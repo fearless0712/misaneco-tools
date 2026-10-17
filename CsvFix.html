@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'unsafe-inline'; style-src 'unsafe-inline'; img-src data: blob:; connect-src 'none'">
+<title>CSV文字化けなおし｜MisaNeco Works</title>
+<style>
+:root{--navy:#1f4e79;--bg:#f5f7fb;--card:#fff;--line:#d6dde8;--text:#1d2533;--muted:#5d6878;--accent:#ffd666;--ok:#2e7d4f;--err:#c0392b}
+*{box-sizing:border-box}
+body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Hiragino Sans","Yu Gothic UI","Segoe UI",Meiryo,sans-serif;background:var(--bg);color:var(--text);font-size:15px}
+header{background:var(--navy);color:#fff;padding:14px 20px;display:flex;align-items:center;gap:16px;flex-wrap:wrap}
+header h1{font-size:20px;margin:0}
+header .tag{font-size:12px;background:var(--accent);color:var(--navy);padding:3px 8px;border-radius:10px;font-weight:700}
+header .sp{flex:1}
+nav{display:flex;gap:4px;padding:10px 20px 0;flex-wrap:wrap}
+nav button{border:1px solid var(--line);border-bottom:none;background:#e9edf4;padding:10px 18px;font-size:15px;border-radius:8px 8px 0 0;cursor:pointer}
+nav button.on{background:var(--card);font-weight:700;color:var(--navy)}
+nav button:disabled{opacity:.45;cursor:default}
+main{background:var(--card);margin:0 20px 20px;border:1px solid var(--line);border-radius:0 8px 8px 8px;padding:20px;min-height:300px}
+section{display:none}section.on{display:block}
+h2{font-size:17px;margin:4px 0 10px;color:var(--navy)}
+.box{border:1px dashed #9fb0c8;border-radius:10px;padding:26px;text-align:center;background:#fafcff;cursor:pointer}
+.box.drag{background:#eaf2ff;border-color:var(--navy)}
+.row{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin:10px 0}
+select,input[type=text]{padding:6px 8px;border:1px solid var(--line);border-radius:6px;font-size:14px}
+button.main{background:var(--navy);color:#fff;border:none;padding:9px 16px;border-radius:8px;font-size:14px;cursor:pointer}
+button.sub{background:#fff;border:1px solid var(--line);padding:7px 12px;border-radius:8px;cursor:pointer;font-size:14px}
+.msg{margin-top:8px;font-size:14px}.msg.ok{color:var(--ok)}.msg.err{color:var(--err)}
+.note{color:var(--muted);font-size:13px}
+.tw{overflow:auto;max-height:460px;border:1px solid var(--line);border-radius:8px;margin-top:10px}
+table{border-collapse:collapse;font-size:13px;width:max-content;min-width:100%}
+th,td{border-bottom:1px solid #eef1f6;padding:5px 9px;text-align:left;white-space:nowrap}
+th{background:#f0f4fa;position:sticky;top:0;z-index:1}
+td.n{text-align:right;font-variant-numeric:tabular-nums}
+.kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:10px;margin:10px 0}
+.kpi{border:1px solid var(--line);border-radius:10px;padding:12px;background:#fbfcfe}
+.kpi b{display:block;font-size:22px;color:var(--navy);margin-top:4px}
+.kpi span{font-size:13px;color:var(--muted)}
+.chartbox{position:relative;height:340px;margin-top:12px}
+.cols{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+@media(max-width:860px){.cols{grid-template-columns:1fr}}
+.badge{display:inline-block;padding:1px 7px;border-radius:8px;font-size:12px;font-weight:700}
+.bA{background:#d9ead3;color:#225c2a}.bB{background:#fff2cc;color:#7a5a00}.bC{background:#f4cccc;color:#8a1f1f}
+footer{color:var(--muted);font-size:12px;text-align:center;margin:0 20px 20px}
+textarea{border:1px solid var(--line);border-radius:8px;padding:8px;box-sizing:border-box}ol li{margin:6px 0}
+@media print{header,nav,.row,#load{display:none!important}#res{display:block!important}}
+</style>
+</head>
+<body>
+<header>
+  <h1>CSV文字化けなおし</h1>
+  <span class="tag">無料</span>
+  <span class="sp"></span>
+  <span style="font-size:13px">ファイルは外部に送信されません（パソコンの中だけで変換します）</span>
+</header>
+<main>
+<section id="load" class="on" style="display:block">
+  <h2>Excelで開くと文字化けするCSVを、ここにドラッグ</h2>
+  <p style="margin:4px 0 10px">文字コード（Shift_JIS／UTF-8）を自動で見分けて、Excelでそのまま開ける形（UTF-8・BOM付き）に直します。複数のファイルもまとめて直せます。</p>
+  <div class="box" id="drop"><span>ここにCSVファイルをドラッグ（クリックして選ぶ）</span></div>
+  <input type="file" id="fin" accept=".csv,.txt,.tsv,text/csv" multiple hidden>
+  <div class="row"><button class="sub" id="sample">サンプルで試す</button></div>
+  <div id="msg" class="msg"></div>
+  <div id="list"></div>
+</section>
+<section style="display:block">
+  <h2>よくある質問</h2>
+  <ol>
+    <li><b>なぜ文字化けするの？</b> Excelは、BOM（目印）のないUTF-8のCSVを、日本語Windowsの文字コード（Shift_JIS）として読もうとするためです。Webサービスから書き出したCSVでよく起きます。</li>
+    <li><b>元のファイルは変わる？</b> 変わりません。直したファイルを別の名前（「_excel」付き）で保存します。</li>
+    <li><b>Excelで開いても数字の先頭の0が消える</b> それはExcelの読み込み方の問題です。電話番号や郵便番号を残したいときは、Excelの「データ」→「テキストまたはCSVから」で、その列を「文字列」にして読み込んでください。</li>
+    <li><b>ファイルの中身は送信される？</b> されません。このファイルは通信をしない設定（CSP）になっていて、ネットにつながっていなくても動きます。</li>
+  </ol>
+  <div class="box" style="text-align:left;margin-top:14px">
+    <b>名簿の整理までまとめてやるなら：MisaNeco DataClean</b><br>
+    電話番号・郵便番号・和暦の日付・メールの表記ゆれや重複を、一括で整えます（買い切り）。<br>
+    <a href="https://excel-temple.booth.pm/items/8999860" target="_blank" rel="noopener">BOOTHで見る</a> ／ <a href="https://excel-temple.booth.pm/" target="_blank" rel="noopener">ほかのツール</a>
+  </div>
+  <p style="font-size:12px;color:#667">MisaNeco Works ／ このツールはAIを活用して作り、動作を確認しています。</p>
+</section>
+</main>
+
+<script>
+const $=id=>document.getElementById(id);
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+function msg(t,c){$("msg").textContent=t;$("msg").className="msg "+(c||"")}
+function detect(u8){
+  if(u8[0]===0xEF&&u8[1]===0xBB&&u8[2]===0xBF)return{enc:"utf-8",bom:true,label:"UTF-8（BOM付き）"};
+  if(u8[0]===0xFF&&u8[1]===0xFE)return{enc:"utf-16le",bom:true,label:"UTF-16"};
+  if(u8[0]===0xFE&&u8[1]===0xFF)return{enc:"utf-16be",bom:true,label:"UTF-16"};
+  try{new TextDecoder("utf-8",{fatal:true}).decode(u8);return{enc:"utf-8",bom:false,label:"UTF-8（BOMなし）"}}catch(e){}
+  return{enc:"shift_jis",bom:false,label:"Shift_JIS"};
+}
+function parseCSV(t,max){const rows=[];let row=[],f="",q=false,i=0;const sep=(t.split("\n")[0].split("\t").length>t.split("\n")[0].split(",").length)?"\t":",";
+  for(;i<t.length;i++){const c=t[i];if(q){if(c==='"'){if(t[i+1]==='"'){f+='"';i++}else q=false}else f+=c}
+  else if(c==='"')q=true;else if(c===sep){row.push(f);f=""}else if(c==="\n"||c==="\r"){if(c==="\r"&&t[i+1]==="\n")i++;row.push(f);rows.push(row);row=[];f="";if(rows.length>=max)return rows}else f+=c}
+  if(f!==""||row.length){row.push(f);rows.push(row)}return rows}
+function save(blob,name){const a=document.createElement("a");a.href=URL.createObjectURL(blob);a.download=name;document.body.appendChild(a);a.click();setTimeout(()=>{URL.revokeObjectURL(a.href);a.remove()},2000)}
+function outName(n){return n.replace(/\.(csv|txt|tsv)$/i,"")+"_excel."+((n.match(/\.(csv|txt|tsv)$/i)||[,"csv"])[1].toLowerCase())}
+function addResult(name,u8){
+  const d=detect(u8);let text=new TextDecoder(d.enc).decode(u8);if(text.charCodeAt(0)===0xFEFF)text=text.slice(1);
+  const rows=parseCSV(text,8);const lines=(text.match(/\n/g)||[]).length+1;
+  const ok=d.enc==="utf-8"&&d.bom;
+  const div=document.createElement("div");div.className="box";div.style.textAlign="left";div.style.marginTop="12px";
+  div.innerHTML=`<b>${esc(name)}</b>　文字コード：${esc(d.label)}　約${lines.toLocaleString()}行<br>`+
+   (ok?'<span>このファイルは、すでにExcelでそのまま開ける形です。</span>':'<span>Excelで開ける形（UTF-8・BOM付き）に直せます。</span>')+
+   `<div style="overflow:auto;margin:8px 0"><table>${rows.map(r=>"<tr>"+r.slice(0,10).map(v=>`<td>${esc(v.slice(0,40))}</td>`).join("")+"</tr>").join("")}</table></div>`;
+  const b=document.createElement("button");b.className="main";b.textContent="Excel用に保存（"+outName(name)+"）";
+  b.onclick=()=>save(new Blob(["﻿"+text],{type:"text/csv;charset=utf-8"}),outName(name));
+  div.appendChild(b);$("list").prepend(div);
+}
+async function addFiles(fs){const list=[...fs];if(!list.length)return;let n=0;for(const f of list){if(f.size>200*1024*1024){msg(f.name+"：大きすぎます（200MBまで）","err");continue}addResult(f.name,new Uint8Array(await f.arrayBuffer()));n++}if(n)msg(n+"件のファイルを読み込みました。下の「Excel用に保存」を押してください。","ok")}
+$("drop").onclick=()=>$("fin").click();$("fin").onchange=e=>{addFiles(e.target.files);e.target.value=""};
+["dragover","dragenter"].forEach(ev=>$("drop").addEventListener(ev,e=>{e.preventDefault();$("drop").classList.add("on")}));
+["dragleave","drop"].forEach(ev=>$("drop").addEventListener(ev,e=>{e.preventDefault();$("drop").classList.remove("on")}));
+$("drop").addEventListener("drop",e=>addFiles(e.dataTransfer.files));
+// サンプル：「顧客リスト」をShift_JISで用意（Excelで直接開くと化けない形の逆＝UTF-8 BOMなし）
+$("sample").onclick=()=>{const t="氏名,電話番号,住所\n山田 花子,03-1234-5678,東京都千代田区1-1\n佐藤 太郎,06-9876-5432,大阪府大阪市北区2-2\n";addResult("サンプル_顧客リスト.csv",new TextEncoder().encode(t));msg("サンプル（UTF-8・BOMなし＝Excelで開くと文字化けする形）を読み込みました。","ok")};
+
+</script>
+</body>
+</html>
