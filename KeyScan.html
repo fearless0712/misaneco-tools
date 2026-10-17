@@ -1,0 +1,238 @@
+<!doctype html>
+<html lang="ja">
+<head><script>(function(){var BUY="https://excel-temple.booth.pm/items/9000282",P="¥1,980";
+function note(){var n=document.getElementById("__demo_n");if(n){n.style.background="#ffe08a";setTimeout(function(){n.style.background="#fff4cc"},600);return}}
+function bar(){if(document.getElementById("__demo_n"))return;var d=document.createElement("div");d.id="__demo_n";d.setAttribute("style","position:sticky;top:0;z-index:99999;background:#fff4cc;color:#3a2e00;border-bottom:1px solid #e0c060;padding:8px 12px;font:14px/1.5 system-ui,sans-serif;text-align:center");d.innerHTML='体験版：「サンプル」ボタンのデータだけで動きます。自分のファイルで使うには製品版へ（'+P+'・買い切り・オフライン）。 <a href="'+BUY+'" target="_blank" rel="noopener" style="color:#0a58ca;font-weight:bold">BOOTHで見る</a><br><span style="font-size:12px">Demo: works with the built-in sample only. <a href="'+BUY+'" target="_blank" rel="noopener" style="color:#0a58ca">Get the full version</a></span>';document.body.insertBefore(d,document.body.firstChild)}
+document.addEventListener("DOMContentLoaded",bar);
+var oc=HTMLInputElement.prototype.click;HTMLInputElement.prototype.click=function(){if(this.type==="file"){note();return}return oc.apply(this,arguments)};
+function block(e){e.preventDefault();e.stopImmediatePropagation();note()}
+window.addEventListener("drop",block,true);
+window.addEventListener("dragover",function(e){e.preventDefault()},true);
+window.addEventListener("click",function(e){var t=e.target;if(t&&t.tagName==="INPUT"&&t.type==="file"){block(e)}else if(t&&t.closest&&t.closest("label")&&t.closest("label").querySelector('input[type=file]')){block(e)}},true);
+window.addEventListener("change",function(e){var t=e.target;if(t&&t.type==="file"){e.stopImmediatePropagation();try{t.value=""}catch(x){}note()}},true);
+window.addEventListener("paste",block,true);
+window.addEventListener("beforeinput",function(e){var t=e.target;if(t&&(t.tagName==="TEXTAREA"||t.isContentEditable))block(e)},true);
+})();</script>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'unsafe-inline'; style-src 'unsafe-inline'; img-src data: blob:; connect-src 'none'">
+<title>【体験版】MisaNeco KeyScan</title>
+<style>
+:root{--navy:#1f4e79;--bg:#f5f7fb;--card:#fff;--line:#d6dde8;--text:#1d2533;--muted:#5d6878;--accent:#ffd666;--ok:#2e7d4f;--err:#c0392b}
+*{box-sizing:border-box}
+body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Hiragino Sans","Yu Gothic UI","Segoe UI",Meiryo,sans-serif;background:var(--bg);color:var(--text);font-size:15px}
+header{background:var(--navy);color:#fff;padding:14px 20px;display:flex;align-items:center;gap:16px;flex-wrap:wrap}
+header h1{font-size:20px;margin:0}
+header .tag{font-size:12px;background:var(--accent);color:var(--navy);padding:3px 8px;border-radius:10px;font-weight:700}
+header .sp{flex:1}
+nav{display:flex;gap:4px;padding:10px 20px 0;flex-wrap:wrap}
+nav button{border:1px solid var(--line);border-bottom:none;background:#e9edf4;padding:10px 18px;font-size:15px;border-radius:8px 8px 0 0;cursor:pointer}
+nav button.on{background:var(--card);font-weight:700;color:var(--navy)}
+nav button:disabled{opacity:.45;cursor:default}
+main{background:var(--card);margin:0 20px 20px;border:1px solid var(--line);border-radius:0 8px 8px 8px;padding:20px;min-height:300px}
+section{display:none}section.on{display:block}
+h2{font-size:17px;margin:4px 0 10px;color:var(--navy)}
+.box{border:1px dashed #9fb0c8;border-radius:10px;padding:26px;text-align:center;background:#fafcff;cursor:pointer}
+.box.drag{background:#eaf2ff;border-color:var(--navy)}
+.row{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin:10px 0}
+select,input[type=text]{padding:6px 8px;border:1px solid var(--line);border-radius:6px;font-size:14px}
+button.main{background:var(--navy);color:#fff;border:none;padding:9px 16px;border-radius:8px;font-size:14px;cursor:pointer}
+button.sub{background:#fff;border:1px solid var(--line);padding:7px 12px;border-radius:8px;cursor:pointer;font-size:14px}
+.msg{margin-top:8px;font-size:14px}.msg.ok{color:var(--ok)}.msg.err{color:var(--err)}
+.note{color:var(--muted);font-size:13px}
+.tw{overflow:auto;max-height:460px;border:1px solid var(--line);border-radius:8px;margin-top:10px}
+table{border-collapse:collapse;font-size:13px;width:max-content;min-width:100%}
+th,td{border-bottom:1px solid #eef1f6;padding:5px 9px;text-align:left;white-space:nowrap}
+th{background:#f0f4fa;position:sticky;top:0;z-index:1}
+td.n{text-align:right;font-variant-numeric:tabular-nums}
+.kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:10px;margin:10px 0}
+.kpi{border:1px solid var(--line);border-radius:10px;padding:12px;background:#fbfcfe}
+.kpi b{display:block;font-size:22px;color:var(--navy);margin-top:4px}
+.kpi span{font-size:13px;color:var(--muted)}
+.chartbox{position:relative;height:340px;margin-top:12px}
+.cols{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+@media(max-width:860px){.cols{grid-template-columns:1fr}}
+.badge{display:inline-block;padding:1px 7px;border-radius:8px;font-size:12px;font-weight:700}
+.bA{background:#d9ead3;color:#225c2a}.bB{background:#fff2cc;color:#7a5a00}.bC{background:#f4cccc;color:#8a1f1f}
+footer{color:var(--muted);font-size:12px;text-align:center;margin:0 20px 20px}
+textarea{border:1px solid var(--line);border-radius:8px;padding:8px;box-sizing:border-box}ol li{margin:6px 0}
+@media print{header,nav,.row,#load,#help,#todo{display:none!important}#res{display:block!important}}
+</style>
+</head>
+<body>
+<header>
+  <h1>MisaNeco KeyScan</h1>
+  <span class="tag" data-i="tag">買い切り・月額0円</span>
+  <span class="sp"></span>
+  <span data-i="local" style="font-size:13px">ファイルは外部に送信されません（パソコンの中だけで調べます）</span>
+  <select id="lang"><option value="ja">日本語</option><option value="en">English</option></select>
+</header>
+<nav>
+  <button data-tab="load" class="on" data-i="t_load">① 調べる</button>
+  <button data-tab="res" disabled data-i="t_res">② 結果</button>
+  <button data-tab="todo" data-i="t_todo">見つかったら</button>
+  <button data-tab="help" data-i="t_help">使い方</button>
+</nav>
+<main>
+<section id="load" class="on">
+  <h2 data-i="ld_h">調べるフォルダ・ファイルを入れる</h2>
+  <div class="box" id="drop"><span data-i="drop">ここにフォルダやファイルをドラッグ（フォルダごとOK）</span><br><span class="note" data-i="drop_n">プログラム・設定ファイル（.env など）・CSV・テキスト・メモ</span></div>
+  <div class="row"><button class="sub" id="pickdir" data-i="pickdir">フォルダを選ぶ</button><button class="sub" id="pickfile" data-i="pickfile">ファイルを選ぶ</button><button class="sub" id="sample" data-i="sample">サンプルで試す</button></div>
+  <input type="file" id="fdir" webkitdirectory multiple hidden><input type="file" id="ffile" multiple hidden>
+  <h2 style="margin-top:18px" data-i="paste_h">または、文章を貼り付けて調べる</h2>
+  <textarea id="paste" rows="6" style="width:100%;font-family:monospace" data-ph="paste_ph"></textarea>
+  <div class="row"><button id="pastego" data-i="pastego">貼り付けた文章を調べる</button></div>
+  <div class="row"><label><input type="checkbox" id="o_skip" checked> <span data-i="o_skip">node_modules・.git・大きいファイル（5MB超）・画像などは飛ばす</span></label></div>
+  <div class="row"><label><input type="checkbox" id="o_generic" checked> <span data-i="o_generic">「password=」「token:」のような書き方も探す（見つかりすぎる場合は外す）</span></label></div>
+  <div class="msg" id="ld_msg"></div>
+</section>
+<section id="res">
+  <h2 data-i="rs_h">結果</h2>
+  <div id="sum" class="kpis"></div>
+  <div class="note" data-i="rs_n">値は一部だけ表示しています（画面を人に見られても安全なように）。</div>
+  <div class="row"><label data-i="flt">表示</label><select id="flt"></select>
+    <button class="sub" id="xcsv" data-i="xcsv">結果をCSVで保存（値は伏せ字）</button><button class="sub" id="xprint" data-i="xprint">印刷・PDF</button></div>
+  <div class="tw" id="tbl"></div>
+</section>
+<section id="todo">
+  <div id="todo_ja">
+  <h2>キーやパスワードが見つかったら</h2>
+  <ol>
+    <li><b>まず、そのキーを無効にする（作り直す）</b>：ファイルから消すだけでは足りません。すでにコピーされているかもしれないからです。各サービスの管理画面で、キーを削除・再発行します。</li>
+    <li><b>新しいキーに入れ替える</b>：使っているプログラムや設定を新しいキーに変えます。</li>
+    <li><b>ファイルから消す</b>：キーは「.env」などの別ファイルに分け、共有やGitの対象から外します（.gitignore に追加）。</li>
+    <li><b>過去の履歴も確かめる</b>：GitHubなどに一度でも上げた場合、履歴に残っています。無効にしたうえで、履歴の削除も検討します。</li>
+    <li><b>不正利用がないか確かめる</b>：サービスの利用履歴・請求額を確認し、身に覚えのない利用があればサービスの窓口に連絡します。</li>
+  </ol>
+  <p class="note">※このツールは、よく知られたキーの形を探すものです。すべての漏洩を見つけられるわけではありません。「見つからなかった＝安全」ではない点にご注意ください。</p>
+  </div>
+  <div id="todo_en" style="display:none">
+  <h2>If a key or password is found</h2>
+  <ol>
+    <li><b>Revoke (rotate) the key first.</b> Deleting it from the file is not enough — it may already have been copied. Delete or regenerate it in the service's dashboard.</li>
+    <li><b>Switch to the new key</b> in your programs and settings.</li>
+    <li><b>Remove it from the file.</b> Keep secrets in a separate file such as .env and exclude it from sharing and Git (.gitignore).</li>
+    <li><b>Check history.</b> If it was ever pushed to GitHub etc., it remains in the history. After revoking, consider cleaning the history.</li>
+    <li><b>Check for misuse.</b> Review usage logs and bills; contact the service if you see activity you don't recognize.</li>
+  </ol>
+  <p class="note">This tool looks for well-known key formats. It cannot find every leak — "nothing found" does not guarantee safety.</p>
+  </div>
+</section>
+<section id="help">
+  <div id="help_ja">
+  <h2>使い方</h2>
+  <ol>
+    <li>このファイル（KeyScan.html）をダブルクリックして、ブラウザ（Chrome・Edge・Safari・Firefox）で開きます。インターネットは不要です。</li>
+    <li>調べたいフォルダを、点線の枠にドラッグします（「フォルダを選ぶ」でもOK）。</li>
+    <li>APIキー・アクセストークン・秘密鍵・パスワードらしき文字が見つかると、ファイル名と行番号を一覧にします。</li>
+    <li>「危険」は実際に使えるキーの形をしているもの、「注意」はパスワードらしき書き方です。中身を開いて確かめてください。</li>
+  </ol>
+  <p><b>探せるもの</b>：AWS・Google（APIキー）・GitHub・OpenAI・Anthropic・Stripe・Slack・SendGrid・Discord（Webhook）・秘密鍵（PEM・OpenSSH）・JWT・パスワード入りのURL・「password=」などの書き方</p>
+  <p class="note">ファイルの中身は、このパソコンのブラウザの中だけで読みます。外部への送信はしません（通信を使う部品は入っていません）。</p>
+  </div>
+  <div id="help_en" style="display:none">
+  <h2>How to use</h2>
+  <ol>
+    <li>Double-click KeyScan.html to open it in a browser (Chrome, Edge, Safari, Firefox). No internet needed.</li>
+    <li>Drag a folder onto the dashed box (or use "Choose folder").</li>
+    <li>Anything that looks like an API key, access token, private key or password is listed with file name and line number.</li>
+    <li>"High" means it matches a real key format; "Check" means it looks like a password assignment. Open the file and check.</li>
+  </ol>
+  <p><b>Detects</b>: AWS, Google API keys, GitHub, OpenAI, Anthropic, Stripe, Slack, SendGrid, Discord webhooks, private keys (PEM/OpenSSH), JWTs, URLs with passwords, and "password=" style assignments.</p>
+  <p class="note">Files are read only inside your browser on this computer. Nothing is sent anywhere (the tool contains no network code).</p>
+  </div>
+</section>
+</main>
+
+<script>
+const T={en:{tag:"One-time purchase · No subscription",local:"Files never leave your computer",t_load:"① Scan",t_res:"② Results",t_todo:"If found",t_help:"How to use",
+ld_h:"Add a folder or files to scan",drop:"Drag folders or files here (whole folders OK)",drop_n:"Code, config files (.env etc.), CSV, text, notes",pickdir:"Choose folder",pickfile:"Choose files",sample:"Try the sample",
+paste_h:"Or paste text to scan",pastego:"Scan pasted text",o_skip:"Skip node_modules, .git, large files (>5MB), images etc.",o_generic:"Also look for \"password=\" / \"token:\" style assignments (turn off if too noisy)",
+rs_h:"Results",rs_n:"Values are partly masked so the screen is safe to show.",flt:"Show",xcsv:"Save results as CSV (values masked)",xprint:"Print / PDF",paste_ph:"Paste config, code, chat logs, etc."},ja:{}};
+document.querySelectorAll("[data-i]").forEach(e=>T.ja[e.dataset.i]=e.textContent);T.ja.paste_ph="設定ファイル・プログラム・チャットのログなどを貼り付け";
+let L="ja";const tt=k=>(T[L]&&T[L][k])||T.ja[k]||k;const J=(ja,en)=>L==="ja"?ja:en;const $=id=>document.getElementById(id);
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+function applyLang(){document.documentElement.lang=L;document.querySelectorAll("[data-i]").forEach(el=>el.textContent=tt(el.dataset.i));$("paste").placeholder=tt("paste_ph");
+ for(const k of["help","todo"]){$(k+"_ja").style.display=L==="ja"?"":"none";$(k+"_en").style.display=L==="en"?"":"none"}if(RES)show()}
+$("lang").onchange=e=>{L=e.target.value;applyLang()};
+try{if((navigator.language||"").slice(0,2)!=="ja"){$("lang").value="en";L="en"}}catch(e){}
+document.querySelectorAll("nav button").forEach(b=>b.onclick=()=>{if(!b.disabled)tab(b.dataset.tab)});
+function tab(id){document.querySelectorAll("nav button").forEach(b=>b.classList.toggle("on",b.dataset.tab===id));document.querySelectorAll("main section").forEach(s=>s.classList.toggle("on",s.id===id))}
+
+// --- detection rules: [id, level(2=high,1=check), name ja, name en, regex, group index of secret]
+const RULES=[
+["pk",2,"秘密鍵","Private key",/-----BEGIN (?:RSA |EC |DSA |OPENSSH |PGP |ENCRYPTED )?PRIVATE KEY(?: BLOCK)?-----/g,0],
+["aws",2,"AWS アクセスキーID","AWS access key ID",/\b((?:AKIA|ASIA|ABIA|ACCA)[0-9A-Z]{16})\b/g,1],
+["awss",2,"AWS シークレットキー","AWS secret access key",/aws.{0,20}?(?:secret|sk).{0,20}?['"=:\s]\s*['"]?([A-Za-z0-9\/+=]{40})(?![A-Za-z0-9\/+=])/gi,1],
+["ant",2,"Anthropic APIキー","Anthropic API key",/\b(sk-ant-[A-Za-z0-9_\-]{20,})/g,1],
+["oai",2,"OpenAI APIキー","OpenAI API key",/\b(sk-(?:proj-|svcacct-|admin-)?[A-Za-z0-9_\-]{20,})/g,1],
+["gh",2,"GitHub トークン","GitHub token",/\b((?:ghp|gho|ghu|ghs|ghr)_[A-Za-z0-9]{36,}|github_pat_[A-Za-z0-9_]{22,})/g,1],
+["gl",2,"GitLab トークン","GitLab token",/\b(glpat-[A-Za-z0-9_\-]{20,})/g,1],
+["gapi",2,"Google APIキー","Google API key",/\b(AIza[0-9A-Za-z_\-]{35})/g,1],
+["stripe",2,"Stripe キー","Stripe key",/\b((?:sk|rk)_(?:live|test)_[0-9A-Za-z]{16,})/g,1],
+["slack",2,"Slack トークン","Slack token",/\b(xox[abposr]-[0-9A-Za-z\-]{10,})/g,1],
+["slackwh",2,"Slack Webhook URL","Slack webhook URL",/(https:\/\/hooks\.slack\.com\/services\/[A-Za-z0-9_\/]{20,})/g,1],
+["discwh",2,"Discord Webhook URL","Discord webhook URL",/(https:\/\/(?:ptb\.|canary\.)?discord(?:app)?\.com\/api\/webhooks\/\d+\/[A-Za-z0-9_\-]{20,})/g,1],
+["sg",2,"SendGrid APIキー","SendGrid API key",/\b(SG\.[A-Za-z0-9_\-]{16,}\.[A-Za-z0-9_\-]{20,})/g,1],
+["hf",2,"Hugging Face トークン","Hugging Face token",/\b(hf_[A-Za-z0-9]{30,})/g,1],
+["urlpw",2,"パスワード入りのURL","URL with password",/\b([a-z][a-z0-9+.\-]{1,20}:\/\/[^\s\/:@'"<>]{1,64}:[^\s\/@'"<>]{3,128}@[^\s'"<>]+)/gi,1],
+["jwt",1,"JWT（ログイン用トークン）","JWT (login token)",/\b(eyJ[A-Za-z0-9_\-]{10,}\.eyJ[A-Za-z0-9_\-]{10,}\.[A-Za-z0-9_\-]{10,})/g,1],
+["gen",1,"パスワード・トークンらしき書き方","Password / token assignment",/(?:^|[^A-Za-z0-9_])((?:password|passwd|pwd|pass|secret|client_secret|api[_\-]?key|apikey|access[_\-]?token|auth[_\-]?token|token|パスワード)\s*["']?\s*[:=＝]\s*["']?([^\s"'`,;#]{8,}))/gi,2]];
+const PLACE=/^(?:x{4,}|\*{4,}|<[^>]*>|\$\{?[A-Za-z_]+\}?|your[_\-]?|example|changeme|dummy|sample|test1234|password|\.\.\.|process\.env|os\.environ|getenv|env\(|None|null|true|false|undefined)/i;
+const SKIPDIR=/(^|\/)(node_modules|\.git|\.svn|\.hg|__pycache__|\.venv|venv|dist|build|\.next|vendor)(\/|$)/;
+const SKIPEXT=/\.(png|jpe?g|gif|webp|bmp|ico|svg|pdf|zip|gz|tgz|7z|rar|mp3|mp4|mov|avi|wav|woff2?|ttf|otf|eot|exe|dll|so|dylib|class|jar|pyc|xlsx?|docx?|pptx?|psd|ai|heic|dmg|iso|bin|lock)$/i;
+const mask=v=>{v=String(v);if(!v)return "";if(v.startsWith("-----"))return v;if(v.length<=8)return v.slice(0,2)+"****";return v.slice(0,Math.min(6,Math.floor(v.length/4)))+"****"+v.slice(-2)};
+function scanText(text,file){const out=[];const lines=text.split(/\r?\n/);const gen=$("o_generic").checked;
+ lines.forEach((ln,i)=>{if(ln.length>20000)ln=ln.slice(0,20000);const taken=[];
+  for(const [id,lv,nj,ne,re,g] of RULES){if(id==="gen"&&!gen)continue;re.lastIndex=0;let m;
+   while((m=re.exec(ln))){const val=m[g]||m[0];const st=m.index+m[0].indexOf(val),en=st+val.length;
+    if(m[0].length===0){re.lastIndex++;continue}
+    if(taken.some(([a,b])=>st<b&&en>a))continue;
+    if(id==="gen"){if(PLACE.test(val)||/^[A-Za-z_]+\(/.test(val)||/^[a-z_.]+$/.test(val))continue}
+    if(id==="urlpw"&&/:\/\/[^:]+:(?:\*+|x+|password|pass|<)/i.test(val))continue;
+    taken.push([st,en]);out.push({lv,id,nj,ne,file,line:i+1,val})}}});return out}
+let RES=null,FILES=0,SKIPPED=0;
+async function readEntries(entry,path,list){if(entry.isFile){await new Promise(r=>entry.file(f=>{list.push([path+f.name,f]);r()},r))}
+ else if(entry.isDirectory){const p=path+entry.name+"/";if($("o_skip").checked&&SKIPDIR.test(p)){SKIPPED++;return}const rd=entry.createReader();
+  for(;;){const ents=await new Promise(r=>rd.readEntries(r,()=>r([])));if(!ents.length)break;for(const e of ents)await readEntries(e,p,list)}}}
+async function scanFiles(list){RES=[];FILES=0;SKIPPED=0;$("ld_msg").className="msg";$("ld_msg").textContent=J("調べています…","Scanning…");
+ for(const [path,f] of list){if($("o_skip").checked&&(SKIPDIR.test(path)||SKIPEXT.test(path)||f.size>5e6)){SKIPPED++;continue}
+  let txt;try{const buf=new Uint8Array(await f.arrayBuffer());if(buf.subarray(0,8000).includes(0)){SKIPPED++;continue}txt=new TextDecoder("utf-8").decode(buf)}catch(e){SKIPPED++;continue}
+  FILES++;if(/(^|\/)\.env(\.|$)/.test(path)&&!/\.(example|sample|template)$/.test(path))RES.push({lv:1,id:"envf",nj:".env ファイル（共有に注意）",ne:".env file (do not share)",file:path,line:0,val:""});
+  RES.push(...scanText(txt,path));if(FILES%50===0){$("ld_msg").textContent=J(`調べています… ${FILES}件`,`Scanning… ${FILES} files`);await new Promise(r=>setTimeout(r))}}
+ done()}
+function done(){RES.sort((a,b)=>b.lv-a.lv||a.file.localeCompare(b.file)||a.line-b.line);
+ $("ld_msg").className="msg ok";$("ld_msg").textContent=J(`${FILES}件のファイルを調べました（飛ばした：${SKIPPED}件）。`,`Scanned ${FILES} files (skipped ${SKIPPED}).`);
+ document.querySelector('nav button[data-tab=res]').disabled=false;show();tab("res")}
+function show(){const hi=RES.filter(r=>r.lv===2).length,ck=RES.length-hi;
+ $("sum").innerHTML=[[J("調べたファイル","Files scanned"),FILES],[J("危険（キーの形）","High (key format)"),hi],[J("注意（確認が必要）","Check"),ck]].map(([k,v],i)=>`<div class="kpi"><span>${esc(k)}</span><b style="${i===1&&v?"color:#b42318":""}">${v}</b></div>`).join("");
+ const f=$("flt"),cur=f.value||"all";f.innerHTML=[["all",J("すべて","All")],["2",J("危険だけ","High only")],["1",J("注意だけ","Check only")]].map(([v,t])=>`<option value="${v}">${esc(t)}</option>`).join("");f.value=cur;
+ const rows=RES.filter(r=>cur==="all"||String(r.lv)===cur);
+ if(!RES.length){$("tbl").innerHTML=`<p class="msg ok">${esc(J("よく知られたキーの形は見つかりませんでした。（すべての漏洩を見つけられるわけではありません）","No well-known key formats were found. (This cannot find every leak.)"))}</p>`;return}
+ $("tbl").innerHTML=`<table><tr><th>${J("判定","Level")}</th><th>${J("種類","Type")}</th><th>${J("ファイル","File")}</th><th>${J("行","Line")}</th><th>${J("見つかった値（伏せ字）","Value (masked)")}</th></tr>`+
+  rows.slice(0,3000).map(r=>`<tr><td><span class="badge" style="background:${r.lv===2?"#fde2e1;color:#b42318":"#fff4d6;color:#8a5a00"}">${r.lv===2?J("危険","High"):J("注意","Check")}</span></td><td>${esc(J(r.nj,r.ne))}</td><td style="word-break:break-all">${esc(r.file)}</td><td>${r.line||""}</td><td style="font-family:monospace;word-break:break-all">${esc(mask(r.val))}</td></tr>`).join("")+"</table>"+(rows.length>3000?`<p class="note">${J("先頭3000件を表示","Showing first 3000")}</p>`:"")}
+$("flt").onchange=show;
+$("xcsv").onclick=()=>{const q=s=>'"'+String(s).replace(/"/g,'""')+'"';const csv="﻿"+[[J("判定","Level"),J("種類","Type"),J("ファイル","File"),J("行","Line"),J("値（伏せ字）","Value (masked)")].map(q).join(",")]
+ .concat(RES.map(r=>[r.lv===2?J("危険","High"):J("注意","Check"),J(r.nj,r.ne),r.file,r.line||"",mask(r.val)].map(q).join(","))).join("\r\n");
+ const a=document.createElement("a");a.href=URL.createObjectURL(new Blob([csv],{type:"text/csv"}));a.download="KeyScan_result.csv";a.click()};
+$("xprint").onclick=()=>window.print();
+const drop=$("drop");drop.onclick=()=>$("fdir").click();$("pickdir").onclick=()=>$("fdir").click();$("pickfile").onclick=()=>$("ffile").click();
+drop.ondragover=e=>{e.preventDefault();drop.classList.add("drag")};drop.ondragleave=()=>drop.classList.remove("drag");
+drop.ondrop=async e=>{e.preventDefault();drop.classList.remove("drag");const list=[];const items=[...(e.dataTransfer.items||[])];
+ const ents=items.map(it=>it.webkitGetAsEntry&&it.webkitGetAsEntry()).filter(Boolean);
+ if(ents.length){for(const en of ents)await readEntries(en,"",list)}else for(const f of e.dataTransfer.files)list.push([f.name,f]);scanFiles(list)};
+const fromInput=inp=>()=>{scanFiles([...inp.files].map(f=>[f.webkitRelativePath||f.name,f]));inp.value=""};
+$("fdir").onchange=fromInput($("fdir"));$("ffile").onchange=fromInput($("ffile"));
+$("pastego").onclick=()=>{FILES=1;SKIPPED=0;RES=scanText($("paste").value,J("貼り付けた文章","Pasted text"));done()};
+$("sample").onclick=()=>{const S={"my-app/.env":"# 本番の設定\nDATABASE_URL=postgres://admin:S3cretPassw0rd@db.example.com:5432/app\nOPENAI_API_KEY=sk-proj-EXAMPLEexampleEXAMPLE1234567890abcd\nSTRIPE_SECRET_KEY=sk_live_EXAMPLE0000000000000000\n",
+ "my-app/.env.example":"OPENAI_API_KEY=your_api_key_here\n","my-app/src/config.js":"const cfg = {\n  apiKey: process.env.API_KEY,\n  githubToken: 'ghp_EXAMPLEexampleEXAMPLEexample1234567890',\n  mapsKey: 'AIzaEXAMPLEexampleEXAMPLEexample1234567',\n};\n",
+ "my-app/deploy/notes.txt":"AWSの鍵（あとで消す）\nAKIAEXAMPLE000000000\naws_secret_access_key = EXAMPLEexampleEXAMPLEexampleEXAMPLE12345\nSlack通知: https://hooks.slack.com/services/T00000000/B00000000/EXAMPLEexampleEXAMPLE00\n",
+ "my-app/README.md":"# My App\nSet password: <your password>\n","my-app/keys/id_ed25519":"-----BEGIN OPENSSH PRIVATE KEY-----\nb3BlbnNzaC1rZXktdjEAAAAA(EXAMPLE)\n-----END OPENSSH PRIVATE KEY-----\n",
+ "my-app/scripts/login.py":"password = \"hunter2hunter2\"\ntoken = os.environ['TOKEN']\n"};
+ scanFiles(Object.entries(S).map(([p,c])=>[p,new File([c],p.split("/").pop())]))};
+applyLang();
+if(location.hash==="#selftest")$("sample").click();
+
+</script>
+</body>
+</html>

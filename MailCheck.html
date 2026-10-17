@@ -1,0 +1,405 @@
+<!doctype html>
+<html lang="ja">
+<head><script>(function(){var BUY="https://excel-temple.booth.pm/items/9001342",P="¥1,480";
+function note(){var n=document.getElementById("__demo_n");if(n){n.style.background="#ffe08a";setTimeout(function(){n.style.background="#fff4cc"},600);return}}
+function bar(){if(document.getElementById("__demo_n"))return;var d=document.createElement("div");d.id="__demo_n";d.setAttribute("style","position:sticky;top:0;z-index:99999;background:#fff4cc;color:#3a2e00;border-bottom:1px solid #e0c060;padding:8px 12px;font:14px/1.5 system-ui,sans-serif;text-align:center");d.innerHTML='体験版：「サンプル」ボタンのデータだけで動きます。自分のファイルで使うには製品版へ（'+P+'・買い切り・オフライン）。 <a href="'+BUY+'" target="_blank" rel="noopener" style="color:#0a58ca;font-weight:bold">BOOTHで見る</a><br><span style="font-size:12px">Demo: works with the built-in sample only. <a href="'+BUY+'" target="_blank" rel="noopener" style="color:#0a58ca">Get the full version</a></span>';document.body.insertBefore(d,document.body.firstChild)}
+document.addEventListener("DOMContentLoaded",bar);
+var oc=HTMLInputElement.prototype.click;HTMLInputElement.prototype.click=function(){if(this.type==="file"){note();return}return oc.apply(this,arguments)};
+function block(e){e.preventDefault();e.stopImmediatePropagation();note()}
+window.addEventListener("drop",block,true);
+window.addEventListener("dragover",function(e){e.preventDefault()},true);
+window.addEventListener("click",function(e){var t=e.target;if(t&&t.tagName==="INPUT"&&t.type==="file"){block(e)}else if(t&&t.closest&&t.closest("label")&&t.closest("label").querySelector('input[type=file]')){block(e)}},true);
+window.addEventListener("change",function(e){var t=e.target;if(t&&t.type==="file"){e.stopImmediatePropagation();try{t.value=""}catch(x){}note()}},true);
+window.addEventListener("paste",block,true);
+window.addEventListener("beforeinput",function(e){var t=e.target;if(t&&(t.tagName==="TEXTAREA"||t.isContentEditable))block(e)},true);
+})();</script>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'unsafe-inline'; style-src 'unsafe-inline'; img-src data: blob:; connect-src 'none'">
+<title>【体験版】MisaNeco MailCheck</title>
+<style>
+:root{--navy:#1f4e79;--bg:#f5f7fb;--card:#fff;--line:#d6dde8;--text:#1d2533;--muted:#5d6878;--accent:#ffd666;--ok:#2e7d4f;--err:#c0392b}
+*{box-sizing:border-box}
+body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Hiragino Sans","Yu Gothic UI","Segoe UI",Meiryo,sans-serif;background:var(--bg);color:var(--text);font-size:15px}
+header{background:var(--navy);color:#fff;padding:14px 20px;display:flex;align-items:center;gap:16px;flex-wrap:wrap}
+header h1{font-size:20px;margin:0}
+header .tag{font-size:12px;background:var(--accent);color:var(--navy);padding:3px 8px;border-radius:10px;font-weight:700}
+header .sp{flex:1}
+nav{display:flex;gap:4px;padding:10px 20px 0;flex-wrap:wrap}
+nav button{border:1px solid var(--line);border-bottom:none;background:#e9edf4;padding:10px 18px;font-size:15px;border-radius:8px 8px 0 0;cursor:pointer}
+nav button.on{background:var(--card);font-weight:700;color:var(--navy)}
+nav button:disabled{opacity:.45;cursor:default}
+main{background:var(--card);margin:0 20px 20px;border:1px solid var(--line);border-radius:0 8px 8px 8px;padding:20px;min-height:300px}
+section{display:none}section.on{display:block}
+h2{font-size:17px;margin:4px 0 10px;color:var(--navy)}
+.box{border:1px dashed #9fb0c8;border-radius:10px;padding:26px;text-align:center;background:#fafcff;cursor:pointer}
+.box.drag{background:#eaf2ff;border-color:var(--navy)}
+.row{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin:10px 0}
+select,input[type=text]{padding:6px 8px;border:1px solid var(--line);border-radius:6px;font-size:14px}
+button.main{background:var(--navy);color:#fff;border:none;padding:9px 16px;border-radius:8px;font-size:14px;cursor:pointer}
+button.sub{background:#fff;border:1px solid var(--line);padding:7px 12px;border-radius:8px;cursor:pointer;font-size:14px}
+.msg{margin-top:8px;font-size:14px}.msg.ok{color:var(--ok)}.msg.err{color:var(--err)}
+.note{color:var(--muted);font-size:13px}
+.tw{overflow:auto;max-height:460px;border:1px solid var(--line);border-radius:8px;margin-top:10px}
+table{border-collapse:collapse;font-size:13px;width:max-content;min-width:100%}
+th,td{border-bottom:1px solid #eef1f6;padding:5px 9px;text-align:left;white-space:nowrap}
+th{background:#f0f4fa;position:sticky;top:0;z-index:1}
+td.n{text-align:right;font-variant-numeric:tabular-nums}
+.kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:10px;margin:10px 0}
+.kpi{border:1px solid var(--line);border-radius:10px;padding:12px;background:#fbfcfe}
+.kpi b{display:block;font-size:22px;color:var(--navy);margin-top:4px}
+.kpi span{font-size:13px;color:var(--muted)}
+.chartbox{position:relative;height:340px;margin-top:12px}
+.cols{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+@media(max-width:860px){.cols{grid-template-columns:1fr}}
+.badge{display:inline-block;padding:1px 7px;border-radius:8px;font-size:12px;font-weight:700}
+.bA{background:#d9ead3;color:#225c2a}.bB{background:#fff2cc;color:#7a5a00}.bC{background:#f4cccc;color:#8a1f1f}
+footer{color:var(--muted);font-size:12px;text-align:center;margin:0 20px 20px}
+textarea{border:1px solid var(--line);border-radius:8px;padding:8px;box-sizing:border-box}ol li{margin:6px 0}
+@media print{header,nav,.row,#load,#help,#todo{display:none!important}#res{display:block!important}}
+</style>
+</head>
+<body>
+<header>
+  <h1>MisaNeco MailCheck</h1>
+  <span class="tag" data-i="tag">買い切り・月額0円</span>
+  <span class="sp"></span>
+  <span data-i="local" style="font-size:13px">メールの中身は外部に送信されません（パソコンの中だけで調べます）</span>
+  <select id="lang"><option value="ja">日本語</option><option value="en">English</option></select>
+</header>
+<nav>
+  <button data-tab="load" class="on" data-i="t_load">① 調べる</button>
+  <button data-tab="res" disabled data-i="t_res">② 結果</button>
+  <button data-tab="todo" data-i="t_todo">怪しいときは</button>
+  <button data-tab="help" data-i="t_help">使い方</button>
+</nav>
+<main>
+<section id="load" class="on">
+  <h2 data-i="ld_h">メールのソース（ヘッダー）を貼り付ける</h2>
+  <textarea id="src" rows="12" style="width:100%;font-family:ui-monospace,Menlo,monospace;font-size:12px" data-ph="src_ph"></textarea>
+  <div class="row"><button class="main" id="go" data-i="go">調べる</button><button class="sub" id="clear" data-i="clear">消す</button></div>
+  <div class="box" id="drop" style="margin-top:10px"><span data-i="drop">または、.eml ファイルをここにドラッグ（クリックして選ぶ）</span></div>
+  <input type="file" id="fin" accept=".eml,.txt,message/rfc822" hidden>
+  <div class="row"><button class="sub" id="s_bad" data-i="s_bad">サンプル（怪しいメール）</button><button class="sub" id="s_ok" data-i="s_ok">サンプル（ふつうのメール）</button></div>
+  <div class="msg" id="ld_msg"></div>
+  <div class="note" data-i="ld_n">ソースの出し方は「使い方」を見てください。本文まで入った全体（.eml）を入れると、リンクや添付ファイルも調べられます。</div>
+</section>
+<section id="res">
+  <div id="verdict"></div>
+  <div id="kp" class="kpis"></div>
+  <h2 data-i="r_chk">チェック結果</h2>
+  <div class="tw" id="checks"></div>
+  <h2 data-i="r_addr">差出人と宛先</h2>
+  <div class="tw" id="addrs"></div>
+  <h2 data-i="r_links">リンク</h2>
+  <div class="tw" id="links"></div>
+  <h2 data-i="r_att">添付ファイル</h2>
+  <div class="tw" id="atts"></div>
+  <h2 data-i="r_route">届いた経路（下から順に）</h2>
+  <div class="tw" id="route"></div>
+  <div class="row"><button class="sub" id="xprint" data-i="xprint">印刷・PDF</button></div>
+  <p class="note" data-i="r_note">※このツールは、よくある「なりすまし」の手口を機械的に調べるものです。「問題なし」でも安全とは限りません。お金や個人情報に関わるメールは、メール以外の方法（前から知っている電話番号など）で必ず確かめてください。</p>
+</section>
+<section id="todo">
+  <div id="todo_ja">
+  <h2>怪しいと思ったら</h2>
+  <ol>
+    <li><b>リンクを押さない・添付を開かない。</b>返信もしないでください。</li>
+    <li><b>サービスの確認は、公式アプリや自分で保存したブックマークから。</b>メールのリンクからログインしません。</li>
+    <li><b>振込先の変更・急ぎの支払いは、前から知っている電話番号で本人に確認。</b>メールに書かれた電話番号は使いません。</li>
+    <li><b>社内で共有する。</b>同じメールが届いていないか確かめ、担当者に知らせます。</li>
+    <li><b>入力してしまったら、すぐにパスワードを変える。</b>同じパスワードを使っている他のサービスも変え、金融機関やカード会社に連絡します。</li>
+  </ol>
+  </div>
+  <div id="todo_en" style="display:none">
+  <h2>If it looks suspicious</h2>
+  <ol>
+    <li><b>Don't click links or open attachments.</b> Don't reply.</li>
+    <li><b>Check your account through the official app or your own bookmark,</b> never through the email link.</li>
+    <li><b>Confirm bank-detail changes or urgent payments by phone,</b> using a number you already know — not one in the email.</li>
+    <li><b>Tell your colleagues</b> and check whether others received it.</li>
+    <li><b>If you entered a password, change it now</b> (and anywhere you reused it), and contact your bank or card company.</li>
+  </ol>
+  </div>
+</section>
+<section id="help">
+  <div id="help_ja">
+  <h2>使い方</h2>
+  <ol>
+    <li>このファイル（MailCheck.html）をダブルクリックして、ブラウザで開きます。インターネットは不要です。</li>
+    <li>調べたいメールの「ソース」をコピーして①に貼り付け、「調べる」を押します（.emlファイルをドラッグしてもOK）。</li>
+    <li>②に、危険のサイン・注意点と、差出人・リンク・添付ファイル・届いた経路が表示されます。</li>
+  </ol>
+  <h2>メールのソースの出し方</h2>
+  <ul>
+    <li><b>Gmail（パソコン）</b>：メールを開き、右上の「︙」→「メッセージのソースを表示」→「クリップボードにコピー」。「元のメッセージをダウンロード」で.emlも保存できます。</li>
+    <li><b>Outlook（Windowsの従来版）</b>：メールをダブルクリックで開き、「ファイル」→「プロパティ」→「インターネット ヘッダー」の中身をコピー（ヘッダーだけなので、リンクと添付は調べられません）。</li>
+    <li><b>Apple Mail（Mac）</b>：メールを選び、「表示」→「メッセージ」→「ソース」の中身をコピー。または、メールをデスクトップにドラッグすると.emlになります。</li>
+    <li>そのほか：メールソフトの「ソースを表示」「ヘッダーを表示」などのメニューを探してください。</li>
+  </ul>
+  <h2>調べること</h2>
+  <ul>
+    <li>受信サーバーの認証結果（SPF・DKIM・DMARC）</li>
+    <li>返信先・送信元（Return-Path）が差出人と違うドメインか</li>
+    <li>表示名に別のメールアドレスや有名な会社名が入っていないか、無料メールなのに会社を名乗っていないか</li>
+    <li>そっくりなドメイン（1〜2文字違い・xn--で始まる国際化ドメイン）</li>
+    <li>リンクの表示と行き先の違い、IPアドレスのURL、短縮URL</li>
+    <li>危ない添付ファイル（.exe・.html・二重拡張子・マクロ付きOffice など）</li>
+    <li>件名・本文の「急がせる言葉」「振込先の変更」など</li>
+  </ul>
+  <p class="note">メールの中身は、このパソコンのブラウザの中だけで読みます。通信できない設定で作っているので、外部に送信されることはありません。本文のリンクを開くこともありません。</p>
+  </div>
+  <div id="help_en" style="display:none">
+  <h2>How to use</h2>
+  <ol>
+    <li>Double-click MailCheck.html to open it in a browser. No internet needed.</li>
+    <li>Copy the email's “source” (original message), paste it in ① and press Check — or drop an .eml file.</li>
+    <li>② shows the warning signs plus sender details, links, attachments and the delivery route.</li>
+  </ol>
+  <h2>How to get the source</h2>
+  <ul>
+    <li><b>Gmail (web)</b>: open the email → “⋮” → “Show original” → “Copy to clipboard” (or “Download original” for an .eml).</li>
+    <li><b>Outlook (classic, Windows)</b>: open the email → File → Properties → copy “Internet headers” (headers only).</li>
+    <li><b>Apple Mail</b>: View → Message → Raw Source, or drag the email to the desktop to get an .eml.</li>
+  </ul>
+  <p class="note">The email is read only inside your browser. The tool blocks all network connections and never opens links.</p>
+  </div>
+  <p class="note">MisaNeco Works｜AIを活用して作成し、動作を確認しています / Built with the help of AI and tested by the author.</p>
+</section>
+</main>
+
+<script>
+const T={en:{tag:"One-time purchase · No subscription",local:"Your email never leaves your computer",t_load:"① Check",t_res:"② Results",t_todo:"If suspicious",t_help:"How to use",
+ld_h:"Paste the email source (headers)",go:"Check",clear:"Clear",drop:"Or drop an .eml file here (or click to choose)",s_bad:"Sample (suspicious)",s_ok:"Sample (normal)",
+ld_n:"See “How to use” for how to get the source. A full .eml (with body) also lets us check links and attachments.",
+r_chk:"Checks",r_addr:"Sender & recipients",r_links:"Links",r_att:"Attachments",r_route:"Delivery route (bottom = first)",xprint:"Print / PDF",
+r_note:"This tool checks common spoofing tricks automatically. “No problems” does not guarantee safety. Always confirm money or personal-data requests another way (e.g. a phone number you already know).",
+src_ph:"Paste the full email source here (it starts with lines like “Received:” or “Delivered-To:”)"},ja:{}};
+document.querySelectorAll("[data-i]").forEach(e=>T.ja[e.dataset.i]=e.innerHTML);T.ja.src_ph="ここにメールのソース全体を貼り付け（「Received:」「Delivered-To:」などで始まる文字）";
+let L="ja";const tt=k=>(T[L]&&T[L][k])||T.ja[k]||k;const J=(ja,en)=>L==="ja"?ja:en;const $=id=>document.getElementById(id);
+const esc=s=>String(s??"").replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+function applyLang(){document.documentElement.lang=L;document.querySelectorAll("[data-i]").forEach(el=>el.innerHTML=tt(el.dataset.i));$("src").placeholder=tt("src_ph");
+ for(const k of["help","todo"]){$(k+"_ja").style.display=L==="ja"?"":"none";$(k+"_en").style.display=L==="en"?"":"none"}if(R)show()}
+$("lang").onchange=e=>{L=e.target.value;applyLang()};
+try{if((navigator.language||"").slice(0,2)!=="ja"){$("lang").value="en";L="en"}}catch(e){}
+if(/[?&]lang=en/.test(location.search)){$("lang").value="en";L="en"}
+document.querySelectorAll("nav button").forEach(b=>b.onclick=()=>{if(!b.disabled)tab(b.dataset.tab)});
+function tab(id){document.querySelectorAll("nav button").forEach(b=>b.classList.toggle("on",b.dataset.tab===id));document.querySelectorAll("main section").forEach(s=>s.classList.toggle("on",s.id===id))}
+function msg(t,c){$("ld_msg").textContent=t;$("ld_msg").className="msg "+(c||"")}
+
+// ---------- decoding helpers
+function strBytes(s){const b=new Uint8Array(s.length);for(let i=0;i<s.length;i++)b[i]=s.charCodeAt(i)&255;return b}
+function b64bytes(s){try{const bin=atob(s.replace(/[^A-Za-z0-9+/=]/g,""));return strBytes(bin)}catch(e){return new Uint8Array()}}
+function qpBytes(s,hdr){if(hdr)s=s.replace(/_/g," ");else s=s.replace(/=\r?\n/g,"");const out=[];for(let i=0;i<s.length;i++){const c=s[i];if(c==="="&&/^[0-9A-Fa-f]{2}$/.test(s.substr(i+1,2))){out.push(parseInt(s.substr(i+1,2),16));i+=2}else{const code=s.charCodeAt(i);if(code<256)out.push(code);else out.push(...new TextEncoder().encode(c))}}return new Uint8Array(out)}
+function decodeBytes(b,cs){cs=(cs||"utf-8").toLowerCase().replace(/^"|"$/g,"");if(cs==="x-sjis"||cs==="sjis"||cs==="cp932"||cs==="windows-31j")cs="shift_jis";try{return new TextDecoder(cs).decode(b)}catch(e){return new TextDecoder("utf-8").decode(b)}}
+function decWords(s){return String(s??"").replace(/(=\?[^?]+\?[BbQq]\?[^?]*\?=)\s+(?==\?)/g,"$1").replace(/=\?([^?]+)\?([BbQq])\?([^?]*)\?=/g,(m,cs,enc,txt)=>decodeBytes(enc.toUpperCase()==="B"?b64bytes(txt):qpBytes(txt,true),cs.replace(/\*.*/,"")))}
+const nfkc=s=>String(s??"").normalize("NFKC");
+
+// ---------- MIME parsing
+function splitHB(raw){raw=raw.replace(/\r\n/g,"\n");const i=raw.search(/\n\n/);return i<0?{head:raw,body:""}:{head:raw.slice(0,i),body:raw.slice(i+2)}}
+function parseHeaders(head){const H=[];for(const line of head.split("\n")){if(/^[ \t]/.test(line)&&H.length)H[H.length-1].v+=" "+line.trim();else{const m=line.match(/^([!-9;-~]+):\s?(.*)$/);if(m)H.push({k:m[1].toLowerCase(),v:m[2]})}}return H}
+const hget=(H,k)=>(H.find(h=>h.k===k)||{}).v;const hall=(H,k)=>H.filter(h=>h.k===k).map(h=>h.v);
+const param=(v,p)=>{const m=String(v||"").match(new RegExp(p+'\\*?=\\s*"?([^";]+)"?',"i"));if(!m)return "";let x=m[1];const r=String(v).match(new RegExp(p+"\\*=([^']*)'[^']*'([^;\\s]+)","i"));if(r){try{x=decodeBytes(strBytes(unescape(r[2])),r[1]||"utf-8")}catch(e){}}return decWords(x)};
+function parts(raw,depth=0){const{head,body}=splitHB(raw);const H=parseHeaders(head);const ct=hget(H,"content-type")||"text/plain";const bd=param(ct,"boundary");
+ if(/^multipart\//i.test(ct)&&bd&&depth<8){const chunks=body.split("--"+bd);return chunks.slice(1).filter(c=>!c.startsWith("--")).flatMap(c=>parts(c.replace(/^[ \t]*\n/,""),depth+1))}
+ return[{H,ct,body}]}
+function partText(p){const cte=(hget(p.H,"content-transfer-encoding")||"").toLowerCase().trim();const cs=param(p.ct,"charset")||"utf-8";
+ if(cte==="base64")return decodeBytes(b64bytes(p.body),cs);if(cte==="quoted-printable")return decodeBytes(qpBytes(p.body),cs);
+ if(!/^utf-?8$/i.test(cs)&&/^[\x00-\xff]*$/.test(p.body))return decodeBytes(strBytes(p.body),cs);return p.body}
+
+// ---------- addresses & domains
+function parseAddr(v){v=decWords(v||"");const m=v.match(/<\s*([^<>\s]+@[^<>\s]+)\s*>/);const addr=(m?m[1]:(v.match(/[^\s<>"',;:()]+@[^\s<>"',;:()]+/)||[""])[0]).toLowerCase().replace(/[>.]+$/,"");
+ const name=m?v.slice(0,m.index).trim().replace(/^"|"$/g,"").trim():"";return{raw:v,addr,name,dom:addr.includes("@")?addr.split("@").pop():""}}
+const SLD=/^(co|ne|or|ac|go|ad|ed|gr|lg|com|net|org|gov|edu)$/;
+function org(d){d=String(d||"").toLowerCase().replace(/\.$/,"");const p=d.split(".");if(p.length<=2)return d;if(SLD.test(p[p.length-2])&&p[p.length-1].length===2)return p.slice(-3).join(".");return p.slice(-2).join(".")}
+const FREE=/^(gmail\.com|googlemail\.com|yahoo\.(co\.jp|com)|ymail\.com|outlook\.(com|jp)|hotmail\.(com|co\.jp)|live\.(com|jp)|msn\.com|icloud\.com|me\.com|mac\.com|aol\.com|gmx\.\w+|mail\.ru|yandex\.\w+|proton(mail)?\.(me|com)|qq\.com|163\.com|126\.com|naver\.com|zoho\.com|docomo\.ne\.jp|ezweb\.ne\.jp|au\.com|softbank\.ne\.jp|i\.softbank\.jp)$/;
+function lev(a,b){if(a===b)return 0;const m=a.length,n=b.length;if(Math.abs(m-n)>2)return 9;let prev=Array.from({length:n+1},(_,j)=>j);for(let i=1;i<=m;i++){const cur=[i];for(let j=1;j<=n;j++)cur[j]=Math.min(prev[j]+1,cur[j-1]+1,prev[j-1]+(a[i-1]===b[j-1]?0:1));prev=cur}return prev[n]}
+const skel=d=>d.replace(/rn/g,"m").replace(/vv/g,"w").replace(/0/g,"o").replace(/[1l|]/g,"i").replace(/5/g,"s");
+function similar(a,b){a=org(a);b=org(b);if(!a||!b||a===b)return false;const la=a.replace(/\.[a-z.]+$/,""),lb=b.replace(/\.[a-z.]+$/,"");if(Math.min(la.length,lb.length)<5)return false;
+ return lev(a,b)<=2||skel(a)===skel(b)||(la===lb&&a!==b)}
+const BRANDS=[[/amazon|アマゾン/i,["amazon.co.jp","amazon.com","amazon.jp","amazonses.com","amazon.de","amazon.co.uk"]],[/apple|アップル|icloud/i,["apple.com","icloud.com"]],[/microsoft|マイクロソフト|outlook|office\s?365/i,["microsoft.com","office.com","outlook.com","live.com","microsoftonline.com","office365.com"]],
+[/google|グーグル|gmail/i,["google.com","gmail.com","youtube.com","googlemail.com"]],[/paypal|ペイパル/i,["paypal.com","paypal.jp"]],[/楽天|rakuten/i,["rakuten.co.jp","rakuten.com","rakuten-card.co.jp","rakuten-bank.co.jp","rakuten.jp"]],
+[/三井住友|smbc/i,["smbc.co.jp","smbc-card.com","vpass.ne.jp"]],[/三菱ＵＦＪ|三菱UFJ|mufg/i,["mufg.jp"]],[/みずほ|mizuho/i,["mizuhobank.co.jp","mizuho-fg.co.jp"]],[/ゆうちょ|日本郵便|japan\s?post/i,["japanpost.jp"]],
+[/ヤマト|クロネコ|yamato/i,["kuronekoyamato.co.jp","yamato-hd.co.jp"]],[/佐川|sagawa/i,["sagawa-exp.co.jp"]],[/ドコモ|docomo/i,["docomo.ne.jp","nttdocomo.co.jp"]],[/ソフトバンク|softbank/i,["softbank.jp","softbank.ne.jp","softbank.co.jp"]],
+[/netflix|ネットフリックス/i,["netflix.com"]],[/メルカリ|mercari/i,["mercari.com","mercari.jp"]],[/国税庁|e-tax/i,["nta.go.jp"]],[/\bjcb\b/i,["jcb.co.jp","jcb.jp"]],[/イオン|aeon/i,["aeon.co.jp","aeon.jp","aeonbank.co.jp","aeon.com"]],
+[/えきねっと|eki-net/i,["eki-net.com"]],[/\bdhl\b/i,["dhl.com"]],[/fedex/i,["fedex.com"]],[/docusign/i,["docusign.com","docusign.net"]],[/dropbox/i,["dropbox.com","dropboxmail.com"]],[/facebook|instagram/i,["facebook.com","facebookmail.com","instagram.com","meta.com"]],
+[/chase/i,["chase.com"]],[/wells\s?fargo/i,["wellsfargo.com"]],[/bank of america/i,["bankofamerica.com","bofa.com"]],[/linkedin/i,["linkedin.com"]],[/coinbase/i,["coinbase.com"]],[/binance/i,["binance.com"]]];
+const brandDomains=BRANDS.flatMap(b=>b[1]);
+const SHORT=/^(bit\.ly|t\.co|tinyurl\.com|is\.gd|ow\.ly|buff\.ly|rebrand\.ly|cutt\.ly|x\.gd|t\.ly|shorturl\.at|rb\.gy|goo\.su|lin\.ee|amzn\.to|qr\.paps\.jp)$/;
+const DANGER_EXT=/\.(exe|scr|com|pif|bat|cmd|js|jse|vbs|vbe|wsf|wsh|hta|ps1|lnk|iso|img|vhdx?|msi|jar|cpl|reg|one|html?|shtml|svg|xll|appx|msix)$/i;
+const MACRO_EXT=/\.(docm|xlsm|pptm|dotm|xltm|xlam|ppam)$/i;const ARCH_EXT=/\.(zip|rar|7z|gz|tgz|cab|ace|arj)$/i;
+const URGENT=/至急|緊急|本日中|24時間以内|アカウント.{0,6}(停止|制限|凍結|ロック)|利用.{0,4}停止|確認できない場合|パスワード.{0,6}(期限|有効期限)|未払い|お支払い.{0,4}(失敗|できません)|urgent|immediately|suspend|locked|verify your account|within 24 hours|final notice|payment failed/i;
+const MONEY=/振込先|口座.{0,4}(変更|変わ)|送金|ギフトカード|ギフト券|プリペイド|請求書.{0,6}(変更|添付)|bank (details|account).{0,10}(change|update)|wire transfer|gift card|new (bank|account)/i;
+
+// ---------- analysis
+let R=null;
+function analyze(raw){raw=String(raw||"").replace(/\r\n/g,"\n").replace(/^﻿/,"");
+ const lines=raw.split("\n");const st=lines.findIndex(l=>/^(Delivered-To|Received|Return-Path|ARC-[A-Za-z-]+|X-[A-Za-z0-9-]+|Authentication-Results|DKIM-Signature|MIME-Version|From|Date|Message-ID|Subject|To|Reply-To|Received-SPF):/i.test(l));
+ if(st<0)throw new Error(J("メールのヘッダーが見つかりません。「From:」や「Received:」の行を含むソース全体を貼り付けてください。","No email headers found. Paste the whole source including lines such as “From:” and “Received:”."));
+ raw=lines.slice(st).join("\n");const{head}=splitHB(raw);const H=parseHeaders(head);
+ const from=parseAddr(hget(H,"from")),rt=hget(H,"reply-to")?parseAddr(hget(H,"reply-to")):null,rp=hget(H,"return-path")?parseAddr(hget(H,"return-path")):null,sender=hget(H,"sender")?parseAddr(hget(H,"sender")):null;
+ const subject=decWords(hget(H,"subject")||""),date=hget(H,"date")||"",mid=hget(H,"message-id")||"";
+ const C=[];const add=(lv,ja,en,dja,den)=>C.push({lv,ja,en,dja:dja||"",den:den||dja||""});
+ // auth results
+ const ars=hall(H,"authentication-results");const ar=ars.join(" ; ");
+ const res=k=>{const m=[...ar.matchAll(new RegExp("\\b"+k+"=([a-z]+)","gi"))].map(x=>x[1].toLowerCase());return m};
+ let spf=res("spf"),dkim=res("dkim"),dmarc=res("dmarc");
+ if(!spf.length){const rs=hget(H,"received-spf");if(rs)spf=[rs.trim().split(/\s/)[0].toLowerCase()]}
+ const pick=a=>!a.length?"none":a.includes("pass")?"pass":a.includes("fail")||a.includes("hardfail")?"fail":a.includes("softfail")?"softfail":a[0];
+ const SPF=pick(spf),DKIM=pick(dkim),DMARC=pick(dmarc);
+ const dkimD=[...ar.matchAll(/header\.(?:d|i)=@?([^\s;]+)/gi)].map(m=>m[1].toLowerCase().replace(/^.*@/,""));
+ hall(H,"dkim-signature").forEach(v=>{const m=v.match(/\bd=([^;\s]+)/i);if(m)dkimD.push(m[1].toLowerCase())});
+ const mailfrom=(ar.match(/smtp\.mailfrom=([^\s;]+)/i)||[])[1];
+ if(!ars.length&&!hget(H,"received-spf"))add(1,"受信サーバーの判定結果（Authentication-Results）がありません","No Authentication-Results header","ヘッダーの一部だけが貼られているか、送信済みフォルダのメールの可能性があります。受信したメールのソース全体で調べてください。","Only part of the headers may have been pasted. Use the full source of a received email.");
+ else{
+  if(DMARC==="fail")add(2,"DMARCが不合格（fail）","DMARC failed","差出人のドメイン（"+from.dom+"）の持ち主が認めていない送信元から届いています。なりすましの可能性が高いサインです。","The message is not authorized by the owner of the sender's domain ("+from.dom+"). A strong sign of spoofing.");
+  else if(DMARC==="pass")add(0,"DMARCは合格（pass）","DMARC passed","差出人のドメインからの送信として確認できました。ただし、攻撃者が自分で取ったドメインでも合格になります。","Sent from the sender's domain. Note: an attacker's own lookalike domain can also pass.");
+  else add(1,"DMARCの判定がありません（"+DMARC+"）","No DMARC result ("+DMARC+")","差出人のドメインがDMARCを設定していないか、判定できませんでした。","The sender's domain has no DMARC policy, or it couldn't be evaluated.");
+  if(SPF==="fail")add(2,"SPFが不合格（fail）","SPF failed","送信したサーバーが、送信元ドメインに登録されていません。","The sending server is not authorized for the sender's domain.");
+  else if(SPF==="softfail")add(1,"SPFが「おそらく不合格」（softfail）","SPF softfail","送信したサーバーが、送信元ドメインに正式には登録されていない可能性があります。","The sending server is probably not authorized.");
+  else if(SPF!=="pass")add(1,"SPFの判定がありません（"+SPF+"）","No SPF pass ("+SPF+")");
+  if(DKIM==="fail")add(2,"DKIM（電子署名）が不合格","DKIM signature failed","途中で書きかえられたか、署名が正しくありません。","The message was altered or the signature is invalid.");
+  else if(DKIM==="pass"){const al=dkimD.some(d=>org(d)===org(from.dom));if(!al&&from.dom)add(1,"電子署名は差出人と別のドメイン","DKIM signed by a different domain","署名したドメイン："+[...new Set(dkimD)].join(", ")+"（メール配信サービスを使っている場合もよくあります）","Signed by: "+[...new Set(dkimD)].join(", ")+" (common with email delivery services).")}
+  else if(DKIM==="none")add(1,"電子署名（DKIM）がありません","No DKIM signature")}
+ // addresses
+ if(!from.addr)add(1,"差出人のアドレスが読めません","Could not read the From address");
+ if(from.name&&/@/.test(from.name)){const inName=(from.name.match(/[^\s<>"'()]+@[^\s<>"'()]+/)||[""])[0].toLowerCase();if(inName&&inName!==from.addr)add(2,"表示名に別のメールアドレスが入っている","Display name contains a different address","表示名："+from.name+" ／ 本当のアドレス："+from.addr,"Shown: "+from.name+" / Actual: "+from.addr)}
+ if(rt&&rt.addr&&org(rt.dom)!==org(from.dom)){const lvl=FREE.test(rt.dom)&&!FREE.test(from.dom)||similar(rt.dom,from.dom)?2:1;add(lvl,"返信先（Reply-To）が差出人と別のドメイン","Reply-To is a different domain","返信すると "+rt.addr+" に届きます（差出人："+from.addr+"）。"+(lvl===2?"無料メールや、そっくりなドメインへの返信は特に危険です。":"メルマガ等ではよくありますが、取引のメールなら要注意です。"),"Replies go to "+rt.addr+" (sender: "+from.addr+"). "+(lvl===2?"Replies to free-mail or lookalike domains are a classic scam sign.":"Common in newsletters, but be careful with business emails."))}
+ if(rp&&rp.dom&&from.dom&&org(rp.dom)!==org(from.dom)&&DMARC!=="pass")add(1,"送信元（Return-Path）が差出人と別のドメイン","Return-Path is a different domain","Return-Path："+rp.addr);
+ const corp=/株式会社|有限会社|銀行|カード|サポート|事務局|運営|お客様センター|カスタマー|経理|総務|請求|inc\b|ltd\b|llc\b|co\.,|corp|bank|support|billing|security|service|team|admin|account/i;
+ if(FREE.test(from.dom)&&corp.test(from.name))add(2,"無料メールなのに会社・窓口を名乗っている","Free email account using a company name","表示名「"+from.name+"」／ アドレス："+from.addr);
+ const nameBrand=BRANDS.find(b=>b[0].test(from.name+" "));if(nameBrand&&from.dom&&!nameBrand[1].some(d=>from.dom===d||from.dom.endsWith("."+d)))add(2,"表示名は有名な会社だが、ドメインが公式と違う","Display name claims a well-known brand, but the domain doesn't match","表示名「"+from.name+"」／ ドメイン："+from.dom+"（公式の例："+nameBrand[1].slice(0,3).join(", ")+"）。※代表的な公式ドメインだけで判定しています。","Name: “"+from.name+"” / domain: "+from.dom+" (official e.g. "+nameBrand[1].slice(0,3).join(", ")+"). Checked against common official domains only.");
+ const doms=[["From",from.dom],["Reply-To",rt&&rt.dom],["Return-Path",rp&&rp.dom]].filter(x=>x[1]);
+ for(const[k,d]of doms){if(/(^|\.)xn--/.test(d))add(2,k+"のドメインが国際化ドメイン（xn--）","IDN / punycode domain in "+k,d+J("：見た目が普通のつづりでも、別の文字が混ざっている可能性があります。",": it may contain look-alike characters."));
+  const bd=brandDomains.find(b=>similar(d,b));if(bd)add(2,k+"のドメインが有名な会社のドメインにそっくり","Lookalike of a well-known domain in "+k,d+" ≈ "+bd)}
+ // body
+ const P=parts(raw);const links=[],atts=[];let text="";
+ for(const p of P){const disp=hget(p.H,"content-disposition")||"";const fn=param(disp,"filename")||param(p.ct,"name");
+  if(fn||/^attachment/i.test(disp)){const sz=/base64/i.test(hget(p.H,"content-transfer-encoding")||"")?Math.round(p.body.replace(/\s/g,"").length*3/4):p.body.length;atts.push({name:fn||J("（名前なし）","(no name)"),type:(p.ct.split(";")[0]||"").trim(),size:sz});continue}
+  if(/^text\/html/i.test(p.ct)){const html=partText(p);const doc=new DOMParser().parseFromString(html,"text/html");text+=" "+(doc.body?doc.body.textContent:"");
+   doc.querySelectorAll("a[href]").forEach(a=>links.push({href:a.getAttribute("href").trim(),text:(a.textContent||"").replace(/\s+/g," ").trim()}))}
+  else if(/^text\//i.test(p.ct)){const t=partText(p);text+=" "+t;(t.match(/https?:\/\/[^\s<>"')\]]+/g)||[]).forEach(u=>links.push({href:u,text:""}))}}
+ // dedupe links
+ const seen=new Set();const L2=[];for(const l of links){const k=l.href+"|"+l.text;if(seen.has(k)||!/^(https?:|\/\/)/i.test(l.href))continue;seen.add(k);
+  let host="";try{host=new URL(l.href.startsWith("//")?"https:"+l.href:l.href).hostname.toLowerCase()}catch(e){continue}
+  const flags=[];const tm=l.text.match(/(?:https?:\/\/)?((?:[a-z0-9-]+\.)+[a-z]{2,})(?:[\/:?#]|$)/i);
+  if(tm&&org(tm[1].toLowerCase())!==org(host))flags.push([2,J("表示（"+tm[1]+"）と行き先が違う","Text shows "+tm[1]+" but goes elsewhere")]);
+  if(/^\d{1,3}(\.\d{1,3}){3}$/.test(host)||host.includes(":"))flags.push([2,J("IPアドレスのURL","IP-address URL")]);
+  if(/(^|\.)xn--/.test(host))flags.push([2,J("国際化ドメイン（xn--）","Punycode domain")]);
+  if(SHORT.test(host))flags.push([1,J("短縮URL（行き先が見えない）","URL shortener (hides destination)")]);
+  if(/^http:/i.test(l.href))flags.push([1,J("暗号化されていない（http）","Not encrypted (http)")]);
+  const bd=brandDomains.find(b=>similar(host,b));if(bd)flags.push([2,J("有名な会社にそっくり（"+bd+"）","Lookalike of "+bd)]);
+  if(from.dom&&similar(host,from.dom))flags.push([2,J("差出人のドメインにそっくり（"+from.dom+"）","Lookalike of the sender's domain")]);
+  if(/@/.test(l.href.replace(/^https?:\/\//,"").split("/")[0]))flags.push([2,J("URLに「@」がある（行き先をごまかす手口）","“@” in URL host part (disguise trick)")]);
+  L2.push({href:l.href,text:l.text,host,flags})}
+ // lookalike between anchor-text domains and sender
+ const shown=[...new Set(L2.flatMap(l=>{const m=l.text.match(/((?:[a-z0-9-]+\.)+[a-z]{2,})/i);return m?[m[1].toLowerCase()]:[]}))];
+ for(const s of shown)if(from.dom&&similar(from.dom,s))add(2,"差出人のドメインが、本文に出てくるドメインとそっくり","Sender domain looks like a domain shown in the email",from.dom+" ≈ "+s+J("（1〜2文字違い）"," (1–2 characters differ)"));
+ const badLinks=L2.filter(l=>l.flags.some(f=>f[0]===2)).length,warnLinks=L2.filter(l=>l.flags.length&&!l.flags.some(f=>f[0]===2)).length;
+ if(badLinks)add(2,"危険なリンクが "+badLinks+" 件","Dangerous links: "+badLinks,J("下の「リンク」の表を見てください。押さないでください。","See the Links table below. Don't click them."));
+ if(warnLinks)add(1,"注意が必要なリンクが "+warnLinks+" 件","Links to be careful with: "+warnLinks);
+ for(const a of atts){const n=a.name.toLowerCase();a.flags=[];
+  if(/\.[a-z0-9]{2,4}\.[a-z0-9]{2,4}$/i.test(n)&&DANGER_EXT.test(n))a.flags.push([2,J("二重拡張子（本当の種類は最後）","Double extension")]);
+  if(DANGER_EXT.test(n))a.flags.push([2,J("開くとプログラムやページが動く種類","Executable / web-page file")]);
+  else if(MACRO_EXT.test(n))a.flags.push([2,J("マクロ付きのOfficeファイル","Macro-enabled Office file")]);
+  else if(ARCH_EXT.test(n))a.flags.push([1,J("圧縮ファイル（中身を確かめにくい）","Archive (contents hidden)")]);
+  if(/[‮‎‏]/.test(a.name))a.flags.push([2,J("ファイル名に向きを変える特殊文字","Right-to-left override in name")])}
+ const badAtt=atts.filter(a=>a.flags.some(f=>f[0]===2));if(badAtt.length)add(2,"危険な添付ファイル："+badAtt.map(a=>a.name).join(", "),"Dangerous attachment: "+badAtt.map(a=>a.name).join(", "),J("開かないでください。","Do not open."));
+ const all=subject+" "+text;const u=all.match(URGENT),mo=all.match(MONEY);
+ if(u)add(1,"急がせる言葉がある（「"+u[0]+"」）","Pressure words (“"+u[0]+"”)",J("急がせて考える時間を奪うのは、詐欺の典型的な手口です。","Creating urgency is a classic scam tactic."));
+ if(mo)add(rt&&org(rt.dom)!==org(from.dom)?2:1,"お金の手続きの話がある（「"+mo[0]+"」）","Money-related request (“"+mo[0]+"”)",J("振込先の変更などは、メール以外（前から知っている電話番号）で必ず確認してください。","Always confirm bank-detail changes by phone using a number you already know."));
+ // route
+ const route=hall(H,"received").map(v=>{const ip=(v.match(/\[(\d{1,3}(?:\.\d{1,3}){3}|[0-9a-f:]{6,})\]/i)||[])[1]||"";const fromH=(v.match(/\bfrom\s+(\S+)/i)||[])[1]||"";const by=(v.match(/\bby\s+(\S+)/i)||[])[1]||"";const dt=v.slice(v.lastIndexOf(";")+1).trim();const t=Date.parse(dt.replace(/\s*\([^)]*\)\s*$/,""));return{fromH,by,ip,dt,t}});
+ const dT=Date.parse(date.replace(/\s*\([^)]*\)\s*$/,""));const firstT=route.length?route[route.length-1].t:NaN;
+ if(isFinite(dT)&&isFinite(firstT)&&Math.abs(firstT-dT)>36*3600*1000)add(1,"送信日時と受信日時が大きくずれている","Date header far from receive time",date);
+ if(!C.some(c=>c.lv>0))add(0,"大きな危険のサインは見つかりませんでした","No major warning signs found",J("ただし安全とは限りません。お金や個人情報の話は、メール以外の方法でも確かめてください。","This does not guarantee safety. Confirm money or personal-data requests another way."));
+ C.sort((a,b)=>b.lv-a.lv);
+ return{H,from,rt,rp,sender,to:decWords(hget(H,"to")||""),subject,date,mid,SPF,DKIM,DMARC,C,links:L2,atts,route,hasBody:P.some(p=>p.body.trim())}}
+
+// ---------- render
+const LV=lv=>lv===2?`<b style="color:var(--err)">${J("危険","Danger")}</b>`:lv===1?`<b style="color:#b26a00">${J("注意","Caution")}</b>`:`<b style="color:var(--ok)">OK</b>`;
+const badge=v=>{const c=v==="pass"?"var(--ok)":v==="fail"?"var(--err)":"#b26a00";return `<b style="color:${c}">${esc(v)}</b>`};
+const tbl=(head,rows)=>rows.length?`<table><tr>${head.map(h=>`<th>${h}</th>`).join("")}</tr>${rows.map(r=>"<tr>"+r.map(c=>`<td style="white-space:normal;word-break:break-all">${c}</td>`).join("")+"</tr>").join("")}</table>`:`<div class="note" style="padding:8px">${J("ありません","None")}</div>`;
+function show(){const r=R;const d=r.C.filter(c=>c.lv===2).length,w=r.C.filter(c=>c.lv===1).length;
+ const v=d?["#fdecea","var(--err)",J("危険のサインがあります","Warning signs found"),J("リンクを押したり、返信・振込をしたりしないでください。「怪しいときは」もご覧ください。","Don't click, reply or pay. See “If suspicious”.")]:w?["#fff6e5","#b26a00",J("注意して確かめてください","Check carefully"),J("下の注意点を確かめてください。","Review the cautions below.")]:["#eaf6ee","var(--ok)",J("大きな危険のサインはありません","No major warning signs"),J("ただし安全とは限りません。","This does not guarantee safety.")];
+ $("verdict").innerHTML=`<div style="background:${v[0]};border:2px solid ${v[1]};border-radius:12px;padding:14px 16px;margin-bottom:8px"><div style="font-size:22px;font-weight:700;color:${v[1]}">${v[2]}</div><div style="margin-top:4px">${v[3]}</div><div class="note" style="margin-top:6px">${J("件名","Subject")}：${esc(r.subject)}</div></div>`;
+ $("kp").innerHTML=[[J("危険","Danger"),d],[J("注意","Caution"),w],["SPF",badge(r.SPF)],["DKIM",badge(r.DKIM)],["DMARC",badge(r.DMARC)]].map(([k,x])=>`<div class="kpi"><span>${k}</span><b>${x}</b></div>`).join("");
+ $("checks").innerHTML=tbl([J("判定","Level"),J("内容","Finding"),J("くわしく","Details")],r.C.map(c=>[LV(c.lv),esc(J(c.ja,c.en)),esc(J(c.dja,c.den))]));
+ const ad=(k,a)=>a?[k,esc(a.name),esc(a.addr),esc(a.dom)]:null;
+ $("addrs").innerHTML=tbl([J("項目","Field"),J("表示名","Name"),J("アドレス","Address"),J("ドメイン","Domain")],[ad("From",r.from),ad("Reply-To",r.rt),ad("Return-Path",r.rp),ad("Sender",r.sender)].filter(Boolean).concat([["To","",esc(r.to),""],["Date","",esc(r.date),""],["Message-ID","",esc(r.mid),""]]));
+ $("links").innerHTML=r.hasBody?tbl([J("判定","Level"),J("表示されている文字","Shown text"),J("本当の行き先","Real destination"),J("理由","Why")],r.links.map(l=>{const lv=l.flags.length?Math.max(...l.flags.map(f=>f[0])):0;return[LV(lv),esc(l.text.slice(0,80)),esc(l.href.slice(0,160)),esc(l.flags.map(f=>f[1]).join(" / "))]})):`<div class="note" style="padding:8px">${J("本文が含まれていないため、リンクは調べていません（.eml やソース全体を入れると調べられます）。","No body included, so links weren't checked. Use the full source or an .eml.")}</div>`;
+ $("atts").innerHTML=r.hasBody?tbl([J("判定","Level"),J("ファイル名","File name"),J("種類","Type"),J("大きさ","Size"),J("理由","Why")],r.atts.map(a=>{const lv=a.flags.length?Math.max(...a.flags.map(f=>f[0])):0;return[LV(lv),esc(a.name),esc(a.type),(a.size/1024).toFixed(1)+" KB",esc(a.flags.map(f=>f[1]).join(" / "))]})):`<div class="note" style="padding:8px">${J("本文が含まれていないため、添付ファイルは調べていません。","No body included, so attachments weren't checked.")}</div>`;
+ $("route").innerHTML=tbl(["#",J("送ったサーバー","From"),"IP",J("受けたサーバー","By"),J("日時","Time")],r.route.slice().reverse().map((x,i)=>[i+1,esc(x.fromH),esc(x.ip),esc(x.by),esc(x.dt)]))}
+function run(raw){try{R=analyze(raw);document.querySelectorAll("nav button").forEach(b=>b.disabled=false);show();tab("res");msg("")}catch(e){msg(e.message,"err")}}
+$("go").onclick=()=>run($("src").value);$("clear").onclick=()=>{$("src").value="";msg("")};
+$("xprint").onclick=()=>window.print();
+const dz=$("drop");dz.onclick=()=>$("fin").click();
+const readF=f=>f.arrayBuffer().then(b=>{const u=new TextDecoder("utf-8").decode(b);$("src").value=u.includes("�")?new TextDecoder("latin1").decode(b):u;run($("src").value)});
+$("fin").onchange=()=>{const f=$("fin").files[0];if(f)readF(f);$("fin").value=""};
+dz.ondragover=e=>{e.preventDefault();dz.classList.add("drag")};dz.ondragleave=()=>dz.classList.remove("drag");
+dz.ondrop=e=>{e.preventDefault();dz.classList.remove("drag");const f=e.dataTransfer.files[0];if(f)readF(f)};
+
+// ---------- samples (fictional domains under .example)
+const b64=s=>btoa(unescape(encodeURIComponent(s)));
+const SAMPLE_BAD=()=>`Delivered-To: keiri@your-company.example
+Received: by 2002:a05:6000:1a8c with SMTP id i12csp1234;
+        Fri, 16 Oct 2026 09:12:45 -0700 (PDT)
+Received: from mail.cheap-host.example (mail.cheap-host.example. [203.0.113.45])
+        by mx.your-company.example with ESMTPS id x7si123;
+        Fri, 16 Oct 2026 09:12:44 -0700 (PDT)
+Authentication-Results: mx.your-company.example;
+       spf=fail (domain of bounce@cheap-host.example does not designate 203.0.113.45 as permitted sender) smtp.mailfrom=bounce@cheap-host.example;
+       dkim=none;
+       dmarc=fail (p=REJECT sp=REJECT dis=QUARANTINE) header.from=sarnple-bank.example
+Return-Path: <bounce@cheap-host.example>
+From: =?UTF-8?B?${b64("サンプル銀行 お客様サポート")}?= <support@sarnple-bank.example>
+Reply-To: samplebank.support.desk@gmail.com
+To: keiri@your-company.example
+Subject: =?UTF-8?B?${b64("【至急】口座の利用を一時停止しました（本日中にご確認ください）")}?=
+Date: Fri, 16 Oct 2026 09:12:40 -0700
+Message-ID: <abc123@cheap-host.example>
+MIME-Version: 1.0
+Content-Type: multipart/mixed; boundary="BOUNDARY1"
+
+--BOUNDARY1
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: base64
+
+${b64(`<p>いつもサンプル銀行をご利用いただきありがとうございます。</p><p>不審なログインがあったため、口座の利用を一時停止しました。本日中に下記からご確認ください。確認できない場合、口座は凍結されます。</p><p><a href="http://198.51.100.7/login">https://www.sample-bank.example/login</a></p><p>また、今月から振込先口座が変わりました。添付の請求書をご確認ください。</p><p><a href="https://bit.ly/3xEXAMPLE">お問い合わせ</a></p>`)}
+--BOUNDARY1
+Content-Type: text/html; name="=?UTF-8?B?${b64("請求書_10月分.pdf.html")}?="
+Content-Disposition: attachment; filename="=?UTF-8?B?${b64("請求書_10月分.pdf.html")}?="
+Content-Transfer-Encoding: base64
+
+${b64("<html><body>sample</body></html>")}
+--BOUNDARY1--
+`;
+const SAMPLE_OK=()=>`Delivered-To: you@your-company.example
+Received: from mail.sample-shop.example (mail.sample-shop.example. [192.0.2.10])
+        by mx.your-company.example with ESMTPS id ok123;
+        Thu, 15 Oct 2026 18:00:05 +0900 (JST)
+Authentication-Results: mx.your-company.example;
+       spf=pass smtp.mailfrom=info@sample-shop.example;
+       dkim=pass header.d=sample-shop.example header.s=s1;
+       dmarc=pass (p=QUARANTINE) header.from=sample-shop.example
+DKIM-Signature: v=1; a=rsa-sha256; d=sample-shop.example; s=s1; h=from:to:subject:date; bh=EXAMPLE=; b=EXAMPLE=
+Return-Path: <info@sample-shop.example>
+From: =?UTF-8?B?${b64("サンプル商店")}?= <info@sample-shop.example>
+To: you@your-company.example
+Subject: =?UTF-8?B?${b64("ご注文ありがとうございました（注文番号 1001）")}?=
+Date: Thu, 15 Oct 2026 18:00:00 +0900
+Message-ID: <order1001@sample-shop.example>
+MIME-Version: 1.0
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: base64
+
+${b64(`<p>ご注文ありがとうございます。発送したらお知らせします。</p><p><a href="https://www.sample-shop.example/orders/1001">https://www.sample-shop.example/orders/1001</a></p>`)}
+`;
+$("s_bad").onclick=()=>{$("src").value=SAMPLE_BAD();run($("src").value)};
+$("s_ok").onclick=()=>{$("src").value=SAMPLE_OK();run($("src").value)};
+applyLang();
+if(location.hash==="#selftest")$("s_bad").click();
+
+</script>
+</body>
+</html>

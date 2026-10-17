@@ -1,0 +1,246 @@
+<!doctype html>
+<html lang="ja">
+<head><script>(function(){var BUY="https://excel-temple.booth.pm/items/9001977",P="¥980";
+function note(){var n=document.getElementById("__demo_n");if(n){n.style.background="#ffe08a";setTimeout(function(){n.style.background="#fff4cc"},600);return}}
+function bar(){if(document.getElementById("__demo_n"))return;var d=document.createElement("div");d.id="__demo_n";d.setAttribute("style","position:sticky;top:0;z-index:99999;background:#fff4cc;color:#3a2e00;border-bottom:1px solid #e0c060;padding:8px 12px;font:14px/1.5 system-ui,sans-serif;text-align:center");d.innerHTML='体験版：「サンプル」ボタンのデータだけで動きます。自分のファイルで使うには製品版へ（'+P+'・買い切り・オフライン）。 <a href="'+BUY+'" target="_blank" rel="noopener" style="color:#0a58ca;font-weight:bold">BOOTHで見る</a><br><span style="font-size:12px">Demo: works with the built-in sample only. <a href="'+BUY+'" target="_blank" rel="noopener" style="color:#0a58ca">Get the full version</a></span>';document.body.insertBefore(d,document.body.firstChild)}
+document.addEventListener("DOMContentLoaded",bar);
+var oc=HTMLInputElement.prototype.click;HTMLInputElement.prototype.click=function(){if(this.type==="file"){note();return}return oc.apply(this,arguments)};
+function block(e){e.preventDefault();e.stopImmediatePropagation();note()}
+window.addEventListener("drop",block,true);
+window.addEventListener("dragover",function(e){e.preventDefault()},true);
+window.addEventListener("click",function(e){var t=e.target;if(t&&t.tagName==="INPUT"&&t.type==="file"){block(e)}else if(t&&t.closest&&t.closest("label")&&t.closest("label").querySelector('input[type=file]')){block(e)}},true);
+window.addEventListener("change",function(e){var t=e.target;if(t&&t.type==="file"){e.stopImmediatePropagation();try{t.value=""}catch(x){}note()}},true);
+window.addEventListener("paste",block,true);
+window.addEventListener("beforeinput",function(e){var t=e.target;if(t&&(t.tagName==="TEXTAREA"||t.isContentEditable))block(e)},true);
+})();</script>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'unsafe-inline'; style-src 'unsafe-inline'; img-src data: blob:; connect-src 'none'">
+<title>【体験版】MisaNeco LinkCheck</title>
+<style>
+:root{--navy:#1f4e79;--bg:#f5f7fb;--card:#fff;--line:#d6dde8;--text:#1d2533;--muted:#5d6878;--accent:#ffd666;--ok:#2e7d4f;--err:#c0392b}
+*{box-sizing:border-box}
+body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Hiragino Sans","Yu Gothic UI","Segoe UI",Meiryo,sans-serif;background:var(--bg);color:var(--text);font-size:15px}
+header{background:var(--navy);color:#fff;padding:14px 20px;display:flex;align-items:center;gap:16px;flex-wrap:wrap}
+header h1{font-size:20px;margin:0}
+header .tag{font-size:12px;background:var(--accent);color:var(--navy);padding:3px 8px;border-radius:10px;font-weight:700}
+header .sp{flex:1}
+nav{display:flex;gap:4px;padding:10px 20px 0;flex-wrap:wrap}
+nav button{border:1px solid var(--line);border-bottom:none;background:#e9edf4;padding:10px 18px;font-size:15px;border-radius:8px 8px 0 0;cursor:pointer}
+nav button.on{background:var(--card);font-weight:700;color:var(--navy)}
+nav button:disabled{opacity:.45;cursor:default}
+main{background:var(--card);margin:0 20px 20px;border:1px solid var(--line);border-radius:0 8px 8px 8px;padding:20px;min-height:300px}
+section{display:none}section.on{display:block}
+h2{font-size:17px;margin:4px 0 10px;color:var(--navy)}
+.box{border:1px dashed #9fb0c8;border-radius:10px;padding:26px;text-align:center;background:#fafcff;cursor:pointer}
+.box.drag{background:#eaf2ff;border-color:var(--navy)}
+.row{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin:10px 0}
+select,input[type=text]{padding:6px 8px;border:1px solid var(--line);border-radius:6px;font-size:14px}
+button.main{background:var(--navy);color:#fff;border:none;padding:9px 16px;border-radius:8px;font-size:14px;cursor:pointer}
+button.sub{background:#fff;border:1px solid var(--line);padding:7px 12px;border-radius:8px;cursor:pointer;font-size:14px}
+.msg{margin-top:8px;font-size:14px}.msg.ok{color:var(--ok)}.msg.err{color:var(--err)}
+.note{color:var(--muted);font-size:13px}
+.tw{overflow:auto;max-height:460px;border:1px solid var(--line);border-radius:8px;margin-top:10px}
+table{border-collapse:collapse;font-size:13px;width:max-content;min-width:100%}
+th,td{border-bottom:1px solid #eef1f6;padding:5px 9px;text-align:left;white-space:nowrap}
+th{background:#f0f4fa;position:sticky;top:0;z-index:1}
+td.n{text-align:right;font-variant-numeric:tabular-nums}
+.kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:10px;margin:10px 0}
+.kpi{border:1px solid var(--line);border-radius:10px;padding:12px;background:#fbfcfe}
+.kpi b{display:block;font-size:22px;color:var(--navy);margin-top:4px}
+.kpi span{font-size:13px;color:var(--muted)}
+.chartbox{position:relative;height:340px;margin-top:12px}
+.cols{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+@media(max-width:860px){.cols{grid-template-columns:1fr}}
+.badge{display:inline-block;padding:1px 7px;border-radius:8px;font-size:12px;font-weight:700}
+.bA{background:#d9ead3;color:#225c2a}.bB{background:#fff2cc;color:#7a5a00}.bC{background:#f4cccc;color:#8a1f1f}
+footer{color:var(--muted);font-size:12px;text-align:center;margin:0 20px 20px}
+textarea{border:1px solid var(--line);border-radius:8px;padding:8px;box-sizing:border-box}ol li{margin:6px 0}
+@media print{header,nav,.row,#load,#help,#todo{display:none!important}#res{display:block!important}}
+</style>
+</head>
+<body>
+<header>
+  <h1>MisaNeco LinkCheck</h1>
+  <span class="tag" data-i="tag">買い切り・月額0円</span>
+  <span class="sp"></span>
+  <span data-i="local" style="font-size:13px">貼り付けた文字は外部に送信されません（リンクも開きません）</span>
+  <select id="lang"><option value="ja">日本語</option><option value="en">English</option></select>
+</header>
+<nav>
+  <button data-tab="load" class="on" data-i="t_load">① 調べる</button>
+  <button data-tab="res" disabled data-i="t_res">② 結果</button>
+  <button data-tab="todo" data-i="t_todo">開いてしまったら</button>
+  <button data-tab="help" data-i="t_help">使い方</button>
+</nav>
+<main>
+<section id="load" class="on">
+  <h2 data-i="ld_h">あやしいSMS・メッセージ・URLを貼り付け</h2>
+  <div class="note" data-i="ld_n">SMS（ショートメッセージ）、LINE・DM、メールの本文、URLだけ、どれでも大丈夫です。リンクは開かず、文字だけを見て調べます。</div>
+  <textarea id="src" rows="9" style="width:100%"></textarea>
+  <div class="row"><button class="main" id="go" data-i="go">調べる</button><button class="sub" id="s_bad" data-i="s_bad">サンプル（あやしい）</button><button class="sub" id="s_ok" data-i="s_ok">サンプル（ふつう）</button><button class="sub" id="clear" data-i="clear">消す</button></div>
+  <div class="msg" id="ld_msg"></div>
+</section>
+<section id="res">
+  <div id="verdict"></div>
+  <div id="kp" class="kpis"></div>
+  <h2 data-i="r_chk">見つかったサイン</h2>
+  <div class="tw" id="tchk"></div>
+  <h2 style="margin-top:14px" data-i="r_links">リンクごとの判定</h2>
+  <div class="tw" id="tlinks"></div>
+  <div class="row"><button class="sub" id="x_print" data-i="xprint">印刷・PDF</button></div>
+  <p class="note" data-i="r_note">よくある手口を自動で調べるツールです。「問題なし」でも安全とは限りません。お金・パスワード・個人情報を求められたら、リンクからではなく、公式アプリやブックマーク、前から知っている電話番号で確かめてください。</p>
+</section>
+<section id="todo">
+  <div id="todo_ja">
+  <h2>リンクを開いてしまったら</h2>
+  <ol>
+    <li><b>何も入力していない</b>：そのページを閉じれば、多くの場合は大丈夫です。届いたSMSは削除し、同じ番号は迷惑メッセージとして報告・拒否します。</li>
+    <li><b>ID・パスワードを入れた</b>：すぐに公式アプリや公式サイト（ブックマークから）でパスワードを変えます。同じパスワードを使っているほかのサービスも変えます。二段階認証をオンにします。</li>
+    <li><b>カード番号を入れた</b>：カード裏面の電話番号に連絡し、カードを止めてもらいます。明細に身に覚えのない請求がないか確かめます。</li>
+    <li><b>アプリを入れてしまった（Android）</b>：機内モードにして、そのアプリを削除します。心配なら携帯会社の窓口に相談します。</li>
+    <li><b>相談先</b>：警察相談専用電話「#9110」、消費者ホットライン「188」。</li>
+  </ol>
+  </div>
+  <div id="todo_en">
+  <h2>If you already opened the link</h2>
+  <ol>
+    <li><b>You didn't type anything</b>: close the page. Delete the message and report/block the sender.</li>
+    <li><b>You entered a password</b>: change it right away in the official app or a bookmarked site, plus any other account that uses the same password. Turn on two-factor authentication.</li>
+    <li><b>You entered card details</b>: call the number on the back of your card and ask them to block it. Check your statement.</li>
+    <li><b>You installed an app (Android)</b>: switch on airplane mode and uninstall it. Ask your carrier or a professional if unsure.</li>
+    <li><b>Report it</b>: to your local police non-emergency line or your country's fraud reporting service.</li>
+  </ol>
+  </div>
+</section>
+<section id="help">
+  <div id="help_ja">
+  <h2>使い方</h2>
+  <ol>
+    <li>このファイル（LinkCheck.html）をChrome・Edge・Safariで開きます（スマホでも開けます）。インターネットは不要です。</li>
+    <li>あやしいSMSやメッセージを長押しでコピーし、上の欄に貼り付けて「調べる」を押します。</li>
+    <li>危険・注意のサインと、リンクごとの判定が出ます。本当のサイトの見分け方と、開いてしまったときの対処もまとめています。</li>
+  </ol>
+  <h2>調べること</h2>
+  <ul><li>文中の会社名（宅配・銀行・カード・携帯会社など）と、リンク先のドメインが合っているか</li><li>有名なドメインにそっくりなつづり（rnとm、0とo など）、国際化ドメイン（xn--）</li><li>「amazon.co.jp.○○.com」のように、有名な名前を前に付けた別のドメイン</li><li>短縮URL・IPアドレス・http・「@」入りのURL・あやしまれやすいドメイン末尾</li><li>「至急」「不在のため持ち帰り」「お支払いが確認できません」などの急がせる言葉</li></ul>
+  <p class="note">貼り付けた文字は、このブラウザの中だけで調べます。リンクを開いたり、外部に送信したりはしません（通信できない設定で作っています）。<br>MisaNeco Works｜AIを活用して作成し、動作を確認しています。</p>
+  </div>
+  <div id="help_en">
+  <h2>How to use</h2>
+  <ol>
+    <li>Open this file (LinkCheck.html) in Chrome, Edge or Safari (works on phones too). No internet needed.</li>
+    <li>Copy the suspicious text message or email text, paste it above, and click "Check".</li>
+    <li>You get the warning signs, a verdict for each link, and what to do if you already opened it.</li>
+  </ol>
+  <h2>What it checks</h2>
+  <ul><li>Whether the brand named in the message (delivery, bank, card, carrier…) matches the link's domain</li><li>Look-alike spellings of well-known domains (rn vs m, 0 vs o), punycode (xn--) domains</li><li>Fake domains that start with a famous name, like "amazon.com.secure-login.xyz"</li><li>Shortened links, IP-address links, http, "@" in the address, often-abused domain endings</li><li>Pressure words such as "urgent", "missed delivery", "payment failed"</li></ul>
+  <p class="note">Text is checked only inside this browser. Links are never opened and nothing is sent anywhere (the page cannot connect to the internet).<br>MisaNeco Works · Made with the help of AI and tested by the author.</p>
+  </div>
+</section>
+</main>
+
+<script>
+const T={en:{tag:"One-time purchase · No subscription",local:"Nothing you paste is sent anywhere (links are never opened)",t_load:"① Check",t_res:"② Results",t_todo:"If you opened it",t_help:"How to use",
+ld_h:"Paste a suspicious text message, DM or URL",ld_n:"A text message (SMS), a chat/DM, email text, or just a URL — all fine. Links are never opened; only the text is checked.",
+go:"Check",s_bad:"Sample (suspicious)",s_ok:"Sample (normal)",clear:"Clear",r_chk:"Warning signs found",r_links:"Verdict for each link",xprint:"Print / PDF",
+r_note:"This tool checks common tricks automatically. “No signs found” does not guarantee safety. If you're asked for money, passwords or personal data, don't use the link — open the official app, a bookmark, or call a number you already know."},ja:{}};
+document.querySelectorAll("[data-i]").forEach(e=>T.ja[e.dataset.i]=e.innerHTML);
+let L="ja";const tt=k=>(T[L]&&T[L][k])||T.ja[k]||k;const J=(ja,en)=>L==="ja"?ja:en;const $=id=>document.getElementById(id);
+const esc=s=>String(s??"").replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+let R=null,RAW="";
+function applyLang(){document.documentElement.lang=L;document.querySelectorAll("[data-i]").forEach(el=>el.innerHTML=tt(el.dataset.i));
+ $("src").placeholder=J("ここにSMSやメッセージ、URLを貼り付け","Paste the message or URL here");
+ for(const k of["help","todo"]){$(k+"_ja").style.display=L==="ja"?"":"none";$(k+"_en").style.display=L==="en"?"":"none"}if(R){R=analyze(RAW);show()}}
+$("lang").onchange=e=>{L=e.target.value;applyLang()};
+try{if((navigator.language||"").slice(0,2)!=="ja"){$("lang").value="en";L="en"}}catch(e){}
+if(/[?&]lang=en/.test(location.search)){$("lang").value="en";L="en"}
+function tab(id){document.querySelectorAll("nav button").forEach(b=>b.classList.toggle("on",b.dataset.tab===id));document.querySelectorAll("main section").forEach(s=>s.classList.toggle("on",s.id===id))}
+document.querySelectorAll("nav button").forEach(b=>b.onclick=()=>{if(!b.disabled)tab(b.dataset.tab)});
+function msg(t,c){$("ld_msg").textContent=t;$("ld_msg").className="msg "+(c||"")}
+
+// ---------- domain helpers
+const SLD=/^(co|ne|or|ac|go|ad|ed|gr|lg|com|net|org|gov|edu)$/;
+function org(d){d=String(d||"").toLowerCase().replace(/\.$/,"");const p=d.split(".");if(p.length<=2)return d;if(SLD.test(p[p.length-2])&&p[p.length-1].length===2)return p.slice(-3).join(".");return p.slice(-2).join(".")}
+function lev(a,b){if(a===b)return 0;const m=a.length,n=b.length;if(Math.abs(m-n)>2)return 9;let prev=Array.from({length:n+1},(_,j)=>j);for(let i=1;i<=m;i++){const cur=[i];for(let j=1;j<=n;j++)cur[j]=Math.min(prev[j]+1,cur[j-1]+1,prev[j-1]+(a[i-1]===b[j-1]?0:1));prev=cur}return prev[n]}
+const skel=d=>d.replace(/rn/g,"m").replace(/vv/g,"w").replace(/0/g,"o").replace(/[1l|]/g,"i").replace(/5/g,"s");
+function similar(a,b){a=org(a);b=org(b);if(!a||!b||a===b)return false;const la=a.replace(/\.[a-z.]+$/,""),lb=b.replace(/\.[a-z.]+$/,"");if(Math.min(la.length,lb.length)<5)return false;
+ return lev(a,b)<=2||skel(a)===skel(b)||(la===lb&&a!==b)}
+// RFC 3492 punycode decode (for showing xn-- labels)
+function puny(s){const base=36,tmin=1,tmax=26,skew=38,damp=700;let n=128,i=0,bias=72;const b=s.lastIndexOf("-");const out=b>0?[...s.slice(0,b)]:[];
+ const adapt=(d,np,first)=>{d=first?Math.floor(d/damp):d>>1;d+=Math.floor(d/np);let k=0;while(d>455){d=Math.floor(d/35);k+=base}return k+Math.floor(36*d/(d+skew))};
+ for(let p=b>0?b+1:0;p<s.length;){const oi=i;let w=1;for(let k=base;;k+=base){if(p>=s.length)return s;const c=s.charCodeAt(p++);const dg=c-48<10?c-22:c-65<26?c-65:c-97<26?c-97:base;if(dg>=base)return s;i+=dg*w;const t=k<=bias?tmin:k>=bias+tmax?tmax:k-bias;if(dg<t)break;w*=base-t}
+  bias=adapt(i-oi,out.length+1,oi===0);n+=Math.floor(i/(out.length+1));i%=out.length+1;out.splice(i,0,String.fromCodePoint(n));i++}return out.join("")}
+const uni=h=>h.split(".").map(x=>/^xn--/.test(x)?puny(x.slice(4)):x).join(".");
+const BRANDS=[[/amazon|アマゾン/i,"amazon",["amazon.co.jp","amazon.com","amazon.jp","amzn.to","amazon.de","amazon.co.uk","amazon.ca","amazon.com.au"]],[/apple|アップル|icloud/i,"apple",["apple.com","icloud.com"]],[/microsoft|マイクロソフト|outlook|office\s?365/i,"microsoft",["microsoft.com","office.com","outlook.com","live.com","microsoftonline.com"]],
+[/google|グーグル|gmail/i,"google",["google.com","gmail.com","youtube.com","google.co.jp"]],[/paypal|ペイパル/i,"paypal",["paypal.com","paypal.jp"]],[/楽天|rakuten/i,"rakuten",["rakuten.co.jp","rakuten.com","rakuten-card.co.jp","rakuten-bank.co.jp","rakuten.jp"]],
+[/三井住友|smbc/i,"smbc",["smbc.co.jp","smbc-card.com","vpass.ne.jp"]],[/三菱ＵＦＪ|三菱UFJ|mufg/i,"mufg",["mufg.jp","bk.mufg.jp"]],[/みずほ|mizuho/i,"mizuho",["mizuhobank.co.jp","mizuho-fg.co.jp"]],[/ゆうちょ|日本郵便|郵便局|japan\s?post/i,"japanpost",["japanpost.jp","jp-bank.japanpost.jp"]],
+[/ヤマト|クロネコ|yamato/i,"yamato",["kuronekoyamato.co.jp","yamato-hd.co.jp"]],[/佐川|sagawa/i,"sagawa",["sagawa-exp.co.jp"]],[/ドコモ|docomo/i,"docomo",["docomo.ne.jp","nttdocomo.co.jp"]],[/ソフトバンク|softbank/i,"softbank",["softbank.jp","softbank.ne.jp","softbank.co.jp"]],
+[/\bau\b|ＫＤＤＩ|kddi/i,"kddi",["au.com","kddi.com"]],[/netflix|ネットフリックス/i,"netflix",["netflix.com"]],[/メルカリ|mercari/i,"mercari",["mercari.com","mercari.jp"]],[/国税庁|e-tax|税務署/i,"nta",["nta.go.jp","e-tax.nta.go.jp"]],[/\bjcb\b/i,"jcb",["jcb.co.jp","jcb.jp"]],
+[/イオン|aeon/i,"aeon",["aeon.co.jp","aeon.jp","aeonbank.co.jp","aeon.com"]],[/えきねっと|eki-net/i,"eki-net",["eki-net.com"]],[/東京電力|tepco/i,"tepco",["tepco.co.jp"]],[/\busps\b/i,"usps",["usps.com"]],[/\bUPS\b/,"ups",["ups.com"]],[/\bdhl\b/i,"dhl",["dhl.com","dhl.de"]],
+[/fedex/i,"fedex",["fedex.com"]],[/royal\s?mail/i,"royalmail",["royalmail.com"]],[/\bHMRC\b/,"hmrc",["gov.uk"]],[/\bIRS\b/,"irs",["irs.gov"]],[/facebook|instagram|フェイスブック|インスタ/i,"facebook",["facebook.com","instagram.com","meta.com","fb.com"]],
+[/\bChase\b/,"chase",["chase.com"]],[/wells\s?fargo/i,"wellsfargo",["wellsfargo.com"]],[/bank of america/i,"bankofamerica",["bankofamerica.com","bofa.com"]],[/coinbase/i,"coinbase",["coinbase.com"]],[/binance/i,"binance",["binance.com"]],[/\bLINE\b|ライン/,"line",["line.me","line.biz"]]];
+const official=h=>BRANDS.find(b=>b[2].some(d=>h===d||h.endsWith("."+d)));
+const SHORT=/^(bit\.ly|t\.co|tinyurl\.com|is\.gd|ow\.ly|buff\.ly|rebrand\.ly|cutt\.ly|x\.gd|t\.ly|shorturl\.at|rb\.gy|goo\.su|s\.id|tiny\.cc|qr\.paps\.jp|00m\.in)$/;
+const RISKY_TLD=/\.(top|xyz|icu|cn|shop|online|site|club|live|buzz|cyou|vip|sbs|cfd|rest|click|link|work|monster|bond|best|win|loan|lol|mom|quest|life|fun|asia|support|help|info|cc|tk|ml|ga|cf|gq)$/;
+const URGENT=/至急|緊急|本日中|24時間以内|\d+時間以内|アカウント.{0,6}(停止|制限|凍結|ロック)|利用.{0,4}(停止|制限)|確認できない場合|未払い|お支払い.{0,6}(確認できません|失敗|できません)|最終通知|urgent|immediately|suspend|locked|within \d+ hours|final notice|payment (failed|declined)|action required/i;
+const DELIVERY=/不在|持ち帰り|お荷物|配達(できません|予定|状況)|再配達|お届け|宛先不明|住所.{0,4}(不備|不完全)|delivery|package|parcel|shipment|redeliver|incomplete address/i;
+const CRED=/パスワード|暗証番号|カード番号|セキュリティコード|ログイン|本人確認|認証コード|password|card number|verify your|log ?in|sign ?in|security code|one-time code/i;
+const PRIZE=/当選|プレゼント|無料で|ギフト券|ポイント.{0,4}(付与|失効)|you(['’]ve| have) won|free gift|reward|refund/i;
+
+// ---------- analysis
+function extract(text){const out=[];const seen=new Set();
+ const re=/\b(?:https?:\/\/|www\.)[^\s<>"'）」』】]+|(?<![@\w.-])(?:[a-z0-9](?:[a-z0-9-]{0,61}[a-z0-9])?\.)+(?:xn--[a-z0-9-]+|[a-z]{2,24})(?:\/[^\s<>"'）」』】]*)?/gi;
+ for(const m of text.matchAll(re)){let u=m[0].replace(/[.,;:!?。、）)】」』]+$/,"");if(/^\d+(\.\d+)+$/.test(u)&&!/^https?:/i.test(u))continue;
+  const href=/^https?:\/\//i.test(u)?u:"http://"+u;let host="";try{host=new URL(href).hostname.toLowerCase()}catch(e){continue}
+  if(!/^https?:/i.test(u)&&!/^www\./i.test(u)&&!host.includes("."))continue;
+  if(!/^https?:/i.test(u)&&!/^www\./i.test(u)&&/\.(txt|pdf|jpg|png|html?|xlsx?|docx?|csv|zip)$/i.test(host))continue;
+  if(seen.has(u))continue;seen.add(u);out.push({raw:u,href,host})}return out}
+function analyze(raw){const text=String(raw||"").normalize("NFKC");const C=[];const add=(lv,ja,en,dja,den)=>C.push({lv,t:J(ja,en),d:J(dja||"",den||dja||"")});
+ const links=extract(text);
+ const named=BRANDS.filter(b=>b[0].test(text.replace(/https?:\/\/\S+/g," ")));
+ for(const l of links){const h=l.host,o=org(h),f=[];l.uni=uni(h);const off=official(h);l.off=off;
+  if(/^\d{1,3}(\.\d{1,3}){3}$/.test(h)||h.includes(":"))f.push([2,J("IPアドレスのURL","IP-address URL")]);
+  if(/(^|\.)xn--/.test(h))f.push([2,J("国際化ドメイン（xn--）：見た目は "+l.uni,"Punycode domain: looks like "+l.uni)]);
+  if(/@/.test(l.raw.replace(/^https?:\/\//i,"").split(/[\/?#]/)[0]))f.push([2,J("URLに「@」がある（行き先をごまかす手口）","“@” in the address (disguise trick)")]);
+  if(!off){const inHost=BRANDS.find(b=>h.replace(/[-.]/g," ").split(" ").some(w=>w===b[1]||w.replace(/0/g,"o").replace(/1/g,"l")===b[1])||h.split(".").slice(0,-1).join(".").includes(b[1]+"."));
+   if(inHost)f.push([2,J("有名な名前（"+inHost[1]+"）が入っているが、公式のドメインではない（本当のドメインは "+o+"）","Contains a famous name ("+inHost[1]+") but is not an official domain (real domain: "+o+")")]);
+   const look=BRANDS.flatMap(b=>b[2]).find(d=>similar(h,d));if(look&&!inHost)f.push([2,J("有名なドメインにそっくり（"+look+"）","Look-alike of "+look)]);
+   const mis=named.filter(b=>!b[2].some(d=>h===d||h.endsWith("."+d)));if(mis.length&&!SHORT.test(h))f.push([2,J("文中の会社名（"+mis.map(b=>b[1]).join(", ")+"）と、リンク先のドメインが違う","The message names "+mis.map(b=>b[1]).join(", ")+", but the link goes to "+o)]);
+   if(RISKY_TLD.test(h))f.push([1,J("詐欺によく使われるドメイン末尾（."+h.split(".").pop()+"）","Domain ending often abused by scams (."+h.split(".").pop()+")")]);
+   if((h.replace(/xn--[a-z0-9-]+/g,"x").match(/-/g)||[]).length>=3||h.split(".").length>=5)f.push([1,J("ハイフンや区切りが多い、長いドメイン","Long domain with many hyphens/parts")])}
+  if(SHORT.test(h))f.push([1,J("短縮URL（行き先が見えない）","Shortened link (hides the destination)")]);
+  if(/^http:\/\//i.test(l.raw))f.push([1,J("暗号化されていない（http）","Not encrypted (http)")]);
+  if(/\.apk(\?|$)/i.test(l.raw))f.push([2,J("Androidアプリ（.apk）を入れさせようとしている","Tries to make you install an Android app (.apk)")]);
+  l.f=f;l.lv=f.length?Math.max(...f.map(x=>x[0])):0}
+ const bad=links.filter(l=>l.lv===2).length,warn=links.filter(l=>l.lv===1).length,ok=links.filter(l=>l.lv===0&&l.off).length;
+ if(bad)add(2,"危険なリンクが "+bad+" 件","Dangerous links: "+bad,"下の表を見てください。開かないでください。","See the table below. Don't open them.");
+ if(warn)add(1,"注意が必要なリンクが "+warn+" 件","Links to be careful with: "+warn);
+ if(DELIVERY.test(text)&&links.length)add(1,"宅配の不在・配達の連絡にリンクが付いている","Delivery / missed-package notice with a link","宅配業者をかたるSMSは、とても多い手口です。荷物の確認は、公式アプリか、伝票の番号で公式サイトから。","Fake delivery texts are one of the most common scams. Check parcels in the official app or by typing the tracking number on the official site.");
+ const u=text.match(URGENT);if(u)add(1,"急がせる言葉（「"+u[0]+"」）","Pressure words (“"+u[0]+"”)","あわてさせて、確かめる時間をなくす手口です。","Creating urgency is a classic scam tactic.");
+ const c=text.match(CRED);if(c&&links.length)add(bad?2:1,"リンク先でログイン・カード番号などを求めている（「"+c[0]+"」）","Asks you to log in or enter card details via a link (“"+c[0]+"”)","本物の会社でも、SMSのリンクからパスワードやカード番号を入れさせることは、まずありません。","Real companies rarely ask for passwords or card numbers through a text-message link.");
+ const p=text.match(PRIZE);if(p)add(1,"当選・プレゼント・返金をうたう（「"+p[0]+"」）","Promises a prize, gift or refund (“"+p[0]+"”)");
+ if(!links.length)add(0,"URLが見つかりませんでした","No links found","URLが「h**ps」や全角・空白でわざと崩されていることもあります。電話番号に電話させる手口もあるので、番号は公式サイトで確かめてください。","Links are sometimes deliberately broken up. Some scams ask you to call a number instead — check numbers on the official site.");
+ return{C,links,bad,warn,ok}}
+
+// ---------- render
+const defang=u=>u.replace(/^http/i,"hxxp").replace(/\./g,"[.]");
+const LV=()=>[J("情報","Info"),J("注意","Caution"),J("危険","Danger")];const COL=["#555","#b26a00","var(--err)"];
+function show(){const r=R;const d=r.C.filter(c=>c.lv===2).length,w=r.C.filter(c=>c.lv===1).length;
+ const v=d?[J("危険なサインがあります","Warning signs found"),J("リンクは開かず、返信もしないでください。「開いてしまったら」も見てください。","Don't open the links or reply. See “If you opened it”."),"var(--err)","#fdecea"]:w?[J("注意が必要です","Be careful"),J("送り主や内容を、公式アプリやブックマークから確かめてください。","Verify the sender and the content through the official app or a bookmark."),"#b26a00","#fff3e0"]:[J("目立つサインはありません","No obvious warning signs"),J("ただし安全とは限りません。お金や個人情報を求められたら、公式の方法で確かめてください。","That doesn't guarantee safety. If asked for money or personal data, verify through official channels."),"#2e7d4f","#e6f4ea"];
+ $("verdict").innerHTML=`<div style="border:2px solid ${v[2]};background:${v[3]};border-radius:10px;padding:14px 18px;margin-bottom:12px"><div style="font-size:22px;font-weight:700;color:${v[2]}">${v[0]}</div><div>${v[1]}</div></div>`;
+ $("kp").innerHTML=[[J("リンク","Links"),r.links.length,""],[J("危険","Danger"),r.bad,"var(--err)"],[J("注意","Caution"),r.warn,"#b26a00"],[J("公式ドメインと一致","Official domain"),r.ok,"#2e7d4f"]].map(([k,x,cl])=>`<div class="kpi"><span>${k}</span><b${cl?` style="color:${cl}"`:""}>${x}</b></div>`).join("");
+ $("tchk").innerHTML=r.C.length?`<table><tr><th>${J("レベル","Level")}</th><th>${J("見つかったこと","Finding")}</th><th>${J("説明","Details")}</th></tr>`+r.C.sort((a,b)=>b.lv-a.lv).map(c=>`<tr><td style="color:${COL[c.lv]};font-weight:700">${LV()[c.lv]}</td><td>${esc(c.t)}</td><td style="white-space:normal;min-width:260px;max-width:560px">${esc(c.d)}</td></tr>`).join("")+`</table>`:`<div class="note">${J("目立つサインは見つかりませんでした。","No warning signs found.")}</div>`;
+ $("tlinks").innerHTML=r.links.length?`<table><tr><th>${J("判定","Verdict")}</th><th>${J("リンク（押せないように表示）","Link (shown unclickable)")}</th><th>${J("本当のドメイン","Real domain")}</th><th>${J("理由","Why")}</th></tr>`+r.links.map(l=>`<tr><td style="color:${l.lv?COL[l.lv]:"#2e7d4f"};font-weight:700">${l.lv?LV()[l.lv]:(l.off?J("公式と一致","Official"):J("サインなし","No signs"))}</td><td style="font-family:monospace;word-break:break-all;white-space:normal;max-width:360px">${esc(defang(l.raw))}</td><td>${esc(org(l.host))}${l.uni!==l.host?"<br><span class=note>"+esc(l.uni)+"</span>":""}</td><td style="white-space:normal;min-width:260px;max-width:480px">${l.f.length?l.f.map(x=>esc(x[1])).join("<br>"):(l.off?esc(J("代表的な公式ドメイン（"+l.off[1]+"）と一致。ただし公式の短縮URLやサービスが悪用されることもあります","Matches a known official domain ("+l.off[1]+"). Official services can still be abused.")):"")}</td></tr>`).join("")+`</table>`:"";}
+function run(){RAW=$("src").value;if(!RAW.trim()){msg(J("文字を貼り付けてください","Please paste some text"),"err");return}try{R=analyze(RAW);document.querySelectorAll("nav button").forEach(b=>b.disabled=false);show();tab("res");msg("")}catch(e){msg(e.message,"err")}}
+$("go").onclick=run;$("clear").onclick=()=>{$("src").value="";R=null;msg("")};$("x_print").onclick=()=>window.print();
+// samples (fictional; domains are made up)
+const SB={ja:"【佐川急便】お荷物をお届けに上がりましたが不在の為持ち帰りました。下記よりご確認ください。\nhttp://sagawa-exp.co.jp.delivery-check.top/jp/?id=8823\n\n【Amazon】お支払い方法に問題があります。24時間以内に更新しない場合、アカウントを停止します。\nhttps://amaz0n-co-jp.xyz/login\n\nhttps://bit.ly/3xYzAbc",en:"USPS: Your package could not be delivered due to an incomplete address. Update within 12 hours:\nhttps://usps.com-track-update.top/us\n\nNetflix: Your payment failed. Verify your account to avoid suspension:\nhttp://netf1ix-billing.com/login"},
+SO={ja:"明日の打ち合わせの資料です。\nhttps://www.rakuten.co.jp/ のキャンペーンページも参考にしてください。",en:"Here are the notes from today's meeting.\nAlso see https://www.amazon.com/gp/help for the return policy."};
+$("s_bad").onclick=()=>{$("src").value=SB[L];run()};$("s_ok").onclick=()=>{$("src").value=SO[L];run()};
+applyLang();
+if(location.hash==="#selftest")$("s_bad").click();
+if(location.hash.startsWith("#t=")){$("src").value=decodeURIComponent(location.hash.slice(3));run()}
+
+</script>
+</body>
+</html>

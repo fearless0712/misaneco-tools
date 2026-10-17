@@ -1,0 +1,236 @@
+<!doctype html>
+<html lang="ja">
+<head><script>(function(){var BUY="https://excel-temple.booth.pm/items/9001499",P="¥980";
+function note(){var n=document.getElementById("__demo_n");if(n){n.style.background="#ffe08a";setTimeout(function(){n.style.background="#fff4cc"},600);return}}
+function bar(){if(document.getElementById("__demo_n"))return;var d=document.createElement("div");d.id="__demo_n";d.setAttribute("style","position:sticky;top:0;z-index:99999;background:#fff4cc;color:#3a2e00;border-bottom:1px solid #e0c060;padding:8px 12px;font:14px/1.5 system-ui,sans-serif;text-align:center");d.innerHTML='体験版：「サンプル」ボタンのデータだけで動きます。自分のファイルで使うには製品版へ（'+P+'・買い切り・オフライン）。 <a href="'+BUY+'" target="_blank" rel="noopener" style="color:#0a58ca;font-weight:bold">BOOTHで見る</a><br><span style="font-size:12px">Demo: works with the built-in sample only. <a href="'+BUY+'" target="_blank" rel="noopener" style="color:#0a58ca">Get the full version</a></span>';document.body.insertBefore(d,document.body.firstChild)}
+document.addEventListener("DOMContentLoaded",bar);
+var oc=HTMLInputElement.prototype.click;HTMLInputElement.prototype.click=function(){if(this.type==="file"){note();return}return oc.apply(this,arguments)};
+function block(e){e.preventDefault();e.stopImmediatePropagation();note()}
+window.addEventListener("drop",block,true);
+window.addEventListener("dragover",function(e){e.preventDefault()},true);
+window.addEventListener("click",function(e){var t=e.target;if(t&&t.tagName==="INPUT"&&t.type==="file"){block(e)}else if(t&&t.closest&&t.closest("label")&&t.closest("label").querySelector('input[type=file]')){block(e)}},true);
+window.addEventListener("change",function(e){var t=e.target;if(t&&t.type==="file"){e.stopImmediatePropagation();try{t.value=""}catch(x){}note()}},true);
+window.addEventListener("paste",block,true);
+window.addEventListener("beforeinput",function(e){var t=e.target;if(t&&(t.tagName==="TEXTAREA"||t.isContentEditable))block(e)},true);
+})();</script>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'unsafe-inline'; style-src 'unsafe-inline'; img-src data: blob:; connect-src 'none'">
+<title>【体験版】MisaNeco PassAudit</title>
+<style>
+:root{--navy:#1f4e79;--bg:#f5f7fb;--card:#fff;--line:#d6dde8;--text:#1d2533;--muted:#5d6878;--accent:#ffd666;--ok:#2e7d4f;--err:#c0392b}
+*{box-sizing:border-box}
+body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Hiragino Sans","Yu Gothic UI","Segoe UI",Meiryo,sans-serif;background:var(--bg);color:var(--text);font-size:15px}
+header{background:var(--navy);color:#fff;padding:14px 20px;display:flex;align-items:center;gap:16px;flex-wrap:wrap}
+header h1{font-size:20px;margin:0}
+header .tag{font-size:12px;background:var(--accent);color:var(--navy);padding:3px 8px;border-radius:10px;font-weight:700}
+header .sp{flex:1}
+nav{display:flex;gap:4px;padding:10px 20px 0;flex-wrap:wrap}
+nav button{border:1px solid var(--line);border-bottom:none;background:#e9edf4;padding:10px 18px;font-size:15px;border-radius:8px 8px 0 0;cursor:pointer}
+nav button.on{background:var(--card);font-weight:700;color:var(--navy)}
+nav button:disabled{opacity:.45;cursor:default}
+main{background:var(--card);margin:0 20px 20px;border:1px solid var(--line);border-radius:0 8px 8px 8px;padding:20px;min-height:300px}
+section{display:none}section.on{display:block}
+h2{font-size:17px;margin:4px 0 10px;color:var(--navy)}
+.box{border:1px dashed #9fb0c8;border-radius:10px;padding:26px;text-align:center;background:#fafcff;cursor:pointer}
+.box.drag{background:#eaf2ff;border-color:var(--navy)}
+.row{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin:10px 0}
+select,input[type=text]{padding:6px 8px;border:1px solid var(--line);border-radius:6px;font-size:14px}
+button.main{background:var(--navy);color:#fff;border:none;padding:9px 16px;border-radius:8px;font-size:14px;cursor:pointer}
+button.sub{background:#fff;border:1px solid var(--line);padding:7px 12px;border-radius:8px;cursor:pointer;font-size:14px}
+.msg{margin-top:8px;font-size:14px}.msg.ok{color:var(--ok)}.msg.err{color:var(--err)}
+.note{color:var(--muted);font-size:13px}
+.tw{overflow:auto;max-height:460px;border:1px solid var(--line);border-radius:8px;margin-top:10px}
+table{border-collapse:collapse;font-size:13px;width:max-content;min-width:100%}
+th,td{border-bottom:1px solid #eef1f6;padding:5px 9px;text-align:left;white-space:nowrap}
+th{background:#f0f4fa;position:sticky;top:0;z-index:1}
+td.n{text-align:right;font-variant-numeric:tabular-nums}
+.kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:10px;margin:10px 0}
+.kpi{border:1px solid var(--line);border-radius:10px;padding:12px;background:#fbfcfe}
+.kpi b{display:block;font-size:22px;color:var(--navy);margin-top:4px}
+.kpi span{font-size:13px;color:var(--muted)}
+.chartbox{position:relative;height:340px;margin-top:12px}
+.cols{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+@media(max-width:860px){.cols{grid-template-columns:1fr}}
+.badge{display:inline-block;padding:1px 7px;border-radius:8px;font-size:12px;font-weight:700}
+.bA{background:#d9ead3;color:#225c2a}.bB{background:#fff2cc;color:#7a5a00}.bC{background:#f4cccc;color:#8a1f1f}
+footer{color:var(--muted);font-size:12px;text-align:center;margin:0 20px 20px}
+textarea{border:1px solid var(--line);border-radius:8px;padding:8px;box-sizing:border-box}ol li{margin:6px 0}
+@media print{header,nav,.row,#load,#help,#todo{display:none!important}#res{display:block!important}}
+</style>
+</head>
+<body>
+<header>
+  <h1>MisaNeco PassAudit</h1>
+  <span class="tag" data-i="tag">買い切り・月額0円</span>
+  <span class="sp"></span>
+  <span data-i="local" style="font-size:13px">パスワードは外部に送信されません（通信できない設定）</span>
+  <select id="lang"><option value="ja">日本語</option><option value="en">English</option></select>
+</header>
+<nav>
+  <button data-tab="load" class="on" data-i="t_load">① 調べる</button>
+  <button data-tab="res" disabled data-i="t_res">② 結果</button>
+  <button data-tab="todo" data-i="t_todo">直し方</button>
+  <button data-tab="help" data-i="t_help">使い方</button>
+</nav>
+<main>
+<section id="load" class="on">
+  <h2 data-i="ld_h">パスワードの一覧（CSV）を入れる</h2>
+  <div class="box" id="drop"><span data-i="drop">ここにCSVファイルをドラッグ、またはクリックして選ぶ</span><br><span class="note" data-i="drop_n">Chrome・Edge・Firefox・Safari・1Password・Bitwarden などで書き出したCSV</span></div>
+  <input type="file" id="fin" accept=".csv,.txt" hidden>
+  <div class="row"><button class="sub" id="sample" data-i="sample">サンプルで試す</button></div>
+  <div class="msg" id="ld_msg"></div>
+  <div class="note" style="margin-top:10px;border-left:4px solid var(--err);padding-left:10px" data-i="warn">⚠ 書き出したCSVには、すべてのパスワードがそのまま入っています。調べ終わったら、CSVファイルはすぐに削除し、ゴミ箱も空にしてください。メールやチャットで送ったり、クラウドに置いたりしないでください。</div>
+</section>
+<section id="res">
+  <div id="kp" class="kpis"></div>
+  <div class="note" data-i="rs_n">パスワードは画面に表示しません（最初と最後の1文字だけ）。直す順番：①使い回し ②弱い ③似ている。お金・メール・仕事のアカウントから先に直しましょう。</div>
+  <div class="row"><label data-i="flt">表示</label><select id="flt"></select><span class="sp"></span><button class="sub" id="xcsv" data-i="xcsv">直す一覧をCSVで保存（パスワードは入りません）</button><button class="sub" id="xprint" data-i="xprint">印刷・PDF</button></div>
+  <div class="tw" id="tbl" style="max-height:560px"></div>
+</section>
+<section id="todo">
+  <div id="todo_ja">
+  <h2>直し方</h2>
+  <ol>
+    <li><b>大事なアカウントから変える。</b>メール・銀行・クレジットカード・仕事・SNSの順がおすすめです。特にメールは、ほかのサービスのパスワード再設定に使われるので最優先です。</li>
+    <li><b>サイトごとに別のパスワードにする。</b>パスワード管理アプリ（ブラウザの保存機能でも可）の「パスワードを生成」で、長くてランダムなものを作ります。覚える必要はありません。</li>
+    <li><b>二段階認証（2要素認証）をオンにする。</b>パスワードが漏れても、すぐには入られにくくなります。使えるサービスでは「パスキー」も便利です。</li>
+    <li><b>書き出したCSVを削除する。</b>ゴミ箱も空にします。</li>
+  </ol>
+  </div>
+  <div id="todo_en" style="display:none">
+  <h2>How to fix</h2>
+  <ol>
+    <li><b>Start with important accounts:</b> email first (it can reset everything else), then banking, cards, work and social.</li>
+    <li><b>Use a different password for every site.</b> Let your password manager (or browser) generate long random ones — you don't need to remember them.</li>
+    <li><b>Turn on two-factor authentication</b>, or use passkeys where available.</li>
+    <li><b>Delete the exported CSV</b> and empty the trash.</li>
+  </ol>
+  </div>
+</section>
+<section id="help">
+  <div id="help_ja">
+  <h2>使い方</h2>
+  <ol>
+    <li>このファイル（PassAudit.html）を、ブラウザで開きます。インターネットは不要です。</li>
+    <li>パスワードの一覧をCSVで書き出します（下の「書き出し方」）。</li>
+    <li>CSVを入れると、使い回し・弱い・似ているパスワードを一覧にします。</li>
+    <li>直し終わったら、CSVファイルを削除してください。</li>
+  </ol>
+  <h2>CSVの書き出し方（例）</h2>
+  <ul>
+    <li><b>Chrome</b>：設定 →「自動入力とパスワード」→「Google パスワード マネージャー」→「設定」→「パスワードをエクスポート」</li>
+    <li><b>Edge</b>：設定 →「パスワード」→ 右上の「…」→「パスワードのエクスポート」</li>
+    <li>そのほか（Firefox・Safari・パスワード管理アプリ）も、設定の中に「エクスポート」「書き出し」があります。メニューの名前は版によって違います。</li>
+  </ul>
+  <h2>調べること</h2>
+  <ul>
+    <li>使い回し：同じパスワードを2つ以上のサイトで使っている</li>
+    <li>弱い：短い（10文字未満）、数字だけ、よく使われるパスワード、キーボードの並び、くり返し、ユーザー名やサイト名が入っている</li>
+    <li>似ている：末尾の数字や記号だけを変えたパスワード（例：Neko2023! と Neko2024!）</li>
+  </ul>
+  <p class="note">パスワードは、このパソコンのブラウザの中だけで調べます。通信できない設定で作っているので、外部に送信されることはありません。漏洩したパスワードのデータベースとの照合（インターネットが必要）は行いません。</p>
+  </div>
+  <div id="help_en" style="display:none">
+  <h2>How to use</h2>
+  <ol>
+    <li>Open PassAudit.html in your browser. No internet needed.</li>
+    <li>Export your saved passwords as CSV (Chrome: Settings → Autofill and passwords → Google Password Manager → Settings → Export; Edge: Settings → Passwords → … → Export).</li>
+    <li>Drop the CSV here. You'll see reused, weak and similar passwords.</li>
+    <li>When you're done, delete the CSV file and empty the trash.</li>
+  </ol>
+  <p class="note">Everything runs inside your browser; network access is blocked. It does not check breach databases (that would need the internet).</p>
+  </div>
+  <p class="note">MisaNeco Works｜AIを活用して作成し、動作を確認しています / Built with the help of AI and tested by the author.</p>
+</section>
+</main>
+
+<script>
+const T={en:{tag:"One-time purchase · No subscription",local:"Passwords never leave your computer (network blocked)",t_load:"① Check",t_res:"② Results",t_todo:"How to fix",t_help:"How to use",
+ld_h:"Add your exported password list (CSV)",drop:"Drag the CSV file here, or click to choose",drop_n:"CSV exported from Chrome, Edge, Firefox, Safari, 1Password, Bitwarden and more",sample:"Try the sample",
+warn:"⚠ The exported CSV contains all your passwords in plain text. Delete it (and empty the trash) as soon as you're done. Never email it or put it in the cloud.",
+rs_n:"Passwords are never shown (only the first and last character). Fix in this order: ① reused ② weak ③ similar — start with email, money and work accounts.",flt:"Show",xcsv:"Save the to-fix list as CSV (no passwords)",xprint:"Print / PDF"},ja:{}};
+document.querySelectorAll("[data-i]").forEach(e=>T.ja[e.dataset.i]=e.innerHTML);
+let L="ja";const tt=k=>(T[L]&&T[L][k])||T.ja[k]||k;const J=(ja,en)=>L==="ja"?ja:en;const $=id=>document.getElementById(id);
+const esc=s=>String(s??"").replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+function applyLang(){document.documentElement.lang=L;document.querySelectorAll("[data-i]").forEach(el=>el.innerHTML=tt(el.dataset.i));for(const k of["help","todo"]){$(k+"_ja").style.display=L==="ja"?"":"none";$(k+"_en").style.display=L==="en"?"":"none"}fillFlt();if(R)show()}
+$("lang").onchange=e=>{L=e.target.value;applyLang()};
+try{if((navigator.language||"").slice(0,2)!=="ja"){$("lang").value="en";L="en"}}catch(e){}
+if(/[?&]lang=en/.test(location.search)){$("lang").value="en";L="en"}
+document.querySelectorAll("nav button").forEach(b=>b.onclick=()=>{if(!b.disabled)tab(b.dataset.tab)});
+function tab(id){document.querySelectorAll("nav button").forEach(b=>b.classList.toggle("on",b.dataset.tab===id));document.querySelectorAll("main section").forEach(s=>s.classList.toggle("on",s.id===id))}
+function msg(t,c){$("ld_msg").textContent=t;$("ld_msg").className="msg "+(c||"")}
+
+// ---------- CSV
+function parseCSV(text){const rows=[];let row=[],f="",q=false;for(let i=0;i<text.length;i++){const c=text[i];
+ if(q){if(c==='"'){if(text[i+1]==='"'){f+='"';i++}else q=false}else f+=c}
+ else if(c==='"')q=true;else if(c===","){row.push(f);f=""}else if(c==="\n"||c==="\r"){if(c==="\r"&&text[i+1]==="\n")i++;row.push(f);rows.push(row);row=[];f=""}else f+=c}
+ if(f!==""||row.length){row.push(f);rows.push(row)}return rows.filter(r=>r.some(x=>x!==""))}
+// ---------- checks
+const COMMON=new Set(("123456 123456789 12345678 12345 1234567 1234567890 1234 password password1 password123 qwerty qwerty123 qwertyuiop abc123 111111 000000 123123 1q2w3e4r 1qaz2wsx iloveyou admin admin123 welcome welcome1 letmein monkey dragon sunshine princess football baseball master shadow superman batman trustno1 passw0rd p@ssw0rd p@ssword zaq12wsx asdfghjkl asdfgh asdf1234 qwer1234 654321 666666 777777 888888 999999 121212 112233 123321 1111 0000 aaaaaa abcdef abcd1234 a123456 a12345 123abc test test123 guest login hello hello123 secret secret123 changeme default master123 root toor pass pass123 pokemon naruto doraemon pikachu sakura tokyo japan nihon nippon hiragana katakana yamada tanaka suzuki satou sato takahashi ilovejapan hello1234 qazwsx 159753 147258 147258369 987654321 963852741 password! password1! qwerty1 starwars whatever freedom mustang michael jordan23 computer internet").split(" "));
+const SEQ=["0123456789","1234567890","abcdefghijklmnopqrstuvwxyz","qwertyuiop","asdfghjkl","zxcvbnm","1qaz2wsx3edc","qazwsxedc"];
+function hasSeq(p){const s=p.toLowerCase();for(const q of SEQ){for(let i=0;i+4<=q.length;i++){const sub=q.slice(i,i+4);if(s.includes(sub)||s.includes([...sub].reverse().join("")))return true}}return false}
+const hostOf=u=>{try{return new URL(/^[a-z]+:\/\//i.test(u)?u:"https://"+u).hostname.replace(/^www\./,"")}catch(e){return String(u||"").slice(0,60)}};
+const siteWord=h=>{const p=h.split(".");return(p.length>2&&/^(co|ne|or|ac|go|com|net|org)$/.test(p[p.length-2])?p[p.length-3]:p[p.length-2]||p[0]||"").toLowerCase()};
+function weak(e){const p=e.pw,low=p.toLowerCase(),out=[];const kinds=[/[a-z]/,/[A-Z]/,/\d/,/[^A-Za-z0-9]/].filter(r=>r.test(p)).length;
+ if(COMMON.has(low)||COMMON.has(low.replace(/[\d!@#.]+$/,"")))out.push([2,J("よく使われるパスワード","Very common password")]);
+ if(p.length<8)out.push([2,J("短すぎる（"+p.length+"文字）","Too short ("+p.length+" chars)")]);else if(p.length<10)out.push([1,J("短い（"+p.length+"文字）","Short ("+p.length+" chars)")]);
+ if(/^\d+$/.test(p))out.push([2,J("数字だけ","Digits only")]);
+ if(/(.)\1\1\1/.test(p))out.push([1,J("同じ文字のくり返し","Repeated characters")]);
+ if(hasSeq(p))out.push([1,J("キーボードや数字の並び","Keyboard / number sequence")]);
+ const u=(e.user||"").toLowerCase().split("@")[0];if(u.length>=4&&low.includes(u))out.push([2,J("ユーザー名が入っている","Contains the username")]);
+ const w=siteWord(e.host);if(w.length>=4&&low.includes(w))out.push([2,J("サイト名が入っている","Contains the site name")]);
+ if(kinds<=1&&p.length<14)out.push([1,J("文字の種類が少ない","Few character types")]);
+ return out}
+const baseOf=p=>p.toLowerCase().replace(/[\d\W_]+$/,"").replace(/^[\d\W_]+/,"");
+const mask=p=>p.length<=2?"••":p[0]+"•".repeat(Math.min(10,p.length-2))+p[p.length-1]+J(`（${p.length}文字）`,` (${p.length})`);
+
+// ---------- load
+let R=null;
+function analyze(text,name){const rows=parseCSV(text.replace(/^﻿/,""));if(rows.length<2)throw new Error(J("CSVの中身が読めません","Couldn't read the CSV"));
+ const head=rows[0].map(h=>h.trim().toLowerCase());const find=re=>head.findIndex(h=>re.test(h));
+ const pc=find(/^(login_)?password$|^パスワード$|^pass$/),uc=find(/^(login_)?username$|^user(name)?$|^ユーザー名$|^email$|^メール/),urc=find(/^url$|^login_uri$|^website$|^uri$|^サイト|^url\s/),nc=find(/^(name|title|名前|タイトル)$/);
+ if(pc<0)throw new Error(J("パスワードの列が見つかりません（列名に password が必要です）","No password column found"));
+ const E=[];for(const r of rows.slice(1)){const pw=r[pc]||"";if(!pw)continue;const url=urc>=0?r[urc]:"";const host=hostOf(url||(nc>=0?r[nc]:""));E.push({site:(nc>=0&&r[nc])||host,host,user:uc>=0?r[uc]:"",pw})}
+ if(!E.length)throw new Error(J("パスワードが入った行がありません","No rows with passwords"));
+ const byPw=new Map();E.forEach(e=>{if(!byPw.has(e.pw))byPw.set(e.pw,[]);byPw.get(e.pw).push(e)});
+ const byBase=new Map();for(const pw of byPw.keys()){const b=baseOf(pw);if(b.length>=4){if(!byBase.has(b))byBase.set(b,new Set());byBase.get(b).add(pw)}}
+ let gid=0;const gOf=new Map();for(const[pw,l]of byPw)if(new Set(l.map(e=>e.host)).size>1)gOf.set(pw,++gid);
+ let sid=0;const sOf=new Map();for(const s of byBase.values())if(s.size>1){sid++;for(const pw of s)sOf.set(pw,sid)}
+ for(const e of E){e.f=[];const l=byPw.get(e.pw);const hosts=new Set(l.map(x=>x.host));if(hosts.size>1){e.reuse=gOf.get(e.pw);e.f.push([2,J(`使い回し（${hosts.size}サイトで同じ・グループ${e.reuse}）`,`Reused on ${hosts.size} sites (group ${e.reuse})`)])}
+  if(sOf.has(e.pw)){e.sim=sOf.get(e.pw);e.f.push([1,J(`ほかとよく似ている（グループ${e.sim}）`,`Similar to others (group ${e.sim})`)])}
+  e.f.push(...weak(e));e.lv=e.f.length?Math.max(...e.f.map(x=>x[0])):0;e.m=mask(e.pw)}
+ E.sort((a,b)=>b.lv-a.lv||(a.reuse||1e9)-(b.reuse||1e9)||a.host.localeCompare(b.host));
+ return{E,name,reusedPw:[...gOf.keys()].length}}
+function fillFlt(){const v=$("flt").value||"bad";$("flt").innerHTML=[["bad",J("直したほうがよいものだけ","Only ones to fix")],["reuse",J("使い回しだけ","Reused only")],["all",J("すべて","All")]].map(([k,t])=>`<option value="${k}"${k===v?" selected":""}>${t}</option>`).join("")}
+function show(){const{E}=R;const reused=E.filter(e=>e.reuse).length,weakN=E.filter(e=>e.f.some(f=>!/使い回し|Reused|似て|Similar/.test(f[1]))).length,sim=E.filter(e=>e.sim).length,ok=E.filter(e=>!e.lv).length;
+ $("kp").innerHTML=[[J("保存されているパスワード","Saved logins"),E.length,""],[J("使い回し","Reused"),reused,reused?"var(--err)":"var(--ok)"],[J("弱い","Weak"),weakN,weakN?"var(--err)":"var(--ok)"],[J("よく似ている","Similar"),sim,sim?"#b26a00":"var(--ok)"],[J("問題なし","OK"),ok,"var(--ok)"]].map(([k,v,c])=>`<div class="kpi"><span>${k}</span><b${c?` style="color:${c}"`:""}>${v}</b></div>`).join("");
+ const f=$("flt").value;const rows=E.filter(e=>f==="all"||(f==="reuse"?e.reuse:e.lv>0));
+ $("tbl").innerHTML=`<table><tr><th>${J("判定","Level")}</th><th>${J("サイト","Site")}</th><th>${J("ユーザー名","Username")}</th><th>${J("パスワード（伏せ字）","Password (masked)")}</th><th>${J("理由","Why")}</th></tr>`+rows.map(e=>`<tr${e.lv===2?' style="background:#fdecea"':e.lv===1?' style="background:#fff6e5"':""}><td>${e.lv===2?`<b style="color:var(--err)">${J("危険","Fix now")}</b>`:e.lv===1?`<b style="color:#b26a00">${J("注意","Improve")}</b>`:`<span style="color:var(--ok)">OK</span>`}</td><td>${esc(e.host)}</td><td>${esc(e.user)}</td><td style="font-family:monospace">${esc(e.m)}</td><td style="white-space:normal">${esc(e.f.map(x=>x[1]).join(" ／ "))}</td></tr>`).join("")+`</table>`}
+$("flt").onchange=()=>R&&show();
+function run(text,name){try{R=analyze(text,name);document.querySelectorAll("nav button").forEach(b=>b.disabled=false);fillFlt();show();tab("res");msg(J(`${R.E.length}件を調べました。終わったら、CSVファイルを削除してください。`,`Checked ${R.E.length} logins. Delete the CSV file when you're done.`),"ok")}catch(e){msg(e.message,"err")}}
+const dz=$("drop");dz.onclick=()=>$("fin").click();
+const readF=f=>f.text().then(t=>run(t,f.name)).catch(e=>msg(e.message,"err"));
+$("fin").onchange=()=>{const f=$("fin").files[0];if(f)readF(f);$("fin").value=""};
+dz.ondragover=e=>{e.preventDefault();dz.classList.add("drag")};dz.ondragleave=()=>dz.classList.remove("drag");dz.ondrop=e=>{e.preventDefault();dz.classList.remove("drag");const f=e.dataTransfer.files[0];if(f)readF(f)};
+$("xcsv").onclick=()=>{if(!R)return;const q=v=>{v=String(v??"");return /[",\r\n]/.test(v)?'"'+v.replace(/"/g,'""')+'"':v};
+ const csv="﻿"+[[J("判定","Level"),J("サイト","Site"),J("ユーザー名","Username"),J("理由","Why"),J("直した","Done")].map(q).join(",")].concat(R.E.filter(e=>e.lv>0).map(e=>[e.lv===2?J("危険","Fix now"):J("注意","Improve"),e.host,e.user,e.f.map(x=>x[1]).join(" / "),""].map(q).join(","))).join("\r\n");
+ const a=document.createElement("a");a.href=URL.createObjectURL(new Blob([csv],{type:"text/csv"}));a.download="PassAudit_to_fix.csv";a.click()};
+$("xprint").onclick=()=>window.print();
+$("sample").onclick=()=>run(`name,url,username,password,note
+mail.example.com,https://mail.example.com/,taro@example.com,Neko2024!,
+bank.example.jp,https://bank.example.jp/login,taro.yamada,Neko2024!,
+shop.example.com,https://shop.example.com/,taro@example.com,Neko2023!,
+sns.example.net,https://sns.example.net/,taro_y,qwerty123,
+work.example.co.jp,https://work.example.co.jp/,yamada,yamada2024,
+cloud.example.org,https://cloud.example.org/,taro@example.com,123456789,
+news.example.com,https://news.example.com/,taro@example.com,sunshine,
+travel.example.com,https://travel.example.com/,taro@example.com,7f#Kq9!vR2mXp4Lz,
+game.example.com,https://game.example.com/,taro,shopexample1,
+pay.example.com,https://pay.example.com/,taro@example.com,Wx8$hT3nQ!e6Rk2V,`,"sample.csv");
+applyLang();
+if(location.hash==="#selftest")$("sample").click();
+
+</script>
+</body>
+</html>
