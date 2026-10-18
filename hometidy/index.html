@@ -1,0 +1,181 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<!--
+  Content Security Policy
+  - Screenshots are processed only in this page (canvas) and in the local Tesseract worker.
+  - connect-src 'self': fetch/XHR/WebSocket can only reach this site (app dictionary, i18n, OCR data). Nothing can upload images.
+  - img-src: this site + blob/data (screenshots, crops) + the ad image hosts listed below (affiliate banner images only).
+  - To add AdSense later you must also add its script/frame hosts here. See README.md.
+-->
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self' 'wasm-unsafe-eval'; worker-src 'self'; connect-src 'self'; img-src 'self' blob: data: https://*.a8.net https://image.moshimo.com https://i.moshimo.com https://m.media-amazon.com https://ws-fe.amazon-adsystem.com https://ir-jp.amazon-adsystem.com; style-src 'self'; font-src 'self'; manifest-src 'self'; base-uri 'none'; form-action 'none'; frame-src 'none'; object-src 'none'">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<title>HomeTidy</title>
+<meta name="description" content="iPhoneのホーム画面のスクショから、フォルダ案と並べ替え手順を作る無料ツール。画像は端末の中だけで処理します。">
+<meta name="theme-color" content="#f6f7f9">
+<link rel="stylesheet" href="css/app.css">
+<link rel="icon" href="img/icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="img/icon-180.png">
+<!-- ADSENSE (future): put the AdSense auto-ads <script> here, and update the CSP above. Not included now. -->
+</head>
+<body>
+<a class="skip" href="#main" data-i18n="skip">Skip</a>
+<header class="top">
+  <div class="brand">
+    <img src="img/icon.svg" alt="" width="28" height="28">
+    <span class="brand-name">HomeTidy</span><span class="beta" data-i18n="beta">仮</span>
+  </div>
+  <label class="lang">
+    <span class="sr" data-i18n="language">言語</span>
+    <select id="langSel" aria-label="Language"></select>
+  </label>
+</header>
+<div id="langNotice" class="notice" hidden></div>
+
+<main id="main">
+  <section class="hero">
+    <h1 data-i18n="title">iPhoneホーム画面 整理プランナー</h1>
+    <p class="lead" data-i18n="lead">ホーム画面のスクショを選ぶと、アプリ名を読み取り、フォルダ案と並べ替えの手順を作ります。</p>
+    <p class="privacy-pill"><span data-i18n="privacyPill">画像はこの端末の中だけで処理し、どこにも送りません</span> <a href="#privacy" data-i18n="more">詳しく</a></p>
+  </section>
+
+  <!-- STEP 1 -->
+  <section class="card" id="step1">
+    <h2><span class="num">1</span><span data-i18n="s1title">スクショを選ぶ</span></h2>
+    <p class="hint" data-i18n="s1hint">ホーム画面の各ページのスクショ（サイドボタン＋音量を上げるボタン）を、ページ順にまとめて選んでください。</p>
+    <label class="filebtn">
+      <input id="fileInput" type="file" accept="image/*" multiple>
+      <span data-i18n="chooseFiles">スクショを選ぶ（複数可）</span>
+    </label>
+    <button id="sampleBtn" class="btn ghost" type="button" data-i18n="trySample">サンプル画像で試す</button>
+    <div id="thumbs" class="thumbs"></div>
+
+    <details class="paste">
+      <summary data-i18n="pasteTitle">予備：文字を貼り付けて使う</summary>
+      <p class="hint" data-i18n="pasteHint">写真アプリでスクショを開き、テキスト認識のボタン →「すべてコピー」で取れた文字を貼り付けます。アイコンの画像は使わず、名前だけで分類します。</p>
+      <textarea id="pasteText" rows="5" data-i18n-ph="pastePh" placeholder="ここに貼り付け"></textarea>
+    </details>
+
+    <div class="row">
+      <button id="analyzeBtn" class="btn primary" type="button" disabled data-i18n="analyze">読み取る</button>
+      <span id="progress" class="progress" aria-live="polite"></span>
+    </div>
+  </section>
+
+  <!-- STEP 2 -->
+  <section class="card" id="step2" hidden>
+    <h2><span class="num">2</span><span data-i18n="s2title">アイコンの位置を確認</span></h2>
+    <p class="hint" data-i18n="s2hint">枠がアイコンに重なっているか見てください。ずれていたら下のつまみで直します。枠をタップすると「アプリ／対象外」を切り替えられます。</p>
+    <div class="shotnav">
+      <button id="prevShot" class="btn small" type="button" aria-label="prev">‹</button>
+      <span id="shotLabel"></span>
+      <button id="nextShot" class="btn small" type="button" aria-label="next">›</button>
+    </div>
+    <div class="gridwrap"><canvas id="gridCanvas"></canvas></div>
+    <div class="legend">
+      <span class="lg app" data-i18n="lgApp">アプリ</span>
+      <span class="lg widget" data-i18n="lgWidget">ウィジェット等（対象外）</span>
+      <span class="lg folder" data-i18n="lgFolder">フォルダ（対象外）</span>
+      <span class="lg empty" data-i18n="lgEmpty">空き</span>
+    </div>
+    <details class="adjust" id="adjust">
+      <summary data-i18n="adjustTitle">位置がずれているとき（手動で調整）</summary>
+      <div class="sliders" id="sliders"></div>
+      <div class="row">
+        <button id="resetGrid" class="btn small" type="button" data-i18n="autoAgain">自動に戻す</button>
+        <button id="applyAll" class="btn small" type="button" data-i18n="applyAll">この設定を全部のスクショに使う</button>
+      </div>
+    </details>
+    <div class="row">
+      <button id="ocrBtn" class="btn primary" type="button" data-i18n="readNames">この位置で名前を読む</button>
+      <span id="ocrProgress" class="progress" aria-live="polite"></span>
+    </div>
+  </section>
+
+  <!-- STEP 3 -->
+  <section class="card" id="step3" hidden>
+    <h2><span class="num">3</span><span data-i18n="s3title">アプリを確認</span></h2>
+    <div id="summary3" class="summary"></div>
+    <div id="unknownBlock">
+      <h3 data-i18n="unknownTitle">判定できなかったアプリ</h3>
+      <p class="hint" data-i18n="unknownHint">カテゴリをタップするか、名前を入れてください。わからないものは「その他」へ。</p>
+      <div class="row"><button id="restOther" class="btn small" type="button" data-i18n="restOther">残りは全部「その他」</button></div>
+      <ul id="unknownList" class="items"></ul>
+    </div>
+    <div id="dockBlock" hidden>
+      <h3 data-i18n="dockTitle">ドックのアプリ（名前が出ません）</h3>
+      <p class="hint" data-i18n="dockHint">ドックのアプリは画面に名前が出ないため読み取れません。カテゴリを選ぶか、名前を入れるか、「ドックはそのまま」を選んでください。</p>
+      <div class="row"><button id="keepAllDock" class="btn small" type="button" data-i18n="keepAllDock">ドックは全部そのまま</button></div>
+      <ul id="dockList" class="items"></ul>
+    </div>
+    <h3 data-i18n="allTitle">すべてのアプリ（★＝よく使う）</h3>
+    <p class="hint" data-i18n="starHint">よく使うアプリに★を付けると、1ページ目に置く案になります（最大24個。うち4個はドック）。</p>
+    <ul id="allList" class="items compact"></ul>
+    <details id="skippedBlock">
+      <summary data-i18n="skippedTitle">対象外にしたもの（ウィジェット・空きなど）</summary>
+      <ul id="skippedList" class="items compact"></ul>
+    </details>
+    <div class="row">
+      <button id="planBtn" class="btn primary" type="button" data-i18n="makePlan">整理プランを作る</button>
+    </div>
+  </section>
+
+  <!-- STEP 4 -->
+  <section class="card" id="step4" hidden>
+    <h2><span class="num">4</span><span data-i18n="s4title">整理プラン</span></h2>
+    <label class="check"><input type="checkbox" id="optLibrary"> <span data-i18n="optLibrary">★のないアプリは、フォルダにせずAppライブラリに送る</span></label>
+    <div id="plan"></div>
+    <div class="row">
+      <button id="savePng" class="btn primary" type="button" data-i18n="savePng">画像として保存（PNG）</button>
+    </div>
+    <p class="hint" data-i18n="savePngHint">iPhoneでは、表示された画像を長押しして「"写真"に保存」でも保存できます。</p>
+    <div id="pngOut" class="pngout"></div>
+  </section>
+
+  <section class="card" id="focus">
+    <h2 data-i18n="focusTitle">集中モードでページを出し分ける</h2>
+    <div id="focusBody"></div>
+  </section>
+
+  <section class="card" id="privacy">
+    <h2 data-i18n="privacyTitle">プライバシー</h2>
+    <div id="privacyBody"></div>
+  </section>
+
+  <!-- AdSense in-page slot (future). Keep empty now. -->
+  <div id="adsense-slot" class="adsense-slot" hidden></div>
+
+  <footer class="foot">
+    <p data-i18n="footNote">HomeTidy（仮）は個人が作った無料ツールです。Apple、iPhone、iOSはApple Inc.の商標です。アプリ名は各社の商標です。本ツールはAppleとは関係ありません。</p>
+    <p><a href="licenses.html" data-i18n="licenses">使っているソフトウェアとライセンス</a></p>
+  </footer>
+</main>
+
+<!-- bottom banner ad -->
+<aside id="adBanner" class="ad-banner" hidden aria-label="Ad">
+  <span class="ad-tag" data-i18n="adLabel">広告</span>
+  <div class="ad-slot" id="adBannerSlot"></div>
+</aside>
+
+<!-- interstitial ad (max once a day) -->
+<div id="adModal" class="ad-modal" hidden role="dialog" aria-modal="true" aria-labelledby="adModalTag">
+  <div class="ad-box">
+    <div class="ad-head">
+      <span id="adModalTag" class="ad-tag"><span data-i18n="adLabel">広告</span> · PR</span>
+      <button id="adClose" class="ad-close" type="button" data-i18n-aria="close" aria-label="閉じる">×</button>
+    </div>
+    <div class="ad-slot" id="adModalSlot"></div>
+  </div>
+</div>
+
+<script src="vendor/tesseract/tesseract.min.js"></script>
+<script src="js/i18n.js"></script>
+<script src="js/match.js"></script>
+<script src="js/detect.js"></script>
+<script src="js/ads.js"></script>
+<script src="js/plan.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>

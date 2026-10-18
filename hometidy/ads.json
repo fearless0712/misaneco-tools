@@ -1,0 +1,33 @@
+{
+  "_doc": [
+    "Ad content for HomeTidy. Edit this file only; no code change is needed.",
+    "slots.banner = fixed bar at the bottom. slots.interstitial = full-screen window shown at most once a day (closable at once with x).",
+    "type 'image': {img, href, alt, width, height}. Image files can be in ads/ or on an allowed ad host (see CSP in index.html).",
+    "type 'html': {html}. Paste affiliate tags (<a><img>) from A8.net / Moshimo / Amazon Associates here. <script> tags will not run.",
+    "lang: list of UI language codes ('ja','en',...) or ['*'] for all. weight: relative frequency. enabled:false = off.",
+    "Do not add wording that asks people to click ads."
+  ],
+  "fallbackLang": "en",
+  "slots": {
+    "banner": [
+      {"id": "booth-ja", "type": "image", "lang": ["ja"], "weight": 1,
+       "img": "ads/booth_banner_ja.png", "width": 640, "height": 100,
+       "href": "https://excel-temple.booth.pm/", "alt": "MisaNeco Works（BOOTH）：仕事を仕組みでラクにするExcel・ツール"},
+      {"id": "gumroad-en", "type": "image", "lang": ["en", "es", "pt", "ko", "zh-Hans", "fr", "de"], "weight": 1,
+       "img": "ads/gumroad_banner_en.png", "width": 640, "height": 100,
+       "href": "https://comedyverse.gumroad.com/", "alt": "MisaNeco Works on Gumroad: offline office tools and templates"},
+      {"id": "a8-sample", "type": "html", "lang": ["ja"], "weight": 1, "enabled": false,
+       "_doc": "A8.net: paste the banner tag here and set enabled:true.", "html": ""},
+      {"id": "moshimo-sample", "type": "html", "lang": ["ja"], "weight": 1, "enabled": false,
+       "_doc": "もしもアフィリエイト: paste the <a><img> tag here and set enabled:true.", "html": ""},
+      {"id": "amazon-sample", "type": "html", "lang": ["ja", "en"], "weight": 1, "enabled": false,
+       "_doc": "Amazon Associates: paste the image link tag here and set enabled:true.", "html": ""}
+    ],
+    "interstitial": [
+      {"id": "booth-ja-card", "type": "html", "lang": ["ja"], "weight": 1,
+       "html": "<a class=\"ad-card\" href=\"https://excel-temple.booth.pm/\"><img src=\"ads/booth_card_ja.png\" width=\"600\" height=\"500\" alt=\"MisaNeco Works（BOOTH）\"><b>MisaNeco Works（BOOTH）</b><span>Excelテンプレートと、ブラウザだけで動く事務ツールを作っています。</span></a>"},
+      {"id": "gumroad-en-card", "type": "html", "lang": ["en", "es", "pt", "ko", "zh-Hans", "fr", "de"], "weight": 1,
+       "html": "<a class=\"ad-card\" href=\"https://comedyverse.gumroad.com/\"><img src=\"ads/gumroad_card_en.png\" width=\"600\" height=\"500\" alt=\"MisaNeco Works on Gumroad\"><b>MisaNeco Works on Gumroad</b><span>Offline office tools and spreadsheet templates.</span></a>"}
+    ]
+  }
+}
