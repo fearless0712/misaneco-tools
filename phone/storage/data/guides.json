@@ -1,0 +1,154 @@
+{
+ "_readme": "手順は各公式ヘルプ（source_url）で確認した内容だけ。画面の名前は公式ページの表記どおり。checked は確認日。",
+ "checked": "2026-10-19",
+ "backup": {
+  "ios": [
+   {"text": "iPhoneのバックアップ（iCloud／Mac／Windows）", "url": "https://support.apple.com/ja-jp/118426"},
+   {"text": "LINEのトーク履歴の標準バックアップ", "url": "https://help.line.me/line/smartphone/sp?contentId=20023473&lang=ja"}
+  ],
+  "android": [
+   {"text": "Androidデバイスのデータのバックアップ", "url": "https://support.google.com/android/answer/2819582?hl=ja"},
+   {"text": "LINEのトーク履歴の標準バックアップ", "url": "https://help.line.me/line/smartphone/sp?contentId=20023473&lang=ja"}
+  ]
+ },
+ "howto_measure": {
+  "ios": {"text": "「設定」→「一般」→「[デバイス]ストレージ」で、空き容量・写真・アプリごとの使用量が見られます。", "url": "https://support.apple.com/ja-jp/108429"},
+  "android": {"text": "設定アプリ →［ストレージ］→ カテゴリを選ぶと使用量が見られます（表示は機種で異なる場合があります）。", "url": "https://support.google.com/android/answer/7431795?hl=ja"}
+ },
+ "actions": [
+  {
+   "id": "line_cache",
+   "os": ["ios", "android"],
+   "amount": "line",
+   "amount_note": "LINEのデータのうちキャッシュの分だけ（量は手順2の画面に表示されます）",
+   "risk": "low",
+   "title": "LINEのキャッシュを削除する",
+   "steps": ["［ホーム］＞［設定］＞［トーク］をタップ", "［データの削除］をタップ", "［キャッシュ］の［削除］をタップ"],
+   "points": ["キャッシュデータを削除しても、トーク履歴などは削除されません（LINEヘルプ）。", "保存期間が経過した写真や動画などは閲覧できなくなります（LINEヘルプ）。"],
+   "source_title": "LINEヘルプセンター「キャッシュの削除とは？」",
+   "source_url": "https://help.line.me/line/smartphone/sp?contentId=20005079&lang=ja"
+  },
+  {
+   "id": "line_talkdata",
+   "os": ["ios", "android"],
+   "amount": null,
+   "risk": "high",
+   "title": "LINEのトークルームごとに写真・動画などのデータを削除する",
+   "steps": ["［設定］＞［トーク］＞［データの削除］", "［トークごとにデータを削除］をタップすると、データ容量が多いトークルーム順に並びます", "削除したいトークルームを選んで削除"],
+   "points": ["削除したデータは復元できません（LINEヘルプ）。残したい写真・動画は先に保存してください。"],
+   "source_title": "LINEヘルプセンター「トークルーム内のデータを削除するには？」",
+   "source_url": "https://help.line.me/line/smartphone/?contentId=20010180&lang=ja"
+  },
+  {
+   "id": "offload",
+   "os": ["ios"],
+   "amount": "apps",
+   "amount_note": "使っていないアプリ本体の分",
+   "risk": "low",
+   "title": "使っていないアプリを「取り除く」（オフロード）",
+   "steps": ["「設定」→「一般」→「[デバイス]ストレージ」", "アプリの名前をタップ", "「アプリを取り除く」をタップ"],
+   "points": ["アプリ本体が使っている分を解放し、書類やデータはそのまま残ります（Apple）。", "同じ画面の「おすすめ」に、その端末向けの節約方法が出ることがあります。"],
+   "source_title": "Apple「iPhoneやiPadのストレージを確認する方法」",
+   "source_url": "https://support.apple.com/ja-jp/108429"
+  },
+  {
+   "id": "archive",
+   "os": ["android"],
+   "amount": "apps",
+   "amount_note": "使っていないアプリのソフトウェアの分",
+   "risk": "low",
+   "title": "使っていないアプリを「アーカイブ」する",
+   "steps": ["［設定］＞［アプリ］を開く", "アーカイブするアプリの名前を選ぶ", "［アーカイブ］をタップ"],
+   "points": ["アプリのソフトウェア・権限・一時ファイルが削除され、アイコンとデータは残ります（Google）。", "一部の手順は Android 15 以降・対応機種のみです。"],
+   "source_title": "Androidヘルプ「Android で使用していないアプリをアーカイブする」",
+   "source_url": "https://support.google.com/android/answer/15523443?hl=ja"
+  },
+  {
+   "id": "recent_ios",
+   "os": ["ios"],
+   "amount": "deleted",
+   "amount_note": "「最近削除した項目」に入っている分",
+   "risk": "high",
+   "title": "写真の「最近削除した項目」を空にする",
+   "steps": ["「写真」を開き、下部の「コレクション」をタップ", "上にスワイプし、「ユーティリティ」の下の「最近削除した項目」をタップ", "「アルバムを表示」をタップし、Face IDやTouch IDでロックを解除", "「選択」で削除したい写真・ビデオを選び、「削除」または「すべてを削除」"],
+   "points": ["削除した写真やビデオは30日間ここに保管され、その後完全に削除されます（Apple）。", "このアルバムから削除すると取り戻せなくなります（Apple）。"],
+   "source_title": "Apple「iPhoneやiPadで写真を削除する」",
+   "source_url": "https://support.apple.com/ja-jp/104967"
+  },
+  {
+   "id": "trash_android",
+   "os": ["android"],
+   "amount": "deleted",
+   "amount_note": "ゴミ箱に入っている分",
+   "risk": "high",
+   "title": "Googleフォトの「ゴミ箱」を空にする",
+   "steps": ["Google フォト アプリを開く", "下部の［コレクション］→［ゴミ箱］", "その他アイコン →［ゴミ箱を空にする］→［完全に削除］"],
+   "points": ["削除した写真や動画はゴミ箱に30日間保管された後、完全に削除されます（Google）。", "ゴミ箱を空にすると復元できません（Google）。機種のギャラリーアプリにも別のゴミ箱がある場合があります。"],
+   "source_title": "Googleフォト ヘルプ「写真や動画を削除する」",
+   "source_url": "https://support.google.com/photos/answer/6128858?hl=ja&co=GENIE.Platform%3DAndroid"
+  },
+  {
+   "id": "messages_keep",
+   "os": ["ios"],
+   "amount": null,
+   "risk": "high",
+   "title": "メッセージの保存期間を決める",
+   "steps": ["設定アプリ →「アプリ」→「メッセージ」", "下にスクロールし、「メッセージ履歴」の下の「メッセージを保存」をタップ", "30日 または 1年 を選ぶ"],
+   "points": ["「無期限」以外を選ぶと、指定期間が過ぎたチャットとすべての添付ファイルは自動的に削除されます（Apple）。", "iCloudで「メッセージ」を使っていると、ほかのデバイスからも削除されます（Apple）。"],
+   "source_title": "Apple「iPhoneの『メッセージ』でメッセージと添付ファイルを削除する」",
+   "source_url": "https://support.apple.com/ja-jp/guide/iphone/iph2c9c4bfcb/ios"
+  },
+  {
+   "id": "icloud_optimize",
+   "os": ["ios"],
+   "amount": "media",
+   "amount_note": "最大で写真＋動画の量まで。端末には省スペース版が残るので、実際はこれより少なくなります",
+   "risk": "mid",
+   "cloud": "icloud",
+   "title": "iCloud写真で「ストレージを最適化」する",
+   "steps": ["「設定」→ 自分のユーザ名 →「iCloud」", "「iCloudに保存する項目」の下の「写真」をタップ", "「iPhoneストレージ」をタップし、「ストレージを最適化」を選ぶ"],
+   "points": ["端末には省スペース版、iCloudにはオリジナルが保管されます（Apple）。", "写真・ビデオの分のiCloud容量が必要です。足りなければ下の②を参照。", "iCloud写真では、1台で削除すると他のデバイスからも削除されます（Apple）。"],
+   "source_title": "Apple「iCloud写真を設定・使用する」",
+   "source_url": "https://support.apple.com/ja-jp/108782"
+  },
+  {
+   "id": "gphotos_free_ios",
+   "os": ["ios"],
+   "amount": "media",
+   "amount_note": "最大で写真＋動画の量まで（Googleフォトにバックアップ済みの分）",
+   "risk": "mid",
+   "cloud": "google",
+   "title": "Googleフォトにバックアップ済みの写真を端末から消す",
+   "steps": ["Google フォト アプリでプロフィール写真またはイニシャル →［このデバイスの空き容量を増やす］", "［デバイスから [x] 個のアイテムを削除］→［削除］", "iPhoneの「写真」アプリ（Googleフォトではない）で［最近削除した項目］を開き、同じ写真と動画を削除"],
+   "points": ["削除する前に、写真がバックアップされていることを必ず確認してください（Google）。", "30日以上経過した写真や動画は、端末から削除してもGoogleフォトに残ります（Google）。"],
+   "source_title": "Googleフォト ヘルプ「デバイスの空き容量を増やす（iPhone と iPad）」",
+   "source_url": "https://support.google.com/photos/answer/6128843?hl=ja&co=GENIE.Platform%3DiOS"
+  },
+  {
+   "id": "gphotos_free_android",
+   "os": ["android"],
+   "amount": "media",
+   "amount_note": "最大で写真＋動画の量まで（Googleフォトにバックアップ済みの分）",
+   "risk": "mid",
+   "cloud": "google",
+   "title": "Googleフォトにバックアップ済みの写真を端末から消す",
+   "steps": ["Google フォト アプリでプロフィール写真またはイニシャル →［このデバイスの空き容量を増やす］", "空き容量がいくら増えるか表示されます", "［空き容量を [x] 増やす］をタップ"],
+   "points": ["削除する前に、写真がバックアップされていることを必ず確認してください（Google）。", "過去30日以内に保存した写真や動画は、デバイスに残る場合があります（Google）。", "設定アプリ →［ストレージ］→［空き容量を増やす］からも、写真・動画・アプリを選んで削除できます（Android 14以上の手順を含む）。"],
+   "source_title": "Googleフォト ヘルプ「デバイスの空き容量を増やす（Android）」",
+   "source_url": "https://support.google.com/photos/answer/6128843?hl=ja&co=GENIE.Platform%3DAndroid",
+   "extra_url": "https://support.google.com/android/answer/7431795?hl=ja",
+   "extra_title": "Androidヘルプ「Android デバイスの空き容量を増やす」"
+  }
+ ],
+ "pc": {
+  "ios": [
+   {"title": "Macに読み込む", "text": "USBケーブルでつなぎ、Macの写真アプリの「読み込み」画面から読み込みます。", "url": "https://support.apple.com/ja-jp/120267", "source_title": "Apple「iPhoneやiPadからMacやWindowsパソコンに写真やビデオを転送する」"},
+   {"title": "Windowsパソコンに読み込む", "text": "Microsoft StoreからAppleデバイスアプリを入れ、USBケーブルでつないで読み込みます。iCloud写真を使っている場合は、先にオリジナルを端末にダウンロードしておく必要があります。", "url": "https://support.apple.com/ja-jp/120267", "source_title": "Apple「iPhoneやiPadからMacやWindowsパソコンに写真やビデオを転送する」"},
+   {"title": "USBドライブ・SDカードに保存する", "text": "対応するコネクタやアダプタで充電ポートにつなぎ、「ファイル」アプリの「ブラウズ」→「場所」から使います。フォーマットは APFS・macOS拡張（HFS+）・exFAT・FAT32・FAT など（データパーティションは1つ）。外付けハードドライブは外部の電源が必要な場合が多いです。", "url": "https://support.apple.com/ja-jp/guide/iphone/iph95baac91f/ios", "source_title": "Apple「iPhoneに外部ストレージデバイスを接続する」"}
+  ],
+  "android": [
+   {"title": "パソコンにUSBで移す", "text": "USBケーブルでつなぎ、端末の［このデバイスを USB で充電中］通知 →［USB の使用］でファイル転送を選び、パソコン側でファイルをドラッグします。", "url": "https://support.google.com/android/answer/9064445?hl=ja", "source_title": "Androidヘルプ「パソコンと Android デバイス間でファイルを転送する」"},
+   {"title": "移したあと端末から消す", "text": "パソコンにコピーしてから、端末のファイルを削除できます。コピーできたことを先に確認してください。", "url": "https://support.google.com/android/answer/7431795?hl=ja", "source_title": "Androidヘルプ「Android デバイスの空き容量を増やす」"}
+  ]
+ }
+}

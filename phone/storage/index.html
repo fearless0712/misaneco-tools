@@ -1,0 +1,144 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self'; img-src 'self' data: https://*.a8.net; connect-src 'self'; font-src 'none'; frame-src 'none'; object-src 'none'; base-uri 'none'; form-action 'none'; manifest-src 'self'">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<meta name="description" content="スマホの空き容量を増やす方法と、iCloud+・Google One・Amazon Photosの料金を、入力した写真・動画の量で比べる無料ツール。入力は外部に送信しません。">
+<meta name="theme-color" content="#ffffff">
+<title>スマホ容量・クラウド診断</title>
+<link rel="stylesheet" href="css/app.css">
+<link rel="icon" href="data:,">
+</head>
+<body>
+<header class="top">
+  <div class="wrap top-row">
+    <span class="brand">スマホ容量・クラウド診断</span>
+    <span class="checked-chip" id="checkedChip">料金確認 2026/10/19</span>
+  </div>
+</header>
+
+<main class="wrap">
+  <h1>スマホ容量・クラウド診断</h1>
+  <p class="lead">今の空き容量と写真・動画・LINEの量を入れると、<b>何を消す・移すとどれだけ空くか</b>（公式の手順つき）と、<b>入る量のクラウドプランの料金</b>、<b>パソコンや外付けへの保存</b>がわかります。</p>
+  <p class="privacy"><span class="lock" aria-hidden="true"></span><span>入力した数字はこの端末の中だけで計算し、外部に送信しません。</span></p>
+
+  <aside class="caution" role="note">
+    <p class="caution-h">消す前に、必ずバックアップを</p>
+    <p>削除した写真・トークなどは、元に戻せないことがあります。この診断は目安で、空く量を約束するものではありません。操作の前にバックアップを取り、各社の公式ヘルプも確認してください。</p>
+  </aside>
+
+  <section class="card" id="inputCard" aria-labelledby="inH">
+    <h2 class="card-h" id="inH">今のスマホのようす</h2>
+
+    <div class="field">
+      <span class="label" id="osLabel">機種</span>
+      <div class="seg" role="radiogroup" aria-labelledby="osLabel">
+        <button type="button" role="radio" class="seg-b" data-os="ios" aria-checked="true">iPhone</button>
+        <button type="button" role="radio" class="seg-b" data-os="android" aria-checked="false">Android</button>
+      </div>
+      <p class="hint" id="howMeasure"></p>
+    </div>
+
+    <div class="grid2">
+      <div class="field">
+        <label for="inCap">本体の容量</label>
+        <select id="inCap"></select>
+      </div>
+      <div class="field">
+        <label for="inFree">今の空き容量</label>
+        <div class="unit"><input id="inFree" type="text" inputmode="decimal" autocomplete="off" placeholder="例 4.5"><span>GB</span></div>
+      </div>
+    </div>
+
+    <div class="field">
+      <span class="label" id="phLabel">写真の量</span>
+      <div class="row-mode">
+        <div class="seg seg-sm" role="radiogroup" aria-labelledby="phLabel">
+          <button type="button" role="radio" class="seg-b" data-pm="gb" aria-checked="true">GBで</button>
+          <button type="button" role="radio" class="seg-b" data-pm="count" aria-checked="false">枚数で</button>
+        </div>
+        <div class="unit"><input id="inPhoto" type="text" inputmode="decimal" autocomplete="off" aria-labelledby="phLabel" placeholder="例 30"><span id="phUnit">GB</span></div>
+      </div>
+    </div>
+
+    <div class="field">
+      <span class="label" id="vdLabel">動画の量</span>
+      <div class="row-mode">
+        <div class="seg seg-sm" role="radiogroup" aria-labelledby="vdLabel">
+          <button type="button" role="radio" class="seg-b" data-vm="gb" aria-checked="true">GBで</button>
+          <button type="button" role="radio" class="seg-b" data-vm="count" aria-checked="false">本数で</button>
+        </div>
+        <div class="unit"><input id="inVideo" type="text" inputmode="decimal" autocomplete="off" aria-labelledby="vdLabel" placeholder="例 20"><span id="vdUnit">GB</span></div>
+      </div>
+      <div class="field sub" id="vidMinWrap" hidden>
+        <label for="inVidMin">1本あたりの平均の長さ</label>
+        <div class="unit unit-s"><input id="inVidMin" type="text" inputmode="decimal" autocomplete="off" value="1"><span>分</span></div>
+      </div>
+    </div>
+
+    <div class="grid2">
+      <div class="field">
+        <label for="inLine">LINEのデータ量</label>
+        <div class="unit"><input id="inLine" type="text" inputmode="decimal" autocomplete="off" placeholder="例 6"><span>GB</span></div>
+      </div>
+      <div class="field">
+        <label for="inApps">使っていないアプリ</label>
+        <div class="unit"><input id="inApps" type="text" inputmode="decimal" autocomplete="off" placeholder="例 3"><span>GB</span></div>
+      </div>
+    </div>
+
+    <div class="field">
+      <label for="inDel" id="delLabel">「最近削除した項目」に入っている量（わかれば）</label>
+      <div class="unit"><input id="inDel" type="text" inputmode="decimal" autocomplete="off" placeholder="例 2"><span>GB</span></div>
+    </div>
+
+    <fieldset class="field clouds">
+      <legend class="label">使っているクラウド（複数可）</legend>
+      <label class="chk"><input type="checkbox" id="cIcloud"> iCloud（iCloud+）</label>
+      <label class="chk"><input type="checkbox" id="cGoogle"> Google（Googleフォト・Google One）</label>
+      <label class="chk"><input type="checkbox" id="cPrime"> Amazonプライム会員</label>
+    </fieldset>
+
+    <details class="more">
+      <summary>くわしい設定（目標・写真1枚の大きさ）</summary>
+      <div class="grid2">
+        <div class="field">
+          <label for="inTarget">目標の空き容量</label>
+          <div class="unit"><input id="inTarget" type="text" inputmode="decimal" autocomplete="off" placeholder="自動"><span>GB</span></div>
+          <p class="hint">空欄なら本体容量の10%（このツールの仮の目標です）。</p>
+        </div>
+        <div class="field">
+          <label for="inPhotoMB">写真1枚の大きさ</label>
+          <div class="unit"><input id="inPhotoMB" type="text" inputmode="decimal" autocomplete="off" placeholder="3"><span>MB</span></div>
+          <p class="hint">「枚数で」入れたときだけ使います。公式の目安がないため仮の値です。</p>
+        </div>
+      </div>
+    </details>
+
+    <button type="button" class="go" id="goBtn">診断する</button>
+    <p class="msg err" id="msg" role="alert" hidden></p>
+  </section>
+
+  <section id="result" hidden aria-live="polite"></section>
+  <section id="ads" class="adbox" hidden></section>
+
+  <section class="card sources" id="srcCard">
+    <h2 class="card-h">料金・手順の出典</h2>
+    <p class="small" id="srcNote"></p>
+    <ul class="srcs" id="srcList"></ul>
+  </section>
+</main>
+
+<footer class="foot wrap">
+  <p>料金・容量は2026年10月19日に各社の公式サイトで確認した内容です。変更されることがあるため、申し込む前に公式ページで最新の料金を確認してください。</p>
+  <p>このツールの計算は目安です。空く量や、プランに入りきるかを保証するものではありません。データの削除・移動はご自身の判断で、バックアップを取ってから行ってください。</p>
+  <p>このページには広告（PR）が含まれることがあります。広告は診断結果とは関係なく表示されます。</p>
+  <p>iCloud・iPhone は Apple Inc. の商標、Google One・Googleフォト・Android は Google LLC の商標、Amazon・Amazon Photos・Amazonプライム は Amazon.com, Inc. またはその関連会社の商標、LINE は LINEヤフー株式会社の商標です。このツールは各社とは関係ありません。</p>
+</footer>
+
+<script src="js/logic.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>

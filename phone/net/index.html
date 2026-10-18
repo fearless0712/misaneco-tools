@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self'; img-src 'self' data: https://*.a8.net; connect-src 'self'; font-src 'none'; frame-src 'none'; object-src 'none'; base-uri 'none'; form-action 'none'; manifest-src 'self'">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<meta name="description" content="住まい・スマホ・使い方・住む期間を選ぶだけで、光回線／ホームルーター／ポケットWiFiのどれが合うかと、スマホとのセット割が使える候補・月額の目安・注意点がわかる無料ツール。入力は外部に送信しません。">
+<meta name="theme-color" content="#ffffff">
+<title>家のネット回線 えらび診断</title>
+<link rel="stylesheet" href="css/app.css">
+<link rel="icon" href="data:,">
+</head>
+<body>
+<header class="top">
+  <div class="wrap top-row">
+    <span class="brand">家のネット回線 えらび診断</span>
+    <span class="checked-chip" id="checkedChip"></span>
+  </div>
+</header>
+
+<main class="wrap">
+  <h1>家のネット回線 えらび診断</h1>
+  <p class="lead">住まい・スマホ・使い方を選ぶと、<b>光回線／ホームルーター／ポケットWiFi</b>のどれが合うかと、スマホとのセット割が使える候補・月額の目安・注意点がわかります。</p>
+  <p class="privacy"><span class="lock" aria-hidden="true"></span><span>選んだ内容はこの画面の中だけで判定し、どこにも送信しません。</span></p>
+
+  <form class="card" id="form" novalidate>
+    <fieldset class="q">
+      <legend><span class="qn">1</span>住まいの形</legend>
+      <div class="opts" data-name="house">
+        <label class="opt"><input type="radio" name="house" value="house"><span>戸建て</span></label>
+        <label class="opt"><input type="radio" name="house" value="apartment" checked><span>マンション・アパート</span></label>
+      </div>
+    </fieldset>
+
+    <fieldset class="q">
+      <legend><span class="qn">2</span>工事はできそう？</legend>
+      <div class="opts" data-name="tenure">
+        <label class="opt"><input type="radio" name="tenure" value="own"><span>持ち家（工事できる）</span></label>
+        <label class="opt"><input type="radio" name="tenure" value="rent"><span>賃貸（許可を取れば工事できそう）</span></label>
+        <label class="opt"><input type="radio" name="tenure" value="nokoji"><span>工事できない・禁止と言われた</span></label>
+        <label class="opt"><input type="radio" name="tenure" value="unknown" checked><span>分からない</span></label>
+      </div>
+    </fieldset>
+
+    <fieldset class="q">
+      <legend><span class="qn">3</span>スマホの会社（家族で一番多いもの）</legend>
+      <div class="opts grid2" data-name="carrier">
+        <label class="opt"><input type="radio" name="carrier" value="docomo"><span>ドコモ</span></label>
+        <label class="opt"><input type="radio" name="carrier" value="ahamo"><span>ahamo</span></label>
+        <label class="opt"><input type="radio" name="carrier" value="au"><span>au</span></label>
+        <label class="opt"><input type="radio" name="carrier" value="uq"><span>UQ mobile</span></label>
+        <label class="opt"><input type="radio" name="carrier" value="softbank"><span>ソフトバンク</span></label>
+        <label class="opt"><input type="radio" name="carrier" value="ymobile"><span>ワイモバイル</span></label>
+        <label class="opt"><input type="radio" name="carrier" value="rakuten"><span>楽天モバイル</span></label>
+        <label class="opt"><input type="radio" name="carrier" value="other" checked><span>その他・格安SIM・バラバラ</span></label>
+      </div>
+    </fieldset>
+
+    <fieldset class="q">
+      <legend><span class="qn">4</span>使う人数</legend>
+      <div class="opts" data-name="people">
+        <label class="opt"><input type="radio" name="people" value="1" checked><span>1人</span></label>
+        <label class="opt"><input type="radio" name="people" value="2"><span>2〜3人</span></label>
+        <label class="opt"><input type="radio" name="people" value="4"><span>4人以上</span></label>
+      </div>
+    </fieldset>
+
+    <fieldset class="q">
+      <legend><span class="qn">5</span>よくする使い方<small>（いくつでも）</small></legend>
+      <div class="opts grid2" data-name="uses">
+        <label class="opt"><input type="checkbox" name="uses" value="video"><span>動画をよく見る</span></label>
+        <label class="opt"><input type="checkbox" name="uses" value="game"><span>オンラインゲーム</span></label>
+        <label class="opt"><input type="checkbox" name="uses" value="work"><span>在宅ワーク・ビデオ会議</span></label>
+        <label class="opt"><input type="checkbox" name="uses" value="upload"><span>大きいファイルを送る</span></label>
+        <label class="opt"><input type="checkbox" name="uses" value="outside"><span>外でも同じWi-Fiを使いたい</span></label>
+        <label class="opt"><input type="checkbox" name="uses" value="light"><span>調べもの・SNSくらい</span></label>
+      </div>
+    </fieldset>
+
+    <fieldset class="q">
+      <legend><span class="qn">6</span>今の家に住む予定</legend>
+      <div class="opts" data-name="stay">
+        <label class="opt"><input type="radio" name="stay" value="lt1"><span>1年以内に引越す</span></label>
+        <label class="opt"><input type="radio" name="stay" value="1to2"><span>1〜2年くらい</span></label>
+        <label class="opt"><input type="radio" name="stay" value="gt3"><span>3年以上</span></label>
+        <label class="opt"><input type="radio" name="stay" value="unknown" checked><span>未定</span></label>
+      </div>
+    </fieldset>
+
+    <fieldset class="q">
+      <legend><span class="qn">7</span>工事日まで待てる？</legend>
+      <div class="opts" data-name="wait">
+        <label class="opt"><input type="radio" name="wait" value="yes" checked><span>待てる（数週間〜1か月）</span></label>
+        <label class="opt"><input type="radio" name="wait" value="no"><span>すぐ使いたい</span></label>
+      </div>
+    </fieldset>
+
+    <button type="submit" class="go" id="goBtn">診断する</button>
+  </form>
+
+  <section id="result" hidden aria-live="polite"></section>
+  <section id="ads" class="adbox" hidden></section>
+
+  <section class="card about">
+    <h2>このツールについて</h2>
+    <ul class="dots">
+      <li>料金・割引は <b id="checkedText"></b> に各社の公式サイトで確認した内容です。最新の料金・条件は必ず公式サイトで確認してください。</li>
+      <li>月額は目安です。「いちばん安い」を判定するものではありません。キャンペーン・キャッシュバックは時期で変わるため載せていません。</li>
+      <li>候補の並び順は「あなたのスマホとのセット割が合うか」だけで決めています。広告の有無で順番は変わりません。</li>
+      <li>確認できなかった項目は「公式で確認」と表示しています。</li>
+    </ul>
+  </section>
+</main>
+
+<footer class="foot wrap">
+  <p>家のネット回線 えらび診断 ・ 料金確認日 <span id="footChecked"></span></p>
+  <p>このページには広告（PR）が含まれることがあります。広告は「広告・PR」と表示し、診断結果とは分けて表示します。</p>
+</footer>
+
+<div id="inter" class="inter" hidden>
+  <div class="inter-box" role="dialog" aria-modal="true" aria-labelledby="interLabel">
+    <div class="inter-bar"><span class="adtag" id="interLabel">広告・PR</span><button type="button" id="interClose" class="x" aria-label="閉じる">×</button></div>
+    <div class="inter-body" id="interBody"></div>
+  </div>
+</div>
+
+<script src="js/logic.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>

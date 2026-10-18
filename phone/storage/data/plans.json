@@ -1,0 +1,78 @@
+{
+ "_readme": "料金・容量は公式ページで確認した数字だけ。確認できない値（年額など）は null。更新手順は README を参照。容量の比較は 1TB=1000GB で計算（少なめに見積もる側）。",
+ "checked": "2026-10-19",
+ "checked_label": "2026年10月19日",
+ "providers": [
+  {
+   "id": "icloud",
+   "name": "iCloud+",
+   "company": "Apple",
+   "free_gb": 5,
+   "free_note": "iCloudを設定すると無料で5GB。iCloudバックアップ・iCloud写真・iCloud Driveで共有。",
+   "free_source_url": "https://support.apple.com/ja-jp/108922",
+   "tax": "税込み（ページに「この国または地域の料金はすべて税込みです」）",
+   "annual_note": "年払いの料金はページに記載なし",
+   "source_url": "https://support.apple.com/ja-jp/108047",
+   "checked": "2026-10-19",
+   "plans": [
+    {"label": "50GB", "gb": 50, "monthly": 180, "annual": null},
+    {"label": "200GB", "gb": 200, "monthly": 540, "annual": null},
+    {"label": "2TB", "gb": 2000, "monthly": 1800, "annual": null},
+    {"label": "6TB", "gb": 6000, "monthly": 5500, "annual": null},
+    {"label": "12TB", "gb": 12000, "monthly": 11000, "annual": null}
+   ]
+  },
+  {
+   "id": "google",
+   "name": "Google One",
+   "company": "Google",
+   "free_gb": 15,
+   "free_note": "すべてのGoogleアカウントに最大15GB。Googleフォト・ドライブ・Gmailで合計。",
+   "free_source_url": "https://one.google.com/about/plans?hl=ja&gl=JP",
+   "tax": "税込み・税抜きの表記はページになし",
+   "annual_note": "年額はページの「年単位」表示の金額",
+   "source_url": "https://one.google.com/about/plans?hl=ja&gl=JP",
+   "checked": "2026-10-19",
+   "plans": [
+    {"label": "100GB（Basic）", "gb": 100, "monthly": 290, "annual": 2900},
+    {"label": "2TB（Google AI Plus）", "gb": 2000, "monthly": 1450, "annual": 14500},
+    {"label": "5TB（Google AI Pro）", "gb": 5000, "monthly": 2900, "annual": 29000}
+   ]
+  },
+  {
+   "id": "amazon",
+   "name": "Amazon Photos",
+   "company": "Amazon",
+   "free_gb": 5,
+   "free_note": "Amazonのお客様は5GBの無料ストレージ。",
+   "free_source_url": "https://www.amazon.co.jp/b?node=5262648051",
+   "tax": "税込み・税抜きの表記はページになし",
+   "annual_note": "年払いの料金はページに記載なし（「月額250円から」の表記あり）",
+   "source_url": "https://www.amazon.co.jp/b?node=5262648051",
+   "checked": "2026-10-19",
+   "plans": [
+    {"label": "100GB", "gb": 100, "monthly": 250, "annual": null},
+    {"label": "1TB", "gb": 1000, "monthly": 1300, "annual": null}
+   ],
+   "prime": {
+    "name": "Amazonプライム",
+    "monthly": 600,
+    "annual": 5900,
+    "tax": "税込み",
+    "photos_unlimited": true,
+    "video_gb": 5,
+    "benefit_text": "Amazonプライム会員は、Amazon Photosで容量無制限のフル解像度の写真ストレージと5GBの動画ストレージをご利用いただけます。",
+    "source_url": "https://www.amazon.co.jp/gp/help/customer/display.html?nodeId=201910360",
+    "fee_source_url": "https://www.amazon.co.jp/gp/help/customer/display.html?nodeId=G34EUPKVMYFW8N2U",
+    "checked": "2026-10-19"
+   }
+  }
+ ],
+ "assumptions": {
+  "video_mb_per_min": 119,
+  "video_note": "Amazon Photosの案内「100GB … 約14時間の1080p HDビデオを保存できます」から 100GB÷(14時間×60分)≒119MB/分 として計算。",
+  "video_source_url": "https://www.amazon.co.jp/b?node=5262648051",
+  "photo_mb_default": 3,
+  "photo_note": "写真1枚あたりの大きさは公式の目安がないため、このツールの仮の値（変更できます）。設定の「ストレージ」画面のGBを入れるほうが正確です。"
+ }
+}

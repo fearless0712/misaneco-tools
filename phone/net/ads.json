@@ -1,0 +1,15 @@
+{
+ "_readme": "A8.netの広告タグをそのまま tag に貼ると、診断結果の下の「広告・PR」枠に表示されます（空なら枠ごと非表示）。types は表示する結果の種類（fiber=光回線 / home=ホームルーター / mobile=ポケットWiFi / any=いつでも）。使えるのは <a> と <img>、画像は *.a8.net か同じサイト内のみ。広告は候補の順番に影響しません。label は変更しないでください。",
+ "label": "広告・PR",
+ "slots": [
+  { "id": "hikari", "network": "A8.net", "advertiser": "", "types": ["fiber"], "tag": "", "caption": "" },
+  { "id": "homerouter", "network": "A8.net", "advertiser": "", "types": ["home"], "tag": "", "caption": "" },
+  { "id": "mobile", "network": "A8.net", "advertiser": "", "types": ["mobile"], "tag": "", "caption": "" },
+  { "id": "general", "network": "A8.net", "advertiser": "", "types": ["any"], "tag": "", "caption": "" }
+ ],
+ "interstitial": {
+  "_readme": "全画面広告。tag が空なら出ません。出すのは1日1回まで、×・背景タップ・Escですぐ閉じられます。",
+  "advertiser": "",
+  "tag": ""
+ }
+}

@@ -1,0 +1,320 @@
+{
+  "checked": "2026-10-19",
+  "checkedLabel": "2026年10月19日",
+  "_readme": "料金は各社公式ページで確認した値だけ。src は sources/ の保存ファイル名（拡張子なし）。tests/test_data.py が、ここに書いた金額（○○円）が保存した公式ページに載っているかを照合する。キャッシュバック額は載せない。",
+  "sources": {
+    "docomo_hikari": { "title": "ドコモ光 料金プラン（NTTドコモ）", "url": "https://www.docomo.ne.jp/internet/hikari/charge/index.html" },
+    "home5g": { "title": "home 5G（NTTドコモ）", "url": "https://www.docomo.ne.jp/home_5g/" },
+    "au_plus_home": { "title": "auひかりプラス ホーム（au）", "url": "https://www.au.com/internet/auhikari_plus-home/" },
+    "au_plus_mansion": { "title": "auひかりプラス マンション（au）", "url": "https://www.au.com/internet/auhikari_plus-mansion/" },
+    "au_plus_wireless": { "title": "auひかりプラス ワイヤレス（au）", "url": "https://www.au.com/internet/auhikari_plus-wireless/" },
+    "au_smartvalue": { "title": "auスマートバリュー（au）", "url": "https://www.au.com/mobile/charge/charge-discount/smartvalue/" },
+    "uq_jitaku": { "title": "自宅セット割（UQ mobile）", "url": "https://www.uqwimax.jp/mobile/newplan/setwari/jitaku/" },
+    "uqwimax": { "title": "UQ WiMAX 料金プラン", "url": "https://www.uqwimax.jp/wimax/plan/" },
+    "sb_top": { "title": "SoftBank 光（ソフトバンク）", "url": "https://www.softbank.jp/internet/sbhikari/" },
+    "sb_flow": { "title": "SoftBank 光 お申し込みの流れ", "url": "https://www.softbank.jp/internet/sbhikari/order-flow/" },
+    "sb_ouchiwari": { "title": "おうち割 光セット（ソフトバンク）", "url": "https://www.softbank.jp/mobile/special/ouchiwari-hikari/" },
+    "ym_setwari": { "title": "おうち割 光セット（A）（ワイモバイル）", "url": "https://www.ymobile.jp/plan/discount/hikarisetwari/" },
+    "sbair_top": { "title": "SoftBank Air（ソフトバンク）", "url": "https://www.softbank.jp/internet/air/" },
+    "sbair_price": { "title": "SoftBank Air 料金", "url": "https://www.softbank.jp/internet/air/price/" },
+    "rakuten_hikari": { "title": "楽天ひかり（楽天モバイル）", "url": "https://network.mobile.rakuten.co.jp/hikari/" },
+    "rakuten_pricelist": { "title": "楽天ひかり 料金表", "url": "https://network.mobile.rakuten.co.jp/hikari/fee/pricelist/" },
+    "rakuten_turbo": { "title": "Rakuten Turbo（楽天モバイル）", "url": "https://network.mobile.rakuten.co.jp/internet/turbo/" },
+    "nuro_house": { "title": "NURO 光 戸建て向け料金", "url": "https://www.nuro.jp/hikari/house/price/" },
+    "nuro_mansion": { "title": "NURO 光 マンション向け料金", "url": "https://www.nuro.jp/hikari/mansion/price/" }
+  },
+  "carriers": [
+    { "id": "docomo", "name": "ドコモ" },
+    { "id": "ahamo", "name": "ahamo" },
+    { "id": "au", "name": "au" },
+    { "id": "uq", "name": "UQ mobile" },
+    { "id": "softbank", "name": "ソフトバンク" },
+    { "id": "ymobile", "name": "ワイモバイル" },
+    { "id": "rakuten", "name": "楽天モバイル" },
+    { "id": "other", "name": "その他・格安SIM・家族でバラバラ" }
+  ],
+  "plans": [
+    {
+      "id": "docomo-hikari",
+      "type": "fiber",
+      "name": "ドコモ光 1ギガ（タイプA）",
+      "company": "NTTドコモ",
+      "url": "https://www.docomo.ne.jp/internet/hikari/charge/index.html",
+      "monthly": {
+        "house": [
+          { "label": "2年定期契約", "yen": 5720, "src": "docomo_hikari" },
+          { "label": "定期契約なし", "yen": 7370, "src": "docomo_hikari" }
+        ],
+        "apartment": [
+          { "label": "2年定期契約", "yen": 4400, "src": "docomo_hikari" },
+          { "label": "定期契約なし", "yen": 5500, "src": "docomo_hikari" }
+        ]
+      },
+      "monthlyNote": { "text": "プロバイダ料金込みのタイプA（OCN インターネット）の料金。プロバイダによって料金が変わります。", "src": "docomo_hikari" },
+      "set": [
+        { "carriers": ["docomo"], "kind": "discount", "title": "ドコモ光セット割", "text": "同じ「ファミリー割引」グループのスマホ1回線ごとに、スマホ料金から永年最大1,210円/月の割引（ドコモ MAX・ドコモ ポイ活 MAX・ドコモ ポイ活 20・ドコモ mini が対象。プラン・利用データ量で割引額は変わります。eximo・irumo などは最大1,100円/月）。", "src": "docomo_hikari" }
+      ],
+      "notes": [
+        { "kind": "cancel", "text": "2年定期契約の途中でやめると解約金：戸建 5,500円／マンション 4,180円（契約満了月の当月・翌月・翌々月はかかりません）。", "src": "docomo_hikari" },
+        { "kind": "initial", "text": "新規の初期費用例：契約事務手数料4,950円＋工事料（代表例）28,600円。設備や申込状況で変わります。土日休日の派遣工事は+3,300円。", "src": "docomo_hikari" }
+      ]
+    },
+    {
+      "id": "ahamo-hikari",
+      "type": "fiber",
+      "name": "ahamo光 1ギガ",
+      "company": "NTTドコモ",
+      "url": "https://www.docomo.ne.jp/internet/hikari/charge/index.html",
+      "monthly": {
+        "house": [
+          { "label": "2年定期契約", "yen": 4950, "src": "docomo_hikari" },
+          { "label": "契約期間なし", "yen": 6600, "src": "docomo_hikari" }
+        ],
+        "apartment": [
+          { "label": "2年定期契約", "yen": 3630, "src": "docomo_hikari" },
+          { "label": "契約期間なし", "yen": 4730, "src": "docomo_hikari" }
+        ]
+      },
+      "monthlyNote": { "text": "ahamoユーザー専用の光回線。申し込みにahamo契約の携帯電話番号が必要です。「OCNバーチャルコネクト」対応のルーターが必要です。", "src": "docomo_hikari" },
+      "set": [
+        { "carriers": ["ahamo"], "kind": "exclusive", "title": "ahamoユーザー専用", "text": "ahamoを使っている人向けの光回線です（ドコモ光セット割の割引対象外）。", "src": "docomo_hikari" }
+      ],
+      "onlyFor": ["ahamo"],
+      "notes": [
+        { "kind": "cancel", "text": "2年定期契約の途中でやめると解約金：戸建 4,950円／マンション 3,630円（契約満了月の当月・翌月・翌々月はかかりません）。", "src": "docomo_hikari" }
+      ]
+    },
+    {
+      "id": "au-hikari-plus",
+      "type": "fiber",
+      "name": "auひかりプラス ホーム／マンション（1ギガ）",
+      "company": "au（KDDI）",
+      "url": "https://www.au.com/internet/auhikari_plus-home/",
+      "urlApartment": "https://www.au.com/internet/auhikari_plus-mansion/",
+      "monthly": {
+        "house": [
+          { "label": "公式の料金例：光回線開通〜12カ月目", "yen": 6578, "src": "au_plus_home" },
+          { "label": "13カ月目〜", "yen": 7018, "src": "au_plus_home" },
+          { "label": "37カ月目〜", "yen": 7238, "src": "au_plus_home" }
+        ],
+        "apartment": [
+          { "label": "公式の料金例：光回線開通〜12カ月目", "yen": 5500, "src": "au_plus_mansion" },
+          { "label": "13カ月目〜", "yen": 5940, "src": "au_plus_mansion" },
+          { "label": "37カ月目〜", "yen": 6160, "src": "au_plus_mansion" }
+        ]
+      },
+      "monthlyNote": { "text": "公式の料金例は「2年契約（プロバイダ：BIGLOBE）・Wi-Fiパック（電話含む）を同時申込・auでんきも申込」の場合。プロバイダ料・ハイブリッドホームルーターのレンタル料込み。申込内容で金額は変わります。", "src": "au_plus_home" },
+      "fastStart": { "text": "光回線の工事を待つあいだも、届いたハイブリッドホームルーターで5G通信が使えます（公式の料金例では光回線開通前は0円）。", "src": "au_plus_home" },
+      "set": [
+        { "carriers": ["au"], "kind": "discount", "title": "auスマートバリュー", "text": "auスマホの料金から最大1,100円/月の割引（使い放題MAX＋ 5G・auバリューリンクプランなど。U18バリュープランは550円/月）。ネット＋電話のセットで使うことが条件。", "src": "au_smartvalue" },
+        { "carriers": ["uq"], "kind": "discount", "title": "自宅セット割（インターネットコース）", "text": "UQ mobileの料金から割引：トクトクプラン2・トクトクプラン・ミニミニプランは1,100円/月、くりこしプランS／M +5Gは638円/月、くりこしプランL +5Gは858円/月。ネット＋電話のセットで使うことが条件。", "src": "uq_jitaku" }
+      ],
+      "notes": [
+        { "kind": "cancel", "text": "2年契約の途中で解約・プラン変更すると契約解除料3,102円（2年契約満了月の当月・翌月・翌々月を除く）。", "src": "au_plus_home" },
+        { "kind": "initial", "text": "サービス登録料4,950円。工事費39,600円（1,650円×24カ月）には同じ額の初期費用相当額割引があります（フレッツ光から乗りかえる場合などは条件が違います）。土日祝日の開通工事は別途3,300円。", "src": "au_plus_home" },
+        { "kind": "area", "text": "工事が必要です（一部不要な場合あり）。エリアや住まいの環境で使えない場合があります。", "src": "au_plus_home" }
+      ]
+    },
+    {
+      "id": "softbank-hikari",
+      "type": "fiber",
+      "name": "SoftBank 光 1ギガ",
+      "company": "ソフトバンク",
+      "url": "https://www.softbank.jp/internet/sbhikari/",
+      "monthly": {
+        "house": [
+          { "label": "2年自動更新プラン", "yen": 5720, "src": "sb_top" }
+        ],
+        "apartment": [
+          { "label": "2年自動更新プラン", "yen": 4180, "src": "sb_top" }
+        ]
+      },
+      "priceChange": { "text": "2026年12月1日から月額料金を+330円に改定すると公式に案内があります。", "src": "sb_top" },
+      "set": [
+        { "carriers": ["softbank"], "kind": "discount", "title": "おうち割 光セット", "text": "対象のスマホ1回線ごとに、通信料から永年毎月1,100円の割引（プランにより550円）。別に指定オプション550円/月〜の加入が必要。", "src": "sb_ouchiwari" },
+        { "carriers": ["ymobile"], "kind": "discount", "title": "おうち割 光セット（A）", "text": "ワイモバイルの料金から割引：シンプル2 M／Lは毎月1,650円、シンプル2 Sは毎月1,100円。別に指定オプション550円/月の加入が必要。", "src": "ym_setwari" }
+      ],
+      "notes": [
+        { "kind": "cancel", "text": "契約期間満了月の当月・翌月・翌々月以外で解約すると、割引前の月額料金相当額の解除料がかかります。", "src": "sb_top" },
+        { "kind": "construction", "text": "工事日は、Web・電話で申し込み本人確認審査が済んでいれば申込日から約6日後以降、済んでいなければ約2週間後以降から選べます。条件によっては1ヵ月以上かかる場合もあります。工事日は立ち会いが必要です。", "src": "sb_flow" }
+      ]
+    },
+    {
+      "id": "rakuten-hikari",
+      "type": "fiber",
+      "name": "楽天ひかり",
+      "company": "楽天モバイル",
+      "url": "https://network.mobile.rakuten.co.jp/hikari/",
+      "monthly": {
+        "house": [
+          { "label": "ファミリープラン（戸建）", "yen": 5280, "src": "rakuten_pricelist" }
+        ],
+        "apartment": [
+          { "label": "マンションプラン（集合住宅）", "yen": 4180, "src": "rakuten_pricelist" }
+        ]
+      },
+      "set": [
+        { "carriers": ["rakuten"], "kind": "points", "title": "楽天モバイルとセットでポイント還元", "text": "楽天ひかりの初めての申込＋楽天モバイル利用で、永年毎月1,000ポイント還元（期間限定ポイント・条件あり）。料金の割引ではなくポイントです。", "src": "rakuten_hikari" }
+      ],
+      "notes": [
+        { "kind": "cancel", "text": "契約解除料：マンションプラン4,180円／ファミリープラン5,280円。契約期間や無料で解約できる期間は、適用されているキャンペーンによって違います。", "src": "rakuten_pricelist" }
+      ]
+    },
+    {
+      "id": "nuro-hikari",
+      "type": "fiber",
+      "name": "NURO 光（2.5ギガ）",
+      "company": "ソニーネットワークコミュニケーションズ",
+      "url": "https://www.nuro.jp/hikari/house/price/",
+      "urlApartment": "https://www.nuro.jp/hikari/mansion/price/",
+      "monthly": {
+        "house": [
+          { "label": "NURO 光(H)・2年割：1〜24か月目", "yen": 4530, "src": "nuro_house" },
+          { "label": "25か月目〜", "yen": 5720, "src": "nuro_house" }
+        ],
+        "apartment": [
+          { "label": "39戸以下の建物＝(H)プラン：1〜24か月目", "yen": 4530, "src": "nuro_mansion" },
+          { "label": "(H)プラン：25か月目〜", "yen": 5720, "src": "nuro_mansion" },
+          { "label": "40戸以上の建物＝(M)プラン：1〜24か月目", "yen": 3530, "src": "nuro_mansion" },
+          { "label": "(M)プラン：25か月目〜", "yen": 4730, "src": "nuro_mansion" }
+        ]
+      },
+      "monthlyNote": { "text": "ホームゲートウェイ（Wi-Fiルーター）料金550円/月を含めた金額。マンションのプランは建物の戸数などで自動判定され、自分では選べません。", "src": "nuro_mansion" },
+      "set": [],
+      "notes": [
+        { "kind": "cancel", "text": "契約期間は36か月（3年単位で自動更新）。途中解約の契約解除料：(H)プラン3,643円／(M)プラン2,653円（契約期間満了月を含む3か月間は無料）。", "src": "nuro_house" },
+        { "kind": "initial", "text": "契約事務手数料6,050円。基本工事費55,000円は36回の分割で、同じ額が割引されます。引越しが理由の解約でも、工事費の分割の残りは発生します。", "src": "nuro_house" },
+        { "kind": "area", "text": "提供エリアは北海道、東京、神奈川、埼玉、千葉、茨城、栃木、群馬、愛知、静岡、岐阜、三重、大阪、兵庫、京都、滋賀、奈良、広島、岡山、福岡、佐賀（一部エリアを除く）。", "src": "nuro_house" }
+      ]
+    },
+    {
+      "id": "home5g",
+      "type": "home",
+      "name": "home 5G（ホームルーター）",
+      "company": "NTTドコモ",
+      "url": "https://www.docomo.ne.jp/home_5g/",
+      "monthly": {
+        "any": [
+          { "label": "home 5G プラン", "yen": 5280, "src": "home5g" }
+        ]
+      },
+      "monthlyNote": { "text": "専用端末の代金は別。HR02は73,260円で、48回の「月々サポート」で実質0円（home 5G プランを解約すると月々サポートも終わります）。", "src": "home5g" },
+      "set": [
+        { "carriers": ["docomo"], "kind": "discount", "title": "home 5G セット割", "text": "同じ「ファミリー割引」グループのスマホ1回線ごとに、永年最大1,210円/月の割引（ドコモ MAX・ドコモ ポイ活 MAX・ドコモ ポイ活 20・ドコモ mini が対象。eximo・irumo などは最大1,100円/月）。", "src": "home5g" }
+      ],
+      "notes": [
+        { "kind": "address", "text": "登録した設置場所の住所以外では使えません。引越しのときは住所変更の手続きが必要です。", "src": "home5g" },
+        { "kind": "initial", "text": "契約事務手数料は、ドコモショップ・量販店などで4,950円、ドコモオンラインショップは無料。", "src": "home5g" },
+        { "kind": "speed", "text": "利用が集中する時間帯やエリアでは通信が遅くなることがあると公式に書かれています。", "src": "home5g" }
+      ]
+    },
+    {
+      "id": "au-hikari-plus-wireless",
+      "type": "home",
+      "name": "auひかりプラス ワイヤレス（ホームルーター）",
+      "company": "au（KDDI）",
+      "url": "https://www.au.com/internet/auhikari_plus-wireless/",
+      "monthly": {
+        "any": [
+          { "label": "公式の料金例：〜12カ月目", "yen": 5500, "src": "au_plus_wireless" },
+          { "label": "13カ月目〜", "yen": 5940, "src": "au_plus_wireless" },
+          { "label": "37カ月目〜", "yen": 6160, "src": "au_plus_wireless" }
+        ]
+      },
+      "monthlyNote": { "text": "公式の料金例は、Wi-Fiパックデビュー割・でんきセット割（auでんき）を含めた金額。ネット利用料4,642円＋ルーターレンタル料858円＋Wi-Fiパック770円から割り引いた額です。", "src": "au_plus_wireless" },
+      "set": [
+        { "carriers": ["au"], "kind": "discount", "title": "auスマートバリュー", "text": "auスマホの料金から最大1,100円/月の割引（U18バリュープランは550円/月）。「auひかりプラス ワイヤレス タイプ2 5G」のプランが対象。", "src": "au_smartvalue" }
+      ],
+      "notes": [
+        { "kind": "address", "text": "契約した住所でのみ使えます。", "src": "au_plus_wireless" },
+        { "kind": "cancel", "text": "2年契約の途中で解約・プラン変更すると契約解除料3,102円（2年契約満了月の当月・翌月・翌々月を除く）。", "src": "au_plus_wireless" },
+        { "kind": "initial", "text": "サービス登録料4,950円。", "src": "au_plus_wireless" }
+      ]
+    },
+    {
+      "id": "softbank-air",
+      "type": "home",
+      "name": "SoftBank Air（ホームルーター）",
+      "company": "ソフトバンク",
+      "url": "https://www.softbank.jp/internet/air/price/",
+      "monthly": {
+        "any": [
+          { "label": "4G/5G共通プラン 月額基本料金", "yen": 5368, "src": "sbair_price" }
+        ]
+      },
+      "priceChange": { "text": "2026年12月1日から月額基本料金は5,698円に改定すると公式に案内があります。", "src": "sbair_price" },
+      "monthlyNote": { "text": "Airターミナル6を48回の分割で買う場合は95,040円（1,980円×48回）。「月月割」で基本料金から1,980円/月（最大48ヵ月）割り引かれ、端末代金相当になります。解約すると月月割は終わります。", "src": "sbair_price" },
+      "set": [
+        { "carriers": ["softbank"], "kind": "discount", "title": "おうち割 光セット", "text": "ソフトバンクのスマホ料金から毎月1,100円の割引。", "src": "sbair_top" },
+        { "carriers": ["ymobile"], "kind": "discount", "title": "おうち割 光セット（A）", "text": "ワイモバイルの料金から毎月1,650円の割引（プランにより異なります）。", "src": "sbair_top" }
+      ],
+      "notes": [
+        { "kind": "unknown", "text": "契約期間・解約時の費用は、このツールでは確認していません。申し込み前に公式で確認してください。", "src": null }
+      ]
+    },
+    {
+      "id": "rakuten-turbo",
+      "type": "home",
+      "name": "Rakuten Turbo（ホームルーター）",
+      "company": "楽天モバイル",
+      "url": "https://network.mobile.rakuten.co.jp/internet/turbo/",
+      "monthly": {
+        "any": [
+          { "label": "月額", "yen": 4840, "src": "rakuten_turbo" }
+        ]
+      },
+      "monthlyNote": { "text": "製品代41,580円は別。48カ月使うとプラン料金から867円/月の割引で実質0円。48カ月未満で解約すると以降の割引はなく、端末代金の支払いは残ります。", "src": "rakuten_turbo" },
+      "set": [
+        { "carriers": ["rakuten"], "kind": "points", "title": "楽天モバイルとセットでポイント還元", "text": "Rakuten Turboの初めての申込＋楽天モバイル利用で、永年毎月1,000ポイント還元（期間限定ポイント・条件あり）。料金の割引ではなくポイントです。", "src": "rakuten_turbo" }
+      ],
+      "notes": [
+        { "kind": "cancel", "text": "契約期間の縛りや最低利用期間はありません（端末代金の支払いは別）。", "src": "rakuten_turbo" },
+        { "kind": "address", "text": "登録した設置先の住所でのみ使えます。", "src": "rakuten_turbo" }
+      ]
+    },
+    {
+      "id": "wimax-home",
+      "type": "home",
+      "name": "UQ WiMAX ホームルーター（ギガ放題プラスS）",
+      "company": "UQコミュニケーションズ（KDDI）",
+      "url": "https://www.uqwimax.jp/wimax/plan/",
+      "monthly": {
+        "any": [
+          { "label": "WiMAX +5G割の適用中（13カ月間）", "yen": 4598, "src": "uqwimax" },
+          { "label": "通常の月額", "yen": 5280, "src": "uqwimax" }
+        ]
+      },
+      "monthlyNote": { "text": "ホームルーターとモバイルルーターの基本料金は同じ。端末代はこのツールでは確認していないので公式で確認してください。", "src": "uqwimax" },
+      "set": [
+        { "carriers": ["au"], "kind": "discount", "title": "auスマートバリュー", "text": "WiMAX +5G（対象の料金プランのみ）が対象。auスマホの料金から最大1,100円/月。対象プランはauかUQの公式・店頭で確認してください。", "src": "au_smartvalue" },
+        { "carriers": ["uq"], "kind": "discount", "title": "自宅セット割（インターネットコース）", "text": "WiMAX +5G（対象の料金プランのみ）が対象。トクトクプラン2などは1,100円/月の割引。", "src": "uq_jitaku" }
+      ],
+      "notes": [
+        { "kind": "cancel", "text": "ギガ放題プラスSは契約期間の条件がない料金プランです。", "src": "uqwimax" },
+        { "kind": "speed", "text": "一定期間内に大量のデータ通信があった場合、混雑する時間帯の通信速度を制限する場合があると公式に書かれています。", "src": "uqwimax" }
+      ]
+    },
+    {
+      "id": "wimax-mobile",
+      "type": "mobile",
+      "name": "UQ WiMAX モバイルルーター（ギガ放題プラスS）",
+      "company": "UQコミュニケーションズ（KDDI）",
+      "url": "https://www.uqwimax.jp/wimax/plan/",
+      "monthly": {
+        "any": [
+          { "label": "WiMAX +5G割の適用中（13カ月間）", "yen": 4598, "src": "uqwimax" },
+          { "label": "通常の月額", "yen": 5280, "src": "uqwimax" }
+        ]
+      },
+      "monthlyNote": { "text": "家でも外でも使えるWi-Fiモバイルルーター。ホームルーターと基本料金は同じ。端末代はこのツールでは確認していないので公式で確認してください。", "src": "uqwimax" },
+      "set": [
+        { "carriers": ["au"], "kind": "discount", "title": "auスマートバリュー", "text": "WiMAX +5G（対象の料金プランのみ）が対象。auスマホの料金から最大1,100円/月。対象プランはauかUQの公式・店頭で確認してください。", "src": "au_smartvalue" },
+        { "carriers": ["uq"], "kind": "discount", "title": "自宅セット割（インターネットコース）", "text": "WiMAX +5G（対象の料金プランのみ）が対象。トクトクプラン2などは1,100円/月の割引。", "src": "uq_jitaku" }
+      ],
+      "notes": [
+        { "kind": "cancel", "text": "ギガ放題プラスSは契約期間の条件がない料金プランです。", "src": "uqwimax" },
+        { "kind": "speed", "text": "一定期間内に大量のデータ通信があった場合、混雑する時間帯の通信速度を制限する場合があると公式に書かれています。", "src": "uqwimax" }
+      ]
+    }
+  ]
+}
