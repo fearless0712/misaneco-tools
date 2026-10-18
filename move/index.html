@@ -1,0 +1,133 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self'; img-src 'self' data: https://*.a8.net https://image.moshimo.com https://i.moshimo.com https://m.media-amazon.com https://ws-fe.amazon-adsystem.com https://ir-jp.amazon-adsystem.com; connect-src 'self'; font-src 'self'; manifest-src 'self'; base-uri 'none'; form-action 'none'; frame-src 'none'; object-src 'none'">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<title>引越しやることリスト</title>
+<meta name="description" content="引越し日と状況を入れるだけで、転出届・転入届などの期限つきやることリストを作ります。入力は端末の外に送りません。">
+<meta name="theme-color" content="#1f4d3a">
+<link rel="icon" href="icon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<header class="site-head">
+  <div class="wrap">
+    <h1>引越しやることリスト <span class="sub">自動作成</span></h1>
+    <p class="lead">引越し日と状況を選ぶと、いつまでに何をするかを一覧にします。入力した内容はこの端末の中だけで使い、外部には送りません。</p>
+  </div>
+</header>
+
+<main class="wrap">
+  <form id="form" class="card form" autocomplete="off" novalidate>
+    <div class="field">
+      <label for="date">引越し日（新しい住所に住み始める日）</label>
+      <input type="date" id="date" name="date" required>
+    </div>
+
+    <fieldset class="field">
+      <legend>引越しの種類</legend>
+      <div class="opts">
+        <label class="opt"><input type="radio" name="type" value="other" checked><span>別の市区町村へ</span></label>
+        <label class="opt"><input type="radio" name="type" value="same"><span>同じ市区町村の中で</span></label>
+        <label class="opt"><input type="radio" name="type" value="abroad"><span>海外へ／海外から</span></label>
+      </div>
+    </fieldset>
+
+    <div class="row2">
+      <fieldset class="field">
+        <legend>今の住まい</legend>
+        <div class="opts">
+          <label class="opt"><input type="radio" name="cur" value="rent" checked><span>賃貸</span></label>
+          <label class="opt"><input type="radio" name="cur" value="own"><span>持ち家</span></label>
+        </div>
+      </fieldset>
+      <fieldset class="field">
+        <legend>新しい住まい</legend>
+        <div class="opts">
+          <label class="opt"><input type="radio" name="next" value="rent" checked><span>賃貸</span></label>
+          <label class="opt"><input type="radio" name="next" value="own"><span>持ち家</span></label>
+        </div>
+      </fieldset>
+    </div>
+
+    <fieldset class="field">
+      <legend>家族</legend>
+      <div class="opts">
+        <label class="opt"><input type="radio" name="family" value="single" checked><span>単身</span></label>
+        <label class="opt"><input type="radio" name="family" value="multi"><span>2人以上</span></label>
+        <label class="opt"><input type="radio" name="family" value="kids"><span>子どもあり（学校・保育園）</span></label>
+      </div>
+    </fieldset>
+
+    <fieldset class="field">
+      <legend>あてはまるもの</legend>
+      <div class="opts">
+        <label class="opt"><input type="checkbox" name="mynum" checked><span>マイナンバーカードがある</span></label>
+        <label class="opt"><input type="checkbox" name="license"><span>運転免許証がある</span></label>
+        <label class="opt"><input type="checkbox" name="car"><span>車がある</span></label>
+        <label class="opt"><input type="checkbox" name="bike"><span>バイク・原付がある</span></label>
+        <label class="opt"><input type="checkbox" name="dog"><span>犬を飼っている</span></label>
+      </div>
+    </fieldset>
+
+    <fieldset class="field">
+      <legend>使っているもの（停止・住所変更が必要）</legend>
+      <div class="opts">
+        <label class="opt"><input type="checkbox" name="u_elec" checked><span>電気</span></label>
+        <label class="opt"><input type="checkbox" name="u_gas" checked><span>ガス</span></label>
+        <label class="opt"><input type="checkbox" name="u_water" checked><span>水道</span></label>
+        <label class="opt"><input type="checkbox" name="u_net" checked><span>ネット回線</span></label>
+        <label class="opt"><input type="checkbox" name="u_nhk"><span>NHK</span></label>
+        <label class="opt"><input type="checkbox" name="u_paper"><span>新聞</span></label>
+        <label class="opt"><input type="checkbox" name="u_post" checked><span>郵便の転送</span></label>
+      </div>
+    </fieldset>
+  </form>
+
+  <p id="abroadMsg" class="card notice" hidden>海外への引越し・海外からの引越しは、このツールの対象外です。国外転出届などの手続きは、お住まいの市区町村の案内で確認してください。</p>
+  <p id="needDate" class="card notice" hidden>引越し日を入れると、リストが表示されます。</p>
+
+  <section id="result" hidden>
+    <div class="result-head">
+      <h2>やることリスト</h2>
+      <p id="summary" class="summary"></p>
+      <div class="actions">
+        <button type="button" id="btnIcs" class="btn">カレンダーに入れる（.ics）</button>
+        <button type="button" id="btnPrint" class="btn btn-ghost">印刷・PDF</button>
+        <button type="button" id="btnReset" class="btn btn-ghost">チェックを全部外す</button>
+      </div>
+      <ul class="legend"><li><span class="badge law">法定期限</span> 法令で日数が決まっている期限</li><li><span class="badge soft">法令は日数なし</span> 「あらかじめ」「速やかに」など。日付は目安</li><li><span class="badge guide">目安</span> 法令の期限ではない、目安の日付</li></ul>
+    </div>
+    <div id="groups"></div>
+    <div class="card note">
+      <h3>このリストについて</h3>
+      <ul>
+        <li>期限は「引越し日＝新しい住所に住み始めた日」として、初日を数えずに計算しています（民法第140条）。例：14日以内なら引越し日の14日後まで。</li>
+        <li>期限の最終日が土日・祝日の場合の扱いや、窓口の受付時間、必要な持ち物は、手続き先の市区町村・機関で確認してください。</li>
+        <li>法令の条文と公式ページは、作成時点（2026年10月）に確認したものです。改正されることがあります。</li>
+        <li>このリストは一般的な案内で、すべての手続きを網羅するものではありません。</li>
+      </ul>
+    </div>
+  </section>
+</main>
+
+<footer class="site-foot wrap">
+  <p>引越しやることリスト（無料）｜入力内容とチェックはこの端末のブラウザにだけ保存されます。外部への送信はしていません。</p>
+  <p class="small">広告・PR枠を含みます。広告を見なくてもすべての機能を使えます。</p>
+</footer>
+
+<div id="adModal" class="ad-modal" hidden role="dialog" aria-modal="true" aria-label="広告">
+  <div class="ad-modal-box">
+    <div class="ad-modal-head"><span class="ad-label">広告・PR</span><button type="button" id="adClose" class="ad-close" aria-label="閉じる">×</button></div>
+    <div id="adModalBody" class="ad-body"></div>
+  </div>
+</div>
+
+<pre id="testOut" hidden></pre>
+<script src="js/items.js"></script>
+<script src="js/ads.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>

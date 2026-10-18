@@ -1,0 +1,33 @@
+{
+  "_doc": [
+    "広告の中身はこのファイルだけで差し替えます（コードの変更は不要）。",
+    "slots.<カテゴリ> に広告を入れると、placements でそのカテゴリを指定したグループの下に「広告・PR」枠として出ます。空のカテゴリは枠ごと出ません。",
+    "type 'image': {img, href, alt, width, height, text(任意・説明1行)}。画像は ads/ に置くか、index.html のCSP(img-src)で許可した広告ホストのもの。",
+    "type 'html': {html}。A8.net・もしもアフィリエイト等の <a><img> タグを貼る。<script> は動きません。",
+    "weight: 出る割合。enabled:false で停止。",
+    "slots.interstitial は全画面の広告（1日1回まで・×ですぐ閉じる）。空なら出ません。",
+    "「クリックしてください」などクリックを促す文言は書かないこと。"
+  ],
+  "categoryNames": {
+    "moving": "引越し見積もり",
+    "internet": "光回線",
+    "buyback": "不用品買取",
+    "insurance": "火災保険"
+  },
+  "placements": {
+    "g1": ["moving", "buyback"],
+    "g2": ["internet", "insurance"],
+    "g3": ["buyback", "moving"],
+    "g4": [],
+    "g5": [],
+    "g6": ["internet", "insurance"],
+    "g7": []
+  },
+  "slots": {
+    "moving": [],
+    "internet": [],
+    "buyback": [],
+    "insurance": [],
+    "interstitial": []
+  }
+}
