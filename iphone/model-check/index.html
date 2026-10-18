@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self'; img-src 'self' data: https://*.a8.net; connect-src 'self'; font-src 'none'; frame-src 'none'; object-src 'none'; base-uri 'none'; form-action 'none'; manifest-src 'self'">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<meta name="description" content="iPhoneのモデル番号（A2xxx）から正確な機種名と、合うケースのサイズ・充電器の端子を判定する無料ツール。入力は外部に送信しません。">
+<meta name="theme-color" content="#ffffff">
+<title>iPhone機種判定＆合うケース・充電器チェッカー</title>
+<link rel="stylesheet" href="css/app.css">
+<link rel="icon" href="data:,">
+</head>
+<body>
+<header class="top">
+  <div class="wrap top-row">
+    <span class="brand" data-i="title">iPhone機種判定＆合うケース・充電器チェッカー</span>
+    <button type="button" id="langBtn" class="lang" data-i="langBtn">English</button>
+  </div>
+</header>
+
+<main class="wrap">
+  <h1 data-i="title">iPhone機種判定＆合うケース・充電器チェッカー</h1>
+  <p class="lead" data-i="lead"></p>
+  <p class="privacy"><span class="lock" aria-hidden="true"></span><span data-i="privacy"></span></p>
+
+  <section class="card" id="inputCard">
+    <div class="tabs" role="tablist">
+      <button type="button" role="tab" class="tab" id="tab-model" aria-selected="true" data-tab="model" data-i="tabModel"></button>
+      <button type="button" role="tab" class="tab" id="tab-part" aria-selected="false" data-tab="part" data-i="tabPart"></button>
+      <button type="button" role="tab" class="tab" id="tab-list" aria-selected="false" data-tab="list" data-i="tabList"></button>
+    </div>
+
+    <div class="pane" id="pane-model">
+      <label for="inModel" data-i="inputModelLabel"></label>
+      <div class="row">
+        <input id="inModel" type="text" inputmode="text" autocomplete="off" autocapitalize="characters" spellcheck="false" maxlength="12" data-ph="inputModelPh">
+        <button type="button" class="go" data-go="model" data-i="check"></button>
+      </div>
+    </div>
+    <div class="pane" id="pane-part" hidden>
+      <label for="inPart" data-i="inputPartLabel"></label>
+      <div class="row">
+        <input id="inPart" type="text" autocomplete="off" autocapitalize="characters" spellcheck="false" maxlength="16" data-ph="inputPartPh">
+        <button type="button" class="go" data-go="part" data-i="check"></button>
+      </div>
+    </div>
+    <div class="pane" id="pane-list" hidden>
+      <label for="inList" data-i="listLabel"></label>
+      <div class="row">
+        <select id="inList"></select>
+        <button type="button" class="go" data-go="list" data-i="check"></button>
+      </div>
+    </div>
+    <p class="msg" id="msg" role="status" aria-live="polite" hidden></p>
+
+    <details class="how" id="how">
+      <summary data-i="howTitle"></summary>
+      <ol>
+        <li data-i="how1"></li>
+        <li data-i="how2"></li>
+        <li data-i="how3"></li>
+        <li data-i="how4"></li>
+      </ol>
+      <p class="small" data-i="howAlt"></p>
+      <p class="small"><a id="howLink" href="https://support.apple.com/ja-jp/106343" rel="noopener noreferrer" target="_blank" data-i="howSrc"></a><br>
+      <a id="howLink2" href="https://support.apple.com/ja-jp/108044" rel="noopener noreferrer" target="_blank" data-i="howSrc2"></a></p>
+    </details>
+  </section>
+
+  <section id="result" hidden></section>
+  <section id="ads" class="adbox" hidden></section>
+</main>
+
+<footer class="foot wrap">
+  <p data-i="footer1"></p>
+  <p data-i="footer3"></p>
+  <p data-i="footer2"></p>
+</footer>
+
+<div id="inter" class="inter" hidden>
+  <div class="inter-box" role="dialog" aria-modal="true" aria-labelledby="interLabel">
+    <div class="inter-bar"><span class="adtag" id="interLabel"></span><button type="button" id="interClose" class="x" aria-label="閉じる">×</button></div>
+    <div class="inter-body" id="interBody"></div>
+  </div>
+</div>
+
+<script src="js/logic.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>

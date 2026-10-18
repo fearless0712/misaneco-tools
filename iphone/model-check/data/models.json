@@ -1,0 +1,3963 @@
+{
+ "generated": "2026-10-18",
+ "note": "Values verified against Apple official pages saved on the generated date. null = 未確認 (not confirmed).",
+ "sources": {
+  "identify": [
+   "https://support.apple.com/ja-jp/108044",
+   "https://support.apple.com/en-us/108044"
+  ],
+  "findModelNumber": [
+   "https://support.apple.com/ja-jp/106343",
+   "https://support.apple.com/en-us/106343"
+  ],
+  "fastCharge": [
+   "https://support.apple.com/ja-jp/102574",
+   "https://support.apple.com/en-us/102574"
+  ],
+  "ios": [
+   "https://support.apple.com/ja-jp/guide/iphone/iphe3fa5df43/ios",
+   "https://www.apple.com/os/ios/",
+   "https://support.apple.com/guide/iphone/iphe3fa5df43/18.0/ios/18.0",
+   "https://support.apple.com/guide/iphone/iphe3fa5df43/16.0/ios/16.0"
+  ]
+ },
+ "partNumbers": {},
+ "models": [
+  {
+   "id": "iphone-duo",
+   "name": {
+    "ja": "iPhone Duo",
+    "en": "iPhone Duo"
+   },
+   "year": 2026,
+   "modelNumbers": [
+    {
+     "a": "A3447",
+     "region": {
+      "ja": "米国（apple.com 技術仕様ページの記載）",
+      "en": "US (apple.com specs page)"
+     },
+     "src": "https://www.apple.com/iphone-duo/specs/"
+    },
+    {
+     "a": "A3719",
+     "region": {
+      "ja": "日本（apple.com/jp 技術仕様ページの記載）",
+      "en": "Japan (apple.com/jp specs page)"
+     },
+     "src": "https://www.apple.com/jp/iphone-duo/specs/"
+    }
+   ],
+   "specUrl": {
+    "en": "https://www.apple.com/iphone-duo/specs/",
+    "ja": "https://www.apple.com/jp/iphone-duo/specs/"
+   },
+   "foldable": true,
+   "dimsFold": {
+    "open": [
+     164.6,
+     117.8,
+     5.2
+    ],
+    "closed": [
+     84.1,
+     117.8,
+     11.3
+    ]
+   },
+   "sizeMm": null,
+   "displayInch": "7.6/5.4",
+   "connector": "usbc",
+   "magsafe": true,
+   "magsafeMaxW": null,
+   "qiMaxW": null,
+   "qiListed": false,
+   "qi2MaxW": 25,
+   "wireless": true,
+   "fastCharge": {
+    "en": [
+     "Up to 50% charge in around 20 minutes with 60W-capable adapter or higher (available separately) paired with USB-C charging cable",
+     "Up to 50% charge in around 30 minutes with 35W adapter or higher paired with MagSafe Charger (both available separately)"
+    ],
+    "ja": [
+     "約20分で最大50%充電（別売りの60W以上対応のアダプタとUSB-C充電ケーブルを組み合わせて使用）",
+     "約30分で最大50%充電（別売りの35W以上のアダプタと別売りのMagSafe充電器を組み合わせて使用）"
+    ],
+    "usbAdapterMinW": 60,
+    "magsafeAdapterMinW": 35,
+    "src": {
+     "en": "https://www.apple.com/iphone-duo/specs/",
+     "ja": "https://www.apple.com/jp/iphone-duo/specs/"
+    },
+    "avs": false
+   },
+   "camera": {
+    "rear": 2,
+    "layout": null
+   },
+   "buttons": {
+    "action": null,
+    "cameraControl": null,
+    "home": false
+   },
+   "ios": {
+    "latest": "iOS 27",
+    "supported": true,
+    "src": "https://www.apple.com/os/ios/"
+   },
+   "sources": [
+    "https://support.apple.com/en-us/108044",
+    "https://support.apple.com/ja-jp/102574",
+    "https://support.apple.com/ja-jp/108044",
+    "https://www.apple.com/iphone-duo/specs/",
+    "https://www.apple.com/jp/iphone-duo/specs/"
+   ]
+  },
+  {
+   "id": "iphone-18-pro-max",
+   "name": {
+    "ja": "iPhone 18 Pro Max",
+    "en": "iPhone 18 Pro Max"
+   },
+   "year": 2026,
+   "modelNumbers": [
+    {
+     "a": "A3473",
+     "region": {
+      "en": "USA, Puerto Rico",
+      "ja": "米国、プエルトリコ"
+     },
+     "src": "https://support.apple.com/ja-jp/108044"
+    },
+    {
+     "a": "A3716",
+     "region": {
+      "en": "Japan, Guam, USVI, Canada, Mexico, Saudi Arabia, KSA, UAE, Oman, Kuwait, Bahrain, Qatar",
+      "ja": "日本、グアム、米領バージン諸島、カナダ、メキシコ、サウジアラビア、KSA、アラブ首長国連邦、オマーン、クウェート、バーレーン、カタール"
+     },
+     "src": "https://support.apple.com/ja-jp/108044",
+     "note": {
+      "ja": "Appleのページでは「A3473（米国、プエルトリコ、A3716、日本…）」と括弧の中に書かれているため、A3716は日本などの番号として扱っています",
+      "en": "Apple's page lists it inside the parentheses of A3473 (\"USA, Puerto Rico, A3716, Japan…\"); treated here as the Japan etc. number"
+     }
+    },
+    {
+     "a": "A3718",
+     "region": {
+      "en": "China mainland",
+      "ja": "中国本土"
+     },
+     "src": "https://support.apple.com/ja-jp/108044"
+    },
+    {
+     "a": "A3717",
+     "region": {
+      "en": "other countries and regions",
+      "ja": "その他の国や地域"
+     },
+     "src": "https://support.apple.com/ja-jp/108044"
+    }
+   ],
+   "specUrl": {
+    "en": "https://support.apple.com/en-us/148591",
+    "ja": "https://support.apple.com/ja-jp/148591"
+   },
+   "sizeMm": {
+    "h": 163.4,
+    "w": 78.0,
+    "d": 8.75
+   },
+   "displayInch": "6.9",
+   "connector": "usbc",
+   "magsafe": true,
+   "magsafeMaxW": 25,
+   "qiMaxW": null,
+   "qiListed": false,
+   "qi2MaxW": 25,
+   "wireless": true,
+   "fastCharge": {
+    "en": [
+     "Up to 50% charge in around 15 minutes when using 60W-capable adapter or higher with Adjustable Voltage Supply (available separately) paired with USB-C charging cable",
+     "Up to 50% charge in 30 minutes with 35W adapter or higher paired with MagSafe Charger (both available separately)"
+    ],
+    "ja": [
+     "約15分で最大50%充電（別売りの可変電圧供給および60W以上対応のアダプタとUSB-C充電ケーブルを組み合わせて使用）",
+     "30分で最大50%充電（別売りの35W以上のアダプタと別売りのMagSafe充電器を組み合わせて使用）"
+    ],
+    "usbAdapterMinW": 60,
+    "magsafeAdapterMinW": 35,
+    "src": {
+     "en": "https://support.apple.com/en-us/148591",
+     "ja": "https://support.apple.com/ja-jp/148591"
+    },
+    "avs": true
+   },
+   "camera": {
+    "rear": 3,
+    "layout": "plateau"
+   },
+   "buttons": {
+    "action": true,
+    "cameraControl": true,
+    "home": false
+   },
+   "ios": {
+    "latest": "iOS 27",
+    "supported": true,
+    "src": "https://support.apple.com/ja-jp/guide/iphone/iphe3fa5df43/ios"
+   },
+   "sources": [
+    "https://support.apple.com/en-us/108044",
+    "https://support.apple.com/en-us/148591",
+    "https://support.apple.com/ja-jp/102574",
+    "https://support.apple.com/ja-jp/108044",
+    "https://support.apple.com/ja-jp/148591"
+   ]
+  },
+  {
+   "id": "iphone-18-pro",
+   "name": {
+    "ja": "iPhone 18 Pro",
+    "en": "iPhone 18 Pro"
+   },
+   "year": 2026,
+   "modelNumbers": [
+    {
+     "a": "A3472",
+     "region": {
+      "en": "USA, Puerto Rico",
+      "ja": "米国、プエルトリコ"
+     },
+     "src": "https://support.apple.com/ja-jp/108044"
+    },
+    {
+     "a": "A3713",
+     "region": {
+      "en": "Japan, Guam, USVI, Canada, Mexico, Saudi Arabia, KSA, UAE, Oman, Kuwait, Bahrain, Qatar",
+      "ja": "日本、グアム、米領バージン諸島、カナダ、メキシコ、サウジアラビア、KSA、アラブ首長国連邦、オマーン、クウェート、バーレーン、カタール"
+     },
+     "src": "https://support.apple.com/ja-jp/108044"
+    },
+    {
+     "a": "A3715",
+     "region": {
+      "en": "China mainland",
+      "ja": "中国本土"
+     },
+     "src": "https://support.apple.com/ja-jp/108044"
+    },
+    {
+     "a": "A3714",
+     "region": {
+      "en": "other countries and regions",
+      "ja": "その他の国や地域"
+     },
+     "src": "https://support.apple.com/ja-jp/108044"
+    }
+   ],
+   "specUrl": {
+    "en": "https://support.apple.com/en-us/148590",
+    "ja": "https://support.apple.com/ja-jp/148590"
+   },
+   "sizeMm": {
+    "h": 150.0,
+    "w": 71.9,
+    "d": 8.75
+   },
+   "displayInch": "6.3",
+   "connector": "usbc",
+   "magsafe": true,
+   "magsafeMaxW": 25,
+   "qiMaxW": null,
+   "qiListed": false,
+   "qi2MaxW": 25,
+   "wireless": true,
+   "fastCharge": {
+    "en": [
+     "Up to 50% charge in around 15 minutes when using 60W-capable adapter or higher with Adjustable Voltage Supply (available separately) paired with USB-C charging cable",
+     "Up to 50% charge in 30 minutes with 35W adapter or higher paired with MagSafe Charger (both available separately)"
+    ],
+    "ja": [
+     "約15分で最大50%充電（別売りの可変電圧供給および60W以上対応のアダプタとUSB-C充電ケーブルを組み合わせて使用）",
+     "30分で最大50%充電（別売りの35W以上のアダプタと別売りのMagSafe充電器を組み合わせて使用）"
+    ],
+    "usbAdapterMinW": 60,
+    "magsafeAdapterMinW": 35,
+    "src": {
+     "en": "https://support.apple.com/en-us/148590",
+     "ja": "https://support.apple.com/ja-jp/148590"
+    },
+    "avs": true
+   },
+   "camera": {
+    "rear": 3,
+    "layout": "plateau"
+   },
+   "buttons": {
+    "action": true,
+    "cameraControl": true,
+    "home": false
+   },
+   "ios": {
+    "latest": "iOS 27",
+    "supported": true,
+    "src": "https://support.apple.com/ja-jp/guide/iphone/iphe3fa5df43/ios"
+   },
+   "sources": [
+    "https://support.apple.com/en-us/108044",
+    "https://support.apple.com/en-us/148590",
+    "https://support.apple.com/ja-jp/102574",
+    "https://support.apple.com/ja-jp/108044",
+    "https://support.apple.com/ja-jp/148590"
+   ]
+  },
+  {
+   "id": "iphone-17e",
+   "name": {
+    "ja": "iPhone 17e",
+    "en": "iPhone 17e"
+   },
+   "year": 2026,
+   "modelNumbers": [
+    {
+     "a": "A3575",
+     "region": {
+      "en": "United States, Puerto Rico, Bahrain, Canada, Guam, Japan, Kuwait, Mexico, Oman, Qatar, Saudi Arabia, United Arab Emirates, and U.S. Virgin Islands",
+      "ja": "日本、米国、プエルトリコ、バーレーン、カナダ、グアム、クウェート、メキシコ、オマーン、カタール、サウジアラビア、アラブ首長国連邦、米領バージン諸島"
+     },
+     "src": "https://support.apple.com/ja-jp/108044"
+    },
+    {
+     "a": "A3635",
+     "region": {
+      "en": "China mainland",
+      "ja": "中国本土"
+     },
+     "src": "https://support.apple.com/ja-jp/108044"
+    },
+    {
+     "a": "A3634",
+     "region": {
+      "en": "other countries and regions",
+      "ja": "その他の国や地域"
+     },
+     "src": "https://support.apple.com/ja-jp/108044"
+    }
+   ],
+   "specUrl": {
+    "en": "https://support.apple.com/en-us/126470",
+    "ja": "https://support.apple.com/ja-jp/126470"
+   },
+   "sizeMm": {
+    "h": 146.7,
+    "w": 71.5,
+    "d": 7.8
+   },
+   "displayInch": "6.1",
+   "connector": "usbc",
+   "magsafe": true,
+   "magsafeMaxW": 15,
+   "qiMaxW": null,
+   "qiListed": false,
+   "qi2MaxW": 15,
+   "wireless": true,
+   "fastCharge": {
+    "en": [
+     "Up to 50% charge in 30 minutes with 20W adapter or higher (available separately) paired with USB‑C charging cable"
+    ],
+    "ja": [
+     "30分で最大50%充電（別売りの20Wアダプタまたはそれ以上のアダプタとUSB-C充電ケーブルを組み合わせて使用）"
+    ],
+    "usbAdapterMinW": 20,
+    "magsafeAdapterMinW": 20,
+    "src": {
+     "en": "https://support.apple.com/en-us/126470",
+     "ja": "https://support.apple.com/ja-jp/126470"
+    }
+   },
+   "camera": {
+    "rear": 1,
+    "layout": null
+   },
+   "buttons": {
+    "action": true,
+    "cameraControl": false,
+    "home": false
+   },
+   "ios": {
+    "latest": "iOS 27",
+    "supported": true,
+    "src": "https://support.apple.com/ja-jp/guide/iphone/iphe3fa5df43/ios"
+   },
+   "sources": [
+    "https://support.apple.com/en-us/108044",
+    "https://support.apple.com/en-us/126470",
+    "https://support.apple.com/ja-jp/102574",
+    "https://support.apple.com/ja-jp/108044",
+    "https://support.apple.com/ja-jp/126470"
+   ]
+  },
+  {
+   "id": "iphone-17-pro-max",
+   "name": {
+    "ja": "iPhone 17 Pro Max",
+    "en": "iPhone 17 Pro Max"
+   },
+   "year": 2025,
+   "modelNumbers": [
+    {
+     "a": "A3257",
+     "region": {
+      "en": "United States, Puerto Rico",
+      "ja": "米国、プエルトリコ"
+     },
+     "src": "https://support.apple.com/ja-jp/108044"
+    },
+    {
+     "a": "A3525",
+     "region": {
+      "en": "Bahrain, Canada, Guam, Japan, Kuwait, Mexico, Oman, Qatar, Saudi Arabia, United Arab Emirates, and U.S. Virgin Islands",
+      "ja": "日本、バーレーン、カナダ、グアム、クウェート、メキシコ、オマーン、カタール、サウジアラビア、アラブ首長国連邦、米領バージン諸島"
+     },
+     "src": "https://support.apple.com/ja-jp/108044"
+    },
+    {
+     "a": "A3527",
+     "region": {
+      "en": "China mainland",
+      "ja": "中国本土"
+     },
+     "src": "https://support.apple.com/ja-jp/108044"
+    },
+    {
+     "a": "A3526",
+     "region": {
+      "en": "other countries and regions",
+      "ja": "その他の国や地域"
+     },
+     "src": "https://support.apple.com/ja-jp/108044"
+    }
+   ],
+   "specUrl": {
+    "en": "https://support.apple.com/en-us/125091",
+    "ja": "https://support.apple.com/ja-jp/125091"
+   },
+   "sizeMm": {
+    "h": 163.4,
+    "w": 78.0,
+    "d": 8.75
+   },
+   "displayInch": "6.9",
+   "connector": "usbc",
+   "magsafe": true,
+   "magsafeMaxW": 25,
+   "qiMaxW": null,
+   "qiListed": false,
+   "qi2MaxW": 25,
+   "wireless": true,
+   "fastCharge": {
+    "en": [
+     "Up to 50% charge in 20 minutes with 40W adapter or higher (available separately) paired with USB-C charging cable",
+     "Up to 50% charge in 30 minutes with 30W adapter or higher paired with MagSafe Charger (both available separately)"
+    ],
+    "ja": [
+     "20分で最大50%充電（別売りの40Wアダプタまたはそれ以上のアダプタとUSB-C充電ケーブルを組み合わせて使用",
+     "30分で最大50%充電（別売りの30Wアダプタまたはそれ以上のアダプタと別売りのMagSafe充電器を組み合わせて使用）"
+    ],
+    "usbAdapterMinW": 40,
+    "magsafeAdapterMinW": 30,
+    "src": {
+     "en": "https://support.apple.com/en-us/125091",
+     "ja": "https://support.apple.com/ja-jp/125091"
+    }
+   },
+   "camera": {
+    "rear": 3,
+    "layout": "plateau"
+   },
+   "buttons": {
+    "action": true,
+    "cameraControl": true,
+    "home": false
+   },
+   "ios": {
+    "latest": "iOS 27",
+    "supported": true,
+    "src": "https://support.apple.com/ja-jp/guide/iphone/iphe3fa5df43/ios"
+   },
+   "sources": [
+    "https://support.apple.com/en-us/108044",
+    "https://support.apple.com/en-us/125091",
+    "https://support.apple.com/ja-jp/102574",
+    "https://support.apple.com/ja-jp/108044",
+    "https://support.apple.com/ja-jp/125091"
+   ]
+  },
+  {
+   "id": "iphone-17-pro",
+   "name": {
+    "ja": "iPhone 17 Pro",
+    "en": "iPhone 17 Pro"
+   },
+   "year": 2025,
+   "modelNumbers": [
+    {
+     "a": "A3256",
+     "region": {
+      "en": "United States, Puerto Rico",
+      "ja": "米国、プエルトリコ"
+     },
+     "src": "https://support.apple.com/ja-jp/108044"
+    },
+    {
+     "a": "A3522",
+     "region": {
+      "en": "Bahrain, Canada, Guam, Japan, Kuwait, Mexico, Oman, Qatar, Saudi Arabia, United Arab Emirates, and U.S. Virgin Islands",
+      "ja": "日本、バーレーン、カナダ、グアム、クウェート、メキシコ、オマーン、カタール、サウジアラビア、アラブ首長国連邦、米領バージン諸島"
+     },
+     "src": "https://support.apple.com/ja-jp/108044"
+    },
+    {
+     "a": "A3524",
+     "region": {
+      "en": "China mainland",
+      "ja": "中国本土"
+     },
+     "src": "https://support.apple.com/ja-jp/108044"
+    },
+    {
+     "a": "A3523",
+     "region": {
+      "en": "other countries and regions",
+      "ja": "その他の国や地域"
+     },
+     "src": "https://support.apple.com/ja-jp/108044"
+    }
+   ],
+   "specUrl": {
+    "en": "https://support.apple.com/en-us/125090",
+    "ja": "https://support.apple.com/ja-jp/125090"
+   },
+   "sizeMm": {
+    "h": 150.0,
+    "w": 71.9,
+    "d": 8.75
+   },
+   "displayInch": "6.3",
+   "connector": "usbc",
+   "magsafe": true,
+   "magsafeMaxW": 25,
+   "qiMaxW": null,
+   "qiListed": false,
+   "qi2MaxW": 25,
+   "wireless": true,
+   "fastCharge": {
+    "en": [
+     "Up to 50% charge in 20 minutes with 40W adapter or higher (available separately) paired with USB-C charging cable",
+     "Up to 50% charge in 30 minutes with 30W adapter or higher paired with MagSafe Charger (both available separately)"
+    ],
+    "ja": [
+     "20分で最大50%充電（別売りの40Wアダプタまたはそれ以上のアダプタとUSB-C充電ケーブルを組み合わせて使用）",
+     "30分で最大50%充電（別売りの30Wアダプタまたはそれ以上のアダプタと別売りのMagSafe充電器を組み合わせて使用）"
+    ],
+    "usbAdapterMinW": 40,
+    "magsafeAdapterMinW": 30,
+    "src": {
+     "en": "https://support.apple.com/en-us/125090",
+     "ja": "https://support.apple.com/ja-jp/125090"
+    }
+   },
+   "camera": {
+    "rear": 3,
+    "layout": "plateau"
+   },
+   "buttons": {
+    "action": true,
+    "cameraControl": true,
+    "home": false
+   },
+   "ios": {
+    "latest": "iOS 27",
+    "supported": true,
+    "src": "https://support.apple.com/ja-jp/guide/iphone/iphe3fa5df43/ios"
+   },
+   "sources": [
+    "https://support.apple.com/en-us/108044",
+    "https://support.apple.com/en-us/125090",
+    "https://support.apple.com/ja-jp/102574",
+    "https://support.apple.com/ja-jp/108044",
+    "https://support.apple.com/ja-jp/125090"
+   ]
+  },
+  {
+   "id": "iphone-17",
+   "name": {
+    "ja": "iPhone 17",
+    "en": "iPhone 17"
+   },
+   "year": 2025,
+   "modelNumbers": [
+    {
+     "a": "A3258",
+     "region": {
+      "en": "United States, Puerto Rico",
+      "ja": "米国、プエルトリコ"
+     },
+     "src": "https://support.apple.com/ja-jp/108044"
+    },
+    {
+     "a": "A3519",
+     "region": {
+      "en": "Bahrain, Canada, Guam, Japan, Kuwait, Mexico, Oman, Qatar, Saudi Arabia, United Arab Emirates, and U.S. Virgin Islands",
+      "ja": "日本、バーレーン、カナダ、グアム、クウェート、メキシコ、オマーン、カタール、サウジアラビア、アラブ首長国連邦、米領バージン諸島"
+     },
+     "src": "https://support.apple.com/ja-jp/108044"
+    },
+    {
+     "a": "A3521",
+     "region": {
+      "en": "China mainland",
+      "ja": "中国本土"
+     },
+     "src": "https://support.apple.com/ja-jp/108044"
+    },
+    {
+     "a": "A3520",
+     "region": {
+      "en": "other countries and regions",
+      "ja": "その他の国や地域"
+     },
+     "src": "https://support.apple.com/ja-jp/108044"
+    }
+   ],
+   "specUrl": {
+    "en": "https://support.apple.com/en-us/125089",
+    "ja": "https://support.apple.com/ja-jp/125089"
+   },
+   "sizeMm": {
+    "h": 149.6,
+    "w": 71.5,
+    "d": 7.95
+   },
+   "displayInch": "6.3",
+   "connector": "usbc",
+   "magsafe": true,
+   "magsafeMaxW": 25,
+   "qiMaxW": null,
+   "qiListed": false,
+   "qi2MaxW": 25,
+   "wireless": true,
+   "fastCharge": {
+    "en": [
+     "Up to 50% charge in 20 minutes with 40W adapter or higher (available separately) paired with USB‑C charging cable",
+     "Up to 50% charge in 30 minutes with 30W adapter or higher paired with MagSafe Charger (both available separately)"
+    ],
+    "ja": [
+     "20分で最大50%充電（別売りの40Wアダプタまたはそれ以上のアダプタとUSB-C充電ケーブルを組み合わせて使用）",
+     "30分で最大50%充電（別売りの30Wアダプタまたはそれ以上のアダプタと別売りのMagSafe充電器を組み合わせて使用）"
+    ],
+    "usbAdapterMinW": 40,
+    "magsafeAdapterMinW": 30,
+    "src": {
+     "en": "https://support.apple.com/en-us/125089",
+     "ja": "https://support.apple.com/ja-jp/125089"
+    }
+   },
+   "camera": {
+    "rear": 2,
+    "layout": "vertical"
+   },
+   "buttons": {
+    "action": true,
+    "cameraControl": true,
+    "home": false
+   },
+   "ios": {
+    "latest": "iOS 27",
+    "supported": true,
+    "src": "https://support.apple.com/ja-jp/guide/iphone/iphe3fa5df43/ios"
+   },
+   "sources": [
+    "https://support.apple.com/en-us/108044",
+    "https://support.apple.com/en-us/125089",
+    "https://support.apple.com/ja-jp/102574",
+    "https://support.apple.com/ja-jp/108044",
+    "https://support.apple.com/ja-jp/125089"
+   ]
+  },
+  {
+   "id": "iphone-air",
+   "name": {
+    "ja": "iPhone Air",
+    "en": "iPhone Air"
+   },
+   "year": 2025,
+   "modelNumbers": [
+    {
+     "a": "A3260",
+     "region": {
+      "en": "United States, Puerto Rico, Bahrain, Canada, Guam, Kuwait, Mexico, Oman, Qatar, Saudi Arabia, United Arab Emirates, and U.S. Virgin Islands",
+      "ja": "米国、プエルトリコ、バーレーン、カナダ、グアム、クウェート、メキシコ、オマーン、カタール、サウジアラビア、アラブ首長国連邦、米領バージン諸島"
+     },
+     "src": "https://support.apple.com/ja-jp/108044"
+    },
+    {
+     "a": "A3516",
+     "region": {
+      "en": "Japan",
+      "ja": "日本"
+     },
+     "src": "https://support.apple.com/ja-jp/108044"
+    },
+    {
+     "a": "A3518",
+     "region": {
+      "en": "China mainland",
+      "ja": "中国本土"
+     },
+     "src": "https://support.apple.com/ja-jp/108044"
+    },
+    {
+     "a": "A3517",
+     "region": {
+      "en": "other countries and regions",
+      "ja": "その他の国や地域"
+     },
+     "src": "https://support.apple.com/ja-jp/108044"
+    }
+   ],
+   "specUrl": {
+    "en": "https://support.apple.com/en-us/125092",
+    "ja": "https://support.apple.com/ja-jp/125092"
+   },
+   "sizeMm": {
+    "h": 156.2,
+    "w": 74.7,
+    "d": 5.64
+   },
+   "displayInch": "6.5",
+   "connector": "usbc",
+   "magsafe": true,
+   "magsafeMaxW": 20,
+   "qiMaxW": null,
+   "qiListed": false,
+   "qi2MaxW": 20,
+   "wireless": true,
+   "fastCharge": {
+    "en": [
+     "Up to 50% charge in 30 minutes with 20W adapter or higher (available separately) paired with USB‑C charging cable, or 30W adapter or higher paired with MagSafe Charger (both available separately)"
+    ],
+    "ja": [
+     "30分で最大50%充電（別売りの20Wアダプタまたはそれ以上のアダプタとUSB-C充電ケーブル、もしくは別売りの30Wアダプタまたはそれ以上のアダプタと別売りのMagSafe充電器を組み合わせて使用）"
+    ],
+    "usbAdapterMinW": 20,
+    "magsafeAdapterMinW": 30,
+    "src": {
+     "en": "https://support.apple.com/en-us/125092",
+     "ja": "https://support.apple.com/ja-jp/125092"
+    }
+   },
+   "camera": {
+    "rear": 1,
+    "layout": "plateau"
+   },
+   "buttons": {
+    "action": true,
+    "cameraControl": true,
+    "home": false
+   },
+   "ios": {
+    "latest": "iOS 27",
+    "supported": true,
+    "src": "https://support.apple.com/ja-jp/guide/iphone/iphe3fa5df43/ios"
+   },
+   "sources": [
+    "https://support.apple.com/en-us/108044",
+    "https://support.apple.com/en-us/125092",
+    "https://support.apple.com/ja-jp/102574",
+    "https://support.apple.com/ja-jp/108044",
+    "https://support.apple.com/ja-jp/125092"
+   ]
+  },
+  {
+   "id": "iphone-16e",
+   "name": {
+    "ja": "iPhone 16e",
+    "en": "iPhone 16e"
+   },
+   "year": 2025,
+   "modelNumbers": [
+    {
+     "a": "A3212",
+     "region": {
+      "en": "United States, Puerto Rico",
+      "ja": "米国、プエルトリコ"
+     },
+     "src": "https://support.apple.com/ja-jp/108044"
+    },
+    {
+     "a": "A3408",
+     "region": {
+      "en": "Bahrain, Canada, Iraq, Guam, Jordan, Kuwait, Mexico, Oman, Qatar, Saudi Arabia, United Arab Emirates, and U.S. Virgin Islands",
+      "ja": "バーレーン、カナダ、イラク、グアム、ヨルダン、クウェート、メキシコ、オマーン、カタール、サウジアラビア、アラブ首長国連邦、米領バージン諸島"
+     },
+     "src": "https://support.apple.com/ja-jp/108044"
+    },
+    {
+     "a": "A3410",
+     "region": {
+      "en": "China mainland",
+      "ja": "中国本土"
+     },
+     "src": "https://support.apple.com/ja-jp/108044"
+    },
+    {
+     "a": "A3409",
+     "region": {
+      "en": "other countries and regions",
+      "ja": "その他の国や地域"
+     },
+     "src": "https://support.apple.com/ja-jp/108044"
+    }
+   ],
+   "specUrl": {
+    "en": "https://support.apple.com/en-us/122208",
+    "ja": "https://support.apple.com/ja-jp/122208"
+   },
+   "sizeMm": {
+    "h": 146.7,
+    "w": 71.5,
+    "d": 7.8
+   },
+   "displayInch": "6.1",
+   "connector": "usbc",
+   "magsafe": false,
+   "magsafeMaxW": null,
+   "qiMaxW": null,
+   "qiListed": true,
+   "qi2MaxW": null,
+   "wireless": true,
+   "fastCharge": {
+    "en": [
+     "Up to 50% charge in 30 minutes with 20W adapter or higher (available separately) paired with USB‑C charging cable"
+    ],
+    "ja": [
+     "30分で最大50%充電（別売りの20Wアダプタまたはそれ以上のアダプタとUSB-C充電ケーブルを組み合わせて使用）"
+    ],
+    "usbAdapterMinW": 20,
+    "magsafeAdapterMinW": null,
+    "src": {
+     "en": "https://support.apple.com/en-us/122208",
+     "ja": "https://support.apple.com/ja-jp/122208"
+    }
+   },
+   "camera": {
+    "rear": 1,
+    "layout": null
+   },
+   "buttons": {
+    "action": true,
+    "cameraControl": false,
+    "home": false
+   },
+   "ios": {
+    "latest": "iOS 27",
+    "supported": true,
+    "src": "https://support.apple.com/ja-jp/guide/iphone/iphe3fa5df43/ios"
+   },
+   "sources": [
+    "https://support.apple.com/en-us/108044",
+    "https://support.apple.com/en-us/122208",
+    "https://support.apple.com/ja-jp/102574",
+    "https://support.apple.com/ja-jp/108044",
+    "https://support.apple.com/ja-jp/122208"
+   ]
+  },
+  {
+   "id": "iphone-16-pro-max",
+   "name": {
+    "ja": "iPhone 16 Pro Max",
+    "en": "iPhone 16 Pro Max"
+   },
+   "year": 2024,
+   "modelNumbers": [
+    {
+     "a": "A3084",
+     "region": {
+      "en": "United States, Puerto Rico",
+      "ja": "米国、プエルトリコ"
+     },
+     "src": "https://support.apple.com/ja-jp/108044"
+    },
+    {
+     "a": "A3295",
+     "region": {
+      "en": "Bahrain, Canada, Iraq, Guam, Japan, Jordan, Kuwait, Mexico, Oman, Qatar, Saudi Arabia, United Arab Emirates, U.S. Virgin Islands",
+      "ja": "バーレーン、カナダ、イラク、グアム、日本、ヨルダン、クウェート、メキシコ、オマーン、カタール、サウジアラビア、アラブ首長国連邦、米領バージン諸島"
+     },
+     "src": "https://support.apple.com/ja-jp/108044"
+    },
+    {
+     "a": "A3297",
+     "region": {
+      "en": "China mainland, Hong Kong, Macao",
+      "ja": "中国本土、香港、マカオ"
+     },
+     "src": "https://support.apple.com/ja-jp/108044"
+    },
+    {
+     "a": "A3296",
+     "region": {
+      "en": "other countries and regions",
+      "ja": "その他の国や地域"
+     },
+     "src": "https://support.apple.com/ja-jp/108044"
+    }
+   ],
+   "specUrl": {
+    "en": "https://support.apple.com/en-us/121032",
+    "ja": "https://support.apple.com/ja-jp/121032"
+   },
+   "sizeMm": {
+    "h": 163.0,
+    "w": 77.6,
+    "d": 8.25
+   },
+   "displayInch": "6.9",
+   "connector": "usbc",
+   "magsafe": true,
+   "magsafeMaxW": 25,
+   "qiMaxW": 7.5,
+   "qiListed": true,
+   "qi2MaxW": 15,
+   "wireless": true,
+   "fastCharge": {
+    "en": [
+     "Up to 50% charge in around 30 minutes with 20W adapter or higher paired with USB-C charging cable, or 30W adapter or higher paired with MagSafe Charger (all available separately)"
+    ],
+    "ja": [
+     "約30分で最大50%充電（別売りの20Wアダプタまたはそれ以上のアダプタとUSB-C充電ケーブル、もしくは30Wアダプタまたはそれ以上のアダプタとMagSafe充電器を組み合わせて使用）"
+    ],
+    "usbAdapterMinW": 20,
+    "magsafeAdapterMinW": 30,
+    "src": {
+     "en": "https://support.apple.com/en-us/121032",
+     "ja": "https://support.apple.com/ja-jp/121032"
+    }
+   },
+   "camera": {
+    "rear": 3,
+    "layout": null
+   },
+   "buttons": {
+    "action": true,
+    "cameraControl": true,
+    "home": false
+   },
+   "ios": {
+    "latest": "iOS 27",
+    "supported": true,
+    "src": "https://support.apple.com/ja-jp/guide/iphone/iphe3fa5df43/ios"
+   },
+   "sources": [
+    "https://support.apple.com/en-us/108044",
+    "https://support.apple.com/en-us/121032",
+    "https://support.apple.com/ja-jp/102574",
+    "https://support.apple.com/ja-jp/108044",
+    "https://support.apple.com/ja-jp/121032"
+   ]
+  },
+  {
+   "id": "iphone-16-pro",
+   "name": {
+    "ja": "iPhone 16 Pro",
+    "en": "iPhone 16 Pro"
+   },
+   "year": 2024,
+   "modelNumbers": [
+    {
+     "a": "A3083",
+     "region": {
+      "en": "United States, Puerto Rico",
+      "ja": "米国、プエルトリコ"
+     },
+     "src": "https://support.apple.com/ja-jp/108044"
+    },
+    {
+     "a": "A3292",
+     "region": {
+      "en": "Bahrain, Canada, Iraq, Guam, Japan, Jordan, Kuwait, Mexico, Oman, Qatar, Saudi Arabia, United Arab Emirates, U.S. Virgin Islands",
+      "ja": "バーレーン、カナダ、イラク、グアム、日本、ヨルダン、クウェート、メキシコ、オマーン、カタール、サウジアラビア、アラブ首長国連邦、米領バージン諸島"
+     },
+     "src": "https://support.apple.com/ja-jp/108044"
+    },
+    {
+     "a": "A3294",
+     "region": {
+      "en": "China mainland, Hong Kong, Macao",
+      "ja": "中国本土、香港、マカオ"
+     },
+     "src": "https://support.apple.com/ja-jp/108044"
+    },
+    {
+     "a": "A3293",
+     "region": {
+      "en": "other countries and regions",
+      "ja": "その他の国や地域"
+     },
+     "src": "https://support.apple.com/ja-jp/108044"
+    }
+   ],
+   "specUrl": {
+    "en": "https://support.apple.com/en-us/121031",
+    "ja": "https://support.apple.com/ja-jp/121031"
+   },
+   "sizeMm": {
+    "h": 149.6,
+    "w": 71.5,
+    "d": 8.25
+   },
+   "displayInch": "6.3",
+   "connector": "usbc",
+   "magsafe": true,
+   "magsafeMaxW": 25,
+   "qiMaxW": 7.5,
+   "qiListed": true,
+   "qi2MaxW": 15,
+   "wireless": true,
+   "fastCharge": {
+    "en": [
+     "Up to 50% charge in around 30 minutes with 20W adapter or higher (available separately) paired with USB-C charging cable, or 30W adapter or higher paired with MagSafe Charger (both available separately)"
+    ],
+    "ja": [
+     "約30分で最大50%充電（別売りの20Wアダプタまたはそれ以上のアダプタとUSB-C充電ケーブル、もしくは別売りの30Wアダプタまたはそれ以上のアダプタと別売りのMagSafe充電器を組み合わせて使用）"
+    ],
+    "usbAdapterMinW": 20,
+    "magsafeAdapterMinW": 30,
+    "src": {
+     "en": "https://support.apple.com/en-us/121031",
+     "ja": "https://support.apple.com/ja-jp/121031"
+    }
+   },
+   "camera": {
+    "rear": 3,
+    "layout": null
+   },
+   "buttons": {
+    "action": true,
+    "cameraControl": true,
+    "home": false
+   },
+   "ios": {
+    "latest": "iOS 27",
+    "supported": true,
+    "src": "https://support.apple.com/ja-jp/guide/iphone/iphe3fa5df43/ios"
+   },
+   "sources": [
+    "https://support.apple.com/en-us/108044",
+    "https://support.apple.com/en-us/121031",
+    "https://support.apple.com/ja-jp/102574",
+    "https://support.apple.com/ja-jp/108044",
+    "https://support.apple.com/ja-jp/121031"
+   ]
+  },
+  {
+   "id": "iphone-16-plus",
+   "name": {
+    "ja": "iPhone 16 Plus",
+    "en": "iPhone 16 Plus"
+   },
+   "year": 2024,
+   "modelNumbers": [
+    {
+     "a": "A3082",
+     "region": {
+      "en": "United States, Puerto Rico",
+      "ja": "米国、プエルトリコ"
+     },
+     "src": "https://support.apple.com/ja-jp/108044"
+    },
+    {
+     "a": "A3289",
+     "region": {
+      "en": "Bahrain, Canada, Iraq, Guam, Japan, Jordan, Kuwait, Mexico, Oman, Qatar, Saudi Arabia, United Arab Emirates, U.S. Virgin Islands",
+      "ja": "バーレーン、カナダ、イラク、グアム、日本、ヨルダン、クウェート、メキシコ、オマーン、カタール、サウジアラビア、アラブ首長国連邦、米領バージン諸島"
+     },
+     "src": "https://support.apple.com/ja-jp/108044"
+    },
+    {
+     "a": "A3291",
+     "region": {
+      "en": "China mainland, Hong Kong, Macao",
+      "ja": "中国本土、香港、マカオ"
+     },
+     "src": "https://support.apple.com/ja-jp/108044"
+    },
+    {
+     "a": "A3290",
+     "region": {
+      "en": "other countries and regions",
+      "ja": "その他の国や地域"
+     },
+     "src": "https://support.apple.com/ja-jp/108044"
+    }
+   ],
+   "specUrl": {
+    "en": "https://support.apple.com/en-us/121030",
+    "ja": "https://support.apple.com/ja-jp/121030"
+   },
+   "sizeMm": {
+    "h": 160.9,
+    "w": 77.8,
+    "d": 7.8
+   },
+   "displayInch": "6.7",
+   "connector": "usbc",
+   "magsafe": true,
+   "magsafeMaxW": 25,
+   "qiMaxW": null,
+   "qiListed": false,
+   "qi2MaxW": 25,
+   "wireless": true,
+   "fastCharge": {
+    "en": [
+     "Up to 50% charge in around 30 minutes with 20W adapter or higher (available separately) paired with USB‑C charging cable, or 30W adapter or higher paired with MagSafe Charger (both available separately)"
+    ],
+    "ja": [
+     "約30分で最大50%充電（別売りの20Wアダプタまたはそれ以上のアダプタとUSB-C充電ケーブル、もしくは別売りの30Wアダプタまたはそれ以上のアダプタと別売りのMagSafe充電器を組み合わせて使用）"
+    ],
+    "usbAdapterMinW": 20,
+    "magsafeAdapterMinW": 30,
+    "src": {
+     "en": "https://support.apple.com/en-us/121030",
+     "ja": "https://support.apple.com/ja-jp/121030"
+    }
+   },
+   "camera": {
+    "rear": 2,
+    "layout": "vertical"
+   },
+   "buttons": {
+    "action": true,
+    "cameraControl": true,
+    "home": false
+   },
+   "ios": {
+    "latest": "iOS 27",
+    "supported": true,
+    "src": "https://support.apple.com/ja-jp/guide/iphone/iphe3fa5df43/ios"
+   },
+   "sources": [
+    "https://support.apple.com/en-us/108044",
+    "https://support.apple.com/en-us/121030",
+    "https://support.apple.com/ja-jp/102574",
+    "https://support.apple.com/ja-jp/108044",
+    "https://support.apple.com/ja-jp/121030"
+   ]
+  },
+  {
+   "id": "iphone-16",
+   "name": {
+    "ja": "iPhone 16",
+    "en": "iPhone 16"
+   },
+   "year": 2024,
+   "modelNumbers": [
+    {
+     "a": "A3081",
+     "region": {
+      "en": "United States, Puerto Rico",
+      "ja": "米国、プエルトリコ"
+     },
+     "src": "https://support.apple.com/ja-jp/108044"
+    },
+    {
+     "a": "A3286",
+     "region": {
+      "en": "Bahrain, Canada, Iraq, Guam, Japan, Jordan, Kuwait, Mexico, Oman, Qatar, Saudi Arabia, United Arab Emirates, U.S. Virgin Islands",
+      "ja": "バーレーン、カナダ、イラク、グアム、日本、ヨルダン、クウェート、メキシコ、オマーン、カタール、サウジアラビア、アラブ首長国連邦、米領バージン諸島"
+     },
+     "src": "https://support.apple.com/ja-jp/108044"
+    },
+    {
+     "a": "A3288",
+     "region": {
+      "en": "China mainland, Hong Kong, Macao",
+      "ja": "中国本土、香港、マカオ"
+     },
+     "src": "https://support.apple.com/ja-jp/108044"
+    },
+    {
+     "a": "A3287",
+     "region": {
+      "en": "other countries and regions",
+      "ja": "その他の国や地域"
+     },
+     "src": "https://support.apple.com/ja-jp/108044"
+    }
+   ],
+   "specUrl": {
+    "en": "https://support.apple.com/en-us/121029",
+    "ja": "https://support.apple.com/ja-jp/121029"
+   },
+   "sizeMm": {
+    "h": 147.6,
+    "w": 71.6,
+    "d": 7.8
+   },
+   "displayInch": "6.1",
+   "connector": "usbc",
+   "magsafe": true,
+   "magsafeMaxW": 25,
+   "qiMaxW": null,
+   "qiListed": false,
+   "qi2MaxW": 25,
+   "wireless": true,
+   "fastCharge": {
+    "en": [
+     "Up to 50% charge in 30 minutes with 20W adapter or higher (available separately) paired with USB‑C charging cable, or 30W adapter or higher paired with MagSafe Charger (both available separately)"
+    ],
+    "ja": [
+     "約30分で最大50%充電（別売りの20Wアダプタまたはそれ以上のアダプタとUSB-C充電ケーブル、もしくは別売りの30Wアダプタまたはそれ以上のアダプタと別売りのMagSafe充電器を組み合わせて使用）"
+    ],
+    "usbAdapterMinW": 20,
+    "magsafeAdapterMinW": 30,
+    "src": {
+     "en": "https://support.apple.com/en-us/121029",
+     "ja": "https://support.apple.com/ja-jp/121029"
+    }
+   },
+   "camera": {
+    "rear": 2,
+    "layout": "vertical"
+   },
+   "buttons": {
+    "action": true,
+    "cameraControl": true,
+    "home": false
+   },
+   "ios": {
+    "latest": "iOS 27",
+    "supported": true,
+    "src": "https://support.apple.com/ja-jp/guide/iphone/iphe3fa5df43/ios"
+   },
+   "sources": [
+    "https://support.apple.com/en-us/108044",
+    "https://support.apple.com/en-us/121029",
+    "https://support.apple.com/ja-jp/102574",
+    "https://support.apple.com/ja-jp/108044",
+    "https://support.apple.com/ja-jp/121029"
+   ]
+  },
+  {
+   "id": "iphone-15-pro-max",
+   "name": {
+    "ja": "iPhone 15 Pro Max",
+    "en": "iPhone 15 Pro Max"
+   },
+   "year": 2023,
+   "modelNumbers": [
+    {
+     "a": "A2849",
+     "region": {
+      "en": "United States, Puerto Rico",
+      "ja": "米国、プエルトリコ"
+     },
+     "src": "https://support.apple.com/ja-jp/108044"
+    },
+    {
+     "a": "A3105",
+     "region": {
+      "en": "Canada, Guam, Japan, Mexico, Saudi Arabia, and U.S. Virgin Islands",
+      "ja": "カナダ、グアム、日本、メキシコ、サウジアラビア、米領バージン諸島"
+     },
+     "src": "https://support.apple.com/ja-jp/108044"
+    },
+    {
+     "a": "A3108",
+     "region": {
+      "en": "China mainland, Hong Kong, Macao",
+      "ja": "中国本土、香港、マカオ"
+     },
+     "src": "https://support.apple.com/ja-jp/108044"
+    },
+    {
+     "a": "A3106",
+     "region": {
+      "en": "other countries and regions",
+      "ja": "その他の国や地域"
+     },
+     "src": "https://support.apple.com/ja-jp/108044"
+    }
+   ],
+   "specUrl": {
+    "en": "https://support.apple.com/en-us/111828",
+    "ja": "https://support.apple.com/ja-jp/111828"
+   },
+   "sizeMm": {
+    "h": 159.9,
+    "w": 76.7,
+    "d": 8.25
+   },
+   "displayInch": "6.7",
+   "connector": "usbc",
+   "magsafe": true,
+   "magsafeMaxW": 15,
+   "qiMaxW": 7.5,
+   "qiListed": true,
+   "qi2MaxW": 15,
+   "wireless": true,
+   "fastCharge": {
+    "en": [
+     "Up to 50% charge in around 30 minutes with 20W adapter or higher (available separately)"
+    ],
+    "ja": [
+     "約30分で最大50%充電（別売りの20W以上のアダプタを使用）"
+    ],
+    "usbAdapterMinW": 20,
+    "magsafeAdapterMinW": 20,
+    "src": {
+     "en": "https://support.apple.com/en-us/111828",
+     "ja": "https://support.apple.com/ja-jp/111828"
+    }
+   },
+   "camera": {
+    "rear": 3,
+    "layout": null
+   },
+   "buttons": {
+    "action": true,
+    "cameraControl": false,
+    "home": false
+   },
+   "ios": {
+    "latest": "iOS 27",
+    "supported": true,
+    "src": "https://support.apple.com/ja-jp/guide/iphone/iphe3fa5df43/ios"
+   },
+   "sources": [
+    "https://support.apple.com/en-us/108044",
+    "https://support.apple.com/en-us/111828",
+    "https://support.apple.com/ja-jp/102574",
+    "https://support.apple.com/ja-jp/108044",
+    "https://support.apple.com/ja-jp/111828"
+   ]
+  },
+  {
+   "id": "iphone-15-pro",
+   "name": {
+    "ja": "iPhone 15 Pro",
+    "en": "iPhone 15 Pro"
+   },
+   "year": 2023,
+   "modelNumbers": [
+    {
+     "a": "A2848",
+     "region": {
+      "en": "United States, Puerto Rico",
+      "ja": "米国、プエルトリコ"
+     },
+     "src": "https://support.apple.com/ja-jp/108044"
+    },
+    {
+     "a": "A3101",
+     "region": {
+      "en": "Canada, Guam, Japan, Mexico, Saudi Arabia, and U.S. Virgin Islands",
+      "ja": "カナダ、グアム、日本、メキシコ、サウジアラビア、米領バージン諸島"
+     },
+     "src": "https://support.apple.com/ja-jp/108044"
+    },
+    {
+     "a": "A3104",
+     "region": {
+      "en": "China mainland, Hong Kong, Macao",
+      "ja": "中国本土、香港、マカオ"
+     },
+     "src": "https://support.apple.com/ja-jp/108044"
+    },
+    {
+     "a": "A3102",
+     "region": {
+      "en": "other countries and regions",
+      "ja": "その他の国や地域"
+     },
+     "src": "https://support.apple.com/ja-jp/108044"
+    }
+   ],
+   "specUrl": {
+    "en": "https://support.apple.com/en-us/111829",
+    "ja": "https://support.apple.com/ja-jp/111829"
+   },
+   "sizeMm": {
+    "h": 146.6,
+    "w": 70.6,
+    "d": 8.25
+   },
+   "displayInch": "6.1",
+   "connector": "usbc",
+   "magsafe": true,
+   "magsafeMaxW": 15,
+   "qiMaxW": 7.5,
+   "qiListed": true,
+   "qi2MaxW": 15,
+   "wireless": true,
+   "fastCharge": {
+    "en": [
+     "Up to 50% charge in around 30 minutes with 20W adapter or higher (available separately)"
+    ],
+    "ja": [
+     "約30分で最大50%充電（別売りの20W以上のアダプタを使用）"
+    ],
+    "usbAdapterMinW": 20,
+    "magsafeAdapterMinW": 20,
+    "src": {
+     "en": "https://support.apple.com/en-us/111829",
+     "ja": "https://support.apple.com/ja-jp/111829"
+    }
+   },
+   "camera": {
+    "rear": 3,
+    "layout": null
+   },
+   "buttons": {
+    "action": true,
+    "cameraControl": false,
+    "home": false
+   },
+   "ios": {
+    "latest": "iOS 27",
+    "supported": true,
+    "src": "https://support.apple.com/ja-jp/guide/iphone/iphe3fa5df43/ios"
+   },
+   "sources": [
+    "https://support.apple.com/en-us/108044",
+    "https://support.apple.com/en-us/111829",
+    "https://support.apple.com/ja-jp/102574",
+    "https://support.apple.com/ja-jp/108044",
+    "https://support.apple.com/ja-jp/111829"
+   ]
+  },
+  {
+   "id": "iphone-15-plus",
+   "name": {
+    "ja": "iPhone 15 Plus",
+    "en": "iPhone 15 Plus"
+   },
+   "year": 2023,
+   "modelNumbers": [
+    {
+     "a": "A2847",
+     "region": {
+      "en": "United States, Puerto Rico",
+      "ja": "米国、プエルトリコ"
+     },
+     "src": "https://support.apple.com/ja-jp/108044"
+    },
+    {
+     "a": "A3093",
+     "region": {
+      "en": "Canada, Guam, Japan, Mexico, Saudi Arabia, and U.S. Virgin Islands",
+      "ja": "カナダ、グアム、日本、メキシコ、サウジアラビア、米領バージン諸島"
+     },
+     "src": "https://support.apple.com/ja-jp/108044"
+    },
+    {
+     "a": "A3096",
+     "region": {
+      "en": "China mainland, Hong Kong, Macao",
+      "ja": "中国本土、香港、マカオ"
+     },
+     "src": "https://support.apple.com/ja-jp/108044"
+    },
+    {
+     "a": "A3094",
+     "region": {
+      "en": "other countries and regions",
+      "ja": "その他の国や地域"
+     },
+     "src": "https://support.apple.com/ja-jp/108044"
+    }
+   ],
+   "specUrl": {
+    "en": "https://support.apple.com/en-us/111830",
+    "ja": "https://support.apple.com/ja-jp/111830"
+   },
+   "sizeMm": {
+    "h": 160.9,
+    "w": 77.8,
+    "d": 7.8
+   },
+   "displayInch": "6.7",
+   "connector": "usbc",
+   "magsafe": true,
+   "magsafeMaxW": 15,
+   "qiMaxW": 7.5,
+   "qiListed": true,
+   "qi2MaxW": 15,
+   "wireless": true,
+   "fastCharge": {
+    "en": [
+     "Up to 50% charge in around 30 minutes with 20W adapter or higher (available separately) paired with USB‑C charging cable"
+    ],
+    "ja": [
+     "約30分で最大50%充電（別売りの20Wアダプタまたはそれ以上のアダプタとUSB-C充電ケーブルを組み合わせて使用）"
+    ],
+    "usbAdapterMinW": 20,
+    "magsafeAdapterMinW": 20,
+    "src": {
+     "en": "https://support.apple.com/en-us/111830",
+     "ja": "https://support.apple.com/ja-jp/111830"
+    }
+   },
+   "camera": {
+    "rear": 2,
+    "layout": null
+   },
+   "buttons": {
+    "action": false,
+    "cameraControl": false,
+    "home": false
+   },
+   "ios": {
+    "latest": "iOS 27",
+    "supported": true,
+    "src": "https://support.apple.com/ja-jp/guide/iphone/iphe3fa5df43/ios"
+   },
+   "sources": [
+    "https://support.apple.com/en-us/108044",
+    "https://support.apple.com/en-us/111830",
+    "https://support.apple.com/ja-jp/102574",
+    "https://support.apple.com/ja-jp/108044",
+    "https://support.apple.com/ja-jp/111830"
+   ]
+  },
+  {
+   "id": "iphone-15",
+   "name": {
+    "ja": "iPhone 15",
+    "en": "iPhone 15"
+   },
+   "year": 2023,
+   "modelNumbers": [
+    {
+     "a": "A2846",
+     "region": {
+      "en": "United States, Puerto Rico",
+      "ja": "米国、プエルトリコ"
+     },
+     "src": "https://support.apple.com/ja-jp/108044"
+    },
+    {
+     "a": "A3089",
+     "region": {
+      "en": "Canada, Guam, Japan, Mexico, Saudi Arabia, and U.S. Virgin Islands",
+      "ja": "カナダ、グアム、日本、メキシコ、サウジアラビア、米領バージン諸島"
+     },
+     "src": "https://support.apple.com/ja-jp/108044"
+    },
+    {
+     "a": "A3092",
+     "region": {
+      "en": "China mainland, Hong Kong, Macao",
+      "ja": "中国本土、香港、マカオ"
+     },
+     "src": "https://support.apple.com/ja-jp/108044"
+    },
+    {
+     "a": "A3090",
+     "region": {
+      "en": "other countries and regions",
+      "ja": "その他の国や地域"
+     },
+     "src": "https://support.apple.com/ja-jp/108044"
+    }
+   ],
+   "specUrl": {
+    "en": "https://support.apple.com/en-us/111831",
+    "ja": "https://support.apple.com/ja-jp/111831"
+   },
+   "sizeMm": {
+    "h": 147.6,
+    "w": 71.6,
+    "d": 7.8
+   },
+   "displayInch": "6.1",
+   "connector": "usbc",
+   "magsafe": true,
+   "magsafeMaxW": 15,
+   "qiMaxW": 7.5,
+   "qiListed": true,
+   "qi2MaxW": 15,
+   "wireless": true,
+   "fastCharge": {
+    "en": [
+     "Up to 50% charge in around 30 minutes with 20W adapter or higher (available separately) paired with USB‑C charging cable"
+    ],
+    "ja": [
+     "30分で最大50%充電（別売りの20Wアダプタまたはそれ以上のアダプタとUSB-C充電ケーブルを組み合わせて使用）"
+    ],
+    "usbAdapterMinW": 20,
+    "magsafeAdapterMinW": 20,
+    "src": {
+     "en": "https://support.apple.com/en-us/111831",
+     "ja": "https://support.apple.com/ja-jp/111831"
+    }
+   },
+   "camera": {
+    "rear": 2,
+    "layout": null
+   },
+   "buttons": {
+    "action": false,
+    "cameraControl": false,
+    "home": false
+   },
+   "ios": {
+    "latest": "iOS 27",
+    "supported": true,
+    "src": "https://support.apple.com/ja-jp/guide/iphone/iphe3fa5df43/ios"
+   },
+   "sources": [
+    "https://support.apple.com/en-us/108044",
+    "https://support.apple.com/en-us/111831",
+    "https://support.apple.com/ja-jp/102574",
+    "https://support.apple.com/ja-jp/108044",
+    "https://support.apple.com/ja-jp/111831"
+   ]
+  },
+  {
+   "id": "iphone-14-pro-max",
+   "name": {
+    "ja": "iPhone 14 Pro Max",
+    "en": "iPhone 14 Pro Max"
+   },
+   "year": 2022,
+   "modelNumbers": [
+    {
+     "a": "A2651",
+     "region": {
+      "en": "United States, Puerto Rico",
+      "ja": "米国、プエルトリコ"
+     },
+     "src": "https://support.apple.com/ja-jp/108044"
+    },
+    {
+     "a": "A2893",
+     "region": {
+      "en": "Canada, Guam, Japan, Mexico, Saudi Arabia, and U.S. Virgin Islands",
+      "ja": "カナダ、グアム、日本、メキシコ、サウジアラビア、米領バージョン諸島"
+     },
+     "src": "https://support.apple.com/ja-jp/108044"
+    },
+    {
+     "a": "A2896",
+     "region": {
+      "en": "China mainland, Hong Kong, Macao",
+      "ja": "中国本土、香港、マカオ"
+     },
+     "src": "https://support.apple.com/ja-jp/108044"
+    },
+    {
+     "a": "A2895",
+     "region": {
+      "en": "Armenia, Belarus, Kazakhstan, Kyrgyzstan, Russia",
+      "ja": "アルメニア、ベラルーシ、カザフスタン、キルギスタン、ロシア"
+     },
+     "src": "https://support.apple.com/ja-jp/108044"
+    },
+    {
+     "a": "A2894",
+     "region": {
+      "en": "other countries and regions",
+      "ja": "その他の国や地域"
+     },
+     "src": "https://support.apple.com/ja-jp/108044"
+    }
+   ],
+   "specUrl": {
+    "en": "https://support.apple.com/en-us/111846",
+    "ja": "https://support.apple.com/ja-jp/111846"
+   },
+   "sizeMm": {
+    "h": 160.7,
+    "w": 77.6,
+    "d": 7.85
+   },
+   "displayInch": "6.7",
+   "connector": "lightning",
+   "magsafe": true,
+   "magsafeMaxW": 15,
+   "qiMaxW": 7.5,
+   "qiListed": true,
+   "qi2MaxW": null,
+   "wireless": true,
+   "fastCharge": {
+    "en": [
+     "Up to 50% charge in 35 minutes with 20W adapter or higher (available separately)"
+    ],
+    "ja": [
+     "35分で最大50%充電（別売りの20Wアダプタまたはそれ以上のアダプタを使用）"
+    ],
+    "usbAdapterMinW": 20,
+    "magsafeAdapterMinW": 20,
+    "src": {
+     "en": "https://support.apple.com/en-us/111846",
+     "ja": "https://support.apple.com/ja-jp/111846"
+    }
+   },
+   "camera": {
+    "rear": 3,
+    "layout": null
+   },
+   "buttons": {
+    "action": false,
+    "cameraControl": false,
+    "home": false
+   },
+   "ios": {
+    "latest": "iOS 27",
+    "supported": true,
+    "src": "https://support.apple.com/ja-jp/guide/iphone/iphe3fa5df43/ios"
+   },
+   "sources": [
+    "https://support.apple.com/en-us/108044",
+    "https://support.apple.com/en-us/111846",
+    "https://support.apple.com/ja-jp/102574",
+    "https://support.apple.com/ja-jp/108044",
+    "https://support.apple.com/ja-jp/111846"
+   ]
+  },
+  {
+   "id": "iphone-14-pro",
+   "name": {
+    "ja": "iPhone 14 Pro",
+    "en": "iPhone 14 Pro"
+   },
+   "year": 2022,
+   "modelNumbers": [
+    {
+     "a": "A2650",
+     "region": {
+      "en": "United States, Puerto Rico",
+      "ja": "米国、プエルトリコ"
+     },
+     "src": "https://support.apple.com/ja-jp/108044"
+    },
+    {
+     "a": "A2889",
+     "region": {
+      "en": "Canada, Guam, Japan, Mexico, Saudi Arabia, and U.S. Virgin Islands",
+      "ja": "カナダ、グアム、日本、メキシコ、サウジアラビア、米領バージン諸島"
+     },
+     "src": "https://support.apple.com/ja-jp/108044"
+    },
+    {
+     "a": "A2892",
+     "region": {
+      "en": "China mainland, Hong Kong, Macao",
+      "ja": "中国本土、香港、マカオ"
+     },
+     "src": "https://support.apple.com/ja-jp/108044"
+    },
+    {
+     "a": "A2891",
+     "region": {
+      "en": "Armenia, Belarus, Kazakhstan, Kyrgyzstan, Russia",
+      "ja": "アルメニア、ベラルーシ、カザフスタン、キルギスタン、ロシア"
+     },
+     "src": "https://support.apple.com/ja-jp/108044"
+    },
+    {
+     "a": "A2890",
+     "region": {
+      "en": "other countries and regions",
+      "ja": "その他の国や地域"
+     },
+     "src": "https://support.apple.com/ja-jp/108044"
+    }
+   ],
+   "specUrl": {
+    "en": "https://support.apple.com/en-us/111849",
+    "ja": "https://support.apple.com/ja-jp/111849"
+   },
+   "sizeMm": {
+    "h": 147.5,
+    "w": 71.5,
+    "d": 7.85
+   },
+   "displayInch": "6.1",
+   "connector": "lightning",
+   "magsafe": true,
+   "magsafeMaxW": 15,
+   "qiMaxW": 7.5,
+   "qiListed": true,
+   "qi2MaxW": null,
+   "wireless": true,
+   "fastCharge": {
+    "en": [
+     "Up to 50% charge in around 30 minutes with 20W adapter or higher (available separately)"
+    ],
+    "ja": [
+     "約30分で最大50%充電（別売りの20W以上のアダプタを使用）"
+    ],
+    "usbAdapterMinW": 20,
+    "magsafeAdapterMinW": 20,
+    "src": {
+     "en": "https://support.apple.com/en-us/111849",
+     "ja": "https://support.apple.com/ja-jp/111849"
+    }
+   },
+   "camera": {
+    "rear": 3,
+    "layout": null
+   },
+   "buttons": {
+    "action": false,
+    "cameraControl": false,
+    "home": false
+   },
+   "ios": {
+    "latest": "iOS 27",
+    "supported": true,
+    "src": "https://support.apple.com/ja-jp/guide/iphone/iphe3fa5df43/ios"
+   },
+   "sources": [
+    "https://support.apple.com/en-us/108044",
+    "https://support.apple.com/en-us/111849",
+    "https://support.apple.com/ja-jp/102574",
+    "https://support.apple.com/ja-jp/108044",
+    "https://support.apple.com/ja-jp/111849"
+   ]
+  },
+  {
+   "id": "iphone-14-plus",
+   "name": {
+    "ja": "iPhone 14 Plus",
+    "en": "iPhone 14 Plus"
+   },
+   "year": 2022,
+   "modelNumbers": [
+    {
+     "a": "A2632",
+     "region": {
+      "en": "United States, Puerto Rico",
+      "ja": "米国、プエルトリコ"
+     },
+     "src": "https://support.apple.com/ja-jp/108044"
+    },
+    {
+     "a": "A2885",
+     "region": {
+      "en": "Canada, Guam, Japan, Mexico, Saudi Arabia, and U.S. Virgin Islands",
+      "ja": "カナダ、グアム、日本、メキシコ、サウジアラビア、米領バージン諸島"
+     },
+     "src": "https://support.apple.com/ja-jp/108044"
+    },
+    {
+     "a": "A2888",
+     "region": {
+      "en": "China mainland, Hong Kong, Macao",
+      "ja": "中国本土、香港、マカオ"
+     },
+     "src": "https://support.apple.com/ja-jp/108044"
+    },
+    {
+     "a": "A2887",
+     "region": {
+      "en": "Armenia, Belarus, Kazakhstan, Kyrgyzstan, Russia",
+      "ja": "アルメニア、ベラルーシ、カザフスタン、キルギスタン、ロシア"
+     },
+     "src": "https://support.apple.com/ja-jp/108044"
+    },
+    {
+     "a": "A2886",
+     "region": {
+      "en": "other countries and regions",
+      "ja": "その他の国や地域"
+     },
+     "src": "https://support.apple.com/ja-jp/108044"
+    }
+   ],
+   "specUrl": {
+    "en": "https://support.apple.com/en-us/111854",
+    "ja": "https://support.apple.com/ja-jp/111854"
+   },
+   "sizeMm": {
+    "h": 160.8,
+    "w": 78.1,
+    "d": 7.8
+   },
+   "displayInch": "6.7",
+   "connector": "lightning",
+   "magsafe": true,
+   "magsafeMaxW": 15,
+   "qiMaxW": 7.5,
+   "qiListed": true,
+   "qi2MaxW": null,
+   "wireless": true,
+   "fastCharge": {
+    "en": [
+     "Up to 50% charge in around 30 minutes with 20W adapter or higher paired with USB-C charging cable (available separately)"
+    ],
+    "ja": [
+     "約30分で最大50%充電（別売りの20Wアダプタまたはそれ以上のアダプタとUSB-C充電ケーブルを組み合わせて使用）"
+    ],
+    "usbAdapterMinW": 20,
+    "magsafeAdapterMinW": 20,
+    "src": {
+     "en": "https://support.apple.com/en-us/111854",
+     "ja": "https://support.apple.com/ja-jp/111854"
+    }
+   },
+   "camera": {
+    "rear": 2,
+    "layout": null
+   },
+   "buttons": {
+    "action": false,
+    "cameraControl": false,
+    "home": false
+   },
+   "ios": {
+    "latest": "iOS 27",
+    "supported": true,
+    "src": "https://support.apple.com/ja-jp/guide/iphone/iphe3fa5df43/ios"
+   },
+   "sources": [
+    "https://support.apple.com/en-us/108044",
+    "https://support.apple.com/en-us/111854",
+    "https://support.apple.com/ja-jp/102574",
+    "https://support.apple.com/ja-jp/108044",
+    "https://support.apple.com/ja-jp/111854"
+   ]
+  },
+  {
+   "id": "iphone-14",
+   "name": {
+    "ja": "iPhone 14",
+    "en": "iPhone 14"
+   },
+   "year": 2022,
+   "modelNumbers": [
+    {
+     "a": "A2649",
+     "region": {
+      "en": "United States, Puerto Rico",
+      "ja": "米国、プエルトリコ"
+     },
+     "src": "https://support.apple.com/ja-jp/108044"
+    },
+    {
+     "a": "A2881",
+     "region": {
+      "en": "Canada, Guam, Japan, Mexico, Saudi Arabia, and U.S. Virgin Islands",
+      "ja": "カナダ、グアム、日本、メキシコ、サウジアラビア、米領バージン諸島"
+     },
+     "src": "https://support.apple.com/ja-jp/108044"
+    },
+    {
+     "a": "A2884",
+     "region": {
+      "en": "China mainland, Hong Kong, Macao",
+      "ja": "中国本土、香港、マカオ"
+     },
+     "src": "https://support.apple.com/ja-jp/108044"
+    },
+    {
+     "a": "A2883",
+     "region": {
+      "en": "Armenia, Belarus, Kazakhstan, Kyrgyzstan, Russia",
+      "ja": "アルメニア、ベラルーシ、カザフスタン、キルギスタン、ロシア"
+     },
+     "src": "https://support.apple.com/ja-jp/108044"
+    },
+    {
+     "a": "A2882",
+     "region": {
+      "en": "other countries and regions",
+      "ja": "その他の国や地域"
+     },
+     "src": "https://support.apple.com/ja-jp/108044"
+    }
+   ],
+   "specUrl": {
+    "en": "https://support.apple.com/en-us/111850",
+    "ja": "https://support.apple.com/ja-jp/111850"
+   },
+   "sizeMm": {
+    "h": 146.7,
+    "w": 71.5,
+    "d": 7.8
+   },
+   "displayInch": "6.1",
+   "connector": "lightning",
+   "magsafe": true,
+   "magsafeMaxW": 15,
+   "qiMaxW": 7.5,
+   "qiListed": true,
+   "qi2MaxW": null,
+   "wireless": true,
+   "fastCharge": {
+    "en": [
+     "Up to 50% charge in around 30 minutes with 20W adapter or higher paired with USB-C charging cable (available separately)"
+    ],
+    "ja": [
+     "約30分で最大50%充電（別売りの20Wアダプタまたはそれ以上のアダプタとUSB-C充電ケーブルを組み合わせて使用）"
+    ],
+    "usbAdapterMinW": 20,
+    "magsafeAdapterMinW": 20,
+    "src": {
+     "en": "https://support.apple.com/en-us/111850",
+     "ja": "https://support.apple.com/ja-jp/111850"
+    }
+   },
+   "camera": {
+    "rear": 2,
+    "layout": null
+   },
+   "buttons": {
+    "action": false,
+    "cameraControl": false,
+    "home": false
+   },
+   "ios": {
+    "latest": "iOS 27",
+    "supported": true,
+    "src": "https://support.apple.com/ja-jp/guide/iphone/iphe3fa5df43/ios"
+   },
+   "sources": [
+    "https://support.apple.com/en-us/108044",
+    "https://support.apple.com/en-us/111850",
+    "https://support.apple.com/ja-jp/102574",
+    "https://support.apple.com/ja-jp/108044",
+    "https://support.apple.com/ja-jp/111850"
+   ]
+  },
+  {
+   "id": "iphone-se-3",
+   "name": {
+    "ja": "iPhone SE（第3世代）",
+    "en": "iPhone SE (3rd generation)"
+   },
+   "year": 2022,
+   "modelNumbers": [
+    {
+     "a": "A2595",
+     "region": {
+      "en": "United States, Canada, Puerto Rico, U.S. Virgin Islands, Guam, Mexico, Saudi Arabia",
+      "ja": "米国、カナダ、プエルトリコ、米領バージン諸島、グアム、メキシコ、サウジアラビア"
+     },
+     "src": "https://support.apple.com/ja-jp/108044"
+    },
+    {
+     "a": "A2782",
+     "region": {
+      "en": "Japan",
+      "ja": "日本"
+     },
+     "src": "https://support.apple.com/ja-jp/108044"
+    },
+    {
+     "a": "A2784",
+     "region": {
+      "en": "Russia, Armenia, Belarus, Kazakhstan, Kyrgyzstan",
+      "ja": "ロシア、アルメニア、ベラルーシ、カザフスタン、キルギスタン"
+     },
+     "src": "https://support.apple.com/ja-jp/108044"
+    },
+    {
+     "a": "A2785",
+     "region": {
+      "en": "China",
+      "ja": "中国"
+     },
+     "src": "https://support.apple.com/ja-jp/108044"
+    },
+    {
+     "a": "A2783",
+     "region": {
+      "en": "other countries and regions",
+      "ja": "その他の国や地域"
+     },
+     "src": "https://support.apple.com/ja-jp/108044"
+    }
+   ],
+   "specUrl": {
+    "en": "https://support.apple.com/en-us/111866",
+    "ja": "https://support.apple.com/ja-jp/111866"
+   },
+   "sizeMm": {
+    "h": 138.4,
+    "w": 67.3,
+    "d": 7.3
+   },
+   "displayInch": "4.7",
+   "connector": "lightning",
+   "magsafe": false,
+   "magsafeMaxW": null,
+   "qiMaxW": null,
+   "qiListed": true,
+   "qi2MaxW": null,
+   "wireless": true,
+   "fastCharge": {
+    "en": [
+     "Up to 50% charge in 30 minutes with 20W adapter or higher (sold separately)"
+    ],
+    "ja": [
+     "30分で最大50%充電（別売りの20W以上のアダプタを使用）"
+    ],
+    "usbAdapterMinW": 20,
+    "magsafeAdapterMinW": null,
+    "src": {
+     "en": "https://support.apple.com/en-us/111866",
+     "ja": "https://support.apple.com/ja-jp/111866"
+    }
+   },
+   "camera": {
+    "rear": 1,
+    "layout": null
+   },
+   "buttons": {
+    "action": false,
+    "cameraControl": false,
+    "home": true
+   },
+   "ios": {
+    "latest": "iOS 27",
+    "supported": true,
+    "src": "https://support.apple.com/ja-jp/guide/iphone/iphe3fa5df43/ios"
+   },
+   "sources": [
+    "https://support.apple.com/en-us/108044",
+    "https://support.apple.com/en-us/111866",
+    "https://support.apple.com/ja-jp/102574",
+    "https://support.apple.com/ja-jp/108044",
+    "https://support.apple.com/ja-jp/111866"
+   ]
+  },
+  {
+   "id": "iphone-13-pro-max",
+   "name": {
+    "ja": "iPhone 13 Pro Max",
+    "en": "iPhone 13 Pro Max"
+   },
+   "year": 2021,
+   "modelNumbers": [
+    {
+     "a": "A2484",
+     "region": {
+      "en": "United States",
+      "ja": "米国"
+     },
+     "src": "https://support.apple.com/ja-jp/108044"
+    },
+    {
+     "a": "A2641",
+     "region": {
+      "en": "Canada, Japan, Mexico, Saudi Arabia",
+      "ja": "カナダ、日本、メキシコ、サウジアラビア"
+     },
+     "src": "https://support.apple.com/ja-jp/108044"
+    },
+    {
+     "a": "A2644",
+     "region": {
+      "en": "China mainland, Hong Kong, Macao",
+      "ja": "中国本土、香港、マカオ"
+     },
+     "src": "https://support.apple.com/ja-jp/108044"
+    },
+    {
+     "a": "A2645",
+     "region": {
+      "en": "Armenia, Belarus, Kazakhstan, Kyrgyzstan, Russia",
+      "ja": "アルメニア、ベラルーシ、カザフスタン、キルギスタン、ロシア"
+     },
+     "src": "https://support.apple.com/ja-jp/108044"
+    },
+    {
+     "a": "A2643",
+     "region": {
+      "en": "other countries and regions",
+      "ja": "その他の国や地域"
+     },
+     "src": "https://support.apple.com/ja-jp/108044"
+    }
+   ],
+   "specUrl": {
+    "en": "https://support.apple.com/en-us/111870",
+    "ja": "https://support.apple.com/ja-jp/111870"
+   },
+   "sizeMm": {
+    "h": 160.8,
+    "w": 78.1,
+    "d": 7.65
+   },
+   "displayInch": "6.7",
+   "connector": "lightning",
+   "magsafe": true,
+   "magsafeMaxW": 15,
+   "qiMaxW": 7.5,
+   "qiListed": true,
+   "qi2MaxW": null,
+   "wireless": true,
+   "fastCharge": {
+    "en": [
+     "Up to 50% charge in around 30 minutes with 20W adapter or higher (available separately)"
+    ],
+    "ja": [
+     "約30分で最大50%充電（別売りの20W以上のアダプタを使用）"
+    ],
+    "usbAdapterMinW": 20,
+    "magsafeAdapterMinW": 20,
+    "src": {
+     "en": "https://support.apple.com/en-us/111870",
+     "ja": "https://support.apple.com/ja-jp/111870"
+    }
+   },
+   "camera": {
+    "rear": 3,
+    "layout": null
+   },
+   "buttons": {
+    "action": false,
+    "cameraControl": false,
+    "home": false
+   },
+   "ios": {
+    "latest": "iOS 27",
+    "supported": true,
+    "src": "https://support.apple.com/ja-jp/guide/iphone/iphe3fa5df43/ios"
+   },
+   "sources": [
+    "https://support.apple.com/en-us/108044",
+    "https://support.apple.com/en-us/111870",
+    "https://support.apple.com/ja-jp/102574",
+    "https://support.apple.com/ja-jp/108044",
+    "https://support.apple.com/ja-jp/111870"
+   ]
+  },
+  {
+   "id": "iphone-13-pro",
+   "name": {
+    "ja": "iPhone 13 Pro",
+    "en": "iPhone 13 Pro"
+   },
+   "year": 2021,
+   "modelNumbers": [
+    {
+     "a": "A2483",
+     "region": {
+      "en": "United States",
+      "ja": "米国"
+     },
+     "src": "https://support.apple.com/ja-jp/108044"
+    },
+    {
+     "a": "A2636",
+     "region": {
+      "en": "Canada, Japan, Mexico, Saudi Arabia",
+      "ja": "カナダ、日本、メキシコ、サウジアラビア"
+     },
+     "src": "https://support.apple.com/ja-jp/108044"
+    },
+    {
+     "a": "A2639",
+     "region": {
+      "en": "China mainland, Hong Kong, Macao",
+      "ja": "中国本土、香港、マカオ"
+     },
+     "src": "https://support.apple.com/ja-jp/108044"
+    },
+    {
+     "a": "A2640",
+     "region": {
+      "en": "Armenia, Belarus, Kazakhstan, Kyrgyzstan, Russia",
+      "ja": "アルメニア、ベラルーシ、カザフスタン、キルギスタン、ロシア"
+     },
+     "src": "https://support.apple.com/ja-jp/108044"
+    },
+    {
+     "a": "A2638",
+     "region": {
+      "en": "other countries and regions",
+      "ja": "その他の国や地域"
+     },
+     "src": "https://support.apple.com/ja-jp/108044"
+    }
+   ],
+   "specUrl": {
+    "en": "https://support.apple.com/en-us/111871",
+    "ja": "https://support.apple.com/ja-jp/111871"
+   },
+   "sizeMm": {
+    "h": 146.7,
+    "w": 71.5,
+    "d": 7.65
+   },
+   "displayInch": "6.1",
+   "connector": "lightning",
+   "magsafe": true,
+   "magsafeMaxW": 15,
+   "qiMaxW": 7.5,
+   "qiListed": true,
+   "qi2MaxW": null,
+   "wireless": true,
+   "fastCharge": {
+    "en": [
+     "Up to 50% charge in around 30 minutes with 20W adapter or higher (available separately)"
+    ],
+    "ja": [
+     "約30分で最大50%充電（別売りの20W以上のアダプタを使用）"
+    ],
+    "usbAdapterMinW": 20,
+    "magsafeAdapterMinW": 20,
+    "src": {
+     "en": "https://support.apple.com/en-us/111871",
+     "ja": "https://support.apple.com/ja-jp/111871"
+    }
+   },
+   "camera": {
+    "rear": 3,
+    "layout": null
+   },
+   "buttons": {
+    "action": false,
+    "cameraControl": false,
+    "home": false
+   },
+   "ios": {
+    "latest": "iOS 27",
+    "supported": true,
+    "src": "https://support.apple.com/ja-jp/guide/iphone/iphe3fa5df43/ios"
+   },
+   "sources": [
+    "https://support.apple.com/en-us/108044",
+    "https://support.apple.com/en-us/111871",
+    "https://support.apple.com/ja-jp/102574",
+    "https://support.apple.com/ja-jp/108044",
+    "https://support.apple.com/ja-jp/111871"
+   ]
+  },
+  {
+   "id": "iphone-13",
+   "name": {
+    "ja": "iPhone 13",
+    "en": "iPhone 13"
+   },
+   "year": 2021,
+   "modelNumbers": [
+    {
+     "a": "A2482",
+     "region": {
+      "en": "United States",
+      "ja": "米国"
+     },
+     "src": "https://support.apple.com/ja-jp/108044"
+    },
+    {
+     "a": "A2631",
+     "region": {
+      "en": "Canada, Japan, Mexico, Saudi Arabia",
+      "ja": "カナダ、日本、メキシコ、サウジアラビア"
+     },
+     "src": "https://support.apple.com/ja-jp/108044"
+    },
+    {
+     "a": "A2634",
+     "region": {
+      "en": "China mainland, Hong Kong, Macao",
+      "ja": "中国本土、香港、マカオ"
+     },
+     "src": "https://support.apple.com/ja-jp/108044"
+    },
+    {
+     "a": "A2635",
+     "region": {
+      "en": "Armenia, Belarus, Kazakhstan, Kyrgyzstan, Russia",
+      "ja": "アルメニア、ベラルーシ、カザフスタン、キルギスタン、ロシア"
+     },
+     "src": "https://support.apple.com/ja-jp/108044"
+    },
+    {
+     "a": "A2633",
+     "region": {
+      "en": "other countires and regions",
+      "ja": "その他の国や地域"
+     },
+     "src": "https://support.apple.com/ja-jp/108044"
+    }
+   ],
+   "specUrl": {
+    "en": "https://support.apple.com/en-us/111872",
+    "ja": "https://support.apple.com/ja-jp/111872"
+   },
+   "sizeMm": {
+    "h": 146.7,
+    "w": 71.5,
+    "d": 7.65
+   },
+   "displayInch": "6.1",
+   "connector": "lightning",
+   "magsafe": true,
+   "magsafeMaxW": 15,
+   "qiMaxW": 7.5,
+   "qiListed": true,
+   "qi2MaxW": 15,
+   "wireless": true,
+   "fastCharge": {
+    "en": [
+     "Up to 50% charge in 30 minutes with 20W adapter or higher (available separately)"
+    ],
+    "ja": [
+     "約30分で最大50%充電（別売りの20W以上のアダプタを使用）"
+    ],
+    "usbAdapterMinW": 20,
+    "magsafeAdapterMinW": 20,
+    "src": {
+     "en": "https://support.apple.com/en-us/111872",
+     "ja": "https://support.apple.com/ja-jp/111872"
+    }
+   },
+   "camera": {
+    "rear": 2,
+    "layout": null
+   },
+   "buttons": {
+    "action": false,
+    "cameraControl": false,
+    "home": false
+   },
+   "ios": {
+    "latest": "iOS 27",
+    "supported": true,
+    "src": "https://support.apple.com/ja-jp/guide/iphone/iphe3fa5df43/ios"
+   },
+   "sources": [
+    "https://support.apple.com/en-us/108044",
+    "https://support.apple.com/en-us/111872",
+    "https://support.apple.com/ja-jp/102574",
+    "https://support.apple.com/ja-jp/108044",
+    "https://support.apple.com/ja-jp/111872"
+   ]
+  },
+  {
+   "id": "iphone-13-mini",
+   "name": {
+    "ja": "iPhone 13 mini",
+    "en": "iPhone 13 mini"
+   },
+   "year": 2021,
+   "modelNumbers": [
+    {
+     "a": "A2481",
+     "region": {
+      "en": "United States",
+      "ja": "米国"
+     },
+     "src": "https://support.apple.com/ja-jp/108044"
+    },
+    {
+     "a": "A2626",
+     "region": {
+      "en": "Canada, Japan, Mexico, Saudi Arabia",
+      "ja": "カナダ、日本、メキシコ、サウジアラビア"
+     },
+     "src": "https://support.apple.com/ja-jp/108044"
+    },
+    {
+     "a": "A2629",
+     "region": {
+      "en": "China mainland",
+      "ja": "中国本土"
+     },
+     "src": "https://support.apple.com/ja-jp/108044"
+    },
+    {
+     "a": "A2630",
+     "region": {
+      "en": "Armenia, Belarus, Kazakhstan, Kyrgyzstan, Russia",
+      "ja": "アルメニア、ベラルーシ、カザフスタン、キルギスタン、ロシア"
+     },
+     "src": "https://support.apple.com/ja-jp/108044"
+    },
+    {
+     "a": "A2628",
+     "region": {
+      "en": "other countries and regions",
+      "ja": "その他の国や地域"
+     },
+     "src": "https://support.apple.com/ja-jp/108044"
+    }
+   ],
+   "specUrl": {
+    "en": "https://support.apple.com/en-us/111873",
+    "ja": "https://support.apple.com/ja-jp/111873"
+   },
+   "sizeMm": {
+    "h": 131.5,
+    "w": 64.2,
+    "d": 7.65
+   },
+   "displayInch": "5.4",
+   "connector": "lightning",
+   "magsafe": true,
+   "magsafeMaxW": 15,
+   "qiMaxW": 7.5,
+   "qiListed": true,
+   "qi2MaxW": null,
+   "wireless": true,
+   "fastCharge": {
+    "en": [
+     "Up to 50% charge in 30 minutes with 20W adapter or higher (available separately)"
+    ],
+    "ja": [
+     "30分で最大50%充電（別売りの20W以上のアダプタを使用）"
+    ],
+    "usbAdapterMinW": 20,
+    "magsafeAdapterMinW": 20,
+    "src": {
+     "en": "https://support.apple.com/en-us/111873",
+     "ja": "https://support.apple.com/ja-jp/111873"
+    }
+   },
+   "camera": {
+    "rear": 2,
+    "layout": null
+   },
+   "buttons": {
+    "action": false,
+    "cameraControl": false,
+    "home": false
+   },
+   "ios": {
+    "latest": "iOS 27",
+    "supported": true,
+    "src": "https://support.apple.com/ja-jp/guide/iphone/iphe3fa5df43/ios"
+   },
+   "sources": [
+    "https://support.apple.com/en-us/108044",
+    "https://support.apple.com/en-us/111873",
+    "https://support.apple.com/ja-jp/102574",
+    "https://support.apple.com/ja-jp/108044",
+    "https://support.apple.com/ja-jp/111873"
+   ]
+  },
+  {
+   "id": "iphone-12-pro-max",
+   "name": {
+    "ja": "iPhone 12 Pro Max",
+    "en": "iPhone 12 Pro Max"
+   },
+   "year": 2020,
+   "modelNumbers": [
+    {
+     "a": "A2342",
+     "region": {
+      "en": "United States",
+      "ja": "米国"
+     },
+     "src": "https://support.apple.com/ja-jp/108044"
+    },
+    {
+     "a": "A2410",
+     "region": {
+      "en": "Canada, Japan",
+      "ja": "カナダ、日本"
+     },
+     "src": "https://support.apple.com/ja-jp/108044"
+    },
+    {
+     "a": "A2412",
+     "region": {
+      "en": "China mainland, Hong Kong, Macao",
+      "ja": "中国本土、香港、マカオ"
+     },
+     "src": "https://support.apple.com/ja-jp/108044"
+    },
+    {
+     "a": "A2411",
+     "region": {
+      "en": "other countries and regions",
+      "ja": "その他の国や地域"
+     },
+     "src": "https://support.apple.com/ja-jp/108044"
+    }
+   ],
+   "specUrl": {
+    "en": "https://support.apple.com/en-us/111874",
+    "ja": "https://support.apple.com/ja-jp/111874"
+   },
+   "sizeMm": {
+    "h": 160.8,
+    "w": 78.1,
+    "d": 7.4
+   },
+   "displayInch": "6.7",
+   "connector": "lightning",
+   "magsafe": true,
+   "magsafeMaxW": 15,
+   "qiMaxW": 7.5,
+   "qiListed": true,
+   "qi2MaxW": null,
+   "wireless": true,
+   "fastCharge": {
+    "en": [
+     "Up to 50% charge in 30 minutes with 20W adapter or higher (sold separately)"
+    ],
+    "ja": [
+     "約30分で最大50%充電（別売りの20W以上のアダプタを使用）"
+    ],
+    "usbAdapterMinW": 20,
+    "magsafeAdapterMinW": 20,
+    "src": {
+     "en": "https://support.apple.com/en-us/111874",
+     "ja": "https://support.apple.com/ja-jp/111874"
+    }
+   },
+   "camera": {
+    "rear": 3,
+    "layout": null
+   },
+   "buttons": {
+    "action": false,
+    "cameraControl": false,
+    "home": false
+   },
+   "ios": {
+    "latest": "iOS 27",
+    "supported": true,
+    "src": "https://support.apple.com/ja-jp/guide/iphone/iphe3fa5df43/ios"
+   },
+   "sources": [
+    "https://support.apple.com/en-us/108044",
+    "https://support.apple.com/en-us/111874",
+    "https://support.apple.com/ja-jp/102574",
+    "https://support.apple.com/ja-jp/108044",
+    "https://support.apple.com/ja-jp/111874"
+   ]
+  },
+  {
+   "id": "iphone-12-pro",
+   "name": {
+    "ja": "iPhone 12 Pro",
+    "en": "iPhone 12 Pro"
+   },
+   "year": 2020,
+   "modelNumbers": [
+    {
+     "a": "A2341",
+     "region": {
+      "en": "United States",
+      "ja": "米国"
+     },
+     "src": "https://support.apple.com/ja-jp/108044"
+    },
+    {
+     "a": "A2406",
+     "region": {
+      "en": "Canada, Japan",
+      "ja": "カナダ、日本"
+     },
+     "src": "https://support.apple.com/ja-jp/108044"
+    },
+    {
+     "a": "A2408",
+     "region": {
+      "en": "China mainland, Hong Kong, Macao",
+      "ja": "中国本土、香港、マカオ"
+     },
+     "src": "https://support.apple.com/ja-jp/108044"
+    },
+    {
+     "a": "A2407",
+     "region": {
+      "en": "other countries and regions",
+      "ja": "その他の国や地域"
+     },
+     "src": "https://support.apple.com/ja-jp/108044"
+    }
+   ],
+   "specUrl": {
+    "en": "https://support.apple.com/en-us/111875",
+    "ja": "https://support.apple.com/ja-jp/111875"
+   },
+   "sizeMm": {
+    "h": 146.7,
+    "w": 71.5,
+    "d": 7.4
+   },
+   "displayInch": "6.1",
+   "connector": "lightning",
+   "magsafe": true,
+   "magsafeMaxW": 15,
+   "qiMaxW": 7.5,
+   "qiListed": true,
+   "qi2MaxW": null,
+   "wireless": true,
+   "fastCharge": {
+    "en": [
+     "Up to 50% charge in around 30 minutes with 20W adapter or higher (sold separately)"
+    ],
+    "ja": [
+     "約30分で最大50%充電（別売りの20W以上のアダプタを使用）"
+    ],
+    "usbAdapterMinW": 20,
+    "magsafeAdapterMinW": 20,
+    "src": {
+     "en": "https://support.apple.com/en-us/111875",
+     "ja": "https://support.apple.com/ja-jp/111875"
+    }
+   },
+   "camera": {
+    "rear": 3,
+    "layout": null
+   },
+   "buttons": {
+    "action": false,
+    "cameraControl": false,
+    "home": false
+   },
+   "ios": {
+    "latest": "iOS 27",
+    "supported": true,
+    "src": "https://support.apple.com/ja-jp/guide/iphone/iphe3fa5df43/ios"
+   },
+   "sources": [
+    "https://support.apple.com/en-us/108044",
+    "https://support.apple.com/en-us/111875",
+    "https://support.apple.com/ja-jp/102574",
+    "https://support.apple.com/ja-jp/108044",
+    "https://support.apple.com/ja-jp/111875"
+   ]
+  },
+  {
+   "id": "iphone-12",
+   "name": {
+    "ja": "iPhone 12",
+    "en": "iPhone 12"
+   },
+   "year": 2020,
+   "modelNumbers": [
+    {
+     "a": "A2172",
+     "region": {
+      "en": "United States",
+      "ja": "米国"
+     },
+     "src": "https://support.apple.com/ja-jp/108044"
+    },
+    {
+     "a": "A2402",
+     "region": {
+      "en": "Canada, Japan",
+      "ja": "カナダ、日本"
+     },
+     "src": "https://support.apple.com/ja-jp/108044"
+    },
+    {
+     "a": "A2404",
+     "region": {
+      "en": "China Mainland, Hong Kong, Macao",
+      "ja": "中国本土、香港、マカオ"
+     },
+     "src": "https://support.apple.com/ja-jp/108044"
+    },
+    {
+     "a": "A2403",
+     "region": {
+      "en": "other countries and regions",
+      "ja": "その他の国や地域"
+     },
+     "src": "https://support.apple.com/ja-jp/108044"
+    }
+   ],
+   "specUrl": {
+    "en": "https://support.apple.com/en-us/111876",
+    "ja": "https://support.apple.com/ja-jp/111876"
+   },
+   "sizeMm": {
+    "h": 146.7,
+    "w": 71.5,
+    "d": 7.4
+   },
+   "displayInch": "6.1",
+   "connector": "lightning",
+   "magsafe": true,
+   "magsafeMaxW": 15,
+   "qiMaxW": 7.5,
+   "qiListed": true,
+   "qi2MaxW": null,
+   "wireless": true,
+   "fastCharge": {
+    "en": [
+     "Up to 50% charge in 30 minutes with 20W adapter or higher (sold separately)"
+    ],
+    "ja": [
+     "30分で最大50%充電（別売りの20W以上のアダプタを使用）"
+    ],
+    "usbAdapterMinW": 20,
+    "magsafeAdapterMinW": 20,
+    "src": {
+     "en": "https://support.apple.com/en-us/111876",
+     "ja": "https://support.apple.com/ja-jp/111876"
+    }
+   },
+   "camera": {
+    "rear": 2,
+    "layout": null
+   },
+   "buttons": {
+    "action": false,
+    "cameraControl": false,
+    "home": false
+   },
+   "ios": {
+    "latest": "iOS 27",
+    "supported": true,
+    "src": "https://support.apple.com/ja-jp/guide/iphone/iphe3fa5df43/ios"
+   },
+   "sources": [
+    "https://support.apple.com/en-us/108044",
+    "https://support.apple.com/en-us/111876",
+    "https://support.apple.com/ja-jp/102574",
+    "https://support.apple.com/ja-jp/108044",
+    "https://support.apple.com/ja-jp/111876"
+   ]
+  },
+  {
+   "id": "iphone-12-mini",
+   "name": {
+    "ja": "iPhone 12 mini",
+    "en": "iPhone 12 mini"
+   },
+   "year": 2020,
+   "modelNumbers": [
+    {
+     "a": "A2176",
+     "region": {
+      "en": "United States",
+      "ja": "米国"
+     },
+     "src": "https://support.apple.com/ja-jp/108044"
+    },
+    {
+     "a": "A2398",
+     "region": {
+      "en": "Canada, Japan",
+      "ja": "カナダ、日本"
+     },
+     "src": "https://support.apple.com/ja-jp/108044"
+    },
+    {
+     "a": "A2400",
+     "region": {
+      "en": "China mainland",
+      "ja": "中国本土"
+     },
+     "src": "https://support.apple.com/ja-jp/108044"
+    },
+    {
+     "a": "A2399",
+     "region": {
+      "en": "other countries and regions",
+      "ja": "その他の国や地域"
+     },
+     "src": "https://support.apple.com/ja-jp/108044"
+    }
+   ],
+   "specUrl": {
+    "en": "https://support.apple.com/en-us/111877",
+    "ja": "https://support.apple.com/ja-jp/111877"
+   },
+   "sizeMm": {
+    "h": 131.5,
+    "w": 64.2,
+    "d": 7.4
+   },
+   "displayInch": "5.4",
+   "connector": "lightning",
+   "magsafe": true,
+   "magsafeMaxW": 15,
+   "qiMaxW": 7.5,
+   "qiListed": true,
+   "qi2MaxW": null,
+   "wireless": true,
+   "fastCharge": {
+    "en": [
+     "Up to 50% charge in 30 minutes with 20W adapter or higher (sold separately)"
+    ],
+    "ja": [
+     "30分で最大50%充電（別売りの20W以上のアダプタを使用）"
+    ],
+    "usbAdapterMinW": 20,
+    "magsafeAdapterMinW": 20,
+    "src": {
+     "en": "https://support.apple.com/en-us/111877",
+     "ja": "https://support.apple.com/ja-jp/111877"
+    }
+   },
+   "camera": {
+    "rear": 2,
+    "layout": null
+   },
+   "buttons": {
+    "action": false,
+    "cameraControl": false,
+    "home": false
+   },
+   "ios": {
+    "latest": "iOS 27",
+    "supported": true,
+    "src": "https://support.apple.com/ja-jp/guide/iphone/iphe3fa5df43/ios"
+   },
+   "sources": [
+    "https://support.apple.com/en-us/108044",
+    "https://support.apple.com/en-us/111877",
+    "https://support.apple.com/ja-jp/102574",
+    "https://support.apple.com/ja-jp/108044",
+    "https://support.apple.com/ja-jp/111877"
+   ]
+  },
+  {
+   "id": "iphone-se-2",
+   "name": {
+    "ja": "iPhone SE（第2世代）",
+    "en": "iPhone SE (2nd generation)"
+   },
+   "year": 2020,
+   "modelNumbers": [
+    {
+     "a": "A2275",
+     "region": {
+      "en": "Canada, United States",
+      "ja": "カナダ、米国"
+     },
+     "src": "https://support.apple.com/ja-jp/108044"
+    },
+    {
+     "a": "A2298",
+     "region": {
+      "en": "China mainland",
+      "ja": "中国本土"
+     },
+     "src": "https://support.apple.com/ja-jp/108044"
+    },
+    {
+     "a": "A2296",
+     "region": {
+      "en": "other countries and regions",
+      "ja": "その他の国や地域"
+     },
+     "src": "https://support.apple.com/ja-jp/108044"
+    }
+   ],
+   "specUrl": {
+    "en": "https://support.apple.com/en-us/111882",
+    "ja": "https://support.apple.com/ja-jp/111882"
+   },
+   "sizeMm": {
+    "h": 138.4,
+    "w": 67.3,
+    "d": 7.3
+   },
+   "displayInch": "4.7",
+   "connector": "lightning",
+   "magsafe": false,
+   "magsafeMaxW": null,
+   "qiMaxW": null,
+   "qiListed": true,
+   "qi2MaxW": null,
+   "wireless": true,
+   "fastCharge": {
+    "en": [
+     "Up to 50% charge in 30 minutes with 18W adapter or higher (sold separately)"
+    ],
+    "ja": [
+     "30分で最大50%充電（別売りの18W以上のアダプタを使用）"
+    ],
+    "usbAdapterMinW": 18,
+    "magsafeAdapterMinW": null,
+    "src": {
+     "en": "https://support.apple.com/en-us/111882",
+     "ja": "https://support.apple.com/ja-jp/111882"
+    }
+   },
+   "camera": {
+    "rear": 1,
+    "layout": null
+   },
+   "buttons": {
+    "action": false,
+    "cameraControl": false,
+    "home": true
+   },
+   "ios": {
+    "latest": "iOS 27",
+    "supported": true,
+    "src": "https://support.apple.com/ja-jp/guide/iphone/iphe3fa5df43/ios"
+   },
+   "sources": [
+    "https://support.apple.com/en-us/108044",
+    "https://support.apple.com/en-us/111882",
+    "https://support.apple.com/ja-jp/102574",
+    "https://support.apple.com/ja-jp/108044",
+    "https://support.apple.com/ja-jp/111882"
+   ]
+  },
+  {
+   "id": "iphone-11-pro-max",
+   "name": {
+    "ja": "iPhone 11 Pro Max",
+    "en": "iPhone 11 Pro Max"
+   },
+   "year": 2019,
+   "modelNumbers": [
+    {
+     "a": "A2161",
+     "region": {
+      "en": "Canada, United States",
+      "ja": "カナダ、米国"
+     },
+     "src": "https://support.apple.com/ja-jp/108044"
+    },
+    {
+     "a": "A2220",
+     "region": {
+      "en": "China mainland, Hong Kong, Macao",
+      "ja": "中国本土、香港、マカオ"
+     },
+     "src": "https://support.apple.com/ja-jp/108044"
+    },
+    {
+     "a": "A2218",
+     "region": {
+      "en": "other countries and regions",
+      "ja": "その他の国や地域"
+     },
+     "src": "https://support.apple.com/ja-jp/108044"
+    }
+   ],
+   "specUrl": {
+    "en": "https://support.apple.com/en-us/111878",
+    "ja": "https://support.apple.com/ja-jp/111878"
+   },
+   "sizeMm": {
+    "h": 158.0,
+    "w": 77.8,
+    "d": 8.1
+   },
+   "displayInch": "6.5",
+   "connector": "lightning",
+   "magsafe": false,
+   "magsafeMaxW": null,
+   "qiMaxW": null,
+   "qiListed": true,
+   "qi2MaxW": null,
+   "wireless": true,
+   "fastCharge": {
+    "en": [
+     "Up to 50% charge in around 30 minutes with 18W adapter or higher"
+    ],
+    "ja": [
+     "約30分で最大50%充電（18W以上のアダプタを使用）"
+    ],
+    "usbAdapterMinW": 18,
+    "magsafeAdapterMinW": null,
+    "src": {
+     "en": "https://support.apple.com/en-us/111878",
+     "ja": "https://support.apple.com/ja-jp/111878"
+    }
+   },
+   "camera": {
+    "rear": 3,
+    "layout": null
+   },
+   "buttons": {
+    "action": false,
+    "cameraControl": false,
+    "home": false
+   },
+   "ios": {
+    "latest": "iOS 27",
+    "supported": true,
+    "src": "https://support.apple.com/ja-jp/guide/iphone/iphe3fa5df43/ios"
+   },
+   "sources": [
+    "https://support.apple.com/en-us/108044",
+    "https://support.apple.com/en-us/111878",
+    "https://support.apple.com/ja-jp/102574",
+    "https://support.apple.com/ja-jp/108044",
+    "https://support.apple.com/ja-jp/111878"
+   ]
+  },
+  {
+   "id": "iphone-11-pro",
+   "name": {
+    "ja": "iPhone 11 Pro",
+    "en": "iPhone 11 Pro"
+   },
+   "year": 2019,
+   "modelNumbers": [
+    {
+     "a": "A2160",
+     "region": {
+      "en": "Canada, United States",
+      "ja": "カナダ、米国"
+     },
+     "src": "https://support.apple.com/ja-jp/108044"
+    },
+    {
+     "a": "A2217",
+     "region": {
+      "en": "China mainland, Hong Kong, Macao",
+      "ja": "中国本土、香港、マカオ"
+     },
+     "src": "https://support.apple.com/ja-jp/108044"
+    },
+    {
+     "a": "A2215",
+     "region": {
+      "en": "other countries and regions",
+      "ja": "その他の国や地域"
+     },
+     "src": "https://support.apple.com/ja-jp/108044"
+    }
+   ],
+   "specUrl": {
+    "en": "https://support.apple.com/en-us/111879",
+    "ja": "https://support.apple.com/ja-jp/111879"
+   },
+   "sizeMm": {
+    "h": 144.0,
+    "w": 71.4,
+    "d": 8.1
+   },
+   "displayInch": "5.8",
+   "connector": "lightning",
+   "magsafe": false,
+   "magsafeMaxW": null,
+   "qiMaxW": null,
+   "qiListed": true,
+   "qi2MaxW": null,
+   "wireless": true,
+   "fastCharge": {
+    "en": [
+     "Up to 50% charge in around 30 minutes with 18W adapter or higher"
+    ],
+    "ja": [
+     "約30分で最大50%充電（18W以上のアダプタを使用）"
+    ],
+    "usbAdapterMinW": 18,
+    "magsafeAdapterMinW": null,
+    "src": {
+     "en": "https://support.apple.com/en-us/111879",
+     "ja": "https://support.apple.com/ja-jp/111879"
+    }
+   },
+   "camera": {
+    "rear": 3,
+    "layout": null
+   },
+   "buttons": {
+    "action": false,
+    "cameraControl": false,
+    "home": false
+   },
+   "ios": {
+    "latest": "iOS 27",
+    "supported": true,
+    "src": "https://support.apple.com/ja-jp/guide/iphone/iphe3fa5df43/ios"
+   },
+   "sources": [
+    "https://support.apple.com/en-us/108044",
+    "https://support.apple.com/en-us/111879",
+    "https://support.apple.com/ja-jp/102574",
+    "https://support.apple.com/ja-jp/108044",
+    "https://support.apple.com/ja-jp/111879"
+   ]
+  },
+  {
+   "id": "iphone-11",
+   "name": {
+    "ja": "iPhone 11",
+    "en": "iPhone 11"
+   },
+   "year": 2019,
+   "modelNumbers": [
+    {
+     "a": "A2111",
+     "region": {
+      "en": "Canada, United States",
+      "ja": "カナダ、米国"
+     },
+     "src": "https://support.apple.com/ja-jp/108044"
+    },
+    {
+     "a": "A2223",
+     "region": {
+      "en": "China mainland, Hong Kong, Macao",
+      "ja": "中国本土、香港、マカオ"
+     },
+     "src": "https://support.apple.com/ja-jp/108044"
+    },
+    {
+     "a": "A2221",
+     "region": {
+      "en": "other countries and regions",
+      "ja": "その他の国や地域"
+     },
+     "src": "https://support.apple.com/ja-jp/108044"
+    }
+   ],
+   "specUrl": {
+    "en": "https://support.apple.com/en-us/111865",
+    "ja": "https://support.apple.com/ja-jp/111865"
+   },
+   "sizeMm": {
+    "h": 150.9,
+    "w": 75.7,
+    "d": 8.3
+   },
+   "displayInch": "6.1",
+   "connector": "lightning",
+   "magsafe": false,
+   "magsafeMaxW": null,
+   "qiMaxW": null,
+   "qiListed": true,
+   "qi2MaxW": null,
+   "wireless": true,
+   "fastCharge": {
+    "en": [
+     "Up to 50% charge in 30 minutes with 20W adapter or higher (sold separately)"
+    ],
+    "ja": [
+     "30分で最大50%充電（別売りの20W以上のアダプタを使用）"
+    ],
+    "usbAdapterMinW": 20,
+    "magsafeAdapterMinW": null,
+    "src": {
+     "en": "https://support.apple.com/en-us/111865",
+     "ja": "https://support.apple.com/ja-jp/111865"
+    }
+   },
+   "camera": {
+    "rear": 2,
+    "layout": null
+   },
+   "buttons": {
+    "action": false,
+    "cameraControl": false,
+    "home": false
+   },
+   "ios": {
+    "latest": "iOS 27",
+    "supported": true,
+    "src": "https://support.apple.com/ja-jp/guide/iphone/iphe3fa5df43/ios"
+   },
+   "sources": [
+    "https://support.apple.com/en-us/108044",
+    "https://support.apple.com/en-us/111865",
+    "https://support.apple.com/ja-jp/102574",
+    "https://support.apple.com/ja-jp/108044",
+    "https://support.apple.com/ja-jp/111865"
+   ]
+  },
+  {
+   "id": "iphone-xs-max",
+   "name": {
+    "ja": "iPhone XS Max",
+    "en": "iPhone XS Max"
+   },
+   "year": 2018,
+   "modelNumbers": [
+    {
+     "a": "A1921",
+     "region": {
+      "en": "",
+      "ja": ""
+     },
+     "src": "https://support.apple.com/ja-jp/108044"
+    },
+    {
+     "a": "A2101",
+     "region": {
+      "en": "",
+      "ja": ""
+     },
+     "src": "https://support.apple.com/ja-jp/108044"
+    },
+    {
+     "a": "A2102",
+     "region": {
+      "en": "Japan",
+      "ja": "日本"
+     },
+     "src": "https://support.apple.com/ja-jp/108044"
+    },
+    {
+     "a": "A2103",
+     "region": {
+      "en": "",
+      "ja": ""
+     },
+     "src": "https://support.apple.com/ja-jp/108044"
+    },
+    {
+     "a": "A2104",
+     "region": {
+      "en": "China mainland",
+      "ja": "中国本土"
+     },
+     "src": "https://support.apple.com/ja-jp/108044"
+    }
+   ],
+   "specUrl": {
+    "en": "https://support.apple.com/en-us/111880",
+    "ja": "https://support.apple.com/ja-jp/111880"
+   },
+   "sizeMm": {
+    "h": 157.5,
+    "w": 77.4,
+    "d": 7.7
+   },
+   "displayInch": "6.5",
+   "connector": "lightning",
+   "magsafe": false,
+   "magsafeMaxW": null,
+   "qiMaxW": null,
+   "qiListed": true,
+   "qi2MaxW": null,
+   "wireless": true,
+   "fastCharge": {
+    "en": [
+     "Up to 50% charge in 30 minutes with 18W adapter or higher (available separately)"
+    ],
+    "ja": [
+     "30分で最大50%充電（別売りの18W以上のアダプタを使用）"
+    ],
+    "usbAdapterMinW": 18,
+    "magsafeAdapterMinW": null,
+    "src": {
+     "en": "https://support.apple.com/en-us/111880",
+     "ja": "https://support.apple.com/ja-jp/111880"
+    }
+   },
+   "camera": {
+    "rear": 2,
+    "layout": null
+   },
+   "buttons": {
+    "action": false,
+    "cameraControl": false,
+    "home": false
+   },
+   "ios": {
+    "latest": "iOS 27",
+    "supported": false,
+    "lastListed": "iOS 18",
+    "src": "https://support.apple.com/guide/iphone/iphe3fa5df43/18.0/ios/18.0"
+   },
+   "sources": [
+    "https://support.apple.com/en-us/108044",
+    "https://support.apple.com/en-us/111880",
+    "https://support.apple.com/ja-jp/102574",
+    "https://support.apple.com/ja-jp/108044",
+    "https://support.apple.com/ja-jp/111880"
+   ]
+  },
+  {
+   "id": "iphone-xs",
+   "name": {
+    "ja": "iPhone XS",
+    "en": "iPhone XS"
+   },
+   "year": 2018,
+   "modelNumbers": [
+    {
+     "a": "A1920",
+     "region": {
+      "en": "",
+      "ja": ""
+     },
+     "src": "https://support.apple.com/ja-jp/108044"
+    },
+    {
+     "a": "A2097",
+     "region": {
+      "en": "",
+      "ja": ""
+     },
+     "src": "https://support.apple.com/ja-jp/108044"
+    },
+    {
+     "a": "A2098",
+     "region": {
+      "en": "Japan",
+      "ja": "日本"
+     },
+     "src": "https://support.apple.com/ja-jp/108044"
+    },
+    {
+     "a": "A2099",
+     "region": {
+      "en": "",
+      "ja": ""
+     },
+     "src": "https://support.apple.com/ja-jp/108044"
+    },
+    {
+     "a": "A2100",
+     "region": {
+      "en": "China mainland",
+      "ja": "中国本土"
+     },
+     "src": "https://support.apple.com/ja-jp/108044"
+    }
+   ],
+   "specUrl": {
+    "en": "https://support.apple.com/en-us/111881",
+    "ja": "https://support.apple.com/ja-jp/111881"
+   },
+   "sizeMm": {
+    "h": 143.6,
+    "w": 70.9,
+    "d": 7.7
+   },
+   "displayInch": "5.8",
+   "connector": "lightning",
+   "magsafe": false,
+   "magsafeMaxW": null,
+   "qiMaxW": null,
+   "qiListed": true,
+   "qi2MaxW": null,
+   "wireless": true,
+   "fastCharge": {
+    "en": [
+     "Up to 50% charge in 30 minutes with 18W adapter or higher (available separately)"
+    ],
+    "ja": [
+     "30分で最大50%充電（別売りの18W以上のアダプタを使用）"
+    ],
+    "usbAdapterMinW": 18,
+    "magsafeAdapterMinW": null,
+    "src": {
+     "en": "https://support.apple.com/en-us/111881",
+     "ja": "https://support.apple.com/ja-jp/111881"
+    }
+   },
+   "camera": {
+    "rear": 2,
+    "layout": null
+   },
+   "buttons": {
+    "action": false,
+    "cameraControl": false,
+    "home": false
+   },
+   "ios": {
+    "latest": "iOS 27",
+    "supported": false,
+    "lastListed": "iOS 18",
+    "src": "https://support.apple.com/guide/iphone/iphe3fa5df43/18.0/ios/18.0"
+   },
+   "sources": [
+    "https://support.apple.com/en-us/108044",
+    "https://support.apple.com/en-us/111881",
+    "https://support.apple.com/ja-jp/102574",
+    "https://support.apple.com/ja-jp/108044",
+    "https://support.apple.com/ja-jp/111881"
+   ]
+  },
+  {
+   "id": "iphone-xr",
+   "name": {
+    "ja": "iPhone XR",
+    "en": "iPhone XR"
+   },
+   "year": 2018,
+   "modelNumbers": [
+    {
+     "a": "A1984",
+     "region": {
+      "en": "",
+      "ja": ""
+     },
+     "src": "https://support.apple.com/ja-jp/108044"
+    },
+    {
+     "a": "A2105",
+     "region": {
+      "en": "",
+      "ja": ""
+     },
+     "src": "https://support.apple.com/ja-jp/108044"
+    },
+    {
+     "a": "A2106",
+     "region": {
+      "en": "Japan",
+      "ja": "日本"
+     },
+     "src": "https://support.apple.com/ja-jp/108044"
+    },
+    {
+     "a": "A2107",
+     "region": {
+      "en": "",
+      "ja": ""
+     },
+     "src": "https://support.apple.com/ja-jp/108044"
+    },
+    {
+     "a": "A2108",
+     "region": {
+      "en": "China mainland",
+      "ja": "中国本土"
+     },
+     "src": "https://support.apple.com/ja-jp/108044"
+    }
+   ],
+   "specUrl": {
+    "en": "https://support.apple.com/en-us/111868",
+    "ja": "https://support.apple.com/ja-jp/111868"
+   },
+   "sizeMm": {
+    "h": 150.9,
+    "w": 75.7,
+    "d": 8.3
+   },
+   "displayInch": "6.1",
+   "connector": "lightning",
+   "magsafe": false,
+   "magsafeMaxW": null,
+   "qiMaxW": null,
+   "qiListed": true,
+   "qi2MaxW": null,
+   "wireless": true,
+   "fastCharge": {
+    "en": [
+     "Up to 50% charge in 30 minutes with 20W adapter or higher (sold separately)"
+    ],
+    "ja": [
+     "30分で最大50%充電（別売りの20W以上のアダプタを使用）"
+    ],
+    "usbAdapterMinW": 20,
+    "magsafeAdapterMinW": null,
+    "src": {
+     "en": "https://support.apple.com/en-us/111868",
+     "ja": "https://support.apple.com/ja-jp/111868"
+    }
+   },
+   "camera": {
+    "rear": 1,
+    "layout": null
+   },
+   "buttons": {
+    "action": false,
+    "cameraControl": false,
+    "home": false
+   },
+   "ios": {
+    "latest": "iOS 27",
+    "supported": false,
+    "lastListed": "iOS 18",
+    "src": "https://support.apple.com/guide/iphone/iphe3fa5df43/18.0/ios/18.0"
+   },
+   "sources": [
+    "https://support.apple.com/en-us/108044",
+    "https://support.apple.com/en-us/111868",
+    "https://support.apple.com/ja-jp/102574",
+    "https://support.apple.com/ja-jp/108044",
+    "https://support.apple.com/ja-jp/111868"
+   ]
+  },
+  {
+   "id": "iphone-x",
+   "name": {
+    "ja": "iPhone X",
+    "en": "iPhone X"
+   },
+   "year": 2017,
+   "modelNumbers": [
+    {
+     "a": "A1865",
+     "region": {
+      "en": "",
+      "ja": ""
+     },
+     "src": "https://support.apple.com/ja-jp/108044"
+    },
+    {
+     "a": "A1901",
+     "region": {
+      "en": "",
+      "ja": ""
+     },
+     "src": "https://support.apple.com/ja-jp/108044"
+    },
+    {
+     "a": "A1902",
+     "region": {
+      "en": "Japan 2",
+      "ja": "日本 2"
+     },
+     "src": "https://support.apple.com/ja-jp/108044"
+    }
+   ],
+   "specUrl": {
+    "en": "https://support.apple.com/en-us/111864",
+    "ja": "https://support.apple.com/ja-jp/111864"
+   },
+   "sizeMm": {
+    "h": 143.6,
+    "w": 70.9,
+    "d": 7.7
+   },
+   "displayInch": "5.8",
+   "connector": "lightning",
+   "magsafe": false,
+   "magsafeMaxW": null,
+   "qiMaxW": null,
+   "qiListed": true,
+   "qi2MaxW": null,
+   "wireless": true,
+   "fastCharge": {
+    "en": [
+     "Up to 50% charge 30 minutes"
+    ],
+    "ja": [
+     "30分で最大50%充電"
+    ],
+    "usbAdapterMinW": 18,
+    "magsafeAdapterMinW": null,
+    "src": {
+     "en": "https://support.apple.com/en-us/111864",
+     "ja": "https://support.apple.com/ja-jp/111864"
+    },
+    "adapterNote": {
+     "ja": "技術仕様ページにW数の記載なし。W数はApple「iPhoneを高速充電する」の記載",
+     "en": "Spec page gives no wattage; wattage from Apple 'Fast charge your iPhone'"
+    },
+    "adapterSrc": "https://support.apple.com/ja-jp/102574"
+   },
+   "camera": {
+    "rear": 2,
+    "layout": null
+   },
+   "buttons": {
+    "action": false,
+    "cameraControl": false,
+    "home": false
+   },
+   "ios": {
+    "latest": "iOS 27",
+    "supported": false,
+    "lastListed": "iOS 16",
+    "src": "https://support.apple.com/guide/iphone/iphe3fa5df43/16.0/ios/16.0"
+   },
+   "sources": [
+    "https://support.apple.com/en-us/108044",
+    "https://support.apple.com/en-us/111864",
+    "https://support.apple.com/ja-jp/102574",
+    "https://support.apple.com/ja-jp/108044",
+    "https://support.apple.com/ja-jp/111864"
+   ]
+  },
+  {
+   "id": "iphone-8-plus",
+   "name": {
+    "ja": "iPhone 8 Plus",
+    "en": "iPhone 8 Plus"
+   },
+   "year": 2017,
+   "modelNumbers": [
+    {
+     "a": "A1864",
+     "region": {
+      "en": "",
+      "ja": ""
+     },
+     "src": "https://support.apple.com/ja-jp/108044"
+    },
+    {
+     "a": "A1897",
+     "region": {
+      "en": "",
+      "ja": ""
+     },
+     "src": "https://support.apple.com/ja-jp/108044"
+    },
+    {
+     "a": "A1898",
+     "region": {
+      "en": "Japan 2",
+      "ja": "日本 2"
+     },
+     "src": "https://support.apple.com/ja-jp/108044"
+    }
+   ],
+   "specUrl": {
+    "en": "https://support.apple.com/en-us/111950",
+    "ja": "https://support.apple.com/ja-jp/111950"
+   },
+   "sizeMm": {
+    "h": 158.4,
+    "w": 78.1,
+    "d": 7.5
+   },
+   "displayInch": "5.5",
+   "connector": "lightning",
+   "magsafe": false,
+   "magsafeMaxW": null,
+   "qiMaxW": null,
+   "qiListed": true,
+   "qi2MaxW": null,
+   "wireless": true,
+   "fastCharge": {
+    "en": [
+     "Up to 50% charge in 30 minutes with 18W adapter or higher (sold separately)"
+    ],
+    "ja": [
+     "30分で最大50%充電（別売りの18W以上のアダプタを使用）"
+    ],
+    "usbAdapterMinW": 18,
+    "magsafeAdapterMinW": null,
+    "src": {
+     "en": "https://support.apple.com/en-us/111950",
+     "ja": "https://support.apple.com/ja-jp/111950"
+    }
+   },
+   "camera": {
+    "rear": 2,
+    "layout": null
+   },
+   "buttons": {
+    "action": false,
+    "cameraControl": false,
+    "home": true
+   },
+   "ios": {
+    "latest": "iOS 27",
+    "supported": false,
+    "lastListed": "iOS 16",
+    "src": "https://support.apple.com/guide/iphone/iphe3fa5df43/16.0/ios/16.0"
+   },
+   "sources": [
+    "https://support.apple.com/en-us/108044",
+    "https://support.apple.com/en-us/111950",
+    "https://support.apple.com/ja-jp/102574",
+    "https://support.apple.com/ja-jp/108044",
+    "https://support.apple.com/ja-jp/111950"
+   ]
+  },
+  {
+   "id": "iphone-8",
+   "name": {
+    "ja": "iPhone 8",
+    "en": "iPhone 8"
+   },
+   "year": 2017,
+   "modelNumbers": [
+    {
+     "a": "A1863",
+     "region": {
+      "en": "",
+      "ja": ""
+     },
+     "src": "https://support.apple.com/ja-jp/108044"
+    },
+    {
+     "a": "A1905",
+     "region": {
+      "en": "",
+      "ja": ""
+     },
+     "src": "https://support.apple.com/ja-jp/108044"
+    },
+    {
+     "a": "A1906",
+     "region": {
+      "en": "Japan 2",
+      "ja": "日本 2"
+     },
+     "src": "https://support.apple.com/ja-jp/108044"
+    }
+   ],
+   "specUrl": {
+    "en": "https://support.apple.com/en-us/111976",
+    "ja": "https://support.apple.com/ja-jp/111976"
+   },
+   "sizeMm": {
+    "h": 138.4,
+    "w": 67.3,
+    "d": 7.3
+   },
+   "displayInch": "4.7",
+   "connector": "lightning",
+   "magsafe": false,
+   "magsafeMaxW": null,
+   "qiMaxW": null,
+   "qiListed": true,
+   "qi2MaxW": null,
+   "wireless": true,
+   "fastCharge": {
+    "en": [
+     "Up to 50% charge in 30 minutes with 18W adapter or higher (sold separately)"
+    ],
+    "ja": [
+     "30分で最大50%充電（別売りの18W以上のアダプタを使用）"
+    ],
+    "usbAdapterMinW": 18,
+    "magsafeAdapterMinW": null,
+    "src": {
+     "en": "https://support.apple.com/en-us/111976",
+     "ja": "https://support.apple.com/ja-jp/111976"
+    }
+   },
+   "camera": {
+    "rear": 1,
+    "layout": null
+   },
+   "buttons": {
+    "action": false,
+    "cameraControl": false,
+    "home": true
+   },
+   "ios": {
+    "latest": "iOS 27",
+    "supported": false,
+    "lastListed": "iOS 16",
+    "src": "https://support.apple.com/guide/iphone/iphe3fa5df43/16.0/ios/16.0"
+   },
+   "sources": [
+    "https://support.apple.com/en-us/108044",
+    "https://support.apple.com/en-us/111976",
+    "https://support.apple.com/ja-jp/102574",
+    "https://support.apple.com/ja-jp/108044",
+    "https://support.apple.com/ja-jp/111976"
+   ]
+  }
+ ],
+ "legacy": [
+  {
+   "name": "iPhone 7",
+   "modelNumbers": [
+    "A1660",
+    "A1778",
+    "A1779"
+   ]
+  },
+  {
+   "name": "iPhone 7 Plus",
+   "modelNumbers": [
+    "A1661",
+    "A1784",
+    "A1785"
+   ]
+  },
+  {
+   "name": "iPhone SE (1st generation)",
+   "modelNumbers": [
+    "A1723",
+    "A1662",
+    "A1724"
+   ]
+  },
+  {
+   "name": "iPhone 6s",
+   "modelNumbers": [
+    "A1633",
+    "A1688",
+    "A1700"
+   ]
+  },
+  {
+   "name": "iPhone 6s Plus",
+   "modelNumbers": [
+    "A1634",
+    "A1687",
+    "A1699"
+   ]
+  },
+  {
+   "name": "iPhone 6",
+   "modelNumbers": [
+    "A1549",
+    "A1586",
+    "A1589"
+   ]
+  },
+  {
+   "name": "iPhone 6 Plus",
+   "modelNumbers": [
+    "A1522",
+    "A1524",
+    "A1593"
+   ]
+  },
+  {
+   "name": "iPhone 5s",
+   "modelNumbers": [
+    "A1453",
+    "A1457",
+    "A1518",
+    "A1528",
+    "A1530",
+    "A1533"
+   ]
+  },
+  {
+   "name": "iPhone 5c",
+   "modelNumbers": [
+    "A1456",
+    "A1507",
+    "A1516",
+    "A1529",
+    "A1532"
+   ]
+  },
+  {
+   "name": "iPhone 5",
+   "modelNumbers": [
+    "A1428",
+    "A1429",
+    "A1442"
+   ]
+  },
+  {
+   "name": "iPhone 4s",
+   "modelNumbers": [
+    "A1431",
+    "A1387"
+   ]
+  },
+  {
+   "name": "iPhone 4",
+   "modelNumbers": [
+    "A1349",
+    "A1332"
+   ]
+  },
+  {
+   "name": "iPhone 3GS",
+   "modelNumbers": [
+    "A1325",
+    "A1303"
+   ]
+  },
+  {
+   "name": "iPhone 3G",
+   "modelNumbers": [
+    "A1324",
+    "A1241"
+   ]
+  },
+  {
+   "name": "iPhone",
+   "modelNumbers": [
+    "A1203"
+   ]
+  }
+ ]
+}
