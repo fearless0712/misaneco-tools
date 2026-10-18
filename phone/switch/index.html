@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self'; img-src 'self' data: https://*.a8.net; connect-src 'self'; font-src 'none'; frame-src 'none'; object-src 'none'; base-uri 'none'; form-action 'none'; manifest-src 'self'">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<meta name="description" content="データ量・通話・家族の人数・家の光回線・店舗サポートの要否・今のキャリアから、合うスマホ料金プランの種類と候補を出す無料ツール。料金は各社公式サイトで確認した目安。入力は外部に送信しません。">
+<meta name="theme-color" content="#ffffff">
+<title>スマホ乗り換え診断｜合うプランの種類と候補・乗り換え前の確認</title>
+<link rel="stylesheet" href="css/app.css">
+<link rel="icon" href="data:,">
+</head>
+<body>
+<header class="top">
+  <div class="wrap top-row">
+    <span class="brand">スマホ乗り換え診断</span>
+  </div>
+</header>
+
+<main class="wrap">
+  <h1>スマホ乗り換え診断</h1>
+  <p class="lead">6つの質問に答えると、合う種類（大手／サブブランド／オンライン専用／格安SIM）と候補プラン、乗り換え前に確認することがわかります。</p>
+  <p class="privacy"><span class="lock" aria-hidden="true"></span><span>答えはこの画面の中だけで判定し、外部に送信しません。</span></p>
+
+  <form class="card" id="quiz" novalidate>
+    <fieldset class="q">
+      <legend><span class="qn">1</span>月に使うデータ量</legend>
+      <div class="chips" data-name="data">
+        <label><input type="radio" name="data" value="s"><span>3GBくらいまで</span></label>
+        <label><input type="radio" name="data" value="m" checked><span>10GBくらいまで</span></label>
+        <label><input type="radio" name="data" value="l"><span>30GBくらいまで</span></label>
+        <label><input type="radio" name="data" value="xl"><span>もっと多い</span></label>
+      </div>
+      <p class="hint">わからないときは「設定」→「モバイル通信」（Androidは「設定」の「ネットワーク」や「データ使用量」の項目。機種により異なります）で、毎月の使用量を確認できます。</p>
+    </fieldset>
+
+    <fieldset class="q">
+      <legend><span class="qn">2</span>電話（通話アプリ以外）</legend>
+      <div class="chips" data-name="call">
+        <label><input type="radio" name="call" value="none"><span>ほぼしない</span></label>
+        <label><input type="radio" name="call" value="short" checked><span>5分以内が多い</span></label>
+        <label><input type="radio" name="call" value="long"><span>長電話もする</span></label>
+      </div>
+    </fieldset>
+
+    <fieldset class="q">
+      <legend><span class="qn">3</span>一緒に乗り換えを考える家族の人数（自分を含む）</legend>
+      <div class="chips" data-name="family">
+        <label><input type="radio" name="family" value="1" checked><span>1人</span></label>
+        <label><input type="radio" name="family" value="2"><span>2人</span></label>
+        <label><input type="radio" name="family" value="3"><span>3人</span></label>
+        <label><input type="radio" name="family" value="4"><span>4人以上</span></label>
+      </div>
+    </fieldset>
+
+    <fieldset class="q">
+      <legend><span class="qn">4</span>家のネット回線</legend>
+      <select id="fiber" name="fiber" aria-label="家のネット回線">
+        <option value="none">ない・わからない</option>
+        <option value="docomo">ドコモ光 / home 5G</option>
+        <option value="au">auひかり など auのセット割の対象回線</option>
+        <option value="softbank">SoftBank光 / SoftBank Air</option>
+        <option value="rakuten">楽天ひかり</option>
+        <option value="other">その他の光回線</option>
+      </select>
+    </fieldset>
+
+    <fieldset class="q">
+      <legend><span class="qn">5</span>お店でのサポート</legend>
+      <div class="chips" data-name="store">
+        <label><input type="radio" name="store" value="need"><span>店舗で相談したい</span></label>
+        <label><input type="radio" name="store" value="some" checked><span>あると安心</span></label>
+        <label><input type="radio" name="store" value="no"><span>いらない</span></label>
+      </div>
+    </fieldset>
+
+    <fieldset class="q">
+      <legend><span class="qn">6</span>今のスマホ会社</legend>
+      <select id="current" name="current" aria-label="今のスマホ会社">
+        <option value="unknown">わからない・その他</option>
+        <option value="docomo">ドコモ</option>
+        <option value="ahamo">ahamo</option>
+        <option value="au">au</option>
+        <option value="uq">UQ mobile</option>
+        <option value="povo">povo</option>
+        <option value="softbank">ソフトバンク</option>
+        <option value="ymobile">ワイモバイル</option>
+        <option value="linemo">LINEMO</option>
+        <option value="rakuten">楽天モバイル</option>
+        <option value="mvno">格安SIM（その他）</option>
+      </select>
+    </fieldset>
+
+    <button type="submit" class="go wide" id="goBtn">診断する</button>
+  </form>
+
+  <section id="result" hidden aria-live="polite"></section>
+  <section id="ads" class="adbox" hidden></section>
+
+  <section class="sec about">
+    <h2>料金データについて</h2>
+    <p class="small" id="checkedNote">料金は2026年10月19日に各社公式サイトで確認。最新は公式でご確認ください。</p>
+    <p class="small">表示は税込の月額の目安です。キャンペーン・ポイント還元・端末代は含めていません。割引は条件を満たした場合のみ。順位は回答とデータだけで決めており、広告で変わることはありません。</p>
+  </section>
+</main>
+
+<footer class="foot wrap">
+  <p>各社の名称・サービス名は各社の商標です。このツールは各社の公式サービスではありません。</p>
+  <p>表示内容は目安です。契約の前に必ず各社の公式サイトで条件をご確認ください。</p>
+  <p>MisaNeco Works</p>
+</footer>
+
+<div id="inter" class="inter" hidden>
+  <div class="inter-box" role="dialog" aria-modal="true" aria-labelledby="interLabel">
+    <div class="inter-bar"><span class="adtag" id="interLabel">広告・PR</span><button type="button" id="interClose" class="x" aria-label="広告を閉じる">×</button></div>
+    <div class="inter-body" id="interBody"></div>
+  </div>
+</div>
+
+<script src="js/logic.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,19 @@
+{
+ "_readme": "A8.netの広告タグをそのまま tag に貼ると、診断結果の下の「広告・PR」枠に表示されます（空なら枠ごと非表示）。使えるのは <a> と <img>、画像は *.a8.net か同じサイト内のみ。label は変更しないでください。広告は診断結果の順位に影響しません。",
+ "label": {
+  "ja": "広告・PR"
+ },
+ "heading": {
+  "ja": "スマホ・回線のサービス"
+ },
+ "slots": [
+  { "id": "slot1", "advertiser": "", "network": "A8.net", "tag": "", "caption": { "ja": "" } },
+  { "id": "slot2", "advertiser": "", "network": "A8.net", "tag": "", "caption": { "ja": "" } },
+  { "id": "slot3", "advertiser": "", "network": "A8.net", "tag": "", "caption": { "ja": "" } }
+ ],
+ "interstitial": {
+  "_readme": "全画面広告。tag が空なら出ません。出すのは1日1回まで、×ですぐ閉じられます。",
+  "advertiser": "",
+  "tag": ""
+ }
+}

@@ -1,0 +1,949 @@
+{
+ "_readme": "料金は各社公式サイトで確認した税込の数字だけを入れる。確認できなかった値は入れない（プランごと外す）。更新手順は README.md。",
+ "checked": "2026-10-19",
+ "plans": [
+  {
+   "id": "docomo-max",
+   "group": "docomo",
+   "kind": "major",
+   "brand": "ドコモ",
+   "name": "ドコモ MAX",
+   "tiers": [
+    {
+     "gb": 1,
+     "price": 5698
+    },
+    {
+     "gb": 3,
+     "price": 6798
+    },
+    {
+     "gb": null,
+     "price": 8448
+    }
+   ],
+   "call": {
+    "rate": "22円/30秒",
+    "short": {
+     "name": "5分通話無料オプション",
+     "price": 880
+    },
+    "long": {
+     "name": "かけ放題オプション",
+     "price": 1980
+    }
+   },
+   "discounts": [
+    {
+     "type": "family",
+     "name": "みんなドコモ割",
+     "byLines": {
+      "2": 550,
+      "3": 1210
+     },
+     "condition": "同じファミリー割引グループの対象の音声回線数に応じて（2回線以上-550円、3回線以上-1,210円）"
+    },
+    {
+     "type": "fiber",
+     "fiber": "docomo",
+     "name": "ドコモ光セット割／home 5G セット割",
+     "amount": 1210,
+     "condition": "同じファミリー割引グループに「ドコモ光」か「home 5G」の契約があること（光・home 5Gの料金は別）"
+    },
+    {
+     "type": "card",
+     "name": "dカードお支払割",
+     "amount": 550,
+     "condition": "dカード GOLD等で-550円、dカードで-220円。月末時点で対象のdカードで支払い（個人名義のみ）"
+    }
+   ],
+   "store": true,
+   "storeNote": "ドコモショップあり",
+   "notes": [
+    "割引をすべて使った場合の公式記載：1GBまで2,398円／3GBまで3,498円／無制限5,148円。"
+   ],
+   "source_url": "https://www.docomo.ne.jp/charge/docomo_max/",
+   "sources": [
+    "https://www.docomo.ne.jp/charge/docomo_max/",
+    "https://www.docomo.ne.jp/charge/"
+   ],
+   "checked": "2026-10-19"
+  },
+  {
+   "id": "docomo-mini",
+   "group": "docomo",
+   "kind": "major",
+   "brand": "ドコモ",
+   "name": "ドコモ mini",
+   "tiers": [
+    {
+     "gb": 4,
+     "price": 2750
+    },
+    {
+     "gb": 10,
+     "price": 3850
+    }
+   ],
+   "call": {
+    "rate": "22円/30秒",
+    "short": {
+     "name": "5分通話無料オプション",
+     "price": 880
+    },
+    "long": {
+     "name": "かけ放題オプション",
+     "price": 1980
+    }
+   },
+   "discounts": [
+    {
+     "type": "fiber",
+     "fiber": "docomo",
+     "name": "ドコモ光セット割／home 5G セット割",
+     "amount": 1210,
+     "condition": "同じファミリー割引グループに「ドコモ光」か「home 5G」の契約があること"
+    },
+    {
+     "type": "card",
+     "name": "dカードお支払割",
+     "amount": 550,
+     "condition": "dカード GOLD等で-550円、dカードで-220円"
+    }
+   ],
+   "store": true,
+   "storeNote": "ドコモショップあり",
+   "notes": [
+    "2026年11月30日で新規受付終了、12月1日から「ドコモ mini2」に変わると公式で案内されています。",
+    "割引をすべて使った場合の公式記載：4GB 880円／10GB 1,980円（家族割の額はこのページで確認できなかったため、ここでは計算に入れていません）。"
+   ],
+   "source_url": "https://www.docomo.ne.jp/charge/docomo_mini/",
+   "sources": [
+    "https://www.docomo.ne.jp/charge/docomo_mini/",
+    "https://www.docomo.ne.jp/charge/docomo_mini2/"
+   ],
+   "checked": "2026-10-19"
+  },
+  {
+   "id": "ahamo",
+   "group": "docomo",
+   "kind": "online",
+   "brand": "ahamo",
+   "name": "ahamo",
+   "tiers": [
+    {
+     "gb": 30,
+     "price": 2970
+    },
+    {
+     "gb": 110,
+     "price": 4950,
+     "label": "110GB（大盛りオプション）"
+    }
+   ],
+   "call": {
+    "rate": "22円/30秒",
+    "included": "1回5分以内の国内通話は無料（料金に込み）",
+    "short": 0,
+    "long": {
+     "name": "かけ放題オプション",
+     "price": 1100
+    }
+   },
+   "discounts": [],
+   "store": false,
+   "storeNote": "手続きはahamoサイト。ドコモショップでの手続きのお手伝いは有料（3,300円）",
+   "notes": [
+    "2026年12月1日から40GB 3,135円〜120GB 5,115円の段階制に変わり、大盛りオプションは11月30日で終了と公式で案内されています。"
+   ],
+   "source_url": "https://ahamo.com/plan/index.html",
+   "sources": [
+    "https://ahamo.com/plan/index.html",
+    "https://ahamo.com/new-ahamo/index.html"
+   ],
+   "checked": "2026-10-19"
+  },
+  {
+   "id": "au-max",
+   "group": "au",
+   "kind": "major",
+   "brand": "au",
+   "name": "使い放題MAX＋ 5G/4G",
+   "tiers": [
+    {
+     "gb": null,
+     "price": 7788
+    }
+   ],
+   "call": {
+    "rate": "22円/30秒",
+    "short": {
+     "name": "通話定額ライト2（1回5分以内）",
+     "price": 880
+    },
+    "long": {
+     "name": "通話定額2（24時間かけ放題）",
+     "price": 1980
+    }
+   },
+   "discounts": [
+    {
+     "type": "family",
+     "name": "家族割プラス",
+     "byLines": {
+      "2": 660,
+      "3": 1210
+     },
+     "condition": "2人で加入-660円、3人以上で加入-1,210円"
+    },
+    {
+     "type": "fiber",
+     "fiber": "au",
+     "name": "auスマートバリュー",
+     "amount": 1100,
+     "condition": "対象の自宅のインターネットサービスなどへの加入が必要"
+    },
+    {
+     "type": "card",
+     "name": "au PAY カードお支払い割",
+     "amount": 220,
+     "condition": "au PAY カードで支払い（スマイルハート割引とは併用不可）"
+    }
+   ],
+   "store": true,
+   "storeNote": "auショップ・au Styleあり",
+   "notes": [
+    "割引をすべて使った場合の公式記載：5,258円。月200GBを超えると最大5Mbps。"
+   ],
+   "source_url": "https://www.au.com/mobile/charge/smartphone/plan/data-unlimited-plus/",
+   "sources": [
+    "https://www.au.com/mobile/charge/smartphone/plan/data-unlimited-plus/",
+    "https://www.uqwimax.jp/mobile/shoplist/"
+   ],
+   "checked": "2026-10-19"
+  },
+  {
+   "id": "au-mini",
+   "group": "au",
+   "kind": "major",
+   "brand": "au",
+   "name": "スマホミニプラン＋ 5G/4G",
+   "tiers": [
+    {
+     "gb": 1,
+     "price": 4928
+    },
+    {
+     "gb": 3,
+     "price": 6578
+    },
+    {
+     "gb": 5,
+     "price": 8228
+    }
+   ],
+   "call": {
+    "rate": "22円/30秒",
+    "short": {
+     "name": "通話定額ライト2（1回5分以内）",
+     "price": 880
+    },
+    "long": {
+     "name": "通話定額2（24時間かけ放題）",
+     "price": 1980
+    }
+   },
+   "discounts": [
+    {
+     "type": "family",
+     "name": "家族割プラス",
+     "byLines": {
+      "2": 660,
+      "3": 1210
+     },
+     "condition": "2人で加入-660円、3人以上で加入-1,210円"
+    },
+    {
+     "type": "fiber",
+     "fiber": "au",
+     "name": "auスマートバリュー",
+     "amount": 1100,
+     "condition": "対象の自宅のインターネットサービスなどへの加入が必要"
+    },
+    {
+     "type": "card",
+     "name": "au PAY カードお支払い割",
+     "amount": 220,
+     "condition": "au PAY カードで支払い"
+    }
+   ],
+   "store": true,
+   "storeNote": "auショップ・au Styleあり",
+   "notes": [
+    "使った量で月額が決まる段階制。割引をすべて使った場合の公式記載：1GBまで2,398円／3GBまで4,048円／5GBまで5,698円。"
+   ],
+   "source_url": "https://www.au.com/mobile/charge/smartphone/plan/sp-mini-plus/",
+   "sources": [
+    "https://www.au.com/mobile/charge/smartphone/plan/sp-mini-plus/",
+    "https://www.au.com/mobile/charge/smartphone/plan/data-unlimited-plus/"
+   ],
+   "checked": "2026-10-19"
+  },
+  {
+   "id": "uq-tokutoku2",
+   "group": "au",
+   "kind": "sub",
+   "brand": "UQ mobile",
+   "name": "トクトクプラン2",
+   "tiers": [
+    {
+     "gb": 5,
+     "price": 2948,
+     "label": "5GB以下の月（5GB以下割引-1,100円込み）"
+    },
+    {
+     "gb": 30,
+     "price": 4048,
+     "label": "30GBまで"
+    }
+   ],
+   "call": {
+    "rate": "22円/30秒",
+    "short": {
+     "name": "通話放題ライト（1回10分以内）",
+     "price": 880
+    },
+    "long": {
+     "name": "通話放題（24時間かけ放題）",
+     "price": 1980
+    }
+   },
+   "discounts": [
+    {
+     "type": "fiber",
+     "fiber": "au",
+     "name": "自宅セット割",
+     "amount": 1100,
+     "exclusive": "uq",
+     "condition": "対象のインターネットサービスなどへの加入が必要（家族セット割とは重複せず、自宅セット割が優先）"
+    },
+    {
+     "type": "family",
+     "name": "家族セット割",
+     "amount": 550,
+     "minLines": 2,
+     "exclusive": "uq",
+     "condition": "家族が割引対象の料金プランに加入（自宅セット割と重複しない）"
+    },
+    {
+     "type": "card",
+     "name": "au PAY カードお支払い割",
+     "amount": 220,
+     "condition": "支払方法がau PAY カード"
+    }
+   ],
+   "store": true,
+   "storeNote": "au Style・auショップ・UQ mobile取扱店あり",
+   "notes": [
+    "公式記載の割引後：自宅セット割＋カード払いで5GB以下1,628円／30GBまで2,728円。"
+   ],
+   "source_url": "https://www.uqwimax.jp/mobile/plan/tokutoku2/",
+   "sources": [
+    "https://www.uqwimax.jp/mobile/plan/tokutoku2/",
+    "https://www.uqwimax.jp/mobile/shoplist/"
+   ],
+   "checked": "2026-10-19"
+  },
+  {
+   "id": "uq-komikomi",
+   "group": "au",
+   "kind": "sub",
+   "brand": "UQ mobile",
+   "name": "コミコミプランバリュー",
+   "tiers": [
+    {
+     "gb": 35,
+     "price": 3828
+    }
+   ],
+   "call": {
+    "rate": "22円/30秒",
+    "included": "1回10分以内の国内通話はかけ放題（料金に込み）",
+    "short": 0,
+    "long": {
+     "name": "えらべる通話オプション（通話放題）",
+     "price": 1100
+    }
+   },
+   "discounts": [],
+   "store": true,
+   "storeNote": "au Style・auショップ・UQ mobile取扱店あり",
+   "notes": [
+    "自宅セット割・家族セット割・カード払い割がこのプランに使えるかは公式ページで確認できなかったため、表示していません。"
+   ],
+   "source_url": "https://www.uqwimax.jp/mobile/plan/komikomi-pv/",
+   "sources": [
+    "https://www.uqwimax.jp/mobile/plan/komikomi-pv/",
+    "https://www.uqwimax.jp/mobile/shoplist/"
+   ],
+   "checked": "2026-10-19"
+  },
+  {
+   "id": "povo",
+   "group": "au",
+   "kind": "online",
+   "brand": "povo",
+   "name": "povo2.0（基本料0円＋データトッピング）",
+   "tiers": [
+    {
+     "gb": 3,
+     "price": 990,
+     "label": "データ追加3GB（30日間）"
+    },
+    {
+     "gb": 5,
+     "price": 1380,
+     "label": "データ追加5GB（30日間）"
+    },
+    {
+     "gb": 30,
+     "price": 2780,
+     "label": "データ追加30GB（30日間）"
+    }
+   ],
+   "call": {
+    "rate": "22円/30秒",
+    "short": {
+     "name": "5分以内通話かけ放題",
+     "price": 550
+    },
+    "long": {
+     "name": "通話かけ放題",
+     "price": 1650
+    }
+   },
+   "discounts": [],
+   "store": false,
+   "storeNote": "なし（手続き・サポートはすべてオンライン）",
+   "notes": [
+    "基本料0円。トッピングは30日ごとに買う仕組みで、月額とは期間がずれます。トッピングがないと最大128kbps。"
+   ],
+   "source_url": "https://povo.jp/spec/topping/list/",
+   "sources": [
+    "https://povo.jp/spec/topping/list/",
+    "https://povo.jp/spec/detail/",
+    "https://povo.jp/spec/"
+   ],
+   "checked": "2026-10-19"
+  },
+  {
+   "id": "softbank-teigaku",
+   "group": "softbank",
+   "kind": "major",
+   "brand": "ソフトバンク",
+   "name": "テイガク無制限",
+   "tiers": [
+    {
+     "gb": null,
+     "price": 8008
+    }
+   ],
+   "call": {
+    "rate": "22円/30秒",
+    "short": {
+     "name": "準定額オプション＋（1回5分以内）",
+     "price": 880
+    },
+    "long": {
+     "name": "定額オプション＋（国内通話かけ放題）",
+     "price": 1980
+    }
+   },
+   "discounts": [
+    {
+     "type": "family",
+     "name": "新みんな家族割",
+     "byLines": {
+      "3": 1210
+     },
+     "condition": "家族3回線以上で-1,210円（回線数で額が変わる。2回線の額は公式で確認）"
+    },
+    {
+     "type": "fiber",
+     "fiber": "softbank",
+     "name": "おうち割 光セット",
+     "amount": 1100,
+     "condition": "SoftBank 光・SoftBank Air の加入"
+    },
+    {
+     "type": "card",
+     "name": "PayPayカード割",
+     "amount": 550,
+     "condition": "PayPayカード ゴールドで支払い（通常のPayPayカードは-330円）"
+    }
+   ],
+   "store": true,
+   "storeNote": "ソフトバンクショップあり（来店は予約制）",
+   "notes": [
+    "公式記載の割引後（家族3人・SoftBank 光/Air・PayPayカード ゴールド）：5,148円。"
+   ],
+   "source_url": "https://www.softbank.jp/mobile/price_plan/",
+   "sources": [
+    "https://www.softbank.jp/mobile/price_plan/",
+    "https://www.softbank.jp/mobile/price_plan/data/paytoku2/",
+    "https://www.softbank.jp/shop/"
+   ],
+   "checked": "2026-10-19"
+  },
+  {
+   "id": "softbank-minifit2",
+   "group": "softbank",
+   "kind": "major",
+   "brand": "ソフトバンク",
+   "name": "ミニフィット２",
+   "tiers": [
+    {
+     "gb": 2,
+     "price": 5258
+    },
+    {
+     "gb": 5,
+     "price": 6358
+    }
+   ],
+   "call": {
+    "rate": "22円/30秒",
+    "short": {
+     "name": "準定額オプション＋（1回5分以内）",
+     "price": 880
+    },
+    "long": {
+     "name": "定額オプション＋（国内通話かけ放題）",
+     "price": 1980
+    }
+   },
+   "discounts": [
+    {
+     "type": "family",
+     "name": "新みんな家族割",
+     "byLines": {
+      "3": 550
+     },
+     "condition": "家族3回線以上で-550円（回線数で額が変わる）"
+    },
+    {
+     "type": "fiber",
+     "fiber": "softbank",
+     "name": "おうち割 光セット",
+     "amount": 1100,
+     "condition": "SoftBank 光・SoftBank Air の加入"
+    },
+    {
+     "type": "card",
+     "name": "PayPayカード割",
+     "amount": 550,
+     "condition": "PayPayカード ゴールドで支払い（通常のPayPayカードは-330円）"
+    }
+   ],
+   "store": true,
+   "storeNote": "ソフトバンクショップあり（来店は予約制）",
+   "notes": [
+    "使った量で月額が決まる段階制。公式記載の割引後：2GB 3,058円／5GB 4,158円。"
+   ],
+   "source_url": "https://www.softbank.jp/mobile/price_plan/",
+   "sources": [
+    "https://www.softbank.jp/mobile/price_plan/",
+    "https://www.softbank.jp/shop/"
+   ],
+   "checked": "2026-10-19"
+  },
+  {
+   "id": "ymobile-simple3",
+   "group": "softbank",
+   "kind": "sub",
+   "brand": "ワイモバイル",
+   "name": "シンプル3（S/M/L）",
+   "tiers": [
+    {
+     "gb": 5,
+     "price": 3278,
+     "label": "シンプル3 S（5GB）"
+    },
+    {
+     "gb": 30,
+     "price": 4378,
+     "label": "シンプル3 M（30GB）"
+    },
+    {
+     "gb": 35,
+     "price": 5478,
+     "label": "シンプル3 L（35GB）",
+     "call": {
+      "included": "1回10分以内の国内通話はかけ放題（Lは追加料金なし）",
+      "short": 0,
+      "long": {
+       "name": "スーパーだれとでも定額＋（L）",
+       "price": 1100
+      }
+     }
+    }
+   ],
+   "call": {
+    "rate": "22円/30秒",
+    "short": {
+     "name": "だれとでも定額＋（1回10分以内）",
+     "price": 880
+    },
+    "long": {
+     "name": "スーパーだれとでも定額＋",
+     "price": 1980
+    }
+   },
+   "discounts": [
+    {
+     "type": "family",
+     "name": "家族割引サービス",
+     "amount": 1100,
+     "minLines": 2,
+     "exclusive": "ym",
+     "condition": "2回線目以降に-1,100円（主回線は対象外）。おうち割 光セット（A）とは重複しない"
+    },
+    {
+     "type": "fiber",
+     "fiber": "softbank",
+     "name": "おうち割 光セット（A）",
+     "exclusive": "ym",
+     "condition": "SoftBank 光・SoftBank Air などとセット。家族割引サービスとは重複しない（どちらか1つ）"
+    },
+    {
+     "type": "card",
+     "name": "PayPayカード割",
+     "amount": 330,
+     "condition": "PayPayカードで支払い（ゴールドは-770円）"
+    }
+   ],
+   "store": true,
+   "storeNote": "ワイモバイルショップあり（来店は予約がおすすめ）",
+   "notes": [
+    "2026年6月2日の改定後の料金。おうち割 光セット（A）の額は公式ページ内で表記が一致しなかったため、金額を入れていません。"
+   ],
+   "source_url": "https://www.ymobile.jp/plan/",
+   "sources": [
+    "https://www.ymobile.jp/plan/",
+    "https://www.ymobile.jp/sp/price_info_2026/",
+    "https://www.ymobile.jp/shop/"
+   ],
+   "checked": "2026-10-19"
+  },
+  {
+   "id": "linemo-best",
+   "group": "softbank",
+   "kind": "online",
+   "brand": "LINEMO",
+   "name": "LINEMOベストプラン",
+   "tiers": [
+    {
+     "gb": 3,
+     "price": 990
+    },
+    {
+     "gb": 10,
+     "price": 2090
+    }
+   ],
+   "call": {
+    "rate": "22円/30秒",
+    "short": {
+     "name": "通話準定額（5分）",
+     "price": 550
+    },
+    "long": {
+     "name": "通話定額（かけ放題）",
+     "price": 1650
+    }
+   },
+   "discounts": [],
+   "store": false,
+   "storeNote": "なし（申し込みはオンラインのみ）",
+   "notes": [
+    "使った量で3GBまで／10GBまでの料金になる段階制。通話オプションは契約から7か月目までキャンペーン価格がありますが、ここでは通常の料金で計算しています。"
+   ],
+   "source_url": "https://www.linemo.jp/plan/",
+   "sources": [
+    "https://www.linemo.jp/plan/"
+   ],
+   "checked": "2026-10-19"
+  },
+  {
+   "id": "linemo-bestv",
+   "group": "softbank",
+   "kind": "online",
+   "brand": "LINEMO",
+   "name": "LINEMOベストプランV",
+   "tiers": [
+    {
+     "gb": 30,
+     "price": 2970
+    }
+   ],
+   "call": {
+    "rate": "22円/30秒",
+    "included": "1回5分以内の国内通話は無料（料金に込み）",
+    "short": 0,
+    "long": {
+     "name": "通話定額 for ベストプランV",
+     "price": 1100
+    }
+   },
+   "discounts": [],
+   "store": false,
+   "storeNote": "なし（申し込みはオンラインのみ）",
+   "notes": [
+    "通話オプションは契約から7か月目までキャンペーン価格がありますが、ここでは通常の料金で計算しています。"
+   ],
+   "source_url": "https://www.linemo.jp/plan/",
+   "sources": [
+    "https://www.linemo.jp/plan/"
+   ],
+   "checked": "2026-10-19"
+  },
+  {
+   "id": "rakuten-saikyo",
+   "group": "rakuten",
+   "kind": "major",
+   "brand": "楽天モバイル",
+   "name": "Rakuten最強プラン",
+   "tiers": [
+    {
+     "gb": 3,
+     "price": 1078
+    },
+    {
+     "gb": 20,
+     "price": 2178
+    },
+    {
+     "gb": null,
+     "price": 3278
+    }
+   ],
+   "call": {
+    "rate": "22円/30秒（OS標準の電話アプリ）",
+    "included": "Rakuten Linkアプリでの国内通話は無料（0570など一部は対象外）",
+    "short": 0,
+    "long": 0
+   },
+   "discounts": [
+    {
+     "type": "family",
+     "name": "最強家族割",
+     "amount": 110,
+     "minLines": 2,
+     "condition": "対象の家族全員が1人あたり月110円引き（グループは代表者がRakuten Linkで作成）"
+    }
+   ],
+   "store": true,
+   "storeNote": "楽天モバイルショップあり",
+   "notes": [
+    "使った量で月額が決まる段階制。通話無料はRakuten Linkアプリを使った場合（標準の電話アプリは30秒22円。15分（標準）通話かけ放題は月1,100円）。"
+   ],
+   "source_url": "https://network.mobile.rakuten.co.jp/fee/saikyo-plan/",
+   "sources": [
+    "https://network.mobile.rakuten.co.jp/fee/saikyo-plan/",
+    "https://network.mobile.rakuten.co.jp/fee/family/",
+    "https://network.mobile.rakuten.co.jp/service/standard-free-call/"
+   ],
+   "checked": "2026-10-19"
+  },
+  {
+   "id": "iijmio-giga",
+   "group": "mvno",
+   "kind": "mvno",
+   "brand": "IIJmio",
+   "name": "ギガプラン 音声SIM（5ギガ）",
+   "tiers": [
+    {
+     "gb": 5,
+     "price": 950,
+     "label": "5ギガ"
+    }
+   ],
+   "call": {
+    "rate": "11円/30秒",
+    "short": {
+     "name": "通話定額5分＋",
+     "price": 500
+    },
+    "long": {
+     "name": "かけ放題＋",
+     "price": 1400
+    }
+   },
+   "discounts": [],
+   "store": false,
+   "storeNote": "申し込みはWeb（店舗サポートは公式で確認）",
+   "notes": [
+    "公式ページの本文で税込額を確認できた5ギガだけを載せています。ほかの容量（2〜55ギガ）は公式でご確認ください。",
+    "IIJmioひかりと一緒に使うと「mio割」（月660円引き）があります。"
+   ],
+   "source_url": "https://www.iijmio.jp/gigaplan/",
+   "sources": [
+    "https://www.iijmio.jp/gigaplan/",
+    "https://www.iijmio.jp/hdc/spec/"
+   ],
+   "checked": "2026-10-19"
+  },
+  {
+   "id": "mineo-mypita",
+   "group": "mvno",
+   "kind": "mvno",
+   "brand": "mineo",
+   "name": "マイピタ デュアルタイプ（音声）",
+   "tiers": [
+    {
+     "gb": 3,
+     "price": 1298
+    },
+    {
+     "gb": 7,
+     "price": 1518
+    },
+    {
+     "gb": 15,
+     "price": 1958
+    },
+    {
+     "gb": 30,
+     "price": 2178
+    },
+    {
+     "gb": 50,
+     "price": 2948
+    }
+   ],
+   "call": {
+    "rate": "22円/30秒",
+    "short": {
+     "name": "10分かけ放題",
+     "price": 550
+    },
+    "long": {
+     "name": "時間無制限かけ放題",
+     "price": 1210
+    }
+   },
+   "discounts": [
+    {
+     "type": "family",
+     "name": "家族割引",
+     "amount": 55,
+     "minLines": 2,
+     "condition": "1回線あたり月55円引き（デュアルタイプの3回線目以降は165円引き）"
+    }
+   ],
+   "store": true,
+   "storeNote": "店舗あり（できることは店舗により異なる）",
+   "notes": [],
+   "source_url": "https://mineo.jp/price/",
+   "sources": [
+    "https://mineo.jp/price/",
+    "https://mineo.jp/discount/"
+   ],
+   "checked": "2026-10-19"
+  },
+  {
+   "id": "nihontsushin",
+   "group": "mvno",
+   "kind": "mvno",
+   "brand": "日本通信SIM",
+   "name": "合理的みんなのプラン／合理的50GBプラン",
+   "tiers": [
+    {
+     "gb": 20,
+     "price": 1390,
+     "label": "合理的みんなのプラン（20GB）"
+    },
+    {
+     "gb": 50,
+     "price": 2178,
+     "label": "合理的50GBプラン（50GB）"
+    }
+   ],
+   "call": {
+    "rate": "11円/30秒",
+    "included": "1回5分以内のかけ放題か、月70分までの無料通話を選べる（料金に込み）",
+    "short": 0,
+    "long": null
+   },
+   "discounts": [],
+   "store": false,
+   "storeNote": "申し込みはWeb",
+   "notes": [
+    "かけ放題オプション（みんなのプラン+1,600円、50GBプラン+1,200円）は税込・税別の表記を確認できなかったため、計算に入れていません。"
+   ],
+   "source_url": "https://www.nihontsushin.com/plan/planminna.html",
+   "sources": [
+    "https://www.nihontsushin.com/plan/planminna.html",
+    "https://www.nihontsushin.com/plan/plangbgdvc.html"
+   ],
+   "checked": "2026-10-19"
+  },
+  {
+   "id": "aeon-voice",
+   "group": "mvno",
+   "kind": "mvno",
+   "brand": "イオンモバイル",
+   "name": "音声プラン",
+   "tiers": [
+    {
+     "gb": 3,
+     "price": 1078
+    },
+    {
+     "gb": 5,
+     "price": 1298
+    },
+    {
+     "gb": 10,
+     "price": 1848
+    },
+    {
+     "gb": 20,
+     "price": 1958
+    },
+    {
+     "gb": 30,
+     "price": 2508
+    },
+    {
+     "gb": 50,
+     "price": 3608
+    }
+   ],
+   "call": {
+    "rate": "11円/30秒",
+    "short": {
+     "name": "イオンでんわ5分かけ放題",
+     "price": 550
+    },
+    "long": {
+     "name": "イオンでんわフルかけ放題",
+     "price": 1650
+    }
+   },
+   "discounts": [],
+   "store": true,
+   "storeNote": "イオンの店舗で相談・契約・MNP（店舗によりできることが異なる）",
+   "notes": [
+    "0.5GB〜200GBまで細かく選べます（ここでは代表的な容量だけ表示）。家族はシェアプランもあります。"
+   ],
+   "source_url": "https://aeonmobile.jp/plan/",
+   "sources": [
+    "https://aeonmobile.jp/plan/",
+    "https://aeonmobile.jp/plan/aeondenwa-freecall/",
+    "https://aeonmobile.jp/shoplist/service/"
+   ],
+   "checked": "2026-10-19"
+  }
+ ]
+}
