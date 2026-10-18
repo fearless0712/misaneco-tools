@@ -13,7 +13,7 @@ window.addEventListener("change",function(e){var t=e.target;if(t&&t.type==="file
 window.addEventListener("paste",block,true);
 window.addEventListener("beforeinput",function(e){var t=e.target;if(t&&(t.tagName==="TEXTAREA"||t.isContentEditable))block(e)},true);
 })();</script><script>(function(){window.print=function(){var n=document.getElementById("__demo_n");if(n){n.style.background="#ffe08a";setTimeout(function(){n.style.background="#fff4cc"},600)}};
-window.addEventListener("click",function(e){var t=e.target&&e.target.closest&&e.target.closest("#xlsx,#word,#exp,#imp,#print");if(t){e.preventDefault();e.stopImmediatePropagation();window.print()}},true);
+window.addEventListener("click",function(e){var t=e.target&&e.target.closest&&e.target.closest("#xlsx,#word,#exp,#imp,#print,#print1,#printall,#tpl,#bk");if(t){e.preventDefault();e.stopImmediatePropagation();window.print()}},true);
 var st=document.createElement("style");st.textContent="@media print{body{display:none!important}}";document.head.appendChild(st);
 })();</script>
 <meta charset="utf-8">
