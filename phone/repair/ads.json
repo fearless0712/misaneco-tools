@@ -1,0 +1,42 @@
+{
+ "_readme": "A8.netなどの広告タグをそのまま tag に貼ると表示されます（空なら枠ごと非表示）。mode は now（壊れた今）／prepare（これから入る）／both。使えるのは <a> <img> <br> だけ、画像は *.a8.net か同じサイト内のみ。label は変更しないでください。",
+ "label": "広告・PR",
+ "heads": {
+  "now": "修理・保証に関するサービス",
+  "prepare": "スマホを守るケース・保護アイテム"
+ },
+ "slots": [
+  {
+   "id": "hamee",
+   "mode": "prepare",
+   "advertiser": "Hamee",
+   "network": "A8.net",
+   "tag": "<a href=\"https://px.a8.net/svt/ejp?a8mat=4BEJHI+AO0LYQ+XTI+7PCKH\" rel=\"nofollow\">\n<img border=\"0\" width=\"300\" height=\"250\" alt=\"\" src=\"https://www23.a8.net/svt/bgt?aid=261018918645&wid=001&eno=01&mid=s00000004383001294000&mc=1\"></a>\n<img border=\"0\" width=\"1\" height=\"1\" src=\"https://www12.a8.net/0.gif?a8mat=4BEJHI+AO0LYQ+XTI+7PCKH\" alt=\"\">",
+   "caption": "iPhoneケース・充電器（Hamee）"
+  },
+  {
+   "id": "coverary",
+   "mode": "prepare",
+   "advertiser": "COVERARY",
+   "network": "A8.net",
+   "tag": "<a href=\"https://px.a8.net/svt/ejp?a8mat=4BEJHI+AOM1KI+5V8G+5ZMCH\" rel=\"nofollow\">\n<img border=\"0\" width=\"300\" height=\"250\" alt=\"\" src=\"https://www24.a8.net/svt/bgt?aid=261018918646&wid=001&eno=01&mid=s00000027376001006000&mc=1\"></a>\n<img border=\"0\" width=\"1\" height=\"1\" src=\"https://www10.a8.net/0.gif?a8mat=4BEJHI+AOM1KI+5V8G+5ZMCH\" alt=\"\">",
+   "caption": "本革スマホケース（COVERARY）"
+  },
+  {
+   "id": "now-1",
+   "mode": "now",
+   "advertiser": "",
+   "network": "",
+   "tag": "",
+   "caption": ""
+  },
+  {
+   "id": "insurance-1",
+   "mode": "prepare",
+   "advertiser": "",
+   "network": "",
+   "tag": "",
+   "caption": ""
+  }
+ ]
+}

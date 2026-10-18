@@ -1,0 +1,141 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self'; img-src 'self' data: https://*.a8.net; connect-src 'self'; font-src 'none'; frame-src 'none'; object-src 'none'; base-uri 'none'; form-action 'none'; manifest-src 'self'">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<meta name="description" content="スマホが壊れた・なくしたときにまずやることと修理の選択肢（Apple・キャリア補償・正規サービスプロバイダ・登録修理業者）、これから入る保証（AppleCare+・キャリア補償・スマホ保険）の違いを、公式サイトで確認した料金で比べる無料ツール。">
+<meta name="theme-color" content="#ffffff">
+<title>スマホが壊れたら？保証・修理えらび診断</title>
+<link rel="stylesheet" href="css/app.css?v=202610190222">
+<link rel="icon" href="data:,">
+</head>
+<body>
+<header class="top">
+  <div class="wrap top-row">
+    <span class="brand">スマホ保証・修理えらび診断</span>
+    <span class="checked-chip" id="checkedChip">公式確認 2026.10.19</span>
+  </div>
+</header>
+
+<main class="wrap">
+  <h1>スマホが壊れたら？<br class="sp">保証・修理えらび診断</h1>
+  <p class="lead">壊れた・なくしたときに「まずやること」と「どこで直すか」、これから入るなら「どの保証にするか」を、公式サイトで確認した料金で整理します。</p>
+  <p class="checked-note" id="checkedNote">2026年10月19日に公式サイトで確認。最新は公式で確認してください（料金・条件は変わることがあります）。</p>
+  <p class="privacy"><span class="lock" aria-hidden="true"></span><span>選んだ内容は端末の中だけで使い、外部に送信しません。</span></p>
+
+  <div class="modes" role="tablist" aria-label="モード">
+    <button type="button" role="tab" class="mode" id="tab-now" aria-selected="true" aria-controls="pane-now" data-mode="now"><span class="mode-t">壊れた今</span><span class="mode-s">修理・紛失の対応</span></button>
+    <button type="button" role="tab" class="mode" id="tab-prepare" aria-selected="false" aria-controls="pane-prepare" data-mode="prepare"><span class="mode-t">これから入る</span><span class="mode-s">保証・保険の比較</span></button>
+  </div>
+
+  <!-- mode 1 -->
+  <section class="card" id="pane-now" role="tabpanel" aria-labelledby="tab-now">
+    <fieldset class="q" data-name="os">
+      <legend><span class="qn">1</span>機種</legend>
+      <div class="chips">
+        <label class="chip"><input type="radio" name="n-os" value="iphone" checked><span>iPhone</span></label>
+        <label class="chip"><input type="radio" name="n-os" value="android"><span>Android</span></label>
+      </div>
+      <div class="sub" id="n-model-wrap">
+        <label for="n-model" class="sublabel">iPhoneの機種（任意：Appleの修理料金の目安を出します）</label>
+        <select id="n-model"></select>
+      </div>
+    </fieldset>
+    <fieldset class="q">
+      <legend><span class="qn">2</span>壊れ方</legend>
+      <div class="chips">
+        <label class="chip"><input type="radio" name="n-damage" value="screen" checked><span>画面割れ</span></label>
+        <label class="chip"><input type="radio" name="n-damage" value="water"><span>水没・水濡れ</span></label>
+        <label class="chip"><input type="radio" name="n-damage" value="battery"><span>バッテリー</span></label>
+        <label class="chip"><input type="radio" name="n-damage" value="nopower"><span>起動しない</span></label>
+        <label class="chip"><input type="radio" name="n-damage" value="lost"><span>紛失・盗難</span></label>
+      </div>
+    </fieldset>
+    <fieldset class="q">
+      <legend><span class="qn">3</span>加入中の保証</legend>
+      <div class="chips">
+        <label class="chip" id="chip-ac"><input type="radio" name="n-cover" value="applecare"><span>AppleCare+</span></label>
+        <label class="chip"><input type="radio" name="n-cover" value="carrier"><span>キャリアの補償</span></label>
+        <label class="chip"><input type="radio" name="n-cover" value="insurance"><span>スマホ保険</span></label>
+        <label class="chip"><input type="radio" name="n-cover" value="none" checked><span>なし</span></label>
+        <label class="chip"><input type="radio" name="n-cover" value="unknown"><span>わからない</span></label>
+      </div>
+      <div class="sub" id="n-carrier-wrap" hidden>
+        <label for="n-carrier" class="sublabel">補償を契約しているキャリア</label>
+        <select id="n-carrier">
+          <option value="docomo">ドコモ</option>
+          <option value="au">au</option>
+          <option value="softbank">ソフトバンク</option>
+          <option value="rakuten">楽天モバイル</option>
+          <option value="other">その他</option>
+        </select>
+      </div>
+    </fieldset>
+    <button type="button" class="go" id="goNow">診断する</button>
+    <p class="msg" id="msgNow" role="status" aria-live="polite" hidden></p>
+  </section>
+
+  <!-- mode 2 -->
+  <section class="card" id="pane-prepare" role="tabpanel" aria-labelledby="tab-prepare" hidden>
+    <fieldset class="q">
+      <legend><span class="qn">1</span>機種</legend>
+      <div class="chips">
+        <label class="chip"><input type="radio" name="p-os" value="iphone" checked><span>iPhone</span></label>
+        <label class="chip"><input type="radio" name="p-os" value="android"><span>Android</span></label>
+      </div>
+      <div class="sub" id="p-model-wrap">
+        <label for="p-model" class="sublabel">買う（買った）iPhone</label>
+        <select id="p-model"></select>
+      </div>
+    </fieldset>
+    <fieldset class="q">
+      <legend><span class="qn">2</span>どこで買う？</legend>
+      <div class="sub nomt">
+        <label for="p-carrier" class="sublabel">購入先（キャリアの補償はそのキャリアで買うときが基本）</label>
+        <select id="p-carrier">
+          <option value="apple">Apple・家電量販店（SIMフリー）</option>
+          <option value="docomo">ドコモ</option>
+          <option value="au">au</option>
+          <option value="softbank">ソフトバンク</option>
+          <option value="rakuten">楽天モバイル</option>
+          <option value="other">その他</option>
+        </select>
+      </div>
+    </fieldset>
+    <fieldset class="q">
+      <legend><span class="qn">3</span>端末の価格</legend>
+      <div class="chips" id="p-band"></div>
+    </fieldset>
+    <fieldset class="q">
+      <legend><span class="qn">4</span>壊しやすさ・使い方</legend>
+      <div class="chips">
+        <label class="chip"><input type="radio" name="p-care" value="often"><span>よく落とす</span></label>
+        <label class="chip"><input type="radio" name="p-care" value="sometimes" checked><span>ときどき</span></label>
+        <label class="chip"><input type="radio" name="p-care" value="rare"><span>ほぼ落とさない</span></label>
+      </div>
+      <div class="chips checks">
+        <label class="chip"><input type="checkbox" id="p-loss"><span>紛失・盗難にも備えたい</span></label>
+        <label class="chip"><input type="checkbox" id="p-multi"><span>タブレット等もまとめたい</span></label>
+      </div>
+    </fieldset>
+    <button type="button" class="go" id="goPrep">比べる</button>
+    <p class="msg" id="msgPrep" role="status" aria-live="polite" hidden></p>
+  </section>
+
+  <section id="result" aria-live="polite" hidden></section>
+  <section id="ads" class="adbox" hidden></section>
+</main>
+
+<footer class="foot wrap">
+  <p>このツールは料金・条件の比較の目安です。特定の保証・保険への加入をすすめるものではありません。最終的な料金は各社の診断・審査で決まります。</p>
+  <p>掲載している料金は2026年10月19日に各社の公式サイトで確認した税込の金額です（モバイル保険の保険料は非課税）。公式で確認できなかった値は載せていません。</p>
+  <p>このページには広告（アフィリエイト）が含まれます。「広告・PR」の枠は結果とは別のもので、診断の内容には影響しません。</p>
+  <p>このサイトはApple、Google、各通信会社・保険会社とは関係ありません。iPhone、AppleCare は Apple Inc. の商標です。Android は Google LLC の商標です。</p>
+</footer>
+
+<script src="js/logic.js?v=202610190222"></script>
+<script src="js/app.js?v=202610190222"></script>
+</body>
+</html>
