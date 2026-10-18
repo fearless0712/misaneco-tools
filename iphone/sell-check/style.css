@@ -74,3 +74,40 @@ button{font:inherit;cursor:pointer}
 .inter-box{background:#fff;border-radius:14px;max-width:420px;width:100%;padding:12px 14px 16px}
 .inter-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px}
 .x{width:44px;height:44px;border:1px solid var(--line);border-radius:22px;background:#fff;font-size:22px;line-height:1;color:var(--ink)}
+
+/* ===== 売り方の比較・高く売るコツ ===== */
+.guide{margin:8px 0 0}
+.guide[hidden]{display:none}
+.guide-h{font-size:18px;margin:8px 0 6px}
+.guide-lead{font-size:14px;color:var(--sub);margin:0 0 12px}
+.gsec h3{font-size:16px;margin:0 0 10px;color:var(--navy)}
+.gsec h4{font-size:15px;margin:12px 0 4px;color:var(--ink)}
+.gsec ul{margin:4px 0 8px;padding-left:18px;font-size:14px}
+.gsec li{margin:3px 0}
+.gsec .src,.gsec .carriers{margin-left:0;margin-right:0}
+.asof{font-size:12px;color:var(--sub);margin:8px 0 0}
+.gm{border:1px solid var(--line);border-radius:10px;margin:0 0 8px;background:#fff}
+.gm[open]{background:#fbfcfe}
+.gm summary{display:flex;flex-wrap:wrap;align-items:baseline;gap:4px 10px;padding:12px 14px;min-height:48px;cursor:pointer;list-style:none}
+.gm summary::-webkit-details-marker{display:none}
+.gm summary::after{content:"＋";margin-left:auto;color:var(--navy);font-weight:700}
+.gm[open] summary::after{content:"−"}
+.gm-n{font-weight:700;font-size:15px}
+.gm-s{font-size:13px;color:var(--sub)}
+.gm-mine{font-size:11px;background:var(--navy);color:#fff;border-radius:4px;padding:0 6px;line-height:1.7}
+.gm-dl{margin:0;padding:0 14px 6px;display:grid;grid-template-columns:5.2em 1fr;gap:6px 10px;font-size:14px}
+.gm-dl dt{font-weight:700;color:var(--navy)}
+.gm-dl dd{margin:0}
+.gm h4,.gm .gt,.gm .src{margin-left:14px;margin-right:14px}
+.gt{list-style:none;padding:0 !important}
+.gt li{border:1px solid var(--line);border-radius:8px;padding:8px 10px;margin:0 0 6px}
+.gt a{display:block;font-weight:700;color:var(--navy);text-decoration:none;overflow-wrap:anywhere}
+.gt span{display:block;font-size:13px;color:var(--sub)}
+.gtip{border-top:1px solid var(--line);padding-top:4px;margin-top:8px}
+.gtip:first-of-type{border-top:0;margin-top:0;padding-top:0}
+.gtip h4{margin-top:6px}
+.gcheck{list-style:none;padding-left:0 !important}
+.gcheck li{position:relative;padding-left:22px}
+.gcheck li::before{content:"□";position:absolute;left:0;color:var(--navy)}
+.adnote{font-size:12px;color:var(--sub);margin:0 0 8px}
+.ghost.danger.armed{background:#fff4ef;border-color:var(--warn);font-weight:700}

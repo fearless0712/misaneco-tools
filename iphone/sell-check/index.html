@@ -100,12 +100,27 @@
     </div>
   </section>
 
+  <!-- ===== 売り方の比較・高く売るコツ（チェックリストとは別の読み物） ===== -->
+  <section id="guide" class="guide" aria-labelledby="guideH">
+    <h2 id="guideH" class="guide-h" data-i18n="guideH">売り方の比較と、高く売るコツ</h2>
+    <p class="guide-lead" data-i18n="guideLead">買取価格の比較はしていません（価格は毎日変わるため）。最新の金額と条件は、各サービスの公式ページで確認してください。</p>
+    <div id="guideBody"></div>
+  </section>
+
+  <!-- 買取サービスの広告（ads.json の guide に中身があるときだけ表示。チェックリストとは別） -->
+  <aside id="guideAdBox" class="card adbox" hidden>
+    <div class="adhead"><span class="adtag" data-i18n="adTag">広告</span><span class="adtag">PR</span><h2 data-i18n="guideAdH">買取サービス</h2></div>
+    <p class="adnote" data-i18n="guideAdNote">以下は広告です。このページの比較やチェック結果とは関係ありません。</p>
+    <div id="guideAdItems"></div>
+  </aside>
+
   <section class="card notes">
     <h2 data-i18n="notesH">このチェックリストについて</h2>
     <ul>
       <li data-i18n="n1">手順はApple公式サポートなどの公式ページで確認した内容だけを載せています。各手順の「出典」から元のページを開けます。</li>
       <li data-i18n="n2">画面の名前はiOSのバージョンで変わることがあります。違う場合は出典のページを確認してください。</li>
       <li data-i18n="n3">LINE・認証アプリ・銀行や決済アプリの手続きは、各サービスの公式案内を確認してください。</li>
+      <li data-i18n="n5">「売り方の比較」の内容は、各社の公式ページを確認日の時点で見たものです。条件は変わることがあります。</li>
       <li data-i18n="n4">このサイトはAppleとは関係ありません。</li>
     </ul>
   </section>
@@ -125,6 +140,7 @@
 </div>
 
 <script src="steps.js"></script>
+<script src="guide.js"></script>
 <script src="app.js"></script>
 </body>
 </html>

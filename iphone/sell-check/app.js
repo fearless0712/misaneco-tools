@@ -1,6 +1,7 @@
 (function () {
   'use strict';
   var D = window.SellCheckSteps;
+  var G = window.SellCheckGuide;
   var KEY = 'sellcheck.v1';
   var INTER_KEY = 'sellcheck.inter';
 
@@ -25,7 +26,15 @@
       n2: '画面の名前はiOSのバージョンで変わることがあります。違う場合は出典のページを確認してください。',
       n3: 'LINE・認証アプリ・銀行や決済アプリの手続きは、各サービスの公式案内を確認してください。',
       n4: 'このサイトはAppleとは関係ありません。',
-      foot: 'iPhoneを売る・譲る前チェック', close: '閉じる', langBtn: 'EN', carrierPrefix: '確認ページ：'
+      foot: 'iPhoneを売る・譲る前チェック', close: '閉じる', langBtn: 'EN', carrierPrefix: '確認ページ：',
+      resetArm: 'もう一度押すと全部消えます',
+      n5: '「売り方の比較」の内容は、各社の公式ページを確認日の時点で見たものです。条件は変わることがあります。',
+      guideH: '売り方の比較と、高く売るコツ',
+      guideLead: '買取価格の比較はしていません（価格は毎日変わるため）。最新の金額と条件は、各サービスの公式ページで確認してください。',
+      gMethodsH: '売り方の比較', gYours: 'あなたが選んだ売り方', gTradeinH: '下取りの公式ページ',
+      gTipsH: '高く売るコツ', gChooseH: '買取サービスの選び方', gLawH: '本人確認（古物営業法）',
+      gAsOf: '確認日', gSrc: '公式ページ', guideAdH: '買取サービス',
+      guideAdNote: '以下は広告です。このページの比較やチェック結果とは関係ありません。'
     },
     en: {
       title: 'Before You Sell Your iPhone',
@@ -47,7 +56,15 @@
       n2: 'Menu names can differ by iOS version. If they don’t match, check the source page.',
       n3: 'For LINE, authenticator apps, and bank or payment apps, check each service’s official guide.',
       n4: 'This site is not affiliated with Apple.',
-      foot: 'Before You Sell Your iPhone', close: 'Close', langBtn: '日本語', carrierPrefix: 'Check page: '
+      foot: 'Before You Sell Your iPhone', close: 'Close', langBtn: '日本語', carrierPrefix: 'Check page: ',
+      resetArm: 'Tap again to clear all',
+      n5: '“Ways to sell” reflects each company’s official page as of the check date. Terms can change.',
+      guideH: 'Ways to sell, and tips for a better price',
+      guideLead: 'We don’t compare buyback prices (they change daily). Check current prices and terms on each service’s official page.',
+      gMethodsH: 'Ways to sell compared', gYours: 'Your choice', gTradeinH: 'Official trade-in pages (Japan)',
+      gTipsH: 'Tips for a better price', gChooseH: 'How to choose a buyback service', gLawH: 'ID check (Antique Dealers Act)',
+      gAsOf: 'Checked', gSrc: 'Official pages', guideAdH: 'Buyback services',
+      guideAdNote: 'The following are ads. They are not part of this page’s comparison or your checklist.'
     }
   };
 
@@ -148,6 +165,77 @@
     $('done').hidden = done !== steps.length;
   }
 
+  // ---- 売り方の比較・高く売るコツ（guide.js） ----
+  function srcLinks(keys) {
+    var L = state.lang;
+    if (!keys || !keys.length) return '';
+    return '<div class="src">' + esc(t('gSrc')) + (L === 'ja' ? '：' : ': ') + keys.map(function (k) {
+      var r = G.SRC[k] ? G.SRC[k][L] : D.SRC[k][L];
+      return '<a href="' + esc(r[1]) + '" target="_blank" rel="noopener noreferrer">' + esc(r[0]) + '</a>';
+    }).join(L === 'ja' ? ' ／ ' : ' / ') + '</div>';
+  }
+  function carrierLinks() {
+    var L = state.lang;
+    return '<div class="carriers">' + D.CARRIERS.map(function (c2) {
+      return '<a href="' + esc(c2.url) + '" target="_blank" rel="noopener noreferrer">' + esc(t('carrierPrefix') + c2[L]) + '</a>';
+    }).join('') + '</div>';
+  }
+  function renderGuide() {
+    var box = $('guide');
+    var onList = !!state.sel && !$('list').hidden;
+    var show = !onList || G.showGuide(state.sel);
+    box.hidden = !show;
+    if (!show) { $('guideBody').innerHTML = ''; renderGuideAds(); return; }
+    var L = state.lang;
+    var open = onList ? G.openFor(state.sel.method) : [];
+    var asOf = '<p class="asof">' + esc(t('gAsOf')) + (L === 'ja' ? '：' : ': ') + esc(G.AS_OF) + '</p>';
+    var h = '';
+    // 売り方の比較
+    h += '<div class="card gsec" id="gMethods"><h3>' + esc(t('gMethodsH')) + '</h3>';
+    G.METHODS.forEach(function (m) {
+      var mine = open.indexOf(m.id) >= 0;
+      h += '<details class="gm" data-method="' + m.id + '"' + (mine ? ' open' : '') + '><summary><span class="gm-n">' + esc(m[L].name) + '</span>' +
+        '<span class="gm-s">' + esc(m[L].sub) + '</span>' + (mine ? '<span class="gm-mine">' + esc(t('gYours')) + '</span>' : '') + '</summary>';
+      h += '<dl class="gm-dl">' + G.ROWS.map(function (r, i) {
+        return '<dt>' + esc(r[L]) + '</dt><dd>' + esc(m[L].rows[i]) + '</dd>';
+      }).join('') + '</dl>';
+      if (m.id === 'tradein') {
+        h += '<h4>' + esc(t('gTradeinH')) + '</h4><ul class="gt">' + G.TRADEIN.map(function (x) {
+          var r = G.SRC[x.src][L];
+          return '<li><a href="' + esc(r[1]) + '" target="_blank" rel="noopener noreferrer">' + esc(r[0]) + '</a><span>' + esc(x[L]) + '</span></li>';
+        }).join('') + '</ul>';
+      }
+      h += srcLinks(m.src) + '</details>';
+    });
+    h += asOf + '</div>';
+    // 高く売るコツ
+    h += '<div class="card gsec" id="gTips"><h3>' + esc(t('gTipsH')) + '</h3>';
+    G.TIPS.forEach(function (tp) {
+      h += '<div class="gtip" data-tip="' + tp.id + '"><h4>' + esc(tp[L].t) + '</h4><ul>' +
+        tp[L].b.map(function (b) { return '<li>' + esc(b) + '</li>'; }).join('') + '</ul>';
+      if (tp.carriers) h += carrierLinks();
+      h += srcLinks(tp.src) + '</div>';
+    });
+    h += asOf + '</div>';
+    // 選び方
+    h += '<div class="card gsec" id="gChoose"><h3>' + esc(t('gChooseH')) + '</h3><ul class="gcheck">' +
+      G.CHOOSE[L].map(function (b) { return '<li>' + esc(b) + '</li>'; }).join('') + '</ul>' + srcLinks(G.CHOOSE.src) + '</div>';
+    // 本人確認
+    h += '<div class="card gsec" id="gLaw"><h3>' + esc(t('gLawH')) + '</h3><ul>' +
+      G.LAW[L].map(function (b) { return '<li>' + esc(b) + '</li>'; }).join('') + '</ul>' + srcLinks(G.LAW.src) + asOf + '</div>';
+    $('guideBody').innerHTML = h;
+    renderGuideAds();
+  }
+  function renderGuideAds() {
+    var box = $('guideAdBox');
+    var list = (ads && Array.isArray(ads.guide)) ? ads.guide.filter(validAd) : [];
+    var onList = !!state.sel && !$('list').hidden;
+    var ok = !$('guide').hidden && (!onList || D.showAds(state.sel));
+    if (!ok || !list.length) { box.hidden = true; $('guideAdItems').innerHTML = ''; return; }
+    $('guideAdItems').innerHTML = list.map(adHtml).join('');
+    box.hidden = false;
+  }
+
   // ---- 広告（ads.json。中身が空なら表示しない） ----
   function validAd(a) { return a && typeof a.href === 'string' && /^https:\/\//.test(a.href); }
   function adHtml(a) {
@@ -185,18 +273,19 @@
     if (!window.fetch) return;
     fetch('ads.json', { cache: 'no-store', credentials: 'omit' })
       .then(function (r) { return r.ok ? r.json() : null; })
-      .then(function (j) { ads = j; if (state.sel && !$('list').hidden) { renderAds(); maybeInterstitial(); } })
+      .then(function (j) { ads = j; renderGuideAds(); if (state.sel && !$('list').hidden) { renderAds(); maybeInterstitial(); } })
       .catch(function () { ads = null; });
   }
 
   // ---- 画面切り替え ----
   function showList() {
     $('setup').hidden = true; $('list').hidden = false;
-    render(); maybeInterstitial();
+    render(); renderGuide(); maybeInterstitial();
   }
   function showSetup() {
     $('list').hidden = true; $('setup').hidden = false;
     if (state.sel) writeSel(state.sel);
+    renderGuide();
   }
 
   // ---- イベント ----
@@ -215,12 +304,21 @@
     updateProgress();
   });
   $('editBtn').addEventListener('click', function () { showSetup(); window.scrollTo(0, 0); });
+  // 確認ダイアログ（confirm）は使わず、2回押しで消す
+  var resetTimer = null;
+  function disarmReset() { var b = $('resetBtn'); b.classList.remove('armed'); b.textContent = t('reset'); clearTimeout(resetTimer); resetTimer = null; }
   $('resetBtn').addEventListener('click', function () {
-    if (!window.confirm(t('resetQ'))) return;
+    var b = $('resetBtn');
+    if (!b.classList.contains('armed')) {
+      b.classList.add('armed'); b.textContent = t('resetArm');
+      resetTimer = setTimeout(disarmReset, 5000);
+      return;
+    }
+    disarmReset();
     state.checks = {}; save(); render();
   });
   $('langBtn').addEventListener('click', function () {
-    state.lang = state.lang === 'ja' ? 'en' : 'ja'; save(); applyLang(); if (state.sel && !$('list').hidden) render();
+    state.lang = state.lang === 'ja' ? 'en' : 'ja'; save(); applyLang(); disarmReset(); if (state.sel && !$('list').hidden) render(); renderGuide();
   });
   $('interClose').addEventListener('click', closeInter);
   $('inter').addEventListener('click', function (e) { if (e.target === $('inter')) closeInter(); });
