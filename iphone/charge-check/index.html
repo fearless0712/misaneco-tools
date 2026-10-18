@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self'; img-src 'self' data: https://*.a8.net; connect-src 'self'; base-uri 'none'; form-action 'none'">
+<meta name="referrer" content="no-referrer">
+<meta name="description" content="手持ちの充電器・ケーブルで、iPhone・iPad・AirPods・Apple Watch・Macを充電できるか／急速充電になるかを、Apple公式の記載にもとづいて判定する無料ツール。">
+<title>充電器・ケーブル相性チェッカー</title>
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="css/style.css">
+<script src="js/i18n.js" defer></script>
+<script src="js/logic.js" defer></script>
+<script src="js/app.js" defer></script>
+</head>
+<body>
+<header class="top">
+  <div class="wrap top-in">
+    <div>
+      <h1 data-i18n="title">充電器・ケーブル相性チェッカー</h1>
+      <p class="sub" data-i18n="subtitle"></p>
+    </div>
+    <button id="lang" class="btn-lang" type="button" data-i18n="lang_btn">English</button>
+  </div>
+</header>
+<main class="wrap">
+  <p class="lead" data-i18n="lead"></p>
+  <p class="note"><span data-i18n="privacy"></span> <span data-i18n="term"></span></p>
+
+  <section class="step">
+    <h2 data-i18n="step1"></h2>
+    <p class="small muted"><span id="sel-count"></span> ・ <span data-i18n="device_count"></span></p>
+    <div id="devices"></div>
+  </section>
+  <section class="step">
+    <h2 data-i18n="step2"></h2>
+    <div id="chargers" class="opts"></div>
+  </section>
+  <section class="step">
+    <h2 data-i18n="step3"></h2>
+    <div id="cables" class="opts"></div>
+  </section>
+  <div class="actions">
+    <button id="judge" class="btn-main" type="button" data-i18n="judge">判定する</button>
+    <button id="reset" class="btn-sub" type="button" data-i18n="reset">すべて解除</button>
+  </div>
+
+  <section id="result-sec" class="step" hidden>
+    <h2 data-i18n="results"></h2>
+    <p class="small muted" data-i18n="unverified_note"></p>
+    <div id="results"></div>
+  </section>
+  <section id="suggest" class="step suggest" hidden>
+    <h2 data-i18n="suggest"></h2>
+    <div id="suggest-body"></div>
+  </section>
+  <aside id="ad-inline" class="ad-box" hidden></aside>
+
+  <section class="step">
+    <h2 data-i18n="safety"></h2>
+    <div id="safety-body"></div>
+  </section>
+  <section class="step">
+    <details>
+      <summary data-i18n="allsources"></summary>
+      <ul id="sources-list" class="srclist"></ul>
+    </details>
+    <p class="small muted" id="checked"></p>
+  </section>
+  <footer class="foot">
+    <p class="small" data-i18n="disclaimer"></p>
+    <button id="clear" class="btn-link" type="button" data-i18n="clear_saved"></button>
+  </footer>
+</main>
+<div id="ad-full" class="ad-full" hidden role="dialog" aria-modal="true" aria-label="広告 / Ad">
+  <div class="ad-full-in">
+    <button id="ad-close" class="ad-close" type="button" aria-label="閉じる / Close">×</button>
+    <div id="ad-full-body"></div>
+  </div>
+</div>
+</body>
+</html>

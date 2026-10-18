@@ -1,0 +1,33 @@
+{
+ "_readme": "広告の設定。href と img が https で入っている項目だけ表示されます。空なら枠ごと非表示。A8.net の広告リンク（<a href>）・バナー画像（<img src>）・計測用1x1画像（pixel）をそれぞれ貼ってください。",
+ "inline": {
+  "items": [
+   {
+    "id": "a8-hamee-inline",
+    "network": "A8.net",
+    "advertiser": "Hamee",
+    "href": "https://px.a8.net/svt/ejp?a8mat=4BEJHI+AO0LYQ+XTI+7PCKH",
+    "img": "https://www23.a8.net/svt/bgt?aid=261018918645&wid=001&eno=01&mid=s00000004383001294000&mc=1",
+    "imgW": 300,
+    "imgH": 250,
+    "pixel": "https://www12.a8.net/0.gif?a8mat=4BEJHI+AO0LYQ+XTI+7PCKH",
+    "alt": "Hamee（iPhoneケース・充電器）"
+   }
+  ]
+ },
+ "interstitial": {
+  "items": [
+   {
+    "id": "a8-hamee-full",
+    "network": "A8.net",
+    "advertiser": "Hamee",
+    "href": "https://px.a8.net/svt/ejp?a8mat=4BEJHI+AO0LYQ+XTI+7PCKH",
+    "img": "https://www23.a8.net/svt/bgt?aid=261018918645&wid=001&eno=01&mid=s00000004383001294000&mc=1",
+    "imgW": 300,
+    "imgH": 250,
+    "pixel": "https://www12.a8.net/0.gif?a8mat=4BEJHI+AO0LYQ+XTI+7PCKH",
+    "alt": "Hamee（iPhoneケース・充電器）"
+   }
+  ]
+ }
+}

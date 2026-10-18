@@ -1,0 +1,244 @@
+{
+ "checked": "2026-10-18",
+ "chargers": [
+  {
+   "id": "a5",
+   "port": "A",
+   "ports": 1,
+   "w": 5,
+   "label": {
+    "ja": "5W USB-A（小さな白い四角い充電器など）",
+    "en": "5W USB-A (small cube)"
+   }
+  },
+  {
+   "id": "a12",
+   "port": "A",
+   "ports": 1,
+   "w": 12,
+   "label": {
+    "ja": "12W USB-A",
+    "en": "12W USB-A"
+   }
+  },
+  {
+   "id": "c18",
+   "port": "C",
+   "ports": 1,
+   "w": 18,
+   "pd": true,
+   "label": {
+    "ja": "18W USB-C",
+    "en": "18W USB-C"
+   }
+  },
+  {
+   "id": "c20",
+   "port": "C",
+   "ports": 1,
+   "w": 20,
+   "pd": true,
+   "label": {
+    "ja": "20W USB-C",
+    "en": "20W USB-C"
+   }
+  },
+  {
+   "id": "c30",
+   "port": "C",
+   "ports": 1,
+   "w": 30,
+   "pd": true,
+   "label": {
+    "ja": "30W USB-C",
+    "en": "30W USB-C"
+   }
+  },
+  {
+   "id": "c35d",
+   "port": "C",
+   "ports": 2,
+   "w": 35,
+   "pd": true,
+   "label": {
+    "ja": "35W USB-C デュアルポート（2口・合計35W）",
+    "en": "35W Dual USB-C (2 ports, 35W total)"
+   }
+  },
+  {
+   "id": "c40dyn",
+   "port": "C",
+   "ports": 1,
+   "w": 40,
+   "maxW": 60,
+   "pd": true,
+   "avs": true,
+   "label": {
+    "ja": "40Wダイナミック（最大60W）USB-C",
+    "en": "40W Dynamic (60W Max) USB-C"
+   }
+  },
+  {
+   "id": "c61",
+   "port": "C",
+   "ports": 1,
+   "w": 61,
+   "pd": true,
+   "label": {
+    "ja": "61W USB-C",
+    "en": "61W USB-C"
+   }
+  },
+  {
+   "id": "c67",
+   "port": "C",
+   "ports": 1,
+   "w": 67,
+   "pd": true,
+   "label": {
+    "ja": "67W USB-C",
+    "en": "67W USB-C"
+   }
+  },
+  {
+   "id": "c70",
+   "port": "C",
+   "ports": 1,
+   "w": 70,
+   "pd": true,
+   "label": {
+    "ja": "70W USB-C",
+    "en": "70W USB-C"
+   }
+  },
+  {
+   "id": "c96",
+   "port": "C",
+   "ports": 1,
+   "w": 96,
+   "pd": true,
+   "label": {
+    "ja": "96W USB-C",
+    "en": "96W USB-C"
+   }
+  },
+  {
+   "id": "c140",
+   "port": "C",
+   "ports": 1,
+   "w": 140,
+   "pd": true,
+   "label": {
+    "ja": "140W USB-C",
+    "en": "140W USB-C"
+   }
+  }
+ ],
+ "cables": [
+  {
+   "id": "a2l",
+   "host": "A",
+   "dev": "lightning",
+   "label": {
+    "ja": "USB-A - Lightning",
+    "en": "USB-A to Lightning"
+   }
+  },
+  {
+   "id": "c2l",
+   "host": "C",
+   "dev": "lightning",
+   "label": {
+    "ja": "USB-C - Lightning",
+    "en": "USB-C to Lightning"
+   }
+  },
+  {
+   "id": "a2c",
+   "host": "A",
+   "dev": "usbc",
+   "label": {
+    "ja": "USB-A - USB-C",
+    "en": "USB-A to USB-C"
+   }
+  },
+  {
+   "id": "c2c",
+   "host": "C",
+   "dev": "usbc",
+   "ratedW": null,
+   "label": {
+    "ja": "USB-C - USB-C（対応W不明）",
+    "en": "USB-C to USB-C (rating unknown)"
+   }
+  },
+  {
+   "id": "c2c60",
+   "host": "C",
+   "dev": "usbc",
+   "ratedW": 60,
+   "label": {
+    "ja": "USB-C - USB-C（60W対応）",
+    "en": "USB-C to USB-C (60W)"
+   }
+  },
+  {
+   "id": "c2c240",
+   "host": "C",
+   "dev": "usbc",
+   "ratedW": 240,
+   "label": {
+    "ja": "USB-C - USB-C（240W対応）",
+    "en": "USB-C to USB-C (240W)"
+   }
+  },
+  {
+   "id": "magsafe",
+   "host": "C",
+   "dev": "magsafe",
+   "label": {
+    "ja": "MagSafe充電器（iPhone用・USB-C）",
+    "en": "MagSafe Charger (for iPhone, USB-C)"
+   }
+  },
+  {
+   "id": "magsafe3",
+   "host": "C",
+   "dev": "magsafe3",
+   "label": {
+    "ja": "USB-C - MagSafe 3（Mac用）",
+    "en": "USB-C to MagSafe 3 (for Mac)"
+   }
+  },
+  {
+   "id": "watchA",
+   "host": "A",
+   "dev": "watch",
+   "fast": false,
+   "label": {
+    "ja": "Apple Watch磁気充電ケーブル（USB-A）",
+    "en": "Apple Watch Magnetic Charging Cable (USB-A)"
+   }
+  },
+  {
+   "id": "watchC",
+   "host": "C",
+   "dev": "watch",
+   "fast": false,
+   "label": {
+    "ja": "Apple Watch磁気充電ケーブル（USB-C・高速非対応）",
+    "en": "Apple Watch Magnetic Charging Cable (USB-C, not fast)"
+   }
+  },
+  {
+   "id": "watchCfast",
+   "host": "C",
+   "dev": "watch",
+   "fast": true,
+   "label": {
+    "ja": "Apple Watch磁気高速充電ケーブル（USB-C・アルミ製の充電面）",
+    "en": "Apple Watch Magnetic Fast Charging Cable (USB-C, aluminum puck)"
+   }
+  }
+ ]
+}

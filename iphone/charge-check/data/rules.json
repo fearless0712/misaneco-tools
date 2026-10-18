@@ -1,0 +1,269 @@
+{
+ "checked": "2026-10-18",
+ "rules": [
+  {
+   "id": "iphone_wired",
+   "source": "iphone_fast",
+   "quote": {
+    "ja": "高速充電するには、iPhone 15以降とUSB-Cケーブル（付属ケーブルなど）が必要です。それ以前のモデルのiPhoneでは、USB-C - Lightningケーブルと以下のいずれかのアダプタが必要です。／Apple製の18W*以上のUSB-C電源アダプタ／USB Power Delivery（USB-PD）を使用できる、対応する他社製のUSB-C電源アダプタ",
+    "en": "To fast charge an iPhone 15 or later, use a USB-C cable, like the one that came in the box, or use a USB-C to Lightning cable with an earlier iPhone model. You need one of these adapters: ／ Apple 18W or greater USB-C Power Adapter ／ A comparable third-party USB-C power adapter that supports USB-PD"
+   }
+  },
+  {
+   "id": "iphone_12_20w",
+   "source": "iphone_fast",
+   "quote": {
+    "ja": "* iPhone 12以降を高速充電するには、20W以上の電源アダプタが必要です。",
+    "en": null
+   }
+  },
+  {
+   "id": "iphone_17",
+   "source": "iphone_fast",
+   "quote": {
+    "ja": "iPhone 17eまたはiPhone Airは、20W以上のアダプターを使用してバッテリーを30分で最大50パーセントまで高速充電できます。iPhone 17、iPhone 17 Pro、iPhone 17 Pro Maxの場合、40W以上のアダプタを使用してバッテリーを約20分で最大50パーセントまで充電できます。",
+    "en": "You can fast charge iPhone 17, iPhone 17 Pro, and iPhone 17 Pro Max up to 50 percent battery in around 20 minutes with a 40W adapter or higher. For iPhone 17e and iPhone Air, use a 20W adapter or higher to charge up to 50 percent battery in around 30 minutes."
+   }
+  },
+  {
+   "id": "iphone_18pro",
+   "source": "iphone_fast",
+   "quote": {
+    "ja": null,
+    "en": "To fast charge iPhone 18 Pro and iPhone 18 Pro Max up to 50 percent battery in around 15 minutes, use the USB-C cable that came in the box, and one of these adapters: ／ Apple 40W Dynamic Power Adapter with 60W Max ／ A comparable third-party 60W-capable (or greater) adapter that uses Adjustable Voltage Supply (AVS) and supports USB Power Delivery (USB-PD) 3.2"
+   }
+  },
+  {
+   "id": "iphone_magsafe16",
+   "source": "iphone_fast",
+   "quote": {
+    "ja": "ワイヤレスで高速充電するには、iPhone 16以降とMagSafe充電器、以下のいずれかのアダプタが必要です。／Apple製の30W以上のUSB-C電源アダプタ／USB Power Delivery（USB-PD）を使用できる、対応する他社製のUSB-C電源アダプタ",
+    "en": "For iPhone 16, iPhone 17, and iPhone Air use a MagSafe Charger and one of these adapters: ／ Apple 30W or greater USB-C Power Adapter ／ A comparable third-party USB-C power adapter that supports USB Power Delivery (USB-PD)"
+   }
+  },
+  {
+   "id": "iphone_magsafe15",
+   "source": "iphone_fast",
+   "quote": {
+    "ja": "iPhone 15以前の場合、MagSafe充電器と以下のいずれかのアダプタを使用して、最大15Wの高速充電ができます。／Apple製の20W以上のUSB-C電源アダプタ／USB Power Delivery（USB-PD）を使用できる、対応する他社製のUSB-C電源アダプタ",
+    "en": "For iPhone 15 and earlier, you can fast charge up to 15W with a MagSafe Charger and one of these adapters: ／ Apple 20W or greater USB-C Power Adapter ／ A comparable third-party USB-C power adapter that supports USB Power Delivery (USB-PD)"
+   }
+  },
+  {
+   "id": "iphone_magsafe18pro",
+   "source": "iphone_fast",
+   "quote": {
+    "ja": null,
+    "en": "To wirelessly charge iPhone 18 Pro and iPhone 18 Pro Max up to 50 percent in around 30 minutes, use a MagSafe Charger and a 35W or higher adapter."
+   }
+  },
+  {
+   "id": "iphone_temp",
+   "source": "iphone_fast",
+   "quote": {
+    "ja": "低温または高温になりすぎた場合は、高速充電できないことがあります。",
+    "en": "Fast charging might not work in conditions that are too cold or too hot."
+   }
+  },
+  {
+   "id": "watch_models",
+   "source": "watch_fast",
+   "quote": {
+    "ja": "高速充電に対応しているのは、Apple Watch Series 7以降、Apple Watch SE 3、Apple Watch Ultra以降です。",
+    "en": "Fast charging is supported on Apple Watch Series 7 and later, Apple Watch SE 3, and Apple Watch Ultra and later."
+   }
+  },
+  {
+   "id": "watch_cable",
+   "source": "watch_fast",
+   "quote": {
+    "ja": "高速充電するには、Apple USB-C磁気高速充電ケーブルが必要です。",
+    "en": null
+   }
+  },
+  {
+   "id": "watch_adapter",
+   "source": "watch_fast",
+   "quote": {
+    "ja": "以下のいずれかの電源アダプタも必要です。／Apple製の18W、20W、29W、30W、35W、61W、87W、96W、または140WのUSB-C電源アダプタ／5W以上のUSB Power Delivery（USB-PD）に対応する他社製の互換USB-C電源アダプタ",
+    "en": "You also need one of these power adapters: ／ Apple 18W, 20W, 29W, 30W, 35W, 61W, 87W, 96W, or 140W USB-C Power Adapter ／ A comparable third-party USB-C power adapter that supports USB Power Delivery (USB-PD) of 5W or greater"
+   }
+  },
+  {
+   "id": "watch_guide18",
+   "source": "watch_charge",
+   "quote": {
+    "ja": "高速充電には、互換性のある充電器および18W以上のUSB-C電源アダプタが必要です。",
+    "en": "Fast charging requires a compatible charger and an 18W or greater USB-C Power Adapter."
+   }
+  },
+  {
+   "id": "watch_wpt",
+   "source": "watch_fast",
+   "quote": {
+    "ja": "WPT準拠の充電器は、高速充電には対応していません。",
+    "en": null
+   }
+  },
+  {
+   "id": "mac_pd",
+   "source": "mac_adapter",
+   "quote": {
+    "ja": "USB-C充電のMacノートブックは、USB Power Delivery（USB PD）対応のUSB-C電源アダプタやディスプレイで充電できます。",
+    "en": "If your Mac uses USB-C to charge, you can charge your Mac laptop with any USB-C power adapter or display that supports USB Power Delivery (USB PD)."
+   }
+  },
+  {
+   "id": "mac_min",
+   "source": "mac_adapter",
+   "quote": {
+    "ja": "快適に充電できるように、お使いのMac向けに推奨される電源アダプタの最小ワット数以上の給電能力がある電源アダプタやディスプレイをお使いください。",
+    "en": "For the best charging experience, use a power adapter or display that provides at least the minimum wattage of the power adapter recommended for your Mac."
+   }
+  },
+  {
+   "id": "mac_any",
+   "source": "mac_adapter",
+   "quote": {
+    "ja": "Macの充電にUSB-Cをお使いの場合は、お使いのMacの推奨アダプタよりもワット数が高い、または低い電源アダプタやディスプレイであっても、任意のUSB-C電源アダプタでMacを充電できます。",
+    "en": "If your Mac uses USB-C to charge, you can charge your Mac with any USB-C power adapter or display, even if it provides higher or lower wattage than the adapter recommended for your Mac."
+   }
+  },
+  {
+   "id": "mac_fast_models",
+   "source": "mac_fast",
+   "quote": {
+    "ja": "2022年以降に発売されたMacBook Airと、2021年以降に発売された14インチモデルと16インチモデルのMacBook Proは高速充電に対応していて、30分ほどで最大50パーセントまで充電できます。",
+    "en": "You can fast charge your MacBook Air introduced in 2022 or later and 14- and 16-inch MacBook Pro models introduced in 2021 or later up to 50 percent battery in around 30 minutes."
+   }
+  },
+  {
+   "id": "ipad_min",
+   "source": "ipad_adapter",
+   "quote": {
+    "ja": "他社製の電源アダプタを使用する場合は、次の推奨仕様を満たしている必要があります:／周波数: 50～60 Hz、単相／線間電圧: 100～240 VAC／出力電圧/電流: 5～15 V / 3A／最小出力電力: 15 W／出力ポート: USB-C",
+    "en": null
+   }
+  },
+  {
+   "id": "ipad_slow",
+   "source": "ipad_charge",
+   "quote": {
+    "ja": "7.5ワット以下の有線式充電器を使用している場合、予期したよりも充電に時間がかかることがあります。",
+    "en": null
+   }
+  },
+  {
+   "id": "ipad_fastmsg",
+   "source": "ipad_charge",
+   "quote": {
+    "ja": "このメッセージは、お使いのiPadが高速充電に対応していても、接続した充電器が最適な給電をできない場合に表示されます。",
+    "en": null
+   }
+  },
+  {
+   "id": "airpods_wired",
+   "source": "airpods_charge",
+   "quote": {
+    "ja": "LightningケーブルまたはUSB-Cケーブルを充電ケースに接続します。どちらを接続するかは充電ケースのモデルによります。",
+    "en": null
+   }
+  },
+  {
+   "id": "airpods_wireless",
+   "source": "airpods_charge",
+   "quote": {
+    "ja": "MagSafe充電ケースまたはワイヤレス充電ケースをQi対応の充電マットまたはMagSafe充電器で充電するには、ケースの蓋を閉じ、ステータスランプを上向きにして充電器の上に置いてください。",
+    "en": null
+   }
+  },
+  {
+   "id": "airpods_watchcharger",
+   "source": "airpods_charge",
+   "quote": {
+    "ja": "AirPods Pro 2のMagSafe充電ケース（LightningまたはUSB-C）、AirPods Pro 3のMagSafe充電ケース、AirPods 4 (ANC)のワイヤレス充電ケース、またはAirPods 5のワイヤレス充電ケースをApple Watch充電器で充電するには、ステータスランプを上に向け、蓋を閉じた状態でケースを充電器に置きます。",
+    "en": null
+   }
+  },
+  {
+   "id": "airpods_usb",
+   "source": "airpods_charge",
+   "quote": {
+    "ja": "iPhoneやiPadのUSB充電器を使うか、Macに接続しておくと、速く充電できます。",
+    "en": null
+   }
+  },
+  {
+   "id": "mfi",
+   "source": "mfi",
+   "quote": {
+    "ja": "Appleでは、MFiバッジが付いたApple認定のアクセサリに限りご利用をお勧めしています。",
+    "en": "Apple recommends using only accessories that Apple has certified and that come with the MFi badge."
+   }
+  },
+  {
+   "id": "mfi_risk",
+   "source": "mfi",
+   "quote": {
+    "ja": "コネクタの端子が外れる、非常に熱くなる、またはデバイスにしっかりと収まらない",
+    "en": null
+   }
+  },
+  {
+   "id": "heat_charge",
+   "source": "heat",
+   "quote": {
+    "ja": "充電（ワイヤレス充電も含む）が遅くなる、停止する",
+    "en": "Charging, including wireless charging, slows or stops"
+   }
+  },
+  {
+   "id": "heat_warm",
+   "source": "heat",
+   "quote": {
+    "ja": "デバイスをワイヤレス充電するとき",
+    "en": null
+   }
+  },
+  {
+   "id": "heat_action",
+   "source": "heat",
+   "quote": {
+    "ja": "本体の電源を切ります。／涼しい場所に移します（直射日光を避けます）。／本体の温度が下がるまで待ちます。",
+    "en": null
+   }
+  },
+  {
+   "id": "wet",
+   "source": "power_safety",
+   "quote": {
+    "ja": "デバイスを湿った状態で充電しないでください。発火、感電、怪我、またはApple製品やその他の所有物の損傷につながるおそれがあります。",
+    "en": "Never charge your device when moisture is present, as this can cause fire, electric shock, injury, or damage to your Apple product or other property."
+   }
+  },
+  {
+   "id": "vent",
+   "source": "power_safety",
+   "quote": {
+    "ja": "アダプタは換気の行き届いた場所でお使いください。",
+    "en": null
+   }
+  },
+  {
+   "id": "ipad_heat",
+   "source": "ipad_safety",
+   "quote": {
+    "ja": "例えば、デバイスまたは電源アダプタが電源に接続されているときは、それらの上に寝たり、毛布、枕、または身体の下にそれらを置かないでください。",
+    "en": null
+   }
+  },
+  {
+   "id": "third_party",
+   "source": "ipad_safety",
+   "quote": {
+    "ja": "その他のアダプタは該当する安全基準を満たさない場合があり、充電に使用すると死亡または負傷の危険が生じるおそれがあります。",
+    "en": null
+   }
+  }
+ ]
+}

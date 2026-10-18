@@ -1,0 +1,2615 @@
+{
+ "checked": "2026-10-18",
+ "devices": [
+  {
+   "id": "iphone-8",
+   "cat": "iphone",
+   "name": {
+    "ja": "iPhone 8",
+    "en": "iPhone 8"
+   },
+   "port": "lightning",
+   "wired": {
+    "fastW": 18,
+    "rules": [
+     "iphone_wired"
+    ]
+   },
+   "sources": [
+    "spec_iphone-8",
+    "iphone_fast"
+   ],
+   "specQuote": {
+    "ja": "高速充電に対応：30分で最大50%充電（別売りの18W以上のアダプタを使用）",
+    "en": "Fast-charge capable: Up to 50% charge in 30 minutes with 18W adapter or higher (sold separately)"
+   },
+   "magsafe": null,
+   "qi": true
+  },
+  {
+   "id": "iphone-8-plus",
+   "cat": "iphone",
+   "name": {
+    "ja": "iPhone 8 Plus",
+    "en": "iPhone 8 Plus"
+   },
+   "port": "lightning",
+   "wired": {
+    "fastW": 18,
+    "rules": [
+     "iphone_wired"
+    ]
+   },
+   "sources": [
+    "spec_iphone-8-plus",
+    "iphone_fast"
+   ],
+   "specQuote": {
+    "ja": "高速充電に対応：30分で最大50%充電（別売りの18W以上のアダプタを使用）",
+    "en": "Fast-charge capable: Up to 50% charge in 30 minutes with 18W adapter or higher (sold separately)"
+   },
+   "magsafe": null,
+   "qi": true
+  },
+  {
+   "id": "iphone-x",
+   "cat": "iphone",
+   "name": {
+    "ja": "iPhone X",
+    "en": "iPhone X"
+   },
+   "port": "lightning",
+   "wired": {
+    "fastW": 18,
+    "rules": [
+     "iphone_wired"
+    ]
+   },
+   "sources": [
+    "spec_iphone-x",
+    "iphone_fast"
+   ],
+   "specQuote": {
+    "ja": "高速充電に対応：30分で最大50%充電",
+    "en": "Fast-charge capable: Up to 50% charge 30 minutes"
+   },
+   "magsafe": null,
+   "qi": true
+  },
+  {
+   "id": "iphone-xr",
+   "cat": "iphone",
+   "name": {
+    "ja": "iPhone XR",
+    "en": "iPhone XR"
+   },
+   "port": "lightning",
+   "wired": {
+    "fastW": 20,
+    "rules": [
+     "iphone_wired",
+     "iphone_12_20w"
+    ]
+   },
+   "sources": [
+    "spec_iphone-xr",
+    "iphone_fast"
+   ],
+   "specQuote": {
+    "ja": "高速充電に対応：30分で最大50%充電（別売りの20W以上のアダプタを使用）",
+    "en": "Fast‑charge capable: Up to 50% charge in 30 minutes with 20W adapter or higher (sold separately)"
+   },
+   "magsafe": null,
+   "qi": true
+  },
+  {
+   "id": "iphone-xs",
+   "cat": "iphone",
+   "name": {
+    "ja": "iPhone XS",
+    "en": "iPhone XS"
+   },
+   "port": "lightning",
+   "wired": {
+    "fastW": 18,
+    "rules": [
+     "iphone_wired"
+    ]
+   },
+   "sources": [
+    "spec_iphone-xs",
+    "iphone_fast"
+   ],
+   "specQuote": {
+    "ja": "高速充電に対応：30分で最大50%充電（別売りの18W以上のアダプタを使用）",
+    "en": "Fast-charge capable: Up to 50% charge in 30 minutes with 18W adapter or higher (available separately)"
+   },
+   "magsafe": null,
+   "qi": true
+  },
+  {
+   "id": "iphone-xs-max",
+   "cat": "iphone",
+   "name": {
+    "ja": "iPhone XS Max",
+    "en": "iPhone XS Max"
+   },
+   "port": "lightning",
+   "wired": {
+    "fastW": 18,
+    "rules": [
+     "iphone_wired"
+    ]
+   },
+   "sources": [
+    "spec_iphone-xs-max",
+    "iphone_fast"
+   ],
+   "specQuote": {
+    "ja": "高速充電に対応：30分で最大50%充電（別売りの18W以上のアダプタを使用）",
+    "en": "Fast-charge capable: Up to 50% charge in 30 minutes with 18W adapter or higher (available separately)"
+   },
+   "magsafe": null,
+   "qi": true
+  },
+  {
+   "id": "iphone-11",
+   "cat": "iphone",
+   "name": {
+    "ja": "iPhone 11",
+    "en": "iPhone 11"
+   },
+   "port": "lightning",
+   "wired": {
+    "fastW": 20,
+    "rules": [
+     "iphone_wired",
+     "iphone_12_20w"
+    ]
+   },
+   "sources": [
+    "spec_iphone-11",
+    "iphone_fast"
+   ],
+   "specQuote": {
+    "ja": "高速充電に対応：30分で最大50%充電（別売りの20W以上のアダプタを使用）",
+    "en": "Fast‑charge capable: Up to 50% charge in 30 minutes with 20W adapter or higher (sold separately)"
+   },
+   "magsafe": null,
+   "qi": true
+  },
+  {
+   "id": "iphone-11-pro",
+   "cat": "iphone",
+   "name": {
+    "ja": "iPhone 11 Pro",
+    "en": "iPhone 11 Pro"
+   },
+   "port": "lightning",
+   "wired": {
+    "fastW": 18,
+    "rules": [
+     "iphone_wired"
+    ]
+   },
+   "sources": [
+    "spec_iphone-11-pro",
+    "iphone_fast"
+   ],
+   "specQuote": {
+    "ja": "高速充電に対応：約30分で最大50%充電（18W以上のアダプタを使用）",
+    "en": "Fast-charge capable: Up to 50% charge in around 30 minutes with 18W adapter or higher"
+   },
+   "magsafe": null,
+   "qi": true
+  },
+  {
+   "id": "iphone-11-pro-max",
+   "cat": "iphone",
+   "name": {
+    "ja": "iPhone 11 Pro Max",
+    "en": "iPhone 11 Pro Max"
+   },
+   "port": "lightning",
+   "wired": {
+    "fastW": 18,
+    "rules": [
+     "iphone_wired"
+    ]
+   },
+   "sources": [
+    "spec_iphone-11-pro-max",
+    "iphone_fast"
+   ],
+   "specQuote": {
+    "ja": "高速充電に対応：約30分で最大50%充電（18W以上のアダプタを使用）",
+    "en": "Fast-charge capable: Up to 50% charge in around 30 minuteswith 18W adapter or higher"
+   },
+   "magsafe": null,
+   "qi": true
+  },
+  {
+   "id": "iphone-se-2",
+   "cat": "iphone",
+   "name": {
+    "ja": "iPhone SE（第2世代）",
+    "en": "iPhone SE (2nd generation)"
+   },
+   "port": "lightning",
+   "wired": {
+    "fastW": 18,
+    "rules": [
+     "iphone_wired"
+    ]
+   },
+   "sources": [
+    "spec_iphone-se-2",
+    "iphone_fast"
+   ],
+   "specQuote": {
+    "ja": "高速充電に対応：30分で最大50%充電（別売りの18W以上のアダプタを使用）",
+    "en": "Fast‑charge capable: Up to 50% charge in 30 minutes with 18W adapter or higher (sold separately)"
+   },
+   "magsafe": null,
+   "qi": true
+  },
+  {
+   "id": "iphone-12-mini",
+   "cat": "iphone",
+   "name": {
+    "ja": "iPhone 12 mini",
+    "en": "iPhone 12 mini"
+   },
+   "port": "lightning",
+   "wired": {
+    "fastW": 20,
+    "rules": [
+     "iphone_wired",
+     "iphone_12_20w"
+    ]
+   },
+   "sources": [
+    "spec_iphone-12-mini",
+    "iphone_fast"
+   ],
+   "specQuote": {
+    "ja": "高速充電に対応：30分で最大50%充電（別売りの20W以上のアダプタを使用）",
+    "en": "Fast‑charge capable: Up to 50% charge in 30 minutes with 20W adapter or higher (sold separately)"
+   },
+   "magsafe": {
+    "fastAdapterW": 20,
+    "maxW": 15,
+    "rules": [
+     "iphone_magsafe15"
+    ],
+    "specQuote": {
+     "ja": "最大15WのMagSafeワイヤレス充電",
+     "en": "MagSafe wireless charging up to 15W"
+    }
+   },
+   "qi": true
+  },
+  {
+   "id": "iphone-12",
+   "cat": "iphone",
+   "name": {
+    "ja": "iPhone 12",
+    "en": "iPhone 12"
+   },
+   "port": "lightning",
+   "wired": {
+    "fastW": 20,
+    "rules": [
+     "iphone_wired",
+     "iphone_12_20w"
+    ]
+   },
+   "sources": [
+    "spec_iphone-12",
+    "iphone_fast"
+   ],
+   "specQuote": {
+    "ja": "高速充電に対応：30分で最大50%充電（別売りの20W以上のアダプタを使用）",
+    "en": "Fast‑charge capable: Up to 50% charge in 30 minutes with 20W adapter or higher (sold separately)"
+   },
+   "magsafe": {
+    "fastAdapterW": 20,
+    "maxW": 15,
+    "rules": [
+     "iphone_magsafe15"
+    ],
+    "specQuote": {
+     "ja": "最大15WのMagSafeワイヤレス充電",
+     "en": "MagSafe wireless charging up to 15W"
+    }
+   },
+   "qi": true
+  },
+  {
+   "id": "iphone-12-pro",
+   "cat": "iphone",
+   "name": {
+    "ja": "iPhone 12 Pro",
+    "en": "iPhone 12 Pro"
+   },
+   "port": "lightning",
+   "wired": {
+    "fastW": 20,
+    "rules": [
+     "iphone_wired",
+     "iphone_12_20w"
+    ]
+   },
+   "sources": [
+    "spec_iphone-12-pro",
+    "iphone_fast"
+   ],
+   "specQuote": {
+    "ja": "高速充電に対応：約30分で最大50%充電（別売りの20W以上のアダプタを使用）",
+    "en": "Fast‑charge capable: Up to 50% charge in around 30 minutes with 20W adapter or higher (sold separately)"
+   },
+   "magsafe": {
+    "fastAdapterW": 20,
+    "maxW": 15,
+    "rules": [
+     "iphone_magsafe15"
+    ],
+    "specQuote": {
+     "ja": "最大15WのMagSafeワイヤレス充電",
+     "en": "MagSafe wireless charging up to 15W"
+    }
+   },
+   "qi": true
+  },
+  {
+   "id": "iphone-12-pro-max",
+   "cat": "iphone",
+   "name": {
+    "ja": "iPhone 12 Pro Max",
+    "en": "iPhone 12 Pro Max"
+   },
+   "port": "lightning",
+   "wired": {
+    "fastW": 20,
+    "rules": [
+     "iphone_wired",
+     "iphone_12_20w"
+    ]
+   },
+   "sources": [
+    "spec_iphone-12-pro-max",
+    "iphone_fast"
+   ],
+   "specQuote": {
+    "ja": "高速充電に対応：約30分で最大50%充電（別売りの20W以上のアダプタを使用）",
+    "en": "Fast‑charge capable: Up to 50% charge in 30 minutes with 20W adapter or higher (sold separately)"
+   },
+   "magsafe": {
+    "fastAdapterW": 20,
+    "maxW": 15,
+    "rules": [
+     "iphone_magsafe15"
+    ],
+    "specQuote": {
+     "ja": "最大15WのMagSafeワイヤレス充電",
+     "en": "MagSafe wireless charging up to 15W"
+    }
+   },
+   "qi": true
+  },
+  {
+   "id": "iphone-13-mini",
+   "cat": "iphone",
+   "name": {
+    "ja": "iPhone 13 mini",
+    "en": "iPhone 13 mini"
+   },
+   "port": "lightning",
+   "wired": {
+    "fastW": 20,
+    "rules": [
+     "iphone_wired",
+     "iphone_12_20w"
+    ]
+   },
+   "sources": [
+    "spec_iphone-13-mini",
+    "iphone_fast"
+   ],
+   "specQuote": {
+    "ja": "高速充電に対応：30分で最大50%充電（別売りの20W以上のアダプタを使用）",
+    "en": "Fast-charge capable: Up to 50% charge in 30 minutes with 20W adapter or higher (available separately)"
+   },
+   "magsafe": {
+    "fastAdapterW": 20,
+    "maxW": 15,
+    "rules": [
+     "iphone_magsafe15"
+    ],
+    "specQuote": {
+     "ja": "最大15WのMagSafeワイヤレス充電",
+     "en": "MagSafe wireless charging up to 15W"
+    }
+   },
+   "qi": true
+  },
+  {
+   "id": "iphone-13",
+   "cat": "iphone",
+   "name": {
+    "ja": "iPhone 13",
+    "en": "iPhone 13"
+   },
+   "port": "lightning",
+   "wired": {
+    "fastW": 20,
+    "rules": [
+     "iphone_wired",
+     "iphone_12_20w"
+    ]
+   },
+   "sources": [
+    "spec_iphone-13",
+    "iphone_fast"
+   ],
+   "specQuote": {
+    "ja": "高速充電に対応：約30分で最大50%充電（別売りの20W以上のアダプタを使用）",
+    "en": "Fast-charge capable: Up to 50% charge in 30 minutes with 20W adapter or higher (available separately)"
+   },
+   "magsafe": {
+    "fastAdapterW": 20,
+    "maxW": 15,
+    "rules": [
+     "iphone_magsafe15"
+    ],
+    "specQuote": {
+     "ja": "最大15WのMagSafeワイヤレス充電",
+     "en": "MagSafe wireless charging up to 15W"
+    }
+   },
+   "qi": true
+  },
+  {
+   "id": "iphone-13-pro",
+   "cat": "iphone",
+   "name": {
+    "ja": "iPhone 13 Pro",
+    "en": "iPhone 13 Pro"
+   },
+   "port": "lightning",
+   "wired": {
+    "fastW": 20,
+    "rules": [
+     "iphone_wired",
+     "iphone_12_20w"
+    ]
+   },
+   "sources": [
+    "spec_iphone-13-pro",
+    "iphone_fast"
+   ],
+   "specQuote": {
+    "ja": "高速充電に対応：約30分で最大50%充電（別売りの20W以上のアダプタを使用）",
+    "en": "Fast-charge capable: Up to 50% charge in around 30 minutes with 20W adapter or higher (available separately)"
+   },
+   "magsafe": {
+    "fastAdapterW": 20,
+    "maxW": 15,
+    "rules": [
+     "iphone_magsafe15"
+    ],
+    "specQuote": {
+     "ja": "最大15WのMagSafeワイヤレス充電",
+     "en": "MagSafe wireless charging up to 15W"
+    }
+   },
+   "qi": true
+  },
+  {
+   "id": "iphone-13-pro-max",
+   "cat": "iphone",
+   "name": {
+    "ja": "iPhone 13 Pro Max",
+    "en": "iPhone 13 Pro Max"
+   },
+   "port": "lightning",
+   "wired": {
+    "fastW": 20,
+    "rules": [
+     "iphone_wired",
+     "iphone_12_20w"
+    ]
+   },
+   "sources": [
+    "spec_iphone-13-pro-max",
+    "iphone_fast"
+   ],
+   "specQuote": {
+    "ja": "高速充電に対応：約30分で最大50%充電（別売りの20W以上のアダプタを使用）",
+    "en": "Fast-charge capable: Up to 50% charge in around 30 minutes with 20W adapter or higher (available separately)"
+   },
+   "magsafe": {
+    "fastAdapterW": 20,
+    "maxW": 15,
+    "rules": [
+     "iphone_magsafe15"
+    ],
+    "specQuote": {
+     "ja": "最大15WのMagSafeワイヤレス充電",
+     "en": "MagSafe wireless charging up to 15W"
+    }
+   },
+   "qi": true
+  },
+  {
+   "id": "iphone-se-3",
+   "cat": "iphone",
+   "name": {
+    "ja": "iPhone SE（第3世代）",
+    "en": "iPhone SE (3rd generation)"
+   },
+   "port": "lightning",
+   "wired": {
+    "fastW": 20,
+    "rules": [
+     "iphone_wired",
+     "iphone_12_20w"
+    ]
+   },
+   "sources": [
+    "spec_iphone-se-3",
+    "iphone_fast"
+   ],
+   "specQuote": {
+    "ja": "高速充電に対応30分で最大50%充電（別売りの20W以上のアダプタを使用）",
+    "en": "Fast‑charge capable Up to 50% charge in 30 minutes with 20W adapter or higher (sold separately)"
+   },
+   "magsafe": null,
+   "qi": true
+  },
+  {
+   "id": "iphone-14",
+   "cat": "iphone",
+   "name": {
+    "ja": "iPhone 14",
+    "en": "iPhone 14"
+   },
+   "port": "lightning",
+   "wired": {
+    "fastW": 20,
+    "rules": [
+     "iphone_wired",
+     "iphone_12_20w"
+    ]
+   },
+   "sources": [
+    "spec_iphone-14",
+    "iphone_fast"
+   ],
+   "specQuote": {
+    "ja": "高速充電に対応： 約30分で最大50%充電（別売りの20Wアダプタまたはそれ以上のアダプタとUSB-C充電ケーブルを組み合わせて使用）",
+    "en": "Fast-charge capable: Up to 50% charge in around 30 minutes with 20W adapter or higher paired with USB-C charging cable (available separately)"
+   },
+   "magsafe": {
+    "fastAdapterW": 20,
+    "maxW": 15,
+    "rules": [
+     "iphone_magsafe15"
+    ],
+    "specQuote": {
+     "ja": "最大15WのMagSafeワイヤレス充電",
+     "en": "MagSafe wireless charging up to 15W"
+    }
+   },
+   "qi": true
+  },
+  {
+   "id": "iphone-14-plus",
+   "cat": "iphone",
+   "name": {
+    "ja": "iPhone 14 Plus",
+    "en": "iPhone 14 Plus"
+   },
+   "port": "lightning",
+   "wired": {
+    "fastW": 20,
+    "rules": [
+     "iphone_wired",
+     "iphone_12_20w"
+    ]
+   },
+   "sources": [
+    "spec_iphone-14-plus",
+    "iphone_fast"
+   ],
+   "specQuote": {
+    "ja": "高速充電に対応：約30分で最大50%充電（別売りの20Wアダプタまたはそれ以上のアダプタとUSB-C充電ケーブルを組み合わせて使用）",
+    "en": "Fast-charge capable: Up to 50% charge in around 30 minutes with 20W adapter or higher paired with USB-C charging cable (available separately)"
+   },
+   "magsafe": {
+    "fastAdapterW": 20,
+    "maxW": 15,
+    "rules": [
+     "iphone_magsafe15"
+    ],
+    "specQuote": {
+     "ja": "最大15WのMagSafeワイヤレス充電",
+     "en": "MagSafe wireless charging up to 15W"
+    }
+   },
+   "qi": true
+  },
+  {
+   "id": "iphone-14-pro",
+   "cat": "iphone",
+   "name": {
+    "ja": "iPhone 14 Pro",
+    "en": "iPhone 14 Pro"
+   },
+   "port": "lightning",
+   "wired": {
+    "fastW": 20,
+    "rules": [
+     "iphone_wired",
+     "iphone_12_20w"
+    ]
+   },
+   "sources": [
+    "spec_iphone-14-pro",
+    "iphone_fast"
+   ],
+   "specQuote": {
+    "ja": "高速充電に対応：約30分で最大50%充電（別売りの20W以上のアダプタを使用）",
+    "en": "Fast-charge capable: Up to 50% charge in around 30 minutes with 20W adapter or higher (available separately)"
+   },
+   "magsafe": {
+    "fastAdapterW": 20,
+    "maxW": 15,
+    "rules": [
+     "iphone_magsafe15"
+    ],
+    "specQuote": {
+     "ja": "最大15WのMagSafeワイヤレス充電",
+     "en": "MagSafe wireless charging up to 15W"
+    }
+   },
+   "qi": true
+  },
+  {
+   "id": "iphone-14-pro-max",
+   "cat": "iphone",
+   "name": {
+    "ja": "iPhone 14 Pro Max",
+    "en": "iPhone 14 Pro Max"
+   },
+   "port": "lightning",
+   "wired": {
+    "fastW": 20,
+    "rules": [
+     "iphone_wired",
+     "iphone_12_20w"
+    ]
+   },
+   "sources": [
+    "spec_iphone-14-pro-max",
+    "iphone_fast"
+   ],
+   "specQuote": {
+    "ja": "高速充電に対応：35分で最大50%充電（別売りの20Wアダプタまたはそれ以上のアダプタを使用）",
+    "en": "Fast-charge capable: Up to 50% charge in 35 minutes with 20W adapter or higher (available separately)"
+   },
+   "magsafe": {
+    "fastAdapterW": 20,
+    "maxW": 15,
+    "rules": [
+     "iphone_magsafe15"
+    ],
+    "specQuote": {
+     "ja": "最大15WのMagSafeワイヤレス充電",
+     "en": "MagSafe wireless charging up to 15W"
+    }
+   },
+   "qi": true
+  },
+  {
+   "id": "iphone-15",
+   "cat": "iphone",
+   "name": {
+    "ja": "iPhone 15",
+    "en": "iPhone 15"
+   },
+   "port": "usbc",
+   "wired": {
+    "fastW": 20,
+    "rules": [
+     "iphone_wired",
+     "iphone_12_20w"
+    ]
+   },
+   "sources": [
+    "spec_iphone-15",
+    "iphone_fast"
+   ],
+   "specQuote": {
+    "ja": "高速充電に対応：30分で最大50%充電（別売りの20Wアダプタまたはそれ以上のアダプタとUSB-C充電ケーブルを組み合わせて使用）",
+    "en": "Fast-charge capable: Up to 50% charge in around 30 minutes with 20W adapter or higher (available separately) paired with USB‑C charging cable"
+   },
+   "magsafe": {
+    "fastAdapterW": 20,
+    "maxW": 15,
+    "rules": [
+     "iphone_magsafe15"
+    ],
+    "specQuote": {
+     "ja": "最大15WのMagSafeワイヤレス充電",
+     "en": "MagSafe wireless charging up to 15W"
+    }
+   },
+   "qi": true
+  },
+  {
+   "id": "iphone-15-plus",
+   "cat": "iphone",
+   "name": {
+    "ja": "iPhone 15 Plus",
+    "en": "iPhone 15 Plus"
+   },
+   "port": "usbc",
+   "wired": {
+    "fastW": 20,
+    "rules": [
+     "iphone_wired",
+     "iphone_12_20w"
+    ]
+   },
+   "sources": [
+    "spec_iphone-15-plus",
+    "iphone_fast"
+   ],
+   "specQuote": {
+    "ja": "高速充電に対応： 約30分で最大50%充電14（別売りの20Wアダプタまたはそれ以上のアダプタとUSB-C充電ケーブルを組み合わせて使用）",
+    "en": "Fast-charge capable: Up to 50% charge in around 30 minutes with 20W adapter or higher (available separately) paired with USB‑C charging cable"
+   },
+   "magsafe": {
+    "fastAdapterW": 20,
+    "maxW": 15,
+    "rules": [
+     "iphone_magsafe15"
+    ],
+    "specQuote": {
+     "ja": "最大15WのMagSafeワイヤレス充電",
+     "en": "MagSafe wireless charging up to 15W"
+    }
+   },
+   "qi": true
+  },
+  {
+   "id": "iphone-15-pro",
+   "cat": "iphone",
+   "name": {
+    "ja": "iPhone 15 Pro",
+    "en": "iPhone 15 Pro"
+   },
+   "port": "usbc",
+   "wired": {
+    "fastW": 20,
+    "rules": [
+     "iphone_wired",
+     "iphone_12_20w"
+    ]
+   },
+   "sources": [
+    "spec_iphone-15-pro",
+    "iphone_fast"
+   ],
+   "specQuote": {
+    "ja": "高速充電に対応：約30分で最大50%充電（別売りの20W以上のアダプタを使用）",
+    "en": "Fast-charge capable: Up to 50% charge in around 30 minutes with 20W adapter or higher (available separately)"
+   },
+   "magsafe": {
+    "fastAdapterW": 20,
+    "maxW": 15,
+    "rules": [
+     "iphone_magsafe15"
+    ],
+    "specQuote": {
+     "ja": "最大15WのMagSafeワイヤレス充電",
+     "en": "MagSafe wireless charging up to 15W"
+    }
+   },
+   "qi": true
+  },
+  {
+   "id": "iphone-15-pro-max",
+   "cat": "iphone",
+   "name": {
+    "ja": "iPhone 15 Pro Max",
+    "en": "iPhone 15 Pro Max"
+   },
+   "port": "usbc",
+   "wired": {
+    "fastW": 20,
+    "rules": [
+     "iphone_wired",
+     "iphone_12_20w"
+    ]
+   },
+   "sources": [
+    "spec_iphone-15-pro-max",
+    "iphone_fast"
+   ],
+   "specQuote": {
+    "ja": "高速充電に対応：約30分で最大50%充電（別売りの20W以上のアダプタを使用）",
+    "en": "Fast-charge capable: Up to 50% charge in around 30 minutes with 20W adapter or higher (available separately)"
+   },
+   "magsafe": {
+    "fastAdapterW": 20,
+    "maxW": 15,
+    "rules": [
+     "iphone_magsafe15"
+    ],
+    "specQuote": {
+     "ja": "最大15WのMagSafeワイヤレス充電",
+     "en": "MagSafe wireless charging up to 15W"
+    }
+   },
+   "qi": true
+  },
+  {
+   "id": "iphone-16",
+   "cat": "iphone",
+   "name": {
+    "ja": "iPhone 16",
+    "en": "iPhone 16"
+   },
+   "port": "usbc",
+   "wired": {
+    "fastW": 20,
+    "rules": [
+     "iphone_wired",
+     "iphone_12_20w"
+    ]
+   },
+   "sources": [
+    "spec_iphone-16",
+    "iphone_fast"
+   ],
+   "specQuote": {
+    "ja": "高速充電に対応：約30分で最大50%充電（別売りの20Wアダプタまたはそれ以上のアダプタとUSB-C充電ケーブル、もしくは別売りの30Wアダプタまたはそれ以上のアダプタと別売りのMagSafe充電器を組み合わせて使用）",
+    "en": "Fast-charge capable: Up to 50% charge in 30 minutes with 20W adapter or higher (available separately) paired with USB‑C charging cable, or 30W adapter or higher paired with MagSafe Charger (both available separately)"
+   },
+   "magsafe": {
+    "fastAdapterW": 30,
+    "maxW": 25,
+    "rules": [
+     "iphone_magsafe16"
+    ],
+    "specQuote": {
+     "ja": "最大25WのMagSafeワイヤレス充電",
+     "en": "MagSafe wireless charging up to 25W"
+    }
+   },
+   "qi": true
+  },
+  {
+   "id": "iphone-16-plus",
+   "cat": "iphone",
+   "name": {
+    "ja": "iPhone 16 Plus",
+    "en": "iPhone 16 Plus"
+   },
+   "port": "usbc",
+   "wired": {
+    "fastW": 20,
+    "rules": [
+     "iphone_wired",
+     "iphone_12_20w"
+    ]
+   },
+   "sources": [
+    "spec_iphone-16-plus",
+    "iphone_fast"
+   ],
+   "specQuote": {
+    "ja": "高速充電に対応：約30分で最大50%充電（別売りの20Wアダプタまたはそれ以上のアダプタとUSB-C充電ケーブル、もしくは別売りの30Wアダプタまたはそれ以上のアダプタと別売りのMagSafe充電器を組み合わせて使用）",
+    "en": "Fast-charge capable: Up to 50% charge in around 30 minutes with 20W adapter or higher (available separately) paired with USB‑C charging cable, or 30W adapter or higher paired with MagSafe Charger (both available separately)"
+   },
+   "magsafe": {
+    "fastAdapterW": 30,
+    "maxW": 25,
+    "rules": [
+     "iphone_magsafe16"
+    ],
+    "specQuote": {
+     "ja": "最大25WのMagSafeワイヤレス充電",
+     "en": "MagSafe wireless charging up to 25W"
+    }
+   },
+   "qi": true
+  },
+  {
+   "id": "iphone-16-pro",
+   "cat": "iphone",
+   "name": {
+    "ja": "iPhone 16 Pro",
+    "en": "iPhone 16 Pro"
+   },
+   "port": "usbc",
+   "wired": {
+    "fastW": 20,
+    "rules": [
+     "iphone_wired",
+     "iphone_12_20w"
+    ]
+   },
+   "sources": [
+    "spec_iphone-16-pro",
+    "iphone_fast"
+   ],
+   "specQuote": {
+    "ja": "高速充電に対応： 約30分で最大50%充電（別売りの20Wアダプタまたはそれ以上のアダプタとUSB-C充電ケーブル、もしくは別売りの30Wアダプタまたはそれ以上のアダプタと別売りのMagSafe充電器を組み合わせて使用）",
+    "en": "Fast-charge capable: Up to 50% charge in around 30 minutes with 20W adapter or higher (available separately) paired with USB-C charging cable, or 30W adapter or higher paired with MagSafe Charger (both available separately)"
+   },
+   "magsafe": {
+    "fastAdapterW": 30,
+    "maxW": 25,
+    "rules": [
+     "iphone_magsafe16"
+    ],
+    "specQuote": {
+     "ja": "最大25WのMagSafeワイヤレス充電（30W以上のアダプタを使用）",
+     "en": "MagSafe wireless charging up to 25W with 30W adapter or higher"
+    }
+   },
+   "qi": true
+  },
+  {
+   "id": "iphone-16-pro-max",
+   "cat": "iphone",
+   "name": {
+    "ja": "iPhone 16 Pro Max",
+    "en": "iPhone 16 Pro Max"
+   },
+   "port": "usbc",
+   "wired": {
+    "fastW": 20,
+    "rules": [
+     "iphone_wired",
+     "iphone_12_20w"
+    ]
+   },
+   "sources": [
+    "spec_iphone-16-pro-max",
+    "iphone_fast"
+   ],
+   "specQuote": {
+    "ja": "高速充電に対応： 約30分で最大50%充電（別売りの20Wアダプタまたはそれ以上のアダプタとUSB-C充電ケーブル、もしくは30Wアダプタまたはそれ以上のアダプタとMagSafe充電器を組み合わせて使用）",
+    "en": "Fast-charge capable: Up to 50% charge in around 30 minutes with 20W adapter or higher paired with USB-C charging cable, or 30W adapter or higher paired with MagSafe Charger (all available separately)"
+   },
+   "magsafe": {
+    "fastAdapterW": 30,
+    "maxW": 25,
+    "rules": [
+     "iphone_magsafe16"
+    ],
+    "specQuote": {
+     "ja": "最大25WのMagSafeワイヤレス充電（30W以上のアダプタを使用）",
+     "en": "MagSafe wireless charging up to 25W with 30W adapter or higher"
+    }
+   },
+   "qi": true
+  },
+  {
+   "id": "iphone-16e",
+   "cat": "iphone",
+   "name": {
+    "ja": "iPhone 16e",
+    "en": "iPhone 16e"
+   },
+   "port": "usbc",
+   "wired": {
+    "fastW": 20,
+    "rules": [
+     "iphone_wired",
+     "iphone_12_20w"
+    ]
+   },
+   "sources": [
+    "spec_iphone-16e",
+    "iphone_fast"
+   ],
+   "specQuote": {
+    "ja": "高速充電に対応:30分で最大50%充電（別売りの20Wアダプタまたはそれ以上のアダプタとUSB-C充電ケーブルを組み合わせて使用）",
+    "en": "Fast-charge capable: Up to 50% charge in 30 minutes with 20W adapter or higher (available separately) paired with USB‑C charging cable"
+   },
+   "magsafe": null,
+   "qi": true
+  },
+  {
+   "id": "iphone-17",
+   "cat": "iphone",
+   "name": {
+    "ja": "iPhone 17",
+    "en": "iPhone 17"
+   },
+   "port": "usbc",
+   "wired": {
+    "fastW": 40,
+    "rules": [
+     "iphone_17"
+    ]
+   },
+   "sources": [
+    "spec_iphone-17",
+    "iphone_fast"
+   ],
+   "specQuote": {
+    "ja": "高速充電に対応：20分で最大50%充電（別売りの40Wアダプタまたはそれ以上のアダプタとUSB-C充電ケーブルを組み合わせて使用）30分で最大50%充電（別売りの30Wアダプタまたはそれ以上のアダプタと別売りのMagSafe充電器を組み合わせて使用）",
+    "en": "Fast‑charge capable: Up to 50% charge in 20 minutes with 40W adapter or higher (available separately) paired with USB‑C charging cable Up to 50% charge in 30 minutes with 30W adapter or higher paired with MagSafe Charger (both available separately)"
+   },
+   "magsafe": {
+    "fastAdapterW": 30,
+    "maxW": 25,
+    "rules": [
+     "iphone_magsafe16"
+    ],
+    "specQuote": {
+     "ja": "最大25WのMagSafeワイヤレス充電",
+     "en": "MagSafe wireless charging up to 25W"
+    }
+   },
+   "qi": true
+  },
+  {
+   "id": "iphone-17-pro",
+   "cat": "iphone",
+   "name": {
+    "ja": "iPhone 17 Pro",
+    "en": "iPhone 17 Pro"
+   },
+   "port": "usbc",
+   "wired": {
+    "fastW": 40,
+    "rules": [
+     "iphone_17"
+    ]
+   },
+   "sources": [
+    "spec_iphone-17-pro",
+    "iphone_fast"
+   ],
+   "specQuote": {
+    "ja": "高速充電に対応：20分で最大50%充電（別売りの40Wアダプタまたはそれ以上のアダプタとUSB-C充電ケーブルを組み合わせて使用）30分で最大50%充電（別売りの30Wアダプタまたはそれ以上のアダプタと別売りのMagSafe充電器を組み合わせて使用）",
+    "en": "Fast-charge capable: Up to 50% charge in 20 minutes with 40W adapter or higher (available separately) paired with USB-C charging cable Up to 50% charge in 30 minutes with 30W adapter or higher paired with MagSafe Charger (both available separately)"
+   },
+   "magsafe": {
+    "fastAdapterW": 30,
+    "maxW": 25,
+    "rules": [
+     "iphone_magsafe16"
+    ],
+    "specQuote": {
+     "ja": "最大25WのMagSafeワイヤレス充電",
+     "en": "MagSafe wireless charging up to 25W"
+    }
+   },
+   "qi": true
+  },
+  {
+   "id": "iphone-17-pro-max",
+   "cat": "iphone",
+   "name": {
+    "ja": "iPhone 17 Pro Max",
+    "en": "iPhone 17 Pro Max"
+   },
+   "port": "usbc",
+   "wired": {
+    "fastW": 40,
+    "rules": [
+     "iphone_17"
+    ]
+   },
+   "sources": [
+    "spec_iphone-17-pro-max",
+    "iphone_fast"
+   ],
+   "specQuote": {
+    "ja": "高速充電に対応：20分で最大50%充電（別売りの40Wアダプタまたはそれ以上のアダプタとUSB-C充電ケーブルを組み合わせて使用30分で最大50%充電（別売りの30Wアダプタまたはそれ以上のアダプタと別売りのMagSafe充電器を組み合わせて使用）",
+    "en": "Fast-charge capable: Up to 50% charge in 20 minutes with 40W adapter or higher (available separately) paired with USB-C charging cable Up to 50% charge in 30 minutes with 30W adapter or higher paired with MagSafe Charger (both available separately)"
+   },
+   "magsafe": {
+    "fastAdapterW": 30,
+    "maxW": 25,
+    "rules": [
+     "iphone_magsafe16"
+    ],
+    "specQuote": {
+     "ja": "最大25WのMagSafeワイヤレス充電",
+     "en": "MagSafe wireless charging up to 25W"
+    }
+   },
+   "qi": true
+  },
+  {
+   "id": "iphone-air",
+   "cat": "iphone",
+   "name": {
+    "ja": "iPhone Air",
+    "en": "iPhone Air"
+   },
+   "port": "usbc",
+   "wired": {
+    "fastW": 20,
+    "rules": [
+     "iphone_17"
+    ]
+   },
+   "sources": [
+    "spec_iphone-air",
+    "iphone_fast"
+   ],
+   "specQuote": {
+    "ja": "高速充電に対応：30分で最大50%充電（別売りの20Wアダプタまたはそれ以上のアダプタとUSB-C充電ケーブル、もしくは別売りの30Wアダプタまたはそれ以上のアダプタと別売りのMagSafe充電器を組み合わせて使用）",
+    "en": "Fast-charge capable: Up to 50% charge in 30 minutes with 20W adapter or higher (available separately) paired with USB‑C charging cable, or 30W adapter or higher paired with MagSafe Charger (both available separately)"
+   },
+   "magsafe": {
+    "fastAdapterW": 30,
+    "maxW": 20,
+    "rules": [
+     "iphone_magsafe16"
+    ],
+    "specQuote": {
+     "ja": "最大20WのMagSafeワイヤレス充電",
+     "en": "MagSafe wireless charging up to 20W"
+    }
+   },
+   "qi": true
+  },
+  {
+   "id": "iphone-17e",
+   "cat": "iphone",
+   "name": {
+    "ja": "iPhone 17e",
+    "en": "iPhone 17e"
+   },
+   "port": "usbc",
+   "wired": {
+    "fastW": 20,
+    "rules": [
+     "iphone_17"
+    ]
+   },
+   "sources": [
+    "spec_iphone-17e",
+    "iphone_fast"
+   ],
+   "specQuote": {
+    "ja": "高速充電に対応:30分で最大50%充電（別売りの20Wアダプタまたはそれ以上のアダプタとUSB-C充電ケーブルを組み合わせて使用）",
+    "en": "Fast-charge capable: Up to 50% charge in 30 minutes with 20W adapter or higher (available separately) paired with USB‑C charging cable"
+   },
+   "magsafe": {
+    "fastAdapterW": 20,
+    "maxW": 15,
+    "rules": [
+     "iphone_magsafe15"
+    ],
+    "specQuote": {
+     "ja": "20W以上の電源アダプタの使用で最大15WのMagSafeワイヤレス充電ができます。",
+     "en": "MagSafe wireless charging up to 15W"
+    }
+   },
+   "qi": true
+  },
+  {
+   "id": "iphone-18-pro",
+   "cat": "iphone",
+   "name": {
+    "ja": "iPhone 18 Pro",
+    "en": "iPhone 18 Pro"
+   },
+   "port": "usbc",
+   "wired": {
+    "fastW": 60,
+    "rules": [
+     "iphone_18pro"
+    ],
+    "avs": true,
+    "cableW": 60
+   },
+   "sources": [
+    "spec_iphone-18-pro",
+    "iphone_fast"
+   ],
+   "specQuote": {
+    "ja": "高速充電に対応：約15分で最大50%充電（別売りの可変電圧供給および60W以上対応のアダプタとUSB-C充電ケーブルを組み合わせて使用）30分で最大50%充電（別売りの35W以上のアダプタと別売りのMagSafe充電器を組み合わせて使用）",
+    "en": "Fast-charge capable: Up to 50% charge in around 15 minutes when using 60W-capable adapter or higher with Adjustable Voltage Supply (available separately) paired with USB-C charging cable Up to 50% charge in 30 minutes with 35W adapter or higher paired with MagSafe Charger (both available separately)"
+   },
+   "magsafe": {
+    "fastAdapterW": 35,
+    "maxW": 25,
+    "rules": [
+     "iphone_magsafe18pro"
+    ],
+    "specQuote": {
+     "ja": "最大25WのMagSafeワイヤレス充電",
+     "en": "MagSafe wireless charging up to 25W"
+    }
+   },
+   "qi": true
+  },
+  {
+   "id": "iphone-18-pro-max",
+   "cat": "iphone",
+   "name": {
+    "ja": "iPhone 18 Pro Max",
+    "en": "iPhone 18 Pro Max"
+   },
+   "port": "usbc",
+   "wired": {
+    "fastW": 60,
+    "rules": [
+     "iphone_18pro"
+    ],
+    "avs": true,
+    "cableW": 60
+   },
+   "sources": [
+    "spec_iphone-18-pro-max",
+    "iphone_fast"
+   ],
+   "specQuote": {
+    "ja": "高速充電に対応：約15分で最大50%充電（別売りの可変電圧供給および60W以上対応のアダプタとUSB-C充電ケーブルを組み合わせて使用）30分で最大50%充電（別売りの35W以上のアダプタと別売りのMagSafe充電器を組み合わせて使用）",
+    "en": "Fast-charge capable: Up to 50% charge in around 15 minutes when using 60W-capable adapter or higher with Adjustable Voltage Supply (available separately) paired with USB-C charging cable Up to 50% charge in 30 minutes with 35W adapter or higher paired with MagSafe Charger (both available separately)"
+   },
+   "magsafe": {
+    "fastAdapterW": 35,
+    "maxW": 25,
+    "rules": [
+     "iphone_magsafe18pro"
+    ],
+    "specQuote": {
+     "ja": "最大25WのMagSafeワイヤレス充電",
+     "en": "MagSafe wireless charging up to 25W"
+    }
+   },
+   "qi": true
+  },
+  {
+   "id": "ipad-9",
+   "cat": "ipad",
+   "name": {
+    "ja": "iPad（第9世代）",
+    "en": "iPad (9th generation)"
+   },
+   "port": "lightning",
+   "wired": {
+    "minW": 15,
+    "fastW": null,
+    "rules": [
+     "ipad_min",
+     "ipad_slow",
+     "ipad_fastmsg"
+    ]
+   },
+   "sources": [
+    "spec_ipad_111898",
+    "ipad_adapter",
+    "ipad_charge"
+   ],
+   "magsafe": null,
+   "qi": false,
+   "specQuote": {
+    "ja": null,
+    "en": null
+   },
+   "bundled": {
+    "ja": "同梱物：20W USB-C電源アダプタ",
+    "en": "In the box: 20W USB-C Power Adapter"
+   }
+  },
+  {
+   "id": "ipad-10",
+   "cat": "ipad",
+   "name": {
+    "ja": "iPad（第10世代）",
+    "en": "iPad (10th generation)"
+   },
+   "port": "usbc",
+   "wired": {
+    "minW": 15,
+    "fastW": null,
+    "rules": [
+     "ipad_min",
+     "ipad_slow",
+     "ipad_fastmsg"
+    ]
+   },
+   "sources": [
+    "spec_ipad_111840",
+    "ipad_adapter",
+    "ipad_charge"
+   ],
+   "magsafe": null,
+   "qi": false,
+   "specQuote": {
+    "ja": null,
+    "en": null
+   },
+   "bundled": {
+    "ja": "同梱物：20W USB-C電源アダプタ",
+    "en": "In the box: 20W USB-C Power Adapter"
+   }
+  },
+  {
+   "id": "ipad-a16",
+   "cat": "ipad",
+   "name": {
+    "ja": "iPad（A16）",
+    "en": "iPad (A16)"
+   },
+   "port": "usbc",
+   "wired": {
+    "minW": 15,
+    "fastW": null,
+    "rules": [
+     "ipad_min",
+     "ipad_slow",
+     "ipad_fastmsg"
+    ]
+   },
+   "sources": [
+    "spec_ipad_122240",
+    "ipad_adapter",
+    "ipad_charge"
+   ],
+   "magsafe": null,
+   "qi": false,
+   "specQuote": {
+    "ja": null,
+    "en": null
+   },
+   "bundled": {
+    "ja": "同梱物：20W USB-C電源アダプタ",
+    "en": "In the box: 20W USB-C Power Adapter"
+   }
+  },
+  {
+   "id": "ipad-mini-5",
+   "cat": "ipad",
+   "name": {
+    "ja": "iPad mini（第5世代）",
+    "en": "iPad mini (5th generation)"
+   },
+   "port": "lightning",
+   "wired": {
+    "minW": 15,
+    "fastW": null,
+    "rules": [
+     "ipad_min",
+     "ipad_slow",
+     "ipad_fastmsg"
+    ]
+   },
+   "sources": [
+    "spec_ipad_111904",
+    "ipad_adapter",
+    "ipad_charge"
+   ],
+   "magsafe": null,
+   "qi": false,
+   "specQuote": {
+    "ja": null,
+    "en": null
+   },
+   "bundled": {
+    "ja": "同梱物：Lightning - USBケーブル／USB電源アダプタ",
+    "en": "In the box: Lightning to USB Cable / USB Power Adapter"
+   }
+  },
+  {
+   "id": "ipad-mini-6",
+   "cat": "ipad",
+   "name": {
+    "ja": "iPad mini（第6世代）",
+    "en": "iPad mini (6th generation)"
+   },
+   "port": "usbc",
+   "wired": {
+    "minW": 15,
+    "fastW": null,
+    "rules": [
+     "ipad_min",
+     "ipad_slow",
+     "ipad_fastmsg"
+    ]
+   },
+   "sources": [
+    "spec_ipad_111886",
+    "ipad_adapter",
+    "ipad_charge"
+   ],
+   "magsafe": null,
+   "qi": false,
+   "specQuote": {
+    "ja": null,
+    "en": null
+   },
+   "bundled": {
+    "ja": "同梱物：20W USB-C電源アダプタ",
+    "en": "In the box: 20W USB-C Power Adapter"
+   }
+  },
+  {
+   "id": "ipad-mini-a17pro",
+   "cat": "ipad",
+   "name": {
+    "ja": "iPad mini（A17 Pro）",
+    "en": "iPad mini (A17 Pro)"
+   },
+   "port": "usbc",
+   "wired": {
+    "minW": 15,
+    "fastW": null,
+    "rules": [
+     "ipad_min",
+     "ipad_slow",
+     "ipad_fastmsg"
+    ]
+   },
+   "sources": [
+    "spec_ipad_121456",
+    "ipad_adapter",
+    "ipad_charge"
+   ],
+   "magsafe": null,
+   "qi": false,
+   "specQuote": {
+    "ja": null,
+    "en": null
+   },
+   "bundled": {
+    "ja": "同梱物：20W USB-C電源アダプタ",
+    "en": "In the box: 20W USB-C Power Adapter"
+   }
+  },
+  {
+   "id": "ipad-air-3",
+   "cat": "ipad",
+   "name": {
+    "ja": "iPad Air（第3世代）",
+    "en": "iPad Air (3rd generation)"
+   },
+   "port": "lightning",
+   "wired": {
+    "minW": 15,
+    "fastW": null,
+    "rules": [
+     "ipad_min",
+     "ipad_slow",
+     "ipad_fastmsg"
+    ]
+   },
+   "sources": [
+    "spec_ipad_111939",
+    "ipad_adapter",
+    "ipad_charge"
+   ],
+   "magsafe": null,
+   "qi": false,
+   "specQuote": {
+    "ja": null,
+    "en": null
+   },
+   "bundled": {
+    "ja": "同梱物：Lightning - USBケーブル／USB電源アダプタ",
+    "en": "In the box: Lightning to USB Cable / USB Power Adapter"
+   }
+  },
+  {
+   "id": "ipad-air-5",
+   "cat": "ipad",
+   "name": {
+    "ja": "iPad Air（第5世代）",
+    "en": "iPad Air (5th generation)"
+   },
+   "port": "usbc",
+   "wired": {
+    "minW": 15,
+    "fastW": null,
+    "rules": [
+     "ipad_min",
+     "ipad_slow",
+     "ipad_fastmsg"
+    ]
+   },
+   "sources": [
+    "spec_ipad_111887",
+    "ipad_adapter",
+    "ipad_charge"
+   ],
+   "magsafe": null,
+   "qi": false,
+   "specQuote": {
+    "ja": null,
+    "en": null
+   },
+   "bundled": {
+    "ja": "同梱物：20W USB-C電源アダプタ",
+    "en": "In the box: 20W USB-C Power Adapter"
+   }
+  },
+  {
+   "id": "ipad-air-m3-11",
+   "cat": "ipad",
+   "name": {
+    "ja": "11インチiPad Air（M3）",
+    "en": "iPad Air 11-inch (M3)"
+   },
+   "port": "usbc",
+   "wired": {
+    "minW": 15,
+    "fastW": null,
+    "rules": [
+     "ipad_min",
+     "ipad_slow",
+     "ipad_fastmsg"
+    ]
+   },
+   "sources": [
+    "spec_ipad_122241",
+    "ipad_adapter",
+    "ipad_charge"
+   ],
+   "magsafe": null,
+   "qi": false,
+   "specQuote": {
+    "ja": null,
+    "en": null
+   },
+   "bundled": {
+    "ja": "同梱物：20W USB-C電源アダプタ",
+    "en": "In the box: 20W USB-C Power Adapter"
+   }
+  },
+  {
+   "id": "ipad-air-m4-11",
+   "cat": "ipad",
+   "name": {
+    "ja": "11インチiPad Air（M4）",
+    "en": "iPad Air 11-inch (M4)"
+   },
+   "port": "usbc",
+   "wired": {
+    "minW": 15,
+    "fastW": null,
+    "rules": [
+     "ipad_min",
+     "ipad_slow",
+     "ipad_fastmsg"
+    ]
+   },
+   "sources": [
+    "spec_ipad_126471",
+    "ipad_adapter",
+    "ipad_charge"
+   ],
+   "magsafe": null,
+   "qi": false,
+   "specQuote": {
+    "ja": null,
+    "en": null
+   },
+   "bundled": {
+    "ja": "同梱物：20W USB-C電源アダプタ",
+    "en": "In the box: 20W USB-C Power Adapter"
+   }
+  },
+  {
+   "id": "ipad-pro-m4-11",
+   "cat": "ipad",
+   "name": {
+    "ja": "11インチiPad Pro（M4）",
+    "en": "iPad Pro 11-inch (M4)"
+   },
+   "port": "usbc",
+   "wired": {
+    "minW": 15,
+    "fastW": null,
+    "rules": [
+     "ipad_min",
+     "ipad_slow",
+     "ipad_fastmsg"
+    ]
+   },
+   "sources": [
+    "spec_ipad_119892",
+    "ipad_adapter",
+    "ipad_charge"
+   ],
+   "magsafe": null,
+   "qi": false,
+   "specQuote": {
+    "ja": null,
+    "en": null
+   },
+   "bundled": {
+    "ja": "同梱物：20W USB-C電源アダプタ",
+    "en": "In the box: 20W USB-C Power Adapter"
+   }
+  },
+  {
+   "id": "ipad-pro-m5-13",
+   "cat": "ipad",
+   "name": {
+    "ja": "13インチiPad Pro（M5）",
+    "en": "iPad Pro 13-inch (M5)"
+   },
+   "port": "usbc",
+   "wired": {
+    "minW": 15,
+    "fastW": 60,
+    "rules": [
+     "ipad_min",
+     "ipad_slow"
+    ]
+   },
+   "sources": [
+    "spec_ipad_125407",
+    "ipad_adapter",
+    "ipad_charge"
+   ],
+   "magsafe": null,
+   "qi": false,
+   "specQuote": {
+    "ja": "高速充電に対応：約30分で最大50%充電（別売りの40Wダイナミック電源アダプタ（最大60W対応）またはそのほかの60W以上供給できるUSB-C電源アダプタを使用）",
+    "en": null
+   },
+   "bundled": {
+    "ja": "同梱物：20W USB-C電源アダプタ",
+    "en": "In the box: 20W USB-C Power Adapter"
+   }
+  },
+  {
+   "id": "airpods-1-2",
+   "cat": "airpods",
+   "name": {
+    "ja": "AirPods（第1/第2世代・Lightning充電ケース）",
+    "en": "AirPods (1st/2nd gen, Lightning Charging Case)"
+   },
+   "port": "lightning",
+   "wireless": null,
+   "watchCharger": false,
+   "wired": {
+    "minW": null,
+    "fastW": null,
+    "rules": [
+     "airpods_wired",
+     "airpods_usb"
+    ]
+   },
+   "sources": [
+    "airpods_charge",
+    "airpods_id"
+   ],
+   "magsafe": null,
+   "specQuote": {
+    "ja": "ケースの底面にLightningポートがあり、差し込んで充電できます。ケースの内側にステータスランプがあり、蓋の裏側にシリアル番号が印字されています。",
+    "en": null
+   }
+  },
+  {
+   "id": "airpods-2-wireless",
+   "cat": "airpods",
+   "name": {
+    "ja": "AirPods（第2世代・ワイヤレス充電ケース）",
+    "en": "AirPods (2nd gen, Wireless Charging Case)"
+   },
+   "port": "lightning",
+   "wireless": "qi",
+   "watchCharger": false,
+   "wired": {
+    "minW": null,
+    "fastW": null,
+    "rules": [
+     "airpods_wired",
+     "airpods_usb"
+    ]
+   },
+   "sources": [
+    "airpods_charge",
+    "airpods_id"
+   ],
+   "magsafe": null,
+   "specQuote": {
+    "ja": "ワイヤレス充電ケースはQiに対応しています。ケースの底面にLightningポートがあり、差し込んで充電できます。",
+    "en": null
+   }
+  },
+  {
+   "id": "airpods-3-lightning",
+   "cat": "airpods",
+   "name": {
+    "ja": "AirPods 3（Lightning充電ケース）",
+    "en": "AirPods 3 (Lightning Charging Case)"
+   },
+   "port": "lightning",
+   "wireless": null,
+   "watchCharger": false,
+   "wired": {
+    "minW": null,
+    "fastW": null,
+    "rules": [
+     "airpods_wired",
+     "airpods_usb"
+    ]
+   },
+   "sources": [
+    "airpods_charge",
+    "airpods_id"
+   ],
+   "magsafe": null,
+   "specQuote": {
+    "ja": "AirPods 3 Lightning充電ケース",
+    "en": null
+   }
+  },
+  {
+   "id": "airpods-3-magsafe",
+   "cat": "airpods",
+   "name": {
+    "ja": "AirPods 3（MagSafe充電ケース）",
+    "en": "AirPods 3 (MagSafe Charging Case)"
+   },
+   "port": "lightning",
+   "wireless": "magsafe",
+   "watchCharger": false,
+   "wired": {
+    "minW": null,
+    "fastW": null,
+    "rules": [
+     "airpods_wired",
+     "airpods_usb"
+    ]
+   },
+   "sources": [
+    "airpods_charge",
+    "airpods_id"
+   ],
+   "magsafe": null,
+   "specQuote": {
+    "ja": "AirPods 3 MagSafe充電ケースは、Qi規格のワイヤレス充電器に対応していて、MagSafe対応充電器には磁力でぴったりとくっつきます。ケースの底面にLightningポートがあり、差し込んで充電できます。",
+    "en": null
+   }
+  },
+  {
+   "id": "airpods-4",
+   "cat": "airpods",
+   "name": {
+    "ja": "AirPods 4",
+    "en": "AirPods 4"
+   },
+   "port": "usbc",
+   "wireless": null,
+   "watchCharger": false,
+   "wired": {
+    "minW": null,
+    "fastW": null,
+    "rules": [
+     "airpods_wired",
+     "airpods_usb"
+    ]
+   },
+   "sources": [
+    "airpods_charge",
+    "airpods_id"
+   ],
+   "magsafe": null,
+   "specQuote": {
+    "ja": "ケースの底面にUSB-Cポートがあり、差し込んで充電できます。ケースの前面にステータスランプがあり、蓋の裏側にシリアル番号が印字されています。AirPods 4充電ケースは",
+    "en": null
+   }
+  },
+  {
+   "id": "airpods-4-anc",
+   "cat": "airpods",
+   "name": {
+    "ja": "AirPods 4（アクティブノイズキャンセリング搭載）",
+    "en": "AirPods 4 (ANC)"
+   },
+   "port": "usbc",
+   "wireless": "qi",
+   "watchCharger": true,
+   "wired": {
+    "minW": null,
+    "fastW": null,
+    "rules": [
+     "airpods_wired",
+     "airpods_usb"
+    ]
+   },
+   "sources": [
+    "airpods_charge",
+    "airpods_id"
+   ],
+   "magsafe": null,
+   "specQuote": {
+    "ja": "AirPods 4（ANC）用ワイヤレス充電ケースは、Apple WatchおよびQi規格のワイヤレス充電器に対応しています。ケースの底面にUSB-Cポートがあり、差し込んで充電できます。",
+    "en": null
+   }
+  },
+  {
+   "id": "airpods-5",
+   "cat": "airpods",
+   "name": {
+    "ja": "AirPods 5",
+    "en": "AirPods 5"
+   },
+   "port": "usbc",
+   "wireless": null,
+   "watchCharger": false,
+   "wired": {
+    "minW": null,
+    "fastW": null,
+    "rules": [
+     "airpods_wired",
+     "airpods_usb"
+    ]
+   },
+   "sources": [
+    "airpods_charge",
+    "airpods_id"
+   ],
+   "magsafe": null,
+   "specQuote": {
+    "ja": "ケースの底面にUSB-Cポートがあり、差し込んで充電できます。ケースの前面にステータスランプがあり、蓋の裏側にシリアル番号が印字されています。AirPods 5用充電ケースは",
+    "en": null
+   }
+  },
+  {
+   "id": "airpods-5-wireless",
+   "cat": "airpods",
+   "name": {
+    "ja": "AirPods 5（ワイヤレス充電ケース付き）",
+    "en": "AirPods 5 (Wireless Charging Case)"
+   },
+   "port": "usbc",
+   "wireless": "qi",
+   "watchCharger": true,
+   "wired": {
+    "minW": null,
+    "fastW": null,
+    "rules": [
+     "airpods_wired",
+     "airpods_usb"
+    ]
+   },
+   "sources": [
+    "airpods_charge",
+    "airpods_id"
+   ],
+   "magsafe": null,
+   "specQuote": {
+    "ja": "AirPods 5用ワイヤレス充電ケースは、Apple WatchおよびQi規格のワイヤレス充電器に対応しています。ケースの底面にUSB-Cポートがあり、差し込んで充電できます。",
+    "en": null
+   }
+  },
+  {
+   "id": "airpods-pro-1",
+   "cat": "airpods",
+   "name": {
+    "ja": "AirPods Pro（第1世代）",
+    "en": "AirPods Pro (1st generation)"
+   },
+   "port": "lightning",
+   "wireless": "qi",
+   "watchCharger": false,
+   "wired": {
+    "minW": null,
+    "fastW": null,
+    "rules": [
+     "airpods_wired",
+     "airpods_usb"
+    ]
+   },
+   "sources": [
+    "airpods_charge",
+    "airpods_id"
+   ],
+   "magsafe": null,
+   "specQuote": {
+    "ja": "AirPods Pro充電ケースはQi規格のワイヤレス充電器に対応しています。ケースの底面にLightningポートがあり、差し込んで充電できます。",
+    "en": null
+   }
+  },
+  {
+   "id": "airpods-pro-2-lightning",
+   "cat": "airpods",
+   "name": {
+    "ja": "AirPods Pro 2（Lightning）",
+    "en": "AirPods Pro 2 (Lightning)"
+   },
+   "port": "lightning",
+   "wireless": "magsafe",
+   "watchCharger": true,
+   "wired": {
+    "minW": null,
+    "fastW": null,
+    "rules": [
+     "airpods_wired",
+     "airpods_usb"
+    ]
+   },
+   "sources": [
+    "airpods_charge",
+    "airpods_id"
+   ],
+   "magsafe": null,
+   "specQuote": {
+    "ja": "AirPods Pro 2 MagSafe充電ケース（Lightning）は、Qi規格のワイヤレス充電器に対応していて、MagSafe対応充電器には磁力でぴったりとくっつきます。ケースの底面にLightningポートがあり、差し込んで充電できます。",
+    "en": null
+   }
+  },
+  {
+   "id": "airpods-pro-2-usbc",
+   "cat": "airpods",
+   "name": {
+    "ja": "AirPods Pro 2（USB-C）",
+    "en": "AirPods Pro 2 (USB-C)"
+   },
+   "port": "usbc",
+   "wireless": "magsafe",
+   "watchCharger": true,
+   "wired": {
+    "minW": null,
+    "fastW": null,
+    "rules": [
+     "airpods_wired",
+     "airpods_usb"
+    ]
+   },
+   "sources": [
+    "airpods_charge",
+    "airpods_id"
+   ],
+   "magsafe": null,
+   "specQuote": {
+    "ja": "AirPods Pro 2 MagSafe充電ケース（USB-C）は、Qi規格のワイヤレス充電器に対応していて、MagSafe対応充電器には磁力でぴったりとくっつきます。ケースの底面にUSB-Cポートがあり、差し込んで充電できます。",
+    "en": null
+   }
+  },
+  {
+   "id": "airpods-pro-3",
+   "cat": "airpods",
+   "name": {
+    "ja": "AirPods Pro 3",
+    "en": "AirPods Pro 3"
+   },
+   "port": "usbc",
+   "wireless": "magsafe",
+   "watchCharger": true,
+   "wired": {
+    "minW": null,
+    "fastW": null,
+    "rules": [
+     "airpods_wired",
+     "airpods_usb"
+    ]
+   },
+   "sources": [
+    "airpods_charge",
+    "airpods_id"
+   ],
+   "magsafe": null,
+   "specQuote": {
+    "ja": "AirPods Pro 3 MagSafe充電ケースは、Qi規格のワイヤレス充電器に対応していて、MagSafe対応充電器には磁力でぴったりとくっつきます。ケースの底面にUSB-Cポートがあり、差し込んで充電できます。",
+    "en": null
+   }
+  },
+  {
+   "id": "airpods-max-lightning",
+   "cat": "airpods",
+   "name": {
+    "ja": "AirPods Max（Lightning）",
+    "en": "AirPods Max (Lightning)"
+   },
+   "port": "lightning",
+   "wireless": null,
+   "watchCharger": false,
+   "wired": {
+    "minW": null,
+    "fastW": null,
+    "rules": [
+     "airpods_wired",
+     "airpods_usb"
+    ]
+   },
+   "sources": [
+    "airpods_charge",
+    "airpods_id"
+   ],
+   "magsafe": null,
+   "specQuote": {
+    "ja": "AirPods Max 1 (Lightning)",
+    "en": null
+   }
+  },
+  {
+   "id": "airpods-max-usbc",
+   "cat": "airpods",
+   "name": {
+    "ja": "AirPods Max（USB-C）",
+    "en": "AirPods Max (USB-C)"
+   },
+   "port": "usbc",
+   "wireless": null,
+   "watchCharger": false,
+   "wired": {
+    "minW": null,
+    "fastW": null,
+    "rules": [
+     "airpods_wired",
+     "airpods_usb"
+    ]
+   },
+   "sources": [
+    "airpods_charge",
+    "airpods_id"
+   ],
+   "magsafe": null,
+   "specQuote": {
+    "ja": "AirPods Max 1（USB-C）",
+    "en": null
+   }
+  },
+  {
+   "id": "airpods-max-2",
+   "cat": "airpods",
+   "name": {
+    "ja": "AirPods Max 2",
+    "en": "AirPods Max 2"
+   },
+   "port": "usbc",
+   "wireless": null,
+   "watchCharger": false,
+   "wired": {
+    "minW": null,
+    "fastW": null,
+    "rules": [
+     "airpods_wired",
+     "airpods_usb"
+    ]
+   },
+   "sources": [
+    "airpods_charge",
+    "airpods_max_specs"
+   ],
+   "magsafe": null,
+   "specQuote": {
+    "ja": "USB-C経由で充電",
+    "en": null
+   }
+  },
+  {
+   "id": "watch-s3-s6-se",
+   "cat": "watch",
+   "name": {
+    "ja": "Apple Watch Series 3〜6 / SE（第1・第2世代）",
+    "en": "Apple Watch Series 3–6 / SE (1st & 2nd gen)"
+   },
+   "port": "watch",
+   "fast": false,
+   "wired": {
+    "minW": null,
+    "fastW": null,
+    "rules": [
+     "watch_models",
+     "watch_cable",
+     "watch_adapter",
+     "watch_guide18"
+    ]
+   },
+   "sources": [
+    "watch_fast",
+    "watch_charge"
+   ],
+   "magsafe": null,
+   "specQuote": {
+    "ja": null,
+    "en": null
+   }
+  },
+  {
+   "id": "watch-s7-s9",
+   "cat": "watch",
+   "name": {
+    "ja": "Apple Watch Series 7 / 8 / 9",
+    "en": "Apple Watch Series 7 / 8 / 9"
+   },
+   "port": "watch",
+   "fast": true,
+   "wired": {
+    "minW": null,
+    "fastW": 18,
+    "rules": [
+     "watch_models",
+     "watch_cable",
+     "watch_adapter",
+     "watch_guide18"
+    ]
+   },
+   "sources": [
+    "watch_fast",
+    "watch_charge"
+   ],
+   "magsafe": null,
+   "specQuote": {
+    "ja": "Apple Watch Series 7、Series 8、Series 9は、約45分で0パーセントから80パーセントまで充電されます。",
+    "en": null
+   }
+  },
+  {
+   "id": "watch-s10-s11",
+   "cat": "watch",
+   "name": {
+    "ja": "Apple Watch Series 10 / 11",
+    "en": "Apple Watch Series 10 / 11"
+   },
+   "port": "watch",
+   "fast": true,
+   "wired": {
+    "minW": null,
+    "fastW": 18,
+    "rules": [
+     "watch_models",
+     "watch_cable",
+     "watch_adapter",
+     "watch_guide18"
+    ]
+   },
+   "sources": [
+    "watch_fast",
+    "watch_charge"
+   ],
+   "magsafe": null,
+   "specQuote": {
+    "ja": "Apple Watch Series 10以降は、約30分で0パーセントから80パーセントまで充電されます。",
+    "en": null
+   }
+  },
+  {
+   "id": "watch-s12",
+   "cat": "watch",
+   "name": {
+    "ja": "Apple Watch Series 12",
+    "en": "Apple Watch Series 12"
+   },
+   "port": "watch",
+   "fast": true,
+   "wired": {
+    "minW": null,
+    "fastW": 18,
+    "rules": [
+     "watch_models",
+     "watch_cable",
+     "watch_adapter",
+     "watch_guide18"
+    ]
+   },
+   "sources": [
+    "watch_fast",
+    "watch_charge"
+   ],
+   "magsafe": null,
+   "specQuote": {
+    "ja": "Apple Watch Series 10以降は、約30分で0パーセントから80パーセントまで充電されます。",
+    "en": null
+   }
+  },
+  {
+   "id": "watch-se3",
+   "cat": "watch",
+   "name": {
+    "ja": "Apple Watch SE 3",
+    "en": "Apple Watch SE 3"
+   },
+   "port": "watch",
+   "fast": true,
+   "wired": {
+    "minW": null,
+    "fastW": 18,
+    "rules": [
+     "watch_models",
+     "watch_cable",
+     "watch_adapter",
+     "watch_guide18"
+    ]
+   },
+   "sources": [
+    "watch_fast",
+    "watch_charge"
+   ],
+   "magsafe": null,
+   "specQuote": {
+    "ja": "Apple Watch SE 3は、約45分で0パーセントから80パーセントまで充電されます。",
+    "en": null
+   }
+  },
+  {
+   "id": "watch-ultra-1-2",
+   "cat": "watch",
+   "name": {
+    "ja": "Apple Watch Ultra / Ultra 2",
+    "en": "Apple Watch Ultra / Ultra 2"
+   },
+   "port": "watch",
+   "fast": true,
+   "wired": {
+    "minW": null,
+    "fastW": 18,
+    "rules": [
+     "watch_models",
+     "watch_cable",
+     "watch_adapter",
+     "watch_guide18"
+    ]
+   },
+   "sources": [
+    "watch_fast",
+    "watch_charge"
+   ],
+   "magsafe": null,
+   "specQuote": {
+    "ja": "Apple Watch UltraおよびApple Watch Ultra 2は、約1時間で0パーセントから80パーセントまで充電されます。",
+    "en": null
+   }
+  },
+  {
+   "id": "watch-ultra-3-4",
+   "cat": "watch",
+   "name": {
+    "ja": "Apple Watch Ultra 3 / Ultra 4",
+    "en": "Apple Watch Ultra 3 / Ultra 4"
+   },
+   "port": "watch",
+   "fast": true,
+   "wired": {
+    "minW": null,
+    "fastW": 18,
+    "rules": [
+     "watch_models",
+     "watch_cable",
+     "watch_adapter",
+     "watch_guide18"
+    ]
+   },
+   "sources": [
+    "watch_fast",
+    "watch_charge"
+   ],
+   "magsafe": null,
+   "specQuote": {
+    "ja": "Apple Watch Ultra 3以降は、約45分で0パーセントから80パーセントまで充電されます。",
+    "en": null
+   }
+  },
+  {
+   "id": "mac-neo",
+   "cat": "mac",
+   "name": {
+    "ja": "MacBook Neo",
+    "en": "MacBook Neo"
+   },
+   "port": "usbc",
+   "magsafe3": false,
+   "wired": {
+    "recW": 20,
+    "fastList": null,
+    "fastCableW": null,
+    "rules": [
+     "mac_pd",
+     "mac_min",
+     "mac_any"
+    ]
+   },
+   "sources": [
+    "mac_adapter",
+    "mac_fast"
+   ],
+   "magsafe": null,
+   "specQuote": {
+    "ja": "Apple 20W USB-C電源アダプタとUSB-C充電ケーブル",
+    "en": null
+   },
+   "fastQuote": {
+    "ja": null,
+    "en": null
+   }
+  },
+  {
+   "id": "mac-air-2018",
+   "cat": "mac",
+   "name": {
+    "ja": "MacBook Air（2018〜2021年）",
+    "en": "MacBook Air (2018–2021)"
+   },
+   "port": "usbc",
+   "magsafe3": false,
+   "wired": {
+    "recW": 30,
+    "fastList": [],
+    "fastCableW": null,
+    "rules": [
+     "mac_pd",
+     "mac_min",
+     "mac_any",
+     "mac_fast_models"
+    ]
+   },
+   "sources": [
+    "mac_adapter",
+    "mac_fast"
+   ],
+   "magsafe": null,
+   "specQuote": {
+    "ja": "Apple 30W USB-C電源アダプタとUSB-C充電ケーブル",
+    "en": null
+   },
+   "fastQuote": {
+    "ja": null,
+    "en": null
+   }
+  },
+  {
+   "id": "mac-air-13-2022",
+   "cat": "mac",
+   "name": {
+    "ja": "13インチMacBook Air（2022年以降）",
+    "en": "MacBook Air 13-inch (2022 or later)"
+   },
+   "port": "usbc",
+   "magsafe3": true,
+   "wired": {
+    "recW": 30,
+    "fastList": [
+     67,
+     70,
+     96,
+     140
+    ],
+    "fastCableW": null,
+    "rules": [
+     "mac_pd",
+     "mac_min",
+     "mac_any",
+     "mac_fast_models"
+    ]
+   },
+   "sources": [
+    "mac_adapter",
+    "mac_fast"
+   ],
+   "magsafe": null,
+   "specQuote": {
+    "ja": "Apple 30W USB-C電源アダプタ（13インチのみ）とUSB-C - MagSafe 3ケーブル",
+    "en": null
+   },
+   "fastQuote": {
+    "ja": "67W USB-C電源アダプタ+ USB-C - MagSafe 3ケーブルまたはUSB-C充電ケーブル（13.6インチモデルのみ）",
+    "en": null
+   }
+  },
+  {
+   "id": "mac-air-15-2023",
+   "cat": "mac",
+   "name": {
+    "ja": "15インチMacBook Air（2023年以降）",
+    "en": "MacBook Air 15-inch (2023 or later)"
+   },
+   "port": "usbc",
+   "magsafe3": true,
+   "wired": {
+    "recW": 35,
+    "fastList": [
+     70,
+     96,
+     140
+    ],
+    "fastCableW": null,
+    "rules": [
+     "mac_pd",
+     "mac_min",
+     "mac_any",
+     "mac_fast_models"
+    ]
+   },
+   "sources": [
+    "mac_adapter",
+    "mac_fast"
+   ],
+   "magsafe": null,
+   "specQuote": {
+    "ja": "AppleデュアルUSB-Cポート搭載35W電源アダプタとUSB-C - MagSafe 3ケーブル",
+    "en": null
+   },
+   "fastQuote": {
+    "ja": "70W USB-C電源アダプタ+ USB-C - MagSafe 3ケーブルまたはUSB-C充電ケーブル",
+    "en": null
+   }
+  },
+  {
+   "id": "mac-pro-13-2016",
+   "cat": "mac",
+   "name": {
+    "ja": "13インチMacBook Pro（2016年以降・USB-C）",
+    "en": "MacBook Pro 13-inch (2016 or later, USB-C)"
+   },
+   "port": "usbc",
+   "magsafe3": false,
+   "wired": {
+    "recW": 61,
+    "fastList": [],
+    "fastCableW": null,
+    "rules": [
+     "mac_pd",
+     "mac_min",
+     "mac_any",
+     "mac_fast_models"
+    ]
+   },
+   "sources": [
+    "mac_adapter",
+    "mac_fast"
+   ],
+   "magsafe": null,
+   "specQuote": {
+    "ja": "Apple 61W USB-C電源アダプタとUSB-C充電ケーブル",
+    "en": null
+   },
+   "fastQuote": {
+    "ja": null,
+    "en": null
+   }
+  },
+  {
+   "id": "mac-pro-15-2016",
+   "cat": "mac",
+   "name": {
+    "ja": "15インチMacBook Pro（2016年以降）",
+    "en": "MacBook Pro 15-inch (2016 or later)"
+   },
+   "port": "usbc",
+   "magsafe3": false,
+   "wired": {
+    "recW": 87,
+    "fastList": [],
+    "fastCableW": null,
+    "rules": [
+     "mac_pd",
+     "mac_min",
+     "mac_any",
+     "mac_fast_models"
+    ]
+   },
+   "sources": [
+    "mac_adapter",
+    "mac_fast"
+   ],
+   "magsafe": null,
+   "specQuote": {
+    "ja": "Apple 87W USB-C電源アダプタとUSB-C充電ケーブル",
+    "en": null
+   },
+   "fastQuote": {
+    "ja": null,
+    "en": null
+   }
+  },
+  {
+   "id": "mac-pro-16-2019",
+   "cat": "mac",
+   "name": {
+    "ja": "16インチMacBook Pro（2019年）",
+    "en": "MacBook Pro 16-inch (2019)"
+   },
+   "port": "usbc",
+   "magsafe3": false,
+   "wired": {
+    "recW": 96,
+    "fastList": [],
+    "fastCableW": null,
+    "rules": [
+     "mac_pd",
+     "mac_min",
+     "mac_any",
+     "mac_fast_models"
+    ]
+   },
+   "sources": [
+    "mac_adapter",
+    "mac_fast"
+   ],
+   "magsafe": null,
+   "specQuote": {
+    "ja": "Apple 96W USB-C電源アダプタとUSB-C充電ケーブル",
+    "en": null
+   },
+   "fastQuote": {
+    "ja": null,
+    "en": null
+   }
+  },
+  {
+   "id": "mac-pro-14-2021",
+   "cat": "mac",
+   "name": {
+    "ja": "14インチMacBook Pro（2021年以降）",
+    "en": "MacBook Pro 14-inch (2021 or later)"
+   },
+   "port": "usbc",
+   "magsafe3": true,
+   "wired": {
+    "recW": 67,
+    "fastList": [
+     96,
+     140
+    ],
+    "fastCableW": null,
+    "rules": [
+     "mac_pd",
+     "mac_min",
+     "mac_any",
+     "mac_fast_models"
+    ]
+   },
+   "sources": [
+    "mac_adapter",
+    "mac_fast"
+   ],
+   "magsafe": null,
+   "specQuote": {
+    "ja": "Apple 67W USB-C電源アダプタとUSB-C - MagSafe 3ケーブル",
+    "en": null
+   },
+   "fastQuote": {
+    "ja": "96W USB-C電源アダプタ+ USB-C - MagSafe 3ケーブルまたはUSB-C充電ケーブル",
+    "en": null
+   }
+  },
+  {
+   "id": "mac-pro-16-2021",
+   "cat": "mac",
+   "name": {
+    "ja": "16インチMacBook Pro（2021年以降）",
+    "en": "MacBook Pro 16-inch (2021 or later)"
+   },
+   "port": "usbc",
+   "magsafe3": true,
+   "wired": {
+    "recW": 140,
+    "fastList": [
+     140
+    ],
+    "fastCableW": 240,
+    "rules": [
+     "mac_pd",
+     "mac_min",
+     "mac_any",
+     "mac_fast_models"
+    ]
+   },
+   "sources": [
+    "mac_adapter",
+    "mac_fast"
+   ],
+   "magsafe": null,
+   "specQuote": {
+    "ja": "Apple 140W USB-C電源アダプタとUSB-C - MagSafe 3ケーブル",
+    "en": null
+   },
+   "fastQuote": {
+    "ja": "140W USB-C電源アダプタ+ 240W USB-C充電ケーブルMacBook Pro（16-inch, Nov 2023）以降用",
+    "en": null
+   }
+  }
+ ]
+}

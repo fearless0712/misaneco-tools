@@ -1,0 +1,1045 @@
+{
+ "checked": "2026-10-18",
+ "sources": [
+  {
+   "id": "iphone_fast",
+   "title": {
+    "ja": "iPhoneを高速充電する",
+    "en": "Fast charge your iPhone"
+   },
+   "url": {
+    "ja": "https://support.apple.com/ja-jp/102574",
+    "en": "https://support.apple.com/en-us/102574"
+   },
+   "file": {
+    "ja": "ja-jp_102574.txt",
+    "en": "en-us_102574.txt"
+   },
+   "checked": "2026-10-18"
+  },
+  {
+   "id": "watch_fast",
+   "title": {
+    "ja": "Apple Watchの高速充電について",
+    "en": "About fast charge on Apple Watch"
+   },
+   "url": {
+    "ja": "https://support.apple.com/ja-jp/102454",
+    "en": "https://support.apple.com/en-us/102454"
+   },
+   "file": {
+    "ja": "ja-jp_102454.txt",
+    "en": "en-us_102454.txt"
+   },
+   "checked": "2026-10-18"
+  },
+  {
+   "id": "mac_adapter",
+   "title": {
+    "ja": "Macで電源アダプタを使う",
+    "en": "Use a power adapter with your Mac"
+   },
+   "url": {
+    "ja": "https://support.apple.com/ja-jp/109509",
+    "en": "https://support.apple.com/en-us/109509"
+   },
+   "file": {
+    "ja": "ja-jp_109509.txt",
+    "en": "en-us_109509.txt"
+   },
+   "checked": "2026-10-18"
+  },
+  {
+   "id": "mac_fast",
+   "title": {
+    "ja": "MacBook AirやMacBook Proを高速充電する",
+    "en": "Fast charge your MacBook Air or MacBook Pro"
+   },
+   "url": {
+    "ja": "https://support.apple.com/ja-jp/102378",
+    "en": "https://support.apple.com/en-us/102378"
+   },
+   "file": {
+    "ja": "ja-jp_102378.txt",
+    "en": "en-us_102378.txt"
+   },
+   "checked": "2026-10-18"
+  },
+  {
+   "id": "airpods_charge",
+   "title": {
+    "ja": "AirPodsを充電する",
+    "en": "Charge your AirPods"
+   },
+   "url": {
+    "ja": "https://support.apple.com/ja-jp/119912",
+    "en": "https://support.apple.com/en-us/119912"
+   },
+   "file": {
+    "ja": "ja-jp_119912.txt",
+    "en": "en-us_119912.txt"
+   },
+   "checked": "2026-10-18"
+  },
+  {
+   "id": "mfi",
+   "title": {
+    "ja": "Lightningコネクタアクセサリの偽造品や模倣品を識別する",
+    "en": "Identify counterfeit or uncertified Lightning connector accessories"
+   },
+   "url": {
+    "ja": "https://support.apple.com/ja-jp/111103",
+    "en": "https://support.apple.com/en-us/111103"
+   },
+   "file": {
+    "ja": "ja-jp_111103.txt",
+    "en": "en-us_111103.txt"
+   },
+   "checked": "2026-10-18"
+  },
+  {
+   "id": "heat",
+   "title": {
+    "ja": "iPhoneやiPadが高温または低温になりすぎた場合",
+    "en": "If your iPhone or iPad gets too hot or too cold"
+   },
+   "url": {
+    "ja": "https://support.apple.com/ja-jp/118431",
+    "en": "https://support.apple.com/en-us/118431"
+   },
+   "file": {
+    "ja": "ja-jp_118431.txt",
+    "en": "en-us_118431.txt"
+   },
+   "checked": "2026-10-18"
+  },
+  {
+   "id": "power_safety",
+   "title": {
+    "ja": "Apple製品でApple製の電源アダプタ、ケーブル、電源プラグを使う",
+    "en": "Use Apple power adapters, cables, and plugs with your Apple products"
+   },
+   "url": {
+    "ja": "https://support.apple.com/ja-jp/102193",
+    "en": "https://support.apple.com/en-us/102193"
+   },
+   "file": {
+    "ja": "ja-jp_102193.txt",
+    "en": "en-us_102193.txt"
+   },
+   "checked": "2026-10-18"
+  },
+  {
+   "id": "airpods_id",
+   "title": {
+    "ja": "AirPodsのモデルを識別する",
+    "en": "Identify your AirPods"
+   },
+   "url": {
+    "ja": "https://support.apple.com/ja-jp/109525",
+    "en": "https://support.apple.com/en-us/109525"
+   },
+   "file": {
+    "ja": "ja-jp_109525.txt",
+    "en": null
+   },
+   "checked": "2026-10-18"
+  },
+  {
+   "id": "ipad_charge",
+   "title": {
+    "ja": "iPadのバッテリーを充電する（iPadユーザガイド）",
+    "en": "Charge the iPad battery (iPad User Guide)"
+   },
+   "url": {
+    "ja": "https://support.apple.com/ja-jp/guide/ipad/ipad997da965/ipados",
+    "en": "https://support.apple.com/en-us/guide/ipad/ipad997da965/ipados"
+   },
+   "file": {
+    "ja": "ja-jp_guide_ipad_ipad997da965_ipados.txt",
+    "en": "en-us_guide_ipad_ipad997da965_ipados.txt"
+   },
+   "checked": "2026-10-18"
+  },
+  {
+   "id": "ipad_adapter",
+   "title": {
+    "ja": "iPad用電源アダプタと充電ケーブル（iPadユーザガイド）",
+    "en": "Power adapters and charge cables for iPad (iPad User Guide)"
+   },
+   "url": {
+    "ja": "https://support.apple.com/ja-jp/guide/ipad/ipad9940eda2/ipados",
+    "en": "https://support.apple.com/en-us/guide/ipad/ipad9940eda2/ipados"
+   },
+   "file": {
+    "ja": "ja-jp_guide_ipad_ipad9940eda2_ipados.txt",
+    "en": "en-us_guide_ipad_ipad9940eda2_ipados.txt"
+   },
+   "checked": "2026-10-18"
+  },
+  {
+   "id": "ipad_safety",
+   "title": {
+    "ja": "iPadの安全性に関する重要な情報（iPadユーザガイド）",
+    "en": "Important safety information for iPad"
+   },
+   "url": {
+    "ja": "https://support.apple.com/ja-jp/guide/ipad/ipad27098ef5/ipados",
+    "en": "https://support.apple.com/en-us/guide/ipad/ipad27098ef5/ipados"
+   },
+   "file": {
+    "ja": "ja-jp_guide_ipad_ipad27098ef5_ipados.txt",
+    "en": null
+   },
+   "checked": "2026-10-18"
+  },
+  {
+   "id": "watch_charge",
+   "title": {
+    "ja": "Apple Watchのバッテリーを充電する（Apple Watchユーザガイド）",
+    "en": "Charge Apple Watch (Apple Watch User Guide)"
+   },
+   "url": {
+    "ja": "https://support.apple.com/ja-jp/guide/watch/apd2b717523a/watchos",
+    "en": "https://support.apple.com/en-us/guide/watch/apd2b717523a/watchos"
+   },
+   "file": {
+    "ja": "ja-jp_guide_watch_apd2b717523a_watchos.txt",
+    "en": "en-us_guide_watch_apd2b717523a_watchos.txt"
+   },
+   "checked": "2026-10-18"
+  },
+  {
+   "id": "airpods_max_specs",
+   "title": {
+    "ja": "AirPods Max 2 - 仕様",
+    "en": "AirPods Max 2 - Tech Specs"
+   },
+   "url": {
+    "ja": "https://www.apple.com/jp/airpods-max/specs/",
+    "en": "https://www.apple.com/airpods-max/specs/"
+   },
+   "file": {
+    "ja": "apple-jp_airpods-max_specs.txt",
+    "en": null
+   },
+   "checked": "2026-10-18"
+  },
+  {
+   "id": "spec_iphone-8",
+   "title": {
+    "ja": "iPhone 8 - 技術仕様",
+    "en": "iPhone 8 - Tech Specs"
+   },
+   "url": {
+    "ja": "https://support.apple.com/ja-jp/111976",
+    "en": "https://support.apple.com/en-us/111976"
+   },
+   "file": {
+    "ja": "specs/iphone/iphone-8_ja-jp.txt",
+    "en": "specs/iphone/iphone-8_en-us.txt"
+   },
+   "checked": "2026-10-18"
+  },
+  {
+   "id": "spec_iphone-8-plus",
+   "title": {
+    "ja": "iPhone 8 Plus - 技術仕様",
+    "en": "iPhone 8 Plus - Tech Specs"
+   },
+   "url": {
+    "ja": "https://support.apple.com/ja-jp/111950",
+    "en": "https://support.apple.com/en-us/111950"
+   },
+   "file": {
+    "ja": "specs/iphone/iphone-8-plus_ja-jp.txt",
+    "en": "specs/iphone/iphone-8-plus_en-us.txt"
+   },
+   "checked": "2026-10-18"
+  },
+  {
+   "id": "spec_iphone-x",
+   "title": {
+    "ja": "iPhone X - 技術仕様",
+    "en": "iPhone X - Tech Specs"
+   },
+   "url": {
+    "ja": "https://support.apple.com/ja-jp/111864",
+    "en": "https://support.apple.com/en-us/111864"
+   },
+   "file": {
+    "ja": "specs/iphone/iphone-x_ja-jp.txt",
+    "en": "specs/iphone/iphone-x_en-us.txt"
+   },
+   "checked": "2026-10-18"
+  },
+  {
+   "id": "spec_iphone-xr",
+   "title": {
+    "ja": "iPhone XR - 技術仕様",
+    "en": "iPhone XR - Tech Specs"
+   },
+   "url": {
+    "ja": "https://support.apple.com/ja-jp/111868",
+    "en": "https://support.apple.com/en-us/111868"
+   },
+   "file": {
+    "ja": "specs/iphone/iphone-xr_ja-jp.txt",
+    "en": "specs/iphone/iphone-xr_en-us.txt"
+   },
+   "checked": "2026-10-18"
+  },
+  {
+   "id": "spec_iphone-xs",
+   "title": {
+    "ja": "iPhone XS - 技術仕様",
+    "en": "iPhone XS - Tech Specs"
+   },
+   "url": {
+    "ja": "https://support.apple.com/ja-jp/111881",
+    "en": "https://support.apple.com/en-us/111881"
+   },
+   "file": {
+    "ja": "specs/iphone/iphone-xs_ja-jp.txt",
+    "en": "specs/iphone/iphone-xs_en-us.txt"
+   },
+   "checked": "2026-10-18"
+  },
+  {
+   "id": "spec_iphone-xs-max",
+   "title": {
+    "ja": "iPhone XS Max - 技術仕様",
+    "en": "iPhone XS Max - Tech Specs"
+   },
+   "url": {
+    "ja": "https://support.apple.com/ja-jp/111880",
+    "en": "https://support.apple.com/en-us/111880"
+   },
+   "file": {
+    "ja": "specs/iphone/iphone-xs-max_ja-jp.txt",
+    "en": "specs/iphone/iphone-xs-max_en-us.txt"
+   },
+   "checked": "2026-10-18"
+  },
+  {
+   "id": "spec_iphone-11",
+   "title": {
+    "ja": "iPhone 11 - 技術仕様",
+    "en": "iPhone 11 - Tech Specs"
+   },
+   "url": {
+    "ja": "https://support.apple.com/ja-jp/111865",
+    "en": "https://support.apple.com/en-us/111865"
+   },
+   "file": {
+    "ja": "specs/iphone/iphone-11_ja-jp.txt",
+    "en": "specs/iphone/iphone-11_en-us.txt"
+   },
+   "checked": "2026-10-18"
+  },
+  {
+   "id": "spec_iphone-11-pro",
+   "title": {
+    "ja": "iPhone 11 Pro - 技術仕様",
+    "en": "iPhone 11 Pro - Tech Specs"
+   },
+   "url": {
+    "ja": "https://support.apple.com/ja-jp/111879",
+    "en": "https://support.apple.com/en-us/111879"
+   },
+   "file": {
+    "ja": "specs/iphone/iphone-11-pro_ja-jp.txt",
+    "en": "specs/iphone/iphone-11-pro_en-us.txt"
+   },
+   "checked": "2026-10-18"
+  },
+  {
+   "id": "spec_iphone-11-pro-max",
+   "title": {
+    "ja": "iPhone 11 Pro Max - 技術仕様",
+    "en": "iPhone 11 Pro Max - Tech Specs"
+   },
+   "url": {
+    "ja": "https://support.apple.com/ja-jp/111878",
+    "en": "https://support.apple.com/en-us/111878"
+   },
+   "file": {
+    "ja": "specs/iphone/iphone-11-pro-max_ja-jp.txt",
+    "en": "specs/iphone/iphone-11-pro-max_en-us.txt"
+   },
+   "checked": "2026-10-18"
+  },
+  {
+   "id": "spec_iphone-se-2",
+   "title": {
+    "ja": "iPhone SE（第2世代） - 技術仕様",
+    "en": "iPhone SE (2nd generation) - Tech Specs"
+   },
+   "url": {
+    "ja": "https://support.apple.com/ja-jp/111882",
+    "en": "https://support.apple.com/en-us/111882"
+   },
+   "file": {
+    "ja": "specs/iphone/iphone-se-2_ja-jp.txt",
+    "en": "specs/iphone/iphone-se-2_en-us.txt"
+   },
+   "checked": "2026-10-18"
+  },
+  {
+   "id": "spec_iphone-12-mini",
+   "title": {
+    "ja": "iPhone 12 mini - 技術仕様",
+    "en": "iPhone 12 mini - Tech Specs"
+   },
+   "url": {
+    "ja": "https://support.apple.com/ja-jp/111877",
+    "en": "https://support.apple.com/en-us/111877"
+   },
+   "file": {
+    "ja": "specs/iphone/iphone-12-mini_ja-jp.txt",
+    "en": "specs/iphone/iphone-12-mini_en-us.txt"
+   },
+   "checked": "2026-10-18"
+  },
+  {
+   "id": "spec_iphone-12",
+   "title": {
+    "ja": "iPhone 12 - 技術仕様",
+    "en": "iPhone 12 - Tech Specs"
+   },
+   "url": {
+    "ja": "https://support.apple.com/ja-jp/111876",
+    "en": "https://support.apple.com/en-us/111876"
+   },
+   "file": {
+    "ja": "specs/iphone/iphone-12_ja-jp.txt",
+    "en": "specs/iphone/iphone-12_en-us.txt"
+   },
+   "checked": "2026-10-18"
+  },
+  {
+   "id": "spec_iphone-12-pro",
+   "title": {
+    "ja": "iPhone 12 Pro - 技術仕様",
+    "en": "iPhone 12 Pro - Tech Specs"
+   },
+   "url": {
+    "ja": "https://support.apple.com/ja-jp/111875",
+    "en": "https://support.apple.com/en-us/111875"
+   },
+   "file": {
+    "ja": "specs/iphone/iphone-12-pro_ja-jp.txt",
+    "en": "specs/iphone/iphone-12-pro_en-us.txt"
+   },
+   "checked": "2026-10-18"
+  },
+  {
+   "id": "spec_iphone-12-pro-max",
+   "title": {
+    "ja": "iPhone 12 Pro Max - 技術仕様",
+    "en": "iPhone 12 Pro Max - Tech Specs"
+   },
+   "url": {
+    "ja": "https://support.apple.com/ja-jp/111874",
+    "en": "https://support.apple.com/en-us/111874"
+   },
+   "file": {
+    "ja": "specs/iphone/iphone-12-pro-max_ja-jp.txt",
+    "en": "specs/iphone/iphone-12-pro-max_en-us.txt"
+   },
+   "checked": "2026-10-18"
+  },
+  {
+   "id": "spec_iphone-13-mini",
+   "title": {
+    "ja": "iPhone 13 mini - 技術仕様",
+    "en": "iPhone 13 mini - Tech Specs"
+   },
+   "url": {
+    "ja": "https://support.apple.com/ja-jp/111873",
+    "en": "https://support.apple.com/en-us/111873"
+   },
+   "file": {
+    "ja": "specs/iphone/iphone-13-mini_ja-jp.txt",
+    "en": "specs/iphone/iphone-13-mini_en-us.txt"
+   },
+   "checked": "2026-10-18"
+  },
+  {
+   "id": "spec_iphone-13",
+   "title": {
+    "ja": "iPhone 13 - 技術仕様",
+    "en": "iPhone 13 - Tech Specs"
+   },
+   "url": {
+    "ja": "https://support.apple.com/ja-jp/111872",
+    "en": "https://support.apple.com/en-us/111872"
+   },
+   "file": {
+    "ja": "specs/iphone/iphone-13_ja-jp.txt",
+    "en": "specs/iphone/iphone-13_en-us.txt"
+   },
+   "checked": "2026-10-18"
+  },
+  {
+   "id": "spec_iphone-13-pro",
+   "title": {
+    "ja": "iPhone 13 Pro - 技術仕様",
+    "en": "iPhone 13 Pro - Tech Specs"
+   },
+   "url": {
+    "ja": "https://support.apple.com/ja-jp/111871",
+    "en": "https://support.apple.com/en-us/111871"
+   },
+   "file": {
+    "ja": "specs/iphone/iphone-13-pro_ja-jp.txt",
+    "en": "specs/iphone/iphone-13-pro_en-us.txt"
+   },
+   "checked": "2026-10-18"
+  },
+  {
+   "id": "spec_iphone-13-pro-max",
+   "title": {
+    "ja": "iPhone 13 Pro Max - 技術仕様",
+    "en": "iPhone 13 Pro Max - Tech Specs"
+   },
+   "url": {
+    "ja": "https://support.apple.com/ja-jp/111870",
+    "en": "https://support.apple.com/en-us/111870"
+   },
+   "file": {
+    "ja": "specs/iphone/iphone-13-pro-max_ja-jp.txt",
+    "en": "specs/iphone/iphone-13-pro-max_en-us.txt"
+   },
+   "checked": "2026-10-18"
+  },
+  {
+   "id": "spec_iphone-se-3",
+   "title": {
+    "ja": "iPhone SE（第3世代） - 技術仕様",
+    "en": "iPhone SE (3rd generation) - Tech Specs"
+   },
+   "url": {
+    "ja": "https://support.apple.com/ja-jp/111866",
+    "en": "https://support.apple.com/en-us/111866"
+   },
+   "file": {
+    "ja": "specs/iphone/iphone-se-3_ja-jp.txt",
+    "en": "specs/iphone/iphone-se-3_en-us.txt"
+   },
+   "checked": "2026-10-18"
+  },
+  {
+   "id": "spec_iphone-14",
+   "title": {
+    "ja": "iPhone 14 - 技術仕様",
+    "en": "iPhone 14 - Tech Specs"
+   },
+   "url": {
+    "ja": "https://support.apple.com/ja-jp/111850",
+    "en": "https://support.apple.com/en-us/111850"
+   },
+   "file": {
+    "ja": "specs/iphone/iphone-14_ja-jp.txt",
+    "en": "specs/iphone/iphone-14_en-us.txt"
+   },
+   "checked": "2026-10-18"
+  },
+  {
+   "id": "spec_iphone-14-plus",
+   "title": {
+    "ja": "iPhone 14 Plus - 技術仕様",
+    "en": "iPhone 14 Plus - Tech Specs"
+   },
+   "url": {
+    "ja": "https://support.apple.com/ja-jp/111854",
+    "en": "https://support.apple.com/en-us/111854"
+   },
+   "file": {
+    "ja": "specs/iphone/iphone-14-plus_ja-jp.txt",
+    "en": "specs/iphone/iphone-14-plus_en-us.txt"
+   },
+   "checked": "2026-10-18"
+  },
+  {
+   "id": "spec_iphone-14-pro",
+   "title": {
+    "ja": "iPhone 14 Pro - 技術仕様",
+    "en": "iPhone 14 Pro - Tech Specs"
+   },
+   "url": {
+    "ja": "https://support.apple.com/ja-jp/111849",
+    "en": "https://support.apple.com/en-us/111849"
+   },
+   "file": {
+    "ja": "specs/iphone/iphone-14-pro_ja-jp.txt",
+    "en": "specs/iphone/iphone-14-pro_en-us.txt"
+   },
+   "checked": "2026-10-18"
+  },
+  {
+   "id": "spec_iphone-14-pro-max",
+   "title": {
+    "ja": "iPhone 14 Pro Max - 技術仕様",
+    "en": "iPhone 14 Pro Max - Tech Specs"
+   },
+   "url": {
+    "ja": "https://support.apple.com/ja-jp/111846",
+    "en": "https://support.apple.com/en-us/111846"
+   },
+   "file": {
+    "ja": "specs/iphone/iphone-14-pro-max_ja-jp.txt",
+    "en": "specs/iphone/iphone-14-pro-max_en-us.txt"
+   },
+   "checked": "2026-10-18"
+  },
+  {
+   "id": "spec_iphone-15",
+   "title": {
+    "ja": "iPhone 15 - 技術仕様",
+    "en": "iPhone 15 - Tech Specs"
+   },
+   "url": {
+    "ja": "https://support.apple.com/ja-jp/111831",
+    "en": "https://support.apple.com/en-us/111831"
+   },
+   "file": {
+    "ja": "specs/iphone/iphone-15_ja-jp.txt",
+    "en": "specs/iphone/iphone-15_en-us.txt"
+   },
+   "checked": "2026-10-18"
+  },
+  {
+   "id": "spec_iphone-15-plus",
+   "title": {
+    "ja": "iPhone 15 Plus - 技術仕様",
+    "en": "iPhone 15 Plus - Tech Specs"
+   },
+   "url": {
+    "ja": "https://support.apple.com/ja-jp/111830",
+    "en": "https://support.apple.com/en-us/111830"
+   },
+   "file": {
+    "ja": "specs/iphone/iphone-15-plus_ja-jp.txt",
+    "en": "specs/iphone/iphone-15-plus_en-us.txt"
+   },
+   "checked": "2026-10-18"
+  },
+  {
+   "id": "spec_iphone-15-pro",
+   "title": {
+    "ja": "iPhone 15 Pro - 技術仕様",
+    "en": "iPhone 15 Pro - Tech Specs"
+   },
+   "url": {
+    "ja": "https://support.apple.com/ja-jp/111829",
+    "en": "https://support.apple.com/en-us/111829"
+   },
+   "file": {
+    "ja": "specs/iphone/iphone-15-pro_ja-jp.txt",
+    "en": "specs/iphone/iphone-15-pro_en-us.txt"
+   },
+   "checked": "2026-10-18"
+  },
+  {
+   "id": "spec_iphone-15-pro-max",
+   "title": {
+    "ja": "iPhone 15 Pro Max - 技術仕様",
+    "en": "iPhone 15 Pro Max - Tech Specs"
+   },
+   "url": {
+    "ja": "https://support.apple.com/ja-jp/111828",
+    "en": "https://support.apple.com/en-us/111828"
+   },
+   "file": {
+    "ja": "specs/iphone/iphone-15-pro-max_ja-jp.txt",
+    "en": "specs/iphone/iphone-15-pro-max_en-us.txt"
+   },
+   "checked": "2026-10-18"
+  },
+  {
+   "id": "spec_iphone-16",
+   "title": {
+    "ja": "iPhone 16 - 技術仕様",
+    "en": "iPhone 16 - Tech Specs"
+   },
+   "url": {
+    "ja": "https://support.apple.com/ja-jp/121029",
+    "en": "https://support.apple.com/en-us/121029"
+   },
+   "file": {
+    "ja": "specs/iphone/iphone-16_ja-jp.txt",
+    "en": "specs/iphone/iphone-16_en-us.txt"
+   },
+   "checked": "2026-10-18"
+  },
+  {
+   "id": "spec_iphone-16-plus",
+   "title": {
+    "ja": "iPhone 16 Plus - 技術仕様",
+    "en": "iPhone 16 Plus - Tech Specs"
+   },
+   "url": {
+    "ja": "https://support.apple.com/ja-jp/121030",
+    "en": "https://support.apple.com/en-us/121030"
+   },
+   "file": {
+    "ja": "specs/iphone/iphone-16-plus_ja-jp.txt",
+    "en": "specs/iphone/iphone-16-plus_en-us.txt"
+   },
+   "checked": "2026-10-18"
+  },
+  {
+   "id": "spec_iphone-16-pro",
+   "title": {
+    "ja": "iPhone 16 Pro - 技術仕様",
+    "en": "iPhone 16 Pro - Tech Specs"
+   },
+   "url": {
+    "ja": "https://support.apple.com/ja-jp/121031",
+    "en": "https://support.apple.com/en-us/121031"
+   },
+   "file": {
+    "ja": "specs/iphone/iphone-16-pro_ja-jp.txt",
+    "en": "specs/iphone/iphone-16-pro_en-us.txt"
+   },
+   "checked": "2026-10-18"
+  },
+  {
+   "id": "spec_iphone-16-pro-max",
+   "title": {
+    "ja": "iPhone 16 Pro Max - 技術仕様",
+    "en": "iPhone 16 Pro Max - Tech Specs"
+   },
+   "url": {
+    "ja": "https://support.apple.com/ja-jp/121032",
+    "en": "https://support.apple.com/en-us/121032"
+   },
+   "file": {
+    "ja": "specs/iphone/iphone-16-pro-max_ja-jp.txt",
+    "en": "specs/iphone/iphone-16-pro-max_en-us.txt"
+   },
+   "checked": "2026-10-18"
+  },
+  {
+   "id": "spec_iphone-16e",
+   "title": {
+    "ja": "iPhone 16e - 技術仕様",
+    "en": "iPhone 16e - Tech Specs"
+   },
+   "url": {
+    "ja": "https://support.apple.com/ja-jp/122208",
+    "en": "https://support.apple.com/en-us/122208"
+   },
+   "file": {
+    "ja": "specs/iphone/iphone-16e_ja-jp.txt",
+    "en": "specs/iphone/iphone-16e_en-us.txt"
+   },
+   "checked": "2026-10-18"
+  },
+  {
+   "id": "spec_iphone-17",
+   "title": {
+    "ja": "iPhone 17 - 技術仕様",
+    "en": "iPhone 17 - Tech Specs"
+   },
+   "url": {
+    "ja": "https://support.apple.com/ja-jp/125089",
+    "en": "https://support.apple.com/en-us/125089"
+   },
+   "file": {
+    "ja": "specs/iphone/iphone-17_ja-jp.txt",
+    "en": "specs/iphone/iphone-17_en-us.txt"
+   },
+   "checked": "2026-10-18"
+  },
+  {
+   "id": "spec_iphone-17-pro",
+   "title": {
+    "ja": "iPhone 17 Pro - 技術仕様",
+    "en": "iPhone 17 Pro - Tech Specs"
+   },
+   "url": {
+    "ja": "https://support.apple.com/ja-jp/125090",
+    "en": "https://support.apple.com/en-us/125090"
+   },
+   "file": {
+    "ja": "specs/iphone/iphone-17-pro_ja-jp.txt",
+    "en": "specs/iphone/iphone-17-pro_en-us.txt"
+   },
+   "checked": "2026-10-18"
+  },
+  {
+   "id": "spec_iphone-17-pro-max",
+   "title": {
+    "ja": "iPhone 17 Pro Max - 技術仕様",
+    "en": "iPhone 17 Pro Max - Tech Specs"
+   },
+   "url": {
+    "ja": "https://support.apple.com/ja-jp/125091",
+    "en": "https://support.apple.com/en-us/125091"
+   },
+   "file": {
+    "ja": "specs/iphone/iphone-17-pro-max_ja-jp.txt",
+    "en": "specs/iphone/iphone-17-pro-max_en-us.txt"
+   },
+   "checked": "2026-10-18"
+  },
+  {
+   "id": "spec_iphone-air",
+   "title": {
+    "ja": "iPhone Air - 技術仕様",
+    "en": "iPhone Air - Tech Specs"
+   },
+   "url": {
+    "ja": "https://support.apple.com/ja-jp/125092",
+    "en": "https://support.apple.com/en-us/125092"
+   },
+   "file": {
+    "ja": "specs/iphone/iphone-air_ja-jp.txt",
+    "en": "specs/iphone/iphone-air_en-us.txt"
+   },
+   "checked": "2026-10-18"
+  },
+  {
+   "id": "spec_iphone-17e",
+   "title": {
+    "ja": "iPhone 17e - 技術仕様",
+    "en": "iPhone 17e - Tech Specs"
+   },
+   "url": {
+    "ja": "https://support.apple.com/ja-jp/126470",
+    "en": "https://support.apple.com/en-us/126470"
+   },
+   "file": {
+    "ja": "specs/iphone/iphone-17e_ja-jp.txt",
+    "en": "specs/iphone/iphone-17e_en-us.txt"
+   },
+   "checked": "2026-10-18"
+  },
+  {
+   "id": "spec_iphone-18-pro",
+   "title": {
+    "ja": "iPhone 18 Pro - 技術仕様",
+    "en": "iPhone 18 Pro - Tech Specs"
+   },
+   "url": {
+    "ja": "https://support.apple.com/ja-jp/148590",
+    "en": "https://support.apple.com/en-us/148590"
+   },
+   "file": {
+    "ja": "specs/iphone/iphone-18-pro_ja-jp.txt",
+    "en": "specs/iphone/iphone-18-pro_en-us.txt"
+   },
+   "checked": "2026-10-18"
+  },
+  {
+   "id": "spec_iphone-18-pro-max",
+   "title": {
+    "ja": "iPhone 18 Pro Max - 技術仕様",
+    "en": "iPhone 18 Pro Max - Tech Specs"
+   },
+   "url": {
+    "ja": "https://support.apple.com/ja-jp/148591",
+    "en": "https://support.apple.com/en-us/148591"
+   },
+   "file": {
+    "ja": "specs/iphone/iphone-18-pro-max_ja-jp.txt",
+    "en": "specs/iphone/iphone-18-pro-max_en-us.txt"
+   },
+   "checked": "2026-10-18"
+  },
+  {
+   "id": "spec_ipad_111898",
+   "title": {
+    "ja": "iPad（第9世代） - 技術仕様",
+    "en": "iPad (9th generation) - Tech Specs"
+   },
+   "url": {
+    "ja": "https://support.apple.com/ja-jp/111898",
+    "en": "https://support.apple.com/en-us/111898"
+   },
+   "file": {
+    "ja": "specs/ipad_111898.txt",
+    "en": null
+   },
+   "checked": "2026-10-18"
+  },
+  {
+   "id": "spec_ipad_111840",
+   "title": {
+    "ja": "iPad（第10世代） - 技術仕様",
+    "en": "iPad (10th generation) - Tech Specs"
+   },
+   "url": {
+    "ja": "https://support.apple.com/ja-jp/111840",
+    "en": "https://support.apple.com/en-us/111840"
+   },
+   "file": {
+    "ja": "specs/ipad_111840.txt",
+    "en": null
+   },
+   "checked": "2026-10-18"
+  },
+  {
+   "id": "spec_ipad_122240",
+   "title": {
+    "ja": "iPad（A16） - 技術仕様",
+    "en": "iPad (A16) - Tech Specs"
+   },
+   "url": {
+    "ja": "https://support.apple.com/ja-jp/122240",
+    "en": "https://support.apple.com/en-us/122240"
+   },
+   "file": {
+    "ja": "specs/ipad_122240.txt",
+    "en": null
+   },
+   "checked": "2026-10-18"
+  },
+  {
+   "id": "spec_ipad_111904",
+   "title": {
+    "ja": "iPad mini（第5世代） - 技術仕様",
+    "en": "iPad mini (5th generation) - Tech Specs"
+   },
+   "url": {
+    "ja": "https://support.apple.com/ja-jp/111904",
+    "en": "https://support.apple.com/en-us/111904"
+   },
+   "file": {
+    "ja": "specs/ipad_111904.txt",
+    "en": null
+   },
+   "checked": "2026-10-18"
+  },
+  {
+   "id": "spec_ipad_111886",
+   "title": {
+    "ja": "iPad mini（第6世代） - 技術仕様",
+    "en": "iPad mini (6th generation) - Tech Specs"
+   },
+   "url": {
+    "ja": "https://support.apple.com/ja-jp/111886",
+    "en": "https://support.apple.com/en-us/111886"
+   },
+   "file": {
+    "ja": "specs/ipad_111886.txt",
+    "en": null
+   },
+   "checked": "2026-10-18"
+  },
+  {
+   "id": "spec_ipad_121456",
+   "title": {
+    "ja": "iPad mini（A17 Pro） - 技術仕様",
+    "en": "iPad mini (A17 Pro) - Tech Specs"
+   },
+   "url": {
+    "ja": "https://support.apple.com/ja-jp/121456",
+    "en": "https://support.apple.com/en-us/121456"
+   },
+   "file": {
+    "ja": "specs/ipad_121456.txt",
+    "en": null
+   },
+   "checked": "2026-10-18"
+  },
+  {
+   "id": "spec_ipad_111939",
+   "title": {
+    "ja": "iPad Air（第3世代） - 技術仕様",
+    "en": "iPad Air (3rd generation) - Tech Specs"
+   },
+   "url": {
+    "ja": "https://support.apple.com/ja-jp/111939",
+    "en": "https://support.apple.com/en-us/111939"
+   },
+   "file": {
+    "ja": "specs/ipad_111939.txt",
+    "en": null
+   },
+   "checked": "2026-10-18"
+  },
+  {
+   "id": "spec_ipad_111887",
+   "title": {
+    "ja": "iPad Air（第5世代） - 技術仕様",
+    "en": "iPad Air (5th generation) - Tech Specs"
+   },
+   "url": {
+    "ja": "https://support.apple.com/ja-jp/111887",
+    "en": "https://support.apple.com/en-us/111887"
+   },
+   "file": {
+    "ja": "specs/ipad_111887.txt",
+    "en": null
+   },
+   "checked": "2026-10-18"
+  },
+  {
+   "id": "spec_ipad_122241",
+   "title": {
+    "ja": "11インチiPad Air（M3） - 技術仕様",
+    "en": "iPad Air 11-inch (M3) - Tech Specs"
+   },
+   "url": {
+    "ja": "https://support.apple.com/ja-jp/122241",
+    "en": "https://support.apple.com/en-us/122241"
+   },
+   "file": {
+    "ja": "specs/ipad_122241.txt",
+    "en": null
+   },
+   "checked": "2026-10-18"
+  },
+  {
+   "id": "spec_ipad_126471",
+   "title": {
+    "ja": "11インチiPad Air（M4） - 技術仕様",
+    "en": "iPad Air 11-inch (M4) - Tech Specs"
+   },
+   "url": {
+    "ja": "https://support.apple.com/ja-jp/126471",
+    "en": "https://support.apple.com/en-us/126471"
+   },
+   "file": {
+    "ja": "specs/ipad_126471.txt",
+    "en": null
+   },
+   "checked": "2026-10-18"
+  },
+  {
+   "id": "spec_ipad_119892",
+   "title": {
+    "ja": "11インチiPad Pro（M4） - 技術仕様",
+    "en": "iPad Pro 11-inch (M4) - Tech Specs"
+   },
+   "url": {
+    "ja": "https://support.apple.com/ja-jp/119892",
+    "en": "https://support.apple.com/en-us/119892"
+   },
+   "file": {
+    "ja": "specs/ipad_119892.txt",
+    "en": null
+   },
+   "checked": "2026-10-18"
+  },
+  {
+   "id": "spec_ipad_125407",
+   "title": {
+    "ja": "13インチiPad Pro（M5） - 技術仕様",
+    "en": "iPad Pro 13-inch (M5) - Tech Specs"
+   },
+   "url": {
+    "ja": "https://support.apple.com/ja-jp/125407",
+    "en": "https://support.apple.com/en-us/125407"
+   },
+   "file": {
+    "ja": "specs/ipad_125407.txt",
+    "en": null
+   },
+   "checked": "2026-10-18"
+  }
+ ]
+}
