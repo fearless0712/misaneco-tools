@@ -1,0 +1,8 @@
+{
+  "_note": "A8.net の広告コードを入れる場所。href が空の項目は表示されません（すべて空なら広告枠ごと非表示）。href・img・pixel は https:// のみ。text_ja / text_en は広告主の素材どおりの説明だけを入れ、クリックを促す文言は書かない。",
+  "inline": [
+    { "name": "LINXAS", "href": "", "img": "", "imgW": 0, "imgH": 0, "pixel": "", "text_ja": "", "text_en": "" },
+    { "name": "モバステ", "href": "", "img": "", "imgW": 0, "imgH": 0, "pixel": "", "text_ja": "", "text_en": "" }
+  ],
+  "interstitial": { "name": "", "href": "", "img": "", "imgW": 0, "imgH": 0, "pixel": "", "text_ja": "", "text_en": "" }
+}

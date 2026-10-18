@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self'; img-src 'self' data: https://*.a8.net; connect-src 'self'; form-action 'none'; base-uri 'none'; frame-src 'none'; object-src 'none'">
+<meta name="referrer" content="no-referrer">
+<meta name="theme-color" content="#1d3557">
+<title>iPhoneを売る・譲る前チェック</title>
+<meta name="description" content="iPhoneを売る・譲る・下取りに出す前の作業を、Apple公式の手順で順番にチェック。入力は端末の外に送りません。">
+<link rel="icon" href="data:,">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="top">
+  <div class="wrap top-in">
+    <h1 id="title" data-i18n="title">iPhoneを売る・譲る前チェック</h1>
+    <button type="button" id="langBtn" class="lang" aria-label="Language">EN</button>
+  </div>
+</header>
+
+<main class="wrap">
+  <p class="lead" data-i18n="lead">売る・譲る・下取りに出す前の作業を、順番どおりに終わらせるためのチェックリストです。</p>
+  <p class="privacy" data-i18n="privacy">選んだ内容とチェックはこの端末の中にだけ保存されます。外部には送りません。</p>
+
+  <!-- ===== 最初に選ぶ ===== -->
+  <section id="setup" class="card">
+    <h2 data-i18n="setupH">最初に選んでください</h2>
+
+    <fieldset>
+      <legend data-i18n="qMethod">どうやって手放しますか？</legend>
+      <div class="opts">
+        <label><input type="radio" name="method" value="shop"><span data-i18n="mShop">買取店に売る</span></label>
+        <label><input type="radio" name="method" value="flea"><span data-i18n="mFlea">フリマで売る</span></label>
+        <label><input type="radio" name="method" value="tradein"><span data-i18n="mTrade">下取りに出す</span></label>
+        <label><input type="radio" name="method" value="family"><span data-i18n="mFamily">家族に譲る</span></label>
+      </div>
+    </fieldset>
+
+    <fieldset>
+      <legend data-i18n="qNew">新しいiPhoneに、クイックスタートでデータを移しますか？</legend>
+      <div class="opts">
+        <label><input type="radio" name="newIphone" value="yes"><span data-i18n="yes">はい</span></label>
+        <label><input type="radio" name="newIphone" value="no"><span data-i18n="noNew">いいえ（新しいiPhoneはない）</span></label>
+      </div>
+    </fieldset>
+
+    <fieldset>
+      <legend data-i18n="qWatch">Apple Watchとペアリングしていますか？</legend>
+      <div class="opts two">
+        <label><input type="radio" name="watch" value="yes"><span data-i18n="yes">はい</span></label>
+        <label><input type="radio" name="watch" value="no"><span data-i18n="no">いいえ</span></label>
+      </div>
+    </fieldset>
+
+    <fieldset>
+      <legend data-i18n="qSim">SIMはどちらですか？</legend>
+      <div class="opts">
+        <label><input type="radio" name="sim" value="esim"><span>eSIM</span></label>
+        <label><input type="radio" name="sim" value="physical"><span data-i18n="simPhys">SIMカード（物理SIM）</span></label>
+      </div>
+      <p class="hint" data-i18n="simHint">わからない場合：SIMトレイにカードが入っていれば物理SIMです。</p>
+    </fieldset>
+
+    <fieldset>
+      <legend data-i18n="qApps">使っているものを選んでください（複数可）</legend>
+      <div class="opts">
+        <label><input type="checkbox" name="line"><span data-i18n="aLine">LINE</span></label>
+        <label><input type="checkbox" name="auth"><span data-i18n="aAuth">認証アプリ（2段階認証のコードが出るアプリ）</span></label>
+        <label><input type="checkbox" name="bank"><span data-i18n="aBank">銀行・決済アプリ</span></label>
+      </div>
+    </fieldset>
+
+    <p id="setupErr" class="err" hidden data-i18n="setupErr">まだ選んでいない質問があります。</p>
+    <button type="button" id="makeBtn" class="primary" data-i18n="make">チェックリストを作る</button>
+  </section>
+
+  <!-- ===== チェックリスト ===== -->
+  <section id="list" hidden>
+    <div class="progress card" aria-live="polite">
+      <div class="prow"><span data-i18n="progress">進み具合</span><strong id="pText">0 / 0</strong></div>
+      <div class="bar" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" id="pBar"><span id="pFill"></span></div>
+    </div>
+    <div id="groups"></div>
+
+    <div id="done" class="card done" hidden>
+      <h2 data-i18n="doneH">すべて終わりました</h2>
+      <p data-i18n="doneP">手放す準備ができました。</p>
+    </div>
+
+    <!-- 広告（ads.json に中身があるときだけ表示） -->
+    <aside id="adBox" class="card adbox" hidden>
+      <div class="adhead"><span class="adtag" data-i18n="adTag">広告</span><span class="adtag">PR</span><h2 data-i18n="adH">売る準備ができたら</h2></div>
+      <div id="adItems"></div>
+    </aside>
+
+    <div class="actions">
+      <button type="button" id="editBtn" class="ghost" data-i18n="edit">選び直す</button>
+      <button type="button" id="resetBtn" class="ghost danger" data-i18n="reset">チェックを全部消す</button>
+    </div>
+  </section>
+
+  <section class="card notes">
+    <h2 data-i18n="notesH">このチェックリストについて</h2>
+    <ul>
+      <li data-i18n="n1">手順はApple公式サポートなどの公式ページで確認した内容だけを載せています。各手順の「出典」から元のページを開けます。</li>
+      <li data-i18n="n2">画面の名前はiOSのバージョンで変わることがあります。違う場合は出典のページを確認してください。</li>
+      <li data-i18n="n3">LINE・認証アプリ・銀行や決済アプリの手続きは、各サービスの公式案内を確認してください。</li>
+      <li data-i18n="n4">このサイトはAppleとは関係ありません。</li>
+    </ul>
+  </section>
+</main>
+
+<footer class="wrap foot"><span data-i18n="foot">iPhoneを売る・譲る前チェック</span> · MisaNeco Works</footer>
+
+<!-- 全画面広告（1日1回・×ですぐ閉じる） -->
+<div id="inter" class="inter" hidden role="dialog" aria-modal="true" aria-labelledby="interLabel">
+  <div class="inter-box">
+    <div class="inter-head">
+      <span id="interLabel"><span class="adtag" data-i18n="adTag">広告</span><span class="adtag">PR</span></span>
+      <button type="button" id="interClose" class="x" aria-label="閉じる">×</button>
+    </div>
+    <div id="interBody"></div>
+  </div>
+</div>
+
+<script src="steps.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
