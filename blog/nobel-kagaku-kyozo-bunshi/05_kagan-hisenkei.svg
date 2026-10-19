@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 405" width="720" height="405" font-family="Hiragino Sans, sans-serif"><rect width="720" height="405" fill="#ffffff"/>
+<text x="360" y="40" font-size="26" font-weight="bold" fill="#214f78" text-anchor="middle">カガンさんの発見：触媒は「2つ組み」</text>
+<g font-size="22" text-anchor="middle">
+<rect x="30" y="70" width="200" height="150" rx="14" fill="#eef3f8" stroke="#214f78" stroke-width="3"/>
+<rect x="260" y="70" width="200" height="150" rx="14" fill="#fbf3dc" stroke="#e0a800" stroke-width="3"/>
+<rect x="490" y="70" width="200" height="150" rx="14" fill="#f3f3f3" stroke="#888" stroke-width="3" stroke-dasharray="8 6"/>
+<text x="130" y="105" fill="#333" font-weight="bold">右＋右</text>
+<text x="360" y="105" fill="#333" font-weight="bold">左＋左</text>
+<text x="590" y="105" fill="#333" font-weight="bold">右＋左</text>
+<text x="130" y="200" fill="#214f78" font-weight="bold">よく働く</text>
+<text x="360" y="200" fill="#8a6a00" font-weight="bold">よく働く</text>
+<text x="590" y="200" fill="#c0392b" font-weight="bold">とてもゆっくり</text>
+</g>
+<circle cx="105" cy="145" r="19" fill="#214f78"/><text x="105" y="152" font-size="20" fill="#fff" text-anchor="middle" font-weight="bold">右</text>
+<circle cx="155" cy="145" r="19" fill="#214f78"/><text x="155" y="152" font-size="20" fill="#fff" text-anchor="middle" font-weight="bold">右</text>
+<circle cx="335" cy="145" r="19" fill="#e0a800"/><text x="335" y="152" font-size="20" fill="#333" text-anchor="middle" font-weight="bold">左</text>
+<circle cx="385" cy="145" r="19" fill="#e0a800"/><text x="385" y="152" font-size="20" fill="#333" text-anchor="middle" font-weight="bold">左</text>
+<circle cx="565" cy="145" r="19" fill="#214f78"/><text x="565" y="152" font-size="20" fill="#fff" text-anchor="middle" font-weight="bold">右</text>
+<circle cx="615" cy="145" r="19" fill="#e0a800"/><text x="615" y="152" font-size="20" fill="#333" text-anchor="middle" font-weight="bold">左</text>
+<text x="40" y="262" font-size="21" fill="#333">触媒のかたより</text>
+<rect x="280" y="243" width="190" height="26" fill="#214f78"/><rect x="470" y="243" width="150" height="26" fill="#e0a800"/>
+<text x="40" y="312" font-size="21" fill="#333">できた分子のかたより</text>
+<rect x="280" y="293" width="280" height="26" fill="#214f78"/><rect x="560" y="293" width="60" height="26" fill="#e0a800"/>
+<text x="360" y="372" font-size="21" fill="#333" text-anchor="middle">「右＋左」が休むので、多いほうの差がさらに開く（非線形効果）</text>
+<text x="360" y="398" font-size="18" fill="#777" text-anchor="middle">※棒の長さはイメージです</text>
+</svg>

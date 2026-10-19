@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 405" width="720" height="405" font-family="Hiragino Sans, sans-serif"><rect width="720" height="405" fill="#ffffff"/>
+<defs>
+<g id="hand" stroke="#214f78" stroke-width="3" fill="#dfe8f1" stroke-linejoin="round">
+<rect x="-34" y="-110" width="16" height="70" rx="8"/>
+<rect x="-16" y="-125" width="16" height="85" rx="8"/>
+<rect x="2" y="-118" width="16" height="78" rx="8"/>
+<rect x="20" y="-100" width="15" height="60" rx="7.5"/>
+<rect x="-38" y="-55" width="74" height="85" rx="22"/>
+<rect x="-78" y="-40" width="16" height="58" rx="8" transform="rotate(-40 -60 -10)"/>
+</g>
+</defs>
+<text x="360" y="42" font-size="26" font-weight="bold" fill="#214f78" text-anchor="middle">右手と左手は「鏡うつし」の関係</text>
+<use href="#hand" x="140" y="230"/>
+<text x="140" y="300" font-size="24" fill="#333" text-anchor="middle">右手</text>
+<line x1="270" y1="80" x2="270" y2="320" stroke="#888" stroke-width="4" stroke-dasharray="10 8"/>
+<text x="270" y="345" font-size="22" fill="#666" text-anchor="middle">鏡</text>
+<use href="#hand" transform="translate(400 230) scale(-1 1)"/>
+<text x="400" y="300" font-size="24" fill="#333" text-anchor="middle">左手</text>
+<line x1="490" y1="190" x2="530" y2="190" stroke="#888" stroke-width="4"/>
+<polygon points="530,180 548,190 530,200" fill="#888"/>
+<g opacity="0.75"><use href="#hand" x="625" y="230"/></g>
+<g opacity="0.6"><use href="#hand" transform="translate(625 230) scale(-1 1)" style="fill:#f6e3b0"/></g>
+<text x="625" y="300" font-size="22" fill="#c0392b" text-anchor="middle" font-weight="bold">重ねると</text>
+<text x="625" y="328" font-size="22" fill="#c0392b" text-anchor="middle" font-weight="bold">親指がずれる</text>
+<text x="360" y="385" font-size="22" fill="#333" text-anchor="middle">形はそっくりでも、ぴったりは重ならない</text>
+</svg>

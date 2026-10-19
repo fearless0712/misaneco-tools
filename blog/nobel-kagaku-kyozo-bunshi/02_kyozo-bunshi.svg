@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 405" width="720" height="405" font-family="Hiragino Sans, sans-serif"><rect width="720" height="405" fill="#ffffff"/>
+<text x="360" y="42" font-size="26" font-weight="bold" fill="#214f78" text-anchor="middle">分子にも「右手型」と「左手型」がある</text>
+<g stroke="#555" stroke-width="5">
+<line x1="170" y1="200" x2="170" y2="110"/><line x1="170" y1="200" x2="95" y2="250"/><line x1="170" y1="200" x2="245" y2="250"/><line x1="170" y1="200" x2="200" y2="280"/>
+<line x1="550" y1="200" x2="550" y2="110"/><line x1="550" y1="200" x2="625" y2="250"/><line x1="550" y1="200" x2="475" y2="250"/><line x1="550" y1="200" x2="520" y2="280"/>
+</g>
+<g font-size="22" font-weight="bold" fill="#fff" text-anchor="middle">
+<circle cx="170" cy="110" r="26" fill="#c0392b"/><text x="170" y="118">A</text>
+<circle cx="95" cy="250" r="26" fill="#214f78"/><text x="95" y="258">B</text>
+<circle cx="245" cy="250" r="26" fill="#e0a800"/><text x="245" y="258">C</text>
+<circle cx="200" cy="285" r="30" fill="#4f8a5b"/><text x="200" y="293">D</text>
+<circle cx="170" cy="200" r="22" fill="#777"/>
+<circle cx="550" cy="110" r="26" fill="#c0392b"/><text x="550" y="118">A</text>
+<circle cx="625" cy="250" r="26" fill="#214f78"/><text x="625" y="258">B</text>
+<circle cx="475" cy="250" r="26" fill="#e0a800"/><text x="475" y="258">C</text>
+<circle cx="520" cy="285" r="30" fill="#4f8a5b"/><text x="520" y="293">D</text>
+<circle cx="550" cy="200" r="22" fill="#777"/>
+</g>
+<line x1="360" y1="80" x2="360" y2="320" stroke="#888" stroke-width="4" stroke-dasharray="10 8"/>
+<text x="360" y="345" font-size="22" fill="#666" text-anchor="middle">鏡</text>
+<text x="170" y="345" font-size="24" fill="#333" text-anchor="middle">もとの分子</text>
+<text x="550" y="345" font-size="24" fill="#333" text-anchor="middle">鏡に映した分子</text>
+<text x="360" y="388" font-size="21" fill="#333" text-anchor="middle">材料（A〜D）は同じ。でも、どう回しても重ならない（模式図）</text>
+</svg>
