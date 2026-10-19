@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self'; img-src 'self' data:; connect-src 'none'; font-src 'none'; frame-src 'none'; object-src 'none'; base-uri 'none'; form-action 'none'">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<meta name="description" content="What the Small Business Automation Check sends and does not send.">
+<title>Data &amp; privacy | Small Business Automation Check</title>
+<link rel="stylesheet" href="css/app.css?v=2026101950">
+<link rel="icon" href="data:,">
+</head>
+<body>
+<header class="top"><div class="wrap top-row"><a class="brand" href="./">Automation Check &amp; Action Plan</a><a class="toplink" href="../">All tools</a></div></header>
+<main class="wrap">
+  <h1>Data &amp; privacy</h1>
+  <section class="sec">
+    <h2>Current status</h2>
+    <p id="stOff">Nothing you enter is sent anywhere. The check runs entirely in your browser.</p>
+    <p id="stOn" hidden>Your selected industry, tasks and setup (no personal information) are used in aggregate to improve our tools. Free-text and names are never sent. Data is sent once when results are shown (the same result is not sent twice). The demo (?demo=) never sends.</p>
+  </section>
+  <section class="sec">
+    <h2>What is sent (when collection is on)</h2>
+    <ul class="list-dot">
+      <li>Country (US, UK, CA, AU or OTHER) and industry</li>
+      <li>IDs of the tasks you picked, with how often and minutes (e.g. invoice:monthly:120)</li>
+      <li>Your setup answers (spreadsheet app, Windows/Mac, Microsoft 365, coding, budget tier)</li>
+      <li>IDs of the recommended methods</li>
+      <li>The date (day only, no time), the app version and the app name (dx-en)</li>
+    </ul>
+  </section>
+  <section class="sec">
+    <h2>What is never sent</h2>
+    <ul class="list-dot">
+      <li>Anything you type in "Other tasks" (it is only matched in this page and is not saved)</li>
+      <li>Names, email addresses, phone numbers, company names or any contact details</li>
+      <li>Your action plan ticks</li>
+    </ul>
+  </section>
+  <section class="sec">
+    <h2>Stored on this device</h2>
+    <p>Your answers and plan ticks are kept in this browser's localStorage so you can come back later. Clearing site data removes them. The check works even if storage is blocked.</p>
+  </section>
+  <section class="sec">
+    <h2>How it is enforced</h2>
+    <p>The page uses a Content-Security-Policy that blocks every connection except the receiver (Google Apps Script: script.google.com). No ads, external scripts or fonts are used. Received rows are stored in a Google Sheets spreadsheet managed by MisaNeco Works and used only for aggregate statistics.</p>
+  </section>
+  <p><a href="./">Back to the check</a></p>
+</main>
+<footer class="foot wrap"><p><a href="../">All tools</a> · <a href="../dx/">日本語版</a></p><p>MisaNeco Works · Built with AI and checked against official sources</p></footer>
+<script src="js/config.js?v=2026101950"></script>
+<script src="js/privacy.js?v=2026101950"></script>
+</body>
+</html>

@@ -1,0 +1,142 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<!-- CSP: the only allowed outbound connection is the anonymous aggregate receiver in js/config.js
+     (Google Apps Script web app, which redirects to script.googleusercontent.com). No forms are submitted (form-action 'none').
+     To stop collecting, set submitUrl to "" and change connect-src back to 'none'. -->
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self'; img-src 'self' data:; connect-src https://script.google.com https://script.googleusercontent.com; font-src 'none'; frame-src 'none'; object-src 'none'; media-src 'none'; manifest-src 'none'; base-uri 'none'; form-action 'none'">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<meta name="description" content="Pick your country, industry, tasks and setup to see which tasks can be automated, compare methods, get a recommendation and a step-by-step plan adapted to small businesses in the US, UK, Canada and Australia.">
+<meta name="theme-color" content="#1b3a5c" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0f1720" media="(prefers-color-scheme: dark)">
+<title>Small Business Automation Check &amp; Action Plan</title>
+<meta property="og:type" content="website"><meta property="og:url" content="https://fearless0712.github.io/misaneco-tools/dx-en/"><meta property="og:title" content="Small Business Automation Check & Action Plan (free)"><meta property="og:description" content="Pick your country, industry and tasks to compare automation methods and get a step-by-step plan."><meta property="og:image" content="https://fearless0712.github.io/misaneco-tools/dx-en/og.png"><meta name="twitter:card" content="summary_large_image">
+<link rel="stylesheet" href="css/app.css?v=2026101950">
+<link rel="icon" href="data:,">
+</head>
+<body>
+<header class="top">
+  <div class="wrap top-row">
+    <a class="brand" href="./">Automation Check &amp; Action Plan</a>
+    <div class="cty" role="group" aria-label="Country / 国・地域">
+      <label for="ctySel" class="sr">Country / 国・地域</label>
+      <select id="ctySel" class="ctysel"></select>
+      <button type="button" id="ctyGo" class="ctygo">Go</button>
+    </div>
+  </div>
+</header>
+
+<main class="wrap" id="main">
+  <h1>Small Business Automation Check &amp; Action Plan</h1>
+  <p class="lead">Pick your country, industry, tasks and setup → see which tasks can be automated, compare methods, get a recommendation and a step-by-step plan, adapted to how small businesses work in your country.</p>
+  <p class="privacy"><span class="lock" aria-hidden="true"></span><span id="privacyText">Nothing you enter is sent anywhere — everything runs in this page.</span></p>
+
+  <nav class="steps" aria-label="Steps">
+    <ol>
+      <li><button type="button" class="stepbtn" data-go="1" aria-current="step"><span class="sn">1</span><span class="sl">Country &amp; tasks</span></button></li>
+      <li><button type="button" class="stepbtn" data-go="2"><span class="sn">2</span><span class="sl">How often</span></button></li>
+      <li><button type="button" class="stepbtn" data-go="3"><span class="sn">3</span><span class="sl">Your setup</span></button></li>
+      <li><button type="button" class="stepbtn" data-go="4"><span class="sn">4</span><span class="sl">Results &amp; plan</span></button></li>
+    </ol>
+  </nav>
+
+  <section class="card panel" id="p1" aria-labelledby="h1s">
+    <h2 id="h1s"><span class="qn">1</span>Country, industry and tasks</h2>
+    <fieldset class="q">
+      <legend>Country</legend>
+      <div class="chips" id="country"></div>
+      <p class="hint">Changes tax and payroll wording, date format and the official resources shown.</p>
+    </fieldset>
+    <fieldset class="q">
+      <legend>Industry</legend>
+      <p class="picked" id="indPicked" aria-live="polite"></p>
+      <label class="sr" for="indSearch">Search industries</label>
+      <input type="search" id="indSearch" class="search" placeholder="Search (e.g. plumber, salon, Airbnb, tutor)" autocomplete="off" aria-controls="indList">
+      <div id="indList" class="glist"></div>
+      <p class="msg" id="indNone" hidden>No match. Try another word, or choose "Other" under "Nonprofit &amp; other".</p>
+    </fieldset>
+    <fieldset class="q">
+      <legend>Tasks you want to automate (pick any)</legend>
+      <div class="selbar" aria-live="polite"><span class="count" id="selCount2">0 selected</span><div id="selChips" class="selchips"></div></div>
+      <label class="sr" for="taskSearch">Search tasks</label>
+      <input type="search" id="taskSearch" class="search" placeholder="Search tasks (e.g. invoices, rota, booking)" autocomplete="off" aria-controls="taskList">
+      <div id="taskList" class="glist"></div>
+      <p class="msg" id="taskNone" hidden>No match. Try another word, or describe it under "Other tasks" below.</p>
+    </fieldset>
+    <div class="q">
+      <label for="freeText">Other tasks (free text — used only in this page, never sent)</label>
+      <div class="row">
+        <input type="text" id="freeText" maxlength="200" placeholder="e.g. I retype orders from emails" autocomplete="off">
+        <button type="button" class="btn" id="matchBtn">Find similar</button>
+      </div>
+      <p class="hint">Matches your words to the task list above (no AI, no network).</p>
+      <div id="matchOut" aria-live="polite"></div>
+    </div>
+    <p class="msg err" id="err1" hidden>Please pick at least one task.</p>
+    <div class="nav"><span class="count" id="selCount">0 selected</span><button type="button" class="go" data-next="2">Next</button></div>
+  </section>
+
+  <section class="card panel" id="p2" hidden aria-labelledby="h2s">
+    <h2 id="h2s"><span class="qn">2</span>How often, and how long each time</h2>
+    <p class="hint">Rough numbers are fine.</p>
+    <div id="freqList"></div>
+    <div class="nav"><button type="button" class="btn ghost" data-next="1">Back</button><button type="button" class="go" data-next="3">Next</button></div>
+  </section>
+
+  <section class="card panel" id="p3" hidden aria-labelledby="h3s">
+    <h2 id="h3s"><span class="qn">3</span>Your setup</h2>
+    <fieldset class="q"><legend>Spreadsheet app</legend><div class="chips" data-env="sheet"></div></fieldset>
+    <fieldset class="q"><legend>Computer</legend><div class="chips" data-env="pc"></div></fieldset>
+    <fieldset class="q"><legend>Microsoft 365 (work or school account)</legend><div class="chips" data-env="m365"></div></fieldset>
+    <fieldset class="q"><legend>Can you write code (macros/scripts)?</legend><div class="chips" data-env="code"></div></fieldset>
+    <fieldset class="q"><legend>Budget for new tools</legend><div class="chips" data-env="budget"></div>
+      <p class="hint">With "Nothing extra", paid services and tools are never recommended (they are still listed for comparison).</p></fieldset>
+    <p class="notice" id="sendNotice" hidden></p>
+    <div class="nav"><button type="button" class="btn ghost" data-next="2">Back</button><button type="button" class="go" id="diagBtn">Show results</button></div>
+  </section>
+
+  <section id="p4" class="panel" hidden aria-live="polite">
+    <div class="tabs" role="tablist" aria-label="Results and action plan">
+      <button type="button" class="tab" role="tab" id="tabRes" aria-controls="resView" aria-selected="true">Results</button>
+      <button type="button" class="tab" role="tab" id="tabPlan" aria-controls="planView" aria-selected="false">Action plan</button>
+    </div>
+    <div id="resView" role="tabpanel" aria-labelledby="tabRes"></div>
+    <div id="planView" role="tabpanel" aria-labelledby="tabPlan" hidden></div>
+    <button type="button" class="btn ghost wide" id="againBtn">Change my answers</button>
+  </section>
+
+  <section class="sec about">
+    <h2>About this check</h2>
+    <ul class="small list-dot">
+      <li>All hours are <strong>estimates</strong>. Saving rates are typical assumptions per task and method; what fits depends on your business.</li>
+      <li>Recommendations: methods your setup can't use are removed; then the easiest (code-based methods count as harder if you don't code); on a tie, a MisaNeco Works tool; then the higher saving.</li>
+      <li>No third-party prices or brand recommendations are shown — cloud services are listed by category only. Check providers' own pages.</li>
+      <li>Tax, payroll and legal notes point to official guidance; they are not advice. Check with your accountant or the official source.</li>
+    </ul>
+  </section>
+
+  <section class="sec">
+    <h2 id="resTitle">Official resources</h2>
+    <ul class="list-dot small" id="resList"></ul>
+  </section>
+
+  <section class="sec" id="sources">
+    <h2>Sources &amp; date checked</h2>
+    <ul class="srcs" id="srcList"></ul>
+  </section>
+</main>
+
+<footer class="foot wrap">
+  <p><a href="../">All tools</a> · <a href="../dx/">日本語版</a> · <a href="privacy.html">Data &amp; privacy</a></p>
+  <p>Product and service names are trademarks of their owners. This tool is not affiliated with them.</p>
+  <p>MisaNeco Works · Built with AI and checked against official sources</p>
+</footer>
+
+<script src="js/config.js?v=2026101950"></script>
+<script src="js/data.js?v=2026101950"></script>
+<script src="js/logic.js?v=2026101950"></script>
+<script src="js/app.js?v=2026101950"></script>
+</body>
+</html>

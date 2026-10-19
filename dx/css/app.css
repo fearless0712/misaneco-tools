@@ -243,3 +243,8 @@ input[type=search] { width: 100%; font: inherit; font-size: 16px; padding: 10px 
   .links, .choose { display: none !important; }
   a { color: #000; text-decoration: none; }
 }
+
+/* 国・地域の切りかえ（ヘッダー） */
+.cty { display: flex; align-items: center; gap: 4px; flex: none; }
+.ctysel { flex: none; max-width: 9.5em; min-height: 36px; font: inherit; font-size: 13px; padding: 4px 6px; border: 1px solid var(--field-line); border-radius: 8px; background: var(--field); color: var(--ink); }
+.ctygo { flex: none; min-height: 36px; min-width: 40px; font: inherit; font-size: 13px; font-weight: 700; border: 1px solid var(--navy); border-radius: 8px; background: var(--navy); color: var(--on-navy); cursor: pointer; padding: 0 8px; }

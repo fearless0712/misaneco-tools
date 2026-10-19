@@ -531,6 +531,7 @@
     for (var i = 0; i < nx.length; i++) nx[i].addEventListener('click', function (e) { go(+e.currentTarget.getAttribute('data-next')); });
     var st = document.querySelectorAll('.stepbtn');
     for (var j = 0; j < st.length; j++) st[j].addEventListener('click', function (e) { go(+e.currentTarget.getAttribute('data-go')); });
+    $('ctyGo').addEventListener('click', function () { var v = $('ctySel').value; if (v && v !== '../dx/') window.location.href = v; });
     $('matchBtn').addEventListener('click', runMatch);
     $('indSearch').addEventListener('input', renderIndustry);
     $('taskSearch').addEventListener('input', renderTasks);

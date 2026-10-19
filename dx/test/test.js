@@ -264,7 +264,7 @@ var html = fs.readFileSync(path.join(ROOT, 'index.html'), 'utf8');
 ok(/default-src 'none'/.test(html) && /connect-src https:\/\/script\.google\.com https:\/\/script\.googleusercontent\.com;/.test(html) && /form-action 'none'/.test(html) && /base-uri 'none'/.test(html) && /script-src 'self'/.test(html), 'CSP');
 ok(!/<script[^>]+src="https?:/.test(html) && !/<link[^>]+href="https?:/.test(html), 'no external scripts/styles');
 var refs = html.match(/(src|href)="(css|js)\/[^"]+"/g) || [];
-ok(refs.length >= 5 && refs.every(function (r) { return r.indexOf('?v=2026101923') > 0; }), 'cache-bust ?v=2026101923');
+ok(refs.length >= 5 && refs.every(function (r) { return r.indexOf('?v=2026101950') > 0; }), 'cache-bust ?v=2026101950');
 ok(html.indexOf('MisaNeco Works ・ AIを活用して作成し、公式情報で確認しています') >= 0, 'footer text');
 ok(html.indexOf('href="../"') >= 0 && html.indexOf('href="../blog/"') >= 0, 'footer links');
 ok(/submitUrl と、この connect-src を一緒に直して/.test(html), 'CSP comment explains endpoint + connect-src');
@@ -333,5 +333,14 @@ var a3 = runApp({ submitUrl: '' }, '');
 ok(a3.byId.indList.children.length >= 1, 'industry groups rendered');
 ok(a3.byId.taskList.children.length >= 1, 'task groups rendered');
 ok(/件選択中/.test(a3.byId.selCount2.textContent), 'selected count shown at top');
+
+/* 15. 国・地域の切りかえ（ヘッダー） */
+var jaHtml2 = fs.readFileSync(path.join(ROOT, 'index.html'), 'utf8');
+var swOpts = (jaHtml2.match(/<option value="([^"]+)"/g) || []).map(function (x) { return /value="([^"]+)"/.exec(x)[1]; });
+eq(swOpts.length, 6, 'switcher has 6 options');
+swOpts.forEach(function (h) { ok(fs.existsSync(path.join(SITE, h.replace(/^\.\.\//, '').split('?')[0], 'index.html')), 'switcher target exists ' + h); });
+ok(/<option value="\.\.\/dx\/" selected>日本 \(Japan\)/.test(jaHtml2), 'Japan selected on dx');
+var enL = require('../../dx-en/js/logic.js');
+swOpts.slice(1).forEach(function (h) { ok(enL.countryFromSearch('?' + h.split('?')[1]), 'dx-en accepts ' + h); });
 console.log('\n' + pass + ' passed, ' + fail + ' failed');
 process.exit(fail ? 1 : 0);

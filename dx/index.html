@@ -14,14 +14,25 @@
 <meta name="theme-color" content="#0f1720" media="(prefers-color-scheme: dark)">
 <title>業務の自動化 診断＆推進プラン</title>
 <meta property="og:type" content="website"><meta property="og:url" content="https://fearless0712.github.io/misaneco-tools/dx/"><meta property="og:title" content="業務の自動化 診断＆推進プラン（無料）"><meta property="og:description" content="40業種・86業務から選ぶと、自動化できる業務・方法の比較・おすすめと進め方のチェックリストが出ます。"><meta property="og:image" content="https://fearless0712.github.io/misaneco-tools/dx/og.png"><meta name="twitter:card" content="summary_large_image">
-<link rel="stylesheet" href="css/app.css?v=2026101923">
+<link rel="stylesheet" href="css/app.css?v=2026101950">
 <link rel="icon" href="data:,">
 </head>
 <body>
 <header class="top">
   <div class="wrap top-row">
     <a class="brand" href="./">業務の自動化 診断＆推進プラン</a>
-    <a class="toplink" href="../">ツール一覧</a>
+    <div class="cty" role="group" aria-label="国・地域 / Country">
+      <label for="ctySel" class="sr">国・地域 / Country</label>
+      <select id="ctySel" class="ctysel">
+        <option value="../dx/" selected>日本 (Japan)</option>
+        <option value="../dx-en/?country=US">United States</option>
+        <option value="../dx-en/?country=UK">United Kingdom</option>
+        <option value="../dx-en/?country=CA">Canada</option>
+        <option value="../dx-en/?country=AU">Australia</option>
+        <option value="../dx-en/?country=OTHER">Other</option>
+      </select>
+      <button type="button" id="ctyGo" class="ctygo">移動</button>
+    </div>
   </div>
 </header>
 
@@ -121,14 +132,14 @@
 </main>
 
 <footer class="foot wrap">
-  <p><a href="../">ツール一覧</a> ・ <a href="../blog/">ブログ</a> ・ <a href="privacy.html">データの扱い</a></p>
+  <p><a href="../">ツール一覧</a> ・ <a href="../blog/">ブログ</a> ・ <a href="privacy.html">データの扱い</a> ・ <a href="../dx-en/" hreflang="en" lang="en">English version</a></p>
   <p>各社の名称・サービス名は各社の商標です。このツールは各社の公式サービスではありません。</p>
   <p>MisaNeco Works ・ AIを活用して作成し、公式情報で確認しています</p>
 </footer>
 
-<script src="js/config.js?v=2026101923"></script>
-<script src="js/data.js?v=2026101923"></script>
-<script src="js/logic.js?v=2026101923"></script>
-<script src="js/app.js?v=2026101923"></script>
+<script src="js/config.js?v=2026101950"></script>
+<script src="js/data.js?v=2026101950"></script>
+<script src="js/logic.js?v=2026101950"></script>
+<script src="js/app.js?v=2026101950"></script>
 </body>
 </html>
