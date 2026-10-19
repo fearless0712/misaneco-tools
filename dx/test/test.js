@@ -205,10 +205,12 @@ ok(L.payloadHash(pl) !== L.payloadHash(L.buildPayload({ industry: 'office', task
 /* 10. 送信先が空 → 送らない・お知らせも出さない・従来の文言 */
 var cfgSrc = fs.readFileSync(path.join(ROOT, 'js/config.js'), 'utf8');
 var sb = { window: {} }; vm.runInNewContext(cfgSrc, sb);
-eq(sb.window.DX_CONFIG.submitUrl, '', 'config submitUrl is empty');
-ok(!L.submitEnabled(sb.window.DX_CONFIG), 'empty submitUrl → disabled');
-ok(!L.shouldSend(sb.window.DX_CONFIG, 'abc', []), 'empty submitUrl → no send');
-ok(L.privacyLine(sb.window.DX_CONFIG).indexOf('入力内容は外部に送信しません') === 0, 'empty → old wording');
+ok(/^https:\/\/script\.google\.com\/macros\/s\/[^/]+\/exec$/.test(sb.window.DX_CONFIG.submitUrl), 'config submitUrl is the Apps Script endpoint');
+ok(L.submitEnabled(sb.window.DX_CONFIG), 'configured submitUrl → enabled');
+ok(!L.submitEnabled({ submitUrl: '' }), 'empty submitUrl → disabled');
+ok(!L.shouldSend({ submitUrl: '' }, 'abc', []), 'empty submitUrl → no send');
+ok(L.privacyLine({ submitUrl: '' }).indexOf('入力内容は外部に送信しません') === 0, 'empty → old wording');
+ok(L.privacyLine(sb.window.DX_CONFIG).indexOf('選んだ業務と環境') >= 0, 'configured → collection notice');
 var on = { submitUrl: 'https://script.google.com/macros/s/x/exec' };
 ok(L.submitEnabled(on) && L.shouldSend(on, 'abc', []), 'set → send');
 ok(!L.shouldSend(on, 'abc', ['abc']), 'same result not sent twice');
@@ -254,13 +256,15 @@ ok(a1.byId.planView.children.length > 0, 'plan rendered without localStorage');
 var a2 = runApp({ submitUrl: 'https://script.google.com/macros/s/x/exec', fields: {} }, '');
 eq(a2.calls.length, 0, 'no send before results');
 ok(a2.byId.sendNotice.hidden === false, 'set submitUrl: notice shown');
+var a3 = runApp({ submitUrl: 'https://script.google.com/macros/s/x/exec', fields: {} }, '?demo=1');
+eq(a3.calls.length, 0, 'demo mode never sends even with submitUrl');
 
 /* 12. HTML：CSP・キャッシュ対策・フッター */
 var html = fs.readFileSync(path.join(ROOT, 'index.html'), 'utf8');
-ok(/default-src 'none'/.test(html) && /connect-src 'none'/.test(html) && /form-action 'none'/.test(html) && /base-uri 'none'/.test(html) && /script-src 'self'/.test(html), 'CSP');
+ok(/default-src 'none'/.test(html) && /connect-src https:\/\/script\.google\.com https:\/\/script\.googleusercontent\.com;/.test(html) && /form-action 'none'/.test(html) && /base-uri 'none'/.test(html) && /script-src 'self'/.test(html), 'CSP');
 ok(!/<script[^>]+src="https?:/.test(html) && !/<link[^>]+href="https?:/.test(html), 'no external scripts/styles');
 var refs = html.match(/(src|href)="(css|js)\/[^"]+"/g) || [];
-ok(refs.length >= 5 && refs.every(function (r) { return r.indexOf('?v=20261019') > 0; }), 'cache-bust ?v=20261019');
+ok(refs.length >= 5 && refs.every(function (r) { return r.indexOf('?v=2026101922') > 0; }), 'cache-bust ?v=2026101922');
 ok(html.indexOf('MisaNeco Works ・ AIを活用して作成し、公式情報で確認しています') >= 0, 'footer text');
 ok(html.indexOf('href="../"') >= 0 && html.indexOf('href="../blog/"') >= 0, 'footer links');
 ok(/connect-src に送信先のオリジン/.test(html), 'CSP comment about enabling submission');

@@ -7,13 +7,13 @@
      js/config.js の submitUrl を設定して集計を始めるときは、connect-src に送信先のオリジンを足してください
      （例：connect-src https://docs.google.com 、Apps Script なら https://script.google.com https://script.googleusercontent.com）。
      フォームの送信（form-action）は使わないので 'none' のままで動きます。 -->
-<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self'; img-src 'self' data:; connect-src 'none'; font-src 'none'; frame-src 'none'; object-src 'none'; media-src 'none'; manifest-src 'none'; base-uri 'none'; form-action 'none'">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self'; img-src 'self' data:; connect-src https://script.google.com https://script.googleusercontent.com; font-src 'none'; frame-src 'none'; object-src 'none'; media-src 'none'; manifest-src 'none'; base-uri 'none'; form-action 'none'">
 <meta name="referrer" content="strict-origin-when-cross-origin">
 <meta name="description" content="業種と業務、頻度と時間、パソコンの環境を選ぶと、自動化しやすい業務と方法（費用・むずかしさ・はじめの一歩）、年間で減らせる時間の目安がわかり、優先順の推進プランを作れる無料ツール。">
 <meta name="theme-color" content="#1b3a5c" media="(prefers-color-scheme: light)">
 <meta name="theme-color" content="#0f1720" media="(prefers-color-scheme: dark)">
 <title>業務の自動化 診断＆推進プラン</title>
-<link rel="stylesheet" href="css/app.css?v=20261019">
+<link rel="stylesheet" href="css/app.css?v=2026101922">
 <link rel="icon" href="data:,">
 </head>
 <body>
@@ -120,9 +120,9 @@
   <p>MisaNeco Works ・ AIを活用して作成し、公式情報で確認しています</p>
 </footer>
 
-<script src="js/config.js?v=20261019"></script>
-<script src="js/data.js?v=20261019"></script>
-<script src="js/logic.js?v=20261019"></script>
-<script src="js/app.js?v=20261019"></script>
+<script src="js/config.js?v=2026101922"></script>
+<script src="js/data.js?v=2026101922"></script>
+<script src="js/logic.js?v=2026101922"></script>
+<script src="js/app.js?v=2026101922"></script>
 </body>
 </html>

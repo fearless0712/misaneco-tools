@@ -8,7 +8,7 @@
       （例：connect-src https://docs.google.com または https://script.google.com https://script.googleusercontent.com）
    送るのは js/logic.js の buildPayload が作る6項目だけです（自由記入の文章・名前・連絡先は入りません）。 */
 window.DX_CONFIG = {
-  submitUrl: '',
+  submitUrl: 'https://script.google.com/macros/s/AKfycbxWcxhmUZr8Q83Nu6EqEYN6wpfcWvi3ghlgAmVl0-k1XhV4AQF9KM6Xkz1TkhG_weXbDA/exec',
   fields: {
     industry: 'industry',
     tasks: 'tasks',

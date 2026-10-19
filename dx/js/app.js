@@ -409,8 +409,9 @@
   }
 
   /* ---------- 送信（submitUrl があるときだけ） ---------- */
+  var DEMO = /[?&]demo=/.test(window.location.search);
   function maybeSend() {
-    if (!DX.submitEnabled(CFG)) return;
+    if (DEMO || !DX.submitEnabled(CFG)) return;
     var payload = DX.buildPayload(answers(), diag, new Date());
     var hash = DX.payloadHash(payload);
     var sent = ssGet(KEY_SENT); if (!Array.isArray(sent)) sent = [];
