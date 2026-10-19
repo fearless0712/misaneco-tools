@@ -1,0 +1,148 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'self'; img-src 'self' data: https://*.a8.net https://*.google-analytics.com https://*.googletagmanager.com; script-src 'self' https://www.googletagmanager.com; connect-src https://*.google-analytics.com https://*.analytics.google.com https://*.googletagmanager.com; base-uri 'none'; form-action 'none'; object-src 'none'">
+<title>A simple customer follow-up sheet (CRM-lite) for small service businesses | MisaNeco Works</title><meta name="description" content="Track last contact and next action for every customer, see who is due today, spot customers who have gone quiet, and count your pipeline with COUNTIFS. Works in Excel and Google Sheets.">
+<link rel="canonical" href="https://fearless0712.github.io/misaneco-tools/blog/en-customer-follow-up-crm-spreadsheet/"><meta property="og:type" content="article"><meta property="og:url" content="https://fearless0712.github.io/misaneco-tools/blog/en-customer-follow-up-crm-spreadsheet/"><meta property="og:image" content="https://fearless0712.github.io/misaneco-tools/blog/og.png"><meta name="twitter:card" content="summary_large_image"><meta property="og:title" content="A simple customer follow-up sheet (CRM-lite) for small service businesses | MisaNeco Works"><meta property="og:description" content="Track last contact and next action for every customer, see who is due today, spot customers who have gone quiet, and count your pipeline with COUNTIFS. Works in Excel and Google Sheets.">
+<link rel="alternate" type="application/rss+xml" title="MisaNeco Works Blog" href="https://fearless0712.github.io/misaneco-tools/blog/en/rss.xml"><script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "A simple customer follow-up sheet (CRM-lite) for small service businesses", "description": "Track last contact and next action for every customer, see who is due today, spot customers who have gone quiet, and count your pipeline with COUNTIFS. Works in Excel and Google Sheets.", "datePublished": "2026-10-20", "dateModified": "2026-10-20", "inLanguage": "en", "mainEntityOfPage": "https://fearless0712.github.io/misaneco-tools/blog/en-customer-follow-up-crm-spreadsheet/", "image": "https://fearless0712.github.io/misaneco-tools/blog/og.png", "author": {"@type": "Organization", "name": "MisaNeco Works", "url": "https://fearless0712.github.io/misaneco-tools/"}, "publisher": {"@type": "Organization", "name": "MisaNeco Works"}}</script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-EWJXRJY9M6"></script><script src="../ga.js?v=202610200405"></script>
+<link rel="stylesheet" href="../blog.css?v=202610200405"></head><body>
+<header><div class="wrap"><a href="../en/">MisaNeco Works Blog</a></div></header>
+<main class="wrap"><p class="meta">2026-10-20・Automation / Small business / Excel</p><h1>A simple customer follow-up sheet (CRM-lite) for small service businesses</h1><p>For a small service business, most new work comes from people you already know: past customers, referrals, and enquiries that were "not right now". The problem is remembering to get back in touch.</p>
+<p>A full CRM can feel like too much. Many small businesses only need one thing from it: a list that says who to contact today, and why. A spreadsheet does that well.</p>
+<p>This guide shows you how to build a CRM-lite sheet in Excel or Google Sheets. Everything works in both apps unless noted. It takes about 15 minutes.</p>
+<h2>What you will build</h2>
+<ul>
+<li>One row per contact, with a stage such as Lead, Customer or Inactive.</li>
+<li>The date you last spoke, the next thing to do, and when to do it.</li>
+<li>A column that says <strong>Today</strong> or <strong>Overdue</strong> when an action is due.</li>
+<li>A "due today" view, so each morning starts with a short list.</li>
+<li>Pipeline counts with COUNTIFS, so you can see the shape of your business at a glance.</li>
+</ul>
+<h2>Step 1. Set up the columns</h2>
+<p>Create a sheet called <strong>Contacts</strong> and add these headers in row 1:</p>
+<table>
+<thead>
+<tr>
+<th>A</th>
+<th>B</th>
+<th>C</th>
+<th>D</th>
+<th>E</th>
+<th>F</th>
+<th>G</th>
+<th>H</th>
+<th>I</th>
+<th>J</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Name</td>
+<td>Phone or email</td>
+<td>Service</td>
+<td>Stage</td>
+<td>Last contact</td>
+<td>Next action</td>
+<td>Next action date</td>
+<td>Due</td>
+<td>Days since contact</td>
+<td>Notes</td>
+</tr>
+</tbody>
+</table>
+<p>Tips:</p>
+<ul>
+<li>Columns E and G must be real dates. Format them as dates.</li>
+<li><strong>Next action</strong> is a short instruction to yourself: "Call to book spring service", "Send price for extra room", "Check in after first month".</li>
+<li><strong>Notes</strong> is for anything useful: preferences, family names, the last job you did.</li>
+</ul>
+<h2>Step 2. Add a dropdown for Stage</h2>
+<p>A fixed list keeps your counts accurate.</p>
+<ol>
+<li>Select D2 down to D1000.</li>
+<li>Open data validation. In Google Sheets it is <strong>Data &gt; Data validation</strong>. In Excel it is <strong>Data &gt; Data Validation</strong>.</li>
+<li>Choose a dropdown or list, and enter: <strong>Lead, Contacted, Quoted, Customer, Inactive</strong>.</li>
+</ol>
+<p>What each stage means is up to you. A simple version:</p>
+<ul>
+<li><strong>Lead:</strong> someone who asked about your services.</li>
+<li><strong>Contacted:</strong> you have spoken and are waiting on them.</li>
+<li><strong>Quoted:</strong> you have sent a price.</li>
+<li><strong>Customer:</strong> they have used your service.</li>
+<li><strong>Inactive:</strong> no longer a fit, or asked not to be contacted.</li>
+</ul>
+<h2>Step 3. Flag what is due</h2>
+<p>In H2 (Due), paste:</p>
+<p><code>=IF(OR(G2="",D2="Inactive"),"",IF(G2&lt;TODAY(),"Overdue",IF(G2=TODAY(),"Today","")))</code></p>
+<p>What it does:</p>
+<ol>
+<li>Shows nothing if there is no next action date, or the contact is Inactive.</li>
+<li>Shows <strong>Overdue</strong> if the date has passed.</li>
+<li>Shows <strong>Today</strong> if the date is today.</li>
+</ol>
+<p>In I2 (Days since contact), paste:</p>
+<p><code>=IF(E2="","",TODAY()-E2)</code></p>
+<p>If it shows a date instead of a number, change column I to a plain number format.</p>
+<p>Copy both formulas down. TODAY() updates on its own, so the flags move forward each day without you touching them.</p>
+<h2>Step 4. Make a "due today" view</h2>
+<p><strong>Both apps:</strong> turn on a filter. In Google Sheets, choose <strong>Data &gt; Create a filter</strong>. In Excel, select the header row and choose <strong>Data &gt; Filter</strong>. Click the arrow on <strong>Due</strong> and tick only <strong>Today</strong> and <strong>Overdue</strong>. Sort by <strong>Next action date</strong>, oldest first.</p>
+<p><strong>Google Sheets only:</strong> for a separate list that updates by itself, create a new tab called <strong>Today</strong> and put this in A2:</p>
+<p><code>=SORT(FILTER(Contacts!A2:J1000,Contacts!G2:G1000&lt;&gt;"",Contacts!G2:G1000&lt;=TODAY(),Contacts!D2:D1000&lt;&gt;"Inactive"),7,TRUE)</code></p>
+<p>Copy the headers from the Contacts tab into row 1. FILTER keeps rows where every condition is true, and SORT puts them in order of the seventh column (Next action date), oldest first. If nothing is due, the cell shows an error saying no matches were found. That just means a clear day.</p>
+<p>Excel 365 also has FILTER and SORT, but the arguments work differently, so this guide sticks to the normal filter for Excel.</p>
+<h2>Step 5. Spot customers who have gone quiet</h2>
+<p>Past customers are often the easiest work to win back. Colour the ones you have not spoken to in a while.</p>
+<p><strong>Google Sheets:</strong> select A2:J1000, open <strong>Format &gt; Conditional formatting</strong>, choose <strong>Custom formula is</strong>, and paste:</p>
+<p><code>=AND($D2="Customer",$E2&lt;&gt;"",TODAY()-$E2&gt;90)</code></p>
+<p><strong>Excel:</strong> select A2:J1000, choose <strong>Home &gt; Conditional Formatting &gt; New Rule</strong>, then <strong>Use a formula to determine which cells to format</strong>, and paste the same formula.</p>
+<p>Give it a soft yellow fill. Change 90 to whatever gap makes sense for your service. A window cleaner might use 60 days, a boiler service business might use a year.</p>
+<p>You can add a second rule for due actions, for example <code>=$H2="Overdue"</code> with a light red fill.</p>
+<h2>Step 6. Count your pipeline with COUNTIFS</h2>
+<p>Make a small summary block, for example in L1:M6 on the Contacts tab:</p>
+<table>
+<thead>
+<tr>
+<th>L</th>
+<th>M</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Lead</td>
+<td><code>=COUNTIFS(D2:D1000,"Lead")</code></td>
+</tr>
+<tr>
+<td>Contacted</td>
+<td><code>=COUNTIFS(D2:D1000,"Contacted")</code></td>
+</tr>
+<tr>
+<td>Quoted</td>
+<td><code>=COUNTIFS(D2:D1000,"Quoted")</code></td>
+</tr>
+<tr>
+<td>Customer</td>
+<td><code>=COUNTIFS(D2:D1000,"Customer")</code></td>
+</tr>
+<tr>
+<td>Due or overdue</td>
+<td><code>=COUNTIFS(G2:G1000,"&lt;="&amp;TODAY(),D2:D1000,"&lt;&gt;Inactive")</code></td>
+</tr>
+<tr>
+<td>Quiet customers</td>
+<td><code>=COUNTIFS(D2:D1000,"Customer",E2:E1000,"&lt;"&amp;TODAY()-90)</code></td>
+</tr>
+</tbody>
+</table>
+<p>A tidier way for the first four: type the stage names in L1:L4 and use <code>=COUNTIFS($D$2:$D$1000,L1)</code> in M1, copied down. If you add a stage later, just add a row.</p>
+<p>The date conditions join a comparison sign to TODAY() with <code>&amp;</code>. Blank dates are not counted, so empty rows do not affect the numbers.</p>
+<h2>Using it day to day</h2>
+<ul>
+<li><strong>New enquiry:</strong> add a row, set Stage to Lead, and set a next action and date.</li>
+<li><strong>Each morning:</strong> open the due view, make your calls or send your messages, then update <strong>Last contact</strong>, <strong>Next action</strong> and <strong>Next action date</strong> for each one.</li>
+<li><strong>After a job:</strong> set Stage to Customer and add a check-in date, for example a few weeks later or when the next service is due.</li>
+<li><strong>Once a month:</strong> look at the quiet customers and the pipeline counts.</li>
+</ul>
+<p>The key habit is simple: every active contact always has a next action date. If a row has no date, it is easy to forget.</p>
+<h2>What else could you automate?</h2>
+<p>Follow-ups are a good place to start. Our free <strong>Small Business Automation Check</strong> asks about your country, industry and daily tasks, and shows which admin jobs are easiest to automate next.</p><div class="tools"><b>Free tools you can use</b><a href="../../dx-en/">Small Business Automation Check</a><br></div><div class="rel"><b>Related articles</b><a href="../en-staff-shift-schedule-google-sheets/">Build a weekly staff shift schedule in Google Sheets (hours per person, gaps highlighted)</a><br><a href="../en-quote-to-job-tracker-spreadsheet/">A simple quote-to-job tracker for trades and service businesses (Excel or Google Sheets)</a><br><a href="../en-clean-customer-list-excel/">Clean up a messy customer list in Excel or Google Sheets (5 formulas, 10 minutes)</a><br></div></main>
+<footer class="wrap">© MisaNeco Works ・ <a href="../en/">All articles</a> ・ <a href="../../">Free tools</a> ・ <a href="../en/../">日本語の記事</a><br>Articles are written with the help of AI and checked against official sources. Articles with ads say so at the top. We use Google Analytics to count page views anonymously (no names or contact details).</footer>
+</body></html>
