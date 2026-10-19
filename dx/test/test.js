@@ -132,7 +132,7 @@ eq(L.matchFreeText('天気がよい').length, 0, 'unrelated → none');
 /* 6. 禁止語・料金の数字（他社） */
 var dataSrc = fs.readFileSync(path.join(ROOT, 'js/data.js'), 'utf8');
 var allText = [dataSrc, fs.readFileSync(path.join(ROOT, 'js/logic.js'), 'utf8'), fs.readFileSync(path.join(ROOT, 'js/app.js'), 'utf8'), fs.readFileSync(path.join(ROOT, 'index.html'), 'utf8'), fs.readFileSync(path.join(ROOT, 'privacy.html'), 'utf8')].join('\n');
-['最安', '必ず', '絶対', '1万円', '30日チャレンジ'].forEach(function (w) { ok(allText.indexOf(w) < 0, 'banned word absent: ' + w); });
+['最安', '必ず', '絶対', '1万'+'円', '30日'+'チャレンジ'].forEach(function (w) { ok(allText.indexOf(w) < 0, 'banned word absent: ' + w); });
 D.TASKS.forEach(function (t) {
   t.m.forEach(function (m) {
     if (m.type === 'tool') return;
