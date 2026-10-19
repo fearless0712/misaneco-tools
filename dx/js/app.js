@@ -520,14 +520,28 @@
     $('inter').hidden = true; $('interBody').textContent = '';
     if (lastFocus && lastFocus.focus) { try { lastFocus.focus(); } catch (e) { /* noop */ } }
   }
+  /* ページ下の広告（毎回表示。開いたときの全画面広告とは別の日替わり） */
+  function renderPageAd() {
+    var host = $('pageAd'); if (!host || DEMO || !ADS || !ADSX) return;
+    var r = ADS.interstitial && Array.isArray(ADS.interstitial.rotate) ? ADS.interstitial.rotate.filter(function (x) { return x && typeof x.tag === 'string' && x.tag.trim(); }) : [];
+    if (!r.length) return;
+    var pick = r[(ADSX.dayIndex(DX.dayString(new Date())) + 1) % r.length], frag = ADSX.sanitizeTag(pick.tag);
+    if (!frag) return;
+    host.textContent = '';
+    var box = el('aside', 'adbox'); box.setAttribute('aria-label', adLabel());
+    var h = el('div', 'adhead'); h.appendChild(el('span', 'adtag', adLabel())); box.appendChild(h);
+    var b = el('div', 'adbody'); b.appendChild(frag); box.appendChild(b);
+    host.appendChild(adDisclosure()); host.appendChild(box);
+  }
   function loadAds() {
     try {
-      window.fetch('ads.json?v=2026101960', { cache: 'no-cache', credentials: 'same-origin' })
+      window.fetch('ads.json?v=2026101961', { cache: 'no-cache', credentials: 'same-origin' })
         .then(function (r) { return r.ok ? r.json() : null; })
         .then(function (j) {
           ADS = j && typeof j === 'object' ? j : null;
           if (!ADS) return;
           if (diag) { renderResult(); renderPlan(); }
+          renderPageAd();
           showInterstitial();
         })['catch'](function () { /* no ads */ });
     } catch (e) { /* no ads */ }
