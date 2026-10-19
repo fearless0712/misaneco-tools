@@ -1,0 +1,32 @@
+<!doctype html><html lang="ja"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self'; img-src 'self' data:; connect-src 'none'; base-uri 'none'; form-action 'none'; object-src 'none'">
+<title>帳簿・領収書の保存期間チェッカー（個人事業主）</title>
+<meta name="description" content="青色・白色申告、インボイス登録の有無を選ぶだけで、帳簿・領収書・請求書を何年保存するかが一覧でわかる無料ツール。国税庁の表で確認。入力は外部に送信しません。">
+<link rel="canonical" href="https://fearless0712.github.io/misaneco-tools/hozon/">
+<link rel="alternate" hreflang="en" href="https://fearless0712.github.io/misaneco-tools/records/">
+<link rel="stylesheet" href="app.css?v=202610200045"></head><body>
+<header><div class="wrap"><a href="../">MisaNeco Works 無料ツール</a></div></header>
+<main class="wrap">
+<h1>帳簿・領収書の保存期間チェッカー</h1>
+<p>個人事業主（フリーランス）向けです。当てはまるものを選ぶと、何を何年保存するかが一覧で出ます。入力は外部に送信しません。</p>
+<div class="card opt">
+<b>申告のしかた</b>
+<label><input type="radio" name="kind" value="blue" checked>青色申告</label>
+<label><input type="radio" name="kind" value="white">白色申告</label>
+<div id="lowRow"><label><input type="checkbox" id="low300">前々年分の事業所得と不動産所得の金額が300万円以下</label></div>
+<b>当てはまるもの</b>
+<label><input type="checkbox" id="invoice">消費税の課税事業者・インボイス（適格請求書発行事業者）に登録している</label>
+<label><input type="checkbox" id="zatsu300">副業など雑所得の業務があり、前々年分のその業務の収入金額が300万円を超える</label>
+</div>
+<div class="card" aria-live="polite">
+<table><tbody id="out"></tbody></table>
+<p class="mut">あとで迷わないよう、その年のフォルダにこの名前の空ファイルを置いておくのがおすすめです：</p>
+<p class="tip" id="memo"></p>
+</div>
+<p class="mut">国税庁「記帳や帳簿等保存・青色申告」（令和8年4月1日現在法令等）の表で2026年10月19日に確認した一般的な内容です。保存期間をいつから数えるか、ご自身が当てはまるかは、捨てる前に税務署または税理士に確認してください。電子で受け取った請求書・領収書は、電子帳簿保存法のルールで電子のまま保存が必要です。</p>
+<p class="mut">出典：<a href="https://www.nta.go.jp/publication/pamph/koho/kurashi/html/01_2.htm" target="_blank" rel="noopener">国税庁「記帳や帳簿等保存・青色申告」</a></p>
+<p>関連：<a href="https://note.com/cool_lily1388/n/nc22a7797d15d" target="_blank" rel="noopener">解説記事（note）</a> ・ <a href="../dx/">業務の自動化 診断＆推進プラン</a> ・ <a href="../records/" hreflang="en">English: US/UK/CA/AU</a></p>
+</main>
+<footer class="wrap">© MisaNeco Works ・ AIを活用して作成し、公式の情報で確認しています。</footer>
+<script src="logic.js?v=202610200045"></script><script src="app.js?v=202610200045"></script>
+</body></html>
