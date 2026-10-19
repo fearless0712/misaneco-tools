@@ -1,33 +1,73 @@
 {
-  "_doc": [
-    "広告の中身はこのファイルだけで差し替えます（コードの変更は不要）。",
-    "slots.<カテゴリ> に広告を入れると、placements でそのカテゴリを指定したグループの下に「広告・PR」枠として出ます。空のカテゴリは枠ごと出ません。",
-    "type 'image': {img, href, alt, width, height, text(任意・説明1行)}。画像は ads/ に置くか、index.html のCSP(img-src)で許可した広告ホストのもの。",
-    "type 'html': {html}。A8.net・もしもアフィリエイト等の <a><img> タグを貼る。<script> は動きません。",
-    "weight: 出る割合。enabled:false で停止。",
-    "slots.interstitial は全画面の広告（1日1回まで・×ですぐ閉じる）。空なら出ません。",
-    "「クリックしてください」などクリックを促す文言は書かないこと。"
+ "_doc": [
+  "広告の中身はこのファイルだけで差し替えます（コードの変更は不要）。",
+  "slots.<カテゴリ> に広告を入れると、placements でそのカテゴリを指定したグループの下に「広告・PR」枠として出ます。空のカテゴリは枠ごと出ません。",
+  "type 'image': {img, href, alt, width, height, text(任意・説明1行)}。画像は ads/ に置くか、index.html のCSP(img-src)で許可した広告ホストのもの。",
+  "type 'html': {html}。A8.net・もしもアフィリエイト等の <a><img> タグを貼る。<script> は動きません。",
+  "weight: 出る割合。enabled:false で停止。",
+  "slots.interstitial は全画面の広告（1日1回まで・×ですぐ閉じる）。空なら出ません。",
+  "「クリックしてください」などクリックを促す文言は書かないこと。"
+ ],
+ "categoryNames": {
+  "moving": "引越し見積もり",
+  "internet": "光回線",
+  "buyback": "不用品買取",
+  "insurance": "火災保険"
+ },
+ "placements": {
+  "g1": [
+   "moving",
+   "buyback"
   ],
-  "categoryNames": {
-    "moving": "引越し見積もり",
-    "internet": "光回線",
-    "buyback": "不用品買取",
-    "insurance": "火災保険"
-  },
-  "placements": {
-    "g1": ["moving", "buyback"],
-    "g2": ["internet", "insurance"],
-    "g3": ["buyback", "moving"],
-    "g4": [],
-    "g5": [],
-    "g6": ["internet", "insurance"],
-    "g7": []
-  },
-  "slots": {
-    "moving": [],
-    "internet": [],
-    "buyback": [],
-    "insurance": [],
-    "interstitial": []
-  }
+  "g2": [
+   "internet",
+   "insurance"
+  ],
+  "g3": [
+   "buyback",
+   "moving"
+  ],
+  "g4": [],
+  "g5": [],
+  "g6": [
+   "internet",
+   "insurance"
+  ],
+  "g7": []
+ },
+ "slots": {
+  "moving": [
+   {
+    "type": "html",
+    "html": "<a href=\"https://px.a8.net/svt/ejp?a8mat=4BEJHJ+1ELV76+5W8K+5YZ75\" rel=\"nofollow\">\n<img border=\"0\" width=\"300\" height=\"250\" alt=\"\" src=\"https://www23.a8.net/svt/bgt?aid=261018919085&wid=001&eno=01&mid=s00000027506001003000&mc=1\"></a>\n<img border=\"0\" width=\"1\" height=\"1\" src=\"https://www18.a8.net/0.gif?a8mat=4BEJHJ+1ELV76+5W8K+5YZ75\" alt=\"\">",
+    "weight": 1
+   },
+   {
+    "type": "html",
+    "html": "<a href=\"https://px.a8.net/svt/ejp?a8mat=4BEJHJ+1CTKDU+4BRI+1TIBOX\" rel=\"nofollow\">\n<img border=\"0\" width=\"300\" height=\"250\" alt=\"\" src=\"https://www27.a8.net/svt/bgt?aid=261018919082&wid=001&eno=01&mid=s00000020187011003000&mc=1\"></a>\n<img border=\"0\" width=\"1\" height=\"1\" src=\"https://www12.a8.net/0.gif?a8mat=4BEJHJ+1CTKDU+4BRI+1TIBOX\" alt=\"\">",
+    "weight": 1
+   }
+  ],
+  "internet": [
+   {
+    "type": "html",
+    "html": "<a href=\"https://px.a8.net/svt/ejp?a8mat=4BEK9C+10WWAA+3SPO+CKIQ1T\" rel=\"nofollow\">\n<img border=\"0\" width=\"300\" height=\"250\" alt=\"\" src=\"https://www23.a8.net/svt/bgt?aid=261019920062&wid=001&eno=01&mid=s00000017718076006000&mc=1\"></a>\n<img border=\"0\" width=\"1\" height=\"1\" src=\"https://www16.a8.net/0.gif?a8mat=4BEK9C+10WWAA+3SPO+CKIQ1T\" alt=\"\">",
+    "weight": 1
+   },
+   {
+    "type": "html",
+    "html": "<a href=\"https://px.a8.net/svt/ejp?a8mat=4BEK9C+123RHU+348K+1BNYOX\" rel=\"nofollow\">\n<img border=\"0\" width=\"300\" height=\"250\" alt=\"\" src=\"https://www27.a8.net/svt/bgt?aid=261019920064&wid=001&eno=01&mid=s00000014546008006000&mc=1\"></a>\n<img border=\"0\" width=\"1\" height=\"1\" src=\"https://www10.a8.net/0.gif?a8mat=4BEK9C+123RHU+348K+1BNYOX\" alt=\"\">",
+    "weight": 1
+   }
+  ],
+  "buyback": [
+   {
+    "type": "html",
+    "html": "<a href=\"https://px.a8.net/svt/ejp?a8mat=4BEJHI+APSWS2+5V1I+BXYE9\" rel=\"nofollow\">\n<img border=\"0\" width=\"300\" height=\"250\" alt=\"\" src=\"https://www20.a8.net/svt/bgt?aid=261018918648&wid=001&eno=01&mid=s00000027351002006000&mc=1\"></a>\n<img border=\"0\" width=\"1\" height=\"1\" src=\"https://www14.a8.net/0.gif?a8mat=4BEJHI+APSWS2+5V1I+BXYE9\" alt=\"\">",
+    "weight": 1
+   }
+  ],
+  "insurance": [],
+  "interstitial": []
+ }
 }

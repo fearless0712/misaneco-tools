@@ -7,9 +7,33 @@
   "ja": "スマホ・回線のサービス"
  },
  "slots": [
-  { "id": "slot1", "advertiser": "", "network": "A8.net", "tag": "", "caption": { "ja": "" } },
-  { "id": "slot2", "advertiser": "", "network": "A8.net", "tag": "", "caption": { "ja": "" } },
-  { "id": "slot3", "advertiser": "", "network": "A8.net", "tag": "", "caption": { "ja": "" } }
+  {
+   "id": "slot1",
+   "advertiser": "LIBMO",
+   "network": "A8.net",
+   "tag": "<a href=\"https://px.a8.net/svt/ejp?a8mat=4BEK9B+EDZ52Q+3UM0+609HT\" rel=\"nofollow\">\n<img border=\"0\" width=\"300\" height=\"250\" alt=\"\" src=\"https://www28.a8.net/svt/bgt?aid=261019919870&wid=001&eno=01&mid=s00000017964001009000&mc=1\"></a>\n<img border=\"0\" width=\"1\" height=\"1\" src=\"https://www19.a8.net/0.gif?a8mat=4BEK9B+EDZ52Q+3UM0+609HT\" alt=\"\">",
+   "caption": {
+    "ja": ""
+   }
+  },
+  {
+   "id": "slot2",
+   "advertiser": "DTI SIM",
+   "network": "A8.net",
+   "tag": "<a href=\"https://px.a8.net/svt/ejp?a8mat=4BEK9B+EC6U9E+1QFI+2Z7IWH\" rel=\"nofollow\">\n<img border=\"0\" width=\"300\" height=\"250\" alt=\"\" src=\"https://www27.a8.net/svt/bgt?aid=261019919867&wid=001&eno=01&mid=s00000008091018007000&mc=1\"></a>\n<img border=\"0\" width=\"1\" height=\"1\" src=\"https://www11.a8.net/0.gif?a8mat=4BEK9B+EC6U9E+1QFI+2Z7IWH\" alt=\"\">",
+   "caption": {
+    "ja": ""
+   }
+  },
+  {
+   "id": "slot3",
+   "advertiser": "",
+   "network": "A8.net",
+   "tag": "",
+   "caption": {
+    "ja": ""
+   }
+  }
  ],
  "interstitial": {
   "_readme": "全画面広告。tag が空なら出ません。出すのは1日1回まで、×ですぐ閉じられます。",
