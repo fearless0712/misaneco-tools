@@ -64,15 +64,43 @@
   }
 
   /* ---------- STEP 1 ---------- */
+  var openState = {};
+  function groupBox(key, title, n, open, fill, parent) {
+    var d = el('details', 'grpbox'); d.setAttribute('data-g', key);
+    d.open = openState.hasOwnProperty(key) ? openState[key] : open;
+    var sm = el('summary', 'ghead');
+    sm.appendChild(el('span', null, title));
+    sm.appendChild(el('span', 'gcount', String(n)));
+    sm.setAttribute('aria-label', title + '（' + n + '件）');
+    d.appendChild(sm);
+    d.addEventListener('toggle', function () { openState[key] = d.open; });
+    var body = el('div', 'gbody'); fill(body); d.appendChild(body);
+    parent.appendChild(d);
+    return d;
+  }
   function renderIndustry() {
-    var box = $('industry'); box.textContent = '';
-    D.INDUSTRIES.forEach(function (ind) {
-      var lb = el('label'), r = el('input');
-      r.type = 'radio'; r.name = 'industry'; r.value = ind.id; r.checked = S.industry === ind.id;
-      r.addEventListener('change', function () { S.industry = ind.id; save(); renderTasks(); });
-      lb.appendChild(r); lb.appendChild(el('span', null, ind.label));
-      box.appendChild(lb);
+    var box = $('indList'); box.textContent = '';
+    var q = $('indSearch').value || '', searching = !!DX.kanaNorm(q);
+    var hits = DX.searchIndustries(q), shown = 0;
+    $('indPicked').textContent = '選んだ業種：' + DX.industryLabel(S.industry);
+    D.CATS.forEach(function (c) {
+      var list = hits.filter(function (x) { return x.cat === c.id; });
+      if (!list.length) return;
+      shown += list.length;
+      var hasSel = list.some(function (x) { return x.id === S.industry; });
+      groupBox('ind-' + c.id + (searching ? '-q' : ''), c.label, list.length, searching || hasSel, function (body) {
+        var ch = el('div', 'chips');
+        list.forEach(function (ind) {
+          var lb = el('label'), r = el('input');
+          r.type = 'radio'; r.name = 'industry'; r.value = ind.id; r.checked = S.industry === ind.id;
+          r.addEventListener('change', function () { S.industry = ind.id; save(); $('indPicked').textContent = '選んだ業種：' + ind.label; renderTasks(); });
+          lb.appendChild(r); lb.appendChild(el('span', null, ind.label));
+          ch.appendChild(lb);
+        });
+        body.appendChild(ch);
+      }, box);
     });
+    $('indNone').hidden = shown > 0;
   }
   function taskRow(t) {
     var lb = el('label', 'tk'), c = el('input');
@@ -84,36 +112,55 @@
     lb.appendChild(e);
     return lb;
   }
-  function group(title, tasks, parent) {
-    if (!tasks.length) return;
-    parent.appendChild(el('p', 'grp', title));
-    var g = el('div', 'tasks');
-    tasks.forEach(function (t) { g.appendChild(taskRow(t)); });
-    parent.appendChild(g);
+  function taskGroup(key, title, tasks, open, parent) {
+    if (!tasks.length) return 0;
+    groupBox(key, title, tasks.length, open, function (body) {
+      var g = el('div', 'tasks');
+      tasks.forEach(function (t) { g.appendChild(taskRow(t)); });
+      body.appendChild(g);
+    }, parent);
+    return tasks.length;
   }
   function renderTasks() {
-    var g = DX.tasksForIndustry(S.industry), box = $('taskList'), other = $('taskListOther');
-    box.textContent = ''; other.textContent = '';
-    var indLabel = D.INDUSTRIES.filter(function (x) { return x.id === S.industry; })[0].label;
-    group(indLabel + 'の業務', g.own, box);
-    group('事務全般（どの業種でも）', g.common, box);
-    var byInd = {};
-    g.others.forEach(function (t) { var k = t.ind[0]; (byInd[k] = byInd[k] || []).push(t); });
-    D.INDUSTRIES.forEach(function (ind) { if (byInd[ind.id]) group(ind.label + 'の業務', byInd[ind.id], other); });
-    $('otherInd').hidden = !g.others.length;
-    if (g.others.some(function (t) { return S.sel[t.id]; })) $('otherInd').open = true;
+    var box = $('taskList'); box.textContent = '';
+    var q = $('taskSearch').value || '', searching = !!DX.kanaNorm(q), sfx = searching ? '-q' : '';
+    var g = DX.tasksForIndustry(S.industry), pop = DX.popularFor(S.industry);
+    var popIds = pop.map(function (t) { return t.id; });
+    function notPop(t) { return popIds.indexOf(t.id) < 0; }
+    function f(list) { return DX.searchTasks(q, list); }
+    var label = DX.industryLabel(S.industry), n = 0;
+    n += taskGroup('pop-' + S.industry + sfx, 'よく選ばれる（' + label + '）', f(pop), true, box);
+    if (S.industry !== 'office' && S.industry !== 'other') n += taskGroup('own-' + S.industry + sfx, label + 'の業務', f(g.own.filter(notPop)), true, box);
+    n += taskGroup('common' + sfx, '事務全般（どの業種でも）', f(g.common.filter(notPop)), searching || S.industry === 'office' || S.industry === 'other', box);
+    var others = f(g.others.filter(notPop));
+    n += taskGroup('others' + sfx, 'ほかの業種の業務', others, searching || others.some(function (t) { return S.sel[t.id]; }), box);
+    $('taskNone').hidden = n > 0;
     syncChecks();
+  }
+  function renderSelChips() {
+    var box = $('selChips'); box.textContent = '';
+    S.order.forEach(function (id) {
+      var t = DX.TASK_BY_ID[id];
+      var c = el('span', 'selchip');
+      c.appendChild(el('span', null, t.name));
+      var x = el('button', 'selx', '×'); x.type = 'button'; x.setAttribute('aria-label', t.name + 'を外す');
+      x.addEventListener('click', function () { toggleTask(id, false); });
+      c.appendChild(x);
+      box.appendChild(c);
+    });
   }
   function syncChecks() {
     var cs = document.querySelectorAll('input[data-task]');
     for (var i = 0; i < cs.length; i++) cs[i].checked = !!S.sel[cs[i].getAttribute('data-task')];
-    $('selCount').textContent = S.order.length + '件選択中';
+    var txt = S.order.length + '件選択中';
+    $('selCount').textContent = txt; $('selCount2').textContent = txt;
+    renderSelChips();
     if (S.order.length) $('err1').hidden = true;
   }
   function runMatch() {
     var out = $('matchOut'); out.textContent = '';
     var q = $('freeText').value;
-    var res = DX.matchFreeText(q, 3);
+    var res = DX.matchFreeText(q, 3, S.industry);
     if (!res.length) { out.appendChild(el('p', 'msg', q.trim().length < 2 ? '2文字以上で書いてください。' : '近い業務が見つかりませんでした。上の一覧から近いものを選んでください。')); return; }
     var box = el('div', 'match');
     box.appendChild(el('p', 'grp', '近い業務（選ぶと上の一覧にも入ります）'));
@@ -300,6 +347,8 @@
     sum.appendChild(el('p', null, '今かかっている時間の目安：約' + diag.currentHours + '時間/年'));
     sum.appendChild(el('p', 'small', 'すべて目安です（回数/年 × 1回の分数 × 削減率 ÷ 60）。合うかどうか・どれだけ減るかは、業務の中身や量によって変わります。'));
     v.appendChild(sum);
+    var inote = DX.industryNote(diag.industry);
+    if (inote) v.appendChild(el('p', 'tnote', '注意：' + inote));
     var ps = productsSection(); if (ps) v.appendChild(ps);
 
     diag.items.forEach(function (it, i) {
@@ -312,6 +361,7 @@
       tg.appendChild(el('span', 'tag', '自動化しやすさ ' + it.task.ease));
       it.labels.forEach(function (l) { tg.appendChild(el('span', 'tag ' + (l === 'すぐできる' ? 'quick' : 'big'), l)); });
       t.appendChild(tg); h.appendChild(t); box.appendChild(h);
+      if (it.task.note) box.appendChild(el('p', 'tnote', '注意：' + it.task.note));
 
       var hr = el('div', 'hours');
       var p1 = el('p'); p1.appendChild(el('span', 'small', '年間で減らせる時間の目安 ')); p1.appendChild(el('b', null, '約' + it.hours + '時間'));
@@ -482,6 +532,8 @@
     var st = document.querySelectorAll('.stepbtn');
     for (var j = 0; j < st.length; j++) st[j].addEventListener('click', function (e) { go(+e.currentTarget.getAttribute('data-go')); });
     $('matchBtn').addEventListener('click', runMatch);
+    $('indSearch').addEventListener('input', renderIndustry);
+    $('taskSearch').addEventListener('input', renderTasks);
     $('freeText').addEventListener('keydown', function (e) { if (e.key === 'Enter' && !e.isComposing) { e.preventDefault(); runMatch(); } });
     $('diagBtn').addEventListener('click', function () { runDiagnose(true); });
     $('againBtn').addEventListener('click', function () { go(1); });

@@ -287,7 +287,7 @@
     for (var i = 0; i < s.length - 1; i++) o[s.substr(i, 2)] = 1;
     return o;
   }
-  function matchFreeText(text, limit) {
+  function matchFreeText(text, limit, industry) {
     var q = normText(text);
     if (q.length < 2) return [];
     var qb = bigrams(q), qn = Object.keys(qb).length;
@@ -301,11 +301,52 @@
       var tb = bigrams(normText(t.name + t.kw.join(''))), common = 0;
       Object.keys(qb).forEach(function (b) { if (tb[b]) common++; });
       score += qn ? common / qn * 2 : 0;
+      if (industry && score >= 1.5 && t.ind.indexOf(industry) >= 0) score += 1;
       return { task: t, score: Math.round(score * 100) / 100, hits: hits, idx: idx };
     }).filter(function (x) { return x.score >= 1.5; });
     res.sort(function (a, b) { return b.score - a.score || a.idx - b.idx; });
     return res.slice(0, limit || 3).map(function (x) { return { id: x.task.id, name: x.task.name, score: x.score, hits: x.hits }; });
   }
+
+  /* ---------- 一覧の検索（ひらがな・カタカナ、全角・半角、空白の違いを無視） ---------- */
+  function kanaNorm(s) {
+    s = String(s || '');
+    if (s.normalize) s = s.normalize('NFKC');
+    s = s.toLowerCase().replace(/[\u30a1-\u30f6]/g, function (c) { return String.fromCharCode(c.charCodeAt(0) - 0x60); });
+    return s.replace(/[\s・、。,.()（）「」\-ー_/]/g, '');
+  }
+  function hit(nq, words) {
+    var Y = D.YOMI || {};
+    words = words.slice();
+    for (var j = 0, n = words.length; j < n; j++) {
+      Object.keys(Y).forEach(function (k) { if (String(words[j]).indexOf(k) >= 0) words.push(Y[k]); });
+    }
+    for (var i = 0; i < words.length; i++) {
+      var w = kanaNorm(words[i]);
+      if (!w) continue;
+      if (w.indexOf(nq) >= 0 || (w.length >= 2 && nq.indexOf(w) >= 0)) return true;
+    }
+    return false;
+  }
+  function searchIndustries(q) {
+    var nq = kanaNorm(q);
+    if (!nq) return D.INDUSTRIES.slice();
+    return D.INDUSTRIES.filter(function (x) { return hit(nq, [x.label].concat(x.syn || [])); });
+  }
+  function searchTasks(q, tasks) {
+    var list = tasks || D.TASKS, nq = kanaNorm(q);
+    if (!nq) return list.slice();
+    return list.filter(function (t) { return hit(nq, [t.name].concat(t.kw)); });
+  }
+  function popularFor(ind) {
+    ind = normalizeIndustry(ind);
+    return ((D.POPULAR && D.POPULAR[ind]) || []).map(function (id) { return TASK_BY_ID[id]; }).filter(Boolean);
+  }
+  function industryLabel(ind) {
+    for (var i = 0; i < D.INDUSTRIES.length; i++) if (D.INDUSTRIES[i].id === ind) return D.INDUSTRIES[i].label;
+    return '';
+  }
+  function industryNote(ind) { return (D.IND_NOTES && D.IND_NOTES[ind]) || ''; }
 
   /* ---------- 匿名の集計データ（送信先が設定されているときだけ使う） ----------
      送るもの：業種・選んだ業務のID・頻度・時間・環境・推奨した方法のID・日付（日まで）・アプリの版。
@@ -362,7 +403,7 @@
     recommend: recommend, envSummary: envSummary,
     annualHours: annualHours, currentHours: currentHours, formulaText: formulaText, priorityScore: priorityScore, labelsFor: labelsFor,
     diagnose: diagnose, productsFor: productsFor, buildPlan: buildPlan, planProgress: planProgress, planCSV: planCSV, stepText: stepText,
-    matchFreeText: matchFreeText, buildPayload: buildPayload, encodeForm: encodeForm, payloadHash: payloadHash,
+    matchFreeText: matchFreeText, kanaNorm: kanaNorm, searchIndustries: searchIndustries, searchTasks: searchTasks, popularFor: popularFor, industryLabel: industryLabel, industryNote: industryNote, buildPayload: buildPayload, encodeForm: encodeForm, payloadHash: payloadHash,
     submitEnabled: submitEnabled, shouldSend: shouldSend, privacyLine: privacyLine, dayString: dayString
   };
   if (typeof module !== 'undefined' && module.exports) module.exports = API;

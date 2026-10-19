@@ -264,7 +264,7 @@ var html = fs.readFileSync(path.join(ROOT, 'index.html'), 'utf8');
 ok(/default-src 'none'/.test(html) && /connect-src https:\/\/script\.google\.com https:\/\/script\.googleusercontent\.com;/.test(html) && /form-action 'none'/.test(html) && /base-uri 'none'/.test(html) && /script-src 'self'/.test(html), 'CSP');
 ok(!/<script[^>]+src="https?:/.test(html) && !/<link[^>]+href="https?:/.test(html), 'no external scripts/styles');
 var refs = html.match(/(src|href)="(css|js)\/[^"]+"/g) || [];
-ok(refs.length >= 5 && refs.every(function (r) { return r.indexOf('?v=2026101922') > 0; }), 'cache-bust ?v=2026101922');
+ok(refs.length >= 5 && refs.every(function (r) { return r.indexOf('?v=2026101923') > 0; }), 'cache-bust ?v=2026101923');
 ok(html.indexOf('MisaNeco Works ・ AIを活用して作成し、公式情報で確認しています') >= 0, 'footer text');
 ok(html.indexOf('href="../"') >= 0 && html.indexOf('href="../blog/"') >= 0, 'footer links');
 ok(/connect-src に送信先のオリジン/.test(html), 'CSP comment about enabling submission');
@@ -274,5 +274,64 @@ ok(!/a8\.net|adsbygoogle|moshimo/.test(allText), 'no ads');
   ok((s.match(/localStorage\./g) || []).length === (s.match(/try \{ (var v = )?window\.localStorage\./g) || []).length, p + ' every localStorage access inside try');
 });
 
+
+/* 13. 業種（40）：分類・言いかえ・固有の業務4つ以上・よく選ばれる */
+var catIds = D.CATS.map(function (c) { return c.id; });
+var indIds = {};
+D.INDUSTRIES.forEach(function (ind) {
+  ok(!indIds[ind.id], 'industry id unique ' + ind.id); indIds[ind.id] = 1;
+  ok(catIds.indexOf(ind.cat) >= 0, ind.id + ' has a valid category');
+  ok(Array.isArray(ind.syn), ind.id + ' has synonyms');
+  var own = D.TASKS.filter(function (t) { return t.ind.indexOf(ind.id) >= 0 && t.ind.indexOf('common') < 0; });
+  if (ind.id !== 'office' && ind.id !== 'other') ok(own.length >= 4, ind.id + ' has >=4 industry tasks (' + own.length + ')');
+  var pop = D.POPULAR[ind.id];
+  ok(Array.isArray(pop) && pop.length >= 5 && pop.length <= 8, ind.id + ' popular list has 5-8 tasks');
+  (pop || []).forEach(function (id) {
+    var t = L.TASK_BY_ID[id];
+    ok(!!t, ind.id + ' popular task exists: ' + id);
+    if (t) ok(t.ind.indexOf(ind.id) >= 0 || t.ind.indexOf('common') >= 0, ind.id + ' popular task is relevant: ' + id);
+  });
+  eq(L.popularFor(ind.id).length, (pop || []).length, ind.id + ' popularFor');
+});
+ok(D.INDUSTRIES.length >= 40, '40 industries (' + D.INDUSTRIES.length + ')');
+['realestate', 'office', 'retail', 'pro', 'food', 'beauty', 'construction', 'civil', 'landscaping', 'logistics', 'care', 'clinic', 'school', 'factory', 'hotel', 'freelance', 'other',
+ 'farm', 'fishery', 'car', 'cleaning', 'security', 'funeral', 'event', 'printing', 'it', 'ad', 'insurance', 'tax', 'sharoushi', 'gyosei', 'nursery', 'pet', 'gym', 'photo', 'moving', 'recycle', 'npo', 'community', 'direct'].forEach(function (id) {
+  ok(indIds[id], 'industry present: ' + id);
+});
+D.CATS.forEach(function (c) { ok(D.INDUSTRIES.some(function (x) { return x.cat === c.id; }), 'category not empty: ' + c.id); });
+/* 業種の注意書き（医療・福祉・保育）は判断を書かず、確認を促すだけ */
+['care', 'clinic', 'nursery'].forEach(function (id) { ok(/確認/.test(L.industryNote(id)), id + ' has a caution note'); });
+
+/* 14. 言いかえ検索（ひらがな・カタカナ・空白・全角半角を無視） */
+function indTop(q) { return L.searchIndustries(q).map(function (x) { return x.id; }); }
+[['大工', 'construction'], ['でんきや', 'construction'], ['水道屋', 'construction'], ['すいどうや', 'construction'], ['内装', 'construction'],
+ ['塾', 'school'], ['じゅく', 'school'], ['民泊', 'hotel'], ['ミンパク', 'hotel'], ['旅館', 'hotel'], ['倉庫', 'logistics'], ['そうこ', 'logistics'],
+ ['ネイル', 'beauty'], ['ｴｽﾃ', 'beauty'], ['整体', 'clinic'], ['せいこついん', 'clinic'], ['PTA', 'community'], ['ｐｔａ', 'community'], ['町内会', 'community'],
+ ['道の駅', 'direct'], ['税理士', 'tax'], ['トリミング', 'pet'], ['車検', 'car'], ['剪定', 'landscaping'], ['学童', 'nursery'], ['ホーム ページ', 'it']].forEach(function (c) {
+  ok(indTop(c[0]).indexOf(c[1]) >= 0, 'industry search ' + c[0] + ' → ' + c[1] + ' (' + indTop(c[0]).join(',') + ')');
+});
+eq(L.searchIndustries('').length, D.INDUSTRIES.length, 'empty industry search → all');
+eq(L.searchIndustries('ぴよぴよぽん').length, 0, 'no industry match');
+function taskIds(q) { return L.searchTasks(q).map(function (t) { return t.id; }); }
+[['シフト', 'svc-shift'], ['しふと', 'svc-shift'], ['勤怠', 'attendance'], ['きんたい', 'attendance'], ['出勤', 'svc-shift'], ['しゅっきん', 'attendance'],
+ ['せいきゅう', 'invoice'], ['請求 書', 'invoice'], ['よやく', 'svc-reserve'], ['ざいこ', 'svc-stock'], ['ﾏｲｿｸ', 'flyer'], ['げっしゃ', 'mem-fee'], ['現場写真', 'site-photo'], ['剪定', 'land-annual']].forEach(function (c) {
+  ok(taskIds(c[0]).indexOf(c[1]) >= 0, 'task search ' + c[0] + ' → ' + c[1]);
+});
+eq(L.searchTasks('ぴよぴよぽん').length, 0, 'no task match');
+eq(L.searchTasks('').length, D.TASKS.length, 'empty task search → all');
+/* 自由記入：業種を考えに入れる */
+eq((L.matchFreeText('シフト表を作るのが大変', 3, 'food')[0] || {}).id, 'svc-shift', 'free text with industry → shift');
+eq((L.matchFreeText('現場の写真がどこにあるか分からない', 3, 'construction')[0] || {}).id, 'site-photo', 'free text → site photo');
+eq((L.matchFreeText('月謝の未納を確認したい', 3, 'school')[0] || {}).id, 'mem-fee', 'free text → mem-fee');
+eq((L.matchFreeText('宿泊予約がダブルブッキングしそう', 3, 'hotel')[0] || {}).id, 'hotel-book', 'free text → hotel-book');
+/* 医療・福祉・保育の業務に、請求・レセプトの方法を書いていない */
+D.TASKS.forEach(function (t) {
+  if (t.ind.some(function (i) { return i === 'care' || i === 'clinic' || i === 'nursery'; })) ok(!/レセプト|診療報酬|介護報酬/.test(JSON.stringify(t)), 'no billing-rule content in ' + t.id);
+});
+/* 画面：step1 の検索・まとまり・選択中の表示 */
+var a3 = runApp({ submitUrl: '' }, '');
+ok(a3.byId.indList.children.length >= 1, 'industry groups rendered');
+ok(a3.byId.taskList.children.length >= 1, 'task groups rendered');
+ok(/件選択中/.test(a3.byId.selCount2.textContent), 'selected count shown at top');
 console.log('\n' + pass + ' passed, ' + fail + ' failed');
 process.exit(fail ? 1 : 0);
