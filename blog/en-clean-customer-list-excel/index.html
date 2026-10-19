@@ -1,0 +1,75 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'self'; img-src 'self' data: https://*.a8.net https://*.google-analytics.com https://*.googletagmanager.com; script-src 'self' https://www.googletagmanager.com; connect-src https://*.google-analytics.com https://*.analytics.google.com https://*.googletagmanager.com; base-uri 'none'; form-action 'none'; object-src 'none'">
+<title>Clean up a messy customer list in Excel or Google Sheets (5 formulas, 10 minutes) | MisaNeco Works</title><meta name="description" content="Extra spaces, random capital letters, duplicate customers and mixed phone formats. Five simple formulas and two built-in tools fix most of it, in Excel and in Google Sheets.">
+<link rel="canonical" href="https://fearless0712.github.io/misaneco-tools/blog/en-clean-customer-list-excel/"><meta property="og:type" content="article"><meta property="og:url" content="https://fearless0712.github.io/misaneco-tools/blog/en-clean-customer-list-excel/"><meta property="og:image" content="https://fearless0712.github.io/misaneco-tools/blog/og.png"><meta name="twitter:card" content="summary_large_image"><meta property="og:title" content="Clean up a messy customer list in Excel or Google Sheets (5 formulas, 10 minutes) | MisaNeco Works"><meta property="og:description" content="Extra spaces, random capital letters, duplicate customers and mixed phone formats. Five simple formulas and two built-in tools fix most of it, in Excel and in Google Sheets.">
+<link rel="alternate" type="application/rss+xml" title="MisaNeco Works Blog" href="https://fearless0712.github.io/misaneco-tools/blog/en/rss.xml"><script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "Clean up a messy customer list in Excel or Google Sheets (5 formulas, 10 minutes)", "description": "Extra spaces, random capital letters, duplicate customers and mixed phone formats. Five simple formulas and two built-in tools fix most of it, in Excel and in Google Sheets.", "datePublished": "2026-10-19", "dateModified": "2026-10-19", "inLanguage": "en", "mainEntityOfPage": "https://fearless0712.github.io/misaneco-tools/blog/en-clean-customer-list-excel/", "image": "https://fearless0712.github.io/misaneco-tools/blog/og.png", "author": {"@type": "Organization", "name": "MisaNeco Works", "url": "https://fearless0712.github.io/misaneco-tools/"}, "publisher": {"@type": "Organization", "name": "MisaNeco Works"}}</script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-EWJXRJY9M6"></script><script src="../ga.js?v=202610192307"></script>
+<link rel="stylesheet" href="../blog.css?v=202610192307"></head><body>
+<header><div class="wrap"><a href="../en/">MisaNeco Works Blog</a></div></header>
+<main class="wrap"><p class="meta">2026-10-19・Automation / Small business / Excel</p><h1>Clean up a messy customer list in Excel or Google Sheets (5 formulas, 10 minutes)</h1><p>Most small businesses have a customer list that grew by itself. Some names are in capitals, some are not. Emails have spaces at the end. The same customer appears three times. Mail merges break, and nobody trusts the numbers.</p>
+<p>The good news: you can fix most of it in about ten minutes with tools you already have. Everything below works in both Excel and Google Sheets unless noted.</p>
+<p><strong>Before you start:</strong> make a copy of the file. Do the cleanup in new columns, check the result, and only then replace the old data.</p>
+<h2>1. Remove extra spaces: TRIM</h2>
+<p>Spaces at the start or end of a cell are invisible, but they make "Smith" and "Smith " look like two different people.</p>
+<p><code>=TRIM(A2)</code></p>
+<p>TRIM removes spaces at the start and end, and turns double spaces in the middle into single spaces.</p>
+<p>Google Sheets also has a menu for this: <strong>Data &gt; Data cleanup &gt; Trim whitespace</strong>.</p>
+<h2>2. Fix capital letters: PROPER, LOWER, UPPER</h2>
+<p><code>=PROPER(TRIM(A2))   →  "jOHN smith "  becomes  "John Smith"
+=LOWER(TRIM(B2))    →  for email addresses
+=UPPER(TRIM(C2))    →  for postcodes, e.g. "sw1a 1aa" becomes "SW1A 1AA"</code></p>
+<p>Check PROPER results by eye. It turns "McDonald" into "Mcdonald" and "O'NEIL" into "O'Neil", which may not be what the customer writes.</p>
+<h2>3. Remove hidden characters: CLEAN</h2>
+<p>Data copied from websites or other systems can carry line breaks and other invisible characters.</p>
+<p><code>=CLEAN(TRIM(A2))</code></p>
+<h2>4. Make phone numbers consistent: SUBSTITUTE</h2>
+<p>If phone numbers are typed in different ways, strip the spaces, dashes, dots and brackets so they can be compared:</p>
+<p><code>=SUBSTITUTE(SUBSTITUTE(SUBSTITUTE(SUBSTITUTE(SUBSTITUTE(D2," ",""),"-",""),"(",""),")",""),".","")</code></p>
+<p>"(555) 123-4567" and "555.123.4567" both become "5551234567". Now you can sort, compare and find duplicates.</p>
+<h2>5. Find duplicates before you delete them: COUNTIF</h2>
+<p>Do not delete duplicates blindly. First, mark them:</p>
+<p><code>=COUNTIF($B$2:$B$1000, B2)</code></p>
+<p>Put this next to the cleaned email column. Any number above 1 means that email appears more than once. Sort by that column and look at the duplicates together. Often one row has the newest phone number and another has the newest address, and you want to merge them by hand.</p>
+<h2>Two built-in tools</h2>
+<ul>
+<li><strong>Remove duplicates.</strong> Excel: <strong>Data &gt; Remove Duplicates</strong>. Google Sheets: <strong>Data &gt; Data cleanup &gt; Remove duplicates</strong>. Choose which columns must match (for example, email only). Use this after you have checked the COUNTIF results.</li>
+<li><strong>Split names.</strong> Excel: <strong>Data &gt; Text to Columns</strong>. Google Sheets: <strong>Data &gt; Split text to columns</strong>. Splits "John Smith" into two columns at the space. Check names with more than two parts.</li>
+</ul>
+<h2>Put it together</h2>
+<p>A cleaned column for each field, side by side with the original:</p>
+<table>
+<thead>
+<tr>
+<th>Original</th>
+<th>Formula</th>
+<th>Result</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>jOHN smith</code></td>
+<td><code>=PROPER(TRIM(A2))</code></td>
+<td><code>John Smith</code></td>
+</tr>
+<tr>
+<td><code>John.Smith@Example.com</code></td>
+<td><code>=LOWER(TRIM(B2))</code></td>
+<td><code>john.smith@example.com</code></td>
+</tr>
+<tr>
+<td><code>(555) 123-4567</code></td>
+<td>SUBSTITUTE chain</td>
+<td><code>5551234567</code></td>
+</tr>
+</tbody>
+</table>
+<p>When the new columns look right, copy them and use <strong>Paste special &gt; Values only</strong> over the original data. Then delete the formula columns.</p>
+<h2>If you do this every month</h2>
+<p>If new messy lists keep arriving (from web forms, events or other systems), doing it by hand every time gets old. Two options:</p>
+<ul>
+<li>Save a template sheet with the formulas already in place, and paste each new list into it.</li>
+<li>Use a tool that does all the steps at once. We sell <strong>DataClean</strong>, an offline browser tool that cleans names, phone numbers, emails and dates, removes duplicates and keeps a log of what it changed. It runs on your computer and does not upload your list. <a href="https://comedyverse.gumroad.com/l/iaynkf" target="_blank" rel="noopener">DataClean on Gumroad</a></li>
+</ul>
+<p>To see which other admin jobs in your business are easy to automate, try our free <strong>Small Business Automation Check</strong>.</p><div class="tools"><b>Free tools you can use</b><a href="../../dx-en/">Small Business Automation Check</a><br></div><div class="rel"><b>Related articles</b><a href="../en-trades-admin-automation/">Admin automation for plumbers, electricians and builders</a><br><a href="../en-salon-booking-client-records/">Simple automation for a small hair or beauty salon</a><br><a href="../en-how-long-keep-business-records/">How long to keep business records in the US, UK, Canada and Australia (and a simple filing system)</a><br></div></main>
+<footer class="wrap">© MisaNeco Works ・ <a href="../en/">All articles</a> ・ <a href="../../">Free tools</a> ・ <a href="../en/../">日本語の記事</a><br>Articles are written with the help of AI and checked against official sources. Articles with ads say so at the top. We use Google Analytics to count page views anonymously (no names or contact details).</footer>
+</body></html>

@@ -1,0 +1,105 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'self'; img-src 'self' data: https://*.a8.net https://*.google-analytics.com https://*.googletagmanager.com; script-src 'self' https://www.googletagmanager.com; connect-src https://*.google-analytics.com https://*.analytics.google.com https://*.googletagmanager.com; base-uri 'none'; form-action 'none'; object-src 'none'">
+<title>Send appointment reminder emails automatically with Google Sheets (free, no add-ons) | MisaNeco Works</title><meta name="description" content="A short Google Apps Script that emails each customer the day before their appointment, using a simple Google Sheet. Copy, paste, set one trigger, done.">
+<link rel="canonical" href="https://fearless0712.github.io/misaneco-tools/blog/en-appointment-reminder-emails-google-sheets/"><meta property="og:type" content="article"><meta property="og:url" content="https://fearless0712.github.io/misaneco-tools/blog/en-appointment-reminder-emails-google-sheets/"><meta property="og:image" content="https://fearless0712.github.io/misaneco-tools/blog/og.png"><meta name="twitter:card" content="summary_large_image"><meta property="og:title" content="Send appointment reminder emails automatically with Google Sheets (free, no add-ons) | MisaNeco Works"><meta property="og:description" content="A short Google Apps Script that emails each customer the day before their appointment, using a simple Google Sheet. Copy, paste, set one trigger, done.">
+<link rel="alternate" type="application/rss+xml" title="MisaNeco Works Blog" href="https://fearless0712.github.io/misaneco-tools/blog/en/rss.xml"><script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "Send appointment reminder emails automatically with Google Sheets (free, no add-ons)", "description": "A short Google Apps Script that emails each customer the day before their appointment, using a simple Google Sheet. Copy, paste, set one trigger, done.", "datePublished": "2026-10-19", "dateModified": "2026-10-19", "inLanguage": "en", "mainEntityOfPage": "https://fearless0712.github.io/misaneco-tools/blog/en-appointment-reminder-emails-google-sheets/", "image": "https://fearless0712.github.io/misaneco-tools/blog/og.png", "author": {"@type": "Organization", "name": "MisaNeco Works", "url": "https://fearless0712.github.io/misaneco-tools/"}, "publisher": {"@type": "Organization", "name": "MisaNeco Works"}}</script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-EWJXRJY9M6"></script><script src="../ga.js?v=202610192307"></script>
+<link rel="stylesheet" href="../blog.css?v=202610192307"></head><body>
+<header><div class="wrap"><a href="../en/">MisaNeco Works Blog</a></div></header>
+<main class="wrap"><p class="meta">2026-10-19・Automation / Small business / Google Apps Script</p><h1>Send appointment reminder emails automatically with Google Sheets (free, no add-ons)</h1><p>No-shows cost small service businesses real money: a hair salon, a dog groomer, a tutor, a cleaner. A reminder the day before helps, but writing those emails by hand every evening is easy to forget.</p>
+<p>If you already keep appointments in a Google Sheet, a few lines of Google Apps Script can send the reminders for you. It is free and needs no add-ons. This guide takes about 15 minutes.</p>
+<h2>What you will build</h2>
+<ul>
+<li>A Google Sheet with one row per appointment.</li>
+<li>A script that runs every morning, finds tomorrow's appointments, and sends each customer a reminder email from your Google account.</li>
+<li>A column that records when each reminder was sent, so nobody gets two.</li>
+</ul>
+<h2>Step 1. Set up the sheet</h2>
+<p>Create a Google Sheet. Rename the first tab to <strong>Appointments</strong> and add these headers in row 1:</p>
+<table>
+<thead>
+<tr>
+<th>A</th>
+<th>B</th>
+<th>C</th>
+<th>D</th>
+<th>E</th>
+<th>F</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Name</td>
+<td>Email</td>
+<td>Date</td>
+<td>Time</td>
+<td>Service</td>
+<td>Reminder sent</td>
+</tr>
+</tbody>
+</table>
+<p>Tips:</p>
+<ul>
+<li>Column C must be a real date. Select column C and choose <strong>Format &gt; Number &gt; Date</strong>.</li>
+<li>Format column D as <strong>Format &gt; Number &gt; Plain text</strong> and type times like <code>10:30</code>. Otherwise Sheets turns them into date-time values and the email shows a long timestamp.</li>
+<li>Leave column F empty. The script fills it in.</li>
+</ul>
+<h2>Step 2. Add the script</h2>
+<p>In the sheet, open <strong>Extensions &gt; Apps Script</strong>. Delete anything in the editor and paste this:</p>
+<p>```javascript
+// Sends a reminder email the day before each appointment.
+// Sheet "Appointments": A Name | B Email | C Date | D Time | E Service | F Reminder sent
+const SHEET_NAME = 'Appointments';
+const BUSINESS_NAME = 'Your Business Name';</p>
+<p>function sendReminders() {
+  const sheet = SpreadsheetApp.getActive().getSheetByName(SHEET_NAME);
+  const rows = sheet.getDataRange().getValues();
+  const tz = Session.getScriptTimeZone();
+  const tomorrow = new Date();
+  tomorrow.setDate(tomorrow.getDate() + 1);
+  const target = Utilities.formatDate(tomorrow, tz, 'yyyy-MM-dd');</p>
+<p>for (let i = 1; i &lt; rows.length; i++) {           // row 0 is the header
+    const [name, email, date, time, service, sent] = rows[i];
+    if (!email || !(date instanceof Date) || sent) continue;
+    if (Utilities.formatDate(date, tz, 'yyyy-MM-dd') !== target) continue;</p>
+<pre><code>const when = Utilities.formatDate(date, tz, 'EEEE, MMMM d') + (time ? ' at ' + time : '');
+const subject = 'Reminder: your appointment tomorrow (' + when + ')';
+const body =
+  'Hi ' + name + ',\n\n' +
+  'This is a reminder of your ' + (service || 'appointment') + ' with ' + BUSINESS_NAME + ' on ' + when + '.\n\n' +
+  'If you need to change or cancel, just reply to this email.\n\n' +
+  'See you soon,\n' + BUSINESS_NAME;
+
+MailApp.sendEmail(email, subject, body);
+sheet.getRange(i + 1, 6).setValue(new Date());     // column F: when the reminder was sent
+</code></pre>
+<p>}
+}</p>
+<p>// Run once: sends reminders every day between 9 and 10 am.
+function createDailyTrigger() {
+  ScriptApp.newTrigger('sendReminders').timeBased().everyDays(1).atHour(9).create();
+}
+```</p>
+<p>Change <code>Your Business Name</code> to your business name, then click <strong>Save</strong>.</p>
+<h2>Step 3. Test it</h2>
+<ol>
+<li>Add a test row with your own email address and tomorrow's date.</li>
+<li>In the Apps Script editor, choose <code>sendReminders</code> in the function menu and click <strong>Run</strong>.</li>
+<li>The first time, Google asks you to allow the script to read the sheet and send email as you. Review the permissions and allow them.</li>
+<li>Check your inbox. Column F of the test row should now show the time it was sent.</li>
+</ol>
+<p>Run it again: nothing is sent, because column F is already filled in.</p>
+<h2>Step 4. Run it every day</h2>
+<p>Choose <code>createDailyTrigger</code> in the function menu and click <strong>Run</strong> once. The script will now run every day between 9 and 10 am (in the script's time zone, which you can check under <strong>Project Settings</strong>).</p>
+<p>To see or remove the trigger later, click the clock icon (<strong>Triggers</strong>) on the left of the Apps Script editor. Run <code>createDailyTrigger</code> only once, or you will get duplicate triggers.</p>
+<h2>Things to know</h2>
+<ul>
+<li><strong>Email limits.</strong> Google limits how many emails a script can send per day, and the limit is lower for free Gmail accounts than for Google Workspace. Check Google's Apps Script quotas page if you send many reminders a day.</li>
+<li><strong>Privacy.</strong> The sheet holds customer names and emails. Share it only with people who need it.</li>
+<li><strong>Replies.</strong> Customers who reply reach your normal inbox, so they can reschedule by email.</li>
+<li><strong>Want a text message instead?</strong> That needs an SMS service, which usually costs money. Email is the free starting point.</li>
+</ul>
+<h2>What else could you automate?</h2>
+<p>Reminders are one small job. Our free <strong>Small Business Automation Check</strong> asks for your country, industry and tasks, and shows which admin jobs are easiest to automate and how to begin.</p><div class="tools"><b>Free tools you can use</b><a href="../../dx-en/">Small Business Automation Check</a><br></div><div class="rel"><b>Related articles</b><a href="../en-trades-admin-automation/">Admin automation for plumbers, electricians and builders</a><br><a href="../en-salon-booking-client-records/">Simple automation for a small hair or beauty salon</a><br><a href="../en-how-long-keep-business-records/">How long to keep business records in the US, UK, Canada and Australia (and a simple filing system)</a><br></div></main>
+<footer class="wrap">© MisaNeco Works ・ <a href="../en/">All articles</a> ・ <a href="../../">Free tools</a> ・ <a href="../en/../">日本語の記事</a><br>Articles are written with the help of AI and checked against official sources. Articles with ads say so at the top. We use Google Analytics to count page views anonymously (no names or contact details).</footer>
+</body></html>
