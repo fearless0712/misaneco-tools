@@ -10,5 +10,6 @@ code{background:var(--card);border:1px solid var(--line);border-radius:4px;paddi
 .ad{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:12px;margin:24px 0;text-align:center}.ad .lbl{display:block;color:var(--mut);font-size:12px;text-align:left}.ad img{max-width:100%;height:auto}
 main p img{display:block;max-width:100%;height:auto;margin:16px auto;border:1px solid var(--line);border-radius:10px;background:#fff}
 .tools{background:var(--card);border:2px solid var(--navy);border-radius:10px;padding:12px 16px;margin:28px 0}.tools b{display:block;margin-bottom:4px}
+.rel{margin:28px 0}.rel b{display:block;margin-bottom:4px}
 .list a{display:block;background:var(--card);border:1px solid var(--line);border-radius:10px;padding:14px 16px;margin:12px 0;text-decoration:none;color:var(--fg)}.list b{color:var(--navy)}
 footer{color:var(--mut);font-size:13px;border-top:1px solid var(--line);padding:16px 0 32px}
