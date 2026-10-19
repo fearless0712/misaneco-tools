@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self'; img-src 'self' data:; connect-src 'none'; font-src 'none'; frame-src 'none'; object-src 'none'; base-uri 'none'; form-action 'none'">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<meta name="description" content="業務の自動化 診断＆推進プランで、入力した内容がどう扱われるか（送るもの・送らないもの）。">
+<title>データの扱い｜業務の自動化 診断＆推進プラン</title>
+<link rel="stylesheet" href="css/app.css?v=20261019">
+<link rel="icon" href="data:,">
+</head>
+<body>
+<header class="top">
+  <div class="wrap top-row">
+    <a class="brand" href="./">業務の自動化 診断＆推進プラン</a>
+    <a class="toplink" href="../">ツール一覧</a>
+  </div>
+</header>
+<main class="wrap">
+  <h1>データの扱い</h1>
+
+  <section class="sec">
+    <h2>いまの状態</h2>
+    <p id="stOff">いまは、入力内容を外部に送信していません。診断はすべて、この画面（あなたのブラウザ）の中だけで行います。</p>
+    <p id="stOn" hidden>このアプリで選んだ業務と環境（個人が分からない情報）は、ツール改善のための集計に使います。自由記入の文章や名前・連絡先は送りません。送るのは、診断の結果を表示したときに1回だけです（同じ結果をくり返し送りません）。</p>
+  </section>
+
+  <section class="sec">
+    <h2>集計に使う情報（送る場合）</h2>
+    <ul class="list-dot">
+      <li>業種（例：不動産）</li>
+      <li>選んだ業務の番号と、頻度・1回の時間（例：invoice:monthly:120）</li>
+      <li>環境の答え（表計算ソフト・Windows/Mac・Microsoft 365 の有無・プログラム・予算）</li>
+      <li>おすすめとして表示した方法の番号</li>
+      <li>日付（日まで。時刻は送りません）と、このアプリの版</li>
+    </ul>
+  </section>
+
+  <section class="sec">
+    <h2>送らないもの</h2>
+    <ul class="list-dot">
+      <li>「ほかの業務」に書いた自由記入の文章（この画面の中で近い業務を探すだけに使い、保存もしません）</li>
+      <li>名前・メールアドレス・電話番号・会社名などの連絡先</li>
+      <li>推進プランのチェックの状態</li>
+    </ul>
+  </section>
+
+  <section class="sec">
+    <h2>この端末に保存するもの</h2>
+    <p>選んだ業種・業務・頻度・環境と、推進プランのチェックは、次に開いたときのために、このブラウザ（localStorage）にだけ保存します。ブラウザの設定でサイトのデータを消すと消えます。保存できない設定のブラウザでも、診断は使えます。</p>
+  </section>
+
+  <section class="sec">
+    <h2>しくみ</h2>
+    <p>ページには、決めた送信先以外に通信できない設定（Content-Security-Policy）を入れています。広告や外部のスクリプト・フォントは使っていません。</p>
+  </section>
+
+  <p><a href="./">診断にもどる</a></p>
+</main>
+<footer class="foot wrap">
+  <p><a href="../">ツール一覧</a> ・ <a href="../blog/">ブログ</a></p>
+  <p>MisaNeco Works ・ AIを活用して作成し、公式情報で確認しています</p>
+</footer>
+<script src="js/config.js?v=20261019"></script>
+<script src="js/privacy.js?v=20261019"></script>
+</body>
+</html>
