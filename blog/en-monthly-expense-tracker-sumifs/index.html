@@ -1,0 +1,143 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'self'; img-src 'self' data: https://*.a8.net https://*.google-analytics.com https://*.googletagmanager.com; script-src 'self' https://www.googletagmanager.com; connect-src https://*.google-analytics.com https://*.analytics.google.com https://*.googletagmanager.com; base-uri 'none'; form-action 'none'; object-src 'none'">
+<title>A simple monthly expense tracker in Google Sheets or Excel (with SUMIFS totals) | MisaNeco Works</title><meta name="description" content="Log receipts, pick a category from a dropdown, and see spending by month and category with SUMIFS. Includes a missing-receipt check and a file naming tip. Works in Excel and Google Sheets.">
+<link rel="canonical" href="https://fearless0712.github.io/misaneco-tools/blog/en-monthly-expense-tracker-sumifs/"><meta property="og:type" content="article"><meta property="og:url" content="https://fearless0712.github.io/misaneco-tools/blog/en-monthly-expense-tracker-sumifs/"><meta property="og:image" content="https://fearless0712.github.io/misaneco-tools/blog/og.png"><meta name="twitter:card" content="summary_large_image"><meta property="og:title" content="A simple monthly expense tracker in Google Sheets or Excel (with SUMIFS totals) | MisaNeco Works"><meta property="og:description" content="Log receipts, pick a category from a dropdown, and see spending by month and category with SUMIFS. Includes a missing-receipt check and a file naming tip. Works in Excel and Google Sheets.">
+<link rel="alternate" type="application/rss+xml" title="MisaNeco Works Blog" href="https://fearless0712.github.io/misaneco-tools/blog/en/rss.xml"><script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "A simple monthly expense tracker in Google Sheets or Excel (with SUMIFS totals)", "description": "Log receipts, pick a category from a dropdown, and see spending by month and category with SUMIFS. Includes a missing-receipt check and a file naming tip. Works in Excel and Google Sheets.", "datePublished": "2026-10-20", "dateModified": "2026-10-20", "inLanguage": "en", "mainEntityOfPage": "https://fearless0712.github.io/misaneco-tools/blog/en-monthly-expense-tracker-sumifs/", "image": "https://fearless0712.github.io/misaneco-tools/blog/og.png", "author": {"@type": "Organization", "name": "MisaNeco Works", "url": "https://fearless0712.github.io/misaneco-tools/"}, "publisher": {"@type": "Organization", "name": "MisaNeco Works"}}</script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-EWJXRJY9M6"></script><script src="../ga.js?v=202610200804"></script>
+<link rel="stylesheet" href="../blog.css?v=202610200804"></head><body>
+<header><div class="wrap"><a href="../en/">MisaNeco Works Blog</a></div></header>
+<main class="wrap"><p class="meta">2026-10-20・Automation / Small business / Bookkeeping</p><h1>A simple monthly expense tracker in Google Sheets or Excel (with SUMIFS totals)</h1><p>If you work for yourself, receipts pile up fast. A coffee with a client, a software subscription, a train ticket, a new keyboard. At the end of the month, or the end of the year, someone has to add them all up. Usually that someone is you.</p>
+<p>You do not need accounting software to stay on top of it. One sheet with a few columns and one formula can show you what you spent, on what, and in which month.</p>
+<p>This guide shows you how to build a simple expense tracker in Google Sheets or Excel. Everything works in both apps unless noted. It takes about 15 minutes.</p>
+<h2>What you will build</h2>
+<ul>
+<li>An <strong>Expenses</strong> tab with one row per receipt.</li>
+<li>A dropdown for categories, so the same thing is always spelled the same way.</li>
+<li>A helper column that turns each date into a month, like <strong>2026-03</strong>.</li>
+<li>A <strong>Summary</strong> tab that shows totals by category and month with SUMIFS.</li>
+<li>A quick check for receipts you have logged but not saved.</li>
+</ul>
+<h2>Step 1. Set up the columns</h2>
+<p>Create a tab called <strong>Expenses</strong> and add these headers in row 1:</p>
+<table>
+<thead>
+<tr>
+<th>A</th>
+<th>B</th>
+<th>C</th>
+<th>D</th>
+<th>E</th>
+<th>F</th>
+<th>G</th>
+<th>H</th>
+<th>I</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Date</td>
+<td>Vendor</td>
+<td>Description</td>
+<td>Category</td>
+<td>Amount</td>
+<td>Paid with</td>
+<td>Receipt saved?</td>
+<td>Month</td>
+<td>Notes</td>
+</tr>
+</tbody>
+</table>
+<p>Tips:</p>
+<ul>
+<li>Column A must be a real date. Format it as a date.</li>
+<li>Column E must be a plain number. Do not type a currency sign as text. Use number or currency format instead.</li>
+<li>For a refund, enter a negative amount. The totals will handle it.</li>
+<li><strong>Paid with</strong> is useful later: card, cash, bank transfer, or which card.</li>
+</ul>
+<h2>Step 2. Add a category dropdown</h2>
+<p>Typos break totals. "Software", "software " and "Sofware" are three different things to a formula. A dropdown fixes that.</p>
+<p>First, make a list. Create a tab called <strong>Lists</strong> and type your categories in A2 down, with a header "Category" in A1. For example:</p>
+<ul>
+<li>Software and subscriptions</li>
+<li>Equipment</li>
+<li>Office supplies</li>
+<li>Phone and internet</li>
+<li>Travel</li>
+<li>Meals</li>
+<li>Advertising</li>
+<li>Professional fees</li>
+<li>Bank fees</li>
+<li>Other</li>
+</ul>
+<p>Pick categories that match how you, your bookkeeper or your tax return group things. That makes year-end much easier. Keep the list short. Ten to fifteen is plenty.</p>
+<p>Then add the dropdown:</p>
+<p><strong>Google Sheets:</strong> select D2:D2000 on the Expenses tab. Choose <strong>Data &gt; Data validation &gt; Add rule</strong>. Under criteria, choose <strong>Dropdown (from a range)</strong> and enter <code>Lists!A2:A20</code>.</p>
+<p><strong>Excel:</strong> select D2:D2000. Choose <strong>Data &gt; Data Validation</strong>. Under Allow, choose <strong>List</strong>. In Source, enter <code>=Lists!$A$2:$A$20</code>.</p>
+<p>Do the same for column G (Receipt saved?) with a simple list: <strong>Y, N</strong>. You can type that directly into the dropdown options instead of using a range.</p>
+<h2>Step 3. Add the Month helper column</h2>
+<p>In H2, paste:</p>
+<p><code>=IF(A2="","",TEXT(A2,"yyyy-mm"))</code></p>
+<p>Copy it down as far as you expect to go, for example to row 2000.</p>
+<p>What it does:</p>
+<ol>
+<li>Shows nothing if there is no date yet, so empty rows stay clean.</li>
+<li>Otherwise turns the date into text like <strong>2026-03</strong>.</li>
+</ol>
+<p>Why text? Because a month label like "2026-03" is easy to match in SUMIFS, sorts in the right order, and reads clearly.</p>
+<p>One note for Excel: if your Excel is set to a language other than English, the date codes in TEXT may be different (for example, some languages use other letters for year). If H2 shows the wrong result, check the format codes for your language.</p>
+<h2>Step 4. Build the summary with SUMIFS</h2>
+<p>Create a tab called <strong>Summary</strong>.</p>
+<ol>
+<li>In A3 down, list your categories. You can copy them from the Lists tab.</li>
+<li>In B2 across, type the months you want to see: <strong>2026-01</strong>, <strong>2026-02</strong>, <strong>2026-03</strong> and so on.</li>
+</ol>
+<p>Important: type each month with an apostrophe in front, like <code>'2026-01</code>. Without it, both Excel and Google Sheets may turn it into a date, and then it will not match the text in column H. The apostrophe does not show in the cell.</p>
+<p>Now in B3, paste:</p>
+<p><code>=SUMIFS(Expenses!$E$2:$E$2000,Expenses!$D$2:$D$2000,$A3,Expenses!$H$2:$H$2000,B$2)</code></p>
+<p>Copy it across and down to fill the whole table.</p>
+<p>How to read it: add up the amounts in column E, but only where the category matches the name in column A of this row, and the month matches the label in row 2 of this column.</p>
+<p>The <code>$</code> signs matter. <code>$A3</code> keeps the category column fixed when you copy across. <code>B$2</code> keeps the month row fixed when you copy down.</p>
+<p>Then add totals:</p>
+<ul>
+<li>At the end of each row, a category total for the whole period: <code>=SUM(B3:M3)</code> if your months run from B to M.</li>
+<li>Under each month, a monthly total: <code>=SUM(B3:B12)</code> if your categories are in rows 3 to 12.</li>
+</ul>
+<h2>Step 5. Check nothing is missing</h2>
+<p>Two quick checks keep the numbers honest. Put them anywhere on the Summary tab, with a label next to each.</p>
+<p><strong>Every expense has a category.</strong> This counts rows with an amount but no category:</p>
+<p><code>=COUNTIFS(Expenses!E2:E2000,"&lt;&gt;",Expenses!D2:D2000,"")</code></p>
+<p>If it is not 0, some rows are missing from your summary table. You can also compare <code>=SUM(Expenses!E2:E2000)</code> with the grand total of your summary. They should be the same.</p>
+<p><strong>Every expense has a receipt.</strong> This counts logged expenses where Receipt saved? is not Y. Blank counts as missing, on purpose:</p>
+<p><code>=COUNTIFS(Expenses!A2:A2000,"&lt;&gt;",Expenses!G2:G2000,"&lt;&gt;Y")</code></p>
+<p>And this shows how much money those rows add up to:</p>
+<p><code>=SUMIFS(Expenses!E2:E2000,Expenses!A2:A2000,"&lt;&gt;",Expenses!G2:G2000,"&lt;&gt;Y")</code></p>
+<p>To see missing receipts per month, put this under the month labels and copy across:</p>
+<p><code>=COUNTIFS(Expenses!$H$2:$H$2000,B$2,Expenses!$G$2:$G$2000,"&lt;&gt;Y")</code></p>
+<p>To find the rows themselves, turn on a filter on the Expenses tab and show only <strong>N</strong> and blanks in column G.</p>
+<h2>Name your receipt files the same way every time</h2>
+<p>Logging a receipt is half the job. The other half is being able to find the file later.</p>
+<p>Pick one naming pattern and stick to it:</p>
+<p><code>YYYY-MM-DD_vendor_amount</code></p>
+<p>For example: <code>2026-03-03_dell_189.00.pdf</code> or <code>2026-01-05_adobe_22.99.jpg</code>.</p>
+<p>Why this works:</p>
+<ul>
+<li>Files sort by date on their own, in any folder.</li>
+<li>You can search for a vendor name and find every receipt from them.</li>
+<li>The amount helps you match a file to a row in your sheet.</li>
+</ul>
+<p>Keep one folder per year, with one folder per month inside it if you get a lot of receipts. When you save a file, set Receipt saved? to <strong>Y</strong> in the sheet. That is what makes the missing-receipt check work.</p>
+<h2>How long should you keep receipts?</h2>
+<p>It depends on your country and your situation. The rules are different in the US, UK, Canada and Australia, and can change. Do not guess.</p>
+<p>Our free <a href="../../records/">Record Retention Calculator</a> gives you a keep-until date for your country and tax year. For anything unusual, check the official guidance from your tax authority or ask your accountant.</p>
+<h2>Using it day to day</h2>
+<ul>
+<li><strong>When you pay for something:</strong> add a row, pick a category, and save the receipt with the naming pattern. It takes a minute.</li>
+<li><strong>Once a week:</strong> check the missing-receipt count. Chase any receipts while you still remember where they are.</li>
+<li><strong>Once a month:</strong> add the new month label to the Summary tab and look at the totals. Is anything bigger than you expected?</li>
+<li><strong>At year-end:</strong> the Summary tab already has your totals by category. Hand it to your bookkeeper with the receipt folder.</li>
+</ul>
+<p>The key habit is simple: one row and one saved file for every receipt, on the day you get it.</p>
+<h2>What else could you automate?</h2>
+<p>Expense tracking is a good first step. Our free <strong>Small Business Automation Check</strong> asks about your country, industry and daily tasks, and shows which admin jobs are easiest to automate next.</p><div class="tools"><b>Free tools you can use</b><a href="../../dx-en/">Small Business Automation Check</a><br><a href="../../records/">Record Retention Calculator (US/UK/CA/AU)</a><br></div><div class="rel"><b>Related articles</b><a href="../en-how-long-keep-business-records/">How long to keep business records in the US, UK, Canada and Australia (and a simple filing system)</a><br><a href="../en-w9-1099-nec-freelancers/">Paying freelancers in the US - Form W-9, Form 1099-NEC and a simple tracking sheet</a><br><a href="../en-track-unpaid-invoices-google-sheets/">Track unpaid invoices in Google Sheets (with overdue days and red rows)</a><br></div></main>
+<footer class="wrap">© MisaNeco Works ・ <a href="../en/">All articles</a> ・ <a href="../../">Free tools</a> ・ <a href="../en/../">日本語の記事</a><br>Articles are written with the help of AI and checked against official sources. Articles with ads say so at the top. We use Google Analytics to count page views anonymously (no names or contact details).</footer>
+</body></html>
