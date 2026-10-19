@@ -1,0 +1,11 @@
+const R=require('./logic.js');let f=0;const eq=(a,b,m)=>{if(a!==b){f++;console.log('FAIL',m,a,b)}};
+eq(R.keepUntil({country:'us',year:2025}).date,'2029-04-15','us on time');
+eq(R.keepUntil({country:'us',year:2025,filed:'2026-03-01'}).date,'2029-04-15','us early');
+eq(R.keepUntil({country:'us',year:2025,filed:'2026-10-15'}).date,'2029-10-15','us late');
+eq(R.keepUntil({country:'uk',year:2024}).date,'2031-01-31','uk 24/25');
+eq(R.keepUntil({country:'ca',year:2025}).date,'2031-12-31','ca');
+eq(R.keepUntil({country:'ca',year:2025,end:'2025-06-30'}).date,'2031-06-30','ca fiscal');
+eq(R.keepUntil({country:'au',year:2025,end:'2026-02-10'}).date,'2031-02-10','au');
+eq(R.addYears('2024-02-29',3),'2027-02-28','leap');
+const html=require('fs').readFileSync(__dirname+'/index.html','utf8');eq(/1万円|30日チャレンジ/.test(html),false,'banned');
+console.log(f? f+' failed':'all passed');process.exit(f?1:0);

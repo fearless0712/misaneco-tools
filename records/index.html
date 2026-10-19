@@ -1,0 +1,33 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self'; img-src 'self' data:; connect-src 'none'; base-uri 'none'; form-action 'none'; object-src 'none'">
+<title>Record Retention Calculator</title>
+<meta name="description" content="Free calculator: how long to keep small business tax records in the US, UK, Canada and Australia, with the official rule and a keep-until date. Nothing you enter leaves your browser.">
+<link rel="canonical" href="https://fearless0712.github.io/misaneco-tools/records/">
+<link rel="stylesheet" href="app.css?v=202610192335"></head><body>
+<header><div class="wrap"><a href="../">MisaNeco Works — free tools</a></div></header>
+<main class="wrap">
+<h1>How long should I keep my business records?</h1>
+<p>Pick your country and tax year. You get the general keep-until date and the official rule. Nothing you enter leaves your browser.</p>
+<div class="card">
+<label for="country">Country</label>
+<select id="country"><option value="us">United States</option><option value="uk">United Kingdom (self-employed)</option><option value="ca">Canada</option><option value="au">Australia</option></select>
+<label for="year" id="yearLabel">Tax year</label><select id="year"></select>
+<div id="filedRow"><label for="filed">Date you filed the return (optional, if filed late)</label><input type="date" id="filed"></div>
+<div id="endRow" hidden><label for="end" id="endLabel">Date</label><input type="date" id="end"></div>
+</div>
+<div class="card" aria-live="polite">
+<div class="mut">Keep records at least until</div>
+<div class="big" id="date"></div>
+<div class="mut" id="basis"></div>
+<p><b>General rule:</b> <span id="rule"></span></p>
+<p><b>Exceptions to check:</b></p><ul id="extra"></ul>
+<p><a id="src" target="_blank" rel="noopener"></a></p>
+<p class="mut">Tip: put an empty file with this name in that year's folder, so the decision is already made later:</p>
+<p class="tip" id="note"></p>
+</div>
+<p class="mut">General information only, not tax or legal advice. Rules were checked against the official pages on October 19, 2026 and can change. Check the official page or ask your accountant before you delete anything.</p>
+<p>More: <a href="../blog/en-how-long-keep-business-records/">How long to keep business records (article)</a> · <a href="../dx-en/">Small Business Automation Check</a></p>
+</main>
+<footer class="wrap">© MisaNeco Works · Made with the help of AI and checked against official sources.</footer>
+<script src="logic.js?v=202610192335"></script><script src="app.js?v=202610192335"></script>
+</body></html>
