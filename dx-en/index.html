@@ -3,17 +3,18 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<!-- CSP: the only allowed outbound connection is the anonymous aggregate receiver in js/config.js
+<!-- Ads: images only from https://*.a8.net (img-src); ads.json is loaded from this site (connect-src 'self').
+     CSP: the only allowed outbound connection is the anonymous aggregate receiver in js/config.js
      (Google Apps Script web app, which redirects to script.googleusercontent.com). No forms are submitted (form-action 'none').
      To stop collecting, set submitUrl to "" and change connect-src back to 'none'. -->
-<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self'; img-src 'self' data:; connect-src https://script.google.com https://script.googleusercontent.com; font-src 'none'; frame-src 'none'; object-src 'none'; media-src 'none'; manifest-src 'none'; base-uri 'none'; form-action 'none'">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self'; img-src 'self' data: https://*.a8.net; connect-src 'self' https://script.google.com https://script.googleusercontent.com; font-src 'none'; frame-src 'none'; object-src 'none'; media-src 'none'; manifest-src 'none'; base-uri 'none'; form-action 'none'">
 <meta name="referrer" content="strict-origin-when-cross-origin">
 <meta name="description" content="Pick your country, industry, tasks and setup to see which tasks can be automated, compare methods, get a recommendation and a step-by-step plan adapted to small businesses in the US, UK, Canada and Australia.">
 <meta name="theme-color" content="#1b3a5c" media="(prefers-color-scheme: light)">
 <meta name="theme-color" content="#0f1720" media="(prefers-color-scheme: dark)">
 <title>Small Business Automation Check &amp; Action Plan</title>
 <meta property="og:type" content="website"><meta property="og:url" content="https://fearless0712.github.io/misaneco-tools/dx-en/"><meta property="og:title" content="Small Business Automation Check & Action Plan (free)"><meta property="og:description" content="Pick your country, industry and tasks to compare automation methods and get a step-by-step plan."><meta property="og:image" content="https://fearless0712.github.io/misaneco-tools/dx-en/og.png"><meta name="twitter:card" content="summary_large_image">
-<link rel="stylesheet" href="css/app.css?v=2026101950">
+<link rel="stylesheet" href="css/app.css?v=2026101960">
 <link rel="icon" href="data:,">
 </head>
 <body>
@@ -134,9 +135,16 @@
   <p>MisaNeco Works · Built with AI and checked against official sources</p>
 </footer>
 
-<script src="js/config.js?v=2026101950"></script>
-<script src="js/data.js?v=2026101950"></script>
-<script src="js/logic.js?v=2026101950"></script>
-<script src="js/app.js?v=2026101950"></script>
+<div id="inter" class="inter" hidden>
+  <div class="inter-box" role="dialog" aria-modal="true" aria-labelledby="interLabel">
+    <div class="inter-bar"><span class="adtag" id="interLabel">Advertisement</span><button type="button" id="interClose" class="x" aria-label="Close ad">×</button></div>
+    <div class="inter-body" id="interBody"></div>
+  </div>
+</div>
+<script src="js/config.js?v=2026101960"></script>
+<script src="js/data.js?v=2026101960"></script>
+<script src="js/logic.js?v=2026101960"></script>
+<script src="js/ads.js?v=2026101960"></script>
+<script src="js/app.js?v=2026101960"></script>
 </body>
 </html>

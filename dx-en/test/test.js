@@ -179,7 +179,7 @@ function runApp(cfg, search) {
   var w = { DX_CONFIG: cfg, location: { search: search || '' }, scrollY: 0, scrollTo: function () {}, addEventListener: function () {}, confirm: function () { return true; }, alert: function () {}, print: function () {},
     localStorage: { getItem: function () { throw new Error('blocked'); }, setItem: function () { throw new Error('blocked'); }, removeItem: function () { throw new Error('blocked'); } },
     sessionStorage: { _s: {}, getItem: function (k) { return this._s[k] || null; }, setItem: function (k, v) { this._s[k] = v; } },
-    fetch: function (u, o) { calls.push([u, o]); return { catch: function () {} }; } };
+    fetch: function (u, o) { if (/^https?:/.test(String(u))) calls.push([u, o]); else (w._local = w._local || []).push(u); return { catch: function () {} }; } };
   w.window = w;
   Object.defineProperty(w.location, 'href', { set: function (v) { nav.push(v); }, get: function () { return ''; } });
   var ctx = { window: w, document: f.doc, setTimeout: setTimeout, URL: {}, Blob: function () {}, URLSearchParams: URLSearchParams, JSON: JSON, Math: Math, Date: Date, Object: Object, Array: Array, String: String, Number: Number, RegExp: RegExp, encodeURIComponent: encodeURIComponent };
@@ -224,11 +224,45 @@ ok(/href="dx-en\/"[^>]*>Free automation check \(English\)/.test(fs.readFileSync(
 
 /* 13. HTML */
 var html = fs.readFileSync(path.join(ROOT, 'index.html'), 'utf8');
-ok(/default-src 'none'/.test(html) && /connect-src https:\/\/script\.google\.com https:\/\/script\.googleusercontent\.com;/.test(html) && /form-action 'none'/.test(html) && /base-uri 'none'/.test(html), 'CSP');
+ok(/default-src 'none'/.test(html) && /connect-src 'self' https:\/\/script\.google\.com https:\/\/script\.googleusercontent\.com;/.test(html) && /form-action 'none'/.test(html) && /base-uri 'none'/.test(html), 'CSP');
 var refs = html.match(/(src|href)="(css|js)\/[^"]+"/g) || [];
-ok(refs.length >= 5 && refs.every(function (r) { return r.indexOf('?v=2026101950') > 0; }), 'cache-bust ?v=2026101950');
+ok(refs.length >= 5 && refs.every(function (r) { return r.indexOf('?v=2026101960') > 0; }), 'cache-bust ?v=2026101960');
 ok(!/<script[^>]+src="https?:/.test(html), 'no external scripts');
 ['js/app.js'].forEach(function (p) { var s = fs.readFileSync(path.join(ROOT, p), 'utf8'); ok((s.match(/localStorage\./g) || []).length === (s.match(/try \{ (var v = )?window\.localStorage\./g) || []).length, 'localStorage in try'); });
 
+
+/* 16. Ads (ads.json + js/ads.js) */
+var ADSX = require('../js/ads.js');
+var adsRaw = fs.readFileSync(path.join(ROOT, 'ads.json'), 'utf8');
+var ADSJ = JSON.parse(adsRaw);
+ok(ADSJ && typeof ADSJ === 'object' && ADSJ.slots && typeof ADSJ.slots === 'object' && ADSJ.interstitial && Array.isArray(ADSJ.interstitial.rotate), 'ads.json valid shape');
+var allTags = Object.keys(ADSJ.slots).map(function (k) { return ADSJ.slots[k].tag || ''; }).concat(ADSJ.interstitial.rotate.map(function (r) { return r.tag || ''; }));
+allTags.forEach(function (t, i) {
+  ADSX.tagHosts(t).forEach(function (u) { ok(/^https:\/\/([a-z0-9-]+\.)*a8\.net\//i.test(u), 'ad url is a8.net only (' + i + ')'); });
+  var elems = (t.match(/<\s*([a-z0-9]+)/gi) || []).map(function (x) { return x.replace(/[<\s]/g, '').toLowerCase(); });
+  ok(elems.every(function (e) { return ['a', 'img', 'br'].indexOf(e) >= 0; }), 'ad tag uses only a/img/br (' + i + ')');
+  ok(!/javascript:|on[a-z]+\s*=/i.test(t), 'ad tag has no script/handlers (' + i + ')');
+});
+['最安', '必ず', '絶対', 'cheapest', 'guaranteed'].forEach(function (w) { ok(adsRaw.indexOf(w) < 0, 'banned word absent in ads.json: ' + w); });
+/* interstitial: once per day, never in demo, nothing without tags */
+var pick = { tag: '<a href="https://px.a8.net/x"><img src="https://www.a8.net/y.gif"></a>' };
+ok(ADSX.shouldShowInterstitial({ demo: false, pick: pick, lastShown: null, today: '2026-10-19' }), 'interstitial shows first time today');
+ok(!ADSX.shouldShowInterstitial({ demo: false, pick: pick, lastShown: '2026-10-19', today: '2026-10-19' }), 'interstitial not twice the same day');
+ok(ADSX.shouldShowInterstitial({ demo: false, pick: pick, lastShown: '2026-10-18', today: '2026-10-19' }), 'interstitial again next day');
+ok(!ADSX.shouldShowInterstitial({ demo: true, pick: pick, lastShown: null, today: '2026-10-19' }), 'interstitial never in demo');
+ok(!ADSX.shouldShowInterstitial({ demo: false, pick: null, lastShown: null, today: '2026-10-19' }), 'no interstitial without a tag');
+eq(ADSX.pickInterstitial({ interstitial: { rotate: [] } }, '2026-10-19'), null, 'empty rotate → no interstitial');
+var appSrc = fs.readFileSync(path.join(ROOT, 'js/app.js'), 'utf8');
+ok(/shouldShowInterstitial\(\{ demo: DEMO/.test(appSrc), 'app passes DEMO to the interstitial check');
+ok(/aria-label="[^"]+"[^>]*>×<\/button>/.test(fs.readFileSync(path.join(ROOT, 'index.html'), 'utf8')), 'close button with label');
+/* ads never change recommendations */
+var logicSrc = fs.readFileSync(path.join(ROOT, 'js/logic.js'), 'utf8');
+ok(!/ads\.json|DXADS|ads\.js|\bADS\b/.test(logicSrc), 'logic.js does not read ads');
+
+eq(Object.keys(ADSJ.slots).length, 0, 'dx-en ads.json has no slots yet');
+eq(ADSJ.interstitial.rotate.length, 0, 'dx-en ads.json has no interstitial yet');
+var dE = L.diagnose({ country: 'US', industry: 'restaurant', tasks: [{ id: 'invoice' }, { id: 'dailysales' }], env: { budget: 'low' } });
+eq(ADSX.placements(dE, ADSJ).count, 0, 'empty ads config → no ad boxes');
+eq(ADSX.pickInterstitial(ADSJ, '2026-10-19'), null, 'empty ads config → no interstitial');
 console.log('\n' + pass + ' passed, ' + fail + ' failed');
 process.exit(fail ? 1 : 0);

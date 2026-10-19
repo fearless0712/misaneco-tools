@@ -1,0 +1,13 @@
+{
+ "_readme": "Paste affiliate tags (a8.net only for now) into tag. Empty = nothing is shown. Ads never affect recommendations.",
+ "label": {
+  "en": "Advertisement"
+ },
+ "disclosure": {
+  "en": "This page contains affiliate ads. Ads do not affect the recommendations."
+ },
+ "interstitial": {
+  "rotate": []
+ },
+ "slots": {}
+}

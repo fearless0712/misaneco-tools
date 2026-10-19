@@ -240,7 +240,7 @@ function runApp(cfg, search) {
   var w = { DX_CONFIG: cfg, location: { search: search || '' }, scrollY: 0, scrollTo: function () {}, addEventListener: function () {}, confirm: function () { return true; }, alert: function () {}, print: function () {},
     localStorage: { getItem: function () { throw new Error('blocked'); }, setItem: function () { throw new Error('blocked'); }, removeItem: function () { throw new Error('blocked'); } },
     sessionStorage: { _s: {}, getItem: function (k) { return this._s[k] || null; }, setItem: function (k, v) { this._s[k] = v; } },
-    fetch: function (u, o) { calls.push([u, o]); return { catch: function () {} }; } };
+    fetch: function (u, o) { if (/^https?:/.test(String(u))) calls.push([u, o]); else (w._local = w._local || []).push(u); return { catch: function () {} }; } };
   w.window = w;
   var ctx = { window: w, document: f.doc, setTimeout: setTimeout, URL: {}, Blob: function () {}, JSON: JSON, Math: Math, Date: Date, Object: Object, Array: Array, String: String, Number: Number, RegExp: RegExp, encodeURIComponent: encodeURIComponent };
   vm.createContext(ctx);
@@ -261,14 +261,15 @@ eq(a3.calls.length, 0, 'demo mode never sends even with submitUrl');
 
 /* 12. HTML：CSP・キャッシュ対策・フッター */
 var html = fs.readFileSync(path.join(ROOT, 'index.html'), 'utf8');
-ok(/default-src 'none'/.test(html) && /connect-src https:\/\/script\.google\.com https:\/\/script\.googleusercontent\.com;/.test(html) && /form-action 'none'/.test(html) && /base-uri 'none'/.test(html) && /script-src 'self'/.test(html), 'CSP');
+ok(/default-src 'none'/.test(html) && /connect-src 'self' https:\/\/script\.google\.com https:\/\/script\.googleusercontent\.com;/.test(html) && /form-action 'none'/.test(html) && /base-uri 'none'/.test(html) && /script-src 'self'/.test(html), 'CSP');
 ok(!/<script[^>]+src="https?:/.test(html) && !/<link[^>]+href="https?:/.test(html), 'no external scripts/styles');
 var refs = html.match(/(src|href)="(css|js)\/[^"]+"/g) || [];
-ok(refs.length >= 5 && refs.every(function (r) { return r.indexOf('?v=2026101950') > 0; }), 'cache-bust ?v=2026101950');
+ok(refs.length >= 5 && refs.every(function (r) { return r.indexOf('?v=2026101960') > 0; }), 'cache-bust ?v=2026101960');
 ok(html.indexOf('MisaNeco Works ・ AIを活用して作成し、公式情報で確認しています') >= 0, 'footer text');
 ok(html.indexOf('href="../"') >= 0 && html.indexOf('href="../blog/"') >= 0, 'footer links');
 ok(/submitUrl と、この connect-src を一緒に直して/.test(html), 'CSP comment explains endpoint + connect-src');
-ok(!/a8\.net|adsbygoogle|moshimo/.test(allText), 'no ads');
+ok(!/adsbygoogle|moshimo/.test(allText), 'no other ad networks');
+ok(/img-src 'self' data: https:\/\/\*\.a8\.net;/.test(html), 'CSP allows a8.net images only');
 ['js/app.js', 'js/logic.js'].forEach(function (p) {
   var s = fs.readFileSync(path.join(ROOT, p), 'utf8');
   ok((s.match(/localStorage\./g) || []).length === (s.match(/try \{ (var v = )?window\.localStorage\./g) || []).length, p + ' every localStorage access inside try');
@@ -342,5 +343,59 @@ swOpts.forEach(function (h) { ok(fs.existsSync(path.join(SITE, h.replace(/^\.\.\
 ok(/<option value="\.\.\/dx\/" selected>日本 \(Japan\)/.test(jaHtml2), 'Japan selected on dx');
 var enL = require('../../dx-en/js/logic.js');
 swOpts.slice(1).forEach(function (h) { ok(enL.countryFromSearch('?' + h.split('?')[1]), 'dx-en accepts ' + h); });
+
+/* 16. Ads (ads.json + js/ads.js) */
+var ADSX = require('../js/ads.js');
+var adsRaw = fs.readFileSync(path.join(ROOT, 'ads.json'), 'utf8');
+var ADSJ = JSON.parse(adsRaw);
+ok(ADSJ && typeof ADSJ === 'object' && ADSJ.slots && typeof ADSJ.slots === 'object' && ADSJ.interstitial && Array.isArray(ADSJ.interstitial.rotate), 'ads.json valid shape');
+var allTags = Object.keys(ADSJ.slots).map(function (k) { return ADSJ.slots[k].tag || ''; }).concat(ADSJ.interstitial.rotate.map(function (r) { return r.tag || ''; }));
+allTags.forEach(function (t, i) {
+  ADSX.tagHosts(t).forEach(function (u) { ok(/^https:\/\/([a-z0-9-]+\.)*a8\.net\//i.test(u), 'ad url is a8.net only (' + i + ')'); });
+  var elems = (t.match(/<\s*([a-z0-9]+)/gi) || []).map(function (x) { return x.replace(/[<\s]/g, '').toLowerCase(); });
+  ok(elems.every(function (e) { return ['a', 'img', 'br'].indexOf(e) >= 0; }), 'ad tag uses only a/img/br (' + i + ')');
+  ok(!/javascript:|on[a-z]+\s*=/i.test(t), 'ad tag has no script/handlers (' + i + ')');
+});
+['最安', '必ず', '絶対', 'cheapest', 'guaranteed'].forEach(function (w) { ok(adsRaw.indexOf(w) < 0, 'banned word absent in ads.json: ' + w); });
+/* interstitial: once per day, never in demo, nothing without tags */
+var pick = { tag: '<a href="https://px.a8.net/x"><img src="https://www.a8.net/y.gif"></a>' };
+ok(ADSX.shouldShowInterstitial({ demo: false, pick: pick, lastShown: null, today: '2026-10-19' }), 'interstitial shows first time today');
+ok(!ADSX.shouldShowInterstitial({ demo: false, pick: pick, lastShown: '2026-10-19', today: '2026-10-19' }), 'interstitial not twice the same day');
+ok(ADSX.shouldShowInterstitial({ demo: false, pick: pick, lastShown: '2026-10-18', today: '2026-10-19' }), 'interstitial again next day');
+ok(!ADSX.shouldShowInterstitial({ demo: true, pick: pick, lastShown: null, today: '2026-10-19' }), 'interstitial never in demo');
+ok(!ADSX.shouldShowInterstitial({ demo: false, pick: null, lastShown: null, today: '2026-10-19' }), 'no interstitial without a tag');
+eq(ADSX.pickInterstitial({ interstitial: { rotate: [] } }, '2026-10-19'), null, 'empty rotate → no interstitial');
+var appSrc = fs.readFileSync(path.join(ROOT, 'js/app.js'), 'utf8');
+ok(/shouldShowInterstitial\(\{ demo: DEMO/.test(appSrc), 'app passes DEMO to the interstitial check');
+ok(/aria-label="[^"]+"[^>]*>×<\/button>/.test(fs.readFileSync(path.join(ROOT, 'index.html'), 'utf8')), 'close button with label');
+/* ads never change recommendations */
+var logicSrc = fs.readFileSync(path.join(ROOT, 'js/logic.js'), 'utf8');
+ok(!/ads\.json|DXADS|ads\.js|\bADS\b/.test(logicSrc), 'logic.js does not read ads');
+
+var ENV1 = { sheet: 'excel', pc: 'win', m365: 'no', code: 'none', budget: '3000' };
+function recSnap() { return JSON.stringify(D.TASKS.map(function (t) { return [t.id, L.recommend(t, ENV1).method.id, L.rankMethods(t, ENV1).map(function (m) { return m.id; })]; })); }
+var before = recSnap();
+var dA = L.diagnose({ industry: 'realestate', tasks: [{ id: 'invoice' }, { id: 'reconcile' }, { id: 'journal' }, { id: 'hankyo' }], env: ENV1 });
+var dSnap = JSON.stringify(dA.items.map(function (i) { return [i.task.id, i.rec.id, i.score]; }));
+var pA = ADSX.placements(dA, ADSJ);
+eq(recSnap(), before, 'recommendations unchanged with ads loaded');
+eq(JSON.stringify(dA.items.map(function (i) { return [i.task.id, i.rec.id, i.score]; })), dSnap, 'placements do not modify the diagnosis');
+ok(pA.count <= 2, 'max 2 ad boxes on results');
+eq(pA.afterTask.invoice, 'accounting', 'invoice → MF会計');
+ok(!pA.afterTask.hankyo, 'no ad on unrelated task');
+ok(pA.plan === 'accounting', 'one ad in plan');
+var dF = L.diagnose({ industry: 'freelance', tasks: [{ id: 'free-expense' }, { id: 'biz-bill' }, { id: 'prj-project' }], env: ENV1 });
+var pF = ADSX.placements(dF, ADSJ);
+eq(pF.summary, 'kaigyo', 'freelance → 開業届 in summary');
+ok(pF.count <= 2 && (pF.afterTask['free-expense'] === 'taxreturn' || pF.afterTask['biz-bill'] === 'freelance'), 'freelance → 確定申告/個人事業主');
+var dR = L.diagnose({ industry: 'food', tasks: [{ id: 'svc-sales' }, { id: 'svc-shift' }, { id: 'invoice' }], env: ENV1 });
+var pR = ADSX.placements(dR, ADSJ);
+ok(Object.keys(pR.afterTask).map(function (k) { return pR.afterTask[k]; }).indexOf('pos') >= 0, 'food → UMaTレジ near 売上/シフト');
+ok(pR.count <= 2, 'food max 2');
+var dN = L.diagnose({ industry: 'construction', tasks: [{ id: 'site-photo' }], env: ENV1 });
+eq(ADSX.placements(dN, ADSJ).count, 0, 'no ads when no relevant task');
+eq(ADSJ.disclosure.ja, 'このページには広告（アフィリエイト）を含みます。広告はおすすめの順位に影響しません。', 'disclosure wording');
+eq(ADSJ.label.ja, '広告・PR', 'label');
+ok(Object.keys(ADSJ.slots).every(function (k) { return ADSJ.slots[k].tag && ADSJ.slots[k].tag.length > 50; }) && ADSJ.interstitial.rotate.length >= 1, 'dx ads have tags');
 console.log('\n' + pass + ' passed, ' + fail + ' failed');
 process.exit(fail ? 1 : 0);

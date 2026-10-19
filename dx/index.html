@@ -3,18 +3,19 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<!-- 通信の設定（CSP）。外部へ送れるのは匿名集計の送信先（Google Apps Script）だけです。
+<!-- 広告：画像は https://*.a8.net だけ（img-src）、ads.json は同じサイトから読む（connect-src 'self'）。
+     通信の設定（CSP）。外部へ送れるのは匿名集計の送信先（Google Apps Script）だけです。
      送信先を変えるときは js/config.js の submitUrl と、この connect-src を一緒に直してください
      （例：connect-src https://docs.google.com 、Apps Script なら https://script.google.com https://script.googleusercontent.com）。
      フォームの送信（form-action）は使わないので 'none' のままで動きます。 -->
-<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self'; img-src 'self' data:; connect-src https://script.google.com https://script.googleusercontent.com; font-src 'none'; frame-src 'none'; object-src 'none'; media-src 'none'; manifest-src 'none'; base-uri 'none'; form-action 'none'">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self'; img-src 'self' data: https://*.a8.net; connect-src 'self' https://script.google.com https://script.googleusercontent.com; font-src 'none'; frame-src 'none'; object-src 'none'; media-src 'none'; manifest-src 'none'; base-uri 'none'; form-action 'none'">
 <meta name="referrer" content="strict-origin-when-cross-origin">
 <meta name="description" content="業種と業務、頻度と時間、パソコンの環境を選ぶと、自動化しやすい業務と方法（費用・むずかしさ・はじめの一歩）、年間で減らせる時間の目安がわかり、優先順の推進プランを作れる無料ツール。">
 <meta name="theme-color" content="#1b3a5c" media="(prefers-color-scheme: light)">
 <meta name="theme-color" content="#0f1720" media="(prefers-color-scheme: dark)">
 <title>業務の自動化 診断＆推進プラン</title>
 <meta property="og:type" content="website"><meta property="og:url" content="https://fearless0712.github.io/misaneco-tools/dx/"><meta property="og:title" content="業務の自動化 診断＆推進プラン（無料）"><meta property="og:description" content="40業種・86業務から選ぶと、自動化できる業務・方法の比較・おすすめと進め方のチェックリストが出ます。"><meta property="og:image" content="https://fearless0712.github.io/misaneco-tools/dx/og.png"><meta name="twitter:card" content="summary_large_image">
-<link rel="stylesheet" href="css/app.css?v=2026101950">
+<link rel="stylesheet" href="css/app.css?v=2026101960">
 <link rel="icon" href="data:,">
 </head>
 <body>
@@ -137,9 +138,16 @@
   <p>MisaNeco Works ・ AIを活用して作成し、公式情報で確認しています</p>
 </footer>
 
-<script src="js/config.js?v=2026101950"></script>
-<script src="js/data.js?v=2026101950"></script>
-<script src="js/logic.js?v=2026101950"></script>
-<script src="js/app.js?v=2026101950"></script>
+<div id="inter" class="inter" hidden>
+  <div class="inter-box" role="dialog" aria-modal="true" aria-labelledby="interLabel">
+    <div class="inter-bar"><span class="adtag" id="interLabel">広告・PR</span><button type="button" id="interClose" class="x" aria-label="広告を閉じる">×</button></div>
+    <div class="inter-body" id="interBody"></div>
+  </div>
+</div>
+<script src="js/config.js?v=2026101960"></script>
+<script src="js/data.js?v=2026101960"></script>
+<script src="js/logic.js?v=2026101960"></script>
+<script src="js/ads.js?v=2026101960"></script>
+<script src="js/app.js?v=2026101960"></script>
 </body>
 </html>

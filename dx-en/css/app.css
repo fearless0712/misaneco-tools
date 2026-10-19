@@ -250,3 +250,18 @@ input[type=search] { width: 100%; font: inherit; font-size: 16px; padding: 10px 
 .ctygo { flex: none; min-height: 36px; min-width: 40px; font: inherit; font-size: 13px; font-weight: 700; border: 1px solid var(--navy); border-radius: 8px; background: var(--navy); color: var(--on-navy); cursor: pointer; padding: 0 8px; }
 .tnote .srcref { margin: 4px 0 0; }
 .tnote p { margin: 0; }
+
+/* ads (A8) */
+.adbox { border: 1px dashed var(--field-line); border-radius: var(--radius); padding: 10px 12px 12px; margin: 0 0 14px; background: var(--card); text-align: center; }
+.adbox .adhead { display: flex; justify-content: space-between; align-items: center; gap: 8px; margin: 0 0 8px; text-align: left; }
+.adtag { flex: none; font-size: 11px; color: var(--muted); border: 1px solid var(--field-line); border-radius: 4px; padding: 0 6px; line-height: 1.6; }
+.adname { font-size: 11px; color: var(--muted); min-width: 0; }
+.adbox img, .inter-body img { max-width: 100%; height: auto; }
+.addisc { font-size: 12px; color: var(--muted); margin: 0 0 10px; }
+.inter { position: fixed; inset: 0; background: rgba(15, 23, 35, .6); z-index: 50; display: flex; align-items: center; justify-content: center; padding: 16px; }
+.inter[hidden] { display: none !important; }
+.inter-box { background: var(--card); border-radius: var(--radius); width: 100%; max-width: 360px; overflow: hidden; }
+.inter-bar { display: flex; justify-content: space-between; align-items: center; padding: 4px 4px 4px 12px; border-bottom: 1px solid var(--line); }
+.x { width: 48px; height: 48px; border: 0; background: none; font-size: 30px; line-height: 1; color: var(--ink); cursor: pointer; border-radius: 8px; }
+.inter-body { padding: 12px; text-align: center; }
+@media print { .adbox, .addisc, .inter { display: none !important; } }

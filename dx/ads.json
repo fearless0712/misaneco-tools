@@ -1,0 +1,64 @@
+{
+ "_readme": "A8.netの広告タグ（300x250バナー）をそのまま tag に入れます。使えるのは a8.net の <a> <img> <br> だけ（それ以外は表示時に取りのぞきます）。広告はおすすめの順位・方法の一覧に影響しません（logic.js は ads.json を読みません）。tag が空の枠は出ません。",
+ "label": {
+  "ja": "広告・PR"
+ },
+ "disclosure": {
+  "ja": "このページには広告（アフィリエイト）を含みます。広告はおすすめの順位に影響しません。"
+ },
+ "interstitial": {
+  "_readme": "開いたときの全画面広告。rotate の中から日ごとに1つ。1日1回まで、×・Esc・外側のクリックで閉じます。?demo= のときは出ません。",
+  "rotate": [
+   {
+    "program": "s00000021185001",
+    "advertiser": "マネーフォワード クラウド会計",
+    "network": "A8.net",
+    "tag": "<a href=\"https://px.a8.net/svt/ejp?a8mat=4BEK9L+5CX82+4JGQ+5ZEMP\" rel=\"nofollow\">\n<img border=\"0\" width=\"300\" height=\"250\" alt=\"\" src=\"https://www26.a8.net/svt/bgt?aid=261019929009&wid=001&eno=01&mid=s00000021185001005000&mc=1\"></a>\n<img border=\"0\" width=\"1\" height=\"1\" src=\"https://www17.a8.net/0.gif?a8mat=4BEK9L+5CX82+4JGQ+5ZEMP\" alt=\"\">"
+   },
+   {
+    "program": "s00000021185002",
+    "advertiser": "マネーフォワード クラウド確定申告",
+    "network": "A8.net",
+    "tag": "<a href=\"https://px.a8.net/svt/ejp?a8mat=4BEK9L+6JSFM+4JGQ+BY641\" rel=\"nofollow\">\n<img border=\"0\" width=\"300\" height=\"250\" alt=\"\" src=\"https://www28.a8.net/svt/bgt?aid=261019929011&wid=001&eno=01&mid=s00000021185002007000&mc=1\"></a>\n<img border=\"0\" width=\"1\" height=\"1\" src=\"https://www17.a8.net/0.gif?a8mat=4BEK9L+6JSFM+4JGQ+BY641\" alt=\"\">"
+   },
+   {
+    "program": "s00000017718074",
+    "advertiser": "マネーフォワード クラウド（個人事業主向け）",
+    "network": "A8.net",
+    "tag": "<a href=\"https://px.a8.net/svt/ejp?a8mat=4BEK9L+ZQ12Q+3SPO+C8MHDT\" rel=\"nofollow\">\n<img border=\"0\" width=\"300\" height=\"250\" alt=\"\" src=\"https://www22.a8.net/svt/bgt?aid=261019929060&wid=001&eno=01&mid=s00000017718074008000&mc=1\"></a>\n<img border=\"0\" width=\"1\" height=\"1\" src=\"https://www10.a8.net/0.gif?a8mat=4BEK9L+ZQ12Q+3SPO+C8MHDT\" alt=\"\">"
+   }
+  ]
+ },
+ "slots": {
+  "accounting": {
+   "program": "s00000021185001",
+   "advertiser": "マネーフォワード クラウド会計",
+   "network": "A8.net",
+   "tag": "<a href=\"https://px.a8.net/svt/ejp?a8mat=4BEK9L+5CX82+4JGQ+5ZEMP\" rel=\"nofollow\">\n<img border=\"0\" width=\"300\" height=\"250\" alt=\"\" src=\"https://www26.a8.net/svt/bgt?aid=261019929009&wid=001&eno=01&mid=s00000021185001005000&mc=1\"></a>\n<img border=\"0\" width=\"1\" height=\"1\" src=\"https://www17.a8.net/0.gif?a8mat=4BEK9L+5CX82+4JGQ+5ZEMP\" alt=\"\">"
+  },
+  "taxreturn": {
+   "program": "s00000021185002",
+   "advertiser": "マネーフォワード クラウド確定申告",
+   "network": "A8.net",
+   "tag": "<a href=\"https://px.a8.net/svt/ejp?a8mat=4BEK9L+6JSFM+4JGQ+BY641\" rel=\"nofollow\">\n<img border=\"0\" width=\"300\" height=\"250\" alt=\"\" src=\"https://www28.a8.net/svt/bgt?aid=261019929011&wid=001&eno=01&mid=s00000021185002007000&mc=1\"></a>\n<img border=\"0\" width=\"1\" height=\"1\" src=\"https://www17.a8.net/0.gif?a8mat=4BEK9L+6JSFM+4JGQ+BY641\" alt=\"\">"
+  },
+  "freelance": {
+   "program": "s00000017718074",
+   "advertiser": "マネーフォワード クラウド（個人事業主向け）",
+   "network": "A8.net",
+   "tag": "<a href=\"https://px.a8.net/svt/ejp?a8mat=4BEK9L+ZQ12Q+3SPO+C8MHDT\" rel=\"nofollow\">\n<img border=\"0\" width=\"300\" height=\"250\" alt=\"\" src=\"https://www22.a8.net/svt/bgt?aid=261019929060&wid=001&eno=01&mid=s00000017718074008000&mc=1\"></a>\n<img border=\"0\" width=\"1\" height=\"1\" src=\"https://www10.a8.net/0.gif?a8mat=4BEK9L+ZQ12Q+3SPO+C8MHDT\" alt=\"\">"
+  },
+  "kaigyo": {
+   "program": "s00000021185010",
+   "advertiser": "マネーフォワード クラウド開業届",
+   "network": "A8.net",
+   "tag": "<a href=\"https://px.a8.net/svt/ejp?a8mat=4BEK9L+8C38Y+4JGQ+1NL281\" rel=\"nofollow\">\n<img border=\"0\" width=\"300\" height=\"250\" alt=\"\" src=\"https://www22.a8.net/svt/bgt?aid=261019929014&wid=001&eno=01&mid=s00000021185010008000&mc=1\"></a>\n<img border=\"0\" width=\"1\" height=\"1\" src=\"https://www13.a8.net/0.gif?a8mat=4BEK9L+8C38Y+4JGQ+1NL281\" alt=\"\">"
+  },
+  "pos": {
+   "program": "s00000017718049",
+   "advertiser": "UMaTレジ（飲食店向けPOSレジ）",
+   "network": "A8.net",
+   "tag": "<a href=\"https://px.a8.net/svt/ejp?a8mat=4BEK9L+123RHU+3SPO+83ROPT\" rel=\"nofollow\">\n<img border=\"0\" width=\"300\" height=\"250\" alt=\"\" src=\"https://www21.a8.net/svt/bgt?aid=261019929064&wid=001&eno=01&mid=s00000017718049006000&mc=1\"></a>\n<img border=\"0\" width=\"1\" height=\"1\" src=\"https://www15.a8.net/0.gif?a8mat=4BEK9L+123RHU+3SPO+83ROPT\" alt=\"\">"
+  }
+ }
+}
