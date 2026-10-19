@@ -1,0 +1,108 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'self'; img-src 'self' data: https://*.a8.net https://*.google-analytics.com https://*.googletagmanager.com; script-src 'self' https://www.googletagmanager.com; connect-src https://*.google-analytics.com https://*.analytics.google.com https://*.googletagmanager.com; base-uri 'none'; form-action 'none'; object-src 'none'">
+<title>Save Gmail attachments to Google Drive automatically (free Apps Script) | MisaNeco Works</title><meta name="description" content="Label an email in Gmail and its attachments are saved to a Google Drive folder within the hour. A short Google Apps Script, one label, one trigger. No add-ons.">
+<link rel="canonical" href="https://fearless0712.github.io/misaneco-tools/blog/en-save-gmail-attachments-to-google-drive/"><meta property="og:type" content="article"><meta property="og:url" content="https://fearless0712.github.io/misaneco-tools/blog/en-save-gmail-attachments-to-google-drive/"><meta property="og:image" content="https://fearless0712.github.io/misaneco-tools/blog/og.png"><meta name="twitter:card" content="summary_large_image"><meta property="og:title" content="Save Gmail attachments to Google Drive automatically (free Apps Script) | MisaNeco Works"><meta property="og:description" content="Label an email in Gmail and its attachments are saved to a Google Drive folder within the hour. A short Google Apps Script, one label, one trigger. No add-ons.">
+<link rel="alternate" type="application/rss+xml" title="MisaNeco Works Blog" href="https://fearless0712.github.io/misaneco-tools/blog/en/rss.xml"><script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "Save Gmail attachments to Google Drive automatically (free Apps Script)", "description": "Label an email in Gmail and its attachments are saved to a Google Drive folder within the hour. A short Google Apps Script, one label, one trigger. No add-ons.", "datePublished": "2026-10-20", "dateModified": "2026-10-20", "inLanguage": "en", "mainEntityOfPage": "https://fearless0712.github.io/misaneco-tools/blog/en-save-gmail-attachments-to-google-drive/", "image": "https://fearless0712.github.io/misaneco-tools/blog/og.png", "author": {"@type": "Organization", "name": "MisaNeco Works", "url": "https://fearless0712.github.io/misaneco-tools/"}, "publisher": {"@type": "Organization", "name": "MisaNeco Works"}}</script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-EWJXRJY9M6"></script><script src="../ga.js?v=202610200256"></script>
+<link rel="stylesheet" href="../blog.css?v=202610200256"></head><body>
+<header><div class="wrap"><a href="../en/">MisaNeco Works Blog</a></div></header>
+<main class="wrap"><p class="meta">2026-10-20・Automation / Small business / Google Apps Script</p><h1>Save Gmail attachments to Google Drive automatically (free Apps Script)</h1><p>Receipts, supplier invoices, signed forms, photos from customers. In a small business, many important files arrive as email attachments. Then they stay in Gmail, and finding them at tax time takes hours.</p>
+<p>You can fix this with a short Google Apps Script. You put a label on an email, and the script saves its attachments to a Google Drive folder for you. It is free, needs no add-ons, and takes about 15 minutes to set up.</p>
+<h2>What you will build</h2>
+<ul>
+<li>A Gmail label called <strong>SaveToDrive</strong>. You add it to any email whose attachments you want to keep.</li>
+<li>A script that finds those emails and saves every attachment to one Drive folder.</li>
+<li>A second label, <strong>SavedToDrive</strong>, that the script adds when it is done. This stops it from saving the same files twice.</li>
+<li>A trigger that runs the script every hour.</li>
+</ul>
+<h2>Step 1. Create the Drive folder</h2>
+<ol>
+<li>Open Google Drive and create a new folder, for example <strong>Email attachments</strong>.</li>
+<li>Open the folder. Look at the address bar in your browser. The last part of the address, after <code>folders/</code>, is the <strong>folder ID</strong>. It is a long mix of letters and numbers.</li>
+<li>Copy the folder ID. You need it in Step 3.</li>
+</ol>
+<h2>Step 2. Create the Gmail label</h2>
+<ol>
+<li>In Gmail, open any email.</li>
+<li>Click the label icon and create a new label called <strong>SaveToDrive</strong> (one word, no spaces).</li>
+</ol>
+<p>You do not need to create <strong>SavedToDrive</strong>. The script makes it the first time it runs.</p>
+<h2>Step 3. Add the script</h2>
+<ol>
+<li>Go to the Apps Script home page (search for "Google Apps Script" and sign in with the same Google account).</li>
+<li>Create a new project and give it a name, like "Save attachments".</li>
+<li>Delete anything in the editor and paste this:</li>
+</ol>
+<p>```javascript
+// Saves Gmail attachments to a Google Drive folder.
+// Put the label "SaveToDrive" on any email whose attachments you want saved.
+// After saving, the script adds the label "SavedToDrive" so it never saves the same thread twice.
+const LABEL_TO_SAVE = 'SaveToDrive';
+const LABEL_DONE = 'SavedToDrive';
+const FOLDER_ID = 'PASTE_YOUR_FOLDER_ID_HERE';
+const MAX_THREADS_PER_RUN = 20;</p>
+<p>function saveAttachments() {
+  const folder = DriveApp.getFolderById(FOLDER_ID);
+  const doneLabel = GmailApp.getUserLabelByName(LABEL_DONE) || GmailApp.createLabel(LABEL_DONE);
+  const tz = Session.getScriptTimeZone();
+  const query = 'label:' + LABEL_TO_SAVE + ' -label:' + LABEL_DONE + ' has:attachment';
+  const threads = GmailApp.search(query, 0, MAX_THREADS_PER_RUN);</p>
+<p>threads.forEach(function (thread) {
+    thread.getMessages().forEach(function (message) {
+      const day = Utilities.formatDate(message.getDate(), tz, 'yyyy-MM-dd');
+      message.getAttachments({ includeInlineImages: false }).forEach(function (attachment) {
+        const blob = attachment.copyBlob();
+        blob.setName(day + ' ' + attachment.getName());
+        folder.createFile(blob);
+      });
+    });
+    thread.addLabel(doneLabel);   // mark the thread as done
+  });
+}</p>
+<p>// Run once: checks for new labelled emails every hour.
+function createHourlyTrigger() {
+  ScriptApp.newTrigger('saveAttachments').timeBased().everyHours(1).create();
+}
+```</p>
+<ol start="4">
+<li>Replace <code>PASTE_YOUR_FOLDER_ID_HERE</code> with your folder ID. Keep the quote marks.</li>
+<li>Click <strong>Save</strong>.</li>
+</ol>
+<h2>How the script works</h2>
+<p>In plain English:</p>
+<ol>
+<li>It opens your Drive folder.</li>
+<li>It finds the <strong>SavedToDrive</strong> label, or creates it if it does not exist yet.</li>
+<li>It searches Gmail for emails that have the <strong>SaveToDrive</strong> label, do <strong>not</strong> have the <strong>SavedToDrive</strong> label, and have an attachment.</li>
+<li>For each email in each conversation, it copies every attachment into the folder. It adds the email's date to the front of the file name, like <code>2026-10-02 receipt.pdf</code>. Files then sort by date in Drive.</li>
+<li>It adds the <strong>SavedToDrive</strong> label to the conversation. Next time, the search skips it.</li>
+</ol>
+<p><code>includeInlineImages: false</code> skips small pictures inside the email body, such as logos in email signatures. You get the real attachments, not a folder full of logos.</p>
+<p><code>MAX_THREADS_PER_RUN</code> limits how many conversations it handles in one run. Google limits how long a script can run and how much it can do each day. If you label a lot of old emails at once, the script simply works through them over several runs.</p>
+<h2>Step 4. Test it</h2>
+<ol>
+<li>Find an email with an attachment and add the <strong>SaveToDrive</strong> label.</li>
+<li>In the Apps Script editor, choose <code>saveAttachments</code> in the function menu and click <strong>Run</strong>.</li>
+<li>The first time, Google asks for permission to read your Gmail and write to your Drive. Review the permissions and allow them. Only allow it if you are using your own script, as here.</li>
+<li>Open your Drive folder. The attachment should be there, with the date in front of the name.</li>
+<li>Back in Gmail, the email now has a <strong>SavedToDrive</strong> label too.</li>
+</ol>
+<p>Now click <strong>Run</strong> again. Nothing new is saved, because that conversation is already marked as done.</p>
+<h2>Step 5. Run it every hour</h2>
+<p>Choose <code>createHourlyTrigger</code> in the function menu and click <strong>Run</strong> once. The script will now check for newly labelled emails about once an hour.</p>
+<p>To see or remove the trigger later, click the clock icon (<strong>Triggers</strong>) on the left side of the Apps Script editor. Run <code>createHourlyTrigger</code> only once, or you will end up with duplicate triggers.</p>
+<h2>Make it hands-free with a Gmail filter</h2>
+<p>Adding the label by hand is fine. But you can also let Gmail do it.</p>
+<p>In Gmail, create a filter (for example, emails from your supplier, or emails with "invoice" in the subject that have an attachment). Set the filter to apply the <strong>SaveToDrive</strong> label. Now those attachments go to Drive without you touching anything.</p>
+<h2>Things to know</h2>
+<ul>
+<li><strong>One conversation, one pass.</strong> The script marks the whole conversation as done. If a new reply with a new attachment arrives later in the same conversation, it is not saved automatically. Remove the <strong>SavedToDrive</strong> label from that conversation and the script will save its attachments again on the next run, including the old ones.</li>
+<li><strong>Duplicates in Drive.</strong> Drive allows two files with the same name. If you re-run on the same email, you may get a second copy. Delete the extra one.</li>
+<li><strong>Limits.</strong> Google limits script runtime and daily quotas, and the limits differ between free Gmail accounts and Google Workspace. For most small businesses, an hourly run with a small batch is well within them.</li>
+<li><strong>Privacy.</strong> Attachments may include customer data. Keep the Drive folder private, or share it only with people who need it.</li>
+<li><strong>Stopping it.</strong> Delete the trigger, and the script stops running. Your saved files stay in Drive.</li>
+</ul>
+<h2>What else could you automate?</h2>
+<p>Saving attachments is one small job that adds up over a year. Our free <strong>Small Business Automation Check</strong> asks about your country, industry and daily tasks, and shows which admin jobs are easiest to automate and how to begin.</p><div class="tools"><b>Free tools you can use</b><a href="../../dx-en/">Small Business Automation Check</a><br></div><div class="rel"><b>Related articles</b><a href="../en-appointment-reminder-emails-google-sheets/">Send appointment reminder emails automatically with Google Sheets (free, no add-ons)</a><br><a href="../en-w9-1099-nec-freelancers/">Paying freelancers in the US - Form W-9, Form 1099-NEC and a simple tracking sheet</a><br><a href="../en-track-unpaid-invoices-google-sheets/">Track unpaid invoices in Google Sheets (with overdue days and red rows)</a><br></div></main>
+<footer class="wrap">© MisaNeco Works ・ <a href="../en/">All articles</a> ・ <a href="../../">Free tools</a> ・ <a href="../en/../">日本語の記事</a><br>Articles are written with the help of AI and checked against official sources. Articles with ads say so at the top. We use Google Analytics to count page views anonymously (no names or contact details).</footer>
+</body></html>

@@ -1,0 +1,112 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'self'; img-src 'self' data: https://*.a8.net https://*.google-analytics.com https://*.googletagmanager.com; script-src 'self' https://www.googletagmanager.com; connect-src https://*.google-analytics.com https://*.analytics.google.com https://*.googletagmanager.com; base-uri 'none'; form-action 'none'; object-src 'none'">
+<title>A simple quote-to-job tracker for trades and service businesses (Excel or Google Sheets) | MisaNeco Works</title><meta name="description" content="Track every quote you send, see which ones need a follow-up call today, and work out your win rate with one COUNTIFS formula. Works in Excel and Google Sheets.">
+<link rel="canonical" href="https://fearless0712.github.io/misaneco-tools/blog/en-quote-to-job-tracker-spreadsheet/"><meta property="og:type" content="article"><meta property="og:url" content="https://fearless0712.github.io/misaneco-tools/blog/en-quote-to-job-tracker-spreadsheet/"><meta property="og:image" content="https://fearless0712.github.io/misaneco-tools/blog/og.png"><meta name="twitter:card" content="summary_large_image"><meta property="og:title" content="A simple quote-to-job tracker for trades and service businesses (Excel or Google Sheets) | MisaNeco Works"><meta property="og:description" content="Track every quote you send, see which ones need a follow-up call today, and work out your win rate with one COUNTIFS formula. Works in Excel and Google Sheets.">
+<link rel="alternate" type="application/rss+xml" title="MisaNeco Works Blog" href="https://fearless0712.github.io/misaneco-tools/blog/en/rss.xml"><script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "A simple quote-to-job tracker for trades and service businesses (Excel or Google Sheets)", "description": "Track every quote you send, see which ones need a follow-up call today, and work out your win rate with one COUNTIFS formula. Works in Excel and Google Sheets.", "datePublished": "2026-10-20", "dateModified": "2026-10-20", "inLanguage": "en", "mainEntityOfPage": "https://fearless0712.github.io/misaneco-tools/blog/en-quote-to-job-tracker-spreadsheet/", "image": "https://fearless0712.github.io/misaneco-tools/blog/og.png", "author": {"@type": "Organization", "name": "MisaNeco Works", "url": "https://fearless0712.github.io/misaneco-tools/"}, "publisher": {"@type": "Organization", "name": "MisaNeco Works"}}</script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-EWJXRJY9M6"></script><script src="../ga.js?v=202610200256"></script>
+<link rel="stylesheet" href="../blog.css?v=202610200256"></head><body>
+<header><div class="wrap"><a href="../en/">MisaNeco Works Blog</a></div></header>
+<main class="wrap"><p class="meta">2026-10-20・Automation / Small business / Excel</p><h1>A simple quote-to-job tracker for trades and service businesses (Excel or Google Sheets)</h1><p>If you run a trades or service business, you probably send a lot of quotes. A plumber, an electrician, a landscaper, a cleaner, a painter. Some quotes turn into jobs. Many just go quiet.</p>
+<p>Often the difference is a single follow-up call. But when quotes live in your email, your notebook and your head, follow-ups get missed.</p>
+<p>This guide shows you how to build a simple quote tracker in Excel or Google Sheets. It tells you who to call today and how many of your quotes you actually win. Everything works in both apps unless noted.</p>
+<h2>What you will build</h2>
+<ul>
+<li>One row per quote.</li>
+<li>A status for each quote: Sent, Won or Lost.</li>
+<li>A follow-up date, and a column that says "Yes" when a call is due.</li>
+<li>A filter that shows only today's follow-ups.</li>
+<li>A win-rate formula, so you know how you are doing.</li>
+</ul>
+<h2>Step 1. Set up the columns</h2>
+<p>Create a new sheet called <strong>Quotes</strong> and add these headers in row 1:</p>
+<table>
+<thead>
+<tr>
+<th>A</th>
+<th>B</th>
+<th>C</th>
+<th>D</th>
+<th>E</th>
+<th>F</th>
+<th>G</th>
+<th>H</th>
+<th>I</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Customer</td>
+<td>Phone or email</td>
+<td>Job</td>
+<td>Quote date</td>
+<td>Amount</td>
+<td>Status</td>
+<td>Follow up on</td>
+<td>Follow up today?</td>
+<td>Notes</td>
+</tr>
+</tbody>
+</table>
+<p>Tips:</p>
+<ul>
+<li>Columns D and G must be real dates. Format them as dates.</li>
+<li>Write the job in a few words, like "Replace kitchen tap" or "Fence repair, 10m".</li>
+<li>Use <strong>Notes</strong> for anything you learn on the phone: "Wants to start after the holidays", "Getting two other quotes".</li>
+</ul>
+<h2>Step 2. Use a dropdown for Status</h2>
+<p>Typing "won", "Won" and "WON" makes formulas harder. A dropdown keeps it tidy.</p>
+<ol>
+<li>Select column F (from F2 down).</li>
+<li>Open data validation. In Google Sheets it is <strong>Data &gt; Data validation</strong>. In Excel it is <strong>Data &gt; Data Validation</strong>.</li>
+<li>Choose a dropdown or list, and enter these options: <strong>Sent, Won, Lost</strong>.</li>
+</ol>
+<p>You can add more if you like, such as <strong>Draft</strong> for quotes you have not sent yet. Just keep the list short.</p>
+<h2>Step 3. Set a follow-up date</h2>
+<p>When you send a quote, put a date in <strong>Follow up on</strong>. Many trades people call two or three working days later. Pick what feels right for your customers.</p>
+<p>If you want a default, this formula sets the follow-up three days after the quote date:</p>
+<p><code>=IF(D2="","",D2+3)</code></p>
+<p>You can type over it any time. After a call, change the date to the next time you want to check in.</p>
+<h2>Step 4. Flag today's follow-ups</h2>
+<p>In H2, paste:</p>
+<p><code>=IF(AND(F2="Sent",G2&lt;&gt;"",G2&lt;=TODAY()),"Yes","")</code></p>
+<p>What it does:</p>
+<ol>
+<li>Only looks at quotes still marked <strong>Sent</strong>. Won and Lost quotes never need a chase.</li>
+<li>Skips rows with no follow-up date.</li>
+<li>Says <strong>Yes</strong> when the follow-up date is today or already passed.</li>
+</ol>
+<p>Copy it down the column. TODAY() updates on its own, so the Yes flags move as the days go by. Missed follow-ups from last week also show Yes, which is what you want.</p>
+<h2>Step 5. Filter to "follow up today"</h2>
+<p>Now make a view of only the calls you need to make.</p>
+<p><strong>Excel:</strong> select the header row and choose <strong>Data &gt; Filter</strong>. Click the arrow on <strong>Follow up today?</strong> and tick only <strong>Yes</strong>.</p>
+<p><strong>Google Sheets:</strong> choose <strong>Data &gt; Create a filter</strong>. Click the filter icon on <strong>Follow up today?</strong> and tick only <strong>Yes</strong>.</p>
+<p>Sort by <strong>Follow up on</strong>, oldest first, so the most overdue calls come to the top.</p>
+<p><strong>Google Sheets only:</strong> if you prefer a separate list that updates by itself, make a new tab and put this in A2:</p>
+<p><code>=FILTER(Quotes!A2:I500, Quotes!H2:H500="Yes")</code></p>
+<p>Copy the headers from the Quotes tab into row 1 of the new tab. The list refreshes as you change statuses and dates. Excel 365 also has a FILTER function, but this guide sticks to the normal filter for Excel so it works in every version.</p>
+<h2>Step 6. Colour the rows (optional)</h2>
+<p>A quick visual helps. Select A2:I500 and add a conditional formatting rule that uses a formula:</p>
+<p><code>=$H2="Yes"</code></p>
+<p>Give it a yellow fill. In Google Sheets this is under <strong>Format &gt; Conditional formatting</strong>, using <strong>Custom formula is</strong>. In Excel it is <strong>Home &gt; Conditional Formatting &gt; New Rule</strong>, then <strong>Use a formula to determine which cells to format</strong>.</p>
+<p>You can add two more rules the same way: <code>=$F2="Won"</code> in green and <code>=$F2="Lost"</code> in grey.</p>
+<h2>Step 7. Work out your win rate</h2>
+<p>Your win rate is the share of decided quotes that you won. Put this in an empty cell, for example K2:</p>
+<p><code>=IFERROR(COUNTIFS(F2:F500,"Won")/(COUNTIFS(F2:F500,"Won")+COUNTIFS(F2:F500,"Lost")),"")</code></p>
+<p>Format the cell as a percentage. Quotes still marked <strong>Sent</strong> are left out, because you do not know the answer yet. IFERROR keeps the cell blank until you have at least one Won or Lost quote.</p>
+<p>Want to know the value of work won? Use SUMIFS:</p>
+<p><code>=SUMIFS(E2:E500,F2:F500,"Won")</code></p>
+<p>And for one month only, add date conditions to COUNTIFS. This counts quotes won from October 2026:</p>
+<p><code>=COUNTIFS(F2:F500,"Won",D2:D500,"&gt;="&amp;DATE(2026,10,1),D2:D500,"&lt;"&amp;DATE(2026,11,1))</code></p>
+<p>Change the dates for other months. Do the same with "Lost" to get the monthly win rate.</p>
+<h2>Using it day to day</h2>
+<ul>
+<li><strong>When you send a quote:</strong> add a row, set Status to Sent, set a follow-up date.</li>
+<li><strong>Each morning:</strong> open the filter, make the calls, and update Status or the next follow-up date.</li>
+<li><strong>When a customer says yes or no:</strong> change Status to Won or Lost. The win rate updates.</li>
+</ul>
+<p>A few minutes a day is enough. Over time you will see patterns. Maybe certain job types win more often, or quotes followed up within a few days do better. Your own numbers are more useful than any general advice.</p>
+<p>If you use your phone on site, both Excel and Google Sheets have mobile apps. You can update a status between jobs.</p>
+<h2>What else could you automate?</h2>
+<p>A quote tracker is a good first step. Our free <strong>Small Business Automation Check</strong> asks about your country, industry and daily tasks, and shows which admin jobs are easiest to automate next.</p><div class="tools"><b>Free tools you can use</b><a href="../../dx-en/">Small Business Automation Check</a><br></div><div class="rel"><b>Related articles</b><a href="../en-clean-customer-list-excel/">Clean up a messy customer list in Excel or Google Sheets (5 formulas, 10 minutes)</a><br><a href="../en-w9-1099-nec-freelancers/">Paying freelancers in the US - Form W-9, Form 1099-NEC and a simple tracking sheet</a><br><a href="../en-track-unpaid-invoices-google-sheets/">Track unpaid invoices in Google Sheets (with overdue days and red rows)</a><br></div></main>
+<footer class="wrap">© MisaNeco Works ・ <a href="../en/">All articles</a> ・ <a href="../../">Free tools</a> ・ <a href="../en/../">日本語の記事</a><br>Articles are written with the help of AI and checked against official sources. Articles with ads say so at the top. We use Google Analytics to count page views anonymously (no names or contact details).</footer>
+</body></html>

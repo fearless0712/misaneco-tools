@@ -1,0 +1,129 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'self'; img-src 'self' data: https://*.a8.net https://*.google-analytics.com https://*.googletagmanager.com; script-src 'self' https://www.googletagmanager.com; connect-src https://*.google-analytics.com https://*.analytics.google.com https://*.googletagmanager.com; base-uri 'none'; form-action 'none'; object-src 'none'">
+<title>Track unpaid invoices in Google Sheets (with overdue days and red rows) | MisaNeco Works</title><meta name="description" content="A simple invoice tracker that counts days overdue, colours late invoices red, and shows only the ones you need to chase. Works in Excel too, plus a polite reminder email you can copy.">
+<link rel="canonical" href="https://fearless0712.github.io/misaneco-tools/blog/en-track-unpaid-invoices-google-sheets/"><meta property="og:type" content="article"><meta property="og:url" content="https://fearless0712.github.io/misaneco-tools/blog/en-track-unpaid-invoices-google-sheets/"><meta property="og:image" content="https://fearless0712.github.io/misaneco-tools/blog/og.png"><meta name="twitter:card" content="summary_large_image"><meta property="og:title" content="Track unpaid invoices in Google Sheets (with overdue days and red rows) | MisaNeco Works"><meta property="og:description" content="A simple invoice tracker that counts days overdue, colours late invoices red, and shows only the ones you need to chase. Works in Excel too, plus a polite reminder email you can copy.">
+<link rel="alternate" type="application/rss+xml" title="MisaNeco Works Blog" href="https://fearless0712.github.io/misaneco-tools/blog/en/rss.xml"><script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "Track unpaid invoices in Google Sheets (with overdue days and red rows)", "description": "A simple invoice tracker that counts days overdue, colours late invoices red, and shows only the ones you need to chase. Works in Excel too, plus a polite reminder email you can copy.", "datePublished": "2026-10-20", "dateModified": "2026-10-20", "inLanguage": "en", "mainEntityOfPage": "https://fearless0712.github.io/misaneco-tools/blog/en-track-unpaid-invoices-google-sheets/", "image": "https://fearless0712.github.io/misaneco-tools/blog/og.png", "author": {"@type": "Organization", "name": "MisaNeco Works", "url": "https://fearless0712.github.io/misaneco-tools/"}, "publisher": {"@type": "Organization", "name": "MisaNeco Works"}}</script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-EWJXRJY9M6"></script><script src="../ga.js?v=202610200256"></script>
+<link rel="stylesheet" href="../blog.css?v=202610200256"></head><body>
+<header><div class="wrap"><a href="../en/">MisaNeco Works Blog</a></div></header>
+<main class="wrap"><p class="meta">2026-10-20・Automation / Small business / Invoicing</p><h1>Track unpaid invoices in Google Sheets (with overdue days and red rows)</h1><p>Sending an invoice is the easy part. Getting paid is where small businesses lose time. You open your email, scroll back, check the bank, and try to remember who still owes you.</p>
+<p>A simple sheet fixes most of this. It shows every unpaid invoice, how many days late it is, and colours late ones red. This guide uses Google Sheets, but everything also works in Excel unless noted. It takes about 15 minutes.</p>
+<h2>What you will build</h2>
+<ul>
+<li>One row per invoice.</li>
+<li>A column that counts how many days each invoice is overdue.</li>
+<li>Red rows for overdue invoices, so you see them at a glance.</li>
+<li>A filtered view that shows only what you need to chase.</li>
+<li>A short, polite reminder email you can reuse.</li>
+</ul>
+<h2>Step 1. Set up the columns</h2>
+<p>Create a new sheet. Name the tab <strong>Invoices</strong> and add these headers in row 1:</p>
+<table>
+<thead>
+<tr>
+<th>A</th>
+<th>B</th>
+<th>C</th>
+<th>D</th>
+<th>E</th>
+<th>F</th>
+<th>G</th>
+<th>H</th>
+<th>I</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Invoice #</td>
+<td>Customer</td>
+<td>Email</td>
+<td>Invoice date</td>
+<td>Due date</td>
+<td>Amount</td>
+<td>Paid date</td>
+<td>Days overdue</td>
+<td>Status</td>
+</tr>
+</tbody>
+</table>
+<p>Tips:</p>
+<ul>
+<li>Columns D, E and G must be real dates, not text. In Google Sheets, select them and choose <strong>Format &gt; Number &gt; Date</strong>. In Excel, use the number format box on the Home tab.</li>
+<li>Leave <strong>Paid date</strong> empty until the money arrives. That one cell is how the sheet knows an invoice is paid.</li>
+<li>Columns H and I are formulas. You do not type in them.</li>
+</ul>
+<h2>Step 2. Count the days overdue</h2>
+<p>In H2, paste this formula:</p>
+<p><code>=IF(G2&lt;&gt;"","",IF(E2="","",MAX(0,TODAY()-E2)))</code></p>
+<p>What it does, step by step:</p>
+<ol>
+<li>If there is a paid date, show nothing. The invoice is settled.</li>
+<li>If there is no due date, show nothing.</li>
+<li>Otherwise, take today's date minus the due date. MAX(0, ...) stops it from showing negative numbers for invoices that are not due yet.</li>
+</ol>
+<p>If the result shows as a date (for example "1/14/1900"), change column H to a plain number format.</p>
+<p>Copy the formula down as far as you need. In both apps you can select H2, then double-click the small square in the corner of the cell to fill down next to your data.</p>
+<h2>Step 3. Add a status</h2>
+<p>In I2, paste:</p>
+<p><code>=IF(G2&lt;&gt;"","Paid",IF(E2="","",IF(TODAY()&gt;E2,"Overdue","Not due")))</code></p>
+<p>Copy it down. Now every row says <strong>Paid</strong>, <strong>Overdue</strong> or <strong>Not due</strong>.</p>
+<p>To see how much money is waiting, put this in an empty cell (for example K1):</p>
+<p><code>=SUMIFS(F2:F1000,I2:I1000,"Overdue")</code></p>
+<p>That is your total overdue amount. Change <code>"Overdue"</code> to <code>"Not due"</code> to see what is coming in soon.</p>
+<p>Note: TODAY() updates when the sheet recalculates, usually when you open or edit it. You do not need to change anything each day.</p>
+<h2>Step 4. Colour overdue rows red</h2>
+<p>This makes late invoices impossible to miss.</p>
+<p><strong>Google Sheets:</strong></p>
+<ol>
+<li>Select the range A2:I1000.</li>
+<li>Open <strong>Format &gt; Conditional formatting</strong>.</li>
+<li>Under "Format cells if", choose <strong>Custom formula is</strong>.</li>
+<li>Paste this formula:</li>
+</ol>
+<p><code>=AND($G2="",$E2&lt;&gt;"",$E2&lt;TODAY())</code></p>
+<ol start="5">
+<li>Pick a light red fill and click <strong>Done</strong>.</li>
+</ol>
+<p><strong>Excel:</strong></p>
+<ol>
+<li>Select A2:I1000.</li>
+<li>On the Home tab, choose <strong>Conditional Formatting &gt; New Rule</strong>.</li>
+<li>Choose <strong>Use a formula to determine which cells to format</strong>.</li>
+<li>Paste the same formula, click <strong>Format</strong>, and choose a light red fill.</li>
+</ol>
+<p>The dollar signs matter. <code>$G2</code> tells the rule to always look at column G, on whichever row it is checking. Without them, only one column turns red.</p>
+<p>Want a second colour? Add another rule for invoices more than 30 days late:</p>
+<p><code>=AND($G2="",$E2&lt;&gt;"",TODAY()-$E2&gt;30)</code></p>
+<p>Give it a darker red. In Google Sheets, the rule at the top of the list wins, so drag this one above the first. In Excel, use <strong>Conditional Formatting &gt; Manage Rules</strong> to put it first.</p>
+<h2>Step 5. Show only what needs chasing</h2>
+<p>You do not want to scroll past fifty paid invoices every week.</p>
+<p><strong>Google Sheets:</strong> use a filter view. It filters the sheet for you without changing what other people see. Look under the <strong>Data</strong> menu for filter views and create a new one. Then click the filter icon in the <strong>Status</strong> column and tick only <strong>Overdue</strong>. Give the view a name like "To chase". Next time, you can open it from the same menu.</p>
+<p>If you work alone, a normal filter is fine too: <strong>Data &gt; Create a filter</strong>.</p>
+<p><strong>Excel:</strong> select your headers and choose <strong>Data &gt; Filter</strong>. Click the arrow on the <strong>Status</strong> column and tick only <strong>Overdue</strong>.</p>
+<p>Sort the result by <strong>Days overdue</strong>, largest first. The oldest debts go to the top of your list.</p>
+<h2>Step 6. Send a polite reminder</h2>
+<p>Most late payments are not bad intent. People forget, or the invoice got lost. A friendly, clear reminder works better than an angry one.</p>
+<p>Here is a short template. Copy it into your email and fill in the brackets from the sheet:</p>
+<blockquote>
+<p><strong>Subject:</strong> Friendly reminder: invoice [Invoice #] is now due</p>
+<p>Hi [Name],</p>
+<p>I hope you are well. This is a quick reminder that invoice [Invoice #] for [Amount], dated [Invoice date], was due on [Due date].</p>
+<p>If you have already paid, thank you, and please ignore this email. If not, I would be grateful if you could arrange payment when you can. I have attached a copy of the invoice.</p>
+<p>If there is a problem with the invoice, just reply and let me know.</p>
+<p>Many thanks,
+[Your name]
+[Your business name]</p>
+</blockquote>
+<p>A few tips:</p>
+<ul>
+<li>Always attach the invoice again. It removes the "I can't find it" delay.</li>
+<li>Add a column <strong>Reminder sent</strong> and type the date when you send one. Then you know who you already chased.</li>
+<li>Keep the tone the same for the second reminder. Just be a little more direct about the date.</li>
+</ul>
+<h2>Make it a weekly habit</h2>
+<p>Pick one time each week, say Monday morning. Open the "To chase" view, send reminders, and fill in any new paid dates. Ten minutes a week is usually enough for a small business.</p>
+<p>When you are ready, the next step is to send the reminders automatically. A short Google Apps Script can read the Overdue rows and email each customer for you, the same way you might already send appointment reminders.</p>
+<h2>What else could you automate?</h2>
+<p>Chasing invoices is just one admin job. Our free <strong>Small Business Automation Check</strong> asks about your country, industry and daily tasks, and shows which jobs are easiest to automate and where to start.</p><div class="tools"><b>Free tools you can use</b><a href="../../dx-en/">Small Business Automation Check</a><br><a href="../../records/">Record Retention Calculator (US/UK/CA/AU)</a><br></div><div class="rel"><b>Related articles</b><a href="../en-automate-invoicing-small-business/">How to Automate Invoicing and Payment Follow-Up</a><br><a href="../en-w9-1099-nec-freelancers/">Paying freelancers in the US - Form W-9, Form 1099-NEC and a simple tracking sheet</a><br><a href="../en-save-gmail-attachments-to-google-drive/">Save Gmail attachments to Google Drive automatically (free Apps Script)</a><br></div></main>
+<footer class="wrap">© MisaNeco Works ・ <a href="../en/">All articles</a> ・ <a href="../../">Free tools</a> ・ <a href="../en/../">日本語の記事</a><br>Articles are written with the help of AI and checked against official sources. Articles with ads say so at the top. We use Google Analytics to count page views anonymously (no names or contact details).</footer>
+</body></html>
