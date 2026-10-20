@@ -1,0 +1,15 @@
+:root{--bg:#f6f8fb;--fg:#1d2a3a;--card:#fff;--line:#dde4ee;--navy:#214f78;--mut:#5b6b7f;--hi:#fff7e0;--ok:#1d7a46;--warn:#9a5b00;--bad:#b42318}
+@media (prefers-color-scheme:dark){:root{--bg:#0f1720;--fg:#e8eef5;--card:#17212d;--line:#2a3a4c;--navy:#6fa8dc;--mut:#9fb0c3;--hi:#2a2410;--ok:#5cc98a;--warn:#f0b35a;--bad:#ff8a80}}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--fg);font:17px/1.7 system-ui,-apple-system,sans-serif;overflow-wrap:anywhere}
+header{background:#214f78;color:#fff;padding:14px 16px}header a{color:#fff;font-weight:700;text-decoration:none}
+.wrap{max-width:720px;margin:0 auto;padding:0 16px}main{padding:20px 0 40px}h1{font-size:26px;line-height:1.35;margin:6px 0}h2{font-size:20px;margin:8px 0}
+.card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:16px;margin:16px 0}
+label{display:block;font-weight:600;margin:10px 0 4px}select,input{font:inherit;width:100%;padding:8px;border:1px solid var(--line);border-radius:8px;background:var(--card);color:var(--fg)}
+.row{display:grid;grid-template-columns:1fr 1fr;gap:0 12px}@media (max-width:480px){.row{grid-template-columns:1fr}}
+.big{font-size:34px;font-weight:800;color:var(--navy);margin:4px 0}.mut{color:var(--mut);font-size:14px}
+table.res{width:100%;border-collapse:collapse}table.res td{padding:6px 0;border-bottom:1px solid var(--line)}table.res td:last-child{text-align:right;font-weight:700;font-variant-numeric:tabular-nums}
+.status{display:inline-block;font-weight:800;padding:2px 12px;border-radius:999px;border:2px solid var(--line)}
+.status.ok{color:var(--ok);border-color:var(--ok)}.status.warn{color:var(--warn);border-color:var(--warn)}.status.bad{color:var(--bad);border-color:var(--bad)}
+.err{background:var(--hi);border:1px solid var(--bad);color:var(--bad);border-radius:8px;padding:8px 12px;font-weight:600}
+.f{background:var(--hi);border:1px solid var(--line);border-radius:8px;padding:8px 12px;font-family:ui-monospace,monospace;font-size:15px}
+a{color:var(--navy)}footer{color:var(--mut);font-size:13px;border-top:1px solid var(--line);padding:16px 0 32px}
