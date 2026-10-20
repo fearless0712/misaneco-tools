@@ -1,0 +1,207 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'self'; img-src 'self' data: https://*.a8.net https://*.google-analytics.com https://*.googletagmanager.com; script-src 'self' https://www.googletagmanager.com; connect-src https://*.google-analytics.com https://*.analytics.google.com https://*.googletagmanager.com; base-uri 'none'; form-action 'none'; object-src 'none'">
+<title>How to work out the business-use share of home costs in a spreadsheet (US and UK) | MisaNeco Works</title><meta name="description" content="A simple Excel or Google Sheets layout for splitting rent, utilities, phone and internet between business and personal use, plus the flat-rate options from the IRS and HMRC to compare against.">
+<link rel="canonical" href="https://fearless0712.github.io/misaneco-tools/blog/en-home-office-business-use-percentage/"><meta property="og:type" content="article"><meta property="og:url" content="https://fearless0712.github.io/misaneco-tools/blog/en-home-office-business-use-percentage/"><meta property="og:image" content="https://fearless0712.github.io/misaneco-tools/blog/og.png"><meta name="twitter:card" content="summary_large_image"><meta property="og:title" content="How to work out the business-use share of home costs in a spreadsheet (US and UK) | MisaNeco Works"><meta property="og:description" content="A simple Excel or Google Sheets layout for splitting rent, utilities, phone and internet between business and personal use, plus the flat-rate options from the IRS and HMRC to compare against.">
+<link rel="alternate" type="application/rss+xml" title="MisaNeco Works Blog" href="https://fearless0712.github.io/misaneco-tools/blog/en/rss.xml"><script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "How to work out the business-use share of home costs in a spreadsheet (US and UK)", "description": "A simple Excel or Google Sheets layout for splitting rent, utilities, phone and internet between business and personal use, plus the flat-rate options from the IRS and HMRC to compare against.", "datePublished": "2026-10-21", "dateModified": "2026-10-21", "inLanguage": "en", "mainEntityOfPage": "https://fearless0712.github.io/misaneco-tools/blog/en-home-office-business-use-percentage/", "image": "https://fearless0712.github.io/misaneco-tools/blog/og.png", "author": {"@type": "Organization", "name": "MisaNeco Works", "url": "https://fearless0712.github.io/misaneco-tools/"}, "publisher": {"@type": "Organization", "name": "MisaNeco Works"}}</script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-EWJXRJY9M6"></script><script src="../ga.js?v=202610210200"></script>
+<link rel="stylesheet" href="../blog.css?v=202610210200"></head><body>
+<header><div class="wrap"><a href="../en/">MisaNeco Works Blog</a></div></header>
+<main class="wrap"><p class="meta">2026-10-21・Small business / Excel / Tax records</p><h1>How to work out the business-use share of home costs in a spreadsheet (US and UK)</h1><p>If you run a small business from home, some of your household bills are partly business costs. Rent or mortgage interest, electricity, heating, your phone, your internet.</p>
+<p>The hard part is not the idea. It is the split. How much of the electricity bill is "business"? And how do you keep a record that still makes sense next year?</p>
+<p>This guide gives you a small spreadsheet that does the split for you, and explains the two flat-rate shortcuts (one in the US, one in the UK) so you can compare. It works in Excel and Google Sheets. It takes about 20 minutes to set up.</p>
+<blockquote>
+<p>This is a general guide to record keeping, not tax advice. Rules depend on your country, your business type and your situation. Check the official pages linked below, or ask a tax professional before you file.</p>
+</blockquote>
+<h2>What you will build</h2>
+<ul>
+<li>A <strong>Settings</strong> area with your business-use percentages and how you got them.</li>
+<li>A <strong>Bills</strong> table that splits each bill into a business part and a personal part.</li>
+<li>A <strong>Summary</strong> row with the yearly totals.</li>
+<li>A comparison against the flat-rate option, so you can see which one is bigger.</li>
+</ul>
+<h2>Step 1. Decide a fair basis for each kind of cost</h2>
+<p>Each cost needs a reason for its percentage. Use something you can measure and explain.</p>
+<table>
+<thead>
+<tr>
+<th>Cost</th>
+<th>Common basis</th>
+<th>Example</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Rent, mortgage interest, insurance</td>
+<td>Floor area used only for work</td>
+<td>Office room 12 m² of a 60 m² home = 20%</td>
+</tr>
+<tr>
+<td>Electricity, heating</td>
+<td>Floor area, or floor area adjusted for hours</td>
+<td>20% area × share of time used</td>
+</tr>
+<tr>
+<td>Phone</td>
+<td>Share of calls or time for business</td>
+<td>Check one typical month of your call log</td>
+</tr>
+<tr>
+<td>Internet</td>
+<td>Share of time or use for business</td>
+<td>Hours online for work vs total</td>
+</tr>
+</tbody>
+</table>
+<p>Two tips:</p>
+<ul>
+<li><strong>Write the reason down.</strong> "Office = 12 m² of 60 m², measured Oct 2026" is far better than just "20%".</li>
+<li><strong>Use one typical month as a sample</strong> for phone and internet, and keep that month's notes.</li>
+</ul>
+<h2>Step 2. Set up the Settings area</h2>
+<p>On a sheet called <strong>Settings</strong>, make a small table:</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>A</th>
+<th>B</th>
+<th>C</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Item</td>
+<td>Business %</td>
+<td>How I got it</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Area</td>
+<td>20%</td>
+<td>Office 12 m² / home 60 m²</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Energy</td>
+<td>15%</td>
+<td>20% area × 75% of the year used</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Phone</td>
+<td>40%</td>
+<td>Call log sample, March</td>
+</tr>
+<tr>
+<td>5</td>
+<td>Internet</td>
+<td>50%</td>
+<td>About 4 of 8 hours online a day</td>
+</tr>
+</tbody>
+</table>
+<p>Format column B as a percentage. Every other formula will read from here, so if a number changes, you change it in one place.</p>
+<h2>Step 3. Make the Bills table</h2>
+<p>On a sheet called <strong>Bills</strong>, add these headers in row 1:</p>
+<table>
+<thead>
+<tr>
+<th>A</th>
+<th>B</th>
+<th>C</th>
+<th>D</th>
+<th>E</th>
+<th>F</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Date</td>
+<td>Bill</td>
+<td>Type</td>
+<td>Amount</td>
+<td>Business part</td>
+<td>Personal part</td>
+</tr>
+</tbody>
+</table>
+<p>Column C holds one of the item names from Settings: Area, Energy, Phone or Internet.</p>
+<p>In <strong>E2</strong>, look up the percentage for that type and multiply:</p>
+<pre><code>=D2*XLOOKUP(C2,Settings!$A$2:$A$5,Settings!$B$2:$B$5,0)
+</code></pre>
+<p>If your Excel does not have XLOOKUP, use this instead:</p>
+<pre><code>=D2*IFERROR(VLOOKUP(C2,Settings!$A$2:$B$5,2,FALSE),0)
+</code></pre>
+<p>In <strong>F2</strong>, the personal part is simply the rest:</p>
+<pre><code>=D2-E2
+</code></pre>
+<p>Copy E2 and F2 down for every row. To stop typos in column C, add a dropdown: select column C, then <strong>Data &gt; Data validation</strong>, and choose a list from <code>Settings!$A$2:$A$5</code>.</p>
+<p>Round only at the end. If you need whole amounts, wrap the final totals in <code>ROUND(...,0)</code>, not each row.</p>
+<h2>Step 4. Add a yearly summary</h2>
+<p>Under the table, or on its own sheet, total the business part by type:</p>
+<pre><code>=SUMIFS(Bills!$E:$E,Bills!$C:$C,&quot;Energy&quot;)
+</code></pre>
+<p>Change "Energy" to each type. Add one more line for the grand total:</p>
+<pre><code>=SUM(Bills!$E:$E)
+</code></pre>
+<p>Now you have one number per type and one total for the year, and every number traces back to a bill and a stated percentage.</p>
+<h2>Step 5. Compare with the flat-rate option</h2>
+<p>Both the US and the UK offer a simpler method for some home costs. It can be smaller or larger than your actual split, so it is worth comparing.</p>
+<h3>United States: simplified home office method</h3>
+<p>The IRS simplified option is <strong>$5 per square foot</strong> of the home used for business, up to <strong>300 square feet</strong>. That makes a maximum of $1,500.</p>
+<p>The space still has to be used <strong>regularly and exclusively</strong> for business. The simplified option does not change who qualifies. Employees cannot claim this deduction for a home office.</p>
+<p>In the sheet:</p>
+<pre><code>=MIN(OfficeSqFt,300)*5
+</code></pre>
+<p>Source: <a href="https://www.irs.gov/businesses/small-businesses-self-employed/simplified-option-for-home-office-deduction" target="_blank" rel="noopener">IRS - Simplified option for home office deduction</a></p>
+<h3>United Kingdom: simplified expenses for working from home</h3>
+<p>If you are self-employed and work <strong>25 hours or more a month</strong> from home, HMRC lets you use a flat rate instead of working out a share of bills:</p>
+<table>
+<thead>
+<tr>
+<th>Hours of business use per month</th>
+<th>Flat rate per month</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>25 to 50</td>
+<td>£10</td>
+</tr>
+<tr>
+<td>51 to 100</td>
+<td>£18</td>
+</tr>
+<tr>
+<td>101 and more</td>
+<td>£26</td>
+</tr>
+</tbody>
+</table>
+<p>The flat rate <strong>does not include phone or internet</strong>. You can still claim the business share of those separately, using your own split like the one above.</p>
+<p>A formula for one month, where B2 holds hours worked at home:</p>
+<pre><code>=IFS(B2&gt;=101,26,B2&gt;=51,18,B2&gt;=25,10,TRUE,0)
+</code></pre>
+<p>Add up the 12 months for the year, then add your Phone and Internet business parts from the Bills sheet.</p>
+<p>Source: <a href="https://www.gov.uk/simpler-income-tax-simplified-expenses/working-from-home" target="_blank" rel="noopener">GOV.UK - Simplified expenses: working from home</a></p>
+<h2>Common mistakes</h2>
+<ul>
+<li><strong>No reason for the percentage.</strong> A number with no note is hard to defend and hard to remember.</li>
+<li><strong>Using the whole home.</strong> Only the part used for work counts, and in the US it must be used only for work.</li>
+<li><strong>Missing phone and internet in the UK.</strong> The flat rate does not include them. Claim their business share once, from your own split.</li>
+<li><strong>Forgetting to update.</strong> If you move, change rooms or change how much you work from home, update the Settings sheet and note the date.</li>
+</ul>
+<h2>Keep the records</h2>
+<p>Keep the bills, the floor plan or measurements, and your sample-month notes with the spreadsheet. How long depends on where you are. See our guide on <a href="../en-how-long-keep-business-records/">how long to keep business records</a>.</p>
+<h2>Summary</h2>
+<ol>
+<li>Pick a measurable basis for each cost and write it down.</li>
+<li>Put the percentages in one Settings table.</li>
+<li>Split each bill with one lookup formula.</li>
+<li>Total by type with SUMIFS.</li>
+<li>Compare with the IRS or HMRC flat rate and use what fits your situation.</li>
+</ol>
+<p><em>This article was drafted with the help of AI and checked against the official IRS and GOV.UK pages linked above on 21 October 2026.</em></p><div class="rel"><b>Related articles</b><a href="../en-staff-shift-schedule-google-sheets/">Build a weekly staff shift schedule in Google Sheets (hours per person, gaps highlighted)</a><br><a href="../en-simple-job-costing-spreadsheet/">Simple job costing in a spreadsheet - see if each job actually made money (Excel or Google Sheets)</a><br><a href="../en-raise-prices-letter-template/">How to raise your prices as a small service business - a simple calculation and a customer letter template</a><br></div></main>
+<footer class="wrap">© MisaNeco Works ・ <a href="../en/">All articles</a> ・ <a href="../../">Free tools</a> ・ <a href="../en/../">日本語の記事</a><br>Articles are written with the help of AI and checked against official sources. Articles with ads say so at the top. We use Google Analytics to count page views anonymously (no names or contact details).</footer>
+</body></html>
