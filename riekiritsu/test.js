@@ -127,7 +127,7 @@ for(const cost of [1,99,100,333,1000,7777,8000,12345,99999])for(const t of [0,5,
 const html=require('fs').readFileSync(__dirname+'/index.html','utf8');
 eq(/1万円|30日チャレンジ/.test(html),false,'banned');eq(/connect-src 'none'/.test(html),true,'csp');
 eq(/script-src 'self';/.test(html),true,'csp script self');eq(/<script>|\son\w+=/.test(html),false,'no inline js');
-eq(/https?:\/\/(?!fearless0712\.github\.io|px\.a8\.net|www[0-9]*\.a8\.net|\*\.a8\.net)/.test(html),false,'no external urls except A8 ad');eq(html.includes('広告・PR'),true,'ad label');
+eq(/https?:\/\/(?!fearless0712\.github\.io|px\.a8\.net|www[0-9]*\.a8\.net|\*\.a8\.net|line\.me\/R\/ti\/p\/@736dykzx|schema\.org)/.test(html),false,'no external urls except A8 ad');eq(html.includes('広告・PR'),true,'ad label');
 eq(html.includes('<html lang="ja">'),true,'lang ja');
 eq(html.includes('<title>利益率・上乗せ率 計算ツール（売値の逆算つき）</title>'),true,'title');
 eq(html.includes('<link rel="canonical" href="https://fearless0712.github.io/misaneco-tools/riekiritsu/">'),true,'canonical');
