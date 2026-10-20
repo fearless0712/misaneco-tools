@@ -1,0 +1,110 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'self'; img-src 'self' data: https://*.a8.net https://*.google-analytics.com https://*.googletagmanager.com; script-src 'self' https://www.googletagmanager.com; connect-src https://*.google-analytics.com https://*.analytics.google.com https://*.googletagmanager.com; base-uri 'none'; form-action 'none'; object-src 'none'">
+<title>Password rules for a small business: what NIST SP 800-63B-4 (2025) actually says | MisaNeco Works</title><meta name="description" content="A plain-English summary of the password rules in NIST SP 800-63B-4 (final, July 2025) — minimum length, no forced complexity, no scheduled resets, blocklists, password managers — and a short policy a small business can copy.">
+<link rel="canonical" href="https://fearless0712.github.io/misaneco-tools/blog/en-small-business-password-policy-nist/"><meta property="og:type" content="article"><meta property="og:url" content="https://fearless0712.github.io/misaneco-tools/blog/en-small-business-password-policy-nist/"><meta property="og:image" content="https://fearless0712.github.io/misaneco-tools/blog/og.png"><meta name="twitter:card" content="summary_large_image"><meta property="og:title" content="Password rules for a small business: what NIST SP 800-63B-4 (2025) actually says | MisaNeco Works"><meta property="og:description" content="A plain-English summary of the password rules in NIST SP 800-63B-4 (final, July 2025) — minimum length, no forced complexity, no scheduled resets, blocklists, password managers — and a short policy a small business can copy.">
+<link rel="alternate" type="application/rss+xml" title="MisaNeco Works Blog" href="https://fearless0712.github.io/misaneco-tools/blog/en/rss.xml"><script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "Password rules for a small business: what NIST SP 800-63B-4 (2025) actually says", "description": "A plain-English summary of the password rules in NIST SP 800-63B-4 (final, July 2025) — minimum length, no forced complexity, no scheduled resets, blocklists, password managers — and a short policy a small business can copy.", "datePublished": "2026-10-21", "dateModified": "2026-10-21", "inLanguage": "en", "mainEntityOfPage": "https://fearless0712.github.io/misaneco-tools/blog/en-small-business-password-policy-nist/", "image": "https://fearless0712.github.io/misaneco-tools/blog/og.png", "author": {"@type": "Organization", "name": "MisaNeco Works", "url": "https://fearless0712.github.io/misaneco-tools/"}, "publisher": {"@type": "Organization", "name": "MisaNeco Works"}}</script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-EWJXRJY9M6"></script><script src="../ga.js?v=202610210802"></script>
+<link rel="stylesheet" href="../blog.css?v=202610210802"></head><body>
+<header><div class="wrap"><a href="../en/">MisaNeco Works Blog</a></div></header>
+<main class="wrap"><p class="meta">2026-10-21・Security</p><h1>Password rules for a small business: what NIST SP 800-63B-4 (2025) actually says</h1><p>Many small businesses still use password rules from years ago: "at least 8 characters, one capital letter, one number, one symbol, change it every 90 days".</p>
+<p>The US National Institute of Standards and Technology (NIST) publishes the best-known guideline on this, <strong>SP 800-63B</strong>. The current version, <strong>SP 800-63B-4</strong>, was finalized in <strong>July 2025</strong>, and it says something quite different.</p>
+<p>In this article:</p>
+<ul>
+<li>what the 2025 guideline requires for passwords</li>
+<li>which old rules it tells you to drop</li>
+<li>a short password policy a small business can copy</li>
+</ul>
+<blockquote>
+<p>NIST SP 800-63B is written for US federal systems. It is not a law for private businesses, but it is widely used as a reference for good practice.</p>
+</blockquote>
+<h2>The main rules (SP 800-63B-4, section 3.1.1)</h2>
+<table>
+<thead>
+<tr>
+<th>Topic</th>
+<th>What the guideline says</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Minimum length</td>
+<td>At least <strong>15 characters</strong> if the password is the only factor. At least <strong>8</strong> if it is used together with another factor (multi-factor authentication)</td>
+</tr>
+<tr>
+<td>Maximum length</td>
+<td>Allow at least <strong>64 characters</strong></td>
+</tr>
+<tr>
+<td>Characters</td>
+<td>Accept all printable ASCII characters and spaces; Unicode should be accepted too</td>
+</tr>
+<tr>
+<td>Complexity rules</td>
+<td><strong>Do not</strong> require mixtures of character types (capitals, numbers, symbols)</td>
+</tr>
+<tr>
+<td>Scheduled changes</td>
+<td><strong>Do not</strong> require people to change passwords periodically. <strong>Do</strong> force a change if there is evidence the password was compromised</td>
+</tr>
+<tr>
+<td>Blocklist</td>
+<td>Check new passwords against a list of common, expected or compromised passwords, and reject matches</td>
+</tr>
+<tr>
+<td>Password managers</td>
+<td><strong>Allow</strong> password managers and autofill. Paste should be allowed</td>
+</tr>
+<tr>
+<td>Hints and security questions</td>
+<td><strong>Do not</strong> allow password hints visible to others, and do not use "first pet" style security questions</td>
+</tr>
+<tr>
+<td>Failed attempts</td>
+<td>Limit the number of failed login attempts (rate limiting)</td>
+</tr>
+<tr>
+<td>Show password</td>
+<td>Offer an option to show the password while typing</td>
+</tr>
+</tbody>
+</table>
+<p>In the guideline's own words, verifiers "SHALL NOT impose other composition rules" and "SHALL NOT require subscribers to change passwords periodically".</p>
+<h2>Why the old rules were dropped</h2>
+<ul>
+<li><strong>Forced complexity</strong> tends to produce predictable passwords like <code>Summer2026!</code>, which meet the rules but are easy to guess.</li>
+<li><strong>Forced changes every 90 days</strong> push people toward small, predictable edits (<code>Summer2026!</code> → <code>Autumn2026!</code>) or writing passwords down.</li>
+<li><strong>Length</strong> does more for strength, and a long passphrase is easier to remember than a short, complicated string.</li>
+</ul>
+<p>The guideline puts the effort where it helps: long passwords, blocking known-bad passwords, password managers, and multi-factor authentication.</p>
+<h2>A short password policy you can copy</h2>
+<p>Adjust this to your systems. Where a service does not let you set a rule (many cloud apps don't), use the closest setting it offers.</p>
+<ol>
+<li><strong>Turn on multi-factor authentication</strong> for email, cloud storage, accounting and banking first.</li>
+<li><strong>Length:</strong> at least 15 characters, or at least 8 where multi-factor authentication is on. Passphrases (several words) are welcome.</li>
+<li><strong>No forced complexity and no scheduled resets.</strong> Change a password <strong>right away</strong> if it may have been exposed (a breach notice, phishing, a lost device, a staff member leaving who knew it).</li>
+<li><strong>No reuse:</strong> every account gets its own password.</li>
+<li><strong>Use a password manager</strong> for the business, and allow autofill and paste.</li>
+<li><strong>Block common passwords</strong> where the service supports it, and don't use company names, years or "password" variations.</li>
+<li><strong>No shared logins</strong> where individual accounts are possible. When someone leaves, remove their access the same day.</li>
+<li><strong>No security questions</strong> with real answers. If a service forces them, store a random answer in the password manager.</li>
+</ol>
+<h2>Quick self-check</h2>
+<ul>
+<li>Multi-factor authentication is on for email and cloud storage</li>
+<li>Every account has a unique password</li>
+<li>The business uses a password manager</li>
+<li>Nobody is forced to change passwords on a timer</li>
+<li>There is a written step for "a password may have leaked"</li>
+<li>Access is removed the day someone leaves</li>
+</ul>
+<h2>Summary</h2>
+<ul>
+<li>NIST SP 800-63B-4 (July 2025): <strong>15+ characters</strong> for password-only logins, <strong>8+</strong> with multi-factor authentication</li>
+<li><strong>Drop</strong> forced complexity and scheduled password changes</li>
+<li><strong>Add</strong> blocklists, password managers, multi-factor authentication, and a change when there is evidence of compromise</li>
+<li>It is a US federal guideline, but a useful baseline for any small business</li>
+</ul>
+<p>Source: <a href="https://pages.nist.gov/800-63-4/sp800-63b.html" target="_blank" rel="noopener">NIST SP 800-63B-4, Digital Identity Guidelines: Authentication and Authenticator Management</a> (section 3.1.1, Passwords) · <a href="https://csrc.nist.gov/pubs/sp/800/63/b/4/final" target="_blank" rel="noopener">Publication record (CSRC)</a></p>
+<p><em>General information, not legal or compliance advice. This article was drafted with the help of AI and checked against the NIST text on 2026-10-21.</em></p></main>
+<footer class="wrap">© MisaNeco Works ・ <a href="../en/">All articles</a> ・ <a href="../../">Free tools</a> ・ <a href="../en/../">日本語の記事</a><br>Articles are written with the help of AI and checked against official sources. Articles with ads say so at the top. We use Google Analytics to count page views anonymously (no names or contact details).</footer>
+</body></html>
