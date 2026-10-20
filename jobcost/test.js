@@ -65,4 +65,5 @@ const html=require('fs').readFileSync(__dirname+'/index.html','utf8');
 eq(/1万円|30日チャレンジ/.test(html),false,'banned');eq(/connect-src 'none'/.test(html),true,'csp');
 eq(/https?:\/\/(?!fearless0712\.github\.io)/.test(html),false,'no external urls');
 eq(html.includes('General information only. This tool was built with the help of AI and tested.'),true,'footer note');
+eq(html.includes('<link rel="alternate" hreflang="ja" href="https://fearless0712.github.io/misaneco-tools/riekiritsu/">'),true,'hreflang ja');eq(html.includes('<link rel="alternate" hreflang="en" href="https://fearless0712.github.io/misaneco-tools/jobcost/">'),true,'hreflang en self');
 console.log(p+' passed, '+f+' failed');process.exit(f?1:0);
