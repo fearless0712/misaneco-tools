@@ -1,0 +1,86 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self'; img-src 'self' data:; connect-src 'none'; base-uri 'none'; form-action 'none'; object-src 'none'">
+<title>Home Office Business-Use Calculator (US &amp; UK) - Free, Split Rent, Utilities, Phone and Internet</title>
+<meta name="description" content="Free calculator for self-employed people and small businesses. Split rent, utilities, phone and internet into a business part and a personal part, and compare with the IRS simplified method ($5 per sq ft) or the HMRC flat rate for working from home. Nothing you enter leaves your browser.">
+<link rel="canonical" href="https://fearless0712.github.io/misaneco-tools/home-office/">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Home Office Business-Use Calculator (US &amp; UK)">
+<meta property="og:description" content="Split household bills into business and personal parts, and compare with the IRS simplified method or the HMRC flat rate. Free, no sign-up, runs in your browser.">
+<meta property="og:url" content="https://fearless0712.github.io/misaneco-tools/home-office/">
+<meta property="og:locale" content="en_US">
+<link rel="stylesheet" href="app.css?v=202610210230"><script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebApplication", "name": "Home Office Business-Use Calculator (US & UK)", "url": "https://fearless0712.github.io/misaneco-tools/home-office/", "description": "Split rent, utilities, phone and internet into business and personal parts, and compare with the IRS simplified method or the HMRC flat rate for working from home.", "applicationCategory": "FinanceApplication", "operatingSystem": "Any (Web browser)", "inLanguage": "en", "isAccessibleForFree": true, "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"}, "publisher": {"@type": "Organization", "name": "Eternal Philosophy"}}</script>
+</head><body>
+<header><div class="wrap"><a href="../blog/en/">MisaNeco Works free tools</a></div></header>
+<main class="wrap">
+<h1>Home office business-use calculator</h1>
+<p>Work from home? Some of your household bills are partly business costs. Enter your monthly bills and how you split them. You get the business part for each bill, a yearly total, and a comparison with the flat-rate option in the US or the UK. Nothing you enter is sent anywhere. It is saved only in this browser.</p>
+<p class="note"><b>This is an estimate, not tax advice.</b> What you can claim depends on your country, your business and how the space is used. Check the official pages below or ask a tax professional before you file.</p>
+<noscript><p class="err">This tool needs JavaScript. Please turn it on in your browser settings.</p></noscript>
+
+<fieldset class="card">
+<legend>1. Your country and office size</legend>
+<div class="row">
+<div class="f"><label for="country">Country (for the comparison)</label><select id="country"><option value="us">United States ($)</option><option value="uk">United Kingdom (£)</option></select></div>
+<div class="f"><label for="unit">Area unit</label><select id="unit"><option value="sqft">square feet</option><option value="m2">square meters (m²)</option></select></div>
+</div>
+<div class="row">
+<div class="f"><label for="office">Area used for work</label><input id="office" type="text" inputmode="decimal" autocomplete="off" placeholder="e.g. 120"></div>
+<div class="f"><label for="home">Whole home area</label><input id="home" type="text" inputmode="decimal" autocomplete="off" placeholder="e.g. 900"></div>
+</div>
+<p class="mut" id="areaOut" aria-live="polite">Area share: enter both numbers.</p>
+</fieldset>
+
+<fieldset class="card">
+<legend>2. Monthly bills</legend>
+<p class="mut">Enter the monthly amount. Choose <b>Area share</b> to use the share from step 1, or <b>My own %</b> and type a percentage (for example from a sample month of your phone log). Leave a bill empty to skip it.</p>
+<div id="bills"></div>
+</fieldset>
+
+<section class="card" id="sum" aria-labelledby="sumH">
+<h2 id="sumH">Result</h2>
+<div aria-live="polite"><div class="mut">Business part for the year (your own split)</div><div class="big" id="yBiz">$0.00</div></div>
+<table class="res">
+<thead><tr><th scope="col">Bill</th><th scope="col" class="pc">Share</th><th scope="col">Business / month</th><th scope="col">Business / year</th></tr></thead>
+<tbody id="tbody"></tbody>
+</table>
+<p class="mut">Amounts are rounded to the nearest cent or penny. The yearly figure is the monthly figure × 12.</p>
+<h3 id="cmpH">Compare with the flat rate</h3>
+<div id="cmpUS">
+<p>IRS simplified option: <b>$5 per square foot</b> of the area used for business, up to <b>300 square feet</b> (maximum $1,500). The space must be used regularly and exclusively for business. Employees cannot claim it.</p>
+<p class="big2" id="usOut">Enter the area used for work.</p>
+</div>
+<div id="cmpUK" hidden>
+<p>HMRC simplified expenses for the self-employed working <b>25 hours or more a month</b> at home: £10 (25–50 hours), £18 (51–100 hours), £26 (101+ hours) per month. The flat rate does not include phone or internet, so those are added from your own split.</p>
+<div class="row">
+<div class="f"><label for="hours">Hours worked at home per month</label><input id="hours" type="text" inputmode="numeric" autocomplete="off" placeholder="e.g. 80"></div>
+<div class="f"><label for="months">Months in the year</label><input id="months" type="text" inputmode="numeric" autocomplete="off" value="12"></div>
+</div>
+<p class="big2" id="ukOut">Enter your hours.</p>
+</div>
+<div class="btns"><button type="button" class="btn" id="copy">Copy a summary with my reasons</button><button type="button" class="btn ghost" id="reset">Clear everything</button></div>
+<p class="mut" id="copied" role="status"></p>
+</section>
+
+<section class="card">
+<h2>How to choose a fair split</h2>
+<ul>
+<li><b>Rent, mortgage interest, insurance:</b> the floor area used for work ÷ the whole home.</li>
+<li><b>Electricity and heating:</b> the area share, or the area share adjusted for how much of the time the room is used for work.</li>
+<li><b>Phone and internet:</b> a sample month of calls or hours online for work.</li>
+<li>Write down how you got each number and keep it with your bills. A percentage with a reason is much easier to explain later.</li>
+</ul>
+<p>Step-by-step spreadsheet version (Excel and Google Sheets): <a href="../blog/en-home-office-business-use-percentage/">How to work out the business-use share of home costs in a spreadsheet</a>.</p>
+</section>
+<section class="mut refs" aria-labelledby="refH">
+<h2 id="refH">Sources (checked 21 October 2026)</h2>
+<ul>
+<li><a href="https://www.irs.gov/businesses/small-businesses-self-employed/simplified-option-for-home-office-deduction" target="_blank" rel="noopener">IRS: Simplified option for home office deduction</a></li>
+<li><a href="https://www.gov.uk/simpler-income-tax-simplified-expenses/working-from-home" target="_blank" rel="noopener">GOV.UK: Simplified expenses, working from home</a></li>
+</ul>
+<p>General information only. This tool was built with the help of AI and checked with automated tests.</p>
+</section>
+<p>More free guides: <a href="../blog/en/">MisaNeco Works blog (English)</a> · <a href="../dx-en/">Small business automation check</a></p>
+</main>
+<footer class="wrap">© MisaNeco Works (a brand of EQUA, operated by Eternal Philosophy) · Built with AI and checked against official sources.</footer>
+<script src="logic.js?v=202610210230"></script><script src="app.js?v=202610210230"></script>
+</body></html>
