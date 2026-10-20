@@ -1,0 +1,74 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self'; img-src 'self' data:; connect-src 'none'; base-uri 'none'; form-action 'none'; object-src 'none'">
+<title>Prorated Rent Calculator - Move-In and Move-Out Month, by Day (Free)</title>
+<meta name="description" content="Free prorated rent calculator. Enter the monthly rent and the move-in or move-out dates to get the partial-month rent for each month. Choose days in the month, a 30-day month or a 365-day year, and how cents are rounded. Nothing you enter leaves your browser.">
+<link rel="canonical" href="https://fearless0712.github.io/misaneco-tools/prorate/">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Prorated Rent Calculator (move-in and move-out month)">
+<meta property="og:description" content="Partial-month rent by day for each month. Days in the month, 30-day month or 365-day year. Free, no sign-up, runs in your browser.">
+<meta property="og:url" content="https://fearless0712.github.io/misaneco-tools/prorate/">
+<meta property="og:locale" content="en_US">
+<link rel="stylesheet" href="app.css?v=202610210530"><script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebApplication", "name": "Prorated Rent Calculator", "url": "https://fearless0712.github.io/misaneco-tools/prorate/", "description": "Calculate partial-month rent for move-in and move-out months by days in the month, a 30-day month or a 365-day year.", "applicationCategory": "UtilitiesApplication", "operatingSystem": "Any (Web browser)", "inLanguage": "en", "isAccessibleForFree": true, "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"}, "publisher": {"@type": "Organization", "name": "Eternal Philosophy"}}</script>
+</head><body>
+<header><div class="wrap"><a href="../blog/en/">MisaNeco Works free tools</a></div></header>
+<main class="wrap">
+<h1>Prorated rent calculator</h1>
+<p>Moving in or out in the middle of a month? Enter the monthly rent and the first and last day you pay for. You get the prorated rent for each month and the total. Nothing you enter is sent anywhere. It is saved only in this browser.</p>
+<p class="note"><b>Your lease decides the method.</b> Landlords prorate in different ways: by the number of days in that month, by a 30-day month, or by a yearly daily rate (rent × 12 ÷ 365). Check your lease or ask your landlord or property manager which one they use.</p>
+<noscript><p class="err">This tool needs JavaScript. Please turn it on in your browser settings.</p></noscript>
+
+<fieldset class="card">
+<legend>Your details</legend>
+<label for="amount">Monthly rent</label>
+<input id="amount" type="text" inputmode="decimal" autocomplete="off" placeholder="e.g. 1500">
+<div class="row">
+<div class="f"><label for="from">First day you pay for (included)</label><input id="from" type="date"></div>
+<div class="f"><label for="to">Last day you pay for (included)</label><input id="to" type="date"></div>
+</div>
+<div class="btns"><button type="button" class="btn ghost small" id="toEnd">Set end to the last day of that month (move-in)</button><button type="button" class="btn ghost small" id="fromStart">Set start to the 1st of that month (move-out)</button></div>
+<div class="row">
+<div class="f"><label for="basis">Daily rate based on</label><select id="basis"><option value="month">Days in that month (28-31)</option><option value="30">30-day month</option><option value="year">365-day year (rent × 12 ÷ 365)</option></select></div>
+<div class="f"><label for="mode">Rounding</label><select id="mode"><option value="nearest">Nearest cent</option><option value="down">Round down</option><option value="up">Round up</option></select></div>
+</div>
+</fieldset>
+
+<section class="card" id="sum" aria-labelledby="sumH">
+<h2 id="sumH">Result</h2>
+<div aria-live="polite">
+<div class="mut" id="sumLabel">Prorated total</div>
+<div class="big" id="total">-</div>
+<p class="err" id="err" role="status"></p>
+</div>
+<table class="res">
+<thead><tr><th scope="col">Month</th><th scope="col">Days</th><th scope="col">Calculation</th><th scope="col">Amount</th></tr></thead>
+<tbody id="tbody"></tbody>
+</table>
+<p class="mut">A full calendar month is charged the full monthly rent. Each partial month is worked out on its own and rounded, then the months are added up.</p>
+<div class="btns"><button type="button" class="btn" id="copy">Copy result</button></div>
+<p class="mut" id="copied" role="status"></p>
+</section>
+
+<section class="card">
+<h2>Worked example</h2>
+<p>Rent is $1,500 and you move in on October 21. October has 31 days, so you pay for 11 days (October 21 to 31, both included).</p>
+<ul>
+<li><b>Days in that month:</b> $1,500 × 11 ÷ 31 = $532.258… → <b>$532.26</b></li>
+<li><b>30-day month:</b> $1,500 × 11 ÷ 30 = <b>$550.00</b></li>
+<li><b>365-day year:</b> $1,500 × 12 ÷ 365 × 11 = $542.465… → <b>$542.47</b></li>
+</ul>
+<p>The same move-in date can differ by almost $18 depending on the method, so it is worth checking which one your lease uses.</p>
+<h2>Other uses</h2>
+<ul>
+<li><b>Moving out:</b> set the start to the 1st of the month and the end to your last day.</li>
+<li><b>Subscriptions and monthly fees:</b> some services charge a partial month by day. Check their billing terms.</li>
+<li><b>Salary for a partial month:</b> employers use their own rules (calendar days or working days). Check your contract.</li>
+</ul>
+</section>
+<section class="card">
+<p>General information only. This tool was built with the help of AI and checked with automated tests.</p>
+<p>More free tools: <a href="../home-office/">Home office business-use calculator</a> · <a href="../records/">Record retention calculator</a> · <a href="../blog/en/">MisaNeco Works blog (English)</a></p>
+</section>
+</main>
+<footer class="wrap">© MisaNeco Works (a brand of EQUA, operated by Eternal Philosophy) · Built with AI and checked with tests.</footer>
+<script src="logic.js?v=202610210530"></script><script src="app.js?v=202610210530"></script>
+</body></html>
