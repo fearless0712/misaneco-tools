@@ -12,6 +12,8 @@ pre{max-width:100%;background:var(--card);border:1px solid var(--line);border-ra
 main p img{display:block;max-width:100%;height:auto;margin:16px auto;border:1px solid var(--line);border-radius:10px;background:#fff}
 .tools{background:var(--card);border:2px solid var(--navy);border-radius:10px;padding:12px 16px;margin:28px 0}.tools b{display:block;margin-bottom:4px}
 .rel{margin:28px 0}.rel b{display:block;margin-bottom:4px}
+.line{background:var(--card);border:2px solid #06c755;border-radius:12px;padding:14px 16px;margin:28px 0}.line p{margin:0 0 10px;font-size:15px}.line small{display:block;color:var(--mut);font-size:12px;margin-top:8px}
+.line a.btn{display:inline-flex;align-items:center;justify-content:center;min-height:44px;padding:8px 20px;border-radius:999px;background:#06c755;color:#fff;font-weight:700;text-decoration:none}
 .lead{margin:4px 0 16px}
 .jump{display:flex;flex-wrap:wrap;gap:8px;margin:12px 0 20px;padding:0;list-style:none}.jump li{margin:0}
 .jump a{display:inline-flex;align-items:center;min-height:44px;padding:6px 14px;border:1px solid var(--navy);border-radius:999px;background:var(--card);color:var(--navy);text-decoration:none;font-size:15px;font-weight:600}
