@@ -360,7 +360,7 @@ allTags.forEach(function (t, i) {
 /* interstitial: once per day, never in demo, nothing without tags */
 var pick = { tag: '<a href="https://px.a8.net/x"><img src="https://www.a8.net/y.gif"></a>' };
 ok(ADSX.shouldShowInterstitial({ demo: false, pick: pick, lastShown: null, today: '2026-10-19' }), 'interstitial shows first time today');
-ok(!ADSX.shouldShowInterstitial({ demo: false, pick: pick, lastShown: '2026-10-19', today: '2026-10-19' }), 'interstitial not twice the same day');
+ok(ADSX.shouldShowInterstitial({ demo: false, pick: pick, lastShown: '2026-10-19', today: '2026-10-19' }), 'interstitial shows on every page open (not once a day)');
 ok(ADSX.shouldShowInterstitial({ demo: false, pick: pick, lastShown: '2026-10-18', today: '2026-10-19' }), 'interstitial again next day');
 ok(!ADSX.shouldShowInterstitial({ demo: true, pick: pick, lastShown: null, today: '2026-10-19' }), 'interstitial never in demo');
 ok(!ADSX.shouldShowInterstitial({ demo: false, pick: null, lastShown: null, today: '2026-10-19' }), 'no interstitial without a tag');

@@ -501,9 +501,13 @@
     var b = el('div', 'adbody'); b.appendChild(frag); box.appendChild(b);
     return box;
   }
+  /* 開くたびに広告をランダムに選ぶ（同じ広告ばかりにならないように） */
+  var interIdx = -1;
+  function interList() { return ADS && ADS.interstitial && Array.isArray(ADS.interstitial.rotate) ? ADS.interstitial.rotate.filter(function (x) { return x && typeof x.tag === 'string' && x.tag.trim(); }) : []; }
+  function pickRandomInter() { var r = interList(); if (!r.length) return null; interIdx = Math.floor(Math.random() * r.length); return r[interIdx]; }
   function showInterstitial() {
     if (interShown || !ADSX || !ADS) return;
-    var today = DX.dayString(new Date()), pick = ADSX.pickInterstitial(ADS, today);
+    var today = DX.dayString(new Date()), pick = interIdx >= 0 ? interList()[interIdx] : pickRandomInter();
     if (!ADSX.shouldShowInterstitial({ demo: DEMO, pick: pick, lastShown: lsRaw(KEY_INTER), today: today })) return;
     var frag = ADSX.sanitizeTag(pick.tag);
     if (!frag) return;
@@ -520,12 +524,13 @@
     $('inter').hidden = true; $('interBody').textContent = '';
     if (lastFocus && lastFocus.focus) { try { lastFocus.focus(); } catch (e) { /* noop */ } }
   }
-  /* ページ下の広告（毎回表示。開いたときの全画面広告とは別の日替わり） */
+  /* ページ下の広告（毎回表示。開いたときの全画面広告とは別の広告） */
   function renderPageAd() {
     var host = $('pageAd'); if (!host || DEMO || !ADS || !ADSX) return;
     var r = ADS.interstitial && Array.isArray(ADS.interstitial.rotate) ? ADS.interstitial.rotate.filter(function (x) { return x && typeof x.tag === 'string' && x.tag.trim(); }) : [];
     if (!r.length) return;
-    var pick = r[(ADSX.dayIndex(DX.dayString(new Date())) + 1) % r.length], frag = ADSX.sanitizeTag(pick.tag);
+    if (interIdx < 0) pickRandomInter();
+    var pick = r[(interIdx + 1) % r.length], frag = ADSX.sanitizeTag(pick.tag);
     if (!frag) return;
     host.textContent = '';
     var box = el('aside', 'adbox'); box.setAttribute('aria-label', adLabel());

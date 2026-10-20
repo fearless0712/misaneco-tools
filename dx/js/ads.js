@@ -43,11 +43,10 @@
     if (!r.length) return null;
     return r[dayIndex(day) % r.length];
   }
-  /* 出すか：デモでは出さない／タグがない日は出さない／同じ日に出していたら出さない */
+  /* 出すか：デモでは出さない／タグがないときは出さない。ページを開くたびに出す（2026-10-20 将さん：1日1回はやめる） */
   function shouldShowInterstitial(opts) {
     if (opts.demo) return false;
     if (!opts.pick) return false;
-    if (opts.lastShown && opts.lastShown === opts.today) return false;
     return true;
   }
 
