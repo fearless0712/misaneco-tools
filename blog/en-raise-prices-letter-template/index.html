@@ -1,0 +1,239 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'self'; img-src 'self' data: https://*.a8.net https://*.google-analytics.com https://*.googletagmanager.com; script-src 'self' https://www.googletagmanager.com; connect-src https://*.google-analytics.com https://*.analytics.google.com https://*.googletagmanager.com; base-uri 'none'; form-action 'none'; object-src 'none'">
+<title>How to raise your prices as a small service business - a simple calculation and a customer letter template | MisaNeco Works</title><meta name="description" content="Check your margin, model a price rise for each regular customer in Excel or Google Sheets, and tell customers with a short, clear letter. Includes two email templates and a checklist.">
+<link rel="canonical" href="https://fearless0712.github.io/misaneco-tools/blog/en-raise-prices-letter-template/"><meta property="og:type" content="article"><meta property="og:url" content="https://fearless0712.github.io/misaneco-tools/blog/en-raise-prices-letter-template/"><meta property="og:image" content="https://fearless0712.github.io/misaneco-tools/blog/og.png"><meta name="twitter:card" content="summary_large_image"><meta property="og:title" content="How to raise your prices as a small service business - a simple calculation and a customer letter template | MisaNeco Works"><meta property="og:description" content="Check your margin, model a price rise for each regular customer in Excel or Google Sheets, and tell customers with a short, clear letter. Includes two email templates and a checklist.">
+<link rel="alternate" type="application/rss+xml" title="MisaNeco Works Blog" href="https://fearless0712.github.io/misaneco-tools/blog/en/rss.xml"><script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "How to raise your prices as a small service business - a simple calculation and a customer letter template", "description": "Check your margin, model a price rise for each regular customer in Excel or Google Sheets, and tell customers with a short, clear letter. Includes two email templates and a checklist.", "datePublished": "2026-10-20", "dateModified": "2026-10-20", "inLanguage": "en", "mainEntityOfPage": "https://fearless0712.github.io/misaneco-tools/blog/en-raise-prices-letter-template/", "image": "https://fearless0712.github.io/misaneco-tools/blog/og.png", "author": {"@type": "Organization", "name": "MisaNeco Works", "url": "https://fearless0712.github.io/misaneco-tools/"}, "publisher": {"@type": "Organization", "name": "MisaNeco Works"}}</script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-EWJXRJY9M6"></script><script src="../ga.js?v=202610201127"></script>
+<link rel="stylesheet" href="../blog.css?v=202610201127"></head><body>
+<header><div class="wrap"><a href="../en/">MisaNeco Works Blog</a></div></header>
+<main class="wrap"><p class="meta">2026-10-20・Automation / Small business / Excel</p><h1>How to raise your prices as a small service business - a simple calculation and a customer letter template</h1><p>Your costs went up. Materials, fuel, software, insurance, your own time. Your prices did not.</p>
+<p>Most small service businesses know they should raise their prices. The hard part is deciding by how much, and then telling customers. So it gets put off for another month, and then another year.</p>
+<p>This guide breaks it into three small jobs. First, check your numbers. Second, see what a rise means for each regular customer, in a spreadsheet. Third, send a short, clear letter. Everything works in Excel and Google Sheets unless noted. It takes about 30 minutes.</p>
+<h2>What you will build</h2>
+<ul>
+<li>A quick margin check to see if a price rise is needed.</li>
+<li>A <strong>Prices</strong> tab that shows the new price, the difference and the yearly effect for each regular customer.</li>
+<li>Two short email templates: one for regular customers, one for customers on a contract.</li>
+<li>A checklist of the places where your old prices still live.</li>
+</ul>
+<h2>Step 1. Check whether you need a price rise</h2>
+<p>Start with margin. Margin is profit as a share of the price. If a job costs you 300 to do and you charge 400, the profit is 100 and the margin is 25%.</p>
+<p><code>Margin = (Price - Cost) / Price</code></p>
+<p>Now watch what happens when costs go up and the price stays the same. Say the cost of that job rises by 10%, from 300 to 330. The price is still 400. Profit drops to 70, and the margin drops from 25% to 17.5%. Nothing about the job changed. You just keep less of it.</p>
+<p>To check your own jobs:</p>
+<ul>
+<li>For one job, use the free <a href="../../jobcost/">Job Profit Calculator</a>. Type in the price and the costs, and it shows the profit and margin.</li>
+<li>For all your jobs, use the sheet from our <a href="../en-simple-job-costing-spreadsheet/">simple job costing guide</a>. Sort by margin and look at the bottom of the list.</li>
+</ul>
+<p>Pick a margin you are happy with. Then work out the price you need to reach it. If the job costs 330 and you want a 25% margin, put this in any cell:</p>
+<p><code>=ROUND(330/(1-0.25),0)</code></p>
+<p>The answer is 440. That is the price that gets you back to 25%, at today's costs.</p>
+<p>Some signs that a rise is due:</p>
+<ul>
+<li>Your margins are lower than they were a year ago.</li>
+<li>You are booked up most weeks, and still not making much.</li>
+<li>You have not changed your prices in a long time, but your suppliers have.</li>
+<li>New customers say yes to your quotes straight away, every time.</li>
+</ul>
+<h2>Step 2. Set up the Prices tab</h2>
+<p>Create a tab called <strong>Prices</strong> and add these headers in row 1:</p>
+<table>
+<thead>
+<tr>
+<th>A</th>
+<th>B</th>
+<th>C</th>
+<th>D</th>
+<th>E</th>
+<th>F</th>
+<th>G</th>
+<th>H</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Customer</td>
+<td>Service</td>
+<td>Current price</td>
+<td>Visits per year</td>
+<td>New price</td>
+<td>Difference</td>
+<td>Per year</td>
+<td>Actual rise</td>
+</tr>
+</tbody>
+</table>
+<p>Then in J1 type <strong>Increase</strong>, and in J2 type the rise you are thinking about, for example <strong>8%</strong>.</p>
+<p>You only type into columns A to D, and J2. The rest are formulas.</p>
+<p>Tips:</p>
+<ul>
+<li>One row per regular customer and service. If a customer gets two different services, use two rows.</li>
+<li><strong>Current price</strong> is what you charge per visit or per job today.</li>
+<li><strong>Visits per year</strong> is how often you do the job. Weekly is 52. Every two weeks is 26. Monthly is 12. Every three months is 4.</li>
+<li>Type the increase in J2 as a percentage. In both apps, typing <strong>8%</strong> stores it as 0.08.</li>
+</ul>
+<h2>Step 3. Work out the new price with ROUND</h2>
+<p>In E2, paste:</p>
+<p><code>=IF(C2="","",ROUND(C2*(1+$J$2),0))</code></p>
+<p>This takes the current price, adds the increase, and rounds it to a whole number. So 85 with an 8% rise gives 91.80, which rounds to 92.</p>
+<p>The <code>$</code> signs in <code>$J$2</code> keep the formula pointing at the same Increase cell when you copy it down.</p>
+<p>Want prices that end in 0 or 5? Use this instead:</p>
+<p><code>=IF(C2="","",ROUND(C2*(1+$J$2)/5,0)*5)</code></p>
+<p>This rounds to the nearest 5. So 85 with an 8% rise gives 90, and 120 gives 130. Round numbers are easier to quote and easier to remember.</p>
+<p>If you want to keep pence or cents, change the last <code>0</code> in the first formula to <code>2</code>.</p>
+<h2>Step 4. Difference, yearly effect and actual rise</h2>
+<p>In F2 (Difference), paste:</p>
+<p><code>=IF(C2="","",E2-C2)</code></p>
+<p>This is how much more the customer pays each time.</p>
+<p>In G2 (Per year), paste:</p>
+<p><code>=IF(C2="","",F2*D2)</code></p>
+<p>This is how much more you get from that customer over a year.</p>
+<p>In H2 (Actual rise), paste:</p>
+<p><code>=IFERROR(F2/C2,"")</code></p>
+<p>Format column H as a percentage. Rounding moves the rise up or down a little. If you round to the nearest 5, a small price can jump by much more than you planned. This column shows you where.</p>
+<p>Copy E2:H2 down for all your customers.</p>
+<p>Then add two totals, anywhere on the tab, with a label next to each. The extra money per year, from all regular customers:</p>
+<p><code>=SUM(G2:G200)</code></p>
+<p>And what those customers pay you per year today:</p>
+<p><code>=SUMPRODUCT(C2:C200,D2:D200)</code></p>
+<p>Now you can see the rise in real money, not just a percentage.</p>
+<h2>An example</h2>
+<p>Here is a small window cleaning round with an 8% increase in J2, rounded to whole numbers:</p>
+<table>
+<thead>
+<tr>
+<th>Customer</th>
+<th>Service</th>
+<th>Current price</th>
+<th>Visits per year</th>
+<th>New price</th>
+<th>Difference</th>
+<th>Per year</th>
+<th>Actual rise</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Smith</td>
+<td>Windows</td>
+<td>25</td>
+<td>12</td>
+<td>27</td>
+<td>2</td>
+<td>24</td>
+<td>8.0%</td>
+</tr>
+<tr>
+<td>Patel</td>
+<td>Windows and frames</td>
+<td>45.50</td>
+<td>12</td>
+<td>49</td>
+<td>3.50</td>
+<td>42</td>
+<td>7.7%</td>
+</tr>
+<tr>
+<td>Green Cafe</td>
+<td>Shop front</td>
+<td>18</td>
+<td>26</td>
+<td>19</td>
+<td>1</td>
+<td>26</td>
+<td>5.6%</td>
+</tr>
+<tr>
+<td>Brown</td>
+<td>Gutters</td>
+<td>85</td>
+<td>4</td>
+<td>92</td>
+<td>7</td>
+<td>28</td>
+<td>8.2%</td>
+</tr>
+<tr>
+<td>Lee</td>
+<td>Conservatory</td>
+<td>120</td>
+<td>2</td>
+<td>130</td>
+<td>10</td>
+<td>20</td>
+<td>8.3%</td>
+</tr>
+</tbody>
+</table>
+<p>The extra per year adds up to 140. These customers pay 1,894 per year today.</p>
+<p>Look at Green Cafe. The rounding cut the rise to 5.6%, but it is a fortnightly customer, so it still adds 26 a year. Small prices with many visits matter more than they look.</p>
+<p>Try a few values in J2, like 5%, 8% and 10%. Watch the totals change. Pick a number you can explain in one sentence.</p>
+<h2>Step 5. Decide how much notice to give</h2>
+<p>There is no single right answer here. Some common practice:</p>
+<ul>
+<li>Many businesses give regular customers around 30 days' notice before a new price starts.</li>
+<li>Pick a clear start date, like the first of a month. "From 1 February" is easier to remember than "from next time".</li>
+<li>Jobs that are already booked or quoted are usually kept at the old price. Say so in your letter.</li>
+</ul>
+<p><strong>If a customer has a contract or a signed agreement, read it first.</strong> It may say how and when prices can change, and how much notice you have to give. Follow what it says. If you are not sure, ask someone who can read the contract for you, like a solicitor, lawyer or business adviser.</p>
+<h2>Step 6. Tell your customers</h2>
+<p>Keep it short. Say what is changing, when, and thank them. You do not need to apologise, and you do not need a long list of reasons. One sentence about why is enough.</p>
+<p>Send it by email, and keep a copy. If you use a customer list in a spreadsheet, add a column called <strong>Price letter sent</strong> with the date. Then you can see who still needs one.</p>
+<h3>Template 1: regular customers</h3>
+<p>```
+Subject: New prices from [start date]</p>
+<p>Hi [first name],</p>
+<p>Thank you for using [business name]. I really appreciate your business.</p>
+<p>I am writing to let you know that my prices will change from [start date].
+My costs have gone up over the past year, and I have kept my prices the same
+for as long as I could.</p>
+<p>From [start date], your [service] will be [new price] per visit
+(currently [current price]).</p>
+<p>Anything already booked before [start date] stays at the current price.</p>
+<p>If you have any questions, just reply to this email or call me on [phone].</p>
+<p>Thanks again,
+[your name]
+[business name]
+```</p>
+<h3>Template 2: customers on a contract</h3>
+<p>```
+Subject: Price change for your [service] agreement</p>
+<p>Hi [first name],</p>
+<p>Thank you for working with [business name].</p>
+<p>As set out in our agreement dated [agreement date], I am giving you notice
+of a change to the price for [service].</p>
+<p>From [start date], the price will be [new price] per [visit / month / job]
+(currently [current price]). Everything else in our agreement stays the same.</p>
+<p>The new price will show on invoices from [start date]. Work done before
+that date will be invoiced at the current price.</p>
+<p>If you would like to talk about this, please reply to this email or call me
+on [phone]. I am happy to go through it with you.</p>
+<p>Kind regards,
+[your name]
+[business name]
+```</p>
+<p>Only use the first line of Template 2 if your agreement really does say how prices change. If it does not, leave that line out, and check your contract before you send anything.</p>
+<p>You can fill in the names and prices from the Prices tab. If you send a lot of these, a mail merge saves time. Our guide to <a href="../en-appointment-reminder-emails-google-sheets/">appointment reminder emails from Google Sheets</a> shows a similar setup.</p>
+<h2>Step 7. Update everywhere your prices live</h2>
+<p>Old prices hide in more places than you think. Before the start date, go through this list:</p>
+<ul>
+<li><strong>Price list.</strong> Your main price list, printed or digital.</li>
+<li><strong>Website.</strong> Your price page, booking page and any FAQ that mentions prices.</li>
+<li><strong>Invoice template.</strong> Any saved line items or default rates in your invoice template or software.</li>
+<li><strong>Quotes.</strong> Your quote template, and any quotes you send from now on. Decide what happens to open quotes that have not been accepted yet.</li>
+<li><strong>Online listings.</strong> Directory pages, booking apps and social media profiles that show prices.</li>
+<li><strong>Your spreadsheets.</strong> The price column in your job costing sheet, so new margins use the new prices.</li>
+</ul>
+<p>On the start date, check the first few invoices you send. Make sure the new price is on them.</p>
+<h2>Using it day to day</h2>
+<ul>
+<li><strong>Once a year:</strong> pick a month to review your prices. The same month each year, so customers come to expect it.</li>
+<li><strong>When a big cost goes up:</strong> check your margin with the <a href="../../jobcost/">Job Profit Calculator</a>. If it drops below your target, run the Prices tab again.</li>
+<li><strong>For new customers:</strong> quote the new price straight away, even before the start date for existing customers.</li>
+<li><strong>After the rise:</strong> watch your margins for a few months. They should move back towards your target.</li>
+</ul>
+<p>Small, regular rises are easier for everyone than one big jump after years of nothing.</p>
+<h2>What else could you automate?</h2>
+<p>Pricing gets easier when your numbers are already in one place. Our free <strong>Small Business Automation Check</strong> asks about your country, industry and daily tasks, and shows which admin jobs are easiest to automate next.</p><div class="tools"><b>Free tools you can use</b><a href="../../dx-en/">Small Business Automation Check</a><br></div><div class="rel"><b>Related articles</b><a href="../en-staff-shift-schedule-google-sheets/">Build a weekly staff shift schedule in Google Sheets (hours per person, gaps highlighted)</a><br><a href="../en-simple-job-costing-spreadsheet/">Simple job costing in a spreadsheet - see if each job actually made money (Excel or Google Sheets)</a><br><a href="../en-quote-to-job-tracker-spreadsheet/">A simple quote-to-job tracker for trades and service businesses (Excel or Google Sheets)</a><br></div></main>
+<footer class="wrap">© MisaNeco Works ・ <a href="../en/">All articles</a> ・ <a href="../../">Free tools</a> ・ <a href="../en/../">日本語の記事</a><br>Articles are written with the help of AI and checked against official sources. Articles with ads say so at the top. We use Google Analytics to count page views anonymously (no names or contact details).</footer>
+</body></html>
