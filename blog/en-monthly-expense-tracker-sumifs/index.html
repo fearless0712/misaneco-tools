@@ -3,8 +3,8 @@
 <title>A simple monthly expense tracker in Google Sheets or Excel (with SUMIFS totals) | MisaNeco Works</title><meta name="description" content="Log receipts, pick a category from a dropdown, and see spending by month and category with SUMIFS. Includes a missing-receipt check and a file naming tip. Works in Excel and Google Sheets.">
 <link rel="canonical" href="https://fearless0712.github.io/misaneco-tools/blog/en-monthly-expense-tracker-sumifs/"><meta property="og:type" content="article"><meta property="og:url" content="https://fearless0712.github.io/misaneco-tools/blog/en-monthly-expense-tracker-sumifs/"><meta property="og:image" content="https://fearless0712.github.io/misaneco-tools/blog/og.png"><meta name="twitter:card" content="summary_large_image"><meta property="og:title" content="A simple monthly expense tracker in Google Sheets or Excel (with SUMIFS totals) | MisaNeco Works"><meta property="og:description" content="Log receipts, pick a category from a dropdown, and see spending by month and category with SUMIFS. Includes a missing-receipt check and a file naming tip. Works in Excel and Google Sheets.">
 <link rel="alternate" type="application/rss+xml" title="MisaNeco Works Blog" href="https://fearless0712.github.io/misaneco-tools/blog/en/rss.xml"><script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "A simple monthly expense tracker in Google Sheets or Excel (with SUMIFS totals)", "description": "Log receipts, pick a category from a dropdown, and see spending by month and category with SUMIFS. Includes a missing-receipt check and a file naming tip. Works in Excel and Google Sheets.", "datePublished": "2026-10-20", "dateModified": "2026-10-20", "inLanguage": "en", "mainEntityOfPage": "https://fearless0712.github.io/misaneco-tools/blog/en-monthly-expense-tracker-sumifs/", "image": "https://fearless0712.github.io/misaneco-tools/blog/og.png", "author": {"@type": "Organization", "name": "MisaNeco Works", "url": "https://fearless0712.github.io/misaneco-tools/"}, "publisher": {"@type": "Organization", "name": "MisaNeco Works"}}</script>
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-EWJXRJY9M6"></script><script src="../ga.js?v=202610201846"></script>
-<link rel="stylesheet" href="../blog.css?v=202610201846"></head><body>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-EWJXRJY9M6"></script><script src="../ga.js?v=202610202128"></script>
+<link rel="stylesheet" href="../blog.css?v=202610202128"></head><body>
 <header><div class="wrap"><a href="../en/">MisaNeco Works Blog</a></div></header>
 <main class="wrap"><p class="meta">2026-10-20・Automation / Small business / Bookkeeping</p><h1>A simple monthly expense tracker in Google Sheets or Excel (with SUMIFS totals)</h1><p>If you work for yourself, receipts pile up fast. A coffee with a client, a software subscription, a train ticket, a new keyboard. At the end of the month, or the end of the year, someone has to add them all up. Usually that someone is you.</p>
 <p>You do not need accounting software to stay on top of it. One sheet with a few columns and one formula can show you what you spent, on what, and in which month.</p>
@@ -76,7 +76,8 @@
 <p>Do the same for column G (Receipt saved?) with a simple list: <strong>Y, N</strong>. You can type that directly into the dropdown options instead of using a range.</p>
 <h2>Step 3. Add the Month helper column</h2>
 <p>In H2, paste:</p>
-<p><code>=IF(A2="","",TEXT(A2,"yyyy-mm"))</code></p>
+<pre><code>=IF(A2=&quot;&quot;,&quot;&quot;,TEXT(A2,&quot;yyyy-mm&quot;))
+</code></pre>
 <p>Copy it down as far as you expect to go, for example to row 2000.</p>
 <p>What it does:</p>
 <ol>
@@ -93,7 +94,8 @@
 </ol>
 <p>Important: type each month with an apostrophe in front, like <code>'2026-01</code>. Without it, both Excel and Google Sheets may turn it into a date, and then it will not match the text in column H. The apostrophe does not show in the cell.</p>
 <p>Now in B3, paste:</p>
-<p><code>=SUMIFS(Expenses!$E$2:$E$2000,Expenses!$D$2:$D$2000,$A3,Expenses!$H$2:$H$2000,B$2)</code></p>
+<pre><code>=SUMIFS(Expenses!$E$2:$E$2000,Expenses!$D$2:$D$2000,$A3,Expenses!$H$2:$H$2000,B$2)
+</code></pre>
 <p>Copy it across and down to fill the whole table.</p>
 <p>How to read it: add up the amounts in column E, but only where the category matches the name in column A of this row, and the month matches the label in row 2 of this column.</p>
 <p>The <code>$</code> signs matter. <code>$A3</code> keeps the category column fixed when you copy across. <code>B$2</code> keeps the month row fixed when you copy down.</p>
@@ -105,19 +107,24 @@
 <h2>Step 5. Check nothing is missing</h2>
 <p>Two quick checks keep the numbers honest. Put them anywhere on the Summary tab, with a label next to each.</p>
 <p><strong>Every expense has a category.</strong> This counts rows with an amount but no category:</p>
-<p><code>=COUNTIFS(Expenses!E2:E2000,"&lt;&gt;",Expenses!D2:D2000,"")</code></p>
+<pre><code>=COUNTIFS(Expenses!E2:E2000,&quot;&lt;&gt;&quot;,Expenses!D2:D2000,&quot;&quot;)
+</code></pre>
 <p>If it is not 0, some rows are missing from your summary table. You can also compare <code>=SUM(Expenses!E2:E2000)</code> with the grand total of your summary. They should be the same.</p>
 <p><strong>Every expense has a receipt.</strong> This counts logged expenses where Receipt saved? is not Y. Blank counts as missing, on purpose:</p>
-<p><code>=COUNTIFS(Expenses!A2:A2000,"&lt;&gt;",Expenses!G2:G2000,"&lt;&gt;Y")</code></p>
+<pre><code>=COUNTIFS(Expenses!A2:A2000,&quot;&lt;&gt;&quot;,Expenses!G2:G2000,&quot;&lt;&gt;Y&quot;)
+</code></pre>
 <p>And this shows how much money those rows add up to:</p>
-<p><code>=SUMIFS(Expenses!E2:E2000,Expenses!A2:A2000,"&lt;&gt;",Expenses!G2:G2000,"&lt;&gt;Y")</code></p>
+<pre><code>=SUMIFS(Expenses!E2:E2000,Expenses!A2:A2000,&quot;&lt;&gt;&quot;,Expenses!G2:G2000,&quot;&lt;&gt;Y&quot;)
+</code></pre>
 <p>To see missing receipts per month, put this under the month labels and copy across:</p>
-<p><code>=COUNTIFS(Expenses!$H$2:$H$2000,B$2,Expenses!$G$2:$G$2000,"&lt;&gt;Y")</code></p>
+<pre><code>=COUNTIFS(Expenses!$H$2:$H$2000,B$2,Expenses!$G$2:$G$2000,&quot;&lt;&gt;Y&quot;)
+</code></pre>
 <p>To find the rows themselves, turn on a filter on the Expenses tab and show only <strong>N</strong> and blanks in column G.</p>
 <h2>Name your receipt files the same way every time</h2>
 <p>Logging a receipt is half the job. The other half is being able to find the file later.</p>
 <p>Pick one naming pattern and stick to it:</p>
-<p><code>YYYY-MM-DD_vendor_amount</code></p>
+<pre><code>YYYY-MM-DD_vendor_amount
+</code></pre>
 <p>For example: <code>2026-03-03_dell_189.00.pdf</code> or <code>2026-01-05_adobe_22.99.jpg</code>.</p>
 <p>Why this works:</p>
 <ul>

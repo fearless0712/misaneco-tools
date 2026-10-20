@@ -3,8 +3,8 @@
 <title>Track unpaid invoices in Google Sheets (with overdue days and red rows) | MisaNeco Works</title><meta name="description" content="A simple invoice tracker that counts days overdue, colours late invoices red, and shows only the ones you need to chase. Works in Excel too, plus a polite reminder email you can copy.">
 <link rel="canonical" href="https://fearless0712.github.io/misaneco-tools/blog/en-track-unpaid-invoices-google-sheets/"><meta property="og:type" content="article"><meta property="og:url" content="https://fearless0712.github.io/misaneco-tools/blog/en-track-unpaid-invoices-google-sheets/"><meta property="og:image" content="https://fearless0712.github.io/misaneco-tools/blog/og.png"><meta name="twitter:card" content="summary_large_image"><meta property="og:title" content="Track unpaid invoices in Google Sheets (with overdue days and red rows) | MisaNeco Works"><meta property="og:description" content="A simple invoice tracker that counts days overdue, colours late invoices red, and shows only the ones you need to chase. Works in Excel too, plus a polite reminder email you can copy.">
 <link rel="alternate" type="application/rss+xml" title="MisaNeco Works Blog" href="https://fearless0712.github.io/misaneco-tools/blog/en/rss.xml"><script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "Track unpaid invoices in Google Sheets (with overdue days and red rows)", "description": "A simple invoice tracker that counts days overdue, colours late invoices red, and shows only the ones you need to chase. Works in Excel too, plus a polite reminder email you can copy.", "datePublished": "2026-10-20", "dateModified": "2026-10-20", "inLanguage": "en", "mainEntityOfPage": "https://fearless0712.github.io/misaneco-tools/blog/en-track-unpaid-invoices-google-sheets/", "image": "https://fearless0712.github.io/misaneco-tools/blog/og.png", "author": {"@type": "Organization", "name": "MisaNeco Works", "url": "https://fearless0712.github.io/misaneco-tools/"}, "publisher": {"@type": "Organization", "name": "MisaNeco Works"}}</script>
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-EWJXRJY9M6"></script><script src="../ga.js?v=202610201846"></script>
-<link rel="stylesheet" href="../blog.css?v=202610201846"></head><body>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-EWJXRJY9M6"></script><script src="../ga.js?v=202610202128"></script>
+<link rel="stylesheet" href="../blog.css?v=202610202128"></head><body>
 <header><div class="wrap"><a href="../en/">MisaNeco Works Blog</a></div></header>
 <main class="wrap"><p class="meta">2026-10-20・Automation / Small business / Invoicing</p><h1>Track unpaid invoices in Google Sheets (with overdue days and red rows)</h1><p>Sending an invoice is the easy part. Getting paid is where small businesses lose time. You open your email, scroll back, check the bank, and try to remember who still owes you.</p>
 <p>A simple sheet fixes most of this. It shows every unpaid invoice, how many days late it is, and colours late ones red. This guide uses Google Sheets, but everything also works in Excel unless noted. It takes about 15 minutes.</p>
@@ -54,7 +54,8 @@
 </ul>
 <h2>Step 2. Count the days overdue</h2>
 <p>In H2, paste this formula:</p>
-<p><code>=IF(G2&lt;&gt;"","",IF(E2="","",MAX(0,TODAY()-E2)))</code></p>
+<pre><code>=IF(G2&lt;&gt;&quot;&quot;,&quot;&quot;,IF(E2=&quot;&quot;,&quot;&quot;,MAX(0,TODAY()-E2)))
+</code></pre>
 <p>What it does, step by step:</p>
 <ol>
 <li>If there is a paid date, show nothing. The invoice is settled.</li>
@@ -65,10 +66,12 @@
 <p>Copy the formula down as far as you need. In both apps you can select H2, then double-click the small square in the corner of the cell to fill down next to your data.</p>
 <h2>Step 3. Add a status</h2>
 <p>In I2, paste:</p>
-<p><code>=IF(G2&lt;&gt;"","Paid",IF(E2="","",IF(TODAY()&gt;E2,"Overdue","Not due")))</code></p>
+<pre><code>=IF(G2&lt;&gt;&quot;&quot;,&quot;Paid&quot;,IF(E2=&quot;&quot;,&quot;&quot;,IF(TODAY()&gt;E2,&quot;Overdue&quot;,&quot;Not due&quot;)))
+</code></pre>
 <p>Copy it down. Now every row says <strong>Paid</strong>, <strong>Overdue</strong> or <strong>Not due</strong>.</p>
 <p>To see how much money is waiting, put this in an empty cell (for example K1):</p>
-<p><code>=SUMIFS(F2:F1000,I2:I1000,"Overdue")</code></p>
+<pre><code>=SUMIFS(F2:F1000,I2:I1000,&quot;Overdue&quot;)
+</code></pre>
 <p>That is your total overdue amount. Change <code>"Overdue"</code> to <code>"Not due"</code> to see what is coming in soon.</p>
 <p>Note: TODAY() updates when the sheet recalculates, usually when you open or edit it. You do not need to change anything each day.</p>
 <h2>Step 4. Colour overdue rows red</h2>
@@ -80,7 +83,8 @@
 <li>Under "Format cells if", choose <strong>Custom formula is</strong>.</li>
 <li>Paste this formula:</li>
 </ol>
-<p><code>=AND($G2="",$E2&lt;&gt;"",$E2&lt;TODAY())</code></p>
+<pre><code>=AND($G2=&quot;&quot;,$E2&lt;&gt;&quot;&quot;,$E2&lt;TODAY())
+</code></pre>
 <ol start="5">
 <li>Pick a light red fill and click <strong>Done</strong>.</li>
 </ol>
@@ -93,7 +97,8 @@
 </ol>
 <p>The dollar signs matter. <code>$G2</code> tells the rule to always look at column G, on whichever row it is checking. Without them, only one column turns red.</p>
 <p>Want a second colour? Add another rule for invoices more than 30 days late:</p>
-<p><code>=AND($G2="",$E2&lt;&gt;"",TODAY()-$E2&gt;30)</code></p>
+<pre><code>=AND($G2=&quot;&quot;,$E2&lt;&gt;&quot;&quot;,TODAY()-$E2&gt;30)
+</code></pre>
 <p>Give it a darker red. In Google Sheets, the rule at the top of the list wins, so drag this one above the first. In Excel, use <strong>Conditional Formatting &gt; Manage Rules</strong> to put it first.</p>
 <h2>Step 5. Show only what needs chasing</h2>
 <p>You do not want to scroll past fifty paid invoices every week.</p>

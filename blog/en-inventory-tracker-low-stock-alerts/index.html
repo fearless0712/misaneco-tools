@@ -3,8 +3,8 @@
 <title>A simple inventory tracker with low-stock alerts (Excel or Google Sheets) | MisaNeco Works</title><meta name="description" content="Log stock in and out, let SUMIFS work out what you have on the shelf, and turn items red when they hit their reorder point. Works in Excel and Google Sheets, plus an optional Apps Script email alert.">
 <link rel="canonical" href="https://fearless0712.github.io/misaneco-tools/blog/en-inventory-tracker-low-stock-alerts/"><meta property="og:type" content="article"><meta property="og:url" content="https://fearless0712.github.io/misaneco-tools/blog/en-inventory-tracker-low-stock-alerts/"><meta property="og:image" content="https://fearless0712.github.io/misaneco-tools/blog/og.png"><meta name="twitter:card" content="summary_large_image"><meta property="og:title" content="A simple inventory tracker with low-stock alerts (Excel or Google Sheets) | MisaNeco Works"><meta property="og:description" content="Log stock in and out, let SUMIFS work out what you have on the shelf, and turn items red when they hit their reorder point. Works in Excel and Google Sheets, plus an optional Apps Script email alert.">
 <link rel="alternate" type="application/rss+xml" title="MisaNeco Works Blog" href="https://fearless0712.github.io/misaneco-tools/blog/en/rss.xml"><script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "A simple inventory tracker with low-stock alerts (Excel or Google Sheets)", "description": "Log stock in and out, let SUMIFS work out what you have on the shelf, and turn items red when they hit their reorder point. Works in Excel and Google Sheets, plus an optional Apps Script email alert.", "datePublished": "2026-10-20", "dateModified": "2026-10-20", "inLanguage": "en", "mainEntityOfPage": "https://fearless0712.github.io/misaneco-tools/blog/en-inventory-tracker-low-stock-alerts/", "image": "https://fearless0712.github.io/misaneco-tools/blog/og.png", "author": {"@type": "Organization", "name": "MisaNeco Works", "url": "https://fearless0712.github.io/misaneco-tools/"}, "publisher": {"@type": "Organization", "name": "MisaNeco Works"}}</script>
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-EWJXRJY9M6"></script><script src="../ga.js?v=202610201846"></script>
-<link rel="stylesheet" href="../blog.css?v=202610201846"></head><body>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-EWJXRJY9M6"></script><script src="../ga.js?v=202610202128"></script>
+<link rel="stylesheet" href="../blog.css?v=202610202128"></head><body>
 <header><div class="wrap"><a href="../en/">MisaNeco Works Blog</a></div></header>
 <main class="wrap"><p class="meta">2026-10-20・Automation / Small business / Google Apps Script</p><h1>A simple inventory tracker with low-stock alerts (Excel or Google Sheets)</h1><p>Running out of something you sell or use every day is stressful. A cafe runs out of cups. A cleaner runs out of gloves. A shop runs out of its best seller just before the weekend.</p>
 <p>Most small businesses do not need inventory software for this. A sheet with two tabs is enough: one where you log stock coming in and going out, and one that shows what is left and what needs reordering.</p>
@@ -75,21 +75,26 @@
 <p>Fill in the code and name of each item in columns A and B. The codes must match the ones you use in the Log exactly.</p>
 <h2>Step 3. Work out current stock with SUMIFS</h2>
 <p>In C2 (Total in), paste:</p>
-<p><code>=SUMIFS(Log!$D:$D,Log!$B:$B,$A2,Log!$C:$C,"In")</code></p>
+<pre><code>=SUMIFS(Log!$D:$D,Log!$B:$B,$A2,Log!$C:$C,&quot;In&quot;)
+</code></pre>
 <p>In D2 (Total out), paste:</p>
-<p><code>=SUMIFS(Log!$D:$D,Log!$B:$B,$A2,Log!$C:$C,"Out")</code></p>
+<pre><code>=SUMIFS(Log!$D:$D,Log!$B:$B,$A2,Log!$C:$C,&quot;Out&quot;)
+</code></pre>
 <p>SUMIFS takes the column to add up first, then pairs of "column to check" and "what to look for". So C2 adds up every quantity in the Log where the code matches this row and the type is In.</p>
 <p>In E2 (Current stock):</p>
-<p><code>=C2-D2</code></p>
+<pre><code>=C2-D2
+</code></pre>
 <p>Copy all three formulas down for every item. Now, whenever someone adds a row to the Log, the stock levels update by themselves.</p>
 <h2>Step 4. Set a reorder point</h2>
 <p>The reorder point is the level at which you want to order more. A simple way to choose it: how many do you use while you wait for a delivery? Add a little extra for safety.</p>
 <p>Type a number in column F for each item. You can change it any time as you learn your real usage.</p>
 <p>In G2 (Status), paste:</p>
-<p><code>=IF(A2="","",IF(E2&lt;=F2,"Reorder","OK"))</code></p>
+<pre><code>=IF(A2=&quot;&quot;,&quot;&quot;,IF(E2&lt;=F2,&quot;Reorder&quot;,&quot;OK&quot;))
+</code></pre>
 <p>Copy it down. Any item at or below its reorder point now says <strong>Reorder</strong>.</p>
 <p>To count how many items need ordering, put this in an empty cell, for example I1:</p>
-<p><code>=COUNTIFS(G2:G500,"Reorder")</code></p>
+<pre><code>=COUNTIFS(G2:G500,&quot;Reorder&quot;)
+</code></pre>
 <h2>Step 5. Colour low-stock rows red</h2>
 <p><strong>Google Sheets:</strong></p>
 <ol>
@@ -98,7 +103,8 @@
 <li>Under "Format cells if", choose <strong>Custom formula is</strong>.</li>
 <li>Paste:</li>
 </ol>
-<p><code>=$G2="Reorder"</code></p>
+<pre><code>=$G2=&quot;Reorder&quot;
+</code></pre>
 <ol start="5">
 <li>Pick a light red fill and click <strong>Done</strong>.</li>
 </ol>
@@ -111,41 +117,45 @@
 </ol>
 <p>The dollar sign in <code>$G2</code> keeps the rule looking at the Status column, so the whole row turns red, not just one cell.</p>
 <p>You can add an amber warning for items getting close. This rule marks items within 20 percent of their reorder point:</p>
-<p><code>=AND($A2&lt;&gt;"",$E2&gt;$F2,$E2&lt;=$F2*1.2)</code></p>
+<pre><code>=AND($A2&lt;&gt;&quot;&quot;,$E2&gt;$F2,$E2&lt;=$F2*1.2)
+</code></pre>
 <h2>Step 6 (optional). Get an email when stock is low</h2>
 <p>This part is for Google Sheets only. A short Apps Script checks the Items tab and emails you a list of everything marked for reorder. If nothing is low, it sends nothing.</p>
 <ol>
 <li>In your sheet, open <strong>Extensions &gt; Apps Script</strong>.</li>
 <li>Delete any code in the editor and paste this:</li>
 </ol>
-<p>```javascript
-// Who gets the alert, and which tab to read
+<pre><code class="language-javascript">// Who gets the alert, and which tab to read
 const ALERT_EMAIL = 'you@example.com';
-const SHEET_NAME = 'Items';</p>
-<p>function checkLowStock() {
+const SHEET_NAME = 'Items';
+
+function checkLowStock() {
   const sheet = SpreadsheetApp.getActiveSpreadsheet().getSheetByName(SHEET_NAME);
   const rows = sheet.getDataRange().getValues();
-  const lowItems = [];</p>
-<p>// Row 0 is the header, so start at 1
+  const lowItems = [];
+
+  // Row 0 is the header, so start at 1
   for (let i = 1; i &lt; rows.length; i++) {
     const code = rows[i][0];
     const name = rows[i][1];
     const stock = rows[i][4];
-    const reorderPoint = rows[i][5];</p>
-<pre><code>if (code === '' || reorderPoint === '') continue;
-if (stock &lt;= reorderPoint) {
-  lowItems.push(name + ' (' + code + '): ' + stock + ' left, reorder point ' + reorderPoint);
-}
-</code></pre>
-<p>}</p>
-<p>if (lowItems.length === 0) return;</p>
-<p>const subject = 'Low stock: ' + lowItems.length + ' item(s) to reorder';
+    const reorderPoint = rows[i][5];
+
+    if (code === '' || reorderPoint === '') continue;
+    if (stock &lt;= reorderPoint) {
+      lowItems.push(name + ' (' + code + '): ' + stock + ' left, reorder point ' + reorderPoint);
+    }
+  }
+
+  if (lowItems.length === 0) return;
+
+  const subject = 'Low stock: ' + lowItems.length + ' item(s) to reorder';
   const body = 'These items are at or below their reorder point:\n\n'
     + lowItems.join('\n')
     + '\n\nOpen the inventory sheet to check and reorder.';
   MailApp.sendEmail(ALERT_EMAIL, subject, body);
 }
-```</p>
+</code></pre>
 <ol start="3">
 <li>Change <code>you@example.com</code> to your own email address.</li>
 <li>Click <strong>Save</strong>, choose <strong>checkLowStock</strong> in the function list, and click <strong>Run</strong>. The first time, Google asks you to give the script permission to read your sheet and send email as you. Review the request and allow it.</li>

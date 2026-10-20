@@ -3,8 +3,8 @@
 <title>Simple job costing in a spreadsheet - see if each job actually made money (Excel or Google Sheets) | MisaNeco Works</title><meta name="description" content="Log materials, labour and subcontractor costs against each job, total them with SUMIFS, and see profit and margin per job. Low-margin jobs light up on their own. Works in Excel and Google Sheets.">
 <link rel="canonical" href="https://fearless0712.github.io/misaneco-tools/blog/en-simple-job-costing-spreadsheet/"><meta property="og:type" content="article"><meta property="og:url" content="https://fearless0712.github.io/misaneco-tools/blog/en-simple-job-costing-spreadsheet/"><meta property="og:image" content="https://fearless0712.github.io/misaneco-tools/blog/og.png"><meta name="twitter:card" content="summary_large_image"><meta property="og:title" content="Simple job costing in a spreadsheet - see if each job actually made money (Excel or Google Sheets) | MisaNeco Works"><meta property="og:description" content="Log materials, labour and subcontractor costs against each job, total them with SUMIFS, and see profit and margin per job. Low-margin jobs light up on their own. Works in Excel and Google Sheets.">
 <link rel="alternate" type="application/rss+xml" title="MisaNeco Works Blog" href="https://fearless0712.github.io/misaneco-tools/blog/en/rss.xml"><script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "Simple job costing in a spreadsheet - see if each job actually made money (Excel or Google Sheets)", "description": "Log materials, labour and subcontractor costs against each job, total them with SUMIFS, and see profit and margin per job. Low-margin jobs light up on their own. Works in Excel and Google Sheets.", "datePublished": "2026-10-20", "dateModified": "2026-10-20", "inLanguage": "en", "mainEntityOfPage": "https://fearless0712.github.io/misaneco-tools/blog/en-simple-job-costing-spreadsheet/", "image": "https://fearless0712.github.io/misaneco-tools/blog/og.png", "author": {"@type": "Organization", "name": "MisaNeco Works", "url": "https://fearless0712.github.io/misaneco-tools/"}, "publisher": {"@type": "Organization", "name": "MisaNeco Works"}}</script>
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-EWJXRJY9M6"></script><script src="../ga.js?v=202610201846"></script>
-<link rel="stylesheet" href="../blog.css?v=202610201846"></head><body>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-EWJXRJY9M6"></script><script src="../ga.js?v=202610202128"></script>
+<link rel="stylesheet" href="../blog.css?v=202610202128"></head><body>
 <header><div class="wrap"><a href="../en/">MisaNeco Works Blog</a></div></header>
 <main class="wrap"><p class="meta">2026-10-20・Automation / Small business / Excel</p><h1>Simple job costing in a spreadsheet - see if each job actually made money (Excel or Google Sheets)</h1><p>You finish a job, the customer pays, and the money is in the bank. But did that job actually make money?</p>
 <p>For a lot of trades and service businesses, the honest answer is "probably". Materials get bought on the way to site. A helper comes in for a day. A subcontractor sends a bill two weeks later. By then, nobody adds it all up against the job.</p>
@@ -102,28 +102,34 @@
 <h2>Step 3. Work out labour as hours × rate</h2>
 <p>For materials, subcontract and other costs, type the amount from the receipt or bill into <strong>Amount</strong>.</p>
 <p>For labour, fill in <strong>Hours</strong> and <strong>Rate</strong>, and let the sheet work out the amount. In the Amount cell of a labour row, enter:</p>
-<p><code>=E2*F2</code></p>
+<pre><code>=E2*F2
+</code></pre>
 <p>Change the row number to match the row you are on. For example, if the labour row is row 5, use <code>=E5*F5</code>.</p>
 <p>Which rate should you use? Use what that hour of labour costs you: a helper's hourly pay, plus any extra costs you pay on top, if you know them. For your own time, pick an hourly rate you think your time is worth. If you leave your own time out, every job will look more profitable than it really is.</p>
 <h2>Step 4. Total the costs for each job with SUMIFS</h2>
 <p>Go back to the Jobs tab. In F2, paste:</p>
-<p><code>=SUMIFS(Costs!$G$2:$G$2000,Costs!$B$2:$B$2000,$A2,Costs!$C$2:$C$2000,F$1)</code></p>
+<pre><code>=SUMIFS(Costs!$G$2:$G$2000,Costs!$B$2:$B$2000,$A2,Costs!$C$2:$C$2000,F$1)
+</code></pre>
 <p>Copy it across to I2, then copy F2:I2 down for all your jobs.</p>
 <p>How to read it: add up the amounts on the Costs tab, but only where the job ID matches this row's job, and the type matches the header at the top of this column.</p>
 <p>The <code>$</code> signs matter. <code>$A2</code> keeps the job ID column fixed when you copy across. <code>F$1</code> keeps the header row fixed when you copy down. That is why one formula fills all four columns: Materials, Labour, Subcontract and Other.</p>
 <p>Now the total cost. In J2, paste:</p>
-<p><code>=SUMIFS(Costs!$G$2:$G$2000,Costs!$B$2:$B$2000,$A2)</code></p>
+<pre><code>=SUMIFS(Costs!$G$2:$G$2000,Costs!$B$2:$B$2000,$A2)
+</code></pre>
 <p>This adds up every cost for the job, whatever the type. Copy it down.</p>
 <p>Normally J2 is the same as F2 + G2 + H2 + I2. If it is bigger, some cost rows for that job have a blank or misspelled type. The dropdown from Step 2 prevents that.</p>
 <p>Want totals by type across all jobs, for example how much you spent on materials this year? Put this anywhere on the Jobs tab:</p>
-<p><code>=SUMIFS(Costs!$G$2:$G$2000,Costs!$C$2:$C$2000,"Materials")</code></p>
+<pre><code>=SUMIFS(Costs!$G$2:$G$2000,Costs!$C$2:$C$2000,&quot;Materials&quot;)
+</code></pre>
 <p>Change "Materials" to "Labour", "Subcontract" or "Other" for the other types.</p>
 <h2>Step 5. Profit and margin for each job</h2>
 <p>In K2 (Profit), paste:</p>
-<p><code>=IF(D2="","",D2-J2)</code></p>
+<pre><code>=IF(D2=&quot;&quot;,&quot;&quot;,D2-J2)
+</code></pre>
 <p>This is the quoted price minus the total cost. It stays blank until the job has a price.</p>
 <p>In L2 (Margin), paste:</p>
-<p><code>=IFERROR(K2/D2,"")</code></p>
+<pre><code>=IFERROR(K2/D2,&quot;&quot;)
+</code></pre>
 <p>Format column L as a percentage. Margin is profit as a share of the price. A margin of 25% means you keep 25p, or 25c, of every pound or dollar the customer pays, after the job's own costs.</p>
 <p>IFERROR keeps the cell blank when the price is 0 or empty. That happens with warranty callbacks or free return visits. You cannot divide by zero, but the Profit column still shows the loss.</p>
 <p>Copy both formulas down.</p>
@@ -131,32 +137,39 @@
 <h2>Step 6. Flag low-margin jobs with colour</h2>
 <p>Pick a margin you are happy with. This example uses 20%. Change it to your own target.</p>
 <p>Select A2:N500 on the Jobs tab and add a conditional formatting rule that uses this formula:</p>
-<p><code>=AND($L2&lt;&gt;"",$L2&lt;0.2)</code></p>
+<pre><code>=AND($L2&lt;&gt;&quot;&quot;,$L2&lt;0.2)
+</code></pre>
 <p>Give it a light orange fill.</p>
 <p>Then add a second rule for jobs that lost money, with a light red fill:</p>
-<p><code>=AND($K2&lt;&gt;"",$K2&lt;0)</code></p>
+<pre><code>=AND($K2&lt;&gt;&quot;&quot;,$K2&lt;0)
+</code></pre>
 <p><strong>Google Sheets:</strong> choose <strong>Format &gt; Conditional formatting</strong>. Under Format rules, choose <strong>Custom formula is</strong> and paste the formula. Pick the fill colour and click <strong>Done</strong>. Click <strong>Add another rule</strong> for the second one. Put the loss rule at the top of the list, so it wins when both match.</p>
 <p><strong>Excel:</strong> choose <strong>Home &gt; Conditional Formatting &gt; New Rule</strong>, then <strong>Use a formula to determine which cells to format</strong>. Paste the formula, click <strong>Format</strong>, and pick a fill colour on the Fill tab. Do the same for the second rule. Then open <strong>Home &gt; Conditional Formatting &gt; Manage Rules</strong> and move the loss rule to the top.</p>
 <p>The <code>$</code> before L and K makes the whole row change colour, not just one cell. <code>$L2&lt;&gt;""</code> stops blank rows from being coloured.</p>
 <h2>Step 7. Compare the quote with what really happened</h2>
 <p>This is where job costing pays off. You can see which of your quotes are off, and by how much.</p>
 <p>In M2 (Over estimate by), paste:</p>
-<p><code>=IF(E2="","",J2-E2)</code></p>
+<pre><code>=IF(E2=&quot;&quot;,&quot;&quot;,J2-E2)
+</code></pre>
 <p>A positive number means the job cost more than you expected. A negative number means it came in under. Blank means you did not enter an estimate.</p>
 <p>In N2 (Quoted margin), paste:</p>
-<p><code>=IFERROR((D2-E2)/D2,"")</code></p>
+<pre><code>=IFERROR((D2-E2)/D2,&quot;&quot;)
+</code></pre>
 <p>This is the margin you planned for when you wrote the quote. Put it next to the real margin in column L. If the quoted margin was 40% and the real one is 18%, something went wrong between the quote and the job.</p>
 <p>Format column N as a percentage and copy both formulas down.</p>
 <p>Look across the cost types too. If materials are close to your estimates but labour keeps running over, your hours are the thing to fix. If you want to see the hours themselves, add a column with the labour hours for each job:</p>
-<p><code>=SUMIFS(Costs!$E$2:$E$2000,Costs!$B$2:$B$2000,$A2,Costs!$C$2:$C$2000,"Labour")</code></p>
+<pre><code>=SUMIFS(Costs!$E$2:$E$2000,Costs!$B$2:$B$2000,$A2,Costs!$C$2:$C$2000,&quot;Labour&quot;)
+</code></pre>
 <p>Compare it with the hours you had in mind when you priced the job.</p>
 <h2>Step 8. Check that every cost lands on a job</h2>
 <p>A cost with a typo in the job ID does not show up on any job. These checks catch that.</p>
 <p>On the Costs tab, put this in H2 and copy it down:</p>
-<p><code>=IF(B2="","",IF(COUNTIF(Jobs!$A$2:$A$500,B2)=0,"Check ID",""))</code></p>
+<pre><code>=IF(B2=&quot;&quot;,&quot;&quot;,IF(COUNTIF(Jobs!$A$2:$A$500,B2)=0,&quot;Check ID&quot;,&quot;&quot;))
+</code></pre>
 <p>It says <strong>Check ID</strong> when the job ID is not on the Jobs tab.</p>
 <p>And somewhere on the Jobs tab, compare two totals:</p>
-<p><code>=SUM(Costs!G2:G2000)-SUM(J2:J500)</code></p>
+<pre><code>=SUM(Costs!G2:G2000)-SUM(J2:J500)
+</code></pre>
 <p>If this is not 0, some cost rows are not counted against any job. Look for <strong>Check ID</strong> on the Costs tab to find them.</p>
 <h2>Using it day to day</h2>
 <ul>

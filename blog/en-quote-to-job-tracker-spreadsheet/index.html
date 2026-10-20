@@ -3,8 +3,8 @@
 <title>A simple quote-to-job tracker for trades and service businesses (Excel or Google Sheets) | MisaNeco Works</title><meta name="description" content="Track every quote you send, see which ones need a follow-up call today, and work out your win rate with one COUNTIFS formula. Works in Excel and Google Sheets.">
 <link rel="canonical" href="https://fearless0712.github.io/misaneco-tools/blog/en-quote-to-job-tracker-spreadsheet/"><meta property="og:type" content="article"><meta property="og:url" content="https://fearless0712.github.io/misaneco-tools/blog/en-quote-to-job-tracker-spreadsheet/"><meta property="og:image" content="https://fearless0712.github.io/misaneco-tools/blog/og.png"><meta name="twitter:card" content="summary_large_image"><meta property="og:title" content="A simple quote-to-job tracker for trades and service businesses (Excel or Google Sheets) | MisaNeco Works"><meta property="og:description" content="Track every quote you send, see which ones need a follow-up call today, and work out your win rate with one COUNTIFS formula. Works in Excel and Google Sheets.">
 <link rel="alternate" type="application/rss+xml" title="MisaNeco Works Blog" href="https://fearless0712.github.io/misaneco-tools/blog/en/rss.xml"><script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "A simple quote-to-job tracker for trades and service businesses (Excel or Google Sheets)", "description": "Track every quote you send, see which ones need a follow-up call today, and work out your win rate with one COUNTIFS formula. Works in Excel and Google Sheets.", "datePublished": "2026-10-20", "dateModified": "2026-10-20", "inLanguage": "en", "mainEntityOfPage": "https://fearless0712.github.io/misaneco-tools/blog/en-quote-to-job-tracker-spreadsheet/", "image": "https://fearless0712.github.io/misaneco-tools/blog/og.png", "author": {"@type": "Organization", "name": "MisaNeco Works", "url": "https://fearless0712.github.io/misaneco-tools/"}, "publisher": {"@type": "Organization", "name": "MisaNeco Works"}}</script>
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-EWJXRJY9M6"></script><script src="../ga.js?v=202610201846"></script>
-<link rel="stylesheet" href="../blog.css?v=202610201846"></head><body>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-EWJXRJY9M6"></script><script src="../ga.js?v=202610202128"></script>
+<link rel="stylesheet" href="../blog.css?v=202610202128"></head><body>
 <header><div class="wrap"><a href="../en/">MisaNeco Works Blog</a></div></header>
 <main class="wrap"><p class="meta">2026-10-20・Automation / Small business / Excel</p><h1>A simple quote-to-job tracker for trades and service businesses (Excel or Google Sheets)</h1><p>If you run a trades or service business, you probably send a lot of quotes. A plumber, an electrician, a landscaper, a cleaner, a painter. Some quotes turn into jobs. Many just go quiet.</p>
 <p>Often the difference is a single follow-up call. But when quotes live in your email, your notebook and your head, follow-ups get missed.</p>
@@ -64,11 +64,13 @@
 <h2>Step 3. Set a follow-up date</h2>
 <p>When you send a quote, put a date in <strong>Follow up on</strong>. Many trades people call two or three working days later. Pick what feels right for your customers.</p>
 <p>If you want a default, this formula sets the follow-up three days after the quote date:</p>
-<p><code>=IF(D2="","",D2+3)</code></p>
+<pre><code>=IF(D2=&quot;&quot;,&quot;&quot;,D2+3)
+</code></pre>
 <p>You can type over it any time. After a call, change the date to the next time you want to check in.</p>
 <h2>Step 4. Flag today's follow-ups</h2>
 <p>In H2, paste:</p>
-<p><code>=IF(AND(F2="Sent",G2&lt;&gt;"",G2&lt;=TODAY()),"Yes","")</code></p>
+<pre><code>=IF(AND(F2=&quot;Sent&quot;,G2&lt;&gt;&quot;&quot;,G2&lt;=TODAY()),&quot;Yes&quot;,&quot;&quot;)
+</code></pre>
 <p>What it does:</p>
 <ol>
 <li>Only looks at quotes still marked <strong>Sent</strong>. Won and Lost quotes never need a chase.</li>
@@ -82,21 +84,26 @@
 <p><strong>Google Sheets:</strong> choose <strong>Data &gt; Create a filter</strong>. Click the filter icon on <strong>Follow up today?</strong> and tick only <strong>Yes</strong>.</p>
 <p>Sort by <strong>Follow up on</strong>, oldest first, so the most overdue calls come to the top.</p>
 <p><strong>Google Sheets only:</strong> if you prefer a separate list that updates by itself, make a new tab and put this in A2:</p>
-<p><code>=FILTER(Quotes!A2:I500, Quotes!H2:H500="Yes")</code></p>
+<pre><code>=FILTER(Quotes!A2:I500, Quotes!H2:H500=&quot;Yes&quot;)
+</code></pre>
 <p>Copy the headers from the Quotes tab into row 1 of the new tab. The list refreshes as you change statuses and dates. Excel 365 also has a FILTER function, but this guide sticks to the normal filter for Excel so it works in every version.</p>
 <h2>Step 6. Colour the rows (optional)</h2>
 <p>A quick visual helps. Select A2:I500 and add a conditional formatting rule that uses a formula:</p>
-<p><code>=$H2="Yes"</code></p>
+<pre><code>=$H2=&quot;Yes&quot;
+</code></pre>
 <p>Give it a yellow fill. In Google Sheets this is under <strong>Format &gt; Conditional formatting</strong>, using <strong>Custom formula is</strong>. In Excel it is <strong>Home &gt; Conditional Formatting &gt; New Rule</strong>, then <strong>Use a formula to determine which cells to format</strong>.</p>
 <p>You can add two more rules the same way: <code>=$F2="Won"</code> in green and <code>=$F2="Lost"</code> in grey.</p>
 <h2>Step 7. Work out your win rate</h2>
 <p>Your win rate is the share of decided quotes that you won. Put this in an empty cell, for example K2:</p>
-<p><code>=IFERROR(COUNTIFS(F2:F500,"Won")/(COUNTIFS(F2:F500,"Won")+COUNTIFS(F2:F500,"Lost")),"")</code></p>
+<pre><code>=IFERROR(COUNTIFS(F2:F500,&quot;Won&quot;)/(COUNTIFS(F2:F500,&quot;Won&quot;)+COUNTIFS(F2:F500,&quot;Lost&quot;)),&quot;&quot;)
+</code></pre>
 <p>Format the cell as a percentage. Quotes still marked <strong>Sent</strong> are left out, because you do not know the answer yet. IFERROR keeps the cell blank until you have at least one Won or Lost quote.</p>
 <p>Want to know the value of work won? Use SUMIFS:</p>
-<p><code>=SUMIFS(E2:E500,F2:F500,"Won")</code></p>
+<pre><code>=SUMIFS(E2:E500,F2:F500,&quot;Won&quot;)
+</code></pre>
 <p>And for one month only, add date conditions to COUNTIFS. This counts quotes won from October 2026:</p>
-<p><code>=COUNTIFS(F2:F500,"Won",D2:D500,"&gt;="&amp;DATE(2026,10,1),D2:D500,"&lt;"&amp;DATE(2026,11,1))</code></p>
+<pre><code>=COUNTIFS(F2:F500,&quot;Won&quot;,D2:D500,&quot;&gt;=&quot;&amp;DATE(2026,10,1),D2:D500,&quot;&lt;&quot;&amp;DATE(2026,11,1))
+</code></pre>
 <p>Change the dates for other months. Do the same with "Lost" to get the monthly win rate.</p>
 <h2>Using it day to day</h2>
 <ul>

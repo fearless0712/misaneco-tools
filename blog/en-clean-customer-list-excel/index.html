@@ -3,32 +3,37 @@
 <title>Clean up a messy customer list in Excel or Google Sheets (5 formulas, 10 minutes) | MisaNeco Works</title><meta name="description" content="Extra spaces, random capital letters, duplicate customers and mixed phone formats. Five simple formulas and two built-in tools fix most of it, in Excel and in Google Sheets.">
 <link rel="canonical" href="https://fearless0712.github.io/misaneco-tools/blog/en-clean-customer-list-excel/"><meta property="og:type" content="article"><meta property="og:url" content="https://fearless0712.github.io/misaneco-tools/blog/en-clean-customer-list-excel/"><meta property="og:image" content="https://fearless0712.github.io/misaneco-tools/blog/og.png"><meta name="twitter:card" content="summary_large_image"><meta property="og:title" content="Clean up a messy customer list in Excel or Google Sheets (5 formulas, 10 minutes) | MisaNeco Works"><meta property="og:description" content="Extra spaces, random capital letters, duplicate customers and mixed phone formats. Five simple formulas and two built-in tools fix most of it, in Excel and in Google Sheets.">
 <link rel="alternate" type="application/rss+xml" title="MisaNeco Works Blog" href="https://fearless0712.github.io/misaneco-tools/blog/en/rss.xml"><script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "Clean up a messy customer list in Excel or Google Sheets (5 formulas, 10 minutes)", "description": "Extra spaces, random capital letters, duplicate customers and mixed phone formats. Five simple formulas and two built-in tools fix most of it, in Excel and in Google Sheets.", "datePublished": "2026-10-19", "dateModified": "2026-10-19", "inLanguage": "en", "mainEntityOfPage": "https://fearless0712.github.io/misaneco-tools/blog/en-clean-customer-list-excel/", "image": "https://fearless0712.github.io/misaneco-tools/blog/og.png", "author": {"@type": "Organization", "name": "MisaNeco Works", "url": "https://fearless0712.github.io/misaneco-tools/"}, "publisher": {"@type": "Organization", "name": "MisaNeco Works"}}</script>
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-EWJXRJY9M6"></script><script src="../ga.js?v=202610201846"></script>
-<link rel="stylesheet" href="../blog.css?v=202610201846"></head><body>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-EWJXRJY9M6"></script><script src="../ga.js?v=202610202128"></script>
+<link rel="stylesheet" href="../blog.css?v=202610202128"></head><body>
 <header><div class="wrap"><a href="../en/">MisaNeco Works Blog</a></div></header>
 <main class="wrap"><p class="meta">2026-10-19・Automation / Small business / Excel</p><h1>Clean up a messy customer list in Excel or Google Sheets (5 formulas, 10 minutes)</h1><p>Most small businesses have a customer list that grew by itself. Some names are in capitals, some are not. Emails have spaces at the end. The same customer appears three times. Mail merges break, and nobody trusts the numbers.</p>
 <p>The good news: you can fix most of it in about ten minutes with tools you already have. Everything below works in both Excel and Google Sheets unless noted.</p>
 <p><strong>Before you start:</strong> make a copy of the file. Do the cleanup in new columns, check the result, and only then replace the old data.</p>
 <h2>1. Remove extra spaces: TRIM</h2>
 <p>Spaces at the start or end of a cell are invisible, but they make "Smith" and "Smith " look like two different people.</p>
-<p><code>=TRIM(A2)</code></p>
+<pre><code>=TRIM(A2)
+</code></pre>
 <p>TRIM removes spaces at the start and end, and turns double spaces in the middle into single spaces.</p>
 <p>Google Sheets also has a menu for this: <strong>Data &gt; Data cleanup &gt; Trim whitespace</strong>.</p>
 <h2>2. Fix capital letters: PROPER, LOWER, UPPER</h2>
-<p><code>=PROPER(TRIM(A2))   →  "jOHN smith "  becomes  "John Smith"
+<pre><code>=PROPER(TRIM(A2))   →  &quot;jOHN smith &quot;  becomes  &quot;John Smith&quot;
 =LOWER(TRIM(B2))    →  for email addresses
-=UPPER(TRIM(C2))    →  for postcodes, e.g. "sw1a 1aa" becomes "SW1A 1AA"</code></p>
+=UPPER(TRIM(C2))    →  for postcodes, e.g. &quot;sw1a 1aa&quot; becomes &quot;SW1A 1AA&quot;
+</code></pre>
 <p>Check PROPER results by eye. It turns "McDonald" into "Mcdonald" and "O'NEIL" into "O'Neil", which may not be what the customer writes.</p>
 <h2>3. Remove hidden characters: CLEAN</h2>
 <p>Data copied from websites or other systems can carry line breaks and other invisible characters.</p>
-<p><code>=CLEAN(TRIM(A2))</code></p>
+<pre><code>=CLEAN(TRIM(A2))
+</code></pre>
 <h2>4. Make phone numbers consistent: SUBSTITUTE</h2>
 <p>If phone numbers are typed in different ways, strip the spaces, dashes, dots and brackets so they can be compared:</p>
-<p><code>=SUBSTITUTE(SUBSTITUTE(SUBSTITUTE(SUBSTITUTE(SUBSTITUTE(D2," ",""),"-",""),"(",""),")",""),".","")</code></p>
+<pre><code>=SUBSTITUTE(SUBSTITUTE(SUBSTITUTE(SUBSTITUTE(SUBSTITUTE(D2,&quot; &quot;,&quot;&quot;),&quot;-&quot;,&quot;&quot;),&quot;(&quot;,&quot;&quot;),&quot;)&quot;,&quot;&quot;),&quot;.&quot;,&quot;&quot;)
+</code></pre>
 <p>"(555) 123-4567" and "555.123.4567" both become "5551234567". Now you can sort, compare and find duplicates.</p>
 <h2>5. Find duplicates before you delete them: COUNTIF</h2>
 <p>Do not delete duplicates blindly. First, mark them:</p>
-<p><code>=COUNTIF($B$2:$B$1000, B2)</code></p>
+<pre><code>=COUNTIF($B$2:$B$1000, B2)
+</code></pre>
 <p>Put this next to the cleaned email column. Any number above 1 means that email appears more than once. Sort by that column and look at the duplicates together. Often one row has the newest phone number and another has the newest address, and you want to merge them by hand.</p>
 <h2>Two built-in tools</h2>
 <ul>

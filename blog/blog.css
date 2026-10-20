@@ -7,6 +7,7 @@ h1{font-size:26px;line-height:1.45;margin:8px 0 6px}h2{font-size:21px;margin:36p
 a{color:var(--navy)}.meta{color:var(--mut);font-size:14px}.pr{background:var(--pr);border:1px solid var(--line);border-radius:8px;padding:6px 12px;font-size:14px;margin:12px 0}
 ul,ol{padding-left:1.4em}li{margin:4px 0}table{border-collapse:collapse;width:100%;font-size:15px;display:block;overflow-x:auto}td,th{border:1px solid var(--line);padding:6px 8px;text-align:left}
 code{background:var(--card);border:1px solid var(--line);border-radius:4px;padding:0 4px;font-size:.9em}
+pre{max-width:100%;background:var(--card);border:1px solid var(--line);border-radius:8px;padding:12px 14px;overflow-x:auto;font-size:14px;line-height:1.6}pre code{border:0;padding:0;background:none;font-size:inherit}
 .ad{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:12px;margin:24px 0;text-align:center}.ad .lbl{display:block;color:var(--mut);font-size:12px;text-align:left}.ad img{max-width:100%;height:auto}
 main p img{display:block;max-width:100%;height:auto;margin:16px auto;border:1px solid var(--line);border-radius:10px;background:#fff}
 .tools{background:var(--card);border:2px solid var(--navy);border-radius:10px;padding:12px 16px;margin:28px 0}.tools b{display:block;margin-bottom:4px}

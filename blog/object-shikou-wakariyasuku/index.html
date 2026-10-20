@@ -1,0 +1,421 @@
+<!doctype html><html lang="ja"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'self'; img-src 'self' data: https://*.a8.net https://*.google-analytics.com https://*.googletagmanager.com; script-src 'self' https://www.googletagmanager.com; connect-src https://*.google-analytics.com https://*.analytics.google.com https://*.googletagmanager.com; base-uri 'none'; form-action 'none'; object-src 'none'">
+<title>オブジェクト指向をわかりやすく｜プログラミングをしない人の仕事にも効く考え方とたとえ｜MisaNeco Works</title><meta name="description" content="オブジェクト指向を、プログラミングをしない人向けにやさしく解説。クラスとインスタンス、カプセル化、継承、ポリモーフィズムを日常のたとえと短いコードで説明し、マニュアル・書類・Excel・チーム運営での使い方までまとめました。">
+<link rel="canonical" href="https://fearless0712.github.io/misaneco-tools/blog/object-shikou-wakariyasuku/"><meta property="og:type" content="article"><meta property="og:url" content="https://fearless0712.github.io/misaneco-tools/blog/object-shikou-wakariyasuku/"><meta property="og:image" content="https://fearless0712.github.io/misaneco-tools/blog/og.png"><meta name="twitter:card" content="summary_large_image"><meta property="og:title" content="オブジェクト指向をわかりやすく｜プログラミングをしない人の仕事にも効く考え方とたとえ｜MisaNeco Works"><meta property="og:description" content="オブジェクト指向を、プログラミングをしない人向けにやさしく解説。クラスとインスタンス、カプセル化、継承、ポリモーフィズムを日常のたとえと短いコードで説明し、マニュアル・書類・Excel・チーム運営での使い方までまとめました。">
+<link rel="alternate" type="application/rss+xml" title="MisaNeco Works ブログ" href="https://fearless0712.github.io/misaneco-tools/blog/rss.xml"><script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "オブジェクト指向をわかりやすく｜プログラミングをしない人の仕事にも効く考え方とたとえ", "description": "オブジェクト指向を、プログラミングをしない人向けにやさしく解説。クラスとインスタンス、カプセル化、継承、ポリモーフィズムを日常のたとえと短いコードで説明し、マニュアル・書類・Excel・チーム運営での使い方までまとめました。", "datePublished": "2026-10-20", "dateModified": "2026-10-20", "inLanguage": "ja", "mainEntityOfPage": "https://fearless0712.github.io/misaneco-tools/blog/object-shikou-wakariyasuku/", "image": "https://fearless0712.github.io/misaneco-tools/blog/og.png", "author": {"@type": "Organization", "name": "MisaNeco Works", "url": "https://fearless0712.github.io/misaneco-tools/"}, "publisher": {"@type": "Organization", "name": "MisaNeco Works"}}</script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-EWJXRJY9M6"></script><script src="../ga.js?v=202610202128"></script>
+<link rel="stylesheet" href="../blog.css?v=202610202128"></head><body>
+<header><div class="wrap"><a href="../">MisaNeco Works ブログ</a></div></header>
+<main class="wrap"><p class="meta">2026-10-20・仕事術 / プログラミング</p><h1>オブジェクト指向をわかりやすく｜プログラミングをしない人の仕事にも効く考え方とたとえ</h1><p>「オブジェクト指向」という言葉を聞いたことはありますか。プログラミングの本には、かならずと言っていいほど出てきます。でも、説明を読むと「クラス」「継承」「カプセル化」など、むずかしい言葉が並びます。</p>
+<p>じつは、オブジェクト指向は<strong>プログラムだけの話ではありません</strong>。仕事の分け方、書類のひな形、チームの頼み方など、ふだんの仕事にもそのまま使える考え方です。</p>
+<p>この記事では、オブジェクト指向を、プログラミングをしない人にもわかるように説明します。それぞれの考え方に「日常のたとえ」と「ごく短いコード例」を付けました。コードは読み飛ばしても大丈夫です。たとえだけで意味がわかるように書いています。</p>
+<p>会社員の方、個人事業主の方、副業を始めたい方、プログラミングを学び始めた方に向けた内容です。</p>
+<h2>1. オブジェクト指向とは何か</h2>
+<p>ひとことで言うと、<strong>「モノ」を中心に考える方法</strong>です。</p>
+<p>ここでいう「モノ」（オブジェクト）は、次の2つをセットで持っています。</p>
+<ul>
+<li><strong>データ</strong>：そのモノが持っている情報</li>
+<li><strong>ふるまい</strong>：そのモノができること</li>
+</ul>
+<p>たとえば「請求書」というモノを考えてみます。</p>
+<ul>
+<li>データ：宛先、金額、請求日、支払期限</li>
+<li>ふるまい：合計を計算する、印刷する、送る</li>
+</ul>
+<p>オブジェクト指向では、この<strong>データとふるまいを1つにまとめて</strong>あつかいます。</p>
+<p>反対の考え方と比べると、違いがわかりやすくなります。</p>
+<ul>
+<li><strong>手順を中心に考える</strong>：「何を、どの順でやるか」を考える。仕事でいうと、作業手順書を上から順に書くやり方です。</li>
+<li><strong>モノを中心に考える（オブジェクト指向）</strong>：「どんなモノがあって、それぞれ何ができるか」を考える。仕事でいうと、担当や書類ごとに、持つ情報と役目を決めるやり方です。</li>
+</ul>
+<p>どちらが正しい、という話ではありません。手順を順に書くほうがわかりやすい仕事もあります。ただ、関わる人やモノが増えて複雑になるほど、「モノごとに分けて、役目を決める」考え方が役に立ちます。</p>
+<p>Pythonの公式チュートリアルでも、クラス（後で説明します）は「データと機能を組み合わせる方法」と説明されています。「情報」と「できること」をまとめる、という点がいちばん大事なところです。</p>
+<h2>2. クラスとインスタンス：設計図と実物</h2>
+<h3>日常のたとえ</h3>
+<p>クラスとインスタンスは、<strong>設計図と、そこから作った実物</strong>の関係です。</p>
+<ul>
+<li>クラス＝たい焼きの型、家の設計図、請求書のひな形</li>
+<li>インスタンス＝焼き上がった1つ1つのたい焼き、建った家、宛先と金額を入れた1枚の請求書</li>
+</ul>
+<p>型は1つでも、たい焼きはいくつも焼けます。同じ型から焼いても、中身があんこかクリームかは1つずつ違います。</p>
+<p>請求書も同じです。ひな形（クラス）には「宛先」「金額」という<strong>欄</strong>があるだけです。実際の1枚（インスタンス）では、そこに「山田商店」「55,000円」などの<strong>値</strong>が入ります。</p>
+<h3>コード例</h3>
+<pre><code class="language-python">class Invoice:
+    def __init__(self, client, amount):
+        self.client = client
+        self.amount = amount
+    def summary(self):
+        return f&quot;{self.client}様 {self.amount:,}円&quot;
+a = Invoice(&quot;山田商店&quot;, 55000)
+b = Invoice(&quot;佐藤工務店&quot;, 120000)
+print(a.summary())
+print(b.summary())
+</code></pre>
+<p>実行すると、次のように表示されます。</p>
+<pre><code>山田商店様 55,000円
+佐藤工務店様 120,000円
+</code></pre>
+<p>読み方はかんたんです。</p>
+<ul>
+<li><code>class Invoice:</code> で「請求書のひな形」を作っています</li>
+<li><code>__init__</code> は「1枚作るときに、宛先と金額を書き込む」部分です</li>
+<li><code>summary</code> は請求書が「できること」（要約を出す）です</li>
+<li><code>a</code> と <code>b</code> が、ひな形から作った2枚の実物です</li>
+</ul>
+<p>ひな形は1つ。でも、実物は何枚でも作れます。これがクラスとインスタンスです。</p>
+<h2>3. カプセル化：中身を隠して、窓口だけ見せる</h2>
+<h3>日常のたとえ</h3>
+<p>自動販売機を思い浮かべてください。私たちは、お金を入れてボタンを押すだけです。中の冷却装置や、在庫の並び方は知らなくても、飲み物は買えます。</p>
+<p>このように、<strong>中のしくみを隠して、使う人には決まった窓口だけを見せる</strong>ことをカプセル化と呼びます。</p>
+<p>お店の在庫も同じです。倉庫の在庫数を、だれでも自由に書きかえられたら困ります。「出庫したいときは、在庫係に出庫票を出す」と窓口を決めておけば、在庫係がきちんと確かめてから数を減らせます。</p>
+<h3>コード例</h3>
+<pre><code class="language-python">class Stock:
+    def __init__(self, count):
+        self._count = count  # 中身。外から直接さわらない約束
+    def take(self, n):       # 窓口
+        if n &gt; self._count:
+            return &quot;在庫が足りません&quot;
+        self._count -= n
+        return f&quot;残り{self._count}個&quot;
+s = Stock(5)
+print(s.take(3), s.take(9))
+</code></pre>
+<p>実行結果：</p>
+<pre><code>残り2個 在庫が足りません
+</code></pre>
+<p>在庫数（<code>_count</code>）を直接いじるのではなく、<code>take</code>（出す）という窓口を通して減らします。窓口の中で「足りるかどうか」を確かめるので、在庫がマイナスになりません。</p>
+<p>ひとつ注意があります。
+Pythonには、外から絶対にさわれない「完全に隠れた変数」はありません。公式チュートリアルでも、名前の先頭にアンダースコア（<code>_</code>）を付けたものは「外から使わない約束」として扱う、という慣習が説明されています。つまり、カプセル化は「鍵をかける」というより、<strong>「ここは窓口から頼んでね」というルールを決めること</strong>に近いのです。</p>
+<h2>4. 継承：共通の部分を引き継ぐ</h2>
+<h3>日常のたとえ</h3>
+<p>チェーン店を考えてみます。</p>
+<ul>
+<li>全店共通のルール：レジ締めは閉店後30分以内、制服を着る、売上を毎日報告する</li>
+<li>駅前店だけの違い：開店時間が朝7時</li>
+</ul>
+<p>駅前店のマニュアルを、ゼロから全部書く必要はありません。「全店共通のルールに従う。ただし開店時間は7時」と書けば足ります。</p>
+<p>このように、<strong>共通の部分を親から引き継ぎ、違うところだけ書きかえる</strong>のが継承です。親にあたるものを「親クラス」、引き継ぐ側を「子クラス」と呼びます。</p>
+<h3>コード例</h3>
+<pre><code class="language-python">class Shop:
+    def open_time(self):
+        return &quot;10時開店&quot;
+    def rule(self):
+        return &quot;レジ締めは閉店後30分以内&quot;
+class StationShop(Shop):
+    def open_time(self):
+        return &quot;7時開店&quot;
+s = StationShop()
+print(s.open_time(), &quot;/&quot;, s.rule())
+</code></pre>
+<p>実行結果：</p>
+<pre><code>7時開店 / レジ締めは閉店後30分以内
+</code></pre>
+<p><code>StationShop(Shop)</code> は「駅前店は、お店（Shop）の共通ルールを引き継ぐ」という意味です。開店時間だけ書きかえ、レジ締めのルールは書いていません。それでも、親のルールがそのまま使えています。</p>
+<h2>5. ポリモーフィズム：同じ指示で、相手ごとに違う動き</h2>
+<h3>日常のたとえ</h3>
+<p>ポリモーフィズムは「多態性（たたいせい）」とも訳されます。むずかしそうな名前ですが、中身は身近です。</p>
+<p>月末に、上司が全部署へ「月末処理をお願いします」と声をかけたとします。</p>
+<ul>
+<li>経理は、帳簿を締めます</li>
+<li>営業は、来月の売上見込みを報告します</li>
+<li>倉庫は、棚卸しをします</li>
+</ul>
+<p><strong>指示は1つ。でも、受け取った相手によって、やることが違います。</strong>
+上司は、各部署の細かい作業を知らなくてもかまいません。「月末処理」という同じ言葉で頼めば、それぞれが自分の仕事をしてくれます。</p>
+<h3>コード例</h3>
+<pre><code class="language-python">class Accounting:
+    def month_end(self): return &quot;経理：帳簿を締める&quot;
+class Sales:
+    def month_end(self): return &quot;営業：売上の見込みを報告する&quot;
+class Warehouse:
+    def month_end(self): return &quot;倉庫：棚卸しをする&quot;
+for team in [Accounting(), Sales(), Warehouse()]:
+    print(team.month_end())
+</code></pre>
+<p>実行結果：</p>
+<pre><code>経理：帳簿を締める
+営業：売上の見込みを報告する
+倉庫：棚卸しをする
+</code></pre>
+<p>最後の2行がポイントです。「全部署に <code>month_end</code>（月末処理）を頼む」としか書いていません。それでも、部署ごとに違う作業が返ってきます。新しく「総務」という部署が増えても、総務に <code>month_end</code> を用意すれば、頼む側の書き方は変えずにすみます。</p>
+<h2>6. 責任の分担と疎結合：頼み方だけ決めて、やり方は任せる</h2>
+<h3>日常のたとえ</h3>
+<p>「疎結合（そけつごう）」は、<strong>部品どうしのつながりがゆるい</strong>状態のことです。反対に、つながりが強すぎる状態は「密結合」と呼ばれます。</p>
+<p>たとえば、取引先へのお知らせを考えます。</p>
+<ul>
+<li>密結合の頼み方：「Aさん、Gmailを開いて、この宛先に、この件名で、この時間に送って」</li>
+<li>疎結合の頼み方：「この内容を、取引先に届けてください」</li>
+</ul>
+<p>後者なら、メールで送るかチャットで送るかは、担当に任せられます。連絡手段が変わっても、頼む側は何も変えなくてすみます。</p>
+<p>オブジェクト指向では、<strong>それぞれのモノに「自分の役目」を持たせ、ほかのモノとは決めた窓口だけでやりとりする</strong>ようにします。これを「責任の分担」と言います。</p>
+<h3>コード例</h3>
+<pre><code class="language-python">class EmailNotice:
+    def send(self, text): print(&quot;メールで送信:&quot;, text)
+class ChatNotice:
+    def send(self, text): print(&quot;チャットで送信:&quot;, text)
+def remind(notice):  # 頼む側は「send」という窓口しか知らない
+    notice.send(&quot;明日は請求書の締め日です&quot;)
+remind(EmailNotice())
+remind(ChatNotice())
+</code></pre>
+<p>実行結果：</p>
+<pre><code>メールで送信: 明日は請求書の締め日です
+チャットで送信: 明日は請求書の締め日です
+</code></pre>
+<p><code>remind</code>（お知らせする）は、相手がメールかチャットかを知りません。知っているのは「<code>send</code>（送る）と頼めば届けてくれる」ということだけです。これが、頼み方だけ決めて、やり方は任せる、という形です。</p>
+<p>ここまでの5つを表にまとめます。</p>
+<table>
+<thead>
+<tr>
+<th>考え方</th>
+<th>ひとことで</th>
+<th>日常のたとえ</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>クラスとインスタンス</td>
+<td>設計図と実物</td>
+<td>たい焼きの型と、焼けたたい焼き</td>
+</tr>
+<tr>
+<td>カプセル化</td>
+<td>中身を隠して窓口だけ見せる</td>
+<td>自動販売機のボタン</td>
+</tr>
+<tr>
+<td>継承</td>
+<td>共通部分を引き継ぎ、違いだけ書く</td>
+<td>チェーン店の共通ルール＋店ごとの違い</td>
+</tr>
+<tr>
+<td>ポリモーフィズム</td>
+<td>同じ指示で、相手ごとに違う動き</td>
+<td>「月末処理お願い」で各部署が別の作業</td>
+</tr>
+<tr>
+<td>責任の分担・疎結合</td>
+<td>頼み方だけ決めて、やり方は任せる</td>
+<td>「届けて」と頼み、手段は担当に任せる</td>
+</tr>
+</tbody>
+</table>
+<h2>7. 少しだけ歴史</h2>
+<p>オブジェクト指向の考え方は、1960年代のノルウェーで生まれました。</p>
+<p>オスロ大学の紹介ページによると、オーレ＝ヨハン・ダールとクリステン・ニガードが、ノルウェー計算センター（Norsk Regnesentral）で、シミュレーション用のプログラミング言語 <strong>Simula I（1961〜1965年）</strong> と <strong>Simula 67（1965〜1968年）</strong> を作りました。この中で、クラス、サブクラス、継承、実行中にオブジェクトを作ることなど、今のオブジェクト指向につながる考え方が初めて形になったと紹介されています。</p>
+<p>2人は、2001年のACMチューリング賞（コンピューター科学で最も権威のある賞の1つ）を受けています。受賞理由は「Simula I と Simula 67 の設計を通じた、オブジェクト指向プログラミングの誕生に欠かせないアイデア」です。</p>
+<p>「オブジェクト指向プログラミング」という言葉そのものは、アメリカの計算機科学者<strong>アラン・ケイ</strong>が使い始めたとされます。ケイ本人が2003年7月23日に送ったメールでは、ユタ大学にいた1966年11月以降に、Simulaなどに影響を受けてプログラムのしくみを考え、「たぶん1967年に、何をしているのかと聞かれて『オブジェクト指向プログラミングだ』と答えた」と書いています。</p>
+<p>同じメールで、ケイは当初の考えを次のように説明しています。</p>
+<blockquote>
+<p>I thought of objects being like biological cells and/or individual computers on a network, only able to communicate with messages</p>
+<p>（オブジェクトは、生き物の細胞や、ネットワーク上の1台1台のコンピューターのようなもので、メッセージでしかやりとりできないものだと考えた）</p>
+</blockquote>
+<p>細胞は、中のしくみを外に見せず、信号のやりとりだけでほかの細胞と協力します。これは、この記事で説明した「カプセル化」や「疎結合」とよく似たイメージです。</p>
+<p>ケイは、ゼロックス社のパロアルト研究所（Xerox PARC）で、プログラミング言語 <strong>Smalltalk（スモールトーク）</strong> を開発したチームを率いました。ケイ自身の論文「The Early History of Smalltalk」では、最初の本格的なSmalltalkは1972年ごろのSmalltalk-72で、一般向けに公開されたのはSmalltalk-80（1983年に公式公開）とされています。ケイは2003年のACMチューリング賞を受けています。</p>
+<p>ちなみに、同じメールでケイは「Simulaの継承のしかたは好きではなかったので、よくわかるまで継承は組み込みの機能から外した」とも書いています。オブジェクト指向の生みの親の1人でさえ、継承には慎重だったのです。この点は、後の「やりすぎの注意」ともつながります。</p>
+<h2>8. エンジニア以外の仕事で役立つ場面</h2>
+<p>ここからが本題です。オブジェクト指向の考え方は、プログラムを書かない仕事でも使えます。以下はすべて「たとえば〜の場合」という仮の例です。</p>
+<h3>8-1. 業務マニュアル・役割分担（カプセル化）</h3>
+<p>たとえば、経費精算のやり方が人によってバラバラな職場を考えます。「経理の田中さんに直接LINEする人」「共有フォルダに置く人」「紙で渡す人」がいると、経理の担当は大変です。</p>
+<p>そこで、<strong>窓口を1つに決めます</strong>。</p>
+<ul>
+<li>経費の申請は「経費申請フォーム」だけで受け付ける</li>
+<li>フォームの先で、だれが確認し、どう記帳するかは経理の中で決める</li>
+</ul>
+<p>申請する人は、フォームの使い方だけ知っていれば十分です。経理は、中のやり方を変えても、申請する人に影響を出さずにすみます。これがカプセル化の考え方です。</p>
+<h3>8-2. テンプレート書類（クラスとインスタンス）</h3>
+<p>見積書・請求書・議事録などのひな形は、そのままクラスです。</p>
+<ul>
+<li>ひな形（クラス）：宛先、日付、品目、金額などの「欄」を決める</li>
+<li>毎回の書類（インスタンス）：その欄に、今回の値を入れる</li>
+</ul>
+<p>ひな形をきちんと作っておくと、だれが作っても同じ項目がそろいます。「欄を足したい」ときは、ひな形を1か所直せば、次からの書類すべてに反映されます。</p>
+<h3>8-3. チェックリスト・店舗の共通ルール（継承）</h3>
+<p>たとえば、3店舗あるお店の開店チェックリストです。</p>
+<table>
+<thead>
+<tr>
+<th>項目</th>
+<th>全店共通（親）</th>
+<th>A店（子）</th>
+<th>B店（子）</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>レジのつり銭確認</td>
+<td>あり</td>
+<td>引き継ぐ</td>
+<td>引き継ぐ</td>
+</tr>
+<tr>
+<td>店内の清掃</td>
+<td>あり</td>
+<td>引き継ぐ</td>
+<td>引き継ぐ</td>
+</tr>
+<tr>
+<td>開店時間</td>
+<td>10時</td>
+<td>7時に変更</td>
+<td>引き継ぐ</td>
+</tr>
+<tr>
+<td>駐車場の確認</td>
+<td>なし</td>
+<td>なし</td>
+<td>追加する</td>
+</tr>
+</tbody>
+</table>
+<p>全店共通のリストを1つ持ち、店ごとには<strong>違うところだけ</strong>書きます。共通ルールが変わったときは、親の1か所を直せば全店にいきわたります。店ごとに全部を書き写していると、1店だけ直し忘れる、ということが起きやすくなります。</p>
+<h3>8-4. 「月末処理をお願い」で各部署が動く（ポリモーフィズム）</h3>
+<p>5章の例のとおりです。仕事の頼み方で言えば、<strong>指示する側は「何をしてほしいか」だけを言い、「どうやるか」は各担当に任せる</strong>ということです。</p>
+<p>たとえば、次のような頼み方がこれにあたります。</p>
+<ul>
+<li>「今週の進捗を報告してください」→ 営業は商談数、制作は作業の進み具合、経理は入金状況を出す</li>
+<li>「年末の大掃除をお願いします」→ 部署ごとに掃除する場所と方法が違う</li>
+</ul>
+<p>全員に同じ言葉で頼めるので、指示がシンプルになります。新しい部署やメンバーが増えても、「その人の報告のしかた」を決めるだけですみます。</p>
+<h3>8-5. Excelの表の設計（1行＝1つのモノ）</h3>
+<p>Excelやスプレッドシートの表も、オブジェクト指向と相性がよいです。コツは、<strong>1行を「1つのモノ」、列を「そのモノが持つ情報（属性）」にする</strong>ことです。</p>
+<table>
+<thead>
+<tr>
+<th>顧客ID</th>
+<th>会社名</th>
+<th>担当者</th>
+<th>電話</th>
+<th>最終連絡日</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>C001</td>
+<td>山田商店</td>
+<td>山田</td>
+<td>03-0000-0000</td>
+<td>2026-10-01</td>
+</tr>
+<tr>
+<td>C002</td>
+<td>佐藤工務店</td>
+<td>佐藤</td>
+<td>06-0000-0000</td>
+<td>2026-09-15</td>
+</tr>
+</tbody>
+</table>
+<p>（表の中身は説明のための架空の例です）</p>
+<ul>
+<li>1行＝1社の顧客（インスタンス）</li>
+<li>列の見出し＝「顧客」というクラスが持つ欄</li>
+</ul>
+<p>よくある失敗は、1行に2つのモノを混ぜることです。たとえば「顧客」と「その顧客の注文」を同じ行に入れると、注文が増えるたびに列が右へ伸びていきます。こういうときは、「顧客」の表と「注文」の表に分けて、注文の表に顧客IDの列を持たせます。モノが違えば表を分ける。これだけで、集計や並べかえがぐっと楽になります。</p>
+<h3>8-6. チーム運営・引き継ぎ</h3>
+<p>仕事を引き継ぐとき、「この仕事は何を持っていて、何ができるのか」を書くと、もれが減ります。</p>
+<p>たとえば「請求業務」を引き継ぐ場合、次のように書き出せます。</p>
+<ul>
+<li>持っている情報：取引先一覧、単価表、過去の請求書、締め日</li>
+<li>できること（役目）：毎月の請求書を作る、送る、入金を確かめる</li>
+<li>窓口：だれから依頼が来て、だれに結果を渡すか</li>
+</ul>
+<p>これは、1つの仕事を「オブジェクト」として説明しているのと同じです。後任の人は、まず窓口と役目をつかめば、中の細かい手順は少しずつ覚えればよくなります。</p>
+<h3>8-7. 外注の頼み方</h3>
+<p>外注先に仕事を頼むときも、疎結合の考え方が使えます。</p>
+<ul>
+<li><strong>決めること</strong>：何を、いつまでに、どんな形で納品してほしいか（窓口）</li>
+<li><strong>任せること</strong>：どのソフトを使うか、どんな順番で作業するか（中のやり方）</li>
+</ul>
+<p>やり方まで細かく決めすぎると、外注先の得意な方法が使えません。反対に、納品の形を決めておかないと、受け取ったあとに手直しが必要になります。「入口と出口は決める。中は任せる」が、ちょうどよいバランスです。</p>
+<h3>8-8. 家事の分担</h3>
+<p>家の中でも同じです。</p>
+<ul>
+<li>「洗濯」という役目を1人に任せる（責任の分担）</li>
+<li>「洗濯物はこのかごに入れる」と窓口を決める（カプセル化）</li>
+<li>干し方やたたみ方は、担当のやり方に任せる（疎結合）</li>
+</ul>
+<p>「洗濯物はかごに入れる」というルールだけ守れば、ほかの家族は洗濯の手順を知らなくても困りません。担当が変わっても、かごのルールが同じなら、家の中は混乱しません。</p>
+<h2>9. やりすぎの注意</h2>
+<p>便利な考え方ですが、使いすぎると逆に複雑になります。</p>
+<h3>細かく分けすぎない</h3>
+<p>窓口や担当を細かく分けすぎると、「この件はだれに頼めばいいの？」が増えます。たとえば、5人のチームで役割を15個に分けても、1人が3役を持つだけで、かえって混乱します。
+<strong>分ける目安は「その分け方で、頼み方がシンプルになるか」</strong>です。シンプルにならないなら、まとめたままでかまいません。</p>
+<h3>継承を深くしすぎない</h3>
+<p>「全社共通 → 地域共通 → 県共通 → 市共通 → 店舗」のように、親子の段を重ねすぎると、「このルールはどこで決まったのか」をさかのぼるのが大変になります。
+7章で紹介したとおり、アラン・ケイも継承には慎重でした。段は浅く、2〜3段くらいまでにとどめると、見通しがよくなります。共通にしたいものが少しだけなら、親子にせず、「共通の部品（チェックリストの一部など）を、必要なところで使う」という方法もあります。</p>
+<h3>最初から完ぺきな設計を目指さない</h3>
+<p>使いながら「ここは分けたほうがいい」「ここはまとめていい」とわかることも多いです。最初はざっくり分けて、困ったところから直していくほうが、結果的にうまくいきます。</p>
+<h2>10. よくある誤解</h2>
+<table>
+<thead>
+<tr>
+<th>誤解</th>
+<th>実際は</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>オブジェクト指向はプログラマーだけのもの</td>
+<td>仕事の分け方・書類・表の作り方にも使える考え方</td>
+</tr>
+<tr>
+<td>継承をたくさん使うほど上級者</td>
+<td>継承は便利だが、深くしすぎると読みにくい。使いどころを選ぶ</td>
+</tr>
+<tr>
+<td>カプセル化は「情報を隠して秘密にする」こと</td>
+<td>目的は秘密ではなく、「窓口を決めて、まちがった使い方を防ぐ」こと</td>
+</tr>
+<tr>
+<td>オブジェクト指向なら必ずよいものができる</td>
+<td>道具の1つ。手順を順に書くほうがわかりやすい場面もある</td>
+</tr>
+<tr>
+<td>「オブジェクト」は物理的なモノだけ</td>
+<td>「請求業務」「予約」「注文」のような、形のないものもオブジェクトにできる</td>
+</tr>
+</tbody>
+</table>
+<h2>11. まとめ</h2>
+<ul>
+<li>オブジェクト指向は、<strong>データ（情報）とふるまい（できること）をまとめた「モノ」を中心に考える方法</strong></li>
+<li>クラスは設計図、インスタンスは実物（ひな形と、毎回の書類）</li>
+<li>カプセル化は、中身を隠して窓口だけ見せること（自動販売機、申請フォーム）</li>
+<li>継承は、共通部分を引き継いで違いだけ書くこと（チェーン店の共通ルール）</li>
+<li>ポリモーフィズムは、同じ指示で相手ごとに違う動きをすること（「月末処理お願い」）</li>
+<li>疎結合は、頼み方だけ決めて、やり方は任せること（外注の頼み方）</li>
+<li>分けすぎ、継承の重ねすぎには注意</li>
+</ul>
+<h2>12. 今日からできる練習</h2>
+<p>最後に、プログラミングをしなくてもできる練習を3つ紹介します。</p>
+<h3>練習1：身の回りの仕事を「モノ・持っている情報・できること」に分ける</h3>
+<p>紙かメモアプリに、「モノ｜持っている情報｜できること」の3つを書き出します。</p>
+<ul>
+<li>請求書｜持っている情報：宛先、金額、期限｜できること：計算する、送る</li>
+<li>顧客｜持っている情報：会社名、担当者、連絡先｜できること：問い合わせる、注文する</li>
+<li>在庫｜持っている情報：品名、数、置き場所｜できること：入庫する、出庫する</li>
+</ul>
+<p>自分の仕事から、モノを3つ選んで書いてみてください。書いてみると、「この情報はどのモノが持つべきか」がはっきりします。</p>
+<h3>練習2：窓口を1つ決める</h3>
+<p>「いつもバラバラの方法で頼まれる仕事」を1つ選びます。その仕事の受付方法を、フォーム・決まったメールアドレス・決まったチャットのどれか1つにしてみましょう。これがカプセル化の第一歩です。</p>
+<h3>練習3：共通ルールと違いを分けて書く</h3>
+<p>似た作業が複数あるとき（店舗ごと、取引先ごと、季節ごとなど）、「全部に共通すること」と「それぞれの違い」を分けて書き出します。共通部分を1か所にまとめるだけで、直し忘れが減ります。</p>
+<p>プログラミングを学ぶ予定がある方は、この練習で作った表を、そのままクラスの設計に使えます。「モノ」がクラス、「持っている情報」がデータ、「できること」がメソッド（ふるまい）です。</p>
+<h2>参考にした資料</h2>
+<ul>
+<li>Ole-Johan Dahl（1931-2002）, University of Oslo, Department of Informatics. https://www.mn.uio.no/ifi/english/about/ole-johan-dahl/index.html</li>
+<li>Kristen Nygaard（ACM A.M. Turing Award 2001）, Heidelberg Laureate Forum. https://www.heidelberg-laureate-forum.org/laureate/kristen-nygaard/</li>
+<li>Alan Kay（ACM A.M. Turing Award 2003）, Heidelberg Laureate Forum. https://www.heidelberg-laureate-forum.org/laureate/alan-kay/</li>
+<li>Dr. Alan Kay on the Meaning of "Object-Oriented Programming"（2003年7月23日のメール）, Stefan Ram（Freie Universität Berlin のページ）. http://userpage.fu-berlin.de/~ram/pub/pub_jf47ht81Ht/doc_kay_oop_en</li>
+<li>Alan C. Kay, "The Early History of Smalltalk", ACM SIGPLAN Notices, Vol. 28, No. 3, 1993. 公開版：https://worrydream.com/EarlyHistoryOfSmalltalk/</li>
+<li>Alan C. Kay, IEEE Computer Society. https://history.computer.org/pioneers/kay.html</li>
+<li>
+<ol start="9">
+<li>クラス, Python チュートリアル, Python Software Foundation. https://docs.python.org/ja/3/tutorial/classes.html</li>
+</ol>
+</li>
+</ul>
+<p>※この記事はAIを活用して作成しています。コード例は Python 3 で実行し、記事中の出力と一致することを確認しています。</p><div class="rel"><b>関連記事</b><a href="../comfort-zone/">コンフォートゾーンとは？意味・言葉の由来と、無理のない広げ方をやさしく解説</a><br></div></main>
+<footer class="wrap">© MisaNeco Works ・ <a href="../">ブログ一覧</a> ・ <a href="../../">無料ツール</a> ・ <a href="../en/">English articles</a><br>記事はAIを活用して作成し、公式の情報で確認しています。広告を含む記事には冒頭に表示しています。読まれた記事を知るため、Googleアナリティクスで閲覧数などを匿名で集計しています（名前や連絡先は集めません）。</footer>
+</body></html>

@@ -3,8 +3,8 @@
 <title>Build a weekly staff shift schedule in Google Sheets (hours per person, gaps highlighted) | MisaNeco Works</title><meta name="description" content="A weekly rota with shift codes, automatic hours per person, red cells when a shift is short of staff, and a view-only link for your team. Formulas also work in Excel.">
 <link rel="canonical" href="https://fearless0712.github.io/misaneco-tools/blog/en-staff-shift-schedule-google-sheets/"><meta property="og:type" content="article"><meta property="og:url" content="https://fearless0712.github.io/misaneco-tools/blog/en-staff-shift-schedule-google-sheets/"><meta property="og:image" content="https://fearless0712.github.io/misaneco-tools/blog/og.png"><meta name="twitter:card" content="summary_large_image"><meta property="og:title" content="Build a weekly staff shift schedule in Google Sheets (hours per person, gaps highlighted) | MisaNeco Works"><meta property="og:description" content="A weekly rota with shift codes, automatic hours per person, red cells when a shift is short of staff, and a view-only link for your team. Formulas also work in Excel.">
 <link rel="alternate" type="application/rss+xml" title="MisaNeco Works Blog" href="https://fearless0712.github.io/misaneco-tools/blog/en/rss.xml"><script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "Build a weekly staff shift schedule in Google Sheets (hours per person, gaps highlighted)", "description": "A weekly rota with shift codes, automatic hours per person, red cells when a shift is short of staff, and a view-only link for your team. Formulas also work in Excel.", "datePublished": "2026-10-20", "dateModified": "2026-10-20", "inLanguage": "en", "mainEntityOfPage": "https://fearless0712.github.io/misaneco-tools/blog/en-staff-shift-schedule-google-sheets/", "image": "https://fearless0712.github.io/misaneco-tools/blog/og.png", "author": {"@type": "Organization", "name": "MisaNeco Works", "url": "https://fearless0712.github.io/misaneco-tools/"}, "publisher": {"@type": "Organization", "name": "MisaNeco Works"}}</script>
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-EWJXRJY9M6"></script><script src="../ga.js?v=202610201846"></script>
-<link rel="stylesheet" href="../blog.css?v=202610201846"></head><body>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-EWJXRJY9M6"></script><script src="../ga.js?v=202610202128"></script>
+<link rel="stylesheet" href="../blog.css?v=202610202128"></head><body>
 <header><div class="wrap"><a href="../en/">MisaNeco Works Blog</a></div></header>
 <main class="wrap"><p class="meta">2026-10-20・Automation / Small business / Excel</p><h1>Build a weekly staff shift schedule in Google Sheets (hours per person, gaps highlighted)</h1><p>If you have a small team, the weekly rota often lives on a whiteboard, a paper sheet on the wall, or a group chat. Then someone swaps a shift, someone else misses the message, and Saturday morning is short of people.</p>
 <p>A shared Google Sheet fixes most of this. Everyone sees the same version, hours add up by themselves, and gaps turn red before they become a problem. This guide uses Google Sheets, but the formulas also work in Excel. It takes about 20 minutes to set up, and then you copy it each week.</p>
@@ -47,7 +47,8 @@
 </ul>
 <p>Format columns B and C as times. In Google Sheets, use <strong>Format &gt; Number &gt; Time</strong>. In Excel, use the number format box on the Home tab.</p>
 <p>In E2, paste this formula and copy it down:</p>
-<p><code>=MOD(C2-B2,1)*24-D2/60</code></p>
+<pre><code>=MOD(C2-B2,1)*24-D2/60
+</code></pre>
 <p>Times in a spreadsheet are fractions of a day, so multiplying by 24 turns them into hours. MOD(..., 1) handles shifts that cross midnight, such as 22:00 to 06:00. The break is then taken off. For OFF, the result is 0.</p>
 <p>If the Hours column shows a time instead of a number, change its format to a plain number.</p>
 <h2>Step 2. Build the weekly grid</h2>
@@ -69,7 +70,8 @@
 <p>Now each person's week is just a row of codes, like E, E, OFF, L, L, OFF, OFF.</p>
 <h2>Step 3. Add up hours per person</h2>
 <p>In I4, paste:</p>
-<p><code>=SUMPRODUCT(COUNTIF(B4:H4,Codes!$A$2:$A$10),Codes!$E$2:$E$10)</code></p>
+<pre><code>=SUMPRODUCT(COUNTIF(B4:H4,Codes!$A$2:$A$10),Codes!$E$2:$E$10)
+</code></pre>
 <p>How it works: COUNTIF counts how many times each code appears in this person's row. SUMPRODUCT multiplies each count by that shift's hours and adds them up. Two Earlies and two Lates at 7.5 hours each gives 30.</p>
 <p>Copy it down to I11. When you change a code in the grid, the hours update straight away.</p>
 <p>For a team total, put <code>=SUM(I4:I11)</code> in I12.</p>
@@ -89,12 +91,14 @@
 <li>Open <strong>Format &gt; Conditional formatting</strong>.</li>
 <li>Under "Format cells if", choose <strong>Custom formula is</strong> and paste:</li>
 </ol>
-<p><code>=B13&lt;$I13</code></p>
+<pre><code>=B13&lt;$I13
+</code></pre>
 <ol start="4">
 <li>Pick a red fill and click <strong>Done</strong>.</li>
 <li>Add another rule on the same range with this formula and an amber fill:</li>
 </ol>
-<p><code>=B13&gt;$I13</code></p>
+<pre><code>=B13&gt;$I13
+</code></pre>
 <p><strong>Excel:</strong> select B13:H14, choose <strong>Home &gt; Conditional Formatting &gt; New Rule</strong>, then <strong>Use a formula to determine which cells to format</strong>, and add the same two rules.</p>
 <p>Red means a shift is short. Amber means more people than planned, which might be fine for a busy day, or might be a mistake worth checking.</p>
 <p>The <code>$I13</code> keeps each rule pointing at the "needed" number in column I, on the same row it is checking.</p>

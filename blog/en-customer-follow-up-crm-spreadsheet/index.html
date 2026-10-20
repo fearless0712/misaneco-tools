@@ -3,8 +3,8 @@
 <title>A simple customer follow-up sheet (CRM-lite) for small service businesses | MisaNeco Works</title><meta name="description" content="Track last contact and next action for every customer, see who is due today, spot customers who have gone quiet, and count your pipeline with COUNTIFS. Works in Excel and Google Sheets.">
 <link rel="canonical" href="https://fearless0712.github.io/misaneco-tools/blog/en-customer-follow-up-crm-spreadsheet/"><meta property="og:type" content="article"><meta property="og:url" content="https://fearless0712.github.io/misaneco-tools/blog/en-customer-follow-up-crm-spreadsheet/"><meta property="og:image" content="https://fearless0712.github.io/misaneco-tools/blog/og.png"><meta name="twitter:card" content="summary_large_image"><meta property="og:title" content="A simple customer follow-up sheet (CRM-lite) for small service businesses | MisaNeco Works"><meta property="og:description" content="Track last contact and next action for every customer, see who is due today, spot customers who have gone quiet, and count your pipeline with COUNTIFS. Works in Excel and Google Sheets.">
 <link rel="alternate" type="application/rss+xml" title="MisaNeco Works Blog" href="https://fearless0712.github.io/misaneco-tools/blog/en/rss.xml"><script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "A simple customer follow-up sheet (CRM-lite) for small service businesses", "description": "Track last contact and next action for every customer, see who is due today, spot customers who have gone quiet, and count your pipeline with COUNTIFS. Works in Excel and Google Sheets.", "datePublished": "2026-10-20", "dateModified": "2026-10-20", "inLanguage": "en", "mainEntityOfPage": "https://fearless0712.github.io/misaneco-tools/blog/en-customer-follow-up-crm-spreadsheet/", "image": "https://fearless0712.github.io/misaneco-tools/blog/og.png", "author": {"@type": "Organization", "name": "MisaNeco Works", "url": "https://fearless0712.github.io/misaneco-tools/"}, "publisher": {"@type": "Organization", "name": "MisaNeco Works"}}</script>
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-EWJXRJY9M6"></script><script src="../ga.js?v=202610201846"></script>
-<link rel="stylesheet" href="../blog.css?v=202610201846"></head><body>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-EWJXRJY9M6"></script><script src="../ga.js?v=202610202128"></script>
+<link rel="stylesheet" href="../blog.css?v=202610202128"></head><body>
 <header><div class="wrap"><a href="../en/">MisaNeco Works Blog</a></div></header>
 <main class="wrap"><p class="meta">2026-10-20・Automation / Small business / Excel</p><h1>A simple customer follow-up sheet (CRM-lite) for small service businesses</h1><p>For a small service business, most new work comes from people you already know: past customers, referrals, and enquiries that were "not right now". The problem is remembering to get back in touch.</p>
 <p>A full CRM can feel like too much. Many small businesses only need one thing from it: a list that says who to contact today, and why. A spreadsheet does that well.</p>
@@ -72,7 +72,8 @@
 </ul>
 <h2>Step 3. Flag what is due</h2>
 <p>In H2 (Due), paste:</p>
-<p><code>=IF(OR(G2="",D2="Inactive"),"",IF(G2&lt;TODAY(),"Overdue",IF(G2=TODAY(),"Today","")))</code></p>
+<pre><code>=IF(OR(G2=&quot;&quot;,D2=&quot;Inactive&quot;),&quot;&quot;,IF(G2&lt;TODAY(),&quot;Overdue&quot;,IF(G2=TODAY(),&quot;Today&quot;,&quot;&quot;)))
+</code></pre>
 <p>What it does:</p>
 <ol>
 <li>Shows nothing if there is no next action date, or the contact is Inactive.</li>
@@ -80,19 +81,22 @@
 <li>Shows <strong>Today</strong> if the date is today.</li>
 </ol>
 <p>In I2 (Days since contact), paste:</p>
-<p><code>=IF(E2="","",TODAY()-E2)</code></p>
+<pre><code>=IF(E2=&quot;&quot;,&quot;&quot;,TODAY()-E2)
+</code></pre>
 <p>If it shows a date instead of a number, change column I to a plain number format.</p>
 <p>Copy both formulas down. TODAY() updates on its own, so the flags move forward each day without you touching them.</p>
 <h2>Step 4. Make a "due today" view</h2>
 <p><strong>Both apps:</strong> turn on a filter. In Google Sheets, choose <strong>Data &gt; Create a filter</strong>. In Excel, select the header row and choose <strong>Data &gt; Filter</strong>. Click the arrow on <strong>Due</strong> and tick only <strong>Today</strong> and <strong>Overdue</strong>. Sort by <strong>Next action date</strong>, oldest first.</p>
 <p><strong>Google Sheets only:</strong> for a separate list that updates by itself, create a new tab called <strong>Today</strong> and put this in A2:</p>
-<p><code>=SORT(FILTER(Contacts!A2:J1000,Contacts!G2:G1000&lt;&gt;"",Contacts!G2:G1000&lt;=TODAY(),Contacts!D2:D1000&lt;&gt;"Inactive"),7,TRUE)</code></p>
+<pre><code>=SORT(FILTER(Contacts!A2:J1000,Contacts!G2:G1000&lt;&gt;&quot;&quot;,Contacts!G2:G1000&lt;=TODAY(),Contacts!D2:D1000&lt;&gt;&quot;Inactive&quot;),7,TRUE)
+</code></pre>
 <p>Copy the headers from the Contacts tab into row 1. FILTER keeps rows where every condition is true, and SORT puts them in order of the seventh column (Next action date), oldest first. If nothing is due, the cell shows an error saying no matches were found. That just means a clear day.</p>
 <p>Excel 365 also has FILTER and SORT, but the arguments work differently, so this guide sticks to the normal filter for Excel.</p>
 <h2>Step 5. Spot customers who have gone quiet</h2>
 <p>Past customers are often the easiest work to win back. Colour the ones you have not spoken to in a while.</p>
 <p><strong>Google Sheets:</strong> select A2:J1000, open <strong>Format &gt; Conditional formatting</strong>, choose <strong>Custom formula is</strong>, and paste:</p>
-<p><code>=AND($D2="Customer",$E2&lt;&gt;"",TODAY()-$E2&gt;90)</code></p>
+<pre><code>=AND($D2=&quot;Customer&quot;,$E2&lt;&gt;&quot;&quot;,TODAY()-$E2&gt;90)
+</code></pre>
 <p><strong>Excel:</strong> select A2:J1000, choose <strong>Home &gt; Conditional Formatting &gt; New Rule</strong>, then <strong>Use a formula to determine which cells to format</strong>, and paste the same formula.</p>
 <p>Give it a soft yellow fill. Change 90 to whatever gap makes sense for your service. A window cleaner might use 60 days, a boiler service business might use a year.</p>
 <p>You can add a second rule for due actions, for example <code>=$H2="Overdue"</code> with a light red fill.</p>
