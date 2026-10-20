@@ -1,0 +1,254 @@
+<!doctype html><html lang="ja"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'self'; img-src 'self' data: https://*.a8.net https://*.google-analytics.com https://*.googletagmanager.com; script-src 'self' https://www.googletagmanager.com; connect-src https://*.google-analytics.com https://*.analytics.google.com https://*.googletagmanager.com; base-uri 'none'; form-action 'none'; object-src 'none'">
+<title>個人事業主の売上と経費をExcelで管理する最低限の列｜確定申告で困らない付け方｜MisaNeco Works</title><meta name="description" content="売上と経費をExcelでつけるとき、最低限ほしい列は何か。国税庁の案内にある帳簿の記載事項と保存期間をもとに、確定申告のときに困らない列の作り方と付け方のルールをまとめました。">
+<link rel="canonical" href="https://fearless0712.github.io/misaneco-tools/blog/kojin-jigyo-uriage-keihi-excel-kanri/"><meta property="og:type" content="article"><meta property="og:url" content="https://fearless0712.github.io/misaneco-tools/blog/kojin-jigyo-uriage-keihi-excel-kanri/"><meta property="og:image" content="https://fearless0712.github.io/misaneco-tools/blog/og.png"><meta name="twitter:card" content="summary_large_image"><meta property="og:title" content="個人事業主の売上と経費をExcelで管理する最低限の列｜確定申告で困らない付け方｜MisaNeco Works"><meta property="og:description" content="売上と経費をExcelでつけるとき、最低限ほしい列は何か。国税庁の案内にある帳簿の記載事項と保存期間をもとに、確定申告のときに困らない列の作り方と付け方のルールをまとめました。">
+<link rel="alternate" type="application/rss+xml" title="MisaNeco Works ブログ" href="https://fearless0712.github.io/misaneco-tools/blog/rss.xml"><script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "個人事業主の売上と経費をExcelで管理する最低限の列｜確定申告で困らない付け方", "description": "売上と経費をExcelでつけるとき、最低限ほしい列は何か。国税庁の案内にある帳簿の記載事項と保存期間をもとに、確定申告のときに困らない列の作り方と付け方のルールをまとめました。", "datePublished": "2026-10-21", "dateModified": "2026-10-21", "inLanguage": "ja", "mainEntityOfPage": "https://fearless0712.github.io/misaneco-tools/blog/kojin-jigyo-uriage-keihi-excel-kanri/", "image": "https://fearless0712.github.io/misaneco-tools/blog/og.png", "author": {"@type": "Organization", "name": "MisaNeco Works", "url": "https://fearless0712.github.io/misaneco-tools/"}, "publisher": {"@type": "Organization", "name": "MisaNeco Works"}}</script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-EWJXRJY9M6"></script><script src="../ga.js?v=202610202316"></script>
+<link rel="stylesheet" href="../blog.css?v=202610202316"><link rel="stylesheet" href="../../assets/ads-inter.css?v=202610202300"></head><body>
+<header><div class="wrap"><a href="../">MisaNeco Works ブログ</a></div></header>
+<main class="wrap"><p class="meta">2026-10-21・フリーランス / 確定申告</p><h1>個人事業主の売上と経費をExcelで管理する最低限の列｜確定申告で困らない付け方</h1><p class="pr">この記事には広告（アフィリエイトリンク）を含みます。</p><p>個人事業主が売上と経費をExcelでつけるなら、<strong>最低限の列は「日付・取引先・内容・金額・区分（科目）」の5つ</strong>です。国税庁の案内では、帳簿には<strong>取引の年月日、相手方の名前、金額</strong>などを書くことになっています。これに「何の取引か」と「どの科目か」を足すと、確定申告のときに集計しやすくなります。</p>
+<p>この記事では、次のことをまとめます。</p>
+<ul>
+<li>最低限の5列と、あると助かる列</li>
+<li>確定申告で困らないための付け方のルール</li>
+<li>保存のこと（帳簿・領収書・メールで受け取った請求書）</li>
+</ul>
+<p>税金の扱いは、人によって違います。制度の細かいところは、<strong>国税庁の案内で確認</strong>してください。</p>
+<h2>1. 国税庁の案内で「帳簿に書くこと」を確認する</h2>
+<p>まず、もとになるルールを見ます。</p>
+<p>国税庁のタックスアンサー「No.2080 白色申告者の記帳・帳簿等保存制度」では、事業所得などがある人は、売上などの収入や、仕入れ・経費について、次のようなことを帳簿に書くとしています。</p>
+<ul>
+<li>取引の年月日</li>
+<li>売上先・仕入先などの相手方の名前</li>
+<li>金額</li>
+<li>日々の売上げ・仕入れ・経費の金額</li>
+</ul>
+<p>また、同じページでは、取引を1件ずつ書かずに<strong>日々の合計金額をまとめて書く</strong>など、簡単な方法でもよいとしています。そのうえで、所得金額を正しく計算できるように、帳簿は<strong>整然と、はっきり</strong>書く必要があるとしています。</p>
+<p>青色申告の人は、ルールが少し違います。国税庁のタックスアンサー「No.2070 青色申告制度」では、原則として、貸借対照表と損益計算書を作れる正式な簿記（一般に複式簿記）で記録するとしています。簡単な方法として、現金出納帳・売掛帳・買掛帳・経費帳・固定資産台帳などをそろえる方法も認められています。</p>
+<p>この記事の表は、<strong>白色申告の人や、青色申告でも会計ソフトに入れる前の「下書き」として使う人</strong>を想定しています。青色申告で控除を受けたい人は、必要な帳簿の形を国税庁の案内で確認してください。</p>
+<h2>2. 最低限の5列</h2>
+<p>1行に1つの取引を書きます。
+1行目には見出しを入れます。</p>
+<table>
+<thead>
+<tr>
+<th>列</th>
+<th>見出し</th>
+<th>入れるもの（例）</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>A</td>
+<td>日付</td>
+<td>2026/10/05</td>
+</tr>
+<tr>
+<td>B</td>
+<td>取引先</td>
+<td>〇〇商店</td>
+</tr>
+<tr>
+<td>C</td>
+<td>内容</td>
+<td>ロゴ制作</td>
+</tr>
+<tr>
+<td>D</td>
+<td>金額</td>
+<td>55000</td>
+</tr>
+<tr>
+<td>E</td>
+<td>区分</td>
+<td>売上</td>
+</tr>
+</tbody>
+</table>
+<p><strong>A 日付</strong>
+取引をした日です。Excelの日付として入れます（<code>2026/10/5</code> のように入力）。文字の「10月5日」で入れると、あとで月ごとに集計しにくくなります。</p>
+<p><strong>B 取引先</strong>
+相手の名前です。お店の名前や、仕事をくれた会社の名前を書きます。同じ相手は、<strong>いつも同じ書き方</strong>にします。「(株)〇〇」と「株式会社〇〇」が混ざると、相手ごとの合計が分かれてしまいます。</p>
+<p><strong>C 内容</strong>
+何の取引かを短く書きます。「ロゴ制作」「プリンターのインク」「打ち合わせの電車代」などです。半年後に見て、自分で思い出せる言葉にします。</p>
+<p><strong>D 金額</strong>
+数字だけを入れます。「円」は書きません。売上も経費も、プラスの数字で入れて、E列で区別するとわかりやすいです。</p>
+<p><strong>E 区分</strong>
+「売上」か、経費の科目名を入れます。経費の科目は、確定申告の書類の項目に合わせておくと、あとで写すだけになります。</p>
+<p>国税庁の「収支内訳書（一般用）の書き方」には、経費の科目ごとの説明があります。たとえば、次のような分け方です。</p>
+<table>
+<thead>
+<tr>
+<th>科目</th>
+<th>国税庁の説明にある例</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>旅費交通費</td>
+<td>電車賃、バス代、タクシー代、宿泊代</td>
+</tr>
+<tr>
+<td>通信費</td>
+<td>電話料、切手代</td>
+</tr>
+<tr>
+<td>水道光熱費</td>
+<td>水道料、電気料、ガス代</td>
+</tr>
+<tr>
+<td>荷造運賃</td>
+<td>商品の包装材料費、運賃</td>
+</tr>
+<tr>
+<td>租税公課</td>
+<td>事業税、固定資産税、印紙税など</td>
+</tr>
+</tbody>
+</table>
+<p>どの科目にするか迷うものは、国税庁の書き方の説明を見て決めます。
+<strong>一度決めたら、同じものは毎回同じ科目に</strong>します。</p>
+<h2>3. あると助かる列</h2>
+<p>最低限の5列に、次の列を足すと、確定申告のときに困りにくくなります。</p>
+<table>
+<thead>
+<tr>
+<th>列</th>
+<th>見出し</th>
+<th>入れるもの</th>
+<th>何に役立つか</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>F</td>
+<td>支払方法</td>
+<td>現金・カード・振込</td>
+<td>カードの明細や通帳と照らし合わせるとき</td>
+</tr>
+<tr>
+<td>G</td>
+<td>証拠</td>
+<td>領収書の番号やファイル名</td>
+<td>どの領収書の行か、すぐ探せる</td>
+</tr>
+<tr>
+<td>H</td>
+<td>事業の割合</td>
+<td>100%、30% など</td>
+<td>家と仕事で共用しているもの</td>
+</tr>
+<tr>
+<td>I</td>
+<td>経費にする額</td>
+<td><code>=D2*H2</code></td>
+<td>実際に経費に入れる金額</td>
+</tr>
+<tr>
+<td>J</td>
+<td>メモ</td>
+<td>自由</td>
+<td>迷ったことや、確認したいこと</td>
+</tr>
+</tbody>
+</table>
+<h3>G列「証拠」の付け方</h3>
+<p>紙の領収書には、もらった順に番号を書きます（例：<code>2026-001</code>）。同じ番号をG列に入れます。こうすると、Excelの行から紙の領収書を、紙からExcelの行を、どちらからでも探せます。</p>
+<h3>H列「事業の割合」の考え方</h3>
+<p>家の電気代やスマホ代のように、仕事とプライベートの両方で使うものがあります。国税庁の「収支内訳書（一般用）の書き方」では、家事に使った部分は必要経費にならないとしています。分け方は、使った面積や時間など、<strong>合理的な基準</strong>で決めるとしています。</p>
+<p>割合の決め方は人によって違います。自分の場合にどう分けるかは、国税庁の案内で確認するか、税務署・税理士に相談してください。</p>
+<h2>4. 確定申告で困らない付け方のルール</h2>
+<p>列を作ったら、付け方のルールを決めます。ルールがばらばらだと、1年分を集計するときに手間が増えます。</p>
+<h3>ルール1：1つのシートに1年分</h3>
+<p>1月から12月まで、<strong>同じシートに下へ足していきます</strong>。月ごとにシートを分けると、1年の合計を出すときに足し忘れが起きやすくなります。月ごとの合計は、あとで式で出せます。</p>
+<h3>ルール2：区分は入力規則で選ぶだけにする</h3>
+<p>E列の区分を手で打つと、「通信費」と「通信料」のような表記ゆれが出ます。
+Excelの「データの入力規則」で、リストから選ぶようにすると防げます。</p>
+<ol>
+<li>別のシートに、科目の一覧を縦に書く</li>
+<li>E列を選ぶ</li>
+<li>「データ」タブ →「データの入力規則」</li>
+<li>「入力値の種類」で「リスト」を選ぶ</li>
+<li>「元の値」に、科目の一覧の範囲を指定する</li>
+</ol>
+<h3>ルール3：合計は式で出す</h3>
+<p>科目ごとの1年の合計は、SUMIF関数で出せます。たとえば、L列に科目名を並べて、M列に次の式を入れます。</p>
+<p><code>=SUMIF($E:$E,L2,$I:$I)</code></p>
+<p>「E列がL2と同じ行の、I列（経費にする額）を足す」という意味です。売上の合計は、L列に「売上」と書いて、同じ式で出せます（売上の行はH列を100%にしておきます）。</p>
+<h3>ルール4：その月のうちにつける</h3>
+<p>1年分をまとめてつけようとすると、内容を思い出せない取引が出てきます。月に1回、カードの明細と通帳を見ながら、その月の分を入れておくと楽です。</p>
+<h3>ルール5：あとから直すときは、メモを残す</h3>
+<p>金額や科目を直したら、J列に「10/20 科目を通信費に変更」のように書いておきます。あとで見直したとき、なぜ変えたかがわかります。</p>
+<h2>5. 保存のこと</h2>
+<p>Excelの表だけでなく、<strong>帳簿と書類の保存</strong>も決まっています。</p>
+<p>国税庁の「No.2080」では、白色申告の人の保存期間を、次のように示しています。</p>
+<table>
+<thead>
+<tr>
+<th>保存するもの</th>
+<th>保存期間</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>収入金額や必要経費を書いた帳簿（法定帳簿）</td>
+<td>7年</td>
+</tr>
+<tr>
+<td>決算に関して作った棚卸表などの書類</td>
+<td>5年</td>
+</tr>
+<tr>
+<td>請求書、納品書、送り状、領収書などの書類</td>
+<td>5年</td>
+</tr>
+</tbody>
+</table>
+<p>青色申告の人は、「No.2070」で、帳簿と書類は原則7年、書類によっては5年でよいものもある、とされています。</p>
+<p>自分の場合に何年とっておけばよいかは、無料の<a href="../../hozon/">帳簿・領収書の保存期間チェッカー</a>で確認できます。青色・白色などを選ぶと、国税庁の表にそって保存期間を表示します。</p>
+<h3>メールやネットで受け取った請求書・領収書</h3>
+<p>最近は、請求書をPDFでメールで受け取ったり、ネットで買った物の領収書が画面にだけ出たりします。こうしたデータのやり取りは「電子取引」と呼ばれます。</p>
+<p>国税庁の電子帳簿等保存制度の特設サイトでは、所得税法上の保存義務がある人は、特に「電子取引」の扱いを確認するよう案内しています。国税庁のパンフレットでは、こうしたデータは<strong>データのまま保存する必要がある</strong>こと、PDFやスクリーンショットで保存してもよいことが書かれています。また、日付・金額・取引先で探せるようにする方法の例として、ファイル名を <code>20261005_55000_〇〇商店</code> のように規則的に付ける方法が紹介されています。</p>
+<p>この「日付_金額_取引先」の形は、Excelの表のG列「証拠」にもそのまま使えます。細かい要件は改正されることがあるので、最新の内容は国税庁の特設サイトで確認してください。</p>
+<div class="ad"><span class="lbl">広告・PR</span><a href="https://px.a8.net/svt/ejp?a8mat=4BEK9L+6JSFM+4JGQ+BY641" target="_blank" rel="noopener" rel="nofollow">
+<img border="0" width="300" height="250" alt="" src="https://www28.a8.net/svt/bgt?aid=261019929011&wid=001&eno=01&mid=s00000021185002007000&mc=1"></a>
+<img border="0" width="1" height="1" src="https://www17.a8.net/0.gif?a8mat=4BEK9L+6JSFM+4JGQ+BY641" alt=""></div>
+
+<h2>まとめ</h2>
+<ul>
+<li>最低限の列は「日付・取引先・内容・金額・区分」の5つ</li>
+<li>国税庁の案内では、帳簿に取引の年月日・相手方・金額などを書く</li>
+<li>「支払方法・証拠・事業の割合・経費にする額・メモ」を足すと、申告のときに困りにくい</li>
+<li>1年分を1シートに、区分はリストから選ぶ、合計はSUMIFで出す</li>
+<li>帳簿と領収書には保存期間がある。メールで受け取った請求書はデータのまま保存する</li>
+</ul>
+<p>まずは、今月の取引を5行だけ入れてみてください。列が足りないところがあれば、そのときに足せば大丈夫です。</p>
+<h2>よくある質問</h2>
+<h3>Q. 売上と経費は、別々のシートに分けたほうがいいですか？</h3>
+<p>A. どちらでも集計はできます。
+1つのシートにまとめて、E列の区分で「売上」と経費の科目を分けると、入力する場所が1つで済みます。月ごとの合計もSUMIFで出せます。</p>
+<h3>Q. 1件ずつ書かないといけませんか？</h3>
+<p>A. 国税庁の「No.2080」では、白色申告の人は、日々の合計金額をまとめて書くなど、簡単な方法でもよいとしています。青色申告の人は求められる帳簿の形が違うので、「No.2070」で確認してください。</p>
+<h3>Q. Excelの表を印刷して保存しないといけませんか？</h3>
+<p>A. 国税庁の電子帳簿保存法の案内では、最初から一貫してパソコンで作った帳簿は、一定の要件のもとでデータのまま保存できるとしています。自分の帳簿がその要件に合うかは、国税庁の特設サイトで確認してください。</p>
+<h3>Q. 家賃や電気代は、全部経費にできますか？</h3>
+<p>A. 国税庁の「収支内訳書（一般用）の書き方」では、家事に使った部分は必要経費にならないとしています。仕事で使った割合を、使った面積や時間など合理的な基準で分けます。自分の場合の分け方は、国税庁の案内や税務署で確認してください。</p>
+<h2>参考にした資料</h2>
+<ul>
+<li>国税庁「No.2080 白色申告者の記帳・帳簿等保存制度」 https://www.nta.go.jp/taxes/shiraberu/taxanswer/shotoku/2080.htm</li>
+<li>帳簿の記載事項（取引の年月日・相手方・金額など）、簡易な記帳方法、整然と明瞭に記載すること、保存期間（帳簿7年・書類5年）</li>
+<li>国税庁「No.2070 青色申告制度」 https://www.nta.go.jp/taxes/shiraberu/taxanswer/shotoku/2070.htm</li>
+<li>正規の簿記・簡易な帳簿の種類、保存期間（原則7年、書類によっては5年）</li>
+<li>国税庁「令和7年分 収支内訳書（一般用）の書き方」 https://www.nta.go.jp/taxes/shiraberu/shinkoku/tebiki/2025/pdf/034.pdf</li>
+<li>経費の科目ごとの例、家事に使った部分は必要経費にならないこと、合理的な基準で分けること</li>
+<li>国税庁「電子帳簿等保存制度特設サイト」 https://www.nta.go.jp/law/joho-zeikaishaku/sonota/jirei/tokusetsu/index.htm</li>
+<li>所得税法上の保存義務者は特に「電子取引」を確認すること</li>
+<li>国税庁「電子帳簿保存法の概要」 https://www.nta.go.jp/law/joho-zeikaishaku/sonota/jirei/02.htm</li>
+<li>最初の記録段階から一貫してパソコンで作る帳簿は、一定の要件のもとでデータで保存できること</li>
+<li>国税庁「電子取引データ（パンフレット）」 https://www.nta.go.jp/publication/pamph/sonota/0021011-068.pdf</li>
+<li>電子取引のデータを保存する必要があること、PDF・スクリーンショットでの保存も可、規則的なファイル名（日付_金額_取引先）の例</li>
+</ul>
+<p>※この記事はAIを活用して作成し、国税庁の公式ページで2026年10月20日に確認しています。税金の扱いは人によって違うため、最新の内容は国税庁の案内で確認してください。</p><div class="tools"><b>あわせて使える無料ツール</b><a href="../../hozon/">帳簿・領収書の保存期間チェッカー</a><br></div><div class="line"><p><b>新しい無料ツールや記事を、LINEでお知らせします</b><br>「ツール」「お金」「スマホ」と送ると、合うツールの案内が自動で届きます。</p><a class="btn" href="https://line.me/R/ti/p/@736dykzx" target="_blank" rel="noopener">LINEで友だち追加</a><small>Eternal Philosophy 公式LINE（EQUA・MisaNeco Works を運営）</small></div><div class="rel"><b>関連記事</b><a href="../kaigyo-todokede-kigen/">個人事業を始めたら出す書類と期限｜開業届・青色申告・インボイスを国税庁の表で確認</a><br><a href="../invoice-kisai-jikou/">インボイス（適格請求書）に書くこと｜記載事項・簡易インボイス・端数処理・7年保存を国税庁で確認</a><br><a href="../aoiro-tokubetsu-kojo-yoken/">青色申告特別控除65万円・55万円・10万円の違い｜複式簿記・e-Tax・期限内申告の要件を国税庁で確認</a><br></div></main>
+<footer class="wrap">© MisaNeco Works ・ <a href="../">ブログ一覧</a> ・ <a href="../../">無料ツール</a> ・ <a href="../en/">English articles</a><br>記事はAIを活用して作成し、公式の情報で確認しています。広告を含む記事には冒頭に表示しています。読まれた記事を知るため、Googleアナリティクスで閲覧数などを匿名で集計しています（名前や連絡先は集めません）。</footer>
+<script src="../../assets/ads-inter.js?v=202610202300" data-pool="accounting" data-page-ad="0" defer></script>
+</body></html>
