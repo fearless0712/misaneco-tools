@@ -7,7 +7,7 @@
      CSP: the only allowed outbound connection is the anonymous aggregate receiver in js/config.js
      (Google Apps Script web app, which redirects to script.googleusercontent.com). No forms are submitted (form-action 'none').
      To stop collecting, set submitUrl to "" and change connect-src back to 'none'. -->
-<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self'; img-src 'self' data: https://*.a8.net; connect-src 'self' https://script.google.com https://script.googleusercontent.com; font-src 'none'; frame-src 'none'; object-src 'none'; media-src 'none'; manifest-src 'none'; base-uri 'none'; form-action 'none'">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self' https://www.googletagmanager.com; style-src 'self'; img-src 'self' data: https://*.a8.net https://*.google-analytics.com https://*.googletagmanager.com; connect-src 'self' https://script.google.com https://script.googleusercontent.com https://*.google-analytics.com https://*.analytics.google.com https://*.googletagmanager.com; font-src 'none'; frame-src 'none'; object-src 'none'; media-src 'none'; manifest-src 'none'; base-uri 'none'; form-action 'none'">
 <meta name="referrer" content="strict-origin-when-cross-origin">
 <meta name="description" content="Pick your country, industry, tasks and setup to see which tasks can be automated, compare methods, get a recommendation and a step-by-step plan adapted to small businesses in the US, UK, Canada and Australia.">
 <meta name="theme-color" content="#1b3a5c" media="(prefers-color-scheme: light)">
@@ -17,6 +17,7 @@
 <meta property="og:type" content="website"><meta property="og:url" content="https://fearless0712.github.io/misaneco-tools/dx-en/"><meta property="og:title" content="Small Business Automation Check & Action Plan (free)"><meta property="og:description" content="Pick your country, industry and tasks to compare automation methods and get a step-by-step plan."><meta property="og:image" content="https://fearless0712.github.io/misaneco-tools/dx-en/og.png"><meta name="twitter:card" content="summary_large_image">
 <link rel="stylesheet" href="css/app.css?v=2026101960">
 <link rel="icon" href="data:,">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-EWJXRJY9M6"></script><script src="../assets/ga.js?v=202610210745"></script>
 </head>
 <body>
 <header class="top">
@@ -134,7 +135,7 @@
   <p><a href="../">All tools</a> · <a href="../blog/en/">Blog</a> · <a href="../records/">Record retention calculator</a> · <a href="../dx/">日本語版</a> · <a href="privacy.html">Data &amp; privacy</a></p>
   <p>Product and service names are trademarks of their owners. This tool is not affiliated with them.</p>
   <p>MisaNeco Works · Built with AI and checked against official sources</p>
-</footer>
+<br><small class="ga-note">We count page views anonymously with Google Analytics. What you type in this tool is not sent.</small></footer>
 
 <div id="inter" class="inter" hidden>
   <div class="inter-box" role="dialog" aria-modal="true" aria-labelledby="interLabel">

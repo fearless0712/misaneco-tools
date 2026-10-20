@@ -124,7 +124,8 @@ for(const cost of [1,99,100,333,1000,7777,8000,12345,99999])for(const t of [0,5,
  const html=fs.readFileSync(__dirname+'/index.html','utf8');
  Object.keys(els).forEach(id=>eq(html.includes('id="'+id+'"'),true,'html has id '+id));}
 // HTMLの確認
-const html=require('fs').readFileSync(__dirname+'/index.html','utf8');
+const __ga=require(__dirname+'/../assets/ga-test-helper.js').stripGA(require('fs').readFileSync(__dirname+'/index.html','utf8'));if(__ga.problems.length){console.log('FAIL GA',__ga.problems.join(','));process.exitCode=1;}
+const html=__ga.html;
 eq(/1万円|30日チャレンジ/.test(html),false,'banned');eq(/connect-src 'none'/.test(html),true,'csp');
 eq(/script-src 'self';/.test(html),true,'csp script self');eq(/<script>|\son\w+=/.test(html),false,'no inline js');
 eq(/https?:\/\/(?!fearless0712\.github\.io|px\.a8\.net|www[0-9]*\.a8\.net|\*\.a8\.net|line\.me\/R\/ti\/p\/@736dykzx|schema\.org)/.test(html),false,'no external urls except A8 ad');eq(html.includes('広告・PR'),true,'ad label');

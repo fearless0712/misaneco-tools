@@ -8,7 +8,7 @@
      送信先を変えるときは js/config.js の submitUrl と、この connect-src を一緒に直してください
      （例：connect-src https://docs.google.com 、Apps Script なら https://script.google.com https://script.googleusercontent.com）。
      フォームの送信（form-action）は使わないので 'none' のままで動きます。 -->
-<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self'; img-src 'self' data: https://*.a8.net; connect-src 'self' https://script.google.com https://script.googleusercontent.com; font-src 'none'; frame-src 'none'; object-src 'none'; media-src 'none'; manifest-src 'none'; base-uri 'none'; form-action 'none'">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self' https://www.googletagmanager.com; style-src 'self'; img-src 'self' data: https://*.a8.net https://*.google-analytics.com https://*.googletagmanager.com; connect-src 'self' https://script.google.com https://script.googleusercontent.com https://*.google-analytics.com https://*.analytics.google.com https://*.googletagmanager.com; font-src 'none'; frame-src 'none'; object-src 'none'; media-src 'none'; manifest-src 'none'; base-uri 'none'; form-action 'none'">
 <meta name="referrer" content="strict-origin-when-cross-origin">
 <meta name="description" content="業種と業務、頻度と時間、パソコンの環境を選ぶと、自動化しやすい業務と方法（費用・むずかしさ・はじめの一歩）、年間で減らせる時間の目安がわかり、優先順の推進プランを作れる無料ツール。">
 <meta name="theme-color" content="#1b3a5c" media="(prefers-color-scheme: light)">
@@ -18,6 +18,7 @@
 <link rel="stylesheet" href="css/app.css?v=202610210009">
 <link rel="icon" href="data:,">
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebApplication", "name": "業務の自動化 診断＆推進プラン", "url": "https://fearless0712.github.io/misaneco-tools/dx/", "description": "業種と業務、頻度と時間、パソコンの環境を選ぶと、自動化しやすい業務と方法（費用・むずかしさ・はじめの一歩）、年間で減らせる時間の目安がわかり、優先順の推進プランを作れる無料ツール。", "applicationCategory": "UtilitiesApplication", "operatingSystem": "Any (Web browser)", "inLanguage": "ja", "isAccessibleForFree": true, "offers": {"@type": "Offer", "price": "0", "priceCurrency": "JPY"}, "publisher": {"@type": "Organization", "name": "Eternal Philosophy"}}</script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-EWJXRJY9M6"></script><script src="../assets/ga.js?v=202610210745"></script>
 </head>
 <body>
 <header class="top">
@@ -139,7 +140,7 @@
   <p><a href="../">ツール一覧</a> ・ <a href="../blog/">ブログ</a> ・ <a href="../hozon/">帳簿・領収書の保存期間チェッカー</a> ・ <a href="privacy.html">データの扱い</a> ・ <a href="../dx-en/" hreflang="en" lang="en">English version</a></p>
   <p>各社の名称・サービス名は各社の商標です。このツールは各社の公式サービスではありません。</p>
   <p>MisaNeco Works ・ AIを活用して作成し、公式情報で確認しています</p>
-</footer>
+<br><small class="ga-note">閲覧数をGoogleアナリティクスで匿名で集計しています。このツールに入力した内容は送信しません。</small></footer>
 
 <div id="inter" class="inter" hidden>
   <div class="inter-box" role="dialog" aria-modal="true" aria-labelledby="interLabel">

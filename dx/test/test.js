@@ -260,7 +260,9 @@ var a3 = runApp({ submitUrl: 'https://script.google.com/macros/s/x/exec', fields
 eq(a3.calls.length, 0, 'demo mode never sends even with submitUrl');
 
 /* 12. HTML：CSP・キャッシュ対策・フッター */
-var html = fs.readFileSync(path.join(ROOT, 'index.html'), 'utf8');
+var __ga = require(path.join(ROOT, '..', 'assets', 'ga-test-helper.js')).stripGA(fs.readFileSync(path.join(ROOT, 'index.html'), 'utf8'));
+if (__ga.problems.length) { console.log('FAIL GA', __ga.problems.join(',')); process.exitCode = 1; }
+var html = __ga.html;
 ok(/default-src 'none'/.test(html) && /connect-src 'self' https:\/\/script\.google\.com https:\/\/script\.googleusercontent\.com;/.test(html) && /form-action 'none'/.test(html) && /base-uri 'none'/.test(html) && /script-src 'self'/.test(html), 'CSP');
 ok(!/<script[^>]+src="https?:/.test(html) && !/<link[^>]+href="https?:/.test(html), 'no external scripts/styles');
 var refs = html.match(/(src|href)="(css|js)\/[^"]+"/g) || [];

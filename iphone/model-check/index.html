@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self'; img-src 'self' data: https://*.a8.net; connect-src 'self'; font-src 'none'; frame-src 'none'; object-src 'none'; base-uri 'none'; form-action 'none'; manifest-src 'self'">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self' https://www.googletagmanager.com; style-src 'self'; img-src 'self' data: https://*.a8.net https://*.google-analytics.com https://*.googletagmanager.com; connect-src 'self' https://*.google-analytics.com https://*.analytics.google.com https://*.googletagmanager.com; font-src 'none'; frame-src 'none'; object-src 'none'; base-uri 'none'; form-action 'none'; manifest-src 'self'">
 <meta name="referrer" content="strict-origin-when-cross-origin">
 <meta name="description" content="iPhoneのモデル番号（A2xxx）から正確な機種名と、合うケースのサイズ・充電器の端子を判定する無料ツール。入力は外部に送信しません。">
 <meta name="theme-color" content="#ffffff">
@@ -11,6 +11,7 @@
 <link rel="stylesheet" href="css/app.css">
 <link rel="icon" href="data:,">
 <link rel="stylesheet" href="../../assets/ads-inter.css?v=202610210009"><script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebApplication", "name": "iPhone機種判定＆合うケース・充電器チェッカー", "url": "https://fearless0712.github.io/misaneco-tools/iphone/model-check/", "description": "iPhoneのモデル番号（A2xxx）から正確な機種名と、合うケースのサイズ・充電器の端子を判定する無料ツール。入力は外部に送信しません。", "applicationCategory": "UtilitiesApplication", "operatingSystem": "Any (Web browser)", "inLanguage": "ja", "isAccessibleForFree": true, "offers": {"@type": "Offer", "price": "0", "priceCurrency": "JPY"}, "publisher": {"@type": "Organization", "name": "Eternal Philosophy"}}</script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-EWJXRJY9M6"></script><script src="../../assets/ga.js?v=202610210745"></script>
 </head>
 <body>
 <header class="top">
@@ -78,7 +79,7 @@
   <p data-i="footer1"></p>
   <p data-i="footer3"></p>
   <p data-i="footer2"></p>
-</footer>
+<br><small class="ga-note">閲覧数をGoogleアナリティクスで匿名で集計しています。このツールに入力した内容は送信しません。</small></footer>
 
 <div id="inter" class="inter" hidden>
   <div class="inter-box" role="dialog" aria-modal="true" aria-labelledby="interLabel">

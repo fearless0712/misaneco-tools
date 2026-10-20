@@ -61,7 +61,8 @@ for(const price of P)for(const materials of M)for(const hours of H)for(const rat
   if(x.status==='On target')eq(price>=x.priceNeeded-0.01,true,'on target >= need '+tag);
   if(x.status==='Below target')eq(price<x.priceNeeded+0.005,true,'below < need '+tag);
 }
-const html=require('fs').readFileSync(__dirname+'/index.html','utf8');
+const __ga=require(__dirname+'/../assets/ga-test-helper.js').stripGA(require('fs').readFileSync(__dirname+'/index.html','utf8'));if(__ga.problems.length){console.log('FAIL GA',__ga.problems.join(','));process.exitCode=1;}
+const html=__ga.html;
 eq(/1万円|30日チャレンジ/.test(html),false,'banned');eq(/connect-src 'none'/.test(html),true,'csp');
 eq(/https?:\/\/(?!fearless0712\.github\.io)/.test(html),false,'no external urls');
 eq(html.includes('General information only. This tool was built with the help of AI and tested.'),true,'footer note');

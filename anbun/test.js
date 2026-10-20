@@ -84,7 +84,8 @@ ok(lines[2].startsWith('"\'=evil,""x""",1000,月額,手入力（%）,,,,50,500,5
 eq(lines[3], '合計,,,,,,,,20500,80500,246000,966000,目安です。1円未満切り捨て。', 'csv total (blank rows skipped)'); eq(lines.length, 5, 'csv line count + trailing CRLF');
 
 /* ---- ページ ---- */
-const html = fs.readFileSync(__dirname + '/index.html', 'utf8'), app = fs.readFileSync(__dirname + '/app.js', 'utf8'), logic = fs.readFileSync(__dirname + '/logic.js', 'utf8');
+const __ga=require(__dirname+'/../assets/ga-test-helper.js').stripGA(fs.readFileSync(__dirname + '/index.html', 'utf8'));if(__ga.problems.length){console.log('FAIL GA',__ga.problems.join(','));process.exitCode=1;}
+const html = __ga.html, app = fs.readFileSync(__dirname + '/app.js', 'utf8'), logic = fs.readFileSync(__dirname + '/logic.js', 'utf8');
 const csp = (/http-equiv="Content-Security-Policy" content="([^"]*)"/.exec(html) || [])[1] || '';
 ok(/default-src 'none'/.test(csp) && /connect-src 'none'/.test(csp) && /script-src 'self';/.test(csp) && /form-action 'none'/.test(csp), 'CSP: no sending');
 ok(!/fetch\(|XMLHttpRequest|sendBeacon|WebSocket/.test(app + logic), 'no network code');

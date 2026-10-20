@@ -223,7 +223,9 @@ ok(/href="\.\.\/dx-en\/"/.test(jaHtml), 'dx footer links to English version');
 ok(/href="dx-en\/"[^>]*>Free automation check \(English\)/.test(fs.readFileSync(path.join(SITE, 'index.html'), 'utf8')), 'site index links to dx-en');
 
 /* 13. HTML */
-var html = fs.readFileSync(path.join(ROOT, 'index.html'), 'utf8');
+var __ga = require(path.join(ROOT, '..', 'assets', 'ga-test-helper.js')).stripGA(fs.readFileSync(path.join(ROOT, 'index.html'), 'utf8'));
+if (__ga.problems.length) { console.log('FAIL GA', __ga.problems.join(',')); process.exitCode = 1; }
+var html = __ga.html;
 ok(/default-src 'none'/.test(html) && /connect-src 'self' https:\/\/script\.google\.com https:\/\/script\.googleusercontent\.com;/.test(html) && /form-action 'none'/.test(html) && /base-uri 'none'/.test(html), 'CSP');
 var refs = html.match(/(src|href)="(css|js)\/[^"]+"/g) || [];
 ok(refs.length >= 5 && refs.every(function (r) { return r.indexOf('?v=2026101960') > 0; }), 'cache-bust ?v=2026101960');
