@@ -136,7 +136,8 @@ eq(html.includes('hreflang="en" href="https://fearless0712.github.io/misaneco-to
 eq(html.includes('一般的な情報です。税務の判断は税理士・税務署にご確認ください。このツールはAIを活用して作成し、テストで確認しています。入力した内容はブラウザの外に送信されません。'),true,'footer note');
 ['href="../"','href="../blog/riekiritsu-uwanoseritsu-chigai/"','href="../dx/"','href="../jobcost/"'].forEach(s=>eq(html.includes(s),true,'link '+s));
 ['売値（税抜）','材料費・仕入れ','作業時間','時給（自分の分も）','外注費','その他の費用','目標利益率','原価合計','利益率','上乗せ率','必要な売値','10,667円','8,000円','10,000円'].forEach(s=>eq(html.includes(s),true,'text '+s));
-const vs=html.match(/\?v=\d+/g)||[];eq(vs.length,4,'cache bust count');eq(vs.every(v=>v==='?v=202610201200'),true,'cache bust value');
+const vs=(html.match(/"(?:logic|ja|app)\.(?:js|css)\?v=\d+/g)||[]).map(v=>v.replace(/^.*(\?v=)/,'$1'));eq(vs.length,4,'cache bust count');eq(vs.every(v=>v==='?v=202610201200'),true,'cache bust value');
+eq(/<script src="\.\.\/assets\/ads-inter\.js\?v=\d+" data-pool="accounting" data-page-ad="0" defer><\/script>/.test(html),true,'interstitial script');eq(html.includes('href="../assets/ads-inter.css?v='),true,'interstitial css');
 ['logic.js','ja.js','app.js','app.css'].forEach(f=>eq(require('fs').existsSync(__dirname+'/'+f),true,'file '+f));
 eq(require('fs').readFileSync(__dirname+'/logic.js','utf8'),require('fs').readFileSync(__dirname+'/../jobcost/logic.js','utf8'),'logic.js same as jobcost');
 const en=require('fs').readFileSync(__dirname+'/../jobcost/index.html','utf8');

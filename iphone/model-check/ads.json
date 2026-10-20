@@ -27,8 +27,8 @@
   }
  ],
  "interstitial": {
-  "_readme": "全画面広告。tag が空なら出ません。出すのは1日1回まで、×ですぐ閉じられます。",
-  "advertiser": "Hamee",
-  "tag": "<a href=\"https://px.a8.net/svt/ejp?a8mat=4BEJHI+AO0LYQ+XTI+7PCKH\" rel=\"nofollow\">\n<img border=\"0\" width=\"300\" height=\"250\" alt=\"\" src=\"https://www23.a8.net/svt/bgt?aid=261018918645&wid=001&eno=01&mid=s00000004383001294000&mc=1\"></a>\n<img border=\"0\" width=\"1\" height=\"1\" src=\"https://www12.a8.net/0.gif?a8mat=4BEJHI+AO0LYQ+XTI+7PCKH\" alt=\"\">"
+  "_readme": "全画面広告は ../../assets/ads-inter.js が出します（開くたびに表示・日本語のときだけ）。二重に出ないよう、ここは空のままにします。",
+  "advertiser": "",
+  "tag": ""
  }
 }

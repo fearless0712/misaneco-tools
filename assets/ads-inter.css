@@ -1,0 +1,24 @@
+/* 全画面広告とページ下の広告（assets/ads-inter.js）。dx/css/app.css の広告と同じ見た目 */
+.mnad-inter, .mnad-page { --mnad-card: #ffffff; --mnad-ink: #1d2433; --mnad-muted: #5b6b7f; --mnad-line: #dfe3ea; }
+/* ページの背景が暗いとき（ダークモード）は暗い色に。JSがページの背景色を見て .mnad-dark を付ける */
+.mnad-inter.mnad-dark, .mnad-page.mnad-dark { --mnad-card: #17212d; --mnad-ink: #e8eef5; --mnad-muted: #9fb0c3; --mnad-line: #2a3a4c; }
+
+.mnad-inter { position: fixed; inset: 0; background: rgba(15, 23, 35, .6); z-index: 2147483000; display: flex; align-items: center; justify-content: center; padding: 16px; box-sizing: border-box; font-family: system-ui, -apple-system, "Hiragino Sans", sans-serif; }
+.mnad-inter[hidden] { display: none !important; }
+.mnad-box { background: var(--mnad-card); color: var(--mnad-ink); border-radius: 12px; width: 100%; max-width: 360px; max-height: calc(100vh - 32px); overflow: auto; box-shadow: 0 10px 40px rgba(0, 0, 0, .3); }
+.mnad-bar { display: flex; justify-content: space-between; align-items: center; padding: 4px 4px 4px 12px; border-bottom: 1px solid var(--mnad-line); }
+.mnad-x { width: 48px; height: 48px; border: 0; background: none; font-size: 30px; line-height: 1; color: var(--mnad-ink); cursor: pointer; border-radius: 8px; padding: 0; font-family: inherit; }
+.mnad-x:focus-visible { outline: 3px solid #4a8fd8; outline-offset: -3px; }
+.mnad-body { padding: 12px; text-align: center; }
+.mnad-body img, .mnad-pbody img { max-width: 100%; height: auto; border: 0; vertical-align: top; }
+.mnad-body img.mnad-px, .mnad-pbody img.mnad-px { width: 1px; height: 1px; }
+.mnad-note { margin: 8px 0 0; font-size: 12px; color: var(--mnad-muted); line-height: 1.5; }
+.mnad-tag { flex: none; font-size: 11px; color: var(--mnad-muted); border: 1px solid var(--mnad-line); border-radius: 4px; padding: 0 6px; line-height: 1.6; }
+
+.mnad-page { box-sizing: border-box; max-width: 100%; margin: 20px 0; font-family: system-ui, -apple-system, "Hiragino Sans", sans-serif; }
+.mnad-page[hidden] { display: none !important; }
+.mnad-disc { font-size: 12px; color: var(--mnad-muted); margin: 0 0 8px; line-height: 1.5; }
+.mnad-head { display: flex; justify-content: space-between; align-items: center; gap: 8px; margin: 0; padding: 10px 12px 8px; text-align: left; border: 1px dashed var(--mnad-line); border-bottom: 0; border-radius: 12px 12px 0 0; background: var(--mnad-card); }
+.mnad-name { font-size: 11px; color: var(--mnad-muted); min-width: 0; }
+.mnad-pbody { padding: 0 12px 12px; text-align: center; border: 1px dashed var(--mnad-line); border-top: 0; border-radius: 0 0 12px 12px; background: var(--mnad-card); }
+@media print { .mnad-inter, .mnad-page { display: none !important; } }

@@ -16,18 +16,7 @@
   ]
  },
  "interstitial": {
-  "items": [
-   {
-    "id": "a8-hamee-full",
-    "network": "A8.net",
-    "advertiser": "Hamee",
-    "href": "https://px.a8.net/svt/ejp?a8mat=4BEJHI+AO0LYQ+XTI+7PCKH",
-    "img": "https://www23.a8.net/svt/bgt?aid=261018918645&wid=001&eno=01&mid=s00000004383001294000&mc=1",
-    "imgW": 300,
-    "imgH": 250,
-    "pixel": "https://www12.a8.net/0.gif?a8mat=4BEJHI+AO0LYQ+XTI+7PCKH",
-    "alt": "Hamee（iPhoneケース・充電器）"
-   }
-  ]
+  "_readme": "全画面広告は ../../assets/ads-inter.js が出します（開くたびに表示・日本語のときだけ）。二重に出ないよう、ここは空のままにします。",
+  "items": []
  }
 }
