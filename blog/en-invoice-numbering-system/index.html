@@ -1,0 +1,92 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'self'; img-src 'self' data: https://*.a8.net https://*.google-analytics.com https://*.googletagmanager.com; script-src 'self' https://www.googletagmanager.com; connect-src https://*.google-analytics.com https://*.analytics.google.com https://*.googletagmanager.com; base-uri 'none'; form-action 'none'; object-src 'none'">
+<title>How to number your invoices (a simple system, plus a formula that does it for you) | MisaNeco Works</title><meta name="description" content="A simple invoice numbering system for freelancers and small businesses (year plus a running number, like 2026-001), why it works, a formula that numbers invoices automatically in Excel or Google Sheets, and what to do about cancelled or corrected invoices. UK rules checked against GOV.UK.">
+<link rel="canonical" href="https://fearless0712.github.io/misaneco-tools/blog/en-invoice-numbering-system/"><meta property="og:type" content="article"><meta property="og:url" content="https://fearless0712.github.io/misaneco-tools/blog/en-invoice-numbering-system/"><meta property="og:image" content="https://fearless0712.github.io/misaneco-tools/blog/og.png"><meta name="twitter:card" content="summary_large_image"><meta property="og:title" content="How to number your invoices (a simple system, plus a formula that does it for you) | MisaNeco Works"><meta property="og:description" content="A simple invoice numbering system for freelancers and small businesses (year plus a running number, like 2026-001), why it works, a formula that numbers invoices automatically in Excel or Google Sheets, and what to do about cancelled or corrected invoices. UK rules checked against GOV.UK.">
+<link rel="alternate" type="application/rss+xml" title="MisaNeco Works Blog" href="https://fearless0712.github.io/misaneco-tools/blog/en/rss.xml"><script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "How to number your invoices (a simple system, plus a formula that does it for you)", "description": "A simple invoice numbering system for freelancers and small businesses (year plus a running number, like 2026-001), why it works, a formula that numbers invoices automatically in Excel or Google Sheets, and what to do about cancelled or corrected invoices. UK rules checked against GOV.UK.", "datePublished": "2026-10-21", "dateModified": "2026-10-21", "inLanguage": "en", "mainEntityOfPage": "https://fearless0712.github.io/misaneco-tools/blog/en-invoice-numbering-system/", "image": "https://fearless0712.github.io/misaneco-tools/blog/og.png", "author": {"@type": "Organization", "name": "MisaNeco Works", "url": "https://fearless0712.github.io/misaneco-tools/"}, "publisher": {"@type": "Organization", "name": "MisaNeco Works"}}</script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-EWJXRJY9M6"></script><script src="../ga.js?v=202610211447"></script>
+<link rel="stylesheet" href="../blog.css?v=202610211447"></head><body>
+<header><div class="wrap"><a href="../en/">MisaNeco Works Blog</a></div></header>
+<main class="wrap"><p class="meta">2026-10-21・Invoicing / Small business / Excel</p><h1>How to number your invoices (a simple system, plus a formula that does it for you)</h1><p>If you started invoicing without deciding on a numbering system, you probably have invoices called "1", "Invoice-Oct", "ACME 2" and so on. That's fine until you need to find one, or match a payment to the right invoice.</p>
+<p>In this article:</p>
+<ul>
+<li>a simple numbering system that works for most small businesses</li>
+<li>whether invoice numbers are required</li>
+<li>a formula that numbers invoices automatically in Excel or Google Sheets</li>
+<li>what to do when an invoice is cancelled or corrected</li>
+</ul>
+<h2>The simple system: year + running number</h2>
+<pre><code>2026-001
+2026-002
+2026-003
+</code></pre>
+<ul>
+<li><strong>The year tells you when</strong>: you can see at a glance which tax year or financial year an invoice belongs to, which helps with filing and record keeping.</li>
+<li><strong>A running number shows gaps</strong>: if you see 014 and 016 but no 015, you know to check what happened to 015.</li>
+<li><strong>Fixed width keeps things in order</strong>: writing 001 instead of 1 means invoices sort as 001, 002 … 010, not 1, 10, 2.</li>
+</ul>
+<p>If you send more than a few hundred invoices a year, use four digits (2026-0001).</p>
+<p>Other common variations: year and month (202610-01) if you invoice monthly, or a client or department prefix (ACME-2026-001). Whatever you choose, <strong>pick one format and stick to it</strong>.</p>
+<h2>Are invoice numbers required?</h2>
+<p>It depends on where you are. In the UK, GOV.UK lists "a unique identification number" first among the things an invoice must include, along with your details, the customer's details, a description, the supply date, the invoice date, the amounts, VAT if applicable and the total. If you and your customer are VAT registered, you need a VAT invoice, which has more requirements.</p>
+<p>Other countries have their own rules, so check your tax authority's guidance. Even where a number isn't strictly required, it makes payments much easier to match.</p>
+<h2>A formula that numbers invoices for you</h2>
+<p>Put the invoice date in column A and the invoice number in column B. Rows should be in <strong>date order</strong>.</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>A (Invoice date)</th>
+<th>B (Invoice number)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Invoice date</td>
+<td>Invoice number</td>
+</tr>
+<tr>
+<td>2</td>
+<td>2026-10-05</td>
+<td>2026-001</td>
+</tr>
+<tr>
+<td>3</td>
+<td>2026-10-31</td>
+<td>2026-002</td>
+</tr>
+<tr>
+<td>4</td>
+<td>2027-01-10</td>
+<td>2027-001</td>
+</tr>
+</tbody>
+</table>
+<p>In B2, enter this formula and copy it down:</p>
+<pre><code>=YEAR(A2)&amp;&quot;-&quot;&amp;TEXT(COUNTIFS($A$2:A2,&quot;&gt;=&quot;&amp;DATE(YEAR(A2),1,1),$A$2:A2,&quot;&lt;=&quot;&amp;DATE(YEAR(A2),12,31)),&quot;000&quot;)
+</code></pre>
+<ul>
+<li><code>YEAR(A2)</code> is the year of the invoice date</li>
+<li><code>COUNTIFS(...)</code> counts how many invoices from the same year appear from the top down to this row, so it gives "the nth invoice of the year"</li>
+<li><code>TEXT(..., "000")</code> pads it to three digits</li>
+</ul>
+<p>The count restarts at 001 when the year changes. The same formula works in Excel and Google Sheets.</p>
+<p>If your financial year doesn't start in January, you can use your own year label instead of <code>YEAR(A2)</code>, but the simplest option is often to number by calendar year and let your accounting software handle the financial year.</p>
+<h3>Lock the numbers once sent</h3>
+<p>The formula recalculates if you sort the sheet or insert a row in the middle, so numbers can shift. Once an invoice has been sent, <strong>copy column B and paste it back as values</strong> so the number can't change. Never renumber an invoice a customer already has.</p>
+<h2>Cancelled and corrected invoices</h2>
+<ul>
+<li><strong>Cancelled before sending</strong>: don't reuse the number. Mark it "void" in your list and carry on with the next number. A gap is fine as long as you can explain it.</li>
+<li><strong>Wrong amount after sending</strong>: rather than quietly changing the invoice under the same number, agree the fix with the customer and issue a credit note or a replacement invoice with a new number, and record that the original was cancelled. For VAT invoices, follow HMRC's guidance on credit and debit notes.</li>
+</ul>
+<h2>Summary</h2>
+<ul>
+<li>Use year + running number (2026-001): easy to read, easy to sort, gaps are obvious</li>
+<li>In the UK, an invoice must have a unique identification number</li>
+<li>A COUNTIFS formula can number invoices automatically; paste as values once sent</li>
+<li>Don't reuse or renumber invoices; record voids and corrections</li>
+</ul>
+<p>Source: <a href="https://www.gov.uk/invoicing-and-taking-payment-from-customers/invoices-what-they-must-include" target="_blank" rel="noopener">GOV.UK: Invoicing and taking payment from customers, what invoices must include</a></p>
+<p><em>General information, not tax advice. This article was drafted with the help of AI and checked against GOV.UK on 2026-10-21.</em></p><div class="tools"><b>Free tools you can use</b><a href="../../records/">Record Retention Calculator (US/UK/CA/AU)</a><br></div><div class="rel"><b>Related articles</b><a href="../en-home-office-business-use-percentage/">How to work out the business-use share of home costs in a spreadsheet (US and UK)</a><br><a href="../en-track-unpaid-invoices-google-sheets/">Track unpaid invoices in Google Sheets (with overdue days and red rows)</a><br><a href="../en-staff-shift-schedule-google-sheets/">Build a weekly staff shift schedule in Google Sheets (hours per person, gaps highlighted)</a><br></div></main>
+<footer class="wrap">© MisaNeco Works ・ <a href="../en/">All articles</a> ・ <a href="../../">Free tools</a> ・ <a href="../en/../">日本語の記事</a><br>Articles are written with the help of AI and checked against official sources. Articles with ads say so at the top. We use Google Analytics to count page views anonymously (no names or contact details).</footer>
+</body></html>
