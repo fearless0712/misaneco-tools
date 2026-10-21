@@ -1,0 +1,98 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'self'; img-src 'self' data: https://*.a8.net https://*.google-analytics.com https://*.googletagmanager.com; script-src 'self' https://www.googletagmanager.com; connect-src https://*.google-analytics.com https://*.analytics.google.com https://*.googletagmanager.com; base-uri 'none'; form-action 'none'; object-src 'none'">
+<title>How to calculate forex position size from your stop-loss (formula and worked examples) | MisaNeco Works</title><meta name="description" content="The position size formula for forex in plain English — amount at risk divided by stop distance times pip value — with worked examples for EUR/USD, USD/JPY and a non-USD account, how spread changes the result, and a free calculator.">
+<link rel="canonical" href="https://tools.equaglobal.com/blog/en-forex-position-size-formula/"><meta property="og:type" content="article"><meta property="og:url" content="https://tools.equaglobal.com/blog/en-forex-position-size-formula/"><meta property="og:image" content="https://tools.equaglobal.com/blog/og.png"><meta name="twitter:card" content="summary_large_image"><meta property="og:title" content="How to calculate forex position size from your stop-loss (formula and worked examples) | MisaNeco Works"><meta property="og:description" content="The position size formula for forex in plain English — amount at risk divided by stop distance times pip value — with worked examples for EUR/USD, USD/JPY and a non-USD account, how spread changes the result, and a free calculator.">
+<link rel="alternate" type="application/rss+xml" title="MisaNeco Works Blog" href="https://tools.equaglobal.com/blog/en/rss.xml"><script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "How to calculate forex position size from your stop-loss (formula and worked examples)", "description": "The position size formula for forex in plain English — amount at risk divided by stop distance times pip value — with worked examples for EUR/USD, USD/JPY and a non-USD account, how spread changes the result, and a free calculator.", "datePublished": "2026-10-22", "dateModified": "2026-10-22", "inLanguage": "en", "mainEntityOfPage": "https://tools.equaglobal.com/blog/en-forex-position-size-formula/", "image": "https://tools.equaglobal.com/blog/og.png", "author": {"@type": "Organization", "name": "MisaNeco Works", "url": "https://tools.equaglobal.com/"}, "publisher": {"@type": "Organization", "name": "MisaNeco Works"}}</script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-EWJXRJY9M6"></script><script src="../ga.js?v=202610220541"></script>
+<link rel="stylesheet" href="../blog.css?v=202610220541"></head><body>
+<header><div class="wrap"><a href="../en/">MisaNeco Works Blog</a></div></header>
+<main class="wrap"><p class="meta">2026-10-22・Trading</p><h1>How to calculate forex position size from your stop-loss (formula and worked examples)</h1><p>Most traders pick a position size first and think about the stop later. It works better the other way round: <strong>decide where your stop goes and how much you are willing to lose, and let those two numbers set the size.</strong></p>
+<p>This post shows the formula, three worked examples, and the mistakes that make a "1% risk" trade lose much more than 1%.</p>
+<p><strong>Free calculator:</strong> <a href="../../position-size/">Forex position size calculator</a> — runs in your browser, nothing you type is sent anywhere.</p>
+<p><em>This is about arithmetic, not trading advice. It doesn't tell you what or when to trade. Leveraged forex trading can lose more than you deposit.</em></p>
+<h2>The formula</h2>
+<pre><code>Position size (units) = Amount at risk ÷ (Stop distance in pips × Pip size × Conversion rate)
+</code></pre>
+<ul>
+<li><strong>Amount at risk</strong> — the most you are willing to lose on this trade, e.g. 1% of a $10,000 account = $100.</li>
+<li><strong>Stop distance in pips</strong> — the gap between your entry price and your stop price.</li>
+<li><strong>Pip size</strong> — 0.0001 for most pairs, 0.01 for JPY pairs.</li>
+<li><strong>Conversion rate</strong> — the value of one unit of the quote currency (the right-hand currency of the pair) in your account currency. If they are the same, it is 1.</li>
+</ul>
+<p>Round the answer <strong>down</strong> to the smallest order size your broker allows. Rounding up means risking more than you planned.</p>
+<h2>Example 1: EUR/USD with a USD account</h2>
+<ul>
+<li>Balance $10,000, risk 1% → <strong>$100</strong></li>
+<li>Buy EUR/USD at 1.0850, stop at 1.0825 → <strong>25 pips</strong></li>
+<li>Quote currency is USD, account is USD → conversion rate <strong>1</strong></li>
+</ul>
+<p>Loss per unit = 25 × 0.0001 × 1 = $0.0025
+Position size = $100 ÷ $0.0025 = <strong>40,000 units (0.4 standard lots)</strong></p>
+<p>If the stop is hit, you lose $100 — the 1% you planned.</p>
+<h2>Example 2: USD/JPY with a USD account</h2>
+<ul>
+<li>Balance $10,000, risk 1% → <strong>$100</strong></li>
+<li>Buy USD/JPY at 150.25, stop at 149.95 → <strong>30 pips</strong> (pip size 0.01)</li>
+<li>Quote currency is JPY, account is USD → one yen is worth <strong>1 ÷ 149.95</strong> dollars at the stop</li>
+</ul>
+<p>Loss per unit = 30 × 0.01 ÷ 149.95 ≈ $0.0020
+Position size = $100 ÷ $0.0020 ≈ 49,983 → <strong>49,000 units</strong> after rounding down to 1,000</p>
+<p>The calculator accepts the conversion rate as a fraction, so you can type <code>1/149.95</code>.</p>
+<h2>Example 3: EUR/USD with a GBP account</h2>
+<ul>
+<li>Balance £10,000, risk 1% → <strong>£100</strong></li>
+<li>Same trade as Example 1: 25 pips</li>
+<li>Quote currency is USD, account is GBP. If 1 USD = 0.75 GBP, the conversion rate is <strong>0.75</strong></li>
+</ul>
+<p>Loss per unit = 25 × 0.0001 × 0.75 = £0.001875
+Position size = £100 ÷ £0.001875 ≈ 53,333 → <strong>53,000 units</strong></p>
+<h2>Add the spread to the stop</h2>
+<p>You pay the spread when you close, so a 25-pip stop with a 1-pip spread really costs about 26 pips. In Example 1:</p>
+<p>$100 ÷ (26 × 0.0001) ≈ 38,461 → <strong>38,000 units</strong> instead of 40,000</p>
+<p>It's a small difference on one trade, but over hundreds of trades it's the gap between "1% risk" and "a bit more than 1% risk".</p>
+<h2>Why a wider stop means a smaller position</h2>
+<p>The amount at risk stays the same, so if the stop is twice as far away, the position has to be half as big:</p>
+<table>
+<thead>
+<tr>
+<th>Stop distance</th>
+<th>Position (EUR/USD, $100 risk)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>10 pips</td>
+<td>100,000 units (1 lot)</td>
+</tr>
+<tr>
+<td>25 pips</td>
+<td>40,000 units (0.4 lots)</td>
+</tr>
+<tr>
+<td>50 pips</td>
+<td>20,000 units (0.2 lots)</td>
+</tr>
+</tbody>
+</table>
+<p>This is the whole point of the method. The chart decides where the stop should be; the formula decides how big you can go.</p>
+<h2>Three ways a "1% trade" loses more than 1%</h2>
+<ol>
+<li><strong>Moving the stop further away</strong> after you enter. The size was set for the original stop, so the loss grows with every pip you move it.</li>
+<li><strong>No stop order in the market.</strong> If you plan to "close it manually", a fast move or a gap can blow straight past your level.</li>
+<li><strong>Gaps and slippage.</strong> Even with a stop order, price can jump over it — over a weekend or after big news. Your fill can be worse than the stop price.</li>
+</ol>
+<p>A simple way to see whether this is happening to you: record, for every trade, whether you followed your stop, and compare the results of the trades where you did with the ones where you didn't.</p>
+<h2>Margin is a separate question</h2>
+<p>Position size from the formula tells you how much you can <strong>lose</strong>. Margin tells you whether your broker will <strong>let you open</strong> the trade. In Example 1, 40,000 units of EUR/USD at 1.0850 is about $43,400 of currency; at 30:1 leverage that needs roughly $1,447 of margin. If the margin needed is more than your balance, the order won't go through. Leverage limits depend on your broker and country.</p>
+<h2>Quick checklist before you enter</h2>
+<ul>
+<li>☐ I chose my stop price before placing the order</li>
+<li>☐ I worked out the position size from the stop and my risk, and rounded down</li>
+<li>☐ I included the spread</li>
+<li>☐ I'm placing the stop order at the same time as the trade</li>
+<li>☐ I'm OK losing the amount at risk</li>
+</ul>
+<p>Try your own numbers: <a href="../../position-size/">Forex position size calculator</a></p>
+<p><em>Written with the help of AI. The examples are arithmetic only and use made-up prices. Check your broker's contract sizes, pip values and leverage limits.</em></p><div class="tools"><b>Free tools you can use</b><a href="../../position-size/">Forex Position Size Calculator</a><br></div></main>
+<footer class="wrap">© MisaNeco Works ・ <a href="../en/">All articles</a> ・ <a href="../../">Free tools</a> ・ <a href="../en/../">日本語の記事</a><br>Articles are written with the help of AI and checked against official sources. Articles with ads say so at the top. We use Google Analytics to count page views anonymously (no names or contact details).</footer>
+</body></html>
