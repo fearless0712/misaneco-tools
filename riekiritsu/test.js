@@ -128,12 +128,12 @@ const __ga=require(__dirname+'/../assets/ga-test-helper.js').stripGA(require('fs
 const html=__ga.html;
 eq(/1万円|30日チャレンジ/.test(html),false,'banned');eq(/connect-src 'none'/.test(html),true,'csp');
 eq(/script-src 'self';/.test(html),true,'csp script self');eq(/<script>|\son\w+=/.test(html),false,'no inline js');
-eq(/https?:\/\/(?!fearless0712\.github\.io|px\.a8\.net|www[0-9]*\.a8\.net|\*\.a8\.net|line\.me\/R\/ti\/p\/@736dykzx|schema\.org)/.test(html),false,'no external urls except A8 ad');eq(html.includes('広告・PR'),true,'ad label');
+eq(/https?:\/\/(?!(?:tools\.)?equaglobal\.com|px\.a8\.net|www[0-9]*\.a8\.net|\*\.a8\.net|line\.me\/R\/ti\/p\/@736dykzx|schema\.org)/.test(html),false,'no external urls except A8 ad');eq(html.includes('広告・PR'),true,'ad label');
 eq(html.includes('<html lang="ja">'),true,'lang ja');
 eq(html.includes('<title>利益率・上乗せ率 計算ツール（売値の逆算つき）</title>'),true,'title');
-eq(html.includes('<link rel="canonical" href="https://fearless0712.github.io/misaneco-tools/riekiritsu/">'),true,'canonical');
-eq(html.includes('hreflang="ja" href="https://fearless0712.github.io/misaneco-tools/riekiritsu/"'),true,'hreflang ja');
-eq(html.includes('hreflang="en" href="https://fearless0712.github.io/misaneco-tools/jobcost/"'),true,'hreflang en');
+eq(html.includes('<link rel="canonical" href="https://tools.equaglobal.com/riekiritsu/">'),true,'canonical');
+eq(html.includes('hreflang="ja" href="https://tools.equaglobal.com/riekiritsu/"'),true,'hreflang ja');
+eq(html.includes('hreflang="en" href="https://tools.equaglobal.com/jobcost/"'),true,'hreflang en');
 eq(html.includes('一般的な情報です。税務の判断は税理士・税務署にご確認ください。このツールはAIを活用して作成し、テストで確認しています。入力した内容はブラウザの外に送信されません。'),true,'footer note');
 ['href="../"','href="../blog/riekiritsu-uwanoseritsu-chigai/"','href="../dx/"','href="../jobcost/"'].forEach(s=>eq(html.includes(s),true,'link '+s));
 ['売値（税抜）','材料費・仕入れ','作業時間','時給（自分の分も）','外注費','その他の費用','目標利益率','原価合計','利益率','上乗せ率','必要な売値','10,667円','8,000円','10,000円'].forEach(s=>eq(html.includes(s),true,'text '+s));
@@ -142,5 +142,5 @@ eq(/<script src="\.\.\/assets\/ads-inter\.js\?v=\d+" data-pool="accounting" data
 ['logic.js','ja.js','app.js','app.css'].forEach(f=>eq(require('fs').existsSync(__dirname+'/'+f),true,'file '+f));
 eq(require('fs').readFileSync(__dirname+'/logic.js','utf8'),require('fs').readFileSync(__dirname+'/../jobcost/logic.js','utf8'),'logic.js same as jobcost');
 const en=require('fs').readFileSync(__dirname+'/../jobcost/index.html','utf8');
-eq(en.includes('hreflang="ja" href="https://fearless0712.github.io/misaneco-tools/riekiritsu/"'),true,'reverse hreflang in jobcost');
+eq(en.includes('hreflang="ja" href="https://tools.equaglobal.com/riekiritsu/"'),true,'reverse hreflang in jobcost');
 console.log(p+' passed, '+f+' failed');process.exit(f?1:0);

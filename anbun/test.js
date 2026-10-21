@@ -91,9 +91,9 @@ ok(/default-src 'none'/.test(csp) && /connect-src 'none'/.test(csp) && /script-s
 ok(!/fetch\(|XMLHttpRequest|sendBeacon|WebSocket/.test(app + logic), 'no network code');
 ok(/localStorage\.getItem/.test(app) && /try \{[^]*localStorage\.setItem[^]*\} catch/.test(app), 'localStorage in try/catch');
 ok(html.includes('<title>家事按分 計算ツール｜家賃・電気・通信費の経費割合と根拠メモ（個人事業主・無料）</title>'), 'title');
-ok(html.includes('<link rel="canonical" href="https://fearless0712.github.io/misaneco-tools/anbun/">'), 'canonical');
-ok(html.includes('property="og:title"') && html.includes('property="og:url" content="https://fearless0712.github.io/misaneco-tools/anbun/"'), 'OGP');
-const ld = JSON.parse(/<script type="application\/ld\+json">([^<]*)<\/script>/.exec(html)[1]); eq(ld['@type'], 'WebApplication', 'JSON-LD'); eq(ld.url, 'https://fearless0712.github.io/misaneco-tools/anbun/', 'JSON-LD url');
+ok(html.includes('<link rel="canonical" href="https://tools.equaglobal.com/anbun/">'), 'canonical');
+ok(html.includes('property="og:title"') && html.includes('property="og:url" content="https://tools.equaglobal.com/anbun/"'), 'OGP');
+const ld = JSON.parse(/<script type="application\/ld\+json">([^<]*)<\/script>/.exec(html)[1]); eq(ld['@type'], 'WebApplication', 'JSON-LD'); eq(ld.url, 'https://tools.equaglobal.com/anbun/', 'JSON-LD url');
 ok(html.includes('広告・PR'), 'ad label'); ok(/<a href="https:\/\/px\.a8\.net\/[^"]+" rel="nofollow sponsored noopener" target="_blank">/.test(html), 'static A8 ad');
 ok(/<script src="\.\.\/assets\/ads-inter\.js\?v=\d+" data-pool="accounting" data-page-ad="0" defer><\/script>/.test(html), 'full-screen ad script');
 ok(/class="line-box"[^]*<\/aside>\n<\/main>/.test(html), 'LINE box right before </main>');
@@ -104,7 +104,7 @@ ok(html.includes('taxanswer/shotoku/2210.htm') && html.includes('laws.e-gov.go.j
 ok(!/\d+%まで(OK|ＯＫ|なら)|まで経費にできます/.test(html + app + logic), 'no invented percentage rules');
 ok(!/1万円|30日チャレンジ/.test(html), 'banned words');
 const urls = (html + app + logic).match(/https?:\/\/[^"'\s<>)]+/g) || [];
-const allowed = /^https:\/\/(fearless0712\.github\.io\/misaneco-tools\/|px\.a8\.net\/|www\d*\.a8\.net\/|\*\.a8\.net;$|line\.me\/R\/ti\/p\/@736dykzx$|schema\.org$|excel-temple\.booth\.pm\/items\/8995923$|www\.nta\.go\.jp\/|laws\.e-gov\.go\.jp\/)/;
+const allowed = /^https:\/\/(tools\.equaglobal\.com\/|px\.a8\.net\/|www\d*\.a8\.net\/|\*\.a8\.net;$|line\.me\/R\/ti\/p\/@736dykzx$|schema\.org$|excel-temple\.booth\.pm\/items\/8995923$|www\.nta\.go\.jp\/|laws\.e-gov\.go\.jp\/)/;
 const extra = urls.filter(u => !allowed.test(u)); eq(extra.join(' '), '', 'no external URLs except A8 / LINE / schema.org / BOOTH / NTA / e-Gov');
 const refs = /<section class="mut refs"[^]*?<\/section>/.exec(html)[0];
 ok(urls.filter(u => /nta\.go\.jp|e-gov\.go\.jp/.test(u)).every(u => refs.includes(u)), 'NTA / e-Gov links only in 参考');
