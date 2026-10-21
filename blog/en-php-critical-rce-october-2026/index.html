@@ -1,0 +1,67 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'self'; img-src 'self' data: https://*.a8.net https://*.google-analytics.com https://*.googletagmanager.com; script-src 'self' https://www.googletagmanager.com; connect-src https://*.google-analytics.com https://*.analytics.google.com https://*.googletagmanager.com; base-uri 'none'; form-action 'none'; object-src 'none'">
+<title>PHP critical RCE (CVE-2026-109618, CVE-2026-109619): how to check your site and update | MisaNeco Works</title><meta name="description" content="On 21 October 2026 PHP released fixes for two critical remote code execution flaws (CVSS v4.0 9.2). The fixed versions, who is at risk, how to check your PHP version on WordPress, shared hosting and your own server, and why php.ini changes are not enough — based on the official PHP advisory.">
+<link rel="canonical" href="https://tools.equaglobal.com/blog/en-php-critical-rce-october-2026/"><meta property="og:type" content="article"><meta property="og:url" content="https://tools.equaglobal.com/blog/en-php-critical-rce-october-2026/"><meta property="og:image" content="https://tools.equaglobal.com/blog/og.png"><meta name="twitter:card" content="summary_large_image"><meta property="og:title" content="PHP critical RCE (CVE-2026-109618, CVE-2026-109619): how to check your site and update | MisaNeco Works"><meta property="og:description" content="On 21 October 2026 PHP released fixes for two critical remote code execution flaws (CVSS v4.0 9.2). The fixed versions, who is at risk, how to check your PHP version on WordPress, shared hosting and your own server, and why php.ini changes are not enough — based on the official PHP advisory.">
+<link rel="alternate" type="application/rss+xml" title="MisaNeco Works Blog" href="https://tools.equaglobal.com/blog/en/rss.xml"><script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "PHP critical RCE (CVE-2026-109618, CVE-2026-109619): how to check your site and update", "description": "On 21 October 2026 PHP released fixes for two critical remote code execution flaws (CVSS v4.0 9.2). The fixed versions, who is at risk, how to check your PHP version on WordPress, shared hosting and your own server, and why php.ini changes are not enough — based on the official PHP advisory.", "datePublished": "2026-10-21", "dateModified": "2026-10-21", "inLanguage": "en", "mainEntityOfPage": "https://tools.equaglobal.com/blog/en-php-critical-rce-october-2026/", "image": "https://tools.equaglobal.com/blog/og.png", "author": {"@type": "Organization", "name": "MisaNeco Works", "url": "https://tools.equaglobal.com/"}, "publisher": {"@type": "Organization", "name": "MisaNeco Works"}}</script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-EWJXRJY9M6"></script><script src="../ga.js?v=202610212337"></script>
+<link rel="stylesheet" href="../blog.css?v=202610212337"></head><body>
+<header><div class="wrap"><a href="../en/">MisaNeco Works Blog</a></div></header>
+<main class="wrap"><p class="meta">2026-10-21・Security</p><h1>PHP critical RCE (CVE-2026-109618, CVE-2026-109619): how to check your site and update</h1><p>On 21 October 2026 the PHP project released security updates for <strong>two critical vulnerabilities that can let an unauthenticated attacker run code on your server</strong>.
+PHP runs WordPress and a large share of business websites. If your site or internal system runs on PHP, <strong>check your version and update now</strong>.</p>
+<p>In this post:</p>
+<ul>
+<li>What was fixed (from the official advisory)</li>
+<li>The fixed version numbers</li>
+<li>How to check which PHP version your site runs</li>
+<li>What to do if you can't update right away</li>
+</ul>
+<h2>What was fixed</h2>
+<p>According to the official PHP advisory, the two issues are:</p>
+<ul>
+<li><strong>CVE-2026-109618</strong> — when out-of-memory handling interrupts PHP while request data is only partly set up, request cleanup can treat that invalid data as valid.</li>
+<li><strong>CVE-2026-109619</strong> — internal state owned by one request can survive after its memory is freed, and a later request on the same worker can use it.</li>
+</ul>
+<p>Both are rated <strong>CVSS v4.0 9.2</strong> and can allow <strong>unauthenticated remote code execution</strong>.</p>
+<p>The advisory says <strong>every PHP installation that serves web requests</strong> is at risk, including PHP-FPM, Apache with mod_php, php-cgi, FrankenPHP and LiteSpeed. It rates the risk highest for <strong>mod_php</strong>, where a demonstrated exploit runs before any application code.</p>
+<h2>Fixed versions</h2>
+<p>Update to at least:</p>
+<ul>
+<li>PHP 8.5: <strong>8.5.12</strong></li>
+<li>PHP 8.4: <strong>8.4.27</strong></li>
+<li>PHP 8.3: <strong>8.3.36</strong></li>
+<li>PHP 8.2: <strong>8.2.35</strong> (8.2 reaches end of life on 31 December 2026)</li>
+</ul>
+<p>PHP 8.1 and older no longer get official releases. The security team published minimal backports for 7.4, 8.0 and 8.1 on GitHub, but moving to a supported version is the safer plan.</p>
+<h2>Check which PHP version you run</h2>
+<p><strong>WordPress</strong></p>
+<p>In the dashboard, go to <strong>Tools → Site Health → Info → Server</strong>. The PHP version is listed there.</p>
+<p><strong>Shared hosting</strong></p>
+<p>Most hosting control panels have a "PHP version" page where you can see and switch the version. On shared hosting, your provider may be rolling out the fix for you — <strong>check your host's status or news page</strong>. Some hosts are doing emergency maintenance, so your site or panel may be briefly unavailable.</p>
+<p><strong>Your own server</strong></p>
+<p>Run <code>php -v</code>. The command-line PHP and the PHP your web server uses can differ, so check the web one too (for example, the PHP-FPM package version).
+If you create a <code>phpinfo()</code> page to check, <strong>delete it straight away</strong> — it exposes details about your server.</p>
+<p><strong>An agency or developer runs your site</strong></p>
+<p>Ask them directly: "Have you updated PHP for CVE-2026-109618 and CVE-2026-109619, and which version are we on now?"</p>
+<h2>If you can't update right away</h2>
+<p>The advisory is clear: <strong>only updating is a complete fix</strong>.</p>
+<p>It lists settings that reduce exposure to specific attack paths — for example setting <code>session.upload_progress.enabled=0</code> in php.ini or the FPM pool and restarting every worker — but says these <strong>do not make an installation safe</strong>. Treat them as a stopgap and update as soon as you can.</p>
+<h2>Checklist</h2>
+<ul>
+<li>☐ Confirmed whether your site or system runs on PHP</li>
+<li>☐ Checked the PHP version</li>
+<li>☐ Updated to 8.5.12 / 8.4.27 / 8.3.36 / 8.2.35 or later (or scheduled it)</li>
+<li>☐ On shared hosting: read your host's notice</li>
+<li>☐ Using an agency: asked them for their status</li>
+<li>☐ Deleted any <code>phpinfo()</code> page you created</li>
+</ul>
+<h2>Sources</h2>
+<ul>
+<li>PHP security advisory, 21 October 2026: https://www.php.net/archive/2026.php#2026-10-21-5</li>
+<li>PHP 8.5.12 release: https://www.php.net/archive/2026.php#2026-10-21-4</li>
+<li>PHP 8.4.27 release: https://www.php.net/archive/2026.php#2026-10-21-3</li>
+<li>PHP 8.3.36 release: https://www.php.net/archive/2026.php#2026-10-21-2</li>
+<li>PHP 8.2.35 release: https://www.php.net/archive/2026.php#2026-10-21-1</li>
+</ul>
+<p><em>Written with the help of AI from the official PHP announcements as of 21 October 2026. The situation may change; check php.net and your hosting provider for the latest.</em></p><div class="tools"><b>Free tools you can use</b><a href="../../PassAudit.html?lang=en">PassAudit password checker (trial)</a><br></div><div class="rel"><b>Related articles</b><a href="../en-small-business-password-policy-nist/">Password rules for a small business: what NIST SP 800-63B-4 (2025) actually says</a><br><a href="../en-find-reused-passwords/">How to find reused and weak passwords (and which ones to fix first)</a><br><a href="../en-employee-offboarding-account-checklist/">When someone leaves: an account offboarding checklist for small businesses</a><br></div></main>
+<footer class="wrap">© MisaNeco Works ・ <a href="../en/">All articles</a> ・ <a href="../../">Free tools</a> ・ <a href="../en/../">日本語の記事</a><br>Articles are written with the help of AI and checked against official sources. Articles with ads say so at the top. We use Google Analytics to count page views anonymously (no names or contact details).</footer>
+</body></html>
