@@ -373,7 +373,7 @@ rs_n:"Passwords are never shown (only the first and last character). Fix in this
 document.querySelectorAll("[data-i]").forEach(e=>T.ja[e.dataset.i]=e.innerHTML);
 let L="ja";const tt=k=>(T[L]&&T[L][k])||T.ja[k]||k;const J=(ja,en)=>L==="ja"?ja:en;const $=id=>document.getElementById(id);
 const esc=s=>String(s??"").replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
-function applyLang(){document.documentElement.lang=L;document.querySelectorAll("[data-i]").forEach(el=>el.innerHTML=tt(el.dataset.i));for(const k of["help","todo"]){$(k+"_ja").style.display=L==="ja"?"":"none";$(k+"_en").style.display=L==="en"?"":"none"}fillFlt();if(R)show()}
+function applyLang(){document.documentElement.lang=L;document.querySelectorAll('aside[aria-label="広告・PR"]').forEach(a=>a.hidden=L!=="ja");document.querySelectorAll("[data-i]").forEach(el=>el.innerHTML=tt(el.dataset.i));for(const k of["help","todo"]){$(k+"_ja").style.display=L==="ja"?"":"none";$(k+"_en").style.display=L==="en"?"":"none"}fillFlt();if(R)show()}
 $("lang").onchange=e=>{L=e.target.value;applyLang()};
 try{if((navigator.language||"").slice(0,2)!=="ja"){$("lang").value="en";L="en"}}catch(e){}
 if(/[?&]lang=en/.test(location.search)){$("lang").value="en";L="en"}

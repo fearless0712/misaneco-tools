@@ -1,0 +1,80 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'self'; img-src 'self' data: https://*.a8.net https://*.google-analytics.com https://*.googletagmanager.com; script-src 'self' https://www.googletagmanager.com; connect-src https://*.google-analytics.com https://*.analytics.google.com https://*.googletagmanager.com; base-uri 'none'; form-action 'none'; object-src 'none'">
+<title>How to find reused and weak passwords (and which ones to fix first) | MisaNeco Works</title><meta name="description" content="A short guide for small businesses and freelancers: use your browser&#x27;s built-in Password Checkup to find compromised, reused and weak passwords, decide what to fix first, and handle an exported password file safely.">
+<link rel="canonical" href="https://fearless0712.github.io/misaneco-tools/blog/en-find-reused-passwords/"><meta property="og:type" content="article"><meta property="og:url" content="https://fearless0712.github.io/misaneco-tools/blog/en-find-reused-passwords/"><meta property="og:image" content="https://fearless0712.github.io/misaneco-tools/blog/og.png"><meta name="twitter:card" content="summary_large_image"><meta property="og:title" content="How to find reused and weak passwords (and which ones to fix first) | MisaNeco Works"><meta property="og:description" content="A short guide for small businesses and freelancers: use your browser&#x27;s built-in Password Checkup to find compromised, reused and weak passwords, decide what to fix first, and handle an exported password file safely.">
+<link rel="alternate" type="application/rss+xml" title="MisaNeco Works Blog" href="https://fearless0712.github.io/misaneco-tools/blog/en/rss.xml"><script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "How to find reused and weak passwords (and which ones to fix first)", "description": "A short guide for small businesses and freelancers: use your browser's built-in Password Checkup to find compromised, reused and weak passwords, decide what to fix first, and handle an exported password file safely.", "datePublished": "2026-10-21", "dateModified": "2026-10-21", "inLanguage": "en", "mainEntityOfPage": "https://fearless0712.github.io/misaneco-tools/blog/en-find-reused-passwords/", "image": "https://fearless0712.github.io/misaneco-tools/blog/og.png", "author": {"@type": "Organization", "name": "MisaNeco Works", "url": "https://fearless0712.github.io/misaneco-tools/"}, "publisher": {"@type": "Organization", "name": "MisaNeco Works"}}</script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-EWJXRJY9M6"></script><script src="../ga.js?v=202610210926"></script>
+<link rel="stylesheet" href="../blog.css?v=202610210926"></head><body>
+<header><div class="wrap"><a href="../en/">MisaNeco Works Blog</a></div></header>
+<main class="wrap"><p class="meta">2026-10-21・Security</p><h1>How to find reused and weak passwords (and which ones to fix first)</h1><p>Most people know they "shouldn't reuse passwords". Fewer know which of their own passwords are reused, and where to start fixing them.</p>
+<p>This guide shows how to find them with tools you probably already have, and what to fix first.</p>
+<p>In this article:</p>
+<ul>
+<li>the three kinds of password problems to look for</li>
+<li>how to run Google's Password Checkup in Chrome</li>
+<li>the order to fix things in</li>
+<li>how to handle an exported password file safely</li>
+</ul>
+<h2>Three problems to look for</h2>
+<p>Google describes the three things its Password Checkup looks for:</p>
+<table>
+<thead>
+<tr>
+<th>Problem</th>
+<th>Why it matters</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Compromised</strong></td>
+<td>The username and password have been published online after a breach</td>
+</tr>
+<tr>
+<td><strong>Reused</strong></td>
+<td>One leak opens every account that uses the same password</td>
+</tr>
+<tr>
+<td><strong>Weak</strong></td>
+<td>Obvious phrases, keyboard patterns and single words are easy to guess</td>
+</tr>
+</tbody>
+</table>
+<h2>Check in Chrome (Password Checkup)</h2>
+<p>If you save passwords in Chrome:</p>
+<ol>
+<li>Open Chrome on your computer.</li>
+<li>Open the <strong>More</strong> menu (top right) → <strong>Passwords and autofill</strong> → <strong>Google Password Manager</strong>.</li>
+<li>Select <strong>Checkup</strong> on the left.</li>
+</ol>
+<p>Other browsers and password managers have similar checks. Look for "password health", "security" or "watchtower" in their settings.</p>
+<h2>What to fix first</h2>
+<ol>
+<li><strong>Compromised passwords</strong>: change these first, starting with any account that matters.</li>
+<li><strong>Your email account</strong>: it can reset every other password, so it should have a unique, long password and two-factor authentication.</li>
+<li><strong>Money and work</strong>: banking, cards, payment services, accounting, cloud storage, and anything with customer data.</li>
+<li><strong>Reused passwords</strong>: give every account its own password. Let your password manager generate long random ones; you don't need to remember them.</li>
+<li><strong>Weak passwords</strong>: the rest, as you go.</li>
+</ol>
+<p>Turn on <strong>two-factor authentication</strong> (or use passkeys) wherever it is offered, starting with email.</p>
+<h2>If you export your passwords</h2>
+<p>Some tools, including our own, work from an exported password file. In Chrome, export is under Google Password Manager → <strong>Settings</strong> → <strong>Export passwords</strong> → <strong>Download file</strong>.</p>
+<p>That file contains <strong>every password in plain text</strong>. So:</p>
+<ul>
+<li>check it on your own computer only, and don't email it, chat it or upload it to cloud storage</li>
+<li><strong>delete it as soon as you are done</strong>, and empty the trash</li>
+</ul>
+<h2>A checker that stays in your browser</h2>
+<p>I made <strong>PassAudit</strong>, a password checker that reads an exported password file (CSV) and lists <strong>reused</strong>, <strong>weak</strong> (short, common, keyboard patterns and so on) and <strong>similar</strong> passwords (the same password with a different number or symbol at the end, like <code>Neko2023!</code> and <code>Neko2024!</code>). It runs entirely in your browser, and passwords are not sent anywhere. It does not check against breach databases, so use your browser's Checkup for that.</p>
+<p>You can open the trial from "Free tools you can use" below this article.</p>
+<h2>Summary</h2>
+<ul>
+<li>Look for three problems: compromised, reused and weak passwords</li>
+<li>Chrome: More → Passwords and autofill → Google Password Manager → Checkup</li>
+<li>Fix compromised passwords first, then email, then money and work accounts</li>
+<li>Give every account its own password and turn on two-factor authentication</li>
+<li>An exported password file holds every password in plain text: keep it local and delete it</li>
+</ul>
+<p>Sources: <a href="https://support.google.com/chrome/answer/95606" target="_blank" rel="noopener">Google Chrome Help: Manage passwords in Chrome</a> · <a href="https://support.google.com/accounts/answer/9457609" target="_blank" rel="noopener">Google Account Help: Password Checkup</a></p>
+<p><em>General information. This article was drafted with the help of AI and checked against Google's help pages on 2026-10-21. Menu names can change between versions.</em></p><div class="tools"><b>Free tools you can use</b><a href="../../PassAudit.html?lang=en">PassAudit password checker (trial)</a><br></div><div class="rel"><b>Related articles</b><a href="../en-small-business-password-policy-nist/">Password rules for a small business: what NIST SP 800-63B-4 (2025) actually says</a><br></div></main>
+<footer class="wrap">© MisaNeco Works ・ <a href="../en/">All articles</a> ・ <a href="../../">Free tools</a> ・ <a href="../en/../">日本語の記事</a><br>Articles are written with the help of AI and checked against official sources. Articles with ads say so at the top. We use Google Analytics to count page views anonymously (no names or contact details).</footer>
+</body></html>
