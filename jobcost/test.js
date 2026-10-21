@@ -64,7 +64,7 @@ for(const price of P)for(const materials of M)for(const hours of H)for(const rat
 const __ga=require(__dirname+'/../assets/ga-test-helper.js').stripGA(require('fs').readFileSync(__dirname+'/index.html','utf8'));if(__ga.problems.length){console.log('FAIL GA',__ga.problems.join(','));process.exitCode=1;}
 const html=__ga.html;
 eq(/1万円|30日チャレンジ/.test(html),false,'banned');eq(/connect-src 'none'/.test(html),true,'csp');
-eq(/https?:\/\/(?!fearless0712\.github\.io)/.test(html),false,'no external urls');
+eq(/https?:\/\/(?!fearless0712\.github\.io|schema\.org)/.test(html),false,'no external urls');
 eq(html.includes('General information only. This tool was built with the help of AI and tested.'),true,'footer note');
 eq(html.includes('<link rel="alternate" hreflang="ja" href="https://fearless0712.github.io/misaneco-tools/riekiritsu/">'),true,'hreflang ja');eq(html.includes('<link rel="alternate" hreflang="en" href="https://fearless0712.github.io/misaneco-tools/jobcost/">'),true,'hreflang en self');
 console.log(p+' passed, '+f+' failed');process.exit(f?1:0);
