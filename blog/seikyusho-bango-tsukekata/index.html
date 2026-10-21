@@ -1,0 +1,110 @@
+<!doctype html><html lang="ja"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'self'; img-src 'self' data: https://*.a8.net https://*.google-analytics.com https://*.googletagmanager.com; script-src 'self' https://www.googletagmanager.com; connect-src https://*.google-analytics.com https://*.analytics.google.com https://*.googletagmanager.com; base-uri 'none'; form-action 'none'; object-src 'none'">
+<title>請求書番号の付け方｜「年＋連番」がラクな理由と、Excel・スプレッドシートで自動で振る式｜MisaNeco Works</title><meta name="description" content="個人事業主・小さな会社向けに、請求書番号のおすすめの付け方（2026-001 のような年＋連番）と、Excel・Googleスプレッドシートで番号を自動で振る式をまとめました。インボイス（適格請求書）で番号は必須か、欠番や取り消しのときどうするかも。">
+<link rel="canonical" href="https://fearless0712.github.io/misaneco-tools/blog/seikyusho-bango-tsukekata/"><meta property="og:type" content="article"><meta property="og:url" content="https://fearless0712.github.io/misaneco-tools/blog/seikyusho-bango-tsukekata/"><meta property="og:image" content="https://fearless0712.github.io/misaneco-tools/blog/og.png"><meta name="twitter:card" content="summary_large_image"><meta property="og:title" content="請求書番号の付け方｜「年＋連番」がラクな理由と、Excel・スプレッドシートで自動で振る式｜MisaNeco Works"><meta property="og:description" content="個人事業主・小さな会社向けに、請求書番号のおすすめの付け方（2026-001 のような年＋連番）と、Excel・Googleスプレッドシートで番号を自動で振る式をまとめました。インボイス（適格請求書）で番号は必須か、欠番や取り消しのときどうするかも。">
+<link rel="alternate" type="application/rss+xml" title="MisaNeco Works ブログ" href="https://fearless0712.github.io/misaneco-tools/blog/rss.xml"><script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "請求書番号の付け方｜「年＋連番」がラクな理由と、Excel・スプレッドシートで自動で振る式", "description": "個人事業主・小さな会社向けに、請求書番号のおすすめの付け方（2026-001 のような年＋連番）と、Excel・Googleスプレッドシートで番号を自動で振る式をまとめました。インボイス（適格請求書）で番号は必須か、欠番や取り消しのときどうするかも。", "datePublished": "2026-10-21", "dateModified": "2026-10-21", "inLanguage": "ja", "mainEntityOfPage": "https://fearless0712.github.io/misaneco-tools/blog/seikyusho-bango-tsukekata/", "image": "https://fearless0712.github.io/misaneco-tools/blog/og.png", "author": {"@type": "Organization", "name": "MisaNeco Works", "url": "https://fearless0712.github.io/misaneco-tools/"}, "publisher": {"@type": "Organization", "name": "MisaNeco Works"}}</script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-EWJXRJY9M6"></script><script src="../ga.js?v=202610211341"></script>
+<link rel="stylesheet" href="../blog.css?v=202610211341"><link rel="stylesheet" href="../../assets/ads-inter.css?v=202610210009"></head><body>
+<header><div class="wrap"><a href="../">MisaNeco Works ブログ</a></div></header>
+<main class="wrap"><p class="meta">2026-10-21・フリーランス</p><h1>請求書番号の付け方｜「年＋連番」がラクな理由と、Excel・スプレッドシートで自動で振る式</h1><p>請求書の番号、どう付けていますか？「なんとなく1から」「日付をそのまま」など、決めずに始めると、あとで探すときや、入金を照らし合わせるときに困ります。</p>
+<p>この記事でわかること：</p>
+<ul>
+<li>おすすめの付け方「年＋連番」と、その理由</li>
+<li>インボイス（適格請求書）で番号は必須か</li>
+<li>Excel・Googleスプレッドシートで番号を自動で振る式</li>
+<li>欠番・取り消し・再発行のときの扱い</li>
+</ul>
+<h2>おすすめは「年＋連番」</h2>
+<pre><code>2026-001
+2026-002
+2026-003
+</code></pre>
+<ul>
+<li><strong>年がわかる</strong>：何年の請求書かがすぐわかります。帳簿や書類は年ごとに保存期間を数えるので、年で分かれていると整理しやすくなります</li>
+<li><strong>連番で抜けに気づける</strong>：001、002、003…と続くので、出し忘れや二重発行に気づきやすくなります</li>
+<li><strong>桁をそろえる</strong>：001 のように3桁でそろえると、並べ替えたときに 1、10、2 の順にならず、番号順に並びます</li>
+</ul>
+<p>1年に1,000通を超えそうなら、4桁（2026-0001）にします。</p>
+<p>取引先が多いなら「年月＋連番」（202610-01）、部門や担当で分けたいなら頭に記号（A-2026-001）を付ける方法もあります。どれにするにしても、<strong>一度決めたら途中で変えない</strong>ことが大切です。</p>
+<h2>インボイスで番号は必須？</h2>
+<p>インボイス（適格請求書）に書くことは、国税庁の案内では次の6つです。</p>
+<ol>
+<li>発行する人の氏名または名称と、登録番号</li>
+<li>取引年月日</li>
+<li>取引内容</li>
+<li>税率ごとに分けて合計した対価の額と、適用税率</li>
+<li>税率ごとに分けた消費税額等</li>
+<li>受け取る相手の氏名または名称</li>
+</ol>
+<p><strong>請求書番号は、この6つに入っていません</strong>。つまり、番号がなくてもインボイスとして認められます。ただ、問い合わせや入金の照合で「どの請求書のことか」をはっきりさせるために、付けておくのがおすすめです。</p>
+<p>※登録番号（T＋13桁）は、請求書番号とは別のものです。登録番号は必ず書きます。</p>
+<p>くわしくは、<a href="../invoice-kisai-jikou/">インボイス（適格請求書）に書くこと</a> にまとめています。</p>
+<h2>Excel・スプレッドシートで自動で振る式</h2>
+<p>A列に請求日、B列に請求書番号を出す例です。行は<strong>請求日の順</strong>に並んでいるものとします。</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>A（請求日）</th>
+<th>B（請求書番号）</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>請求日</td>
+<td>請求書番号</td>
+</tr>
+<tr>
+<td>2</td>
+<td>2026/10/05</td>
+<td>2026-001</td>
+</tr>
+<tr>
+<td>3</td>
+<td>2026/10/31</td>
+<td>2026-002</td>
+</tr>
+<tr>
+<td>4</td>
+<td>2027/01/10</td>
+<td>2027-001</td>
+</tr>
+</tbody>
+</table>
+<p>B2 に次の式を入れて、下にコピーします。</p>
+<pre><code>=YEAR(A2)&amp;&quot;-&quot;&amp;TEXT(COUNTIFS($A$2:A2,&quot;&gt;=&quot;&amp;DATE(YEAR(A2),1,1),$A$2:A2,&quot;&lt;=&quot;&amp;DATE(YEAR(A2),12,31)),&quot;000&quot;)
+</code></pre>
+<ul>
+<li><code>YEAR(A2)</code>：請求日の年</li>
+<li><code>COUNTIFS(...)</code>：先頭の行から今の行までで、同じ年の請求日がいくつあるか（＝その年の何通目か）</li>
+<li><code>TEXT(...,"000")</code>：3桁にそろえる</li>
+</ul>
+<p>年が変わると、自動で001から数え直します。ExcelでもGoogleスプレッドシートでも同じ式で動きます。</p>
+<h3>気をつけること</h3>
+<ul>
+<li><strong>行を並べ替えたり、途中に行を入れたりすると番号が変わります</strong>。番号を確定したら、B列をコピーして「値として貼り付け」ておくと安全です</li>
+<li>一度相手に送った請求書の番号は、あとから付け直さないでください</li>
+</ul>
+<h2>欠番・取り消し・再発行のとき</h2>
+<ul>
+<li><strong>出す前にやめた</strong>：その番号は使わず、一覧に「取り消し」と書いておきます。次は続きの番号から出します。欠番があってもかまいませんが、なぜ欠けたかがわかるようにしておきます</li>
+<li><strong>送ったあとに金額をまちがえた</strong>：同じ番号で中身だけ変えると、どちらが正しいかわからなくなります。相手と相談のうえ、新しい番号で出し直し、元の請求書は「取り消し」と記録しておくのがわかりやすい方法です</li>
+<li><strong>インボイスの内容をまちがえた</strong>：国税庁の案内では、交付したインボイスに誤りがあった場合は、<strong>修正したインボイスを交付する</strong>ことになっています。全体を出し直す方法のほか、修正するところだけを明らかにした書類で知らせる例も示されています</li>
+</ul>
+<h2>まとめ</h2>
+<ul>
+<li>請求書番号は「年＋連番」（2026-001）がおすすめ。年がわかり、抜けに気づけて、並べ替えもしやすい</li>
+<li>インボイスの記載事項に請求書番号は入っていない。ただし付けておくと照合がラク</li>
+<li>番号は式で自動で振れる。確定したら値として貼り付ける</li>
+<li>欠番・取り消しは、理由がわかるように一覧に記録する</li>
+</ul>
+<p>出典：</p>
+<ul>
+<li><a href="https://www.nta.go.jp/taxes/shiraberu/taxanswer/shohi/6625.htm" target="_blank" rel="noopener">国税庁 タックスアンサー No.6625 適格請求書等の記載事項</a></li>
+<li><a href="https://www.nta.go.jp/taxes/shiraberu/zeimokubetsu/shohi/keigenzeiritsu/pdf/0026004-099-02.pdf" target="_blank" rel="noopener">国税庁 適格請求書等保存方式の概要 －インボイス制度の理解のために－</a></li>
+</ul>
+<p>※この記事は、AIが下書きを作り、国税庁の案内で確認して公開しています。税の扱いは人によって違います。くわしくは税理士や税務署にご相談ください。</p><div class="tools"><b>あわせて使える無料ツール</b><a href="../../hozon/">帳簿・領収書の保存期間チェッカー</a><br><a href="../../anbun/">家事按分 計算ツール</a><br></div><div class="line"><p><b>新しい無料ツールや記事を、LINEでお知らせします</b><br>「ツール」「お金」「スマホ」と送ると、合うツールの案内が自動で届きます。</p><a class="btn" href="https://line.me/R/ti/p/@736dykzx" target="_blank" rel="noopener">LINEで友だち追加</a><small>Eternal Philosophy 公式LINE（EQUA・MisaNeco Works を運営）</small></div><div class="rel"><b>関連記事</b><a href="../kojin-jigyo-uriage-keihi-excel-kanri/">個人事業主の売上と経費をExcelで管理する最低限の列｜確定申告で困らない付け方</a><br><a href="../kicho-hozon-kikan-kojin/">個人事業主の帳簿・領収書は何年保存？｜7年と5年の分かれ目と、いつから数えるか</a><br><a href="../kaji-anbun-keisan/">家事按分の計算のしかた｜家賃・通信費・車の計算例と、根拠メモの書き方</a><br></div></main>
+<footer class="wrap">© MisaNeco Works ・ <a href="../">ブログ一覧</a> ・ <a href="../../">無料ツール</a> ・ <a href="../en/">English articles</a><br>記事はAIを活用して作成し、公式の情報で確認しています。広告を含む記事には冒頭に表示しています。読まれた記事を知るため、Googleアナリティクスで閲覧数などを匿名で集計しています（名前や連絡先は集めません）。</footer>
+<script src="../../assets/ads-inter.js?v=202610210009" data-pool="accounting" data-page-ad="0" defer></script>
+</body></html>
