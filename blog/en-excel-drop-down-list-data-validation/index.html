@@ -1,0 +1,82 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'self'; img-src 'self' data: https://*.a8.net https://*.google-analytics.com https://*.googletagmanager.com; script-src 'self' https://www.googletagmanager.com; connect-src https://*.google-analytics.com https://*.analytics.google.com https://*.googletagmanager.com; base-uri 'none'; form-action 'none'; object-src 'none'">
+<title>Stop typos in your spreadsheet: make a drop-down list with Data Validation (Excel and Google Sheets) | MisaNeco Works</title><meta name="description" content="The quickest way to stop typing mistakes in a business spreadsheet is a drop-down list. Step-by-step for Excel on Windows and Mac and for Google Sheets, how to keep the list in one place, what happens when someone types something else, and how to find entries that don&#x27;t match.">
+<link rel="canonical" href="https://tools.equaglobal.com/blog/en-excel-drop-down-list-data-validation/"><meta property="og:type" content="article"><meta property="og:url" content="https://tools.equaglobal.com/blog/en-excel-drop-down-list-data-validation/"><meta property="og:image" content="https://tools.equaglobal.com/blog/og.png"><meta name="twitter:card" content="summary_large_image"><meta property="og:title" content="Stop typos in your spreadsheet: make a drop-down list with Data Validation (Excel and Google Sheets) | MisaNeco Works"><meta property="og:description" content="The quickest way to stop typing mistakes in a business spreadsheet is a drop-down list. Step-by-step for Excel on Windows and Mac and for Google Sheets, how to keep the list in one place, what happens when someone types something else, and how to find entries that don&#x27;t match.">
+<link rel="alternate" type="application/rss+xml" title="MisaNeco Works Blog" href="https://tools.equaglobal.com/blog/en/rss.xml"><script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "Stop typos in your spreadsheet: make a drop-down list with Data Validation (Excel and Google Sheets)", "description": "The quickest way to stop typing mistakes in a business spreadsheet is a drop-down list. Step-by-step for Excel on Windows and Mac and for Google Sheets, how to keep the list in one place, what happens when someone types something else, and how to find entries that don't match.", "datePublished": "2026-10-22", "dateModified": "2026-10-22", "inLanguage": "en", "mainEntityOfPage": "https://tools.equaglobal.com/blog/en-excel-drop-down-list-data-validation/", "image": "https://tools.equaglobal.com/blog/og.png", "author": {"@type": "Organization", "name": "MisaNeco Works", "url": "https://tools.equaglobal.com/"}, "publisher": {"@type": "Organization", "name": "MisaNeco Works"}}</script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-EWJXRJY9M6"></script><script src="../ga.js?v=202610220913"></script>
+<link rel="stylesheet" href="../blog.css?v=202610220913"></head><body>
+<header><div class="wrap"><a href="../en/">MisaNeco Works Blog</a></div></header>
+<main class="wrap"><p class="meta">2026-10-22・Automation / Small business / Excel</p><h1>Stop typos in your spreadsheet: make a drop-down list with Data Validation (Excel and Google Sheets)</h1><p>"Paid", "paid", "PAID " and "Payed" look the same to you. To a filter, a SUMIFS formula or a pivot table they are four different things — and your totals quietly go wrong.</p>
+<p>The simplest fix is a <strong>drop-down list</strong>: people pick a value instead of typing it. This post shows how to set one up in Excel (Windows and Mac) and Google Sheets.</p>
+<h2>What a drop-down list prevents</h2>
+<ul>
+<li>Spelling and capitalisation differences ("Paid" vs "paid")</li>
+<li>Extra spaces you can't see</li>
+<li>Values that aren't on the list at all ("Done?", "ask Sam")</li>
+<li>Inconsistent names for the same thing ("Card", "Credit card", "CC")</li>
+</ul>
+<p>Good candidates: status (Quoted / Won / Lost), payment method, category, staff name, yes/no columns.</p>
+<h2>Step 1: keep the list in one place</h2>
+<p>Put the choices in their own column, ideally on a separate sheet called <strong>Lists</strong>:</p>
+<table>
+<thead>
+<tr>
+<th>A</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Paid</td>
+</tr>
+<tr>
+<td>Unpaid</td>
+</tr>
+<tr>
+<td>Overdue</td>
+</tr>
+</tbody>
+</table>
+<p>Keeping the list on a sheet (instead of typing it into the rule) means you can add a choice later in one place.</p>
+<h2>Excel (Windows)</h2>
+<ol>
+<li>Select the cells where people will choose a value (for example C2:C500).</li>
+<li>Go to <strong>Data → Data Validation</strong>.</li>
+<li>Under <strong>Allow</strong>, choose <strong>List</strong>.</li>
+<li>In <strong>Source</strong>, select your list (for example <code>=Lists!$A$2:$A$4</code>), or type the choices separated by commas.</li>
+<li>Keep <strong>In-cell dropdown</strong> ticked and click <strong>OK</strong>.</li>
+</ol>
+<h2>Excel (Mac)</h2>
+<p>The steps are the same: select the cells, then <strong>Data → Data Validation</strong>, choose <strong>List</strong> under <strong>Allow</strong>, and set the <strong>Source</strong>.</p>
+<h2>Google Sheets</h2>
+<ol>
+<li>Select the cells.</li>
+<li>Go to <strong>Insert → Dropdown</strong> (or <strong>Data → Data validation</strong>).</li>
+<li>Choose <strong>Dropdown (from a range)</strong> and select your list, or <strong>Dropdown</strong> and type the options.</li>
+<li>Under <strong>Advanced options</strong>, choose what happens with invalid data: <strong>Show a warning</strong> or <strong>Reject the input</strong>.</li>
+<li>Click <strong>Done</strong>.</li>
+</ol>
+<h2>What happens when someone types something else?</h2>
+<ul>
+<li><strong>Excel</strong>: on the <strong>Error Alert</strong> tab of the Data Validation window, the <strong>Stop</strong> style refuses the value; <strong>Warning</strong> and <strong>Information</strong> let it through after a message. Stop is the safest for shared files.</li>
+<li><strong>Google Sheets</strong>: <strong>Reject the input</strong> refuses the value; <strong>Show a warning</strong> accepts it and marks the cell.</li>
+</ul>
+<p>Validation only checks what is typed. <strong>Values pasted over the cells can bypass it</strong>, so it's worth checking now and then.</p>
+<h2>Find the entries that don't match</h2>
+<p>Rules only apply to new entries. To find old mistakes:</p>
+<ul>
+<li><strong>Excel for Windows</strong>: <strong>Data → Data Validation → Circle Invalid Data</strong> draws a circle around cells that break the rule.</li>
+<li><strong>Both</strong>: a helper column such as <code>=COUNTIF(Lists!$A$2:$A$4, C2)=0</code> returns TRUE for values that aren't on the list. Filter it to TRUE and fix them.</li>
+</ul>
+<h2>Adding a new choice later</h2>
+<p>If your list is a fixed range, add the new value inside the range (for example insert a row above the last item) so the rule picks it up. In Excel you can also turn the list into a <strong>Table</strong> (Insert → Table) and point the rule at the table column, so new rows are included automatically.</p>
+<h2>Quick checklist</h2>
+<ul>
+<li>☐ Choices kept on a separate <strong>Lists</strong> sheet</li>
+<li>☐ Drop-down applied to the whole column you'll fill in, not just the first rows</li>
+<li>☐ Invalid entries set to <strong>Stop</strong> (Excel) or <strong>Reject the input</strong> (Sheets) for shared files</li>
+<li>☐ Old entries checked with a COUNTIF helper column (or Circle Invalid Data in Excel for Windows)</li>
+</ul>
+<p>Related: <a href="../en-invoice-numbering-system/">How to number your invoices</a> · <a href="../en-monthly-expense-tracker-sumifs/">A simple monthly expense tracker with SUMIFS</a></p>
+<p><em>Written with the help of AI. Menu names can differ slightly between versions of Excel and Google Sheets.</em></p><div class="tools"><b>Free tools you can use</b><a href="../../dx-en/">Small Business Automation Check</a><br></div><div class="rel"><b>Related articles</b><a href="../en-staff-shift-schedule-google-sheets/">Build a weekly staff shift schedule in Google Sheets (hours per person, gaps highlighted)</a><br><a href="../en-simple-job-costing-spreadsheet/">Simple job costing in a spreadsheet - see if each job actually made money (Excel or Google Sheets)</a><br><a href="../en-raise-prices-letter-template/">How to raise your prices as a small service business - a simple calculation and a customer letter template</a><br></div></main>
+<footer class="wrap">© MisaNeco Works ・ <a href="../en/">All articles</a> ・ <a href="../../">Free tools</a> ・ <a href="../en/../">日本語の記事</a><br>Articles are written with the help of AI and checked against official sources. Articles with ads say so at the top. We use Google Analytics to count page views anonymously (no names or contact details).</footer>
+</body></html>
