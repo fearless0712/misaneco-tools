@@ -1,0 +1,110 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self' https://www.googletagmanager.com; style-src 'self'; img-src 'self' data: https://*.google-analytics.com https://*.googletagmanager.com; connect-src https://*.google-analytics.com https://*.analytics.google.com https://*.googletagmanager.com; base-uri 'none'; form-action 'none'; object-src 'none'">
+<title>Freelance Rate Calculator - Hourly Rate, Project Price and Take-Home After Fees (Free)</title>
+<meta name="description" content="Free freelance rate calculator. Work back from your income goal, expenses and set-aside % to the lowest hourly rate you need, turn it into a fixed project price with a buffer, and see your take-home and effective hourly rate after platform and transfer fees. USD, PHP, EUR, GBP, AUD, CAD or JPY. Nothing you enter leaves your browser.">
+<link rel="canonical" href="https://tools.equaglobal.com/freelance-rate/">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Freelance Rate Calculator - what to charge per hour and per project">
+<meta property="og:description" content="Start from the income you want, count only the hours you can bill, and see what is left after platform and transfer fees. Free, no sign-up, runs in your browser.">
+<meta property="og:url" content="https://tools.equaglobal.com/freelance-rate/">
+<meta property="og:locale" content="en_US">
+<link rel="stylesheet" href="../hiwari/app.css?v=202610210230"><link rel="stylesheet" href="app.css?v=202610222000"><script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebApplication", "name": "Freelance Rate Calculator", "url": "https://tools.equaglobal.com/freelance-rate/", "description": "Work out the lowest hourly rate that reaches your income goal, a fixed project price with a buffer, and your take-home and effective hourly rate after platform and transfer fees.", "applicationCategory": "BusinessApplication", "operatingSystem": "Any (Web browser)", "inLanguage": "en", "isAccessibleForFree": true, "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"}, "publisher": {"@type": "Organization", "name": "Eternal Philosophy"}}</script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-EWJXRJY9M6"></script><script src="../assets/ga.js?v=202610210745"></script>
+</head><body>
+<header><div class="wrap"><a href="../blog/en/">MisaNeco Works free tools</a></div></header>
+<main class="wrap">
+<h1>Freelance rate calculator</h1>
+<p>Work out <b>the lowest hourly rate that reaches your income goal</b>, turn it into a fixed price for a project, and see <b>what you actually keep after platform and transfer fees</b>. For freelancers and side businesses paid by the hour or by the project. Nothing you enter is sent anywhere.</p>
+<p class="note"><b>Set aside % is your own estimate &mdash; check your local tax rules.</b> This tool does not give tax advice and does not know the tax rate where you live. Put in the share of your profit you want to keep aside for taxes and contributions.</p>
+<noscript><p class="err">This tool needs JavaScript. Please turn it on in your browser settings.</p></noscript>
+
+<fieldset class="card">
+<legend>Currency</legend>
+<label for="currency">Show amounts in</label>
+<select id="currency"><option value="USD">USD &ndash; US dollar ($)</option><option value="PHP">PHP &ndash; Philippine peso (&#8369;)</option><option value="EUR">EUR &ndash; Euro (&euro;)</option><option value="GBP">GBP &ndash; British pound (&pound;)</option><option value="AUD">AUD &ndash; Australian dollar (A$)</option><option value="CAD">CAD &ndash; Canadian dollar (C$)</option><option value="JPY">JPY &ndash; Japanese yen (&yen;, no decimals)</option></select>
+<p class="mut hint">This only changes the symbol and decimals. Nothing is converted, so enter every amount in the same currency.</p>
+</fieldset>
+
+<fieldset class="card">
+<legend>1. Your income goal</legend>
+<div class="row">
+<div class="f"><label for="period">Goal per</label><select id="period"><option value="year">Year</option><option value="month">Month</option></select></div>
+<div class="f"><label for="income" id="incomeLabel">Take-home income goal per year</label><input id="income" type="text" inputmode="decimal" autocomplete="off" placeholder="e.g. 40000"></div>
+</div>
+<div class="row">
+<div class="f"><label for="expenses">Business expenses per year</label><input id="expenses" type="text" inputmode="decimal" autocomplete="off" placeholder="e.g. 3000 (software, internet, equipment)"></div>
+<div class="f"><label for="setAside">Set aside for taxes etc. (% of profit)</label><input id="setAside" type="text" inputmode="decimal" autocomplete="off" placeholder="e.g. 25"></div>
+</div>
+<p class="mut hint">Set aside % is your own estimate &mdash; check your local tax rules. Use 0 if you plan for taxes separately.</p>
+<div class="row3">
+<div class="f"><label for="weeks">Working weeks per year</label><input id="weeks" type="text" inputmode="decimal" autocomplete="off" placeholder="e.g. 48"></div>
+<div class="f"><label for="hours">Hours per week</label><input id="hours" type="text" inputmode="decimal" autocomplete="off" placeholder="e.g. 40"></div>
+<div class="f"><label for="billable">Billable %</label><input id="billable" type="text" inputmode="decimal" autocomplete="off" placeholder="e.g. 60"></div>
+</div>
+<p class="mut hint">Billable % is the share of your working hours a client pays for. Finding work, admin, messages and learning are usually not billed.</p>
+</fieldset>
+
+<fieldset class="card">
+<legend>2. Price a project</legend>
+<label for="rate">Hourly rate for this project</label>
+<input id="rate" type="text" inputmode="decimal" autocomplete="off" placeholder="Leave empty to use your required rate">
+<div class="row">
+<div class="f"><label for="projHours">Estimated hours</label><input id="projHours" type="text" inputmode="decimal" autocomplete="off" placeholder="e.g. 40"></div>
+<div class="f"><label for="buffer">Buffer (% extra hours)</label><input id="buffer" type="text" inputmode="decimal" autocomplete="off" placeholder="e.g. 15"></div>
+</div>
+<p class="mut hint">The buffer covers revisions, calls and things that take longer than planned.</p>
+</fieldset>
+
+<fieldset class="card">
+<legend>3. Fees taken from the payment</legend>
+<div class="row3">
+<div class="f"><label for="platform">Platform fee %</label><input id="platform" type="text" inputmode="decimal" autocomplete="off" placeholder="e.g. 10"></div>
+<div class="f"><label for="transferPct">Transfer fee %</label><input id="transferPct" type="text" inputmode="decimal" autocomplete="off" placeholder="e.g. 1"></div>
+<div class="f"><label for="transferFixed">Fixed fee per payment</label><input id="transferFixed" type="text" inputmode="decimal" autocomplete="off" placeholder="e.g. 3"></div>
+</div>
+<p class="mut hint">Use your own platform's and payment service's current fees. Leave a field empty or 0 if it does not apply (for example, a client who pays you directly).</p>
+</fieldset>
+
+<section class="card" id="sum" aria-labelledby="sumH">
+<h2 id="sumH">Result</h2>
+<div aria-live="polite">
+<div class="tiles">
+<div class="tile"><div class="mut">Required hourly rate</div><div class="big" id="tRate">&mdash;</div><div class="mut" id="tRateSub"></div></div>
+<div class="tile"><div class="mut">Suggested project price</div><div class="big" id="tPrice">&mdash;</div><div class="mut" id="tPriceSub"></div></div>
+<div class="tile"><div class="mut">Take-home after fees</div><div class="big" id="tTake">&mdash;</div><div class="mut" id="tTakeSub"></div></div>
+<div class="tile"><div class="mut">Effective hourly rate</div><div class="big" id="tEff">&mdash;</div><div class="mut" id="tEffSub"></div></div>
+</div>
+<p class="err" id="err" role="status"></p>
+<p class="tip" id="cmp" hidden></p>
+</div>
+<h3>How the hourly rate is worked out</h3>
+<table class="res"><tbody id="tbRate"></tbody></table>
+<h3>Project and fees</h3>
+<table class="res"><tbody id="tbProj"></tbody></table>
+<div class="btns"><button type="button" class="btn" id="copy">Copy result</button><button type="button" class="btn ghost" id="reset">Reset to the example</button></div>
+<p class="mut" id="copied" role="status"></p>
+</section>
+
+<section class="card">
+<h2>How it works</h2>
+<ul class="memos">
+<li><b>Revenue needed</b> = income goal &divide; (1 &minus; set aside %) + business expenses. The set aside is taken from your profit (revenue minus expenses).</li>
+<li><b>Billable hours</b> = working weeks &times; hours per week &times; billable %.</li>
+<li><b>Required hourly rate</b> = revenue needed &divide; billable hours, rounded up to the next cent (or yen). It is a floor, not a market price.</li>
+<li><b>Suggested project price</b> = hourly rate &times; estimated hours &times; (1 + buffer %).</li>
+<li><b>Take-home</b> = price &minus; platform fee &minus; transfer fee. The transfer fee % is taken from what is left after the platform fee, then the fixed fee is added.</li>
+<li><b>Effective hourly rate</b> = take-home &divide; estimated hours, and &divide; hours with the buffer if you use all of it.</li>
+</ul>
+</section>
+
+<section class="card">
+<h2>Example</h2>
+<p>You want to keep $40,000 a year. You expect $3,000 of business expenses and want to set aside 25% of your profit. $40,000 &divide; 0.75 = $53,333.33, plus $3,000 = <b>$56,333.33 of revenue</b>. You work 48 weeks &times; 40 hours, but only 60% is billable: 1,152 hours. $56,333.33 &divide; 1,152 = $48.9005, so your <b>required hourly rate is $48.91</b>.</p>
+<p>A 40-hour project with a 15% buffer is 46 hours: 46 &times; $48.91 = <b>$2,249.86</b>. A 10% platform fee takes $224.99, and a 1% transfer fee takes $20.25 of the $2,024.87 left. You keep <b>$2,004.62</b> &mdash; about $50.12 an hour if the job takes 40 hours, but $43.58 if it takes all 46. If your effective rate falls below your required rate, raise the price or cut the hours.</p>
+</section>
+<p>Also free: <a href="../jobcost/">Job profit calculator</a> &middot; <a href="../home-office/">Home office business-use calculator</a> &middot; <a href="../workdays/">Working days calculator</a> &middot; Read: <a href="../blog/en-w9-1099-nec-freelancers/">Paying freelancers in the US: Form W-9 and 1099-NEC</a></p>
+<p class="mut">Built with the help of AI; the calculations are covered by tests. Results are estimates for planning your prices. They are not tax, legal or financial advice.</p>
+</main>
+<footer class="wrap">&copy; MisaNeco Works &middot; Operated by Eternal Philosophy &gt; EQUA &gt; MisaNeco Works &middot; Built with AI assistance and tested.<br><small class="ga-note">Page views are counted anonymously with Google Analytics. What you type into this tool is never sent.</small></footer>
+<script src="logic.js?v=202610222000"></script><script src="app.js?v=202610222000"></script>
+</body></html>
