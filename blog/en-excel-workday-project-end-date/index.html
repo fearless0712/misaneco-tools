@@ -1,0 +1,83 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'self'; img-src 'self' data: https://*.a8.net https://*.google-analytics.com https://*.googletagmanager.com; script-src 'self' https://www.googletagmanager.com; connect-src https://*.google-analytics.com https://*.analytics.google.com https://*.googletagmanager.com; base-uri 'none'; form-action 'none'; object-src 'none'">
+<title>Project end dates in Excel with WORKDAY.INTL — and the start-date gotcha that shifts every schedule by a day | MisaNeco Works</title><meta name="description" content="How to calculate a job&#x27;s finish date in working days with WORKDAY.INTL, count working days with NETWORKDAYS.INTL, set custom weekends and holidays, and avoid the most common mistake — WORKDAY.INTL does not count the start date itself.">
+<link rel="canonical" href="https://tools.equaglobal.com/blog/en-excel-workday-project-end-date/"><meta property="og:type" content="article"><meta property="og:url" content="https://tools.equaglobal.com/blog/en-excel-workday-project-end-date/"><meta property="og:image" content="https://tools.equaglobal.com/blog/og.png"><meta name="twitter:card" content="summary_large_image"><meta property="og:title" content="Project end dates in Excel with WORKDAY.INTL — and the start-date gotcha that shifts every schedule by a day | MisaNeco Works"><meta property="og:description" content="How to calculate a job&#x27;s finish date in working days with WORKDAY.INTL, count working days with NETWORKDAYS.INTL, set custom weekends and holidays, and avoid the most common mistake — WORKDAY.INTL does not count the start date itself.">
+<link rel="alternate" type="application/rss+xml" title="MisaNeco Works Blog" href="https://tools.equaglobal.com/blog/en/rss.xml"><script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "Project end dates in Excel with WORKDAY.INTL — and the start-date gotcha that shifts every schedule by a day", "description": "How to calculate a job's finish date in working days with WORKDAY.INTL, count working days with NETWORKDAYS.INTL, set custom weekends and holidays, and avoid the most common mistake — WORKDAY.INTL does not count the start date itself.", "datePublished": "2026-10-22", "dateModified": "2026-10-22", "inLanguage": "en", "mainEntityOfPage": "https://tools.equaglobal.com/blog/en-excel-workday-project-end-date/", "image": "https://tools.equaglobal.com/blog/og.png", "author": {"@type": "Organization", "name": "MisaNeco Works", "url": "https://tools.equaglobal.com/"}, "publisher": {"@type": "Organization", "name": "MisaNeco Works"}}</script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-EWJXRJY9M6"></script><script src="../ga.js?v=202610221539"></script>
+<link rel="stylesheet" href="../blog.css?v=202610221539"></head><body>
+<header><div class="wrap"><a href="../en/">MisaNeco Works Blog</a></div></header>
+<main class="wrap"><p class="meta">2026-10-22・Excel</p><h1>Project end dates in Excel with WORKDAY.INTL — and the start-date gotcha that shifts every schedule by a day</h1><p>"Three days of work, starting Friday — so we're done Monday."</p>
+<p>If Monday is a public holiday, you are not done Monday. Small contractors, freelancers and anyone quoting turnaround times run into this all the time. Excel has two functions built for it, and one detail that trips almost everyone up.</p>
+<h2>The two functions</h2>
+<table>
+<thead>
+<tr>
+<th>You want to…</th>
+<th>Use</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Get the date N working days after a start date</td>
+<td><code>WORKDAY.INTL(start, days, [weekend], [holidays])</code></td>
+</tr>
+<tr>
+<td>Count the working days between two dates</td>
+<td><code>NETWORKDAYS.INTL(start, end, [weekend], [holidays])</code></td>
+</tr>
+</tbody>
+</table>
+<p>The <code>.INTL</code> versions let you choose which days are the weekend. Google Sheets has the same functions with the same names.</p>
+<h2>Setting the weekend</h2>
+<p>The third argument controls the weekend. According to Microsoft's documentation:</p>
+<ul>
+<li><code>1</code> (or omitted): Saturday and Sunday</li>
+<li><code>11</code>: Sunday only</li>
+<li><code>17</code>: Saturday only</li>
+<li>A 7-character string, Monday first, where <code>1</code> means a day off: <code>"0000011"</code> is Saturday + Sunday, <code>"0000001"</code> is Sunday only</li>
+</ul>
+<h2>Holidays and company days off</h2>
+<p>The fourth argument takes a range of dates to skip. Keep one small sheet called <code>Holidays</code> with:</p>
+<ol>
+<li>The public holidays for this year <strong>and next year</strong></li>
+<li>Your own closures (summer break, year-end shutdown)</li>
+</ol>
+<p>Point every formula at that range. When the dates change, you update one list instead of every formula.</p>
+<h2>The gotcha: WORKDAY.INTL doesn't count the start date</h2>
+<p><code>WORKDAY.INTL</code> counts from the day <strong>after</strong> the start date. Microsoft's documentation notes that a day count of 0 simply returns the start date.</p>
+<p>On site, people usually count the start day as <strong>day 1</strong>. Plug the start date straight in and every finish date comes out one working day late. The fix is to count from the day before:</p>
+<pre><code>=WORKDAY.INTL(start-1, days, 1, Holidays)
+</code></pre>
+<p><strong>Example:</strong> start Friday October 9, 2026, 3 working days, weekends off, Monday October 12 listed as a holiday.</p>
+<ul>
+<li>Day 1: Fri Oct 9</li>
+<li>Sat Oct 10, Sun Oct 11, Mon Oct 12 (holiday): skipped</li>
+<li>Day 2: Tue Oct 13</li>
+<li>Day 3: <strong>Wed Oct 14</strong> ← finish date</li>
+</ul>
+<p>A side effect of <code>start-1</code>: if the start date itself is a day off, the next working day becomes day 1, which is usually what you want.</p>
+<h2>Counting working days in a range</h2>
+<p><code>NETWORKDAYS.INTL</code> counts <strong>both</strong> the start and end dates. For Oct 9 to Oct 14 above, with the same weekend and holiday, it returns <strong>3</strong>, which matches the finish-date formula.</p>
+<p>Microsoft's own example: January 1 to January 31, 2006, with a Saturday–Sunday weekend, returns 22 (31 days minus 9 weekend days).</p>
+<h2>Common mistakes</h2>
+<ol>
+<li><strong>Passing the start date directly to WORKDAY</strong> — every date is off by one if you count the start day as day 1. Use <code>start-1</code>.</li>
+<li><strong>Holiday dates stored as text</strong> — "Oct 12" typed as text won't be skipped. Check the cells are real dates.</li>
+<li><strong>Holiday list not updated for next year</strong> — jobs that cross New Year will run straight through the holiday.</li>
+</ol>
+<h2>Quick checklist</h2>
+<ul>
+<li>☐ Durations are in working days, start day = day 1</li>
+<li>☐ Formula uses <code>start-1</code></li>
+<li>☐ Weekend code matches how your crew actually works</li>
+<li>☐ Holiday list covers this year and next, including company closures</li>
+<li>☐ Weather delays and contract terms handled separately, as agreed with the client</li>
+</ul>
+<h2>References</h2>
+<ul>
+<li>Microsoft Support, "WORKDAY.INTL function"</li>
+<li>Microsoft Support, "NETWORKDAYS.INTL function"</li>
+</ul>
+<p><em>This article was written with the help of AI. The function behavior is based on Microsoft's documentation, and the worked example was counted by hand.</em></p><div class="rel"><b>Related articles</b><a href="../en-excel-drop-down-list-data-validation/">Stop typos in your spreadsheet: make a drop-down list with Data Validation (Excel and Google Sheets)</a><br><a href="../en-prorated-rent-calculation/">How to calculate prorated rent (3 methods, with Excel formulas)</a><br><a href="../en-invoice-numbering-system/">How to number your invoices (a simple system, plus a formula that does it for you)</a><br></div></main>
+<footer class="wrap">© MisaNeco Works ・ <a href="../en/">All articles</a> ・ <a href="../../">Free tools</a> ・ <a href="../en/../">日本語の記事</a><br>Articles are written with the help of AI and checked against official sources. Articles with ads say so at the top. We use Google Analytics to count page views anonymously (no names or contact details).</footer>
+</body></html>
