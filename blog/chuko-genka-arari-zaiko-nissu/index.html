@@ -1,0 +1,103 @@
+<!doctype html><html lang="ja"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'self'; img-src 'self' data: https://*.a8.net https://*.google-analytics.com https://*.googletagmanager.com; script-src 'self' https://www.googletagmanager.com; connect-src https://*.google-analytics.com https://*.analytics.google.com https://*.googletagmanager.com; base-uri 'none'; form-action 'none'; object-src 'none'">
+<title>中古車・中古バイクの原価と粗利の出し方｜仕入れ＋整備費＋諸費用、在庫日数と「長く売れていない台」の見つけ方｜MisaNeco Works</title><meta name="description" content="町の車屋さん・バイク屋さん向けに、中古車1台ごとの原価（仕入れ価格＋整備費＋諸費用）、粗利と粗利率、在庫日数の数え方をまとめます。計算例と、長期在庫を見落とさないための表の作り方、よくある間違いとチェックリストつき。">
+<link rel="canonical" href="https://tools.equaglobal.com/blog/chuko-genka-arari-zaiko-nissu/"><meta property="og:type" content="article"><meta property="og:url" content="https://tools.equaglobal.com/blog/chuko-genka-arari-zaiko-nissu/"><meta property="og:image" content="https://tools.equaglobal.com/blog/og.png"><meta name="twitter:card" content="summary_large_image"><meta property="og:title" content="中古車・中古バイクの原価と粗利の出し方｜仕入れ＋整備費＋諸費用、在庫日数と「長く売れていない台」の見つけ方｜MisaNeco Works"><meta property="og:description" content="町の車屋さん・バイク屋さん向けに、中古車1台ごとの原価（仕入れ価格＋整備費＋諸費用）、粗利と粗利率、在庫日数の数え方をまとめます。計算例と、長期在庫を見落とさないための表の作り方、よくある間違いとチェックリストつき。">
+<link rel="alternate" type="application/rss+xml" title="MisaNeco Works ブログ" href="https://tools.equaglobal.com/blog/rss.xml"><script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "中古車・中古バイクの原価と粗利の出し方｜仕入れ＋整備費＋諸費用、在庫日数と「長く売れていない台」の見つけ方", "description": "町の車屋さん・バイク屋さん向けに、中古車1台ごとの原価（仕入れ価格＋整備費＋諸費用）、粗利と粗利率、在庫日数の数え方をまとめます。計算例と、長期在庫を見落とさないための表の作り方、よくある間違いとチェックリストつき。", "datePublished": "2026-10-22", "dateModified": "2026-10-22", "inLanguage": "ja", "mainEntityOfPage": "https://tools.equaglobal.com/blog/chuko-genka-arari-zaiko-nissu/", "image": "https://tools.equaglobal.com/blog/og.png", "author": {"@type": "Organization", "name": "MisaNeco Works", "url": "https://tools.equaglobal.com/"}, "publisher": {"@type": "Organization", "name": "MisaNeco Works"}}</script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-EWJXRJY9M6"></script><script src="../ga.js?v=202610221411"></script>
+<link rel="stylesheet" href="../blog.css?v=202610221411"><link rel="stylesheet" href="../../assets/ads-inter.css?v=202610210009"></head><body>
+<header><div class="wrap"><a href="../">MisaNeco Works ブログ</a></div></header>
+<main class="wrap"><p class="meta">2026-10-22・車屋 / Excel</p><h1>中古車・中古バイクの原価と粗利の出し方｜仕入れ＋整備費＋諸費用、在庫日数と「長く売れていない台」の見つけ方</h1><p>「この車、結局いくら残ったんだっけ」仕入れた値段は覚えていても、あとからかかった整備費やオークションの手数料までは、意外と頭に残っていません。</p>
+<p>中古車・中古バイクは、<strong>1台ごとに原価と粗利を出して、在庫日数と並べて見る</strong>と、どの台が儲かっていて、どの台が置きっぱなしになっているかが一目でわかります。</p>
+<p>この記事では、その数え方と表の作り方をまとめます。例の数字はすべて架空です。</p>
+<h2>1台ごとの原価</h2>
+<pre><code>原価 ＝ 仕入れ価格 ＋ 整備費 ＋ 諸費用
+</code></pre>
+<ul>
+<li><strong>仕入れ価格</strong>：オークション・下取り・業者からの仕入れの金額</li>
+<li><strong>整備費</strong>：その台にかけた部品代・工賃（自社の作業でも、かかった分を入れる）</li>
+<li><strong>諸費用</strong>：陸送費、オークションの手数料、名義変更の費用など、その台のためにかかったもの</li>
+</ul>
+<p>何を「諸費用」に入れるかは、お店で決めて毎回そろえることが大事です。台によって入れたり入れなかったりすると、粗利を比べられなくなります。</p>
+<h2>粗利と粗利率</h2>
+<pre><code>粗利   ＝ 販売価格 − 原価
+粗利率 ＝ 粗利 ÷ 販売価格
+</code></pre>
+<p><strong>例1（軽自動車）</strong>
+- 仕入れ 380,000円 ＋ 整備費 45,000円 ＋ 諸費用 30,000円 ＝ 原価 <strong>455,000円</strong>
+- 販売価格 598,000円 → 粗利 <strong>143,000円</strong>、粗利率 <strong>23.9%</strong></p>
+<p><strong>例2（ミニバン）</strong>
+- 仕入れ 720,000円 ＋ 整備費 88,000円 ＋ 諸費用 35,000円 ＝ 原価 <strong>843,000円</strong>
+- 販売価格 980,000円 → 粗利 <strong>137,000円</strong>、粗利率 <strong>14.0%</strong></p>
+<p>粗利の金額は例1と例2でほとんど同じですが、粗利率は大きく違います。高い車ほど、少しの値引きや追加の整備で粗利が消えやすい、ということも見えてきます。</p>
+<p><strong>例3（原付）</strong>
+- 仕入れ 70,000円 ＋ 整備費 30,000円 ＋ 諸費用 5,000円 ＝ 原価 <strong>105,000円</strong>
+- 販売価格 98,000円 → 粗利 <strong>−7,000円</strong>（原価割れ）</p>
+<p>整備費が思ったよりかかると、安い台ほど原価割れになりやすくなります。</p>
+<h2>在庫日数の数え方</h2>
+<pre><code>在庫日数 ＝ 基準日（今日）− 仕入れ日     ← まだ売れていない台
+在庫日数 ＝ 売れた日 − 仕入れ日          ← 売れた台
+</code></pre>
+<p><strong>例：</strong> 2026年6月15日に仕入れて、まだ売れていない台は、10月22日時点で <strong>129日</strong>。</p>
+<p>在庫日数が長い台は、置き場所をふさぎ、仕入れのお金も寝かせたままになります。お店ごとに「◯日を超えたら長期在庫」という線を決めておくと、見直すきっかけになります（例：90日）。</p>
+<h2>表にまとめると見えること</h2>
+<p>1台1行で、次の列を並べます。</p>
+<table>
+<thead>
+<tr>
+<th>管理番号</th>
+<th>車名</th>
+<th>仕入れ日</th>
+<th>仕入れ価格</th>
+<th>整備費</th>
+<th>諸費用</th>
+<th>原価</th>
+<th>販売価格</th>
+<th>売れた日</th>
+<th>粗利</th>
+<th>粗利率</th>
+<th>在庫日数</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>そのうえで、</p>
+<ul>
+<li>在庫日数が線（例：90日）を超えた行を赤くする</li>
+<li>粗利がマイナスの行を赤字にする</li>
+<li>売れた台を月ごとに集計して、台数・売上・粗利を見る</li>
+</ul>
+<p>ようにすると、「今月は台数は出たけど粗利が薄い」「この2台はずっと残っている」といったことに早く気づけます。</p>
+<h2>よくある間違い</h2>
+<ol>
+<li><strong>整備費や諸費用をあとから足し忘れる</strong>：売れたあとに陸送費の請求が来て、粗利が減っていた、ということがあります。かかったらすぐ、その台の行に足します。</li>
+<li><strong>粗利率を原価で割っている</strong>：「粗利 ÷ 原価」は上乗せ率で、粗利率とは別のものです。どちらで見るかをお店で決めておきます。</li>
+<li><strong>在庫日数を売れたあとも今日まで数えている</strong>：売れた台は「売れた日」で止めないと、平均の在庫日数が長く見えてしまいます。</li>
+</ol>
+<h2>チェックリスト</h2>
+<ul>
+<li>☐ 「諸費用」に入れるものを、お店で決めた</li>
+<li>☐ 1台ごとに原価・粗利・粗利率を出している</li>
+<li>☐ 長期在庫の線（例：90日）を決めた</li>
+<li>☐ 線を超えた台を、月に1回見直している</li>
+<li>☐ 売れた台を月ごとに集計している</li>
+</ul>
+<p>中古車の売買には、古物営業法などの決まりもあります。帳簿の付け方などの判断は、所轄の警察署や専門家に確認してください。</p>
+<p><em>この記事はAIを活用して作成し、計算例は検算しています。例の数字はすべて架空です。</em></p><div class="line"><p><b>新しい無料ツールや記事を、LINEでお知らせします</b><br>「ツール」「お金」「スマホ」と送ると、合うツールの案内が自動で届きます。</p><a class="btn" href="https://line.me/R/ti/p/@736dykzx" target="_blank" rel="noopener">LINEで友だち追加</a><small>Eternal Philosophy 公式LINE（EQUA・MisaNeco Works を運営）</small></div><div class="rel"><b>関連記事</b><a href="../excel-kouki-kadoubi-workday/">Excelで工期（稼働日）を数える｜WORKDAY.INTL・NETWORKDAYS.INTLの使い方と「開始日を1日目にする」コツ</a><br><a href="../riekiritsu-uwanoseritsu-chigai/">利益率（粗利率）と上乗せ率（マークアップ）の違い｜値付けで損しないためのExcel・スプレッドシートの式</a><br></div></main>
+<footer class="wrap">© MisaNeco Works ・ <a href="../">ブログ一覧</a> ・ <a href="../../">無料ツール</a> ・ <a href="../en/">English articles</a><br>記事はAIを活用して作成し、公式の情報で確認しています。広告を含む記事には冒頭に表示しています。読まれた記事を知るため、Googleアナリティクスで閲覧数などを匿名で集計しています（名前や連絡先は集めません）。</footer>
+<script src="../../assets/ads-inter.js?v=202610210009" data-pool="accounting" data-page-ad="0" defer></script>
+</body></html>
