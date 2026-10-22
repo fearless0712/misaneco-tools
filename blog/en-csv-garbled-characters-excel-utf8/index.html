@@ -1,0 +1,42 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'self'; img-src 'self' data: https://*.a8.net https://*.google-analytics.com https://*.googletagmanager.com; script-src 'self' https://www.googletagmanager.com; connect-src https://*.google-analytics.com https://*.analytics.google.com https://*.googletagmanager.com; base-uri 'none'; form-action 'none'; object-src 'none'">
+<title>CSV shows garbled characters in Excel? Open it as UTF-8 instead of double-clicking | MisaNeco Works</title><meta name="description" content="Accented letters, symbols or non-English names turning into strange characters when you open a CSV in Excel is almost always an encoding mismatch. Here is how to import the file as UTF-8 on Windows and Mac, how to save a CSV that opens cleanly, and what not to do.">
+<link rel="canonical" href="https://tools.equaglobal.com/blog/en-csv-garbled-characters-excel-utf8/"><meta property="og:type" content="article"><meta property="og:url" content="https://tools.equaglobal.com/blog/en-csv-garbled-characters-excel-utf8/"><meta property="og:image" content="https://tools.equaglobal.com/blog/og.png"><meta name="twitter:card" content="summary_large_image"><meta property="og:title" content="CSV shows garbled characters in Excel? Open it as UTF-8 instead of double-clicking | MisaNeco Works"><meta property="og:description" content="Accented letters, symbols or non-English names turning into strange characters when you open a CSV in Excel is almost always an encoding mismatch. Here is how to import the file as UTF-8 on Windows and Mac, how to save a CSV that opens cleanly, and what not to do.">
+<link rel="alternate" type="application/rss+xml" title="MisaNeco Works Blog" href="https://tools.equaglobal.com/blog/en/rss.xml"><script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "CSV shows garbled characters in Excel? Open it as UTF-8 instead of double-clicking", "description": "Accented letters, symbols or non-English names turning into strange characters when you open a CSV in Excel is almost always an encoding mismatch. Here is how to import the file as UTF-8 on Windows and Mac, how to save a CSV that opens cleanly, and what not to do.", "datePublished": "2026-10-22", "dateModified": "2026-10-22", "inLanguage": "en", "mainEntityOfPage": "https://tools.equaglobal.com/blog/en-csv-garbled-characters-excel-utf8/", "image": "https://tools.equaglobal.com/blog/og.png", "author": {"@type": "Organization", "name": "MisaNeco Works", "url": "https://tools.equaglobal.com/"}, "publisher": {"@type": "Organization", "name": "MisaNeco Works"}}</script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-EWJXRJY9M6"></script><script src="../ga.js?v=202610221743"></script>
+<link rel="stylesheet" href="../blog.css?v=202610221743"></head><body>
+<header><div class="wrap"><a href="../en/">MisaNeco Works Blog</a></div></header>
+<main class="wrap"><p class="meta">2026-10-22・Excel</p><h1>CSV shows garbled characters in Excel? Open it as UTF-8 instead of double-clicking</h1><p>You export customers from your shop, booking system or bank, double-click the CSV, and "José" shows up as "JosÃ©". Names in other scripts become rows of question marks or symbols.</p>
+<p>The file is almost never broken. Excel simply guessed the wrong <strong>character encoding</strong> when it opened it.</p>
+<h2>Why it happens</h2>
+<p>A CSV is plain text with no built-in label saying which encoding it uses. Most web apps export <strong>UTF-8</strong>. When you double-click, Excel may read the file using your system's older default encoding instead, so every non-ASCII character is decoded wrongly.</p>
+<p>Plain English letters and numbers usually look fine either way, which is why the problem only shows up on some rows.</p>
+<h2>Fix: import instead of double-clicking (Windows)</h2>
+<ol>
+<li>Open a blank workbook.</li>
+<li>Go to <strong>Data → From Text/CSV</strong> and pick the file.</li>
+<li>In the preview, set <strong>File Origin</strong> to <strong>65001: Unicode (UTF-8)</strong>.</li>
+<li>Check the preview looks right, then click <strong>Load</strong>.</li>
+</ol>
+<p>If some columns are codes with leading zeros (ZIP codes, phone numbers, product codes), choose <strong>Transform Data</strong> and set those columns to <strong>Text</strong> before loading, so Excel doesn't drop the zeros.</p>
+<h2>Fix on a Mac</h2>
+<p>Recent versions of Excel for Mac have the same <strong>Data → From Text</strong> (or <strong>Get Data</strong>) import, where you can choose UTF-8 as the file origin. Menu names vary by version, so look for the import option under the <strong>Data</strong> tab rather than opening the file directly.</p>
+<h2>Saving a CSV that opens cleanly next time</h2>
+<p>When you save from Excel, choose <strong>CSV UTF-8 (Comma delimited)</strong> rather than plain <strong>CSV (Comma delimited)</strong>. The UTF-8 version includes a small marker at the start of the file that helps Excel recognise the encoding on the next double-click.</p>
+<h2>What not to do</h2>
+<ul>
+<li><strong>Don't fix names by hand.</strong> If one row is garbled, many probably are.</li>
+<li><strong>Don't save over the original after opening it wrongly.</strong> Saving can lock the garbled characters into the file. Keep the original export and re-import it.</li>
+<li><strong>Don't paste the CSV into an online converter</strong> if it contains customer data. The fix above happens entirely on your computer.</li>
+</ul>
+<h2>Quick checklist</h2>
+<ul>
+<li>☐ Import with Data → From Text/CSV, not double-click</li>
+<li>☐ File Origin set to 65001: Unicode (UTF-8)</li>
+<li>☐ Code columns set to Text to keep leading zeros</li>
+<li>☐ Original export kept untouched</li>
+<li>☐ Save as CSV UTF-8 when sending the file on</li>
+</ul>
+<p><em>General information. This article was written with the help of AI. Menu names can differ between Excel versions.</em></p><div class="rel"><b>Related articles</b><a href="../en-excel-workday-project-end-date/">Project end dates in Excel with WORKDAY.INTL — and the start-date gotcha that shifts every schedule by a day</a><br><a href="../en-excel-drop-down-list-data-validation/">Stop typos in your spreadsheet: make a drop-down list with Data Validation (Excel and Google Sheets)</a><br><a href="../en-prorated-rent-calculation/">How to calculate prorated rent (3 methods, with Excel formulas)</a><br></div></main>
+<footer class="wrap">© MisaNeco Works ・ <a href="../en/">All articles</a> ・ <a href="../../">Free tools</a> ・ <a href="../en/../">日本語の記事</a><br>Articles are written with the help of AI and checked against official sources. Articles with ads say so at the top. We use Google Analytics to count page views anonymously (no names or contact details).</footer>
+</body></html>
