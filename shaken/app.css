@@ -1,0 +1,6 @@
+/* 車検の日付計算ツールの画面 */
+.hint{margin:6px 0 0}
+.bf{display:flex;align-items:flex-end;padding-bottom:2px}
+@media (max-width:480px){.bf{padding:8px 0 0}}
+#tbody th{width:46%}
+[hidden]{display:none!important}
