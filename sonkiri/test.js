@@ -51,12 +51,17 @@ eq(C({ balance: '' }).state, 'empty', '残高なし'); eq(C({ risk: 'abc' }).sta
 eq(C({ risk: '100' }).state, 'error', '100%以上'); eq(C({ riskMode: 'yen', risk: '2000000' }).state, 'error', '残高超え');
 eq(C({ balance: '0' }).state, 'error', '残高0');
 
+// 日誌に貼る1行
+r = C({}); eq(S.journalRow({ pairName: 'USD/JPY', entry: '150.25', stop: '149.95' }, r, '2026/10/22'), '2026/10/22\tUSD/JPY\t買い\t66000\t150.25\t149.95\t\t19800', '日誌の行');
+eq(S.journalRow({ pairName: 'a\tb' , entry: '150.25', stop: '150.55'}, C({ side: 'sell', stop: '150.55' }), 'x').split('\t')[1], 'a b', 'タブを除く');
+eq(S.journalRow({}, C({ balance: '' }), 'x'), '', '空なら空');
+eq(S.journalRow({}, C({ riskMode: 'yen', risk: '1', stop: '149.00' }), 'x'), '', '数量0なら空');
 // ページ
 const html = fs.readFileSync(__dirname + '/index.html', 'utf8'), js = fs.readFileSync(__dirname + '/app.js', 'utf8');
 eq(/Content-Security-Policy/.test(html), true, 'CSP'); eq(/innerHTML/.test(js), false, 'innerHTMLなし');
 eq(/ads-inter\.js/.test(html) && /広告/.test(html), true, '広告と表示'); eq(/line\.me\/R\/ti\/p\/@736dykzx/.test(html), true, 'LINE');
 eq(/application\/ld\+json/.test(html), true, 'JSON-LD'); eq(/売買の判断をしません/.test(html), true, '売買の判断をしない注意');
 eq(/fetch\(|XMLHttpRequest/.test(js), false, '入力を送信しない');
-eq(/https?:\/\/(?!tools\.equaglobal\.com|schema\.org|www\.googletagmanager\.com|line\.me\/R\/ti\/p\/@736dykzx)/.test(html.replace(/<meta http-equiv="Content-Security-Policy"[^>]*>/,'')), false, '外部URLなし');
+eq(/https?:\/\/(?!tools\.equaglobal\.com|excel-temple\.booth\.pm\/items\/9023354|schema\.org|www\.googletagmanager\.com|line\.me\/R\/ti\/p\/@736dykzx)/.test(html.replace(/<meta http-equiv="Content-Security-Policy"[^>]*>/,'')), false, '外部URLなし');
 [...js.matchAll(/\$\('([\w-]+)'\)/g)].map(m => m[1]).forEach(id => eq(html.includes('id="' + id + '"'), true, 'id: ' + id));
 console.log(p + ' passed, ' + f + ' failed'); process.exit(f ? 1 : 0);

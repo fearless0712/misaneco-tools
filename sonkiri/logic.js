@@ -58,6 +58,12 @@
     res.marginShort = res.margin > balance;
     return res;
   }
-  var api = { num: num, fix: fix, yen: yen, int: int, calc: calc };
+  // トレード日誌（Excel）の「記録」シートに貼る1行（タブ区切り）：日付・通貨ペア・売買・数量・エントリー・損切り予定・決済（空）・予定損失
+  function journalRow(o, r, date) {
+    if (!r || r.state !== 'ok' || r.tooSmall) return '';
+    var clean = function (v) { return String(v === undefined || v === null ? '' : v).replace(/[\t\r\n]/g, ' ').trim(); };
+    return [clean(date), clean(o.pairName), r.buy ? '買い' : '売り', r.units, num(o.entry), num(o.stop), '', Math.round(r.loss)].join('\t');
+  }
+  var api = { num: num, fix: fix, yen: yen, int: int, calc: calc, journalRow: journalRow };
   if (typeof module !== 'undefined' && module.exports) module.exports = api; else root.SK = api;
 })(this);
