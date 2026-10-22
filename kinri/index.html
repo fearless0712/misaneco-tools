@@ -1,0 +1,101 @@
+<!doctype html><html lang="ja"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self' https://www.googletagmanager.com; style-src 'self'; img-src 'self' data: https://*.a8.net https://*.google-analytics.com https://*.googletagmanager.com; connect-src https://*.google-analytics.com https://*.analytics.google.com https://*.googletagmanager.com; base-uri 'none'; form-action 'none'; object-src 'none'">
+<title>金利が上がったら返済はいくら増える？｜ローン返済シミュレーター（住宅ローン・事業の借入れ・預金の利息／無料）</title>
+<meta name="description" content="借入残高・残りの年数・今の金利・上がったあとの金利を入れると、毎月の返済額がいくら増えるか、総返済額と利息の差を計算する無料ツール。元利均等・元金均等、5年ルール・125%ルールの目安、事業の借入れ（運転資金）、預金の受け取り利息の増加（税引き後の目安）にも対応。入力は外部に送信しません。">
+<link rel="canonical" href="https://tools.equaglobal.com/kinri/">
+<meta property="og:type" content="website">
+<meta property="og:title" content="金利が上がったら返済はいくら増える？｜ローン返済シミュレーター">
+<meta property="og:description" content="+0.25%・+0.5%・+1.0%で、毎月の返済額・総返済額・利息がいくら変わるかを計算。預金の利息の増え方も。入力は外部に送信しません。">
+<meta property="og:url" content="https://tools.equaglobal.com/kinri/">
+<meta property="og:locale" content="ja_JP">
+<link rel="stylesheet" href="../hiwari/app.css?v=202610210230"><link rel="stylesheet" href="app.css?v=202610222330"><link rel="stylesheet" href="../assets/ads-inter.css?v=202610210009"><script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebApplication", "name": "金利が上がったら返済はいくら増える？（ローン返済シミュレーター）", "url": "https://tools.equaglobal.com/kinri/", "description": "借入残高・残りの年数・金利の変化から、毎月の返済額・総返済額・利息の差を計算する無料ツール。元利均等・元金均等、5年ルール・125%ルールの目安、預金の利息の増加（税引き後の目安）に対応。", "applicationCategory": "FinanceApplication", "operatingSystem": "Any (Web browser)", "inLanguage": "ja", "isAccessibleForFree": true, "offers": {"@type": "Offer", "price": "0", "priceCurrency": "JPY"}, "publisher": {"@type": "Organization", "name": "Eternal Philosophy"}}</script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-EWJXRJY9M6"></script><script src="../assets/ga.js?v=202610210745"></script>
+</head><body>
+<header><div class="wrap"><a href="../">MisaNeco Works 無料ツール</a></div></header>
+<main class="wrap">
+<h1>金利が上がったら返済はいくら増える？</h1>
+<p>住宅ローンや、お店・会社の借入れ（運転資金など）で、<b>金利が上がると毎月の返済がいくら増えるか</b>を計算します。総返済額と利息がどれだけ変わるかも出ます。下の欄では、預金の受け取り利息がどれだけ増えるか（税引き後の目安）も計算できます。入力は外部に送信しません。</p>
+<p class="note"><b>結果は目安です。</b>金利がいつ・どれだけ上がるか、返済額がいつから変わるか（5年ルール・125%ルールなど）は、銀行と契約によって違います。ご自分の契約書や「返済予定表」で確認してください。借り換え・繰上げ返済などの判断は、借入先の金融機関や専門家に相談してください。</p>
+<p class="pr mut">このページには広告（アフィリエイトリンク）を含みます。広告を見なくても、すべての機能を使えます。</p>
+<noscript><p class="err">このツールはJavaScriptを使います。ブラウザの設定でJavaScriptをオンにしてください。</p></noscript>
+
+<fieldset class="card">
+<legend>借入れ（ローン）</legend>
+<label for="balance">借入残高（いま残っている額）</label>
+<div class="unit"><input id="balance" type="text" inputmode="decimal" autocomplete="off" placeholder="例：3000"><span>万円</span></div>
+<div class="row3">
+<div class="f"><label for="years">残りの期間（年）</label><div class="unit"><input id="years" type="text" inputmode="numeric" autocomplete="off" placeholder="例：30"><span>年</span></div></div>
+<div class="f"><label for="months">＋か月（0〜11）</label><div class="unit"><input id="months" type="text" inputmode="numeric" autocomplete="off" placeholder="0"><span>か月</span></div></div>
+</div>
+<div class="row">
+<div class="f"><label for="rateNow">今の金利（年）</label><div class="unit"><input id="rateNow" type="text" inputmode="decimal" autocomplete="off" placeholder="例：0.5"><span>％</span></div></div>
+<div class="f"><label for="rateNew">上がったあとの金利（年）</label><div class="unit"><input id="rateNew" type="text" inputmode="decimal" autocomplete="off" placeholder="例：1.0"><span>％</span></div></div>
+</div>
+<div class="btns" role="group" aria-label="今の金利に足す"><button type="button" class="btn ghost small" data-step="0.25">今の金利 ＋0.25%</button><button type="button" class="btn ghost small" data-step="0.5">＋0.5%</button><button type="button" class="btn ghost small" data-step="1">＋1.0%</button></div>
+<label for="method">返済のしかた</label>
+<select id="method"><option value="ganri">元利均等（毎月の返済額が同じ。住宅ローンで多い）</option><option value="gankin">元金均等（元金を毎月同じ額ずつ返す）</option></select>
+<label class="chk"><input type="checkbox" id="rule5"> <span>「5年ルール」「125%ルール」がある契約として計算する（元利均等のみ）</span></label>
+<p class="mut hint">多くの銀行の変動金利（元利均等）で使われていますが、使っていない銀行もあります。元金均等や、固定期間が終わったあとの変動金利では使われないこともあります。契約書で確認してください。</p>
+</fieldset>
+
+<section class="card" id="sum" aria-labelledby="sumH">
+<h2 id="sumH">結果（借入れ）</h2>
+<div aria-live="polite">
+<div class="mut" id="bigLabel">毎月の返済額の増え方</div>
+<div class="big" id="big">―</div>
+<p class="err" id="err" role="status"></p>
+</div>
+<table class="res cmp">
+<thead><tr><th scope="col">項目</th><th scope="col" class="num">今の金利</th><th scope="col" class="num">上がったあと</th><th scope="col" class="num">差</th></tr></thead>
+<tbody id="tbody"></tbody>
+</table>
+<p class="mut" id="calcNote">元利均等は、Excelの PMT 関数と同じ式（毎月の返済額 ＝ 残高 × 月の金利 ÷ (1 − (1 ＋ 月の金利)<sup>−回数</sup>)）で計算し、1円未満を四捨五入しています。金利がすぐに変わり、そのあとずっと同じとしたときの計算です。</p>
+<div class="five" id="fiveBox" hidden>
+<h3>5年ルール・125%ルールがある場合の目安</h3>
+<ul id="fiveList"></ul>
+<p class="mut">5年ルール：金利が変わっても、毎月の返済額は5年間そのまま。その分、返済額のうち<b>利息の割合が増え、元金の減りが遅く</b>なります。125%ルール：5年ごとに返済額を見直すとき、増えるのは前の返済額の1.25倍まで。利息が返済額より多くなると<b>未払い利息</b>が出ます。返済額が抑えられた分は、なくなるのではなく後に回るだけです。正確な扱い（見直しの時期・未払い利息の払い方）は契約によって違います。</p>
+</div>
+<div class="btns"><button type="button" class="btn" id="copy">結果をコピー</button></div>
+<p class="mut" id="copied" role="status"></p>
+</section>
+
+<fieldset class="card">
+<legend>預金（受け取る利息）</legend>
+<p class="mut hint">金利が上がると、預金の利息も増えることがあります。上がり方は銀行・預金の種類によって違い、政策金利と同じだけ上がるとは限りません。</p>
+<label for="deposit">預金残高</label>
+<div class="unit"><input id="deposit" type="text" inputmode="decimal" autocomplete="off" placeholder="例：300"><span>万円</span></div>
+<div class="row">
+<div class="f"><label for="dRateNow">今の預金金利（年）</label><div class="unit"><input id="dRateNow" type="text" inputmode="decimal" autocomplete="off" placeholder="例：0.2"><span>％</span></div></div>
+<div class="f"><label for="dRateNew">上がったあとの預金金利（年）</label><div class="unit"><input id="dRateNew" type="text" inputmode="decimal" autocomplete="off" placeholder="例：0.3"><span>％</span></div></div>
+</div>
+</fieldset>
+
+<section class="card" aria-labelledby="depH">
+<h2 id="depH">結果（預金・1年分の利息）</h2>
+<div aria-live="polite">
+<div class="mut">1年で増える利息（税引き後の目安）</div>
+<div class="big" id="dBig">―</div>
+<p class="err" id="dErr" role="status"></p>
+</div>
+<table class="res cmp">
+<thead><tr><th scope="col">項目</th><th scope="col" class="num">今の金利</th><th scope="col" class="num">上がったあと</th><th scope="col" class="num">差</th></tr></thead>
+<tbody id="dBody"></tbody>
+</table>
+<p class="mut">預金の利子には、20.315％（所得税・復興特別所得税 15.315％＋住民税 5％）の税金がかかり、受け取るときに差し引かれます（国税庁「No.1310 利息を受け取ったとき（利子所得）」）。ここでは1年分を1回で受け取るとして計算しています。実際は利息の付く回数・日数・端数の扱いで少し変わります。</p>
+</section>
+
+<section class="card">
+<h2>使い方の例</h2>
+<p><b>住宅ローン</b>：残り3,000万円・30年・元利均等で、金利が0.5％から1.0％に上がった場合。毎月の返済額は 89,757円 → 96,492円 で、<b>月 6,735円（年 80,820円）</b>増えます。30年の利息の合計は 約231万円 → 約474万円 です。</p>
+<p><b>事業の借入れ（運転資金）</b>：残り500万円・5年・元利均等で、2.0％から2.5％になると、毎月 87,639円 → 88,737円（月 1,098円増）です。資金繰り表の返済の行を、この額で見直しておくと安心です。</p>
+<p><b>預金</b>：300万円を、金利0.2％の預金から0.3％の預金に置いた場合、1年の利息（税引き前）は 6,000円 → 9,000円、税引き後の目安は 4,782円 → 7,172円 です。</p>
+</section>
+<p>くわしい解説：<a href="../blog/boj-rate-hike-loan-deposit/">日銀の利上げ（政策金利1.25%）で、住宅ローン・事業の借入れ・預金・投資はどう変わる？</a></p>
+<p>関連する無料ツール：<a href="../riekiritsu/">利益率・上乗せ率 計算ツール</a> ・ <a href="../hiwari/">日割り計算ツール</a> ・ <a href="../hozon/">帳簿・領収書の保存期間チェッカー</a></p>
+<p class="mut">このツールはAIを活用して作成し、テストで計算を確認しています。投資や借入れの助言ではありません。</p>
+<aside class="line-box" aria-label="公式LINE"><p><b>新しい無料ツールや記事を、LINEでお知らせします</b><br>「ツール」「お金」「スマホ」と送ると、合うツールの案内が自動で届きます。</p><a class="line-btn" href="https://line.me/R/ti/p/@736dykzx" target="_blank" rel="noopener">LINEで友だち追加</a><small>Eternal Philosophy 公式LINE（EQUA・MisaNeco Works を運営）</small></aside>
+</main>
+<footer class="wrap">© MisaNeco Works ・ AIを活用して作成し、テストで確認しています。<br><small class="ga-note">閲覧数をGoogleアナリティクスで匿名で集計しています。このツールに入力した内容は送信しません。</small></footer>
+<script src="logic.js?v=202610222300"></script><script src="app.js?v=202610222300"></script>
+<script src="../assets/ads-inter.js?v=202610210009" data-pool="accounting" defer></script>
+</body></html>

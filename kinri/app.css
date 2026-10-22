@@ -1,0 +1,9 @@
+.chk{display:flex;gap:8px;align-items:flex-start;font-weight:600;margin:12px 0 4px}.chk input{width:22px;min-height:22px;height:22px;margin:3px 0 0;flex:none}
+.row3{display:grid;grid-template-columns:1fr 1fr;gap:0 12px}@media (max-width:480px){.row3{grid-template-columns:1fr 1fr}}
+.unit{position:relative}.unit input{padding-right:52px}.unit span{position:absolute;right:10px;top:50%;transform:translateY(-50%);color:var(--mut);font-size:15px;pointer-events:none}
+.up{color:var(--bad)}.plus{color:#0a7a3d}@media (prefers-color-scheme:dark){.plus{color:#7ee2a8}}
+table.res td.num,table.res th.num{text-align:right}
+.five{border-left:4px solid var(--navy);padding:4px 12px;margin:12px 0}.five ul{padding-left:20px;margin:6px 0}.five li{margin:4px 0}
+.hint{margin:6px 0 0}
+@media (max-width:480px){table.cmp thead tr,table.cmp tbody tr{display:grid;grid-template-columns:1fr 1fr 1fr}table.cmp thead th:first-child{display:none}
+table.cmp tbody th{grid-column:1/-1;border-bottom:0;padding-bottom:0;color:var(--fg);font-weight:700}table.cmp tbody td{border-bottom:1px solid var(--line)}table.cmp tbody td:empty{min-height:1px}}
