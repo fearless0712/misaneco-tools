@@ -1,0 +1,76 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self' https://www.googletagmanager.com; style-src 'self'; img-src 'self' data: https://*.google-analytics.com https://*.googletagmanager.com; connect-src https://*.google-analytics.com https://*.analytics.google.com https://*.googletagmanager.com; base-uri 'none'; form-action 'none'; object-src 'none'">
+<title>Working Days Calculator - End Date from a Start Date and Working Days (Free)</title>
+<meta name="description" content="Free working days calculator. Enter a start date and a number of working days to get the end date, or two dates to count the working days between them. Choose your weekend (Sat+Sun, Sun only, Sat only, Fri+Sat or none) and paste your own holidays and closures. Shows a calendar and the matching Excel WORKDAY.INTL formula. Nothing you enter leaves your browser.">
+<link rel="canonical" href="https://tools.equaglobal.com/workdays/">
+<link rel="alternate" hreflang="en" href="https://tools.equaglobal.com/workdays/">
+<link rel="alternate" hreflang="ja" href="https://tools.equaglobal.com/kouki/">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Working Days Calculator - end date from a start date and working days">
+<meta property="og:description" content="Count working days the way a job is scheduled: the start date is day 1. Custom weekends, your own holidays, a calendar and the Excel formula. Free, no sign-up, runs in your browser.">
+<meta property="og:url" content="https://tools.equaglobal.com/workdays/">
+<meta property="og:locale" content="en_US">
+<link rel="stylesheet" href="../hiwari/app.css?v=202610210230"><link rel="stylesheet" href="../kouki/app.css?v=202610221330"><link rel="stylesheet" href="app.css?v=202610221800"><script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebApplication", "name": "Working Days Calculator", "url": "https://tools.equaglobal.com/workdays/", "description": "Get the end date from a start date and a number of working days, or count the working days between two dates, with a custom weekend and your own holidays and closures.", "applicationCategory": "BusinessApplication", "operatingSystem": "Any (Web browser)", "inLanguage": "en", "isAccessibleForFree": true, "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"}, "publisher": {"@type": "Organization", "name": "Eternal Philosophy"}}</script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-EWJXRJY9M6"></script><script src="../assets/ga.js?v=202610210745"></script>
+</head><body>
+<header><div class="wrap"><a href="../blog/en/">MisaNeco Works free tools</a></div></header>
+<main class="wrap">
+<h1>Working days calculator</h1>
+<p>Find out <b>when a job that takes a number of working days will finish</b>, skipping weekends, public holidays and your own closures. You can also count the working days between two dates. Handy for quotes, schedules and telling a client when to expect the work. Nothing you enter is sent anywhere.</p>
+<p class="note"><b>Contract deadlines, weather delays and similar terms follow your agreement with the client.</b> This tool only counts days, skipping the days off you choose. It does not know about weather, deliveries or inspections.</p>
+<noscript><p class="err">This tool needs JavaScript. Please turn it on in your browser settings.</p></noscript>
+
+<fieldset class="card">
+<legend>Dates and days</legend>
+<label for="mode">What do you want to find?</label>
+<select id="mode"><option value="end">Start date + working days &rarr; end date</option><option value="count">Start date + end date &rarr; working days</option></select>
+<div class="row">
+<div class="f"><label for="start">Start date (day 1)</label><input id="start" type="date"></div>
+<div class="f" id="daysBox"><label for="days">Working days</label><input id="days" type="text" inputmode="numeric" autocomplete="off" placeholder="e.g. 10"></div>
+<div class="f" id="endBox" hidden><label for="end">End date (included)</label><input id="end" type="date"></div>
+</div>
+<p class="mut hint">The start date counts as day 1. If the start date is a day off, the next working day is day 1.</p>
+</fieldset>
+
+<fieldset class="card">
+<legend>Days off</legend>
+<label for="weekend">Weekend</label>
+<select id="weekend"><option value="satsun">Saturday + Sunday</option><option value="sun">Sunday only</option><option value="sat">Saturday only</option><option value="frisat">Friday + Saturday</option><option value="none">None (work every day)</option></select>
+<label for="holidays">Holidays and closures</label>
+<textarea id="holidays" rows="5" autocomplete="off" spellcheck="false" placeholder="One date per line (YYYY-MM-DD), a note after it is OK&#10;2026-11-26 Thanksgiving&#10;2026-12-25 Christmas Day&#10;2026-12-28&#10;2027-01-01 New Year's Day"></textarea>
+<p class="mut hint">No holiday list is built in, because holidays differ by country and region. Paste your public holidays and company closures here, one date per line. A column copied from Excel works too.</p>
+<p class="mut" id="holInfo" role="status"></p>
+<p class="tip" id="holBad" hidden></p>
+</fieldset>
+
+<section class="card" id="sum" aria-labelledby="sumH">
+<h2 id="sumH">Result</h2>
+<div aria-live="polite">
+<div class="mut" id="bigLabel">End date</div>
+<div class="big" id="big">&mdash;</div>
+<p class="tip" id="startNote" hidden></p>
+<p class="err" id="err" role="status"></p>
+</div>
+<table class="res"><tbody id="tbody"></tbody></table>
+<p class="mut">A holiday that falls on a weekend day is counted once, as a weekend day.</p>
+<div class="btns"><button type="button" class="btn" id="copy">Copy result</button></div>
+<p class="mut" id="copied" role="status"></p>
+<h3>Same calculation in Excel or Google Sheets</h3>
+<code class="xl" id="xl">=WORKDAY.INTL(start-1, days, weekend, holidays)</code>
+<p class="mut"><span id="xlNote"></span> <i>holidays</i> is the cell range with your holiday dates. More in <a href="../blog/en-excel-workday-project-end-date/">Project end dates in Excel with WORKDAY.INTL</a>.</p>
+<h3>Calendar</h3>
+<p class="mut">Grey days are days off. The small number under each date is the working day count (1, 2, 3...).</p>
+<div id="cal"></div>
+</section>
+
+<section class="card">
+<h2>Example</h2>
+<p>A 3-day job starts on Friday, October 9, 2026. Weekends are Saturday and Sunday, and Monday, October 12 is a holiday. Friday the 9th is day 1. Saturday, Sunday and Monday are skipped, Tuesday the 13th is day 2, and <b>Wednesday, October 14 is the end date</b>. That is 6 calendar days.</p>
+<p>For a job that runs over the year-end break, add the closure dates to "Holidays and closures" and they are skipped. You can do the same for a client's or supplier's days off.</p>
+</section>
+<p>Also free: <a href="../prorate/">Prorated rent calculator</a> &middot; <a href="../jobcost/">Job profit calculator</a> &middot; <a href="../kouki/" hreflang="ja" lang="ja">日本語版（工期・稼働日計算）</a></p>
+<p class="mut">Built with the help of AI; the calculations are covered by tests.</p>
+</main>
+<footer class="wrap">&copy; MisaNeco Works &middot; Operated by Eternal Philosophy &gt; EQUA &gt; MisaNeco Works &middot; Built with AI assistance and tested.<br><small class="ga-note">Page views are counted anonymously with Google Analytics. What you type into this tool is never sent.</small></footer>
+<script src="logic.js?v=202610221800"></script><script src="app.js?v=202610221800"></script>
+</body></html>
