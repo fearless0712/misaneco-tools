@@ -1,0 +1,71 @@
+<!doctype html><html lang="ja"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'self'; img-src 'self' data: https://*.a8.net https://*.google-analytics.com https://*.googletagmanager.com; script-src 'self' https://www.googletagmanager.com; connect-src https://*.google-analytics.com https://*.analytics.google.com https://*.googletagmanager.com; base-uri 'none'; form-action 'none'; object-src 'none'">
+<title>FXの取引数量は「損切りの幅」から決める｜許せる損失からロットを逆算する計算式と例｜MisaNeco Works</title><meta name="description" content="FXで1回に負けてよい金額と損切りの幅から、取引してよい数量（通貨数・ロット）を逆算する方法をまとめました。計算式、USD/JPYとEUR/USDの計算例、スプレッドの入れ方、損切りを守れなくなる3つのパターン、無料の計算ツールつき。売買の判断を示すものではありません。">
+<link rel="canonical" href="https://tools.equaglobal.com/blog/fx-sonkiri-lot-keisan/"><meta property="og:type" content="article"><meta property="og:url" content="https://tools.equaglobal.com/blog/fx-sonkiri-lot-keisan/"><meta property="og:image" content="https://tools.equaglobal.com/blog/og.png"><meta name="twitter:card" content="summary_large_image"><meta property="og:title" content="FXの取引数量は「損切りの幅」から決める｜許せる損失からロットを逆算する計算式と例｜MisaNeco Works"><meta property="og:description" content="FXで1回に負けてよい金額と損切りの幅から、取引してよい数量（通貨数・ロット）を逆算する方法をまとめました。計算式、USD/JPYとEUR/USDの計算例、スプレッドの入れ方、損切りを守れなくなる3つのパターン、無料の計算ツールつき。売買の判断を示すものではありません。">
+<link rel="alternate" type="application/rss+xml" title="MisaNeco Works ブログ" href="https://tools.equaglobal.com/blog/rss.xml"><script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "FXの取引数量は「損切りの幅」から決める｜許せる損失からロットを逆算する計算式と例", "description": "FXで1回に負けてよい金額と損切りの幅から、取引してよい数量（通貨数・ロット）を逆算する方法をまとめました。計算式、USD/JPYとEUR/USDの計算例、スプレッドの入れ方、損切りを守れなくなる3つのパターン、無料の計算ツールつき。売買の判断を示すものではありません。", "datePublished": "2026-10-22", "dateModified": "2026-10-22", "inLanguage": "ja", "mainEntityOfPage": "https://tools.equaglobal.com/blog/fx-sonkiri-lot-keisan/", "image": "https://tools.equaglobal.com/blog/og.png", "author": {"@type": "Organization", "name": "MisaNeco Works", "url": "https://tools.equaglobal.com/"}, "publisher": {"@type": "Organization", "name": "MisaNeco Works"}}</script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-EWJXRJY9M6"></script><script src="../ga.js?v=202610220901"></script>
+<link rel="stylesheet" href="../blog.css?v=202610220901"><link rel="stylesheet" href="../../assets/ads-inter.css?v=202610210009"></head><body>
+<header><div class="wrap"><a href="../">MisaNeco Works ブログ</a></div></header>
+<main class="wrap"><p class="meta">2026-10-22・FX</p><h1>FXの取引数量は「損切りの幅」から決める｜許せる損失からロットを逆算する計算式と例</h1><p>FXでは、先に「何ロット買うか」を決めて、損切りはあとで考える、という順番になりがちです。この記事では逆に、<strong>「どこで損切りするか」と「1回でいくらまで負けてよいか」を先に決めて、取引してよい数量を逆算する方法</strong>をまとめます。</p>
+<p><strong>無料の計算ツール：</strong><a href="../../sonkiri/">FX 損切り・ロット計算ツール</a>（登録不要。入力した内容は外部に送りません）</p>
+<p><em>この記事は計算方法の説明で、どの通貨をいつ売り買いするかを示すものではありません。FXは預けたお金以上の損失が出ることもある取引です。取引の前に、取引会社の説明書（契約締結前交付書面）を確認してください。</em></p>
+<h2>計算式</h2>
+<pre><code>取引してよい数量（通貨） ＝ 許せる損失（円） ÷ 1通貨あたりの損失（円）
+
+1通貨あたりの損失 ＝ 損切りまでの幅（pips）× 1pipの大きさ × 円レート
+</code></pre>
+<ul>
+<li><strong>許せる損失</strong>：1回の取引で負けてもよい金額。口座残高の1〜2％などと決める人が多いです（例：100万円の2％＝2万円）。</li>
+<li><strong>損切りまでの幅</strong>：エントリー価格と損切り価格の差。</li>
+<li><strong>1pipの大きさ</strong>：円がつくペア（USD/JPYなど）は0.01円、円がつかないペア（EUR/USDなど）は0.0001。</li>
+<li><strong>円レート</strong>：円がつくペアは1。円がつかないペアは、右側の通貨の円レート（EUR/USDならUSD/JPYのレート）。</li>
+</ul>
+<p>答えは、取引会社の<strong>最小単位で切り捨て</strong>ます。切り上げると、決めた損失を超えてしまうからです。</p>
+<h2>例1：USD/JPY</h2>
+<ul>
+<li>口座残高 100万円、許せる損失は残高の2％ → <strong>2万円</strong></li>
+<li>150.25円で買い、損切りは149.95円 → 幅は <strong>30pips（0.30円）</strong></li>
+</ul>
+<p>1通貨あたりの損失 ＝ 0.30円取引してよい数量 ＝ 2万円 ÷ 0.30円 ＝ 66,666通貨 → 1,000通貨単位で切り捨てて <strong>66,000通貨</strong></p>
+<p>損切りしたときの損失は 66,000 × 0.30円 ＝ <strong>19,800円</strong> で、決めた2万円の中に収まります。</p>
+<h2>例2：EUR/USD（円がつかないペア）</h2>
+<ul>
+<li>許せる損失は同じく <strong>2万円</strong></li>
+<li>1.0850で買い、損切りは1.0825 → 幅は <strong>25pips（0.0025ドル）</strong></li>
+<li>USD/JPYのレートを150円とすると、1通貨あたりの損失 ＝ 0.0025ドル × 150円 ＝ <strong>0.375円</strong></li>
+</ul>
+<p>取引してよい数量 ＝ 2万円 ÷ 0.375円 ≒ 53,333通貨 → <strong>53,000通貨</strong></p>
+<h2>スプレッドも損切りの幅に入れる</h2>
+<p>決済するときにはスプレッドの分だけ不利な価格になります。例1でスプレッドが0.2pipsなら、実際の幅は30.2pipsです。</p>
+<p>2万円 ÷ 0.302円 ≒ 66,225通貨 → <strong>66,000通貨</strong>（この例では同じ）</p>
+<p>スプレッドが広い時間帯や通貨ペアでは、数量が変わることがあります。</p>
+<h2>損切りの幅を広げると、数量は減る</h2>
+<p>許せる損失が同じなら、損切りを遠くに置くほど、取引できる数量は少なくなります（USD/JPY、許せる損失2万円の場合）。</p>
+<ul>
+<li>損切り 20pips → 100,000通貨</li>
+<li>損切り 30pips → 66,000通貨</li>
+<li>損切り 50pips → 40,000通貨</li>
+</ul>
+<p>「数量を先に決めて、損切りをあとで考える」と、損切りを遠くに置きたくなったときに、知らないうちに負けてよい金額を超えてしまいます。<strong>損切りの位置と許せる損失から数量を決める</strong>のが、この方法の考え方です。</p>
+<h2>決めた損失より大きく負ける3つのパターン</h2>
+<ol>
+<li><strong>入ったあとで、損切りを遠くへ動かす</strong>：数量は最初の損切りの位置で決めているので、動かした分だけ損失が増えます。</li>
+<li><strong>損切りの注文を入れずに離れる</strong>：「あとで手で切る」つもりでも、急な値動きで大きく負けることがあります。</li>
+<li><strong>窓開け・すべり</strong>：損切りの注文を入れていても、週明けや大きな発表のあとは、損切り価格より不利な価格で決済されることがあります。</li>
+</ol>
+<p>自分がどれに当てはまるかは、取引のたびに「決めた損切りを守ったか」を記録すると見えてきます。守った回と破った回の損益の差を自動で集計するExcelの日誌も作りました（<a href="https://excel-temple.booth.pm/items/9023354" target="_blank" rel="noopener">BOOTH</a>・980円）。</p>
+<h2>必要証拠金は別に確かめる</h2>
+<p>ここで出した数量は「負けてもよい額」から決めたものです。注文できるかどうかは、必要証拠金で決まります。例1の66,000通貨（150.25円）は約991万円分の取引で、個人のFXのレバレッジの上限25倍なら、必要証拠金は約40万円です。口座残高より大きい場合は、その数量は注文できません。</p>
+<h2>入る前のチェックリスト</h2>
+<ul>
+<li>☐ 注文の前に、損切りの価格を決めた</li>
+<li>☐ 許せる損失と損切りの幅から数量を計算し、切り捨てた</li>
+<li>☐ スプレッドを入れて計算した</li>
+<li>☐ 損切りの注文を、取引と同時に入れる</li>
+<li>☐ 計算した損失額を、払ってもよいお金だと思える</li>
+</ul>
+<p>自分の数字で計算するときは、<a href="../../sonkiri/">FX 損切り・ロット計算ツール</a>をどうぞ。英語版（<a href="../../position-size/">Forex position size calculator</a>）もあります。</p>
+<p><em>この記事はAIを活用して作成し、計算例は検算しています。例の価格は説明用の仮のものです。最小単位・1ロットの大きさ・レバレッジの上限は、お使いの取引会社の案内を確認してください。</em></p><div class="tools"><b>あわせて使える無料ツール</b><a href="../../sonkiri/">FX 損切り・ロット計算ツール</a><br></div><div class="line"><p><b>新しい無料ツールや記事を、LINEでお知らせします</b><br>「ツール」「お金」「スマホ」と送ると、合うツールの案内が自動で届きます。</p><a class="btn" href="https://line.me/R/ti/p/@736dykzx" target="_blank" rel="noopener">LINEで友だち追加</a><small>Eternal Philosophy 公式LINE（EQUA・MisaNeco Works を運営）</small></div></main>
+<footer class="wrap">© MisaNeco Works ・ <a href="../">ブログ一覧</a> ・ <a href="../../">無料ツール</a> ・ <a href="../en/">English articles</a><br>記事はAIを活用して作成し、公式の情報で確認しています。広告を含む記事には冒頭に表示しています。読まれた記事を知るため、Googleアナリティクスで閲覧数などを匿名で集計しています（名前や連絡先は集めません）。</footer>
+<script src="../../assets/ads-inter.js?v=202610210009" data-pool="accounting" data-page-ad="0" defer></script>
+</body></html>
