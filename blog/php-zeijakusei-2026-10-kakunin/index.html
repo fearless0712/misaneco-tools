@@ -3,8 +3,8 @@
 <title>PHPの重大な脆弱性（2026年10月）｜自分のサイトは大丈夫？ 確認と更新の手順｜MisaNeco Works</title><meta name="description" content="2026年10月21日、PHPで外部からコードを実行されるおそれのある脆弱性2件（CVE-2026-109618／CVE-2026-109619、CVSS 9.2）が修正されました。修正版の番号、対象になるサーバー、WordPressやレンタルサーバーでPHPのバージョンを確かめる方法、すぐ更新できないときの注意を、PHP公式の発表をもとにまとめました。">
 <link rel="canonical" href="https://tools.equaglobal.com/blog/php-zeijakusei-2026-10-kakunin/"><meta property="og:type" content="article"><meta property="og:url" content="https://tools.equaglobal.com/blog/php-zeijakusei-2026-10-kakunin/"><meta property="og:image" content="https://tools.equaglobal.com/blog/og.png"><meta name="twitter:card" content="summary_large_image"><meta property="og:title" content="PHPの重大な脆弱性（2026年10月）｜自分のサイトは大丈夫？ 確認と更新の手順｜MisaNeco Works"><meta property="og:description" content="2026年10月21日、PHPで外部からコードを実行されるおそれのある脆弱性2件（CVE-2026-109618／CVE-2026-109619、CVSS 9.2）が修正されました。修正版の番号、対象になるサーバー、WordPressやレンタルサーバーでPHPのバージョンを確かめる方法、すぐ更新できないときの注意を、PHP公式の発表をもとにまとめました。">
 <link rel="alternate" type="application/rss+xml" title="MisaNeco Works ブログ" href="https://tools.equaglobal.com/blog/rss.xml"><script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "PHPの重大な脆弱性（2026年10月）｜自分のサイトは大丈夫？ 確認と更新の手順", "description": "2026年10月21日、PHPで外部からコードを実行されるおそれのある脆弱性2件（CVE-2026-109618／CVE-2026-109619、CVSS 9.2）が修正されました。修正版の番号、対象になるサーバー、WordPressやレンタルサーバーでPHPのバージョンを確かめる方法、すぐ更新できないときの注意を、PHP公式の発表をもとにまとめました。", "datePublished": "2026-10-21", "dateModified": "2026-10-21", "inLanguage": "ja", "mainEntityOfPage": "https://tools.equaglobal.com/blog/php-zeijakusei-2026-10-kakunin/", "image": "https://tools.equaglobal.com/blog/og.png", "author": {"@type": "Organization", "name": "MisaNeco Works", "url": "https://tools.equaglobal.com/"}, "publisher": {"@type": "Organization", "name": "MisaNeco Works"}}</script>
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-EWJXRJY9M6"></script><script src="../ga.js?v=202610221219"></script>
-<link rel="stylesheet" href="../blog.css?v=202610221219"><link rel="stylesheet" href="../../assets/ads-inter.css?v=202610210009"></head><body>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-EWJXRJY9M6"></script><script src="../ga.js?v=202610221308"></script>
+<link rel="stylesheet" href="../blog.css?v=202610221308"><link rel="stylesheet" href="../../assets/ads-inter.css?v=202610210009"></head><body>
 <header><div class="wrap"><a href="../">MisaNeco Works ブログ</a></div></header>
 <main class="wrap"><p class="meta">2026-10-21・セキュリティ</p><h1>PHPの重大な脆弱性（2026年10月）｜自分のサイトは大丈夫？ 確認と更新の手順</h1><p>2026年10月21日、PHPの開発チームが、<strong>外部から勝手にコードを実行されるおそれのある脆弱性2件</strong>を修正したバージョンを公開しました。
 PHPは、WordPressをはじめ多くのWebサイトや業務システムの裏側で動いています。会社や個人のサイトをPHPで動かしている場合は、<strong>今すぐバージョンを確かめて、修正版に更新</strong>してください。</p>
@@ -23,6 +23,7 @@ PHPは、WordPressをはじめ多くのWebサイトや業務システムの裏�
 </ul>
 <p>どちらも深刻度（CVSS v4.0）は <strong>9.2</strong> で、<strong>ログインしていない外部の人から、任意のコードを実行されるおそれ</strong>があるとされています。</p>
 <p>公式の発表では、<strong>Webのリクエストを処理しているPHPはすべて</strong>対象とされています。たとえば、PHP-FPM、Apacheのmod_php、php-cgi、FrankenPHP、LiteSpeed です。とくにmod_phpは、アプリのコードが動く前に攻撃が成り立つ例が示されていて、危険度がいちばん高いとされています。</p>
+<p><strong>10/22追記：</strong> IPA（情報処理推進機構）も2026年10月22日に注意喚起を出しました（この2件は「PHP2Shell」と呼ばれています）。IPAは、修正版への更新に加えて、すぐ更新できない場合の暫定対策やアクセス制限、それも難しい場合は外部からのアクセスを止めることも検討するよう呼びかけています。</p>
 <h2>修正版の番号</h2>
 <p>次のバージョン以上に更新します。</p>
 <ul>
@@ -57,6 +58,7 @@ PHPは、WordPressをはじめ多くのWebサイトや業務システムの裏�
 <a href="https://excel-temple.booth.pm/items/9024580" target="_blank" rel="noopener">【無料】ホームページの更新・セキュリティ点検シート（BOOTH）</a></p>
 <h2>参考</h2>
 <ul>
+<li>IPA：PHPの脆弱性対策について(CVE-2026-109618、CVE-2026-109619：PHP2shell)（2026年10月22日） https://www.ipa.go.jp/security/security-alert/2026/alert20261022.html</li>
 <li>PHP公式：重大な脆弱性についての発表（2026年10月21日） https://www.php.net/archive/2026.php#2026-10-21-5</li>
 <li>PHP 8.5.12 リリース https://www.php.net/archive/2026.php#2026-10-21-4</li>
 <li>PHP 8.4.27 リリース https://www.php.net/archive/2026.php#2026-10-21-3</li>
