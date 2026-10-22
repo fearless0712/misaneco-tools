@@ -74,6 +74,7 @@ ja.push({ f: 'blog/index.html', pool: 'mix', pageAd: false, up: '../' });
   .forEach(function (x) { ja.push({ f: x[0] + '/index.html', pool: x[1], pageAd: true, up: '../../' }); });
 ja.push({ f: 'move/index.html', pool: 'move', pageAd: true, up: '../' });
 ja.push({ f: 'hozon/index.html', pool: 'accounting', pageAd: false, up: '../', staticAd: true });
+ja.push({ f: 'kouki/index.html', pool: 'accounting', pageAd: true, up: '../' });
 ja.push({ f: 'riekiritsu/index.html', pool: 'accounting', pageAd: false, up: '../', staticAd: true });
 ja.push({ f: 'anbun/index.html', pool: 'accounting', pageAd: false, up: '../', staticAd: true });
 fs.readdirSync(SITE).filter(function (f) { return /^[A-Z][A-Za-z0-9]+\.html$/.test(f); })
