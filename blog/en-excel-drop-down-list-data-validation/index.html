@@ -68,7 +68,7 @@
 <li><strong>Both</strong>: a helper column such as <code>=COUNTIF(Lists!$A$2:$A$4, C2)=0</code> returns TRUE for values that aren't on the list. Filter it to TRUE and fix them.</li>
 </ul>
 <h2>Adding a new choice later</h2>
-<p>If your list is a fixed range, add the new value inside the range (for example insert a row above the last item) so the rule picks it up. In Excel you can also turn the list into a <strong>Table</strong> (Insert → Table) and point the rule at the table column, so new rows are included automatically.</p>
+<p>If your list is a fixed range, add the new value inside the range (for example insert a row above the last item) so the rule picks it up. In Excel you can also turn the list into a <strong>Table</strong> (Insert → Table), give its column a name (<strong>Formulas → Define Name</strong>, referring to the table column), and use that name as the Source (for example <code>=StatusList</code>). The name grows with the table, so new rows are included automatically.</p>
 <h2>Quick checklist</h2>
 <ul>
 <li>☐ Choices kept on a separate <strong>Lists</strong> sheet</li>
