@@ -1,0 +1,110 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self' https://www.googletagmanager.com; style-src 'self'; img-src 'self' data: https://*.google-analytics.com https://*.googletagmanager.com; connect-src https://*.google-analytics.com https://*.analytics.google.com https://*.googletagmanager.com; base-uri 'none'; form-action 'none'; object-src 'none'">
+<title>Invoice Due Date Calculator - Net 30, Net 60, EOM and 2/10 Net 30 (Free)</title>
+<meta name="description" content="Free invoice due date calculator. Enter the invoice date and payment terms (Net 7 to Net 90, Due on receipt, EOM, Net 30 EOM, 15th of next month or custom days) to get the due date, move weekend due dates, see days left or days overdue, and check an early payment discount like 2/10 Net 30. Paste a list of invoices to sort them by due date and total what is overdue. Nothing you enter leaves your browser.">
+<link rel="canonical" href="https://tools.equaglobal.com/due-date/">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Invoice Due Date Calculator - Net 30, EOM and 2/10 Net 30">
+<meta property="og:description" content="When is this invoice due? Net 30, Net 60, EOM, Net 30 EOM, 15th of next month, weekend rules, early payment discounts and a sorted list of what is overdue. Free, no sign-up, runs in your browser.">
+<meta property="og:url" content="https://tools.equaglobal.com/due-date/">
+<meta property="og:locale" content="en_US">
+<link rel="stylesheet" href="../hiwari/app.css?v=202610210230"><link rel="stylesheet" href="../kouki/app.css?v=202610221330"><link rel="stylesheet" href="app.css?v=202610231330"><script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebApplication", "name": "Invoice Due Date Calculator", "url": "https://tools.equaglobal.com/due-date/", "description": "Get an invoice due date from the invoice date and payment terms (Net 30, Net 60, EOM, Net 30 EOM, 15th of next month), handle weekend due dates, check an early payment discount like 2/10 Net 30, and sort a list of invoices by due date with the overdue total.", "applicationCategory": "BusinessApplication", "operatingSystem": "Any (Web browser)", "inLanguage": "en", "isAccessibleForFree": true, "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"}, "publisher": {"@type": "Organization", "name": "Eternal Philosophy"}}</script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-EWJXRJY9M6"></script><script src="../assets/ga.js?v=202610210745"></script>
+</head><body>
+<header><div class="wrap"><a href="../blog/en/">MisaNeco Works free tools</a></div></header>
+<main class="wrap">
+<h1>Invoice due date calculator</h1>
+<p>Find out <b>when an invoice is due</b> from the invoice date and the payment terms &mdash; Net 30, Net 60, EOM, Net 30 EOM, 15th of next month or your own number of days. See how many days are left or how late a payment is, check an early payment discount like <b>2/10 Net 30</b>, and paste a list of invoices to see <b>what is overdue</b>. For freelancers and small businesses. Nothing you enter is sent anywhere.</p>
+<p class="note"><b>The terms in your contract or on your invoice always come first.</b> Some clients read terms like EOM differently, so agree on them in writing. Public holidays are not included &mdash; check them yourself. This tool does not give legal or tax advice and does not work out late fees or interest.</p>
+<noscript><p class="err">This tool needs JavaScript. Please turn it on in your browser settings.</p></noscript>
+
+<fieldset class="card">
+<legend>1. Invoice and terms</legend>
+<div class="row">
+<div class="f"><label for="invoiceDate">Invoice date</label><input id="invoiceDate" type="date"></div>
+<div class="f"><label for="terms">Payment terms</label><select id="terms"><option value="receipt">Due on receipt</option><option value="net7">Net 7</option><option value="net10">Net 10</option><option value="net15">Net 15</option><option value="net30">Net 30</option><option value="net45">Net 45</option><option value="net60">Net 60</option><option value="net90">Net 90</option><option value="eom">EOM (end of the invoice month)</option><option value="net30eom">Net 30 EOM (30 days after the end of the month)</option><option value="15th">15th of next month</option><option value="custom">Custom number of days</option></select></div>
+</div>
+<div id="customBox" hidden><label for="customDays">Days after the invoice date</label><input id="customDays" type="text" inputmode="numeric" autocomplete="off" placeholder="e.g. 21"></div>
+<label for="weekend">If the due date falls on a Saturday or Sunday</label>
+<select id="weekend"><option value="keep">Keep the date</option><option value="prev">Move to the previous weekday (Friday)</option><option value="next">Move to the next weekday (Monday)</option></select>
+<p class="mut hint">Net 30 means 30 calendar days after the invoice date, weekends included. Many businesses keep the date as it is; some pay on the weekday before or after. Public holidays are not built in &mdash; check your country's holidays yourself.</p>
+<div class="row">
+<div class="f"><label for="amount">Invoice amount (optional)</label><input id="amount" type="text" inputmode="decimal" autocomplete="off" placeholder="e.g. 1500"></div>
+<div class="f"><label for="currency">Currency symbol</label><select id="currency"><option value="USD">USD &ndash; US dollar ($)</option><option value="PHP">PHP &ndash; Philippine peso (&#8369;)</option><option value="EUR">EUR &ndash; Euro (&euro;)</option><option value="GBP">GBP &ndash; British pound (&pound;)</option><option value="AUD">AUD &ndash; Australian dollar (A$)</option><option value="CAD">CAD &ndash; Canadian dollar (C$)</option></select></div>
+</div>
+<div class="row">
+<div class="f"><label for="today">Count days from (leave empty for today)</label><input id="today" type="date"></div>
+</div>
+</fieldset>
+
+<fieldset class="card">
+<legend>2. Early payment discount</legend>
+<p class="mut hint">Optional. &ldquo;2/10 Net 30&rdquo; means 2% off if paid within 10 days, otherwise the full amount within 30 days. Leave both empty if there is no discount.</p>
+<div class="row">
+<div class="f"><label for="discPct">Discount %</label><input id="discPct" type="text" inputmode="decimal" autocomplete="off" placeholder="e.g. 2"></div>
+<div class="f"><label for="discDays">If paid within (days)</label><input id="discDays" type="text" inputmode="numeric" autocomplete="off" placeholder="e.g. 10"></div>
+</div>
+</fieldset>
+
+<section class="card" id="sum" aria-labelledby="sumH">
+<h2 id="sumH">Result</h2>
+<div aria-live="polite">
+<div class="mut">Due date</div>
+<div class="big" id="big">&mdash;</div>
+<p class="stat" id="stat"></p>
+<p class="tip" id="movedNote" hidden></p>
+<p class="err" id="err" role="status"></p>
+</div>
+<table class="res"><tbody id="tbody"></tbody></table>
+<div id="discBox" hidden>
+<h3>Early payment discount</h3>
+<table class="res"><tbody id="tbDisc"></tbody></table>
+<p class="mut">The annualized figure is a rough guide for comparing the discount with other uses of money, not an interest rate anyone charges.</p>
+</div>
+<div class="btns"><button type="button" class="btn" id="copy">Copy result</button><button type="button" class="btn ghost" id="reset">Reset to the example</button></div>
+<p class="mut" id="copied" role="status"></p>
+</section>
+
+<section class="card" aria-labelledby="listH">
+<h2 id="listH">3. Several invoices: sort by due date</h2>
+<label for="list">Paste invoices, one per line: date,amount,terms</label>
+<textarea id="list" rows="7" autocomplete="off" spellcheck="false"></textarea>
+<p class="mut hint">Dates as YYYY-MM-DD or MM/DD/YYYY (US order). Terms like <i>Net 30</i>, <i>Net 30 EOM</i>, <i>EOM</i>, <i>15th of next month</i>, <i>Due on receipt</i> or <i>2/10 Net 30</i>. An empty terms field uses the terms chosen above. A fourth column (invoice number or client) is optional. Columns copied from Excel (tab-separated) work too. The weekend rule and the &ldquo;count days from&rdquo; date above are used.</p>
+<div aria-live="polite">
+<div class="tiles">
+<div class="tile"><div class="mut">Overdue</div><div class="big bad" id="sOver">&mdash;</div><div class="mut" id="sOverSub"></div></div>
+<div class="tile"><div class="mut">Due today or in the next 7 days</div><div class="big" id="sSoon">&mdash;</div><div class="mut" id="sSoonSub"></div></div>
+<div class="tile"><div class="mut">Due later</div><div class="big" id="sLater">&mdash;</div><div class="mut" id="sLaterSub"></div></div>
+<div class="tile"><div class="mut">Total</div><div class="big" id="sTotal">&mdash;</div><div class="mut" id="sTotalSub"></div></div>
+</div>
+<p class="tip" id="listBad" hidden></p>
+</div>
+<div class="tblwrap"><table class="res" id="listTable"><thead><tr><th scope="col">Due date</th><th scope="col" class="pc">Status</th><th scope="col">Amount</th><th scope="col" class="pc">Invoice date / terms</th></tr></thead><tbody id="listBody"></tbody></table></div>
+<div class="btns"><button type="button" class="btn" id="copyList">Copy list as CSV</button><button type="button" class="btn ghost" id="clearList">Clear the list</button></div>
+<p class="mut" id="copiedList" role="status"></p>
+</section>
+
+<section class="card">
+<h2>How the terms are counted</h2>
+<ul class="memos">
+<li><b>Net 7 / 10 / 15 / 30 / 45 / 60 / 90</b>: that many calendar days after the invoice date. Weekends count.</li>
+<li><b>Due on receipt</b>: the invoice date itself.</li>
+<li><b>EOM</b>: the last day of the month the invoice is dated in. (Some businesses use &ldquo;EOM&rdquo; to mean a later date, so check what your client means.)</li>
+<li><b>Net 30 EOM</b>: 30 days after the last day of the invoice month.</li>
+<li><b>15th of next month</b>: the 15th of the month after the invoice month. A December invoice is due on January 15 of the next year.</li>
+<li><b>Early payment discount</b>: the discount deadline is counted from the invoice date and is not moved for weekends. Annualized cost = discount % &divide; (100% &minus; discount %) &times; 365 &divide; (payment period &minus; discount period).</li>
+</ul>
+</section>
+
+<section class="card">
+<h2>Examples</h2>
+<p>An invoice for $1,500 is dated Monday, October 5, 2026, on <b>2/10 Net 30</b>. The full amount is due 30 days later, on <b>Wednesday, November 4, 2026</b>. If the client pays by Thursday, October 15, they pay <b>$1,470.00</b> and save $30.00. Skipping the discount is like borrowing $1,470 for 20 days at a cost of $30: 2 &divide; 98 &times; 365 &divide; 20 = <b>about 37.24% a year</b>.</p>
+<p>Month ends: January 31, 2027 + Net 30 is <b>March 2, 2027</b> (February has 28 days), but January 31, 2028 + Net 30 is <b>March 1, 2028</b> (a leap year). Net 30 EOM on an October 23, 2026 invoice is October 31 + 30 days = <b>November 30, 2026</b>. &ldquo;15th of next month&rdquo; on a December 10, 2026 invoice is <b>January 15, 2027</b>.</p>
+<p>Weekends: an invoice dated October 1, 2026 on Net 30 lands on Saturday, October 31. Keep the date, or move it to Friday, October 30 or Monday, November 2 &mdash; whichever your agreement says.</p>
+</section>
+<p>Also free: <a href="../freelance-rate/">Freelance rate calculator</a> &middot; <a href="../workdays/">Working days calculator</a> &middot; Read: <a href="../blog/en-track-unpaid-invoices-google-sheets/">Track unpaid invoices in Google Sheets</a> &middot; <a href="../blog/en-invoice-numbering-system/">Invoice numbering</a></p>
+<p class="mut">Built with the help of AI; the calculations are covered by tests. Results are for planning and following up on payments. They are not legal, tax or financial advice.</p>
+</main>
+<footer class="wrap">&copy; MisaNeco Works &middot; Operated by Eternal Philosophy &gt; EQUA &gt; MisaNeco Works &middot; Built with AI assistance and tested.<br><small class="ga-note">Page views are counted anonymously with Google Analytics. What you type into this tool is never sent.</small></footer>
+<script src="logic.js?v=202610231300"></script><script src="app.js?v=202610231330"></script>
+</body></html>

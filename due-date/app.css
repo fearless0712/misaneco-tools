@@ -1,0 +1,14 @@
+/* Invoice due date calculator - page */
+.tiles{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:8px 0}@media (max-width:480px){.tiles{grid-template-columns:1fr}}
+.tile{border:1px solid var(--line);border-radius:10px;padding:10px 12px;background:var(--bg);min-width:0}
+.tile .big{font-size:26px;margin:2px 0 0;font-variant-numeric:tabular-nums}
+.tile .mut{font-size:13px;line-height:1.45}
+.big.bad,.stat.late,td.late{color:var(--bad)}
+.stat{font-weight:700;font-size:18px;margin:2px 0 6px}
+table.res th{width:45%}
+#listTable th{width:auto}#listTable td.num{text-align:right}
+#listTable tr.over td{background:var(--hi)}
+#listTable .sub{display:block;color:var(--mut);font-size:12px}
+#listTable .sub.pctm{display:none}#listTable .sub.late{color:var(--bad);font-weight:600}
+@media (max-width:480px){#listTable .sub.pctm{display:block}#listTable td.num{white-space:normal}}
+.tblwrap{overflow-x:auto}
