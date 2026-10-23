@@ -62,6 +62,6 @@ eq(/Content-Security-Policy/.test(html), true, 'CSP'); eq(/innerHTML/.test(js), 
 eq(/ads-inter\.js/.test(html) && /広告/.test(html), true, '広告と表示'); eq(/line\.me\/R\/ti\/p\/@736dykzx/.test(html), true, 'LINE');
 eq(/application\/ld\+json/.test(html), true, 'JSON-LD'); eq(/売買の判断をしません/.test(html), true, '売買の判断をしない注意');
 eq(/fetch\(|XMLHttpRequest/.test(js), false, '入力を送信しない');
-eq(/https?:\/\/(?!tools\.equaglobal\.com|excel-temple\.booth\.pm\/items\/9023354|schema\.org|www\.googletagmanager\.com|line\.me\/R\/ti\/p\/@736dykzx)/.test(html.replace(/<meta http-equiv="Content-Security-Policy"[^>]*>/,'')), false, '外部URLなし');
+eq(/https?:\/\/(?!tools\.equaglobal\.com|schema\.org|www\.googletagmanager\.com|line\.me\/R\/ti\/p\/@736dykzx)/.test(html.replace(/<meta http-equiv="Content-Security-Policy"[^>]*>/,'')), false, '外部URLなし');
 [...js.matchAll(/\$\('([\w-]+)'\)/g)].map(m => m[1]).forEach(id => eq(html.includes('id="' + id + '"'), true, 'id: ' + id));
 console.log(p + ' passed, ' + f + ' failed'); process.exit(f ? 1 : 0);
