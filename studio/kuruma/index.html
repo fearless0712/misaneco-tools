@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; connect-src 'none'; base-uri 'none'; form-action 'none'; object-src 'none'">
+<title>車屋・バイク屋スタジオ｜車検台帳・ピット予約・整備見積・部品・中古車をひとつの画面で（見本）</title>
+<meta name="description" content="町の整備工場・バイク屋さん向け。車検の満了日と案内、ピット予約、整備見積・請求と入金、部品の在庫と発注、中古車の原価と粗利までをつなげて管理するWebアプリの見本です。データはこのブラウザの中だけに保存し、外部に送信しません。表示しているのは架空のお店のデータです。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700&family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/app.css">
+</head>
+<body>
+<div class="app" id="app">
+  <aside class="side">
+    <div class="logo"><span class="logo-mark" aria-hidden="true"></span><div><b>車屋・バイク屋<span class="lbr"></span>スタジオ</b><small>AUTO &amp; MOTO STUDIO</small></div></div>
+    <nav class="nav" id="nav" aria-label="メニュー">
+      <button data-view="dash" class="on"><i>01</i><span>ダッシュボード</span></button>
+      <button data-view="cust"><i>02</i><span>顧客と車検台帳</span></button>
+      <button data-view="pit"><i>03</i><span>ピット予約</span></button>
+      <button data-view="job"><i>04</i><span>整備見積・請求</span></button>
+      <button data-view="parts"><i>05</i><span>部品在庫</span></button>
+      <button data-view="used"><i>06</i><span>中古車在庫</span></button>
+      <button data-view="set"><i>07</i><span>設定</span></button>
+    </nav>
+    <div class="side-foot">
+      <p class="fict">表示中のデータは<b>架空</b>のお店「サンプル自動車（架空）」の見本です。</p>
+      <button class="ghost" data-act="reset">見本データに戻す</button>
+    </div>
+  </aside>
+
+  <main class="main" id="main">
+    <header class="top">
+      <div class="top-l">
+        <h1 id="viewTitle">ダッシュボード</h1>
+        <p class="top-sub"><span class="live" aria-hidden="true"></span><span id="coName">サンプル自動車（架空）</span><span class="sep">／</span><span id="todayLabel"></span></p>
+      </div>
+      <div class="top-r"><span class="chip-fict">架空のデータ</span><span class="chip-local">保存先：このブラウザだけ</span></div>
+    </header>
+    <div id="warn" class="warnbar" hidden></div>
+
+    <section class="view on" id="v-dash" aria-label="ダッシュボード"></section>
+    <section class="view" id="v-cust" aria-label="顧客と車検台帳"></section>
+    <section class="view" id="v-pit" aria-label="ピット予約"></section>
+    <section class="view" id="v-job" aria-label="整備見積・請求"></section>
+    <section class="view" id="v-parts" aria-label="部品在庫"></section>
+    <section class="view" id="v-used" aria-label="中古車在庫"></section>
+    <section class="view" id="v-set" aria-label="設定"></section>
+
+    <footer class="foot">
+      <p>計算のしかたは Excel版（車検・点検台帳・整備見積請求書・作業予約ピット表・部品在庫発注・中古車在庫原価管理・案内文作成）と同じです。車検の有効期間・受けられる時期は国土交通省の案内（2026年10月に確認）にもとづきます。実際の満了日は車検証で、税・法定費用・古物の扱いは運輸支局・税理士など専門家にご確認ください。</p>
+      <p>入力したデータはこのブラウザ（localStorage）にだけ保存し、外部には送信しません。表示しているお店・人・車・金額はすべて架空です。AIを活用して作成しています。</p>
+    </footer>
+  </main>
+</div>
+<div class="brandmark">MisaNeco Works</div>
+<div id="toast" class="toast" role="status" aria-live="polite"></div>
+<div id="cursor" class="cursor" aria-hidden="true"><svg viewBox="0 0 24 24" width="30" height="30"><path d="M3 2 L3 19 L8 14.5 L11.5 22 L14.5 20.6 L11 13.3 L17.5 13.3 Z" fill="#fff" stroke="#e0374f" stroke-width="1.6" stroke-linejoin="round"/></svg><span class="ring"></span></div>
+<script src="assets/logic.js"></script>
+<script src="assets/data.js"></script>
+<script src="assets/app.js"></script>
+</body>
+</html>

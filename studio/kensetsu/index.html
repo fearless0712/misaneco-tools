@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; connect-src 'none'; base-uri 'none'; form-action 'none'; object-src 'none'">
+<title>建設スタジオ｜見積・工程・日報・請求をひとつの画面で（見本）</title>
+<meta name="description" content="塗装・水道・土木・電気の小さな会社向け。見積から現場・工程表・日報・原価と粗利・請求と入金・期限までをつなげて管理するWebアプリの見本です。データはこのブラウザの中だけに保存し、外部に送信しません。表示しているのは架空の会社のデータです。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700&family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/app.css">
+</head>
+<body>
+<div class="app" id="app">
+  <aside class="side">
+    <div class="logo"><span class="logo-mark" aria-hidden="true"></span><div><b>建設スタジオ</b><small>KENSETSU STUDIO</small></div></div>
+    <nav class="nav" id="nav" aria-label="メニュー">
+      <button data-view="dash" class="on"><i>01</i><span>ダッシュボード</span></button>
+      <button data-view="est"><i>02</i><span>見積</span></button>
+      <button data-view="sched"><i>03</i><span>現場と工程表</span></button>
+      <button data-view="daily"><i>04</i><span>日報・出面</span></button>
+      <button data-view="bills"><i>05</i><span>請求・入金</span></button>
+      <button data-view="due"><i>06</i><span>期限</span></button>
+      <button data-view="paint"><i>07</i><span>塗装計算</span></button>
+      <button data-view="subs"><i>08</i><span>外注支払</span></button>
+      <button data-view="set"><i>09</i><span>設定</span></button>
+    </nav>
+    <div class="side-foot">
+      <p class="fict">表示中のデータは<b>架空</b>の会社「サンプル塗装店」の見本です。</p>
+      <button class="ghost" data-act="reset">見本データに戻す</button>
+    </div>
+  </aside>
+
+  <main class="main" id="main">
+    <header class="top">
+      <div class="top-l">
+        <h1 id="viewTitle">ダッシュボード</h1>
+        <p class="top-sub"><span class="live" aria-hidden="true"></span><span id="coName">サンプル塗装店（架空）</span><span class="sep">／</span><span id="todayLabel"></span></p>
+      </div>
+      <div class="top-r"><span class="chip-fict">架空のデータ</span><span class="chip-local">保存先：このブラウザだけ</span></div>
+    </header>
+    <div id="warn" class="warnbar" hidden></div>
+
+    <section class="view on" id="v-dash" aria-label="ダッシュボード"></section>
+    <section class="view" id="v-est" aria-label="見積"></section>
+    <section class="view" id="v-sched" aria-label="現場と工程表"></section>
+    <section class="view" id="v-daily" aria-label="日報・出面"></section>
+    <section class="view" id="v-bills" aria-label="請求・入金"></section>
+    <section class="view" id="v-due" aria-label="期限"></section>
+    <section class="view" id="v-paint" aria-label="塗装計算"></section>
+    <section class="view" id="v-subs" aria-label="外注支払"></section>
+    <section class="view" id="v-set" aria-label="設定"></section>
+
+    <footer class="foot">
+      <p>計算のしかたは Excel版（工事見積書・現場別原価粗利管理・請求入金管理・工程表・作業日報出面表・期限管理表・塗装計算・外注支払管理）と同じです。税・労務・契約の判断は、税理士・社会保険労務士など専門家にご確認ください。祝日は内閣府「国民の祝日について」（2026年・2027年）。</p>
+      <p>入力したデータはこのブラウザ（localStorage）にだけ保存し、外部には送信しません。表示している会社・人・金額はすべて架空です。AIを活用して作成しています。</p>
+    </footer>
+  </main>
+</div>
+<div class="brandmark">MisaNeco Works</div>
+<div id="toast" class="toast" role="status" aria-live="polite"></div>
+<div id="cursor" class="cursor" aria-hidden="true"><svg viewBox="0 0 24 24" width="30" height="30"><path d="M3 2 L3 19 L8 14.5 L11.5 22 L14.5 20.6 L11 13.3 L17.5 13.3 Z" fill="#fff" stroke="#ff9142" stroke-width="1.6" stroke-linejoin="round"/></svg><span class="ring"></span></div>
+<script src="assets/logic.js"></script>
+<script src="assets/paint.js"></script>
+<script src="assets/data.js"></script>
+<script src="assets/app.js"></script>
+</body>
+</html>

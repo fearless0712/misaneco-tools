@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; connect-src 'none'; base-uri 'none'; form-action 'none'; object-src 'none'">
+<title>経理・事務スタジオ｜明細の仕訳・請求書・入金の照合・勤怠・月次まとめをひとつの画面で（見本）</title>
+<meta name="description" content="小さな会社・個人事業主向け。銀行・カードの明細の取り込みと仕訳、インボイスの請求書、入金の照合、勤怠の集計、月次まとめまでをつなげて管理するWebアプリの見本です。データはこのブラウザの中だけに保存し、外部に送信しません。表示しているのは架空の会社のデータです。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700&family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/app.css">
+</head>
+<body>
+<div class="app" id="app">
+  <aside class="side">
+    <div class="logo"><span class="logo-mark" aria-hidden="true"></span><div><b>経理・事務<span class="lbr"></span>スタジオ</b><small>BACK OFFICE STUDIO</small></div></div>
+    <nav class="nav" id="nav" aria-label="メニュー">
+      <button data-view="dash" class="on"><i>01</i><span>ダッシュボード</span></button>
+      <button data-view="imp"><i>02</i><span>明細の取り込みと仕訳</span></button>
+      <button data-view="inv"><i>03</i><span>請求書</span></button>
+      <button data-view="rec"><i>04</i><span>入金の照合</span></button>
+      <button data-view="kin"><i>05</i><span>勤怠の集計</span></button>
+      <button data-view="mon"><i>06</i><span>月次まとめ</span></button>
+      <button data-view="set"><i>07</i><span>設定</span></button>
+    </nav>
+    <div class="side-foot">
+      <p class="fict">表示中のデータは<b>架空</b>の会社「サンプル商事（架空）」の見本です。</p>
+      <button class="ghost" data-act="reset">見本データに戻す</button>
+    </div>
+  </aside>
+
+  <main class="main" id="main">
+    <header class="top">
+      <div class="top-l">
+        <h1 id="viewTitle">ダッシュボード</h1>
+        <p class="top-sub"><span class="live" aria-hidden="true"></span><span id="coName">サンプル商事（架空）</span><span class="sep">／</span><span id="todayLabel"></span></p>
+      </div>
+      <div class="top-r"><span class="chip-fict">架空のデータ</span><span class="chip-local">保存先：このブラウザだけ</span></div>
+    </header>
+    <div id="warn" class="warnbar" hidden></div>
+
+    <section class="view on" id="v-dash" aria-label="ダッシュボード"></section>
+    <section class="view" id="v-imp" aria-label="明細の取り込みと仕訳"></section>
+    <section class="view" id="v-inv" aria-label="請求書"></section>
+    <section class="view" id="v-rec" aria-label="入金の照合"></section>
+    <section class="view" id="v-kin" aria-label="勤怠の集計"></section>
+    <section class="view" id="v-mon" aria-label="月次まとめ"></section>
+    <section class="view" id="v-set" aria-label="設定"></section>
+
+    <footer class="foot">
+      <p>計算のしかたは、ブラウザで動くツール（KichoAuto・請求書一括作成・入金消込チェッカー・勤怠集計・MoneyLens・電帳リネーム・CSV文字化けなおし）と同じです。請求書の記載事項と消費税の端数処理（1枚の請求書につき税率ごとに1回）は国税庁の案内にもとづいていますが、税の扱いは事業によって変わります。最終確認は国税庁の案内・税理士へ。勤怠の時間外・深夜の数え方は目安です。就業規則・労使協定・社会保険労務士にご確認ください。</p>
+      <p>入力したデータはこのブラウザ（localStorage）にだけ保存し、外部には送信しません。表示している会社・人・取引先・金額はすべて架空です。AIを活用して作成しています。</p>
+    </footer>
+  </main>
+</div>
+<div class="brandmark">MisaNeco Works</div>
+<div id="toast" class="toast" role="status" aria-live="polite"></div>
+<div id="cursor" class="cursor" aria-hidden="true"><svg viewBox="0 0 24 24" width="30" height="30"><path d="M3 2 L3 19 L8 14.5 L11.5 22 L14.5 20.6 L11 13.3 L17.5 13.3 Z" fill="#fff" stroke="#5fd3b0" stroke-width="1.6" stroke-linejoin="round"/></svg><span class="ring"></span></div>
+<script src="assets/logic.js"></script>
+<script src="assets/data.js"></script>
+<script src="assets/app.js"></script>
+</body>
+</html>
