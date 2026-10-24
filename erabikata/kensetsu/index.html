@@ -1,0 +1,179 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'unsafe-inline'; img-src 'self'; base-uri 'none'; form-action 'none'; object-src 'none'">
+<title>建設・設備の業務ツール、どれを選ぶ？｜困りごとから選ぶExcel</title>
+<meta name="description" content="塗装・水道・土木・電気の小さな工務店・職人さん向け。見積・原価・請求入金・工程表・日報出面・期限・写真台帳・塗装計算・外注支払のツールを、困りごとから選べる一覧です。">
+<link rel="canonical" href="https://tools.equaglobal.com/erabikata/kensetsu/">
+<meta property="og:title" content="建設・設備の業務ツール、どれを選ぶ？｜困りごとから選ぶExcel">
+<meta property="og:description" content="塗装・水道・土木・電気の小さな工務店・職人さん向け。見積・原価・請求入金・工程表・日報出面・期限・写真台帳・塗装計算・外注支払のツールを、困りごとから選べる一覧です。">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://tools.equaglobal.com/erabikata/kensetsu/">
+<style>
+:root{--bg:#06080d;--panel:#0f141f;--panel2:#131a28;--line:#1f2838;--text:#eef2f8;--dim:#8d97ab;--acc:#ff9142;--acc2:#ffb27a;--accInk:#1a0d02}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--text);font-family:"Hiragino Sans","Noto Sans JP","Yu Gothic",sans-serif;font-size:16px;line-height:1.75;-webkit-font-smoothing:antialiased}
+a{color:var(--acc2)}
+main{max-width:960px;margin:0 auto;padding:28px 16px 56px}
+.crumb{font-size:13px;color:var(--dim);margin:0 0 14px}.crumb a{color:var(--dim)}
+h1{font-size:26px;line-height:1.4;margin:0 0 8px}
+.lead{color:var(--dim);margin:0 0 26px}
+h2{font-size:20px;margin:40px 0 6px;padding-left:12px;border-left:4px solid var(--acc)}
+.sub{color:var(--dim);font-size:14px;margin:0 0 14px}
+.hero{background:var(--panel);border:1px solid var(--line);border-radius:16px;overflow:hidden;display:grid;grid-template-columns:1fr;gap:0}
+.hero img{display:block;width:100%;height:auto;background:#fff}
+.hero .body{padding:18px 18px 20px}
+.tag{display:inline-block;font-size:12px;font-weight:700;letter-spacing:.04em;color:var(--accInk);background:var(--acc);border-radius:999px;padding:2px 10px;margin-bottom:8px}
+.hero h3{font-size:20px;line-height:1.45;margin:0 0 8px}
+.hero p{margin:0 0 12px;color:var(--dim);font-size:15px}
+.price{font-size:30px;font-weight:800;color:var(--text);margin:4px 0 2px;font-variant-numeric:tabular-nums}
+.calc{width:100%;border-collapse:collapse;font-size:14px;margin:8px 0 14px;font-variant-numeric:tabular-nums}
+.calc td{padding:6px 0;border-bottom:1px solid var(--line)}.calc td:last-child{text-align:right;white-space:nowrap}
+.calc tr.diff td{color:var(--acc2);font-weight:700;border-bottom:0}
+.btn{display:inline-block;background:var(--acc);color:var(--accInk);font-weight:700;text-decoration:none;border-radius:10px;padding:12px 20px;min-height:44px}
+.btn:hover{filter:brightness(1.08)}
+.btn.ghost{background:transparent;color:var(--acc2);border:1px solid var(--acc);padding:9px 16px;font-size:14px}
+.also{margin-top:14px;background:var(--panel2);border:1px solid var(--line);border-radius:12px;padding:14px 16px;font-size:14px;color:var(--dim)}
+.also b{color:var(--text)}
+table.pick{width:100%;border-collapse:collapse;background:var(--panel);border:1px solid var(--line);border-radius:14px;overflow:hidden;font-size:15px}
+table.pick th{background:var(--panel2);color:var(--dim);font-size:13px;font-weight:600;text-align:left;padding:10px 12px;border-bottom:1px solid var(--line)}
+table.pick td{padding:14px 12px;border-bottom:1px solid var(--line);vertical-align:top}
+table.pick tr:last-child td{border-bottom:0}
+.pain{font-weight:700}
+.nm{font-weight:700;color:var(--acc2)}
+.pr{font-weight:800;white-space:nowrap;font-variant-numeric:tabular-nums}
+.ease{color:var(--dim);font-size:14px;margin-top:2px}
+.env{display:inline-block;font-size:11px;color:var(--dim);border:1px solid var(--line);border-radius:6px;padding:0 6px;margin-left:6px;vertical-align:2px}
+td.go{text-align:right;white-space:nowrap}
+.studio{display:block;background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:18px;color:var(--text);text-decoration:none}
+.studio:hover{border-color:var(--acc)}
+.studio b{color:var(--acc2);font-size:18px}.studio span{display:block;color:var(--dim);font-size:14px;margin-top:4px}
+ul.notes{margin:0;padding:16px 16px 16px 34px;background:var(--panel);border:1px solid var(--line);border-radius:14px;color:var(--dim);font-size:14px}
+ul.notes li{margin:4px 0}
+footer{margin-top:40px;font-size:13px;color:var(--dim)}footer a{color:var(--dim)}
+.brand{margin-top:6px}
+@media (min-width:760px){
+  h1{font-size:30px}
+  .hero{grid-template-columns:1.15fr 1fr}
+  .hero img{height:100%;object-fit:contain;background:#fff}
+  .hero .body{padding:24px}
+}
+@media (max-width:700px){
+  table.pick thead{display:none}
+  table.pick,table.pick tbody,table.pick tr,table.pick td{display:block;width:100%}
+  table.pick tr{padding:14px 14px 16px;border-bottom:1px solid var(--line)}
+  table.pick tr:last-child{border-bottom:0}
+  table.pick td{padding:0;border:0}
+  table.pick td.c-pain{margin-bottom:6px;font-size:15px}
+  table.pick td.c-pain::before{content:"困りごと";display:block;font-size:11px;color:var(--dim);font-weight:400}
+  table.pick td.go{text-align:left;margin-top:10px}
+}
+</style>
+</head>
+<body>
+<main>
+<p class="crumb"><a href="/">ツール集</a> ／ <a href="../">業種別の選び方</a> ／ 建設・設備</p>
+<h1>建設・設備の業務ツール、どれを選ぶ？</h1>
+<p class="lead">見積・原価・請求・工程・日報…。困っていることから、合うツールを選べます。</p>
+
+<h2>迷ったらこれ</h2>
+<section class="hero" aria-label="セット商品">
+<img src="../assets/kensetsu-set.jpg" alt="建設・設備 業務ツール9点セットの表紙画像" width="960" height="720">
+<div class="body">
+<span class="tag">セット</span>
+<h3>建設・設備 業務ツール9点セット</h3>
+<p>下の9本がすべて入ったセットです。見積から請求・入金、工程表・日報・期限・写真台帳・塗装計算・外注支払まで、仕事の流れに沿ってそろいます。</p>
+<div class="price" data-set-price="6980">¥6,980</div>
+<table class="calc" aria-label="単品で買う場合との比較">
+<tr><td>単品9本を別々に買った合計</td><td data-single-total="11320">¥11,320</td></tr>
+<tr><td>セットの価格</td><td>¥6,980</td></tr>
+<tr class="diff"><td>差額</td><td data-diff="4340">¥4,340</td></tr>
+</table>
+<a class="btn" href="https://excel-temple.booth.pm/items/9025293" data-booth-id="9025293" target="_blank" rel="noopener">BOOTHで見る</a>
+</div>
+</section>
+
+<h2>困りごとから選ぶ</h2>
+<p class="sub">1本ずつでも買えます。リンクはBOOTHの商品ページです。</p>
+<table class="pick">
+<thead><tr><th>困りごと</th><th>合うツール・楽になること</th><th>価格</th><th></th></tr></thead>
+<tbody>
+<tr data-item="9026735">
+<td class="c-pain"><span class="pain">見積書を毎回、電卓で計算している</span></td>
+<td><span class="nm">工事見積書</span><span class="env">Excel・スプレッドシート</span><div class="ease">品名・数量・単価を入れると、金額・諸経費・値引き・消費税・合計まで自動で計算。A4縦1枚で印刷・PDF保存。</div></td>
+<td class="pr" data-price="1480">¥1,480</td>
+<td class="go"><a class="btn ghost" href="https://excel-temple.booth.pm/items/9026735" data-booth-id="9026735" target="_blank" rel="noopener">BOOTHで見る</a></td>
+</tr>
+<tr data-item="9026749">
+<td class="c-pain"><span class="pain">現場が終わっても、利益が残ったかわからない</span></td>
+<td><span class="nm">現場別 原価・粗利管理</span><span class="env">Excel・スプレッドシート</span><div class="ease">材料・外注・人工・その他の費用を1行ずつ記録すると、現場ごとの原価・粗利・粗利率を集計。目標より低い現場は赤。</div></td>
+<td class="pr" data-price="1480">¥1,480</td>
+<td class="go"><a class="btn ghost" href="https://excel-temple.booth.pm/items/9026749" data-booth-id="9026749" target="_blank" rel="noopener">BOOTHで見る</a></td>
+</tr>
+<tr data-item="9026757">
+<td class="c-pain"><span class="pain">入金が入ったか、通帳とメモで見比べている</span></td>
+<td><span class="nm">請求・入金管理</span><span class="env">Excel・スプレッドシート</span><div class="ease">着手金・出来高・完成などの請求と入金を記録すると、未入金・一部入金・遅れを自動で判定。遅れは赤。</div></td>
+<td class="pr" data-price="1480">¥1,480</td>
+<td class="go"><a class="btn ghost" href="https://excel-temple.booth.pm/items/9026757" data-booth-id="9026757" target="_blank" rel="noopener">BOOTHで見る</a></td>
+</tr>
+<tr data-item="9026768">
+<td class="c-pain"><span class="pain">段取りを頭の中やホワイトボードで回している</span></td>
+<td><span class="nm">工程表（ガントチャート）</span><span class="env">Excel・スプレッドシート</span><div class="ease">開始日と日数を入れると、土日・祝日・休工日を飛ばして終了予定を計算し、日付の横に帯を表示。遅れは赤。</div></td>
+<td class="pr" data-price="1480">¥1,480</td>
+<td class="go"><a class="btn ghost" href="https://excel-temple.booth.pm/items/9026768" data-booth-id="9026768" target="_blank" rel="noopener">BOOTHで見る</a></td>
+</tr>
+<tr data-item="9026794">
+<td class="c-pain"><span class="pain">月末に日報の紙を見ながら人工を数え直している</span></td>
+<td><span class="nm">作業日報・出面表</span><span class="env">Excel・スプレッドシート</span><div class="ease">1人1日1行で開始・終了・休憩を入れると、実働時間と人工を出し、月のまとめと出面表を作成。</div></td>
+<td class="pr" data-price="980">¥980</td>
+<td class="go"><a class="btn ghost" href="https://excel-temple.booth.pm/items/9026794" data-booth-id="9026794" target="_blank" rel="noopener">BOOTHで見る</a></td>
+</tr>
+<tr data-item="9026800">
+<td class="c-pain"><span class="pain">許可・資格・保険・車検の期限をうっかり過ぎそう</span></td>
+<td><span class="nm">期限管理表</span><span class="env">Excel・スプレッドシート</span><div class="ease">有効期限を入れると残り日数を計算し、90日前から黄・30日前から赤・期限切れは濃い赤で表示。</div></td>
+<td class="pr" data-price="980">¥980</td>
+<td class="go"><a class="btn ghost" href="https://excel-temple.booth.pm/items/9026800" data-booth-id="9026800" target="_blank" rel="noopener">BOOTHで見る</a></td>
+</tr>
+<tr data-item="9026808">
+<td class="c-pain"><span class="pain">写真台帳づくりに休みの日を使っている</span></td>
+<td><span class="nm">現場写真台帳メーカー</span><span class="env">ブラウザ</span><div class="ease">写真を入れて工種・撮影日・説明を書くと、A4の写真台帳に並べて印刷・PDF保存。撮影日は写真の情報から自動入力（ある場合）。</div></td>
+<td class="pr" data-price="980">¥980</td>
+<td class="go"><a class="btn ghost" href="https://excel-temple.booth.pm/items/9026808" data-booth-id="9026808" target="_blank" rel="noopener">BOOTHで見る</a></td>
+</tr>
+<tr data-item="9026818">
+<td class="c-pain"><span class="pain">塗料の缶数を見積のたびに電卓で出している</span></td>
+<td><span class="nm">塗装面積・塗料缶数の計算</span><span class="env">ブラウザ</span><div class="ease">幅×高さから開口部を引いた塗装面積と、下塗り・中塗り・上塗りごとの必要量・缶数を計算。塗布量はカタログ値を入力。</div></td>
+<td class="pr" data-price="980">¥980</td>
+<td class="go"><a class="btn ghost" href="https://excel-temple.booth.pm/items/9026818" data-booth-id="9026818" target="_blank" rel="noopener">BOOTHで見る</a></td>
+</tr>
+<tr data-item="9026778">
+<td class="c-pain"><span class="pain">協力会社ごとの締め日・支払日を頭の中で計算している</span></td>
+<td><span class="nm">外注・協力会社 支払管理</span><span class="env">Excel・スプレッドシート</span><div class="ease">協力会社ごとの締め日・支払日のルールから支払予定日を計算し、今月の支払予定・未払いを協力会社別に集計。</div></td>
+<td class="pr" data-price="1480">¥1,480</td>
+<td class="go"><a class="btn ghost" href="https://excel-temple.booth.pm/items/9026778" data-booth-id="9026778" target="_blank" rel="noopener">BOOTHで見る</a></td>
+</tr>
+</tbody>
+</table>
+
+<h2>実際に触れる見本</h2>
+<p class="sub">買う前に、同じ計算のしかたの見本をブラウザで動かせます。</p>
+<a class="studio" href="/studio/kensetsu/"><b>建設スタジオ →</b><span>見積 → 現場と工程表 → 日報・出面 → 請求 → 入金。原価と粗利は日報から自動で。Excel版と同じ計算のしかたで、ブラウザで実際に入力して試せます。</span></a>
+
+<h2>ご注意</h2>
+<ul class="notes">
+<li>01〜06・09 は Excel（Windows・Mac）と Googleスプレッドシートで使えます。マクロは使っていません。</li>
+<li>07・08 はHTMLファイル1つで動くブラウザのツールです（推奨：Google Chrome・Microsoft Edge）。インストールは要りません。</li>
+<li>Excel・ブラウザで使うとき、入れたデータはお使いのパソコンの中にあり、外部には送信されません。Googleスプレッドシートで開く場合は、ご自身のGoogleドライブに保存されます。</li>
+<li>見本のデータ（会社・現場・人・金額）はすべて架空です。</li>
+<li>税・労務・契約の判断は、国税庁の案内や税理士・社会保険労務士など専門家にご確認ください。</li>
+</ul>
+<footer>
+<p>価格はBOOTHの商品ページで2026年10月25日に確かめたものです。購入の前に、BOOTHの商品ページで最新の内容と価格をご確認ください。ツールはAIを活用して作成し、動作を確認しています。</p>
+<p class="brand"><a href="/">MisaNeco Works ツール集</a> ／ 運営：Eternal Philosophy（EQUA）</p>
+</footer>
+</main>
+</body>
+</html>

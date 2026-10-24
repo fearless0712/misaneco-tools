@@ -1,0 +1,161 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'unsafe-inline'; img-src 'self'; base-uri 'none'; form-action 'none'; object-src 'none'">
+<title>車屋・バイク屋の業務ツール、どれを選ぶ？｜困りごとから選ぶExcel</title>
+<meta name="description" content="町の整備工場・バイク屋さん向け。車検・点検台帳、整備見積・請求、作業予約・ピット表、部品在庫、中古車の原価、案内文作成のツールを、困りごとから選べる一覧です。">
+<link rel="canonical" href="https://tools.equaglobal.com/erabikata/kuruma/">
+<meta property="og:title" content="車屋・バイク屋の業務ツール、どれを選ぶ？｜困りごとから選ぶExcel">
+<meta property="og:description" content="町の整備工場・バイク屋さん向け。車検・点検台帳、整備見積・請求、作業予約・ピット表、部品在庫、中古車の原価、案内文作成のツールを、困りごとから選べる一覧です。">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://tools.equaglobal.com/erabikata/kuruma/">
+<style>
+:root{--bg:#0c0d0f;--panel:#15161a;--panel2:#1b1c21;--line:#26292f;--text:#eef0f2;--dim:#a2a8b1;--acc:#e0374f;--acc2:#ff8a98;--accInk:#ffffff}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--text);font-family:"Hiragino Sans","Noto Sans JP","Yu Gothic",sans-serif;font-size:16px;line-height:1.75;-webkit-font-smoothing:antialiased}
+a{color:var(--acc2)}
+main{max-width:960px;margin:0 auto;padding:28px 16px 56px}
+.crumb{font-size:13px;color:var(--dim);margin:0 0 14px}.crumb a{color:var(--dim)}
+h1{font-size:26px;line-height:1.4;margin:0 0 8px}
+.lead{color:var(--dim);margin:0 0 26px}
+h2{font-size:20px;margin:40px 0 6px;padding-left:12px;border-left:4px solid var(--acc)}
+.sub{color:var(--dim);font-size:14px;margin:0 0 14px}
+.hero{background:var(--panel);border:1px solid var(--line);border-radius:16px;overflow:hidden;display:grid;grid-template-columns:1fr;gap:0}
+.hero img{display:block;width:100%;height:auto;background:#fff}
+.hero .body{padding:18px 18px 20px}
+.tag{display:inline-block;font-size:12px;font-weight:700;letter-spacing:.04em;color:var(--accInk);background:var(--acc);border-radius:999px;padding:2px 10px;margin-bottom:8px}
+.hero h3{font-size:20px;line-height:1.45;margin:0 0 8px}
+.hero p{margin:0 0 12px;color:var(--dim);font-size:15px}
+.price{font-size:30px;font-weight:800;color:var(--text);margin:4px 0 2px;font-variant-numeric:tabular-nums}
+.calc{width:100%;border-collapse:collapse;font-size:14px;margin:8px 0 14px;font-variant-numeric:tabular-nums}
+.calc td{padding:6px 0;border-bottom:1px solid var(--line)}.calc td:last-child{text-align:right;white-space:nowrap}
+.calc tr.diff td{color:var(--acc2);font-weight:700;border-bottom:0}
+.btn{display:inline-block;background:var(--acc);color:var(--accInk);font-weight:700;text-decoration:none;border-radius:10px;padding:12px 20px;min-height:44px}
+.btn:hover{filter:brightness(1.08)}
+.btn.ghost{background:transparent;color:var(--acc2);border:1px solid var(--acc);padding:9px 16px;font-size:14px}
+.also{margin-top:14px;background:var(--panel2);border:1px solid var(--line);border-radius:12px;padding:14px 16px;font-size:14px;color:var(--dim)}
+.also b{color:var(--text)}
+table.pick{width:100%;border-collapse:collapse;background:var(--panel);border:1px solid var(--line);border-radius:14px;overflow:hidden;font-size:15px}
+table.pick th{background:var(--panel2);color:var(--dim);font-size:13px;font-weight:600;text-align:left;padding:10px 12px;border-bottom:1px solid var(--line)}
+table.pick td{padding:14px 12px;border-bottom:1px solid var(--line);vertical-align:top}
+table.pick tr:last-child td{border-bottom:0}
+.pain{font-weight:700}
+.nm{font-weight:700;color:var(--acc2)}
+.pr{font-weight:800;white-space:nowrap;font-variant-numeric:tabular-nums}
+.ease{color:var(--dim);font-size:14px;margin-top:2px}
+.env{display:inline-block;font-size:11px;color:var(--dim);border:1px solid var(--line);border-radius:6px;padding:0 6px;margin-left:6px;vertical-align:2px}
+td.go{text-align:right;white-space:nowrap}
+.studio{display:block;background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:18px;color:var(--text);text-decoration:none}
+.studio:hover{border-color:var(--acc)}
+.studio b{color:var(--acc2);font-size:18px}.studio span{display:block;color:var(--dim);font-size:14px;margin-top:4px}
+ul.notes{margin:0;padding:16px 16px 16px 34px;background:var(--panel);border:1px solid var(--line);border-radius:14px;color:var(--dim);font-size:14px}
+ul.notes li{margin:4px 0}
+footer{margin-top:40px;font-size:13px;color:var(--dim)}footer a{color:var(--dim)}
+.brand{margin-top:6px}
+@media (min-width:760px){
+  h1{font-size:30px}
+  .hero{grid-template-columns:1.15fr 1fr}
+  .hero img{height:100%;object-fit:contain;background:#fff}
+  .hero .body{padding:24px}
+}
+@media (max-width:700px){
+  table.pick thead{display:none}
+  table.pick,table.pick tbody,table.pick tr,table.pick td{display:block;width:100%}
+  table.pick tr{padding:14px 14px 16px;border-bottom:1px solid var(--line)}
+  table.pick tr:last-child{border-bottom:0}
+  table.pick td{padding:0;border:0}
+  table.pick td.c-pain{margin-bottom:6px;font-size:15px}
+  table.pick td.c-pain::before{content:"困りごと";display:block;font-size:11px;color:var(--dim);font-weight:400}
+  table.pick td.go{text-align:left;margin-top:10px}
+}
+</style>
+</head>
+<body>
+<main>
+<p class="crumb"><a href="/">ツール集</a> ／ <a href="../">業種別の選び方</a> ／ 車屋・バイク屋</p>
+<h1>車屋・バイク屋の業務ツール、どれを選ぶ？</h1>
+<p class="lead">車検の案内・見積・ピット予約・部品・中古車。困っていることから、合うツールを選べます。</p>
+
+<h2>迷ったらこれ</h2>
+<section class="hero" aria-label="セット商品">
+<img src="../assets/kuruma-set.jpg" alt="車屋・バイク屋 業務ツール6点セットの表紙画像" width="960" height="720">
+<div class="body">
+<span class="tag">セット</span>
+<h3>車屋・バイク屋 業務ツール6点セット</h3>
+<p>下の6本がすべて入ったセットです。車検の案内から見積・請求、ピット予約、部品在庫、中古車の原価まで、仕事の流れに沿ってそろいます。</p>
+<div class="price" data-set-price="4980">¥4,980</div>
+<table class="calc" aria-label="単品で買う場合との比較">
+<tr><td>単品6本を別々に買った合計</td><td data-single-total="7880">¥7,880</td></tr>
+<tr><td>セットの価格</td><td>¥4,980</td></tr>
+<tr class="diff"><td>差額</td><td data-diff="2900">¥2,900</td></tr>
+</table>
+<a class="btn" href="https://excel-temple.booth.pm/items/9026647" data-booth-id="9026647" target="_blank" rel="noopener">BOOTHで見る</a>
+</div>
+</section>
+
+<h2>困りごとから選ぶ</h2>
+<p class="sub">1本ずつでも買えます。リンクはBOOTHの商品ページです。</p>
+<table class="pick">
+<thead><tr><th>困りごと</th><th>合うツール・楽になること</th><th>価格</th><th></th></tr></thead>
+<tbody>
+<tr data-item="9026828">
+<td class="c-pain"><span class="pain">車検の案内を出し忘れてしまう</span></td>
+<td><span class="nm">車検・点検 顧客台帳</span><span class="env">Excel・スプレッドシート</span><div class="ease">満了日を入れると、案内日（60日前・30日前、変更可）と残り日数を色で表示。今月案内する人を満了日の近い順に一覧。</div></td>
+<td class="pr" data-price="1480">¥1,480</td>
+<td class="go"><a class="btn ghost" href="https://excel-temple.booth.pm/items/9026828" data-booth-id="9026828" target="_blank" rel="noopener">BOOTHで見る</a></td>
+</tr>
+<tr data-item="9026833">
+<td class="c-pain"><span class="pain">部品・工賃・法定費用を毎回電卓で足している</span></td>
+<td><span class="nm">整備 見積書・請求書</span><span class="env">Excel・スプレッドシート</span><div class="ease">部品と工賃（時間×レート）から金額・消費税・合計を計算。法定費用は課税分と分けて合計。見積書と請求書を切り替え。</div></td>
+<td class="pr" data-price="1480">¥1,480</td>
+<td class="go"><a class="btn ghost" href="https://excel-temple.booth.pm/items/9026833" data-booth-id="9026833" target="_blank" rel="noopener">BOOTHで見る</a></td>
+</tr>
+<tr data-item="9026841">
+<td class="c-pain"><span class="pain">予約の電話のたびに、ノートで空きを探している</span></td>
+<td><span class="nm">作業予約・ピット表</span><span class="env">Excel・スプレッドシート</span><div class="ease">予約を1件1行で入れると、日ごと・リフトごとの予約表と空き枠を表示。重なりは赤、代車の空きも一緒に。</div></td>
+<td class="pr" data-price="1480">¥1,480</td>
+<td class="go"><a class="btn ghost" href="https://excel-temple.booth.pm/items/9026841" data-booth-id="9026841" target="_blank" rel="noopener">BOOTHで見る</a></td>
+</tr>
+<tr data-item="9026852">
+<td class="c-pain"><span class="pain">オイルやフィルターの在庫を切らしてしまう</span></td>
+<td><span class="nm">部品在庫・発注管理</span><span class="env">Excel・スプレッドシート</span><div class="ease">入荷・出庫・発注の記録から在庫数を計算し、発注点を下回った品を赤で表示。頼む数の目安と在庫金額も。</div></td>
+<td class="pr" data-price="1480">¥1,480</td>
+<td class="go"><a class="btn ghost" href="https://excel-temple.booth.pm/items/9026852" data-booth-id="9026852" target="_blank" rel="noopener">BOOTHで見る</a></td>
+</tr>
+<tr data-item="9026859">
+<td class="c-pain"><span class="pain">1台ごとの利益と、仕入れてからの日数がわからない</span></td>
+<td><span class="nm">中古車・中古バイク 在庫・原価管理</span><span class="env">Excel・スプレッドシート</span><div class="ease">仕入れ・整備費・諸費用から原価、販売価格から粗利・粗利率、在庫日数を計算。長く売れていない台は赤。</div></td>
+<td class="pr" data-price="980">¥980</td>
+<td class="go"><a class="btn ghost" href="https://excel-temple.booth.pm/items/9026859" data-booth-id="9026859" target="_blank" rel="noopener">BOOTHで見る</a></td>
+</tr>
+<tr data-item="9026865">
+<td class="c-pain"><span class="pain">お客さまごとの案内文・はがきを1枚ずつ作っている</span></td>
+<td><span class="nm">車検・点検の案内文作成</span><span class="env">ブラウザ</span><div class="ease">お客さまの一覧（CSVや表のコピー）から、1人ずつの案内文を作成。はがき（A4に4面）の印刷・PDF保存、LINE・メール用の文章のコピー。送信はしません。</div></td>
+<td class="pr" data-price="980">¥980</td>
+<td class="go"><a class="btn ghost" href="https://excel-temple.booth.pm/items/9026865" data-booth-id="9026865" target="_blank" rel="noopener">BOOTHで見る</a></td>
+</tr>
+</tbody>
+</table>
+
+<h2>実際に触れる見本</h2>
+<p class="sub">買う前に、同じ計算のしかたの見本をブラウザで動かせます。</p>
+<a class="studio" href="/studio/kuruma/"><b>車屋・バイク屋スタジオ →</b><span>車検の案内 → ピット予約 → 整備見積 → 請求 → 入金。部品在庫と中古車の粗利も。Excel版と同じ計算のしかたで、ブラウザで実際に入力して試せます。</span></a>
+
+<h2>ご注意</h2>
+<ul class="notes">
+<li>01〜05 は Excel（Windows・Mac）と Googleスプレッドシートで使えます。マクロは使っていません。</li>
+<li>06 はHTMLファイル1つで動くブラウザのツールです（動作を確かめたブラウザ：Google Chrome）。インストールは要りません。</li>
+<li>Excel・ブラウザで使うとき、入れたデータはお使いのパソコンの中にあり、外部には送信されません。Googleスプレッドシートで開く場合は、ご自身のGoogleドライブに保存されます。</li>
+<li>見本のデータ（お店・人・車・金額）はすべて架空です。</li>
+<li>実際の満了日は車検証で、税・法定費用の扱いは運輸支局・税理士など専門家にご確認ください。</li>
+</ul>
+<footer>
+<p>価格はBOOTHの商品ページで2026年10月25日に確かめたものです。購入の前に、BOOTHの商品ページで最新の内容と価格をご確認ください。ツールはAIを活用して作成し、動作を確認しています。</p>
+<p class="brand"><a href="/">MisaNeco Works ツール集</a> ／ 運営：Eternal Philosophy（EQUA）</p>
+</footer>
+</main>
+</body>
+</html>
