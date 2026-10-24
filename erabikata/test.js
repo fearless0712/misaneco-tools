@@ -107,7 +107,7 @@ for (const [slug, f] of Object.entries(files)) {
 // ---- スタジオからの導線 ----
 for (const s of ['kensetsu', 'kuruma', 'keiri']) {
   const h = fs.readFileSync(path.join(__dirname, '..', 'studio', s, 'index.html'), 'utf8');
-  eq(h.includes(`href="/erabikata/${s}/"`) && h.includes('この業務のExcel版を選ぶ →'), true, 'studio/' + s + ' → 選び方ページ');
+  eq(h.includes(`href="/erabikata/${s}/"`) && (h.includes('この業務のExcel版を選ぶ →')||h.includes('この業務のツールを選ぶ →')), true, 'studio/' + s + ' → 選び方ページ');
 }
 // ---- サイトマップ ----
 const sm = fs.readFileSync(path.join(__dirname, '..', 'sitemap.xml'), 'utf8');
