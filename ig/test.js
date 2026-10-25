@@ -80,7 +80,7 @@ for (const h of hrefs) {
     eq(fs.existsSync(f), true, 'リンク先が存在：' + h);
   }
 }
-eq(ext, 4, '外部リンクの数（BOOTH3＋EQUA1）');
+eq(ext, 3, '外部リンクの数（BOOTH3。相談の欄は10/25に外した）');
 
 async function live() {
   const ids = [...APPS.map(a => [a.id, a.price, a.name]), ...SETS.map(s => [s.id, s.price, s.slug + 'セット'])];
