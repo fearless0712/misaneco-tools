@@ -122,18 +122,19 @@
   function invTotal(v) { return invCalc(v).total; }
   function txById(id) { return S.tx.filter(function (e) { return e.id === id; })[0]; }
   function invById(id) { return S.invoices.filter(function (v) { return v.id === id; })[0]; }
-  function isPaid(v) { return !!(v.paid && (v.paid.status === '入金済み' || v.paid.status === '手数料差引')); }
+  function isPaid(v) { return K.paidDone(v); }
   function eligibleDeps() { return S.tx.filter(function (e) { return e.dir === 'in' && e.src === '普通預金' && !(e.inv && e.inv.length) && e.acc === '売上高'; }); }
   function recon() {
     var invs = S.invoices.filter(function (v) { return !v.paid; }).map(function (v) { return { id: v.id, no: v.no, partner: v.partner, amount: invTotal(v), date: D(v.issue), due: D(v.due), ref: v }; });
     var deps = eligibleDeps().map(function (e) { return { id: e.id, date: D(e.date), desc: e.name, amount: e.amt, ref: e }; });
     return K.match(invs, deps, { feeMax: n0(C().feeMax), today: TODAY, nameMap: K.parseNameMap(C().namemap) });
   }
-  function invStatus(v) { if (v.paid) return v.paid.status; return D(v.due) !== null && D(v.due) < TODAY ? '期日超過' : '未入金'; }
-  function unpaid() {
-    var list = S.invoices.filter(function (v) { return !isPaid(v); });
-    return { list: list, sum: list.reduce(function (a, v) { return a + invTotal(v); }, 0), late: list.filter(function (v) { return invStatus(v) === '期日超過'; }) };
-  }
+  function invStatus(v) { if (v.paid) return v.paid.status; return K.invLate(v, TODAY) ? '期日超過' : '未入金'; }
+  function isLate(v) { return K.invLate(v, TODAY); } // 未入金・要確認で期日を過ぎた
+  function statusPills(v) { var s = invStatus(v); return pill(s) + (s === '要確認' && isLate(v) ? ' ' + pill('期日超過') : ''); }
+  function remainOf(v) { return K.invRemain(v, invTotal(v)); }
+  // 未入金：入金済み・手数料差引でない請求書。要確認（入金が足りない）は残り＝請求額−入金額で数え、期日を過ぎていれば期日超過にも入れる
+  function unpaid() { return K.openInvoices(S.invoices, invTotal, TODAY); }
   function months6() { var out = []; for (var i = 5; i >= 0; i--) out.push(K.ym(K.addMonths(TODAY, -i))); return out; }
   var _sd = null;
   function SD() { if (!_sd) _sd = K.sumData(S.tx, months6().concat([K.ym(K.addMonths(TODAY, -6))])); return _sd; }
@@ -197,7 +198,7 @@
     h += kpi('今月の売上（請求書・税込）', cnt('d-s', cur.sales), '', '請求書 ' + cur.n + '枚・前月 ' + yen(prev.sales), 'k-s', Math.min(1, cur.sales / Math.max(1, prev.sales)));
     h += kpi('今月の経費（事業分・税込）', cnt('d-e', cur.exp), 'st', '前月比 ' + dlt(cur.exp, prev.exp, true) + '・前月 ' + yen(prev.exp), 'k-e', Math.min(1, cur.exp / Math.max(1, prev.exp)), 'st');
     h += kpi('今月の利益（目安）', cnt('d-p', cur.profit), cur.profit < 0 ? 'rd' : 'gr', '利益率 ' + (cur.sales ? pct(cur.profit / cur.sales) : '—') + '・売上−経費', 'k-p', cur.sales ? Math.max(0, cur.profit / cur.sales) : 0);
-    h += kpi('未入金', cnt('d-u', up.sum), up.late.length ? 'rd' : '', up.list.length + '件' + (up.late.length ? '・<span class="bad">期日超過 ' + up.late.length + '件 ' + yen(up.late.reduce(function (a, v) { return a + invTotal(v); }, 0)) + '</span>' : ''), 'k-u', Math.min(1, up.sum / Math.max(1, up.sum + cur.sales)));
+    h += kpi('未入金', cnt('d-u', up.sum), up.late.length ? 'rd' : '', up.list.length + '件' + (up.late.length ? '・<span class="bad">期日超過 ' + up.late.length + '件 ' + yen(up.lateSum) + '</span>' : ''), 'k-u', Math.min(1, up.sum / Math.max(1, up.sum + cur.sales)));
     h += '</div>';
     var flow = [
       { lab: '明細の取り込み', k: 'f-1', v: tx.length, f: 'n', u: '行' }, { lab: '仕訳', k: 'f-2', v: tx.length ? Math.round(okN / tx.length * 100) : 0, f: 'n', u: '%済' },
@@ -237,15 +238,15 @@
     h += '<div class="grid g2 mt">';
     h += '<div class="panel"><div class="ph"><h2><b>03</b>未入金の請求書</h2><span class="tag">期日の近い順</span></div><div class="list">';
     up.list.slice().sort(function (a, b) { return D(a.due) - D(b.due); }).slice(0, 6).forEach(function (v) {
-      var rem = D(v.due) - TODAY, stt = invStatus(v);
-      h += '<div class="li"><span class="days ' + (stt === '期日超過' ? 'bad' : rem <= 10 ? 'warn' : 'ok') + '">' + (rem < 0 ? rem : '+' + rem) + '日</span><span class="x">' + esc(v.partner) + '<small>' + esc(v.no) + '・期日 ' + K.md(D(v.due)) + '</small></span><span class="r">' + yen(invTotal(v)) + '</span>' + pill(stt) + '</div>';
+      var rem = D(v.due) - TODAY;
+      h += '<div class="li"><span class="days ' + (isLate(v) ? 'bad' : rem <= 10 ? 'warn' : 'ok') + '">' + (rem < 0 ? rem : '+' + rem) + '日</span><span class="x">' + esc(v.partner) + '<small>' + esc(v.no) + '・期日 ' + K.md(D(v.due)) + (K.paidCheck(v) ? '・請求 ' + yen(invTotal(v)) + '−入金 ' + yen(K.invGot(v, invTotal(v))) : '') + '</small></span><span class="r">' + yen(remainOf(v)) + '</span>' + statusPills(v) + '</div>';
     });
     if (!up.list.length) h += '<p class="note">未入金の請求書はありません。</p>';
     h += '</div></div>';
     h += '<div class="panel st"><div class="ph"><h2><b>04</b>気をつけること</h2></div><div class="list">';
     h += '<div class="li"><span class="days ' + (bad.length ? 'bad' : 'ok') + '">' + bad.length + '</span><span class="x">未分類・要確認の明細<small>' + esc(bad.slice(0, 3).map(function (e) { return e.name; }).join('・')) + '</small></span></div>';
     h += '<div class="li"><span class="days ' + (cand ? 'warn' : 'ok') + '">' + cand + '</span><span class="x">照合を待っている入金<small>' + (cand ? '入金の照合で「確定」' : '') + '</small></span></div>';
-    h += '<div class="li"><span class="days ' + (late.length ? 'bad' : 'ok') + '">' + late.length + '</span><span class="x">期日を過ぎた請求書<small>' + esc(late.map(function (v) { return v.partner; }).join('・')) + '</small></span><span class="r">' + yen(late.reduce(function (a, v) { return a + invTotal(v); }, 0)) + '</span></div>';
+    h += '<div class="li"><span class="days ' + (late.length ? 'bad' : 'ok') + '">' + late.length + '</span><span class="x">期日を過ぎた請求書<small>' + esc(late.map(function (v) { return v.partner; }).join('・')) + '</small></span><span class="r">' + yen(up.lateSum) + '</span></div>';
     h += '<div class="li"><span class="days ' + (overP.length || kr.skipped.length ? 'bad' : 'ok') + '">' + (overP.length + kr.skipped.length) + '</span><span class="x">勤怠の注意<small>時間外の上限超え ' + overP.length + '人・打刻もれ ' + kr.skipped.length + '件</small></span></div>';
     h += '<div class="li"><span class="days ' + (ngInv.length ? 'bad' : 'ok') + '">' + ngInv.length + '</span><span class="x">記載事項が足りない請求書（今月）</span></div>';
     h += '</div></div></div>';
@@ -428,8 +429,8 @@
     var list = S.invoices.slice().sort(function (a, b) { return D(b.issue) - D(a.issue) || (a.no < b.no ? 1 : -1); });
     h += '<div class="panel mt"><div class="ph"><h2><b>LIST</b>請求書の一覧</h2><span class="tag">新しい順・' + list.length + '枚</span></div><div class="tw"><table id="invTbl"><thead><tr><th>番号</th><th>請求日</th><th>取引先</th><th class="r">請求額（税込）</th><th class="r hide-n">うち消費税</th><th>期日</th><th>状態</th><th></th></tr></thead><tbody>';
     list.slice(0, invMore ? 200 : 12).forEach(function (v) {
-      var cal = invCalc(v), stt = invStatus(v);
-      h += '<tr class="' + (stt === '期日超過' ? 's-bad' : '') + (v.id === newInv ? ' flash' : '') + (v.id === selInv ? ' sel' : '') + '"><td class="mono nowrap">' + esc(v.no) + '</td><td class="mono nowrap">' + K.slash(D(v.issue)) + '</td><td>' + esc(v.partner) + '</td><td class="r mono">' + K.num(cal.total) + '</td><td class="r mono hide-n">' + K.num(cal.tax) + '</td><td class="mono nowrap">' + K.md(D(v.due)) + '</td><td>' + pill(stt) + '</td><td><button class="ghost sm" data-act="inv-open" data-id="' + v.id + '">見る</button></td></tr>';
+      var cal = invCalc(v);
+      h += '<tr class="' + (isLate(v) ? 's-bad' : '') + (v.id === newInv ? ' flash' : '') + (v.id === selInv ? ' sel' : '') + '"><td class="mono nowrap">' + esc(v.no) + '</td><td class="mono nowrap">' + K.slash(D(v.issue)) + '</td><td>' + esc(v.partner) + '</td><td class="r mono">' + K.num(cal.total) + '</td><td class="r mono hide-n">' + K.num(cal.tax) + '</td><td class="mono nowrap">' + K.md(D(v.due)) + '</td><td>' + statusPills(v) + '</td><td><button class="ghost sm" data-act="inv-open" data-id="' + v.id + '">見る</button></td></tr>';
     });
     h += '</tbody></table></div>' + (list.length > 12 && !invMore ? '<button class="ghost mt" data-act="inv-more">すべて表示</button>' : '') + '</div>';
     $('#v-inv').innerHTML = h;
@@ -453,9 +454,8 @@
 
   // ================= 4) 入金の照合 =================
   function confirmInv(inv, deps, how, diff, status) {
-    inv.paid = { deps: deps.map(function (e) { return e.id; }), how: how, diff: diff || 0, status: status, date: deps.reduce(function (a, e) { return a > e.date ? a : e.date; }, '') };
-    deps.forEach(function (e) { e.acc = '売掛金'; e.manual = true; e.status = ''; e.inv = (e.inv || []).concat([inv.id]); });
-    if (diff > 0 && status === '手数料差引') S.tx.push({ id: uid('t'), date: inv.paid.date, name: '振込手数料（差引）' + inv.partner, key: '振込手数料', amt: diff, dir: 'out', src: '売掛金', file: '入金の照合', manual: true, acc: '支払手数料', pct: 100, status: '' });
+    K.applyPaid(inv, deps, how, diff, status); // 入金の行を売掛金の回収に（取り消せるように元の値を残す）
+    if (diff > 0 && status === '手数料差引') S.tx.push({ id: (inv.paid.feeTx = uid('t')), date: inv.paid.date, name: '振込手数料（差引）' + inv.partner, key: '振込手数料', amt: diff, dir: 'out', src: '売掛金', file: '入金の照合', manual: true, acc: '支払手数料', pct: 100, status: '' });
   }
   function recConfirmAll() {
     var R = recon(), n = 0, sum = 0;
@@ -470,35 +470,48 @@
   function recManual(invId, depId) {
     var v = invById(invId); if (!v) return;
     var e = txById(depId); if (!e) return;
-    var amt = invTotal(v), diff = Math.max(0, amt - e.amt), feeMax = n0(C().feeMax);
-    var status = diff ? (diff <= feeMax ? '手数料差引' : '要確認') : '入金済み';
-    confirmInv(v, [e], '手で確定', diff, status);
-    if (status === '要確認') v.paid.note = '差額 ¥' + K.num(diff);
+    var deps = [e];
+    if (K.paidCheck(v)) { deps = v.paid.deps.map(txById).filter(Boolean).concat([e]); K.undoPaid(v, S.tx); } // 要確認の請求書：残りの入金を足す
+    var amt = invTotal(v), got = deps.reduce(function (a, d) { return a + d.amt; }, 0), ms = K.manualStatus(amt, got, C().feeMax), diff = ms.diff, status = ms.status;
+    confirmInv(v, deps, deps.length > 1 ? '手で確定（入金' + deps.length + '件）' : '手で確定', diff, status);
+    if (status === '要確認') v.paid.note = '入金 ¥' + K.num(got) + '・残り ¥' + K.num(diff);
     // 振込名義を登録（入金消込チェッカーと同じ）
     var nm = K.parseNameMap(C().namemap), key = K.kanaKey(e.name);
     if (key && nm.get(key) !== v.partner) C().namemap = C().namemap.replace(/\s*$/, '\n') + K.nfkc(e.name).replace(/^(振込|フリコミ)\s*/, '').trim() + ' = ' + v.partner + '\n';
     log('入金を手で確定：' + v.no + ' ' + v.partner);
-    commit(); toast(v.no + ' を「' + status + '」にしました（振込名義を登録）');
+    commit(); toast(v.no + ' を「' + status + '」にしました（' + (status === '要確認' ? '残り ' + yen(diff) + ' は未入金のまま・' : '') + '振込名義を登録）');
+  }
+  function recUndo(invId) { // 要確認の確定を取り消す（入金の行も確定前に戻す）
+    var v = invById(invId); if (!v || !K.paidCheck(v)) return;
+    if (!DEMO && !window.confirm(v.no + '（' + v.partner + '）の入金の確定を取り消しますか？')) return;
+    K.undoPaid(v, S.tx);
+    log('入金の確定を取り消し：' + v.no + ' ' + v.partner);
+    commit(); toast(v.no + ' の確定を取り消しました（未入金に戻しました）');
   }
   RENDER.rec = function () {
-    var R = recon(), up = unpaid(), cand = R.invs.filter(function (v) { return v.dep.length && (v.status === '入金済み' || v.status === '手数料差引'); });
+    var R = recon(), up = unpaid(), chk = S.invoices.filter(K.paidCheck).sort(function (a, b) { return D(a.due) - D(b.due); }), cand = R.invs.filter(function (v) { return v.dep.length && (v.status === '入金済み' || v.status === '手数料差引'); });
     var unk = R.deps.filter(function (d) { return !d.inv.length; });
     var h = '<div class="grid g4">';
-    h += kpi('未入金', cnt('r-u', up.sum), '', up.list.length + '件（確定前の候補を含む）', 'rk1', Math.min(1, up.list.length / Math.max(1, S.invoices.length)), 'st');
+    h += kpi('未入金', cnt('r-u', up.sum), '', up.list.length + '件（確定前の候補を含む' + (chk.length ? '・要確認 ' + chk.length + '件は残りの額' : '') + '）', 'rk1', Math.min(1, up.list.length / Math.max(1, S.invoices.length)), 'st');
     h += kpi('照合の候補', cnt('r-c', cand.length, 'n') + '<small>件</small>', cand.length ? 'gr' : 'st', yen(cand.reduce(function (a, v) { return a + v.amount; }, 0)) + '・「確定」で入金済みに', 'rk2', cand.length ? 1 : 0);
-    h += kpi('期日超過', cnt('r-l', up.late.length, 'n') + '<small>件</small>', up.late.length ? 'rd' : '', yen(up.late.reduce(function (a, v) { return a + invTotal(v); }, 0)), 'rk3', up.late.length ? 1 : 0);
+    h += kpi('期日超過', cnt('r-l', up.late.length, 'n') + '<small>件</small>', up.late.length ? 'rd' : '', yen(up.lateSum), 'rk3', up.late.length ? 1 : 0);
     h += kpi('合わない入金', cnt('r-x', unk.length, 'n') + '<small>件</small>', unk.length ? 'rd' : 'st', '請求書が見つからない入金', 'rk4', unk.length ? 1 : 0, 'st');
     h += '</div>';
     h += '<div class="panel mt"><div class="ph"><h2><b>MATCH</b>請求書と入金の突き合わせ</h2><div class="btns"><button class="btn" data-act="rec-confirm" id="recConfirm"' + (cand.length ? '' : ' disabled') + '>照合を確定する（' + cand.length + '件）</button></div></div>';
     h += '<div class="tw"><table id="recTbl"><thead><tr><th>状態</th><th>番号</th><th>取引先</th><th class="hide-n">請求日</th><th>期日</th><th class="r">請求額</th><th>対応する入金（選び直せます）</th><th>根拠・メモ</th></tr></thead><tbody>';
     var deps = eligibleDeps();
+    chk.forEach(function (v) { // 要確認で確定した請求書（入金が足りない）：残りを未入金に数えたまま表に残す
+      var tot = invTotal(v), got = K.invGot(v, tot);
+      var sel = '<select data-recinv="' + v.id + '"><option value="">（残りの入金を足す）</option>' + deps.map(function (e) { return '<option value="' + e.id + '">' + K.md(D(e.date)) + ' ' + esc(e.name.slice(0, 16)) + ' ¥' + K.num(e.amt) + '</option>'; }).join('') + '</select>';
+      h += '<tr class="' + (isLate(v) ? 's-bad' : 's-ord') + '" data-chk="' + v.id + '"><td>' + statusPills(v) + '</td><td class="mono nowrap">' + esc(v.no) + '</td><td>' + esc(v.partner) + '</td><td class="mono hide-n nowrap">' + K.md(D(v.issue)) + '</td><td class="mono nowrap">' + K.md(D(v.due)) + '</td><td class="r mono">' + K.num(tot) + '</td><td>' + sel + ' <button class="ghost sm" data-act="rec-undo" data-id="' + v.id + '">確定を取り消す</button></td><td><small style="white-space:normal">' + esc('入金 ¥' + K.num(got) + '（' + v.paid.deps.length + '件）・残り ¥' + K.num(tot - got) + 'は未入金に数えています') + '</small></td></tr>';
+    });
     R.invs.slice().sort(function (a, b) { return (b.dep.length ? 1 : 0) - (a.dep.length ? 1 : 0) || (a.due || 0) - (b.due || 0); }).forEach(function (v) {
       var label = v.dep.length && !v.weak ? v.status : (v.dep.length ? '要確認' : v.status);
       var sel = '<select data-recinv="' + v.id + '"><option value="">（入金なし）</option>' + deps.map(function (e) { return '<option value="' + e.id + '"' + (v.dep.some(function (d) { return d.id === e.id; }) ? ' selected' : '') + '>' + K.md(D(e.date)) + ' ' + esc(e.name.slice(0, 16)) + ' ¥' + K.num(e.amt) + '</option>'; }).join('') + '</select>';
       h += '<tr class="' + (v.dep.length ? 's-ord' : (label === '期日超過' ? 's-bad' : '')) + '"><td>' + pill(label) + (v.dep.length ? '<small>候補</small>' : '') + '</td><td class="mono nowrap">' + esc(v.no) + '</td><td>' + esc(v.partner) + '</td><td class="mono hide-n nowrap">' + K.md(v.date) + '</td><td class="mono nowrap">' + K.md(v.due) + '</td><td class="r mono">' + K.num(v.amount) + '</td><td>' + sel + '</td><td><small style="white-space:normal">' + esc([v.how, v.diff ? '差額 ¥' + K.num(v.diff) + '（振込手数料として仕訳）' : '', v.note].filter(Boolean).join(' ／ ')) + '</small></td></tr>';
     });
-    if (!R.invs.length) h += '<tr><td colspan="8" class="note">未入金の請求書はありません。</td></tr>';
-    h += '</tbody></table></div><p class="note mt">順番：①取引先が分かって金額がぴったり → ②振込手数料（' + K.num(n0(C().feeMax)) + '円まで）を引いた金額 → ③何枚かをまとめて入金 → ④金額だけ一致（要確認）。取引先は、登録した振込名義・名前のカナで見分けます（入金消込チェッカーと同じ）。差し引かれた手数料は「支払手数料」として仕訳します。</p></div>';
+    if (!R.invs.length && !chk.length) h += '<tr><td colspan="8" class="note">未入金の請求書はありません。</td></tr>';
+    h += '</tbody></table></div><p class="note mt">順番：①取引先が分かって金額がぴったり → ②振込手数料（' + K.num(n0(C().feeMax)) + '円まで）を引いた金額 → ③何枚かをまとめて入金 → ④金額だけ一致（要確認）。取引先は、登録した振込名義・名前のカナで見分けます（入金消込チェッカーと同じ）。差し引かれた手数料は「支払手数料」として仕訳します。入金が請求額に足りず「要確認」で確定した請求書は、残り（請求額−入金額）を未入金・期日超過に数えたままこの表に残ります。残りの入金を選ぶと足し、「確定を取り消す」で確定前に戻せます。</p></div>';
     h += '<div class="grid g2 mt"><div class="panel st"><div class="ph"><h2><b>UNKNOWN</b>合わない入金</h2></div><div class="list">';
     unk.forEach(function (d) { h += '<div class="li"><span class="m">' + K.md(d.date) + '</span><span class="x">' + esc(d.desc) + '<small>' + esc(d.pp ? '推定：' + d.pp.p : (d.cands ? '同じ金額の請求書が' + d.cands.length + '枚' : '取引先が分からない')) + '</small></span><span class="r">' + yen(d.amount) + '</span></div>'; });
     if (!unk.length) h += '<p class="note">取り込んだ入金は、すべてどれかの請求書に当てはまりました。</p>';
@@ -687,6 +700,7 @@
       case 'inv-back': selInv = null; render(); return;
       case 'inv-more': invMore = true; render(); return;
       case 'rec-confirm': recConfirmAll(); return;
+      case 'rec-undo': recUndo(id); return;
       case 'kin-who': kinWho = b.getAttribute('data-w'); render(); return;
       case 'kin-fix': { var r0 = S.kintai.filter(function (r) { return r.id === id; })[0]; if (r0) { kinEdit = { no: r0.no, date: r0.date, s: r0.s, e: r0.e, brk: r0.brk }; kinWho = r0.no + ' ' + r0.name; render(); var ke = $('#kn-e'); if (ke) ke.focus(); } return; }
       case 'kin-add': {

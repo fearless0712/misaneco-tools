@@ -139,6 +139,48 @@ eq(Rm.invs.find(v => v.no === 'INV-0021').status, '期日超過', '山田 花子
 const sumU = unpaid.reduce((a, v) => a + tot(v), 0);
 eq([sumU, sumU - 121000 - 176000 - 278240], [1185740 + 24200 + 1168140, 1802840], '未入金 2,378,080円（9月分1,185,740＋山田 花子24,200＋10月分1,168,140）→ 照合で 1,802,840円');
 eq(S.invoices.filter(v => v.partner === 'MOCK Design LLC' && v.paid).every(v => v.paid.how === '登録済みの名義'), true, 'MOCK Design は登録済みの振込名義で照合');
+// 入金の照合で「要確認」にした請求書（入金が請求額に足りない）：残り＝請求額−入金額を未入金・期日超過に数え、照合の表に残し、取り消すと元に戻る
+{
+  const Sx = DA.sample(T0), y = Sx.invoices.find(v => v.no === 'INV-0021'), open = () => K.openInvoices(Sx.invoices, tot, T0);
+  const o0 = open();
+  eq([o0.sum, o0.list.length, o0.late.length, o0.lateSum], [2378080, 11, 1, 24200], '要確認の前：未入金 2,378,080円・11件・期日超過 1件 24,200円（山田 花子 INV-0021）');
+  const dep = { id: 'tz', date: '2026-10-20', name: '振込 テスト入金', key: '', amt: 14200, dir: 'in', src: '普通預金', file: 'テスト.csv', manual: false, acc: '売上高', pct: 100, status: '入金' };
+  const dep0 = JSON.stringify(dep), tx0 = Sx.tx.length; Sx.tx.push(dep);
+  const ms = K.manualStatus(tot(y), dep.amt, Sx.company.feeMax);
+  eq([tot(y), ms], [24200, { diff: 10000, status: '要確認' }], '請求 24,200円に入金 14,200円を手で当てる → 差 10,000円（手数料の上限 990円より大きい）→ 要確認');
+  K.applyPaid(y, [dep], '手で確定', ms.diff, ms.status);
+  const o1 = open();
+  eq([K.invGot(y, 24200), K.invRemain(y, 24200), o1.remain(y)], [14200, 10000, 10000], '要確認：残り＝24,200−14,200＝10,000円');
+  eq([o1.sum, o1.list.length, o1.late.length, o1.lateSum], [2378080 - 14200, 11, 1, 10000], '要確認の後：未入金は残り10,000円で数える（2,363,880円・11件）、期日超過 1件 10,000円（全額のまま・期日超過から消える、にならない）');
+  eq([K.paidDone(y), K.paidCheck(y), K.invLate(y, T0), o1.late.map(v => v.no)], [false, true, true, ['INV-0021']], '要確認は回収済みではない・期日（9/30）を過ぎているので期日超過');
+  eq(Sx.invoices.filter(K.paidCheck).map(v => v.no), ['INV-0021'], '入金の照合の表に「要確認」の行として残る');
+  eq([dep.acc, K.state(dep), dep.inv], ['売掛金', '', [y.id]], '当てた入金 14,200円は売掛金の回収');
+  // 取り消す → 元に戻る
+  eq(K.undoPaid(y, Sx.tx), true, '確定を取り消す');
+  const o2 = open();
+  eq([o2.sum, o2.list.length, o2.late.length, o2.lateSum, y.paid], [2378080, 11, 1, 24200, null], '取り消すと元に戻る：未入金 2,378,080円・11件・期日超過 1件 24,200円');
+  eq([JSON.stringify(dep) === dep0, K.state(dep), Sx.tx.length], [true, '要確認', tx0 + 1], '取り消すと入金の行も確定前と同じ（売上高・要確認・請求書のひも付けなし）');
+  // 残りの入金を足す → 入金済み
+  K.applyPaid(y, [dep], '手で確定', ms.diff, ms.status);
+  const dep2 = Object.assign(JSON.parse(dep0), { id: 'tz2', date: '2026-10-21', amt: 10000 }); Sx.tx.push(dep2);
+  const both = y.paid.deps.map(id => Sx.tx.find(e => e.id === id)).concat([dep2]); K.undoPaid(y, Sx.tx);
+  const ms2 = K.manualStatus(tot(y), both.reduce((a, e) => a + e.amt, 0), Sx.company.feeMax);
+  K.applyPaid(y, both, '手で確定（入金2件）', ms2.diff, ms2.status);
+  const o3 = open();
+  eq([ms2, K.paidDone(y), y.paid.got, o3.sum, o3.list.length, o3.late.length], [{ diff: 0, status: '入金済み' }, true, 24200, 2378080 - 24200, 10, 0], '残り10,000円の入金を足す → 入金済み（未入金 2,353,880円・10件・期日超過 0件）');
+  eq([dep.acc, dep2.acc, Sx.invoices.filter(K.paidCheck).length], ['売掛金', '売掛金', 0], '足した入金も売掛金の回収・照合の表の要確認はなくなる');
+  // 前の版で保存した要確認（got・prev なし）も残りで数え、取り消せる
+  const dep3 = JSON.parse(dep0); dep3.id = 'tz3'; dep3.acc = '売掛金'; dep3.manual = true; dep3.status = ''; dep3.inv = ['i-old'];
+  const old = { id: 'i-old', due: '2026-09-30', paid: { deps: ['tz3'], how: '手で確定', diff: 10000, status: '要確認', date: '2026-10-20', note: '差額 ¥10,000' } };
+  eq([K.invGot(old, 24200), K.invRemain(old, 24200), K.invLate(old, T0)], [14200, 10000, true], '前の版の保存データ：差額 10,000円から入金 14,200円・残り 10,000円・期日超過');
+  const tx3 = [dep3]; K.undoPaid(old, tx3);
+  eq([old.paid, dep3.acc, K.state(dep3), dep3.inv], [null, '売上高', '要確認', undefined], '前の版の保存データも取り消すと銀行への入金（売上高・要確認）に戻る');
+  // 画面が同じ数え方を使う
+  eq(/function unpaid\(\) \{ return K\.openInvoices\(S\.invoices, invTotal, TODAY\); \}/.test(app) && !/late\.reduce\(function \(a, v\) \{ return a \+ invTotal\(v\)/.test(app) && (app.match(/yen\(up\.lateSum\)/g) || []).length === 3, true, '画面：ダッシュボード・請求書・入金の照合の未入金と期日超過は同じ数え方（要確認は残り）');
+  const recFn = app.slice(app.indexOf('RENDER.rec = '), app.indexOf('RENDER.kin = '));
+  eq(/S\.invoices\.filter\(K\.paidCheck\)/.test(recFn) && /data-act="rec-undo"/.test(recFn) && /残りの入金を足す/.test(recFn) && /case 'rec-undo': recUndo\(id\)/.test(app), true, '画面：入金の照合の表に要確認の行（残りの入金を足す・確定を取り消す）');
+  eq(/K\.paidCheck\(v\)\) \{ deps = v\.paid\.deps\.map\(txById\)/.test(app) && /K\.manualStatus\(amt, got, C\(\)\.feeMax\)/.test(app) && /K\.applyPaid\(inv, deps, how, diff, status\)/.test(app), true, '画面：手で選んだ入金は manualStatus・applyPaid（要確認なら前の入金に足す）');
+}
 eq(Object.keys(S.close).length, 6, '前の6か月は締め済み');
 const s2 = DA.sample(K.D('2026-12-03'));
 eq([s2.pending.text.split('\n').length, s2.invoices.every(v => K.D(v.issue) < K.D('2026-12-03'))], [1, true], '今日が12/3なら今月の銀行明細はまだ見出しだけ・未来の請求書はない');

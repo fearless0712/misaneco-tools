@@ -354,6 +354,52 @@
     return { invs: invs, deps: deps };
   }
 
+  // ---------- 請求書ごとの入金の状態 ----------
+  // 入金済み・手数料差引＝回収済み。要確認＝入金を当てたが請求額に足りない（一部入金など）→ 残り（請求額−入金額）は未入金のまま数え、
+  // 期日を過ぎていれば期日超過にも入れる。入金の照合の表に残し、確定を取り消す・残りの入金を足すことができる。
+  function paidDone(v) { return !!(v && v.paid && (v.paid.status === '入金済み' || v.paid.status === '手数料差引')); }
+  function paidCheck(v) { return !!(v && v.paid && !paidDone(v)); }
+  function invGot(v, total) { // 当てた入金の額
+    if (!v.paid) return 0;
+    if (paidDone(v)) return total;
+    return typeof v.paid.got === 'number' ? v.paid.got : Math.max(0, total - n0(v.paid.diff)); // got がない前の保存データは 差額 から
+  }
+  function invRemain(v, total) { return Math.max(0, total - invGot(v, total)); }
+  function invLate(v, today) { var d = D(v.due); return !paidDone(v) && d !== null && d < today; }
+  function openInvoices(invoices, totalOf, today) { // 未入金（要確認の残りを含む）と期日超過
+    var rem = function (v) { return invRemain(v, totalOf(v)); };
+    var list = invoices.filter(function (v) { return !paidDone(v); });
+    var late = list.filter(function (v) { return invLate(v, today); });
+    var add = function (a, v) { return a + rem(v); };
+    return { list: list, sum: list.reduce(add, 0), late: late, lateSum: late.reduce(add, 0), remain: rem };
+  }
+  function manualStatus(total, got, feeMax) { // 手で選んだ入金の状態（入金消込チェッカーと同じ：差が手数料の上限までなら手数料差引）
+    var diff = Math.max(0, total - got);
+    return { diff: diff, status: diff ? (diff <= n0(feeMax) ? '手数料差引' : '要確認') : '入金済み' };
+  }
+  function applyPaid(inv, deps, how, diff, status) { // 確定：入金の行を売掛金の回収にする（取り消せるように元の値を残す）
+    inv.paid = { deps: deps.map(function (e) { return e.id; }), how: how, diff: diff || 0, status: status,
+      date: deps.reduce(function (a, e) { return a > e.date ? a : e.date; }, ''), got: deps.reduce(function (a, e) { return a + n0(e.amt); }, 0),
+      prev: deps.map(function (e) { return { id: e.id, acc: e.acc, manual: !!e.manual, status: e.status || '', inv: e.inv ? e.inv.slice() : null }; }) };
+    deps.forEach(function (e) { e.acc = '売掛金'; e.manual = true; e.status = ''; e.inv = (e.inv || []).concat([inv.id]); });
+    return inv.paid;
+  }
+  function undoPaid(inv, tx) { // 確定の取り消し：入金の行を確定前に戻し、請求書を未入金に戻す
+    if (!inv || !inv.paid) return false;
+    var prev = {}; (inv.paid.prev || []).forEach(function (p) { prev[p.id] = p; });
+    (inv.paid.deps || []).forEach(function (id) {
+      var e = tx.filter(function (t) { return t.id === id; })[0]; if (!e) return;
+      var p = prev[id];
+      var rest = (e.inv || []).filter(function (x) { return x !== inv.id; });
+      if (p) { e.acc = p.acc; e.manual = p.manual; e.status = p.status; }
+      else if (!rest.length) { e.acc = '売上高'; e.status = '入金'; e.manual = false; } // prev がない前の保存データ：取り込んだときの形（銀行への入金）
+      if (rest.length) e.inv = rest; else delete e.inv;
+    });
+    if (inv.paid.feeTx) for (var i = tx.length - 1; i >= 0; i--) if (tx[i].id === inv.paid.feeTx) tx.splice(i, 1);
+    inv.paid = null;
+    return true;
+  }
+
   // ================= 勤怠の集計（KintaiSum と同じ） =================
   function toMin(v) {
     if (v === '' || v === null || v === undefined) return null;
@@ -427,6 +473,7 @@
     mlKey: mlKey, median: median, recurring: recurring,
     RF: RF, ROUND_LABEL: ROUND_LABEL, rateOf: rateOf, invCalc: invCalc, dueOf: dueOf, regNoOk: regNoOk, regNoClean: regNoClean, invChecks: invChecks, cleanName: cleanName, fileName: fileName,
     kanaKey: kanaKey, katakanaRuns: katakanaRuns, parseNameMap: parseNameMap, partnerOf: partnerOf, combos: combos, match: match,
+    paidDone: paidDone, paidCheck: paidCheck, invGot: invGot, invRemain: invRemain, invLate: invLate, openInvoices: openInvoices, manualStatus: manualStatus, applyPaid: applyPaid, undoPaid: undoPaid,
     toMin: toMin, toBreak: toBreak, hm: hm, NIGHT: NIGHT, kintai: kintai,
     yen: yen, num: num, pct: pct
   };
