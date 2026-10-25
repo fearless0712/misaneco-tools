@@ -171,8 +171,8 @@
     var h = '';
     h += '<div class="grid g4">';
     h += kpi('今月の売上（請求・税込）', cnt('d-sales', monthSales), '', '請求 ' + bills.filter(function (b) { return K.monthKey(K.D(b.date)) === mk; }).length + '件', 'k-sales', Math.min(1, monthSales / Math.max(1, mx)));
-    h += kpi('粗利（進行中・完了の現場／税抜）', cnt('d-profit', ps.profit), 'gr', '見積 ' + yen(ps.est) + '・原価 ' + yen(ps.cost), 'k-prof', ps.est ? Math.max(0, ps.profit / ps.est) : 0, 'cy');
-    h += kpi('粗利率', cnt('d-margin', ps.margin, 'pct'), 'cy', '目標 ' + pct(target, 0) + (ps.under ? '・<span class="bad">目標未満 ' + ps.under + '現場</span>' : ''), 'k-marg', ps.margin || 0, 'cy');
+    h += kpi('粗利（見積中以外の現場・ここまでの原価で計算／税抜）', cnt('d-profit', ps.profit), 'gr', '見積 ' + yen(ps.est) + '・原価 ' + yen(ps.cost), 'k-prof', ps.est ? Math.max(0, ps.profit / ps.est) : 0, 'cy');
+    h += kpi('粗利率（見積中以外の現場・ここまでの原価で計算）', cnt('d-margin', ps.margin, 'pct'), 'cy', '目標 ' + pct(target, 0) + (ps.under ? '・<span class="bad">目標未満 ' + ps.under + '現場</span>' : ''), 'k-marg', ps.margin || 0, 'cy');
     h += kpi('未入金', cnt('d-unpaid', bs.remain), bs.late ? 'rd' : '', bs.lateCount ? '<span class="bad">遅れ ' + bs.lateCount + '件 ' + yen(bs.late) + '</span>' : '遅れなし', 'k-unp', bills.length ? bs.remain / Math.max(1, mx * 2) : 0);
     h += '</div>';
     // 流れ
