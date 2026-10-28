@@ -65,6 +65,6 @@ const __ga=require(__dirname+'/../assets/ga-test-helper.js').stripGA(require('fs
 const html=__ga.html;
 eq(/1万円|30日チャレンジ/.test(html),false,'banned');eq(/connect-src 'none'/.test(html),true,'csp');
 eq(/https?:\/\/(?!(?:tools\.)?equaglobal\.com|schema\.org)/.test(html),false,'no external urls');
-eq(html.includes('General information only. This tool was built with the help of AI and tested.'),true,'footer note');
+eq(html.includes('General information only. This tool is tested before release.'),true,'footer note');
 eq(html.includes('<link rel="alternate" hreflang="ja" href="https://tools.equaglobal.com/riekiritsu/">'),true,'hreflang ja');eq(html.includes('<link rel="alternate" hreflang="en" href="https://tools.equaglobal.com/jobcost/">'),true,'hreflang en self');
 console.log(p+' passed, '+f+' failed');process.exit(f?1:0);

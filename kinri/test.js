@@ -128,7 +128,7 @@ eq(/application\/ld\+json/.test(html), true, 'JSON-LD'); eq(/<link rel="canonica
 eq(/og:url" content="https:\/\/tools\.equaglobal\.com\/kinri\/"/.test(html), true, 'OGP');
 eq(/契約によって違います/.test(html), true, '契約で違う注意'); eq(/金融機関や専門家に相談/.test(html), true, '判断は専門家へ');
 eq(/投資や借入れの助言ではありません/.test(html), true, '助言ではない'); eq(/20\.315％/.test(html), true, '税率の表示');
-eq(/外部に送信しません/.test(html), true, '送信しない明記'); eq(/AIを活用して作成し、テストで/.test(html), true, 'AI明記');
+eq(/外部に送信しません/.test(html), true, '送信しない明記'); eq(/AIを活用|AIで作/.test(html), false, 'AIの文言がない');
 eq(/事業の借入れ/.test(html) && /運転資金/.test(html), true, '事業の借入れにも使える');
 // ページの例の数字が計算と一致
 eq(html.includes('89,757円 → 96,492円') && html.includes('月 6,735円（年 80,820円）'), true, '例1の数字');

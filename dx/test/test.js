@@ -267,7 +267,8 @@ ok(/default-src 'none'/.test(html) && /connect-src 'self' https:\/\/script\.goog
 ok(!/<script[^>]+src="https?:/.test(html) && !/<link[^>]+href="https?:/.test(html), 'no external scripts/styles');
 var refs = html.match(/(src|href)="(css|js)\/[^"]+"/g) || [];
 ok(refs.length >= 5 && refs.every(function (r) { var m = /\?v=(\d+)/.exec(r), m0 = /\?v=(\d+)/.exec(refs[0]); return m && m0 && m[1] === m0[1]; }), 'cache-bust: all ?v= the same');
-ok(html.indexOf('MisaNeco Works ・ AIを活用して作成し、公式情報で確認しています') >= 0, 'footer text');
+ok(html.indexOf('MisaNeco Works ・ 公式情報で確認しています') >= 0, 'footer text');
+ok(!/AIを活用|AIで作/.test(html), 'no AI wording');
 ok(html.indexOf('href="../"') >= 0 && html.indexOf('href="../blog/"') >= 0, 'footer links');
 ok(/submitUrl と、この connect-src を一緒に直して/.test(html), 'CSP comment explains endpoint + connect-src');
 ok(!/adsbygoogle|moshimo/.test(allText), 'no other ad networks');

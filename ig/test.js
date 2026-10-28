@@ -35,7 +35,7 @@ eq(scripts, ['https://www.googletagmanager.com/gtag/js?id=G-EWJXRJY9M6', '../ass
 eq(/<script(?![^>]*src=)/i.test(html), false, 'インラインのスクリプトなし');
 eq(/リールで見た画面は、ここから/.test(html), true, '一言の見出し');
 for (const w of ['おすすめ', '今だけ', '限定', '残りわずか', '最安']) eq(html.includes(w), false, '売り込み言葉なし：' + w);
-eq(/AIを活用して作成/.test(html), true, 'AI活用の表記');
+eq(/AIを活用|AIで作/.test(html), false, 'AIの文言がない');
 eq(/Eternal Philosophy（EQUA）/.test(html), true, '運営表記');
 eq(/Macで動作を確認。Windowsは未確認/.test(html), true, '動作環境を正直に');
 const sm = fs.readFileSync(path.join(ROOT, 'sitemap.xml'), 'utf8');

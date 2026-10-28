@@ -21,7 +21,7 @@ Small, offline-friendly web tools and plain-language guides for sole proprietors
 
 ## Notes
 
-- Built with the help of AI; calculations are covered by tests (`*/test.js`).
+- Calculations are covered by tests (`*/test.js`).
 - Some Japanese pages include affiliate links, labelled on the page. English pages have no ads.
 - Contact: https://equaglobal.com/
 

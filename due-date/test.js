@@ -127,7 +127,7 @@ const dir = __dirname, html = fs.readFileSync(path.join(dir, 'index.html'), 'utf
 eq(/<html lang="en">/.test(html), true, 'lang en');
 eq(html.includes("script-src 'self' https://www.googletagmanager.com; style-src 'self';"), true, 'CSP');
 eq(html.includes('G-EWJXRJY9M6') && html.includes('../assets/ga.js'), true, 'GA4');
-eq(html.includes('Operated by Eternal Philosophy &gt; EQUA &gt; MisaNeco Works') && html.includes('Built with AI assistance') && html.includes('never sent'), true, 'footer');
+eq(html.includes('Operated by Eternal Philosophy &gt; EQUA &gt; MisaNeco Works') && !/Built with AI|help of AI|AI assistance/.test(html) && html.includes('never sent'), true, 'footer');
 eq(html.indexOf('ads-inter') < 0 && html.indexOf('a8.net') < 0 && html.indexOf('mnad-') < 0, true, 'no ads');
 eq(/<script>(?!<\/script>)|style="|onclick=/.test(html), false, 'no inline script or style (CSP)');
 eq(/statutory|legal (interest )?rate|per annum late|% late fee/i.test(html), false, 'no late fee / legal interest rate claims');

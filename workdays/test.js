@@ -149,7 +149,7 @@ eq(kh.includes('hreflang="ja" href="https://tools.equaglobal.com/kouki/"') && kh
 eq(kh.includes('href="../workdays/"'), true, 'kouki links to workdays');
 eq(/never sent/.test(html) && /Nothing you enter is sent anywhere/.test(html), true, 'says nothing is sent');
 eq(/Eternal Philosophy &gt; EQUA &gt; MisaNeco Works/.test(html), true, 'operator hierarchy');
-eq(/Built with AI assistance/.test(html), true, 'AI disclosure');
+eq(/Built with AI|help of AI|AI assistance/.test(html), false, 'no AI wording');
 eq(html.includes('=WORKDAY.INTL(start-1, days, weekend, holidays)'), true, 'Excel formula shown');
 ['../blog/en-excel-workday-project-end-date/', '../prorate/', '../jobcost/', '../kouki/'].forEach(u => {
   eq(html.includes('href="' + u + '"'), true, 'link ' + u);

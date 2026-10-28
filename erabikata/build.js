@@ -103,7 +103,7 @@ ${css(c)}</style>
 }
 
 const FOOT = `<footer>
-<p>価格はBOOTHの商品ページで2026年10月25日に確かめたものです。購入の前に、BOOTHの商品ページで最新の内容と価格をご確認ください。ツールはAIを活用して作成し、動作を確認しています。</p>
+<p>価格はBOOTHの商品ページで2026年10月25日に確かめたものです。購入の前に、BOOTHの商品ページで最新の内容と価格をご確認ください。ツールは公開前に動作をテストしています。</p>
 <p class="brand"><a href="/">MisaNeco Works ツール集</a> ／ 運営：Eternal Philosophy（EQUA）</p>
 </footer>
 </main>

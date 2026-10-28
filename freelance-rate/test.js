@@ -115,7 +115,7 @@ eq(/[぀-ヿ一-鿿]/.test(html + js + lg), false, 'English only');
 eq(/application\/ld\+json/.test(html), true, 'JSON-LD'); eq(html.includes('<link rel="canonical" href="https://tools.equaglobal.com/freelance-rate/">'), true, 'canonical');
 eq(/never sent/.test(html) && /Nothing you enter is sent anywhere/.test(html), true, 'says nothing is sent');
 eq(/Eternal Philosophy &gt; EQUA &gt; MisaNeco Works/.test(html), true, 'operator hierarchy');
-eq(/Built with AI assistance/.test(html), true, 'AI disclosure');
+eq(/Built with AI|help of AI|AI assistance/.test(html), false, 'no AI wording');
 eq(/Set aside % is your own estimate &mdash; check your local tax rules/.test(html), true, 'tax note');
 eq(/Upwork|Fiverr|PayPal|Wise|Payoneer|GCash/i.test(html + js + lg), false, 'no platform names');
 ['../jobcost/', '../home-office/', '../workdays/', '../blog/en-w9-1099-nec-freelancers/'].forEach(u => {

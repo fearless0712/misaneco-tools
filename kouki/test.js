@@ -154,7 +154,7 @@ eq(/ads-inter\.js/.test(html) && /広告/.test(html), true, '広告と表示'); 
 eq(/application\/ld\+json/.test(html), true, 'JSON-LD'); eq(/<link rel="canonical" href="https:\/\/tools\.equaglobal\.com\/kouki\/">/.test(html), true, 'canonical');
 eq(/og:url" content="https:\/\/tools\.equaglobal\.com\/kouki\/"/.test(html), true, 'OGP');
 eq(/雨天順延などは、契約・発注者との取り決めに従ってください/.test(html), true, '契約の注意');
-eq(/外部に送信しません/.test(html), true, '送信しない明記'); eq(/AIを活用して作成し、テストで/.test(html), true, 'AI明記');
+eq(/外部に送信しません/.test(html), true, '送信しない明記'); eq(/AIを活用|AIで作/.test(html), false, 'AIの文言がない');
 ['../blog/tosou-menseki-kansu-keisan/', '../blog/kensetsu-jimu-jidouka-iriguchi/', '../hiwari/', '../riekiritsu/', '../hozon/'].forEach(u => {
   eq(html.includes('href="' + u + '"'), true, 'リンク ' + u);
   eq(fs.existsSync(path.join(__dirname, u, 'index.html')), true, 'リンク先がある ' + u);

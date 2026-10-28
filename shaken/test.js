@@ -79,7 +79,7 @@ eq(/fetch\(|XMLHttpRequest|sendBeacon/.test(js + fs.readFileSync(__dirname + '/l
 eq(/ads-inter\.js/.test(html) && /広告/.test(html), true, '広告と表示'); eq(/line\.me\/R\/ti\/p\/@736dykzx/.test(html), true, 'LINE');
 eq(/application\/ld\+json/.test(html), true, 'JSON-LD'); eq(/<link rel="canonical" href="https:\/\/tools\.equaglobal\.com\/shaken\/">/.test(html), true, 'canonical');
 eq(/og:url" content="https:\/\/tools\.equaglobal\.com\/shaken\/"/.test(html), true, 'OGP');
-eq(/外部に送信しません/.test(html), true, '送信しない明記'); eq(/AIを活用して作成し、テストで/.test(html), true, 'AI明記');
+eq(/外部に送信しません/.test(html), true, '送信しない明記'); eq(/AIを活用|AIで作/.test(html), false, 'AIの文言がない');
 eq(/運輸支局で確認/.test(html) && /新しい車検証の記録で確認/.test(html), true, '目安の注意');
 eq(/車検証閲覧アプリ/.test(html) && /検査標章/.test(html), true, '電子車検証の満了日の確かめ方');
 ['../blog/shaken-2kagetsu-mae-annai/', '../blog/chuko-genka-arari-zaiko-nissu/', '../kouki/', '../hiwari/', '../riekiritsu/'].forEach(u => {
