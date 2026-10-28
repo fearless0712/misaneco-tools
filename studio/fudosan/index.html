@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; connect-src 'none'; base-uri 'none'; form-action 'none'; object-src 'none'">
+<title>不動産スタジオ｜反響・追客・媒介の期限・契約の下書き・報酬・賃貸の更新をひとつの画面で（見本）</title>
+<meta name="description" content="街の小さな不動産屋さん向け。反響の追客、物件調査、媒介契約のレインズ登録・業務報告の期限、案内・申込、契約書と重要事項説明の下書き、決済と報酬、賃貸の更新管理までをつなげたWebアプリの見本です。データはこのブラウザの中だけに保存し、外部に送信しません。表示しているのは架空の会社のデータです。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700&family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/app.css">
+</head>
+<body>
+<div class="app" id="app">
+  <aside class="side">
+    <div class="logo"><span class="logo-mark" aria-hidden="true"></span><div><b>不動産スタジオ</b><small>REAL ESTATE STUDIO</small></div></div>
+    <nav class="nav" id="nav" aria-label="メニュー">
+      <button data-view="dash" class="on"><i>01</i><span>ダッシュボード</span></button>
+      <button data-view="lead"><i>02</i><span>反響・追客</span></button>
+      <button data-view="survey"><i>03</i><span>物件調査</span></button>
+      <button data-view="baikai"><i>04</i><span>媒介契約（期限・報酬）</span></button>
+      <button data-view="visit"><i>05</i><span>案内・申込</span></button>
+      <button data-view="draft"><i>06</i><span>契約書・重説（下書き）</span></button>
+      <button data-view="settle"><i>07</i><span>決済・報酬</span></button>
+      <button data-view="lease"><i>08</i><span>賃貸の更新</span></button>
+      <button data-view="sim"><i>09</i><span>収支シミュレーション</span></button>
+      <button data-view="set"><i>10</i><span>設定</span></button>
+    </nav>
+    <div class="side-foot">
+      <p class="fict">表示中のデータは<b>架空</b>の会社「サンプル不動産（架空）」の見本です。</p>
+      <button class="ghost" data-act="reset">見本データに戻す</button>
+    </div>
+  </aside>
+
+  <main class="main" id="main">
+    <header class="top">
+      <div class="top-l">
+        <h1 id="viewTitle">ダッシュボード</h1>
+        <p class="top-sub"><span class="live" aria-hidden="true"></span><span id="coName">サンプル不動産（架空）</span><span class="sep">／</span><span id="todayLabel"></span></p>
+      </div>
+      <div class="top-r"><span class="chip-fict">架空のデータ</span><span class="chip-draft">契約書・重説は下書き</span><span class="chip-local">保存先：このブラウザだけ</span></div>
+    </header>
+    <div id="warn" class="warnbar" hidden></div>
+
+    <section class="view on" id="v-dash" aria-label="ダッシュボード"></section>
+    <section class="view" id="v-lead" aria-label="反響・追客"></section>
+    <section class="view" id="v-survey" aria-label="物件調査"></section>
+    <section class="view" id="v-baikai" aria-label="媒介契約（期限・報酬）"></section>
+    <section class="view" id="v-visit" aria-label="案内・申込"></section>
+    <section class="view" id="v-draft" aria-label="契約書・重説（下書き）"></section>
+    <section class="view" id="v-settle" aria-label="決済・報酬"></section>
+    <section class="view" id="v-lease" aria-label="賃貸の更新"></section>
+    <section class="view" id="v-sim" aria-label="収支シミュレーション"></section>
+    <section class="view" id="v-set" aria-label="設定"></section>
+
+    <footer class="foot">
+      <p>計算のしかたは、不動産のExcel版（反響・追客管理表・投資用不動産 収支シミュレーター・賃貸契約 更新期限管理表・媒介契約 期限・報酬管理表・媒介契約 期限かんたん計算・物件調査チェック）と同じです。レインズ登録の期限（専任7日・専属専任5日、休業日を除く）・業務報告（専任2週間に1回以上・専属専任1週間に1回以上）・有効期間（3か月を超えられない）は宅地建物取引業法34条の2と同法施行規則15条の10、有効期間の満了日は民法140条（初日不算入）・141条・143条（応当日の前日、応当日がない月は末日）、定期借家の終了通知の期間は借地借家法38条6項、報酬の上限は報酬告示（令和6年国土交通省告示第949号による改正）にもとづいています。権利金・長期の空家等の特例は計算していません。該当するときは告示と専門家で確認してください。</p>
+      <p><b class="ft-draft">契約書・重要事項説明書は「下書き」です。</b>宅地建物取引士が内容を確認してから使ってください。法令・告示・標準約款は改正されるので、最新の内容は国土交通省・e-Gov法令検索などの公的情報で確認してください。個別の判断は、所属の業界団体や専門家にご確認ください。収支シミュレーションは税引前の概算で、投資の助言ではありません。祝日は内閣府「国民の祝日について」（2026年・2027年）。</p>
+      <p>入力したデータはこのブラウザ（localStorage）にだけ保存し、外部には送信しません。表示している会社・人・物件・住所・金額はすべて架空です。</p>
+      <p><a href="/blog/fudosan-jimu-jidouka-iriguchi/" style="color:var(--acc2)">不動産の事務をどこから楽にするか（記事）を読む →</a></p>
+      <p><a href="/studio/" style="color:var(--acc2)">ほかの業種別スタジオを見る →</a></p>
+    </footer>
+  </main>
+</div>
+<div class="brandmark">MisaNeco Works</div>
+<div id="toast" class="toast" role="status" aria-live="polite"></div>
+<div id="cursor" class="cursor" aria-hidden="true"><svg viewBox="0 0 24 24" width="30" height="30"><path d="M3 2 L3 19 L8 14.5 L11.5 22 L14.5 20.6 L11 13.3 L17.5 13.3 Z" fill="#fff" stroke="#a78bfa" stroke-width="1.6" stroke-linejoin="round"/></svg><span class="ring"></span></div>
+<script src="assets/logic.js"></script>
+<script src="assets/data.js"></script>
+<script src="assets/app.js"></script>
+</body>
+</html>
