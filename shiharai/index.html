@@ -1,0 +1,511 @@
+<!doctype html><html lang="ja"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self' https://www.googletagmanager.com 'sha256-6oZBm7Q6iMg4vQ9OPXNFQX1aYKHN7mK+ktJrqb4DBaI=' 'sha256-REMeHnceIIGim0aAjmtPVJ8BkK8MGwUaqUwypcK5dVA='; style-src 'self' 'sha256-xlLDPTI6lsIo9zF9issuBjAFqnGS4o21Yowczy2wbpU='; img-src 'self' data: https://*.a8.net https://*.google-analytics.com https://*.googletagmanager.com; connect-src https://*.google-analytics.com https://*.analytics.google.com https://*.googletagmanager.com; base-uri 'none'; form-action 'none'; object-src 'none'">
+<title>支払期日の計算ツール｜締め日と支払サイトから期日を出す（土日祝の前営業日・翌営業日／Excelの式つき／無料）</title>
+<meta name="description" content="取引日・締め日（末日・15日・20日・25日・任意）・支払サイト（当月末・翌月末・翌々月末・翌月○日・○日後）から、締め日と支払期日を計算する無料ツール。期日が土日・祝日（2026年・2027年）・銀行の休み・会社の休みに当たるときは前営業日か翌営業日にずらします。取引先ごとに複数行まとめて計算し、Excelに貼れる表と、EOMONTH・WORKDAYを使った同じ計算の式も出します。入力は外部に送信しません。">
+<link rel="canonical" href="https://tools.equaglobal.com/shiharai/">
+<meta property="og:type" content="website">
+<meta property="og:title" content="支払期日の計算ツール｜締め日と支払サイトから期日を出す（Excelの式つき）">
+<meta property="og:description" content="20日締め翌月末払い、末日締め翌月10日払いなどの支払期日を、土日祝の扱いまで含めて計算する無料ツール。取引先ごとにまとめて計算してExcelに貼れます。入力は外部に送信しません。">
+<meta property="og:url" content="https://tools.equaglobal.com/shiharai/">
+<meta property="og:locale" content="ja_JP">
+<link rel="stylesheet" href="../hiwari/app.css?v=202610210230"><link rel="stylesheet" href="../assets/ads-inter.css?v=202610210009"><style>
+/* 支払期日の計算ツールの画面（このページだけで使う分） */
+.hint{margin:6px 0 0}
+textarea{font:inherit;width:100%;padding:8px;border:1px solid var(--line);border-radius:8px;background:var(--card);color:var(--fg);resize:vertical;min-height:96px}
+textarea:focus-visible{outline:3px solid var(--focus);outline-offset:2px}
+label.chk{display:flex;gap:10px;align-items:flex-start;font-weight:600;margin:14px 0 4px}
+label.chk input{width:22px;min-height:22px;height:22px;flex:none;margin:3px 0 0;padding:0}
+.bf{display:flex;align-items:flex-end;padding-bottom:2px}
+@media (max-width:480px){.bf{padding:8px 0 0}}
+.rowc{border:1px solid var(--line);border-radius:10px;padding:4px 12px 12px;margin:12px 0}
+.rowh{display:flex;justify-content:space-between;align-items:center;gap:8px;margin-top:6px}
+.rowh b{color:var(--navy)}
+.g3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:0 12px}
+@media (max-width:600px){.g3{grid-template-columns:1fr 1fr}}
+@media (max-width:400px){.g3{grid-template-columns:1fr}}
+.pair{display:flex;gap:6px}.pair select{flex:1 1 auto;min-width:0}.pair input{flex:0 0 5.2em}
+.rerr{color:var(--bad);font-weight:600;font-size:14px;margin:6px 0 0}
+.scroll{overflow-x:auto;-webkit-overflow-scrolling:touch}
+table.res.wide{min-width:640px}
+table.res.wide td,table.res.wide th{white-space:nowrap}
+table.res td.moved{font-weight:700;color:var(--navy)}
+table.res td.late{color:var(--bad);font-weight:700}
+.fx{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:13px;background:var(--bg);border:1px solid var(--line);border-radius:6px;padding:2px 6px;display:inline-block;max-width:100%;overflow-wrap:anywhere}
+.fxl{list-style:none;padding:0;margin:8px 0}.fxl li{margin:6px 0}
+.fxb{margin:12px 0 4px;padding-top:8px;border-top:1px solid var(--line)}
+.spec li{margin:6px 0}
+[hidden]{display:none!important}
+</style><script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebApplication", "name": "支払期日の計算ツール", "url": "https://tools.equaglobal.com/shiharai/", "description": "取引日・締め日・支払サイトから締め日と支払期日を計算し、土日祝・銀行の休み・会社の休みに当たるときは前営業日か翌営業日にずらす無料ツール。複数の取引先をまとめて計算し、Excelに貼れる表とExcelの式も出します。", "applicationCategory": "BusinessApplication", "operatingSystem": "Any (Web browser)", "inLanguage": "ja", "isAccessibleForFree": true, "offers": {"@type": "Offer", "price": "0", "priceCurrency": "JPY"}, "publisher": {"@type": "Organization", "name": "Eternal Philosophy"}}</script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-EWJXRJY9M6"></script><script src="../assets/ga.js?v=202610210745"></script>
+</head><body>
+<header><div class="wrap"><a href="../">MisaNeco Works 無料ツール</a></div></header>
+<main class="wrap">
+<h1>支払期日の計算ツール</h1>
+<p>「20日締め・翌月末払い」「末日締め・翌月10日払い」のような支払条件から、<b>締め日と支払期日</b>を出します。期日が土日・祝日などに当たるときは、前営業日か翌営業日にずらした日も出します。取引先ごとに何行でもまとめて計算でき、結果はExcelに貼れる形でコピーできます。Excelで同じ計算をする式も出します。入力は外部に送信しません。</p>
+<p class="note"><b>実際の支払期日は、契約書や取引先との取り決めに従ってください。</b>このツールは、選んだ条件どおりに日付を数えるだけです。土日祝のときに前と後のどちらにずらすかも、取引先との取り決めで決まります。下請取引などでは、法律で支払期日の決まりがある場合があります。</p>
+<p class="pr mut">このページには広告（アフィリエイトリンク）を含みます。広告を見なくても、すべての機能を使えます。</p>
+<noscript><p class="err">このツールはJavaScriptを使います。ブラウザの設定でJavaScriptをオンにしてください。</p></noscript>
+
+<fieldset class="card">
+<legend>取引と支払条件</legend>
+<p class="mut hint">1行が1つの取引（または1つの請求）です。「行を追加」で取引先ごとに増やせます。新しい行は、すぐ上の行と同じ条件で始まります。</p>
+<div id="rows"></div>
+<div class="btns"><button type="button" class="btn ghost small" id="add">行を追加</button><button type="button" class="btn ghost small" id="reset">例に戻す</button></div>
+</fieldset>
+
+<fieldset class="card">
+<legend>休みの日と基準日</legend>
+<p class="mut">土曜・日曜と、国民の祝日（振替休日・国民の休日を含む）は休みとして扱います。</p>
+<label class="chk"><input type="checkbox" id="bank" checked> 銀行の休み（12月31日〜1月3日）も休みにする</label>
+<p class="mut hint">銀行は12月31日〜1月3日が休みのため、振込の期日を出すときはオンのままにしてください。</p>
+<label for="company">会社の休み（年末年始・お盆など）</label>
+<textarea id="company" rows="3" autocomplete="off" placeholder="1行に1日、または期間&#10;2026-12-29〜2027-01-04 年末年始&#10;2027-08-13 お盆"></textarea>
+<p class="mut hint">自社や取引先の休みで期日をずらしたいときに入れます。1行に1日（2027-08-13）か、期間（2026-12-29〜2027-01-04）で入れてください。日付の後ろにメモを書けます。</p>
+<div class="row">
+<div class="f"><label for="base">基準日（ふだんは今日）</label><input id="base" type="date"></div>
+<div class="f bf"><button type="button" class="btn ghost small" id="today">今日に戻す</button></div>
+</div>
+<p class="mut hint">「残り日数」は、基準日から支払期日（調整後）までの日数です。</p>
+</fieldset>
+
+<section class="card" id="sum" aria-labelledby="sumH">
+<h2 id="sumH">結果</h2>
+<div aria-live="polite">
+<p class="err" id="err" role="status"></p>
+<p class="tip" id="warn" hidden></p>
+</div>
+<div class="scroll"><table class="res wide"><thead><tr><th scope="col">取引先</th><th scope="col">取引日</th><th scope="col">締め日</th><th scope="col">支払期日（調整前）</th><th scope="col">支払期日（調整後）</th><th scope="col">残り日数</th></tr></thead><tbody id="tbody"></tbody></table></div>
+<p class="mut" id="moveNote"></p>
+<div class="btns"><button type="button" class="btn" id="copy">表をコピー（Excelに貼れます）</button><button type="button" class="btn ghost" id="copyHol">休みの日の一覧をコピー</button></div>
+<p class="mut" id="copied" role="status"></p>
+<p class="mut">「表をコピー」はタブ区切りです。ExcelのA1のセルを選んで貼り付けると、A列：取引先、B列：取引日、C列：締め日、D列：支払期日（調整前）、E列：支払期日（調整後）、F列：曜日、G列：残り日数、H列：支払条件、I列：メモ の順に入ります。</p>
+
+<h3>Excelで同じことをする式</h3>
+<p class="mut">上の表をExcelのA1に貼ったときの、各行の式です。休みの日は、別のシートに「休みの日の一覧をコピー」で貼った日付の列（A列）を選び、<b>「祝日」という名前</b>を付けてください（数式タブ →「名前の定義」）。</p>
+<div id="fx"></div>
+</section>
+
+<section class="card">
+<h2>計算の決まり（判断が分かれるところ）</h2>
+<ul class="spec">
+<li><b>締め日の当日の取引は、その締めに入ります。</b>25日締めなら、10月25日の取引は10月25日締め、10月26日の取引は11月25日締めです。</li>
+<li><b>締め日がその月にないとき</b>（30日締めの2月など）は、その月の末日を締め日にします。</li>
+<li><b>支払日がその月にないとき</b>（翌月30日払いで翌月が2月など）は、その月の末日を支払期日にします。次の月にはみ出させません。</li>
+<li><b>「締め日から○日後」</b>は、締め日の翌日を1日目として、土日祝も含めた暦の日数で数えます（締め日＋○日）。</li>
+<li><b>「当月末」</b>は締め日と同じ月の末日です。末日締め・当月末払いでは、締め日と支払期日が同じ日になります。</li>
+<li><b>「締めなし」</b>は、取引日（請求日・納品日）をそのまま締め日として数えます。「請求日から30日後」などに使えます。</li>
+<li><b>前営業日にずらすと、月をまたぐことがあります。</b>たとえば1月1日の期日を前営業日にすると、前の年の12月30日になります（銀行の休みを入れた場合）。</li>
+<li>休みにするのは、土曜・日曜・国民の祝日・銀行の休み（オンのとき）・会社の休みです。</li>
+</ul>
+</section>
+
+<section class="card">
+<h2>使い方の例</h2>
+<p>たとえば25日締め・翌月末払いの取引先で、2026年10月26日の取引の場合。25日を過ぎているので締めは11月25日、支払期日はその翌月末の12月31日です。12月31日は銀行の休みなので、前営業日にずらすと<b>12月30日（水）</b>になります。</p>
+<p>末日締め・翌月末払いで、2026年1月31日に締めた場合は、2月28日（土）が期日です。前営業日なら2月27日（金）、翌営業日なら3月2日（月）です。2028年のようなうるう年は2月29日になります。</p>
+</section>
+
+<section class="card refs">
+<h2>出典</h2>
+<ul>
+<li>祝日：<a href="https://www8.cao.go.jp/chosei/shukujitsu/gaiyou.html" target="_blank" rel="noopener">内閣府「国民の祝日について」</a>の「昭和30年（1955年）から令和9年（2027年）国民の祝日（csv形式）」から、2026年・2027年の分を入れています（確認した日：2026年10月28日）。2028年以降の祝日は入っていないため、休みとして扱いません。</li>
+<li>銀行の休み：<a href="https://laws.e-gov.go.jp/law/357CO0000000040" target="_blank" rel="noopener">銀行法施行令（e-Gov法令検索）</a>第5条（銀行の休日：日曜日、国民の祝日、12月31日から翌年1月3日まで、土曜日）</li>
+</ul>
+</section>
+<p>関連する無料ツール：<a href="../kouki/">工期（稼働日）計算ツール</a> ・ <a href="../hiwari/">日割り計算ツール</a> ・ <a href="../riekiritsu/">利益率・上乗せ率 計算ツール</a> ・ <a href="../hozon/">帳簿・領収書の保存期間チェッカー</a> ・ <a href="../due-date/" hreflang="en" lang="en">English: Invoice due date calculator</a></p>
+<p class="mut">このツールはAIを活用して作成し、テストで計算を確認しています。</p>
+<aside class="line-box" aria-label="公式LINE"><p><b>新しい無料ツールや記事を、LINEでお知らせします</b><br>「ツール」「お金」「スマホ」と送ると、合うツールの案内が自動で届きます。</p><a class="line-btn" href="https://line.me/R/ti/p/@736dykzx" target="_blank" rel="noopener">LINEで友だち追加</a><small>Eternal Philosophy 公式LINE（EQUA・MisaNeco Works を運営）</small></aside>
+</main>
+<footer class="wrap">© MisaNeco Works ・ AIを活用して作成し、テストで確認しています。<br><small class="ga-note">閲覧数をGoogleアナリティクスで匿名で集計しています。このツールに入力した内容は送信しません。</small></footer>
+<script id="shiharai-logic">
+/* 支払期日の計算ツールの計算部分（ブラウザ・node 共通。テスト：WebDemo/tests/shiharai_test.js） */
+(function (root) {
+  // 国民の祝日（振替休日・国民の休日を含む）
+  // 出典：内閣府「国民の祝日について」syukujitsu.csv（https://www8.cao.go.jp/chosei/shukujitsu/syukujitsu.csv）
+  // 2026年・2027年の行をそのまま入れています。確認した日：2026-10-28（名称の「休日」は振替休日・国民の休日）
+  var HOLIDAYS = [
+    ['2026-01-01', '元日'], ['2026-01-12', '成人の日'], ['2026-02-11', '建国記念の日'], ['2026-02-23', '天皇誕生日'],
+    ['2026-03-20', '春分の日'], ['2026-04-29', '昭和の日'], ['2026-05-03', '憲法記念日'], ['2026-05-04', 'みどりの日'],
+    ['2026-05-05', 'こどもの日'], ['2026-05-06', '休日'], ['2026-07-20', '海の日'], ['2026-08-11', '山の日'],
+    ['2026-09-21', '敬老の日'], ['2026-09-22', '休日'], ['2026-09-23', '秋分の日'], ['2026-10-12', 'スポーツの日'],
+    ['2026-11-03', '文化の日'], ['2026-11-23', '勤労感謝の日'],
+    ['2027-01-01', '元日'], ['2027-01-11', '成人の日'], ['2027-02-11', '建国記念の日'], ['2027-02-23', '天皇誕生日'],
+    ['2027-03-21', '春分の日'], ['2027-03-22', '休日'], ['2027-04-29', '昭和の日'], ['2027-05-03', '憲法記念日'],
+    ['2027-05-04', 'みどりの日'], ['2027-05-05', 'こどもの日'], ['2027-07-19', '海の日'], ['2027-08-11', '山の日'],
+    ['2027-09-20', '敬老の日'], ['2027-09-23', '秋分の日'], ['2027-10-11', 'スポーツの日'], ['2027-11-03', '文化の日'],
+    ['2027-11-23', '勤労感謝の日']
+  ];
+  var HOL_FROM = 2026, HOL_TO = 2027, HOL_CHECKED = '2026-10-28';
+  var WD = ['日', '月', '火', '水', '木', '金', '土'];
+
+  function z2h(s) { return String(s).replace(/[０-９]/g, function (c) { return String.fromCharCode(c.charCodeAt(0) - 0xFEE0); }); }
+  function daysIn(y, m) { return new Date(Date.UTC(y, m, 0)).getUTCDate(); }
+  function mk(y, m, d) { return Date.UTC(y, m - 1, d) / 86400000; } // 月のはみ出しは Date.UTC が繰り上げる
+  // "2026-10-09" "2026/10/9" → 通し番号（1970-01-01 が 0）。存在しない日付は null
+  function parseDate(s) {
+    var m = /^(\d{4})[-\/.](\d{1,2})[-\/.](\d{1,2})$/.exec(z2h(String(s || '')).trim());
+    if (!m) return null;
+    var y = +m[1], mo = +m[2], d = +m[3];
+    if (mo < 1 || mo > 12 || d < 1 || d > daysIn(y, mo)) return null;
+    return mk(y, mo, d);
+  }
+  function ymd(n) { var t = new Date(n * 86400000); return { y: t.getUTCFullYear(), m: t.getUTCMonth() + 1, d: t.getUTCDate() }; }
+  function p2(v) { return (v < 10 ? '0' : '') + v; }
+  function iso(n) { var o = ymd(n); return o.y + '-' + p2(o.m) + '-' + p2(o.d); }
+  function slash(n) { var o = ymd(n); return o.y + '/' + o.m + '/' + o.d; }
+  function wday(n) { return ((n % 7) + 7 + 4) % 7; } // 1970-01-01 は木曜（4）
+  function fmt(n) { var o = ymd(n); return o.y + '/' + p2(o.m) + '/' + p2(o.d) + '（' + WD[wday(n)] + '）'; }
+  // n の月から k か月後の月の末日（Excel の EOMONTH と同じ）
+  function eom(n, k) { var o = ymd(n); return mk(o.y, o.m + k + 1, 0); }
+  // n の月から k か月後の月の d 日。その月にない日は月末にする
+  function dayOf(n, k, d) { var e = eom(n, k), last = ymd(e).d; return e - last + Math.min(d, last); }
+
+  var HMAP = {};
+  HOLIDAYS.forEach(function (h) { HMAP[parseDate(h[0])] = h[1]; });
+
+  // 数字 "30" "３０日" → 30。空は null、整数でないものは NaN
+  function num(s) {
+    if (s === null || s === undefined) return null;
+    var t = z2h(s).replace(/[\s,，]/g, '').replace(/日(後)?$/, '');
+    if (t === '') return null;
+    if (!/^\d+$/.test(t)) return NaN;
+    return parseInt(t, 10);
+  }
+
+  // 会社の休み：1行に1日、または期間（2026-12-29〜2027-01-04）。後ろにメモを書いてもよい
+  function parseCompany(text) {
+    var days = {}, errors = [];
+    String(text || '').split(/\r?\n/).forEach(function (raw, i) {
+      var line = z2h(raw).trim();
+      if (!line) return;
+      var D = '(\\d{4}[-\\/.]\\d{1,2}[-\\/.]\\d{1,2})';
+      var m = new RegExp('^' + D + '(?:\\s*(?:〜|～|~|から)\\s*' + D + ')?\\s*(.*)$').exec(line);
+      var a = m && parseDate(m[1]), b = m && (m[2] ? parseDate(m[2]) : a);
+      if (!m || a === null || b === null) { errors.push((i + 1) + '行目「' + raw.trim() + '」は日付として読めませんでした（例：2027-08-13 または 2026-12-29〜2027-01-04）'); return; }
+      if (b < a) { errors.push((i + 1) + '行目の期間は、始まりより終わりが前になっています'); return; }
+      if (b - a > 366) { errors.push((i + 1) + '行目の期間が長すぎます（1年まで）'); return; }
+      var memo = (m[3] || '').trim() || '会社の休み';
+      for (var n = a; n <= b; n++) if (!(n in days)) days[n] = memo;
+    });
+    return { days: days, errors: errors };
+  }
+
+  // 休みの日か。休みなら理由（「土曜」「祝日：元日」など）、営業日なら ''
+  function offReason(n, ctx) {
+    var w = wday(n), o = ymd(n);
+    if (w === 0) return '日曜';
+    if (w === 6) return '土曜';
+    if (HMAP[n]) return '祝日（' + HMAP[n] + '）';
+    if (ctx.bank && ((o.m === 12 && o.d === 31) || (o.m === 1 && o.d <= 3))) return '銀行の休み';
+    if (ctx.company && ctx.company[n]) return ctx.company[n];
+    return '';
+  }
+
+  // 締め日：close = 'end'（末日）| 'none'（締めなし）| 数字（1〜30）
+  function closingDate(t, close) {
+    if (close === 'none') return t;
+    if (close === 'end') return eom(t, 0);
+    var c = dayOf(t, 0, close); // その月の締め日（ない日は月末）
+    return t <= c ? c : dayOf(t, 1, close);
+  }
+
+  var SITES = {
+    m0end: { label: '当月末', k: 0 }, m1end: { label: '翌月末', k: 1 }, m2end: { label: '翌々月末', k: 2 },
+    m1d: { label: '翌月○日', k: 1, n: true }, m2d: { label: '翌々月○日', k: 2, n: true },
+    days: { label: '締め日から○日後', n: true }
+  };
+  function siteText(site, n) {
+    if (site === 'm1d') return '翌月' + n + '日';
+    if (site === 'm2d') return '翌々月' + n + '日';
+    if (site === 'days') return n + '日後';
+    return SITES[site].label;
+  }
+  function closeText(close) { return close === 'end' ? '末日締め' : close === 'none' ? '締めなし' : close + '日締め'; }
+
+  // 支払期日（調整前）
+  function dueRaw(c, site, n) {
+    if (site === 'days') return c + n;
+    var s = SITES[site];
+    return s.n ? dayOf(c, s.k, n) : eom(c, s.k);
+  }
+
+  // 休みのときにずらす：adj = 'prev' | 'next' | 'none'
+  function adjust(n, adj, ctx) {
+    var r = { n: n, reason: offReason(n, ctx), skipped: [] };
+    if (adj === 'none' || !r.reason) return r;
+    var step = adj === 'prev' ? -1 : 1, x = n;
+    for (var i = 0; i < 60; i++) {
+      var why = offReason(x, ctx);
+      if (!why) { r.n = x; return r; }
+      r.skipped.push(x);
+      x += step;
+    }
+    r.error = '60日続けて休みのため、ずらせませんでした。会社の休みの入力を確認してください。';
+    return r;
+  }
+
+  // 1行の入力をそろえる。row = { name, date, close, closeDay, site, n, adj }
+  function readRow(row) {
+    var t = parseDate(row.date), close = row.close, err = '';
+    if (!row.date || !String(row.date).trim()) return { empty: true };
+    if (t === null) err = '取引日を正しく入れてください（例：2026-10-26）。';
+    if (!err && close === 'custom') {
+      var cd = num(row.closeDay);
+      if (cd === null || isNaN(cd)) err = '締め日の日にちを数字で入れてください（1〜30）。';
+      else if (cd < 1 || cd > 30) err = '締め日の日にちは1〜30で入れてください。31日締めは「末日」を選んでください。';
+      else close = cd;
+    } else if (/^\d+$/.test(String(close))) close = +close;
+    else if (close !== 'end' && close !== 'none') close = 'end';
+    var site = SITES[row.site] ? row.site : 'm1end', n = null;
+    if (!err && SITES[site].n) {
+      n = num(row.n);
+      if (n === null || isNaN(n)) err = site === 'days' ? '何日後かを数字で入れてください。' : '支払日の日にちを数字で入れてください（1〜31）。';
+      else if (site === 'days' && (n < 1 || n > 365)) err = '何日後かは1〜365で入れてください。';
+      else if (site !== 'days' && (n < 1 || n > 31)) err = '支払日の日にちは1〜31で入れてください。';
+    }
+    var adj = row.adj === 'next' || row.adj === 'none' ? row.adj : 'prev';
+    return { t: t, close: close, site: site, n: n, adj: adj, error: err };
+  }
+
+  function context(o) {
+    var c = parseCompany(o.company);
+    return { bank: o.bank !== false, company: c.days, errors: c.errors };
+  }
+
+  // 1行を計算。base は残り日数の基準日（通し番号）
+  function calcRow(row, ctx, base) {
+    var x = readRow(row), r = { name: String(row.name || '').trim() };
+    if (x.empty) { r.state = 'empty'; return r; }
+    if (x.error) { r.state = 'error'; r.error = x.error; return r; }
+    r.t = x.t; r.close = x.close; r.site = x.site; r.n = x.n; r.adj = x.adj;
+    r.cond = closeText(x.close) + '・' + siteText(x.site, x.n);
+    r.closing = closingDate(x.t, x.close);
+    r.raw = dueRaw(r.closing, x.site, x.n);
+    var a = adjust(r.raw, x.adj, ctx);
+    if (a.error) { r.state = 'error'; r.error = a.error; return r; }
+    r.due = a.n; r.reason = a.reason; r.moved = a.n !== r.raw;
+    r.left = base === null || base === undefined ? null : r.due - base;
+    var lo = Math.min(r.raw, r.due), hi = Math.max(r.raw, r.due);
+    r.outOfRange = ymd(lo).y < HOL_FROM || ymd(hi).y > HOL_TO;
+    r.memo = !r.reason ? '' : r.moved ? r.reason + 'のため' + (x.adj === 'prev' ? '前営業日' : '翌営業日') + 'に' : r.reason + '（そのまま）';
+    if (r.outOfRange) r.memo += (r.memo ? '／' : '') + '祝日データの範囲外';
+    r.state = 'ok';
+    return r;
+  }
+
+  function leftText(v) { return v === null ? '' : v === 0 ? '今日' : v > 0 ? 'あと' + v + '日' : v * -1 + '日すぎ'; }
+
+  // Excel の式（表を A1 に貼ったとき。r は行番号＝2,3,…）
+  function formulas(x, r) {
+    var B = 'B' + r, C = 'C' + r, D = 'D' + r, E = 'E' + r, f = {};
+    if (x.close === 'none') f.closing = '=' + B;
+    else if (x.close === 'end') f.closing = '=EOMONTH(' + B + ',0)';
+    else if (x.close <= 28) f.closing = '=EOMONTH(' + B + ',(DAY(' + B + ')>' + x.close + ')-1)+' + x.close;
+    else {
+      var k = '(DAY(' + B + ')>MIN(' + x.close + ',DAY(EOMONTH(' + B + ',0))))';
+      f.closing = '=MIN(EOMONTH(' + B + ',' + k + '-1)+' + x.close + ',EOMONTH(' + B + ',' + k + '*1))';
+    }
+    var s = SITES[x.site];
+    if (x.site === 'days') f.raw = '=' + C + '+' + x.n;
+    else if (!s.n) f.raw = '=EOMONTH(' + C + ',' + s.k + ')';
+    else if (x.n <= 28) f.raw = '=EOMONTH(' + C + ',' + (s.k - 1) + ')+' + x.n;
+    else f.raw = '=MIN(EOMONTH(' + C + ',' + (s.k - 1) + ')+' + x.n + ',EOMONTH(' + C + ',' + s.k + '))';
+    f.due = x.adj === 'prev' ? '=WORKDAY(' + D + '+1,-1,祝日)' : x.adj === 'next' ? '=WORKDAY(' + D + '-1,1,祝日)' : '=' + D;
+    f.wd = '=TEXT(' + E + ',"aaa")';
+    f.left = '=' + E + '-TODAY()';
+    return f;
+  }
+
+  // Excel に貼る表（タブ区切り）
+  function tsv(results) {
+    var L = [['取引先', '取引日', '締め日', '支払期日（調整前）', '支払期日（調整後）', '曜日', '残り日数', '支払条件', 'メモ'].join('\t')];
+    results.forEach(function (r) {
+      if (r.state !== 'ok') return;
+      L.push([r.name.replace(/[\t\r\n]/g, ' '), slash(r.t), slash(r.closing), slash(r.raw), slash(r.due), WD[wday(r.due)],
+        r.left === null ? '' : r.left, r.cond + '・' + { prev: '休みは前営業日', next: '休みは翌営業日', none: '休みでもそのまま' }[r.adj], r.memo].join('\t'));
+    });
+    return L.join('\r\n');
+  }
+
+  // Excel の「祝日」用：休みにしている日（土日以外）の一覧
+  function holidayList(ctx) {
+    var out = [], from = mk(HOL_FROM, 1, 1), to = mk(HOL_TO, 12, 31), n;
+    for (n = from; n <= to; n++) {
+      var w = wday(n); if (w === 0 || w === 6) continue;
+      var why = offReason(n, ctx); if (why) out.push([n, why]);
+    }
+    Object.keys(ctx.company || {}).map(Number).forEach(function (c) {
+      if ((c < from || c > to) && wday(c) !== 0 && wday(c) !== 6) out.push([c, ctx.company[c]]);
+    });
+    out.sort(function (a, b) { return a[0] - b[0]; });
+    return out;
+  }
+  function holidayTsv(ctx) { return holidayList(ctx).map(function (h) { return slash(h[0]) + '\t' + h[1]; }).join('\r\n'); }
+
+  var API = { HOLIDAYS: HOLIDAYS, HOL_FROM: HOL_FROM, HOL_TO: HOL_TO, HOL_CHECKED: HOL_CHECKED, WD: WD, SITES: SITES,
+    parseDate: parseDate, iso: iso, slash: slash, ymd: ymd, wday: wday, fmt: fmt, eom: eom, dayOf: dayOf, num: num,
+    parseCompany: parseCompany, offReason: offReason, closingDate: closingDate, dueRaw: dueRaw, adjust: adjust,
+    readRow: readRow, context: context, calcRow: calcRow, leftText: leftText, formulas: formulas, tsv: tsv,
+    holidayList: holidayList, holidayTsv: holidayTsv, siteText: siteText, closeText: closeText };
+  if (typeof module !== 'undefined' && module.exports) module.exports = API; else root.SHIHARAI = API;
+})(this);
+</script>
+<script id="shiharai-app">
+/* 支払期日の計算ツールの画面 */
+(function () {
+  var $ = function (id) { return document.getElementById(id); };
+  var S = SHIHARAI, KEY = 'misaneco.shiharai.v1';
+  function todayIso() { var d = new Date(); return d.getFullYear() + '-' + (d.getMonth() < 9 ? '0' : '') + (d.getMonth() + 1) + '-' + (d.getDate() < 10 ? '0' : '') + d.getDate(); }
+  function sample() {
+    return [
+      { name: 'A商店', date: '2026-10-26', close: '25', closeDay: '', site: 'm1end', n: '', adj: 'prev' },
+      { name: 'B工業', date: '2026-10-31', close: 'end', closeDay: '', site: 'm1d', n: '10', adj: 'next' },
+      { name: 'C社', date: '2027-01-15', close: 'end', closeDay: '', site: 'm1end', n: '', adj: 'prev' },
+      { name: 'D事務所', date: '2027-03-20', close: '20', closeDay: '', site: 'm1d', n: '5', adj: 'next' }
+    ];
+  }
+  var state = { rows: sample(), bank: true, company: '', base: '' };
+  try {
+    var s = JSON.parse(window.localStorage.getItem(KEY) || 'null');
+    if (s && typeof s === 'object') {
+      if (Array.isArray(s.rows) && s.rows.length) state.rows = s.rows.slice(0, 200).map(function (r) {
+        var o = {}; ['name', 'date', 'close', 'closeDay', 'site', 'n', 'adj'].forEach(function (k) { o[k] = r && typeof r[k] === 'string' ? r[k] : ''; }); return o;
+      });
+      if (typeof s.bank === 'boolean') state.bank = s.bank;
+      if (typeof s.company === 'string') state.company = s.company;
+    }
+  } catch (e) { /* 保存が使えないときはそのまま */ }
+  function save() { try { window.localStorage.setItem(KEY, JSON.stringify({ rows: state.rows, bank: state.bank, company: state.company })); } catch (e) { /* noop */ } }
+  function el(tag, text, cls) { var e = document.createElement(tag); if (text) e.textContent = text; if (cls) e.className = cls; return e; }
+  function clear(n) { while (n.firstChild) n.removeChild(n.firstChild); }
+  function opt(sel, v, t) { var o = el('option', t); o.value = v; sel.appendChild(o); }
+  var copyText = '', holText = '', uid = 0;
+
+  function field(box, label, input, wrap) {
+    var f = el('div', '', 'f'), id = 'r' + (++uid);
+    var l = el('label', label); l.htmlFor = id; input.id = id;
+    f.appendChild(l); f.appendChild(wrap || input); box.appendChild(f);
+    return f;
+  }
+  function textIn(ph, numeric) {
+    var i = el('input'); i.type = 'text'; i.autocomplete = 'off'; if (ph) i.placeholder = ph; if (numeric) i.inputMode = 'numeric'; return i;
+  }
+
+  function drawRows() {
+    var box = $('rows'); clear(box);
+    state.rows.forEach(function (row, idx) {
+      var c = el('div', '', 'rowc'), h = el('div', '', 'rowh');
+      h.appendChild(el('b', (idx + 1) + '行目'));
+      var del = el('button', 'この行を消す', 'btn ghost small'); del.type = 'button';
+      del.disabled = state.rows.length === 1;
+      del.addEventListener('click', function () { state.rows.splice(idx, 1); drawRows(); update(); });
+      h.appendChild(del); c.appendChild(h);
+      var g = el('div', '', 'g3');
+      var name = textIn('例：A商店'); name.value = row.name; field(g, '取引先（なくても可）', name);
+      var date = el('input'); date.type = 'date'; date.value = row.date; field(g, '取引日（請求日・納品日）', date);
+      var cw = el('div', '', 'pair'), close = el('select');
+      [['end', '末日'], ['15', '15日'], ['20', '20日'], ['25', '25日'], ['custom', '日にちを入れる'], ['none', '締めなし（取引日のまま）']].forEach(function (o) { opt(close, o[0], o[1]); });
+      close.value = row.close || 'end';
+      var cd = textIn('10', true); cd.value = row.closeDay; cd.setAttribute('aria-label', (idx + 1) + '行目の締め日（日にち）');
+      cw.appendChild(close); cw.appendChild(cd);
+      field(g, '締め日', close, cw);
+      var sw = el('div', '', 'pair'), site = el('select');
+      Object.keys(S.SITES).forEach(function (k) { opt(site, k, S.SITES[k].label); });
+      site.value = row.site || 'm1end';
+      var n = textIn('10', true); n.value = row.n; n.setAttribute('aria-label', (idx + 1) + '行目の支払サイトの日数・日にち');
+      sw.appendChild(site); sw.appendChild(n);
+      field(g, '支払サイト', site, sw);
+      var adj = el('select');
+      [['prev', '前営業日にずらす'], ['next', '翌営業日にずらす'], ['none', 'そのまま']].forEach(function (o) { opt(adj, o[0], o[1]); });
+      adj.value = row.adj || 'prev';
+      field(g, '期日が休みのとき', adj);
+      c.appendChild(g);
+      var err = el('p', '', 'rerr'); err.setAttribute('role', 'status'); c.appendChild(err);
+      function vis() {
+        cd.hidden = close.value !== 'custom';
+        n.hidden = !S.SITES[site.value].n;
+        n.placeholder = site.value === 'days' ? '30' : '10';
+      }
+      function bind(i, k) {
+        var h2 = function () { row[k] = i.value; vis(); update(); };
+        i.addEventListener('input', h2); i.addEventListener('change', h2);
+      }
+      bind(name, 'name'); bind(date, 'date'); bind(close, 'close'); bind(cd, 'closeDay'); bind(site, 'site'); bind(n, 'n'); bind(adj, 'adj');
+      vis();
+      row._err = err;
+      box.appendChild(c);
+    });
+  }
+
+  function td(tr, text, cls) { var t = el('td', text, cls); tr.appendChild(t); return t; }
+  function fxItem(ul, label, f) { var li = el('li'); li.appendChild(el('span', label + '：')); li.appendChild(el('code', f, 'fx')); ul.appendChild(li); }
+
+  function update() {
+    save();
+    var ctx = S.context(state), base = S.parseDate(state.base);
+    $('err').textContent = ctx.errors.length ? '会社の休み：' + ctx.errors[0] + '。' : '';
+    if (base === null) $('err').textContent += (state.base ? '基準日を正しく入れてください。' : '');
+    var results = state.rows.map(function (row) { return S.calcRow(row, ctx, base); });
+    var tb = $('tbody'), fx = $('fx'); clear(tb); clear(fx);
+    var out = false, moved = 0, ok = 0, line = 1;
+    results.forEach(function (r, i) {
+      var row = state.rows[i];
+      if (row._err) row._err.textContent = r.state === 'error' ? r.error : '';
+      if (r.state !== 'ok') return;
+      ok++; line++;
+      if (r.outOfRange) out = true;
+      if (r.moved) moved++;
+      var tr = el('tr');
+      td(tr, r.name || (i + 1) + '行目');
+      td(tr, S.fmt(r.t)); td(tr, S.fmt(r.closing)); td(tr, S.fmt(r.raw));
+      var d = td(tr, S.fmt(r.due), r.moved ? 'moved' : '');
+      if (r.memo) d.title = r.memo;
+      td(tr, S.leftText(r.left), r.left !== null && r.left < 0 ? 'late' : '');
+      tb.appendChild(tr);
+      var b = el('div', '', 'fxb');
+      b.appendChild(el('b', line + '行目：' + (r.name || (i + 1) + '行目') + '（' + r.cond + '・' + { prev: '前営業日', next: '翌営業日', none: 'そのまま' }[r.adj] + '）'));
+      var ul = el('ul', '', 'fxl'), f = S.formulas(r, line);
+      fxItem(ul, 'C' + line + ' 締め日', f.closing);
+      fxItem(ul, 'D' + line + ' 支払期日（調整前）', f.raw);
+      fxItem(ul, 'E' + line + ' 支払期日（調整後）', f.due);
+      fxItem(ul, 'F' + line + ' 曜日', f.wd);
+      fxItem(ul, 'G' + line + ' 残り日数', f.left);
+      b.appendChild(ul); fx.appendChild(b);
+    });
+    if (!ok) { var tr0 = el('tr'), t0 = td(tr0, '取引日を入れると、ここに結果が出ます。'); t0.colSpan = 6; tb.appendChild(tr0); }
+    var notes = results.filter(function (r) { return r.state === 'ok' && r.memo; }).map(function (r, j) { return (r.name || '') + ' ' + S.fmt(r.raw) + '：' + r.memo; });
+    $('moveNote').textContent = notes.length ? '休みの日に当たった期日：' + notes.join('　') : '';
+    var w = $('warn');
+    if (out) { w.textContent = '祝日のデータは' + S.HOL_FROM + '年〜' + S.HOL_TO + '年の分だけです。それ以外の年の期日は、土日・銀行の休み・会社の休みだけで判断しています。その年の祝日は「会社の休み」の欄に入れてください。'; w.hidden = false; }
+    else w.hidden = true;
+    copyText = ok ? S.tsv(results) : '';
+    holText = S.holidayTsv(ctx);
+  }
+
+  function copy(text, msg) {
+    var done = function (ok) { $('copied').textContent = ok ? msg : 'コピーできませんでした。表を選んでコピーしてください。'; };
+    if (!text) { $('copied').textContent = '先に取引日を入れてください。'; return; }
+    if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(text).then(function () { done(true); }, function () { done(false); });
+    else done(false);
+  }
+
+  $('add').addEventListener('click', function () {
+    var last = state.rows[state.rows.length - 1] || {};
+    state.rows.push({ name: '', date: '', close: last.close || 'end', closeDay: last.closeDay || '', site: last.site || 'm1end', n: last.n || '', adj: last.adj || 'prev' });
+    drawRows(); update();
+  });
+  $('reset').addEventListener('click', function () { state.rows = sample(); drawRows(); update(); });
+  $('bank').checked = state.bank;
+  $('bank').addEventListener('change', function () { state.bank = $('bank').checked; update(); });
+  $('company').value = state.company;
+  $('company').addEventListener('input', function () { state.company = $('company').value; update(); });
+  state.base = todayIso(); $('base').value = state.base;
+  ['input', 'change'].forEach(function (ev) { $('base').addEventListener(ev, function () { state.base = $('base').value; update(); }); });
+  $('today').addEventListener('click', function () { state.base = todayIso(); $('base').value = state.base; update(); });
+  $('copy').addEventListener('click', function () { copy(copyText, 'コピーしました。ExcelのA1を選んで貼り付けてください。'); });
+  $('copyHol').addEventListener('click', function () { copy(S.HOL_FROM + '年〜' + S.HOL_TO + '年の休みの日（土日を除く）\t名前\r\n' + holText, '休みの日の一覧をコピーしました（1行目は見出しです。名前を付けるときは2行目からのA列を選んでください）。'); });
+  drawRows(); update();
+})();
+</script>
+<script src="../assets/ads-inter.js?v=202610210009" data-pool="accounting" defer></script>
+</body></html>

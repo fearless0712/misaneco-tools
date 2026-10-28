@@ -76,6 +76,7 @@ ja.push({ f: 'move/index.html', pool: 'move', pageAd: true, up: '../' });
 ja.push({ f: 'hozon/index.html', pool: 'accounting', pageAd: false, up: '../', staticAd: true });
 ja.push({ f: 'kouki/index.html', pool: 'accounting', pageAd: true, up: '../' });
 ja.push({ f: 'shaken/index.html', pool: 'accounting', pageAd: true, up: '../' });
+ja.push({ f: 'shiharai/index.html', pool: 'accounting', pageAd: true, up: '../' });
 ja.push({ f: 'kinri/index.html', pool: 'accounting', pageAd: true, up: '../' });
 ja.push({ f: 'riekiritsu/index.html', pool: 'accounting', pageAd: false, up: '../', staticAd: true });
 ja.push({ f: 'anbun/index.html', pool: 'accounting', pageAd: false, up: '../', staticAd: true });
