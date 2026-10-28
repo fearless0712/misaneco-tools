@@ -52,6 +52,7 @@ for (const a of APPS) {
   eq(card.includes(yen(a.price) + '<small>'), true, a.name + ' 表示価格');
   eq(card.includes('BOOTHで見る（' + yen(a.price) + '）'), true, a.name + ' ボタンの価格');
   eq(card.includes('href="/studio/' + a.slug + '/"'), true, a.name + ' 見本リンク');
+  if (a.slug === 'kensetsu') eq(card.includes('href="/studio/kensetsu/free/"'), true, a.name + ' 無料版ダウンロードへのリンク');
   eq(card.includes('src="assets/' + a.slug + '.jpg"'), true, a.name + ' サムネ');
   eq(fs.existsSync(path.join(__dirname, 'assets', a.slug + '.jpg')), true, a.name + ' サムネのファイル');
   // BOOTHの控えにあれば一致（公開前は控えにないので省略）

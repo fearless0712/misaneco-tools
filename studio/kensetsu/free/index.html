@@ -1,0 +1,159 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' https://*.google-analytics.com https://*.googletagmanager.com; script-src 'self' https://www.googletagmanager.com; connect-src https://*.google-analytics.com https://*.analytics.google.com https://*.googletagmanager.com; base-uri 'none'; form-action 'none'; object-src 'none'">
+<title>建設スタジオ 無料版｜見積書と工程表を、無料で（ダウンロード）</title>
+<meta name="description" content="塗装・水道・土木・電気の小さな会社向け。明細を入れると諸経費・消費税・合計がその場で出て、見積から工種ごとの工程表を作れる無料のアプリです。インターネット不要、データはお使いのパソコンの中だけに保存します。">
+<link rel="canonical" href="https://tools.equaglobal.com/studio/kensetsu/free/">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700&family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#06080d;--panel:#0f141f;--panel2:#131a28;--line:#1f2838;--line2:#2c3850;--text:#eef2f8;--dim:#8d97ab;--dim2:#5d6880;--acc:#ff9142;--acc2:#ffb27a;--cyan:#4cc9f0;--green:#3ddc97;
+  --mono:'JetBrains Mono',ui-monospace,Menlo,monospace;--jp:'Noto Sans JP','Hiragino Sans','Yu Gothic',sans-serif}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;color:var(--text);font-family:var(--jp);font-size:16px;line-height:1.75;-webkit-font-smoothing:antialiased;
+  background:radial-gradient(900px 600px at 80% -10%,rgba(255,145,66,.12),transparent 60%),radial-gradient(800px 600px at -10% 100%,rgba(76,201,240,.07),transparent 60%),var(--bg);background-color:var(--bg)}
+a{color:var(--acc2)}
+main{max-width:960px;margin:0 auto;padding:24px 16px 64px}
+.crumb{font-size:13px;color:var(--dim);margin:0 0 20px}.crumb a{color:var(--dim)}
+.hero{display:grid;gap:24px;align-items:center}
+.tag{display:inline-block;font-family:var(--mono);font-size:11px;letter-spacing:.2em;color:var(--acc);border:1px solid rgba(255,145,66,.45);border-radius:999px;padding:2px 10px;margin:0 0 12px}
+h1{font-size:28px;line-height:1.35;margin:0 0 4px;font-weight:900}
+.catch{font-size:19px;font-weight:700;color:var(--acc2);margin:0 0 14px}
+.lead{color:var(--dim);margin:0 0 20px;font-size:15px}
+.dl{display:flex;align-items:center;justify-content:center;gap:10px;text-decoration:none;font-weight:700;font-size:17px;color:#fff;min-height:56px;padding:12px 22px;border-radius:12px;
+  border:1px solid rgba(255,178,122,.7);background:linear-gradient(180deg,rgba(255,145,66,.55),rgba(255,145,66,.25));max-width:420px}
+.dl:hover{filter:brightness(1.1)}
+.dl small{font-weight:400;font-size:13px;color:var(--acc2)}
+.dl-note{font-size:13px;color:var(--dim);margin:8px 0 0}
+.chips{display:flex;flex-wrap:wrap;gap:6px;margin:16px 0 0;padding:0;list-style:none}
+.chips li{font-size:12px;border:1px solid var(--line2);background:var(--panel2);border-radius:999px;padding:2px 10px}
+.shot{margin:0;background:var(--panel);border:1px solid var(--line);border-radius:14px;overflow:hidden}
+.shot img{display:block;width:100%;height:auto}
+.shot figcaption{font-size:13px;color:var(--dim);padding:8px 12px}
+.panel{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:18px 18px 20px;margin-top:28px}
+h2{font-size:19px;line-height:1.45;margin:0 0 12px;display:flex;align-items:baseline;gap:10px}
+h2 i{font-style:normal;font-family:var(--mono);font-size:12px;letter-spacing:.12em;color:var(--acc)}
+.feat{display:grid;gap:12px;margin:0;padding:0;list-style:none}
+.feat li{background:var(--panel2);border:1px solid var(--line);border-left:3px solid var(--acc);border-radius:10px;padding:12px 14px}
+.feat b{display:block;margin-bottom:2px}
+.feat span{color:var(--dim);font-size:14px}
+.shots{display:grid;gap:14px;margin-top:14px}
+.tbl{width:100%;border-collapse:collapse;font-size:14px}
+.tbl th,.tbl td{border-bottom:1px solid var(--line);padding:9px 8px;text-align:center}
+.tbl th:first-child,.tbl td:first-child{text-align:left}
+.tbl thead th{font-size:13px;color:var(--dim);font-weight:500}
+.tbl .y{color:var(--green);font-weight:700}
+.tbl .n{color:var(--dim2)}
+.tbl tr.price td{font-family:var(--mono);font-weight:700;font-size:15px;border-bottom:0}
+.sub{color:var(--dim);font-size:14px;margin:12px 0 0}
+.steps{counter-reset:s;display:grid;gap:10px;margin:0;padding:0;list-style:none}
+.steps li{counter-increment:s;display:flex;gap:12px;align-items:flex-start;background:var(--panel2);border:1px solid var(--line);border-radius:10px;padding:12px 14px}
+.steps li:before{content:counter(s,decimal-leading-zero);font-family:var(--mono);font-weight:700;color:var(--acc);font-size:15px;line-height:1.75}
+ul.plain{margin:0;padding-left:1.2em;color:var(--dim);font-size:15px}
+ul.plain li{margin:4px 0}
+ul.plain b{color:var(--text)}
+.pro{display:inline-block;margin-top:12px;font-weight:700;color:var(--acc2)}
+footer{margin-top:40px;font-size:13px;color:var(--dim)}footer a{color:var(--dim)}
+@media (min-width:760px){
+  h1{font-size:34px}
+  .hero{grid-template-columns:1fr 1.15fr}
+  .feat{grid-template-columns:repeat(3,1fr)}
+  .shots{grid-template-columns:1fr 1fr}
+  .shots .wide{grid-column:1/-1}
+}
+</style>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-EWJXRJY9M6"></script><script src="../../../assets/ga.js?v=202610210745"></script>
+</head>
+<body>
+<main>
+<p class="crumb"><a href="/">MisaNeco Works ツール集</a> ／ <a href="/studio/">業種別スタジオ</a> ／ <a href="/studio/kensetsu/">建設スタジオ</a> ／ 無料版</p>
+
+<section class="hero">
+<div>
+<p class="tag">KENSETSU STUDIO · FREE</p>
+<h1>建設スタジオ 無料版</h1>
+<p class="catch">見積書と工程表を、無料で。</p>
+<p class="lead">明細を入れると、諸経費・消費税・合計がその場で出ます。「この見積で現場を作る」を押すと、工種ごとの工程表ができます。インターネットは不要。入力したデータは、お使いのパソコンの中だけに保存します。</p>
+<a class="dl" id="download" href="kensetsu-studio-free-v1.0.zip" download="建設スタジオ_無料版_v1.0.zip">無料でダウンロード <small>zip・約0.9MB</small></a>
+<p class="dl-note">v1.0 ／ 登録・メールアドレスの入力はいりません。</p>
+<ul class="chips"><li>無料</li><li>ネット不要</li><li>データは手元のパソコンだけ</li><li>外部への送信なし</li></ul>
+</div>
+<figure class="shot"><img src="assets/estimate.jpg" width="1280" height="800" alt="建設スタジオ無料版の見積画面。明細を入れると小計・諸経費・消費税・合計が出る（会社名・金額は架空の見本）"><figcaption>見積：明細を入れると、合計（税込）までその場で計算</figcaption></figure>
+</section>
+
+<section class="panel" aria-labelledby="h-what">
+<h2 id="h-what"><i>01</i>無料版でできること</h2>
+<ul class="feat">
+<li><b>見積書</b><span>数量×単価、諸経費、値引き、税率ごとの消費税（10%・8%）。そのまま印刷、PDFにも保存できます。</span></li>
+<li><b>工程表</b><span>見積から現場と工種ごとの工程を作成。開始日と稼働日数から、土日・祝日・会社の休みを除いて終了予定を出します。</span></li>
+<li><b>バックアップ</b><span>データを1つのファイルに保存して、あとで戻せます。別のパソコンへ移すときも同じ手順です。</span></li>
+</ul>
+<div class="shots">
+<figure class="shot"><img src="assets/schedule.jpg" width="1280" height="800" alt="現場と工程表の画面。工種ごとの帯が並ぶガントチャート（架空の見本）" loading="lazy"><figcaption>現場と工程表：見積から工程の帯を自動で並べる</figcaption></figure>
+<figure class="shot"><img src="assets/backup.jpg" width="1280" height="800" alt="設定・バックアップの画面。バックアップを保存・バックアップから戻すのボタン（架空の見本）" loading="lazy"><figcaption>設定・バックアップ：保存と戻すの2つのボタン</figcaption></figure>
+</div>
+</section>
+
+<section class="panel" aria-labelledby="h-diff">
+<h2 id="h-diff"><i>02</i>無料版と製品版の違い</h2>
+<table class="tbl">
+<thead><tr><th scope="col">機能</th><th scope="col">無料版</th><th scope="col">製品版</th></tr></thead>
+<tbody>
+<tr><td>見積書（計算・印刷）</td><td class="y">○</td><td class="y">○</td></tr>
+<tr><td>工程表（見積から自動）</td><td class="y">○</td><td class="y">○</td></tr>
+<tr><td>設定・バックアップ</td><td class="y">○</td><td class="y">○</td></tr>
+<tr><td>日報 → 原価・粗利</td><td class="n">－</td><td class="y">○</td></tr>
+<tr><td>請求・入金</td><td class="n">－</td><td class="y">○</td></tr>
+<tr><td>外注支払</td><td class="n">－</td><td class="y">○</td></tr>
+<tr><td>期限管理</td><td class="n">－</td><td class="y">○</td></tr>
+<tr><td>塗装計算</td><td class="n">－</td><td class="y">○</td></tr>
+<tr><td>全体のまとめ</td><td class="n">－</td><td class="y">○</td></tr>
+<tr class="price"><td>価格</td><td>0円</td><td data-price="9800">¥9,800<br><small style="font-family:var(--jp);font-weight:400;color:var(--dim)">買い切り</small></td></tr>
+</tbody>
+</table>
+<p class="sub">無料版のバックアップは、製品版でそのまま読み込めます。あとから製品版に変えても、入れ直しはいりません。</p>
+<a class="pro" href="/ig/#studio">製品版について →</a>
+</section>
+
+<section class="panel" aria-labelledby="h-steps">
+<h2 id="h-steps"><i>03</i>使い始めるまで</h2>
+<ol class="steps">
+<li><span>ダウンロードした zip を展開する（ダブルクリック、Windowsは右クリック→「すべて展開」）</span></li>
+<li><span>app フォルダの <b>index.html</b> を Google Chrome で開く</span></li>
+<li><span>「設定」で会社名を入れて、見積を作る</span></li>
+</ol>
+<p class="sub">くわしい手順は、zip に入っている「使い方.html」に画面つきでまとめています。</p>
+</section>
+
+<section class="panel" aria-labelledby="h-env">
+<h2 id="h-env"><i>04</i>動作環境とデータ</h2>
+<ul class="plain">
+<li>パソコン（Mac・Windows）の Google Chrome で使います。</li>
+<li><b>動作を確認したのは Mac の Google Chrome だけです。</b>Windows・Edge・Safari では確認していません。</li>
+<li>スマホ・タブレットはおすすめしません。</li>
+<li>入力したデータは、お使いのパソコンのブラウザの中にだけ保存します。インターネットへの送信はしません。</li>
+<li>ブラウザのデータを消すと入力も消えます。こまめに「バックアップを保存」をしてください。</li>
+</ul>
+</section>
+
+<section class="panel" aria-labelledby="h-note">
+<h2 id="h-note"><i>05</i>ご注意</h2>
+<ul class="plain">
+<li>個人でも、仕事でも使えます。ファイルの再配布はできません（同梱の利用規約）。</li>
+<li>税の判断は、国税庁の案内や税理士などの専門家にご確認ください。</li>
+<li>画面の会社名・金額は架空の見本です。</li>
+</ul>
+<p class="sub">ダウンロードの前に、どんな画面か触ってみたいときは <a href="/studio/kensetsu/">Web版の見本（全機能入り・架空のデータ）</a> へ。</p>
+</section>
+
+<footer>
+<p class="brand"><a href="/">MisaNeco Works ツール集</a> ／ 運営：Eternal Philosophy（EQUA）</p>
+</footer>
+</main>
+</body>
+</html>

@@ -220,6 +220,7 @@ eq(/googletagmanager|gtag|ads-inter|a8\.net|adsbygoogle/.test(html + app), false
 eq(/fetch\(|XMLHttpRequest|WebSocket|sendBeacon|EventSource/.test(app), false, '送信する処理なし');
 eq(/円引き|今だけ|購入|BOOTH|¥\d|\d+円で/.test(html), false, '宣伝の言葉・価格なし');
 eq(/MisaNeco Works/.test(html), true, 'MisaNeco Works の表記');
+eq(/<a href="\/studio\/kensetsu\/free\/"[^>]*>まず無料版をダウンロード/.test(html) && fs.existsSync(path.join(__dirname, 'free/index.html')), true, 'フッターに無料版ダウンロードへの導線');
 eq((app.match(/localStorage\.(getItem|setItem|removeItem)/g) || []).length > 0 && /try\s*{[^}]*localStorage/.test(app), true, 'localStorage は try の中');
 eq(/requestAnimationFrame/.test(app) && /visibilitychange/.test(app), true, 'rAF と 見えないときは止める');
 [...app.matchAll(/\$\('#([\w-]+)'\)/g)].map(m => m[1]).filter((v, i, a) => a.indexOf(v) === i).forEach(id => eq(html.includes('id="' + id + '"') || app.includes('id="' + id + '"'), true, 'id: ' + id));
