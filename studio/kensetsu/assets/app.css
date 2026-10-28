@@ -242,3 +242,13 @@ td input,td select{padding:5px 6px;font-size:12.5px}
   .lines td{padding:3px 2px}
   .lines td.amt{font-size:11.5px}
 }
+/* スマホ幅：表は横にずらして見る（入力欄がつぶれないように最小幅をつける）・小さいボタンを押しやすく */
+@media (max-width:760px){
+  .lines{min-width:620px}
+  .lines input[type=checkbox]{width:20px;height:20px}
+  .tw table:not(.lines) td{white-space:nowrap}
+  .tw table:not(.lines) td input:not([type=checkbox]){min-width:64px}
+  .tw table:not(.lines) td input:not(.num):not([type=checkbox]):not([type=date]):not([type=time]){min-width:120px}
+  .tw table:not(.lines) td select{min-width:88px}
+  .ghost.sm{padding:6px 10px;font-size:12px;min-height:32px}
+}

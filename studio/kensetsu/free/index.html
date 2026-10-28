@@ -59,6 +59,15 @@ ul.plain li{margin:4px 0}
 ul.plain b{color:var(--text)}
 .pro{display:inline-block;margin-top:12px;font-weight:700;color:var(--acc2)}
 footer{margin-top:40px;font-size:13px;color:var(--dim)}footer a{color:var(--dim)}
+.mobile-note{background:var(--panel);border:1px solid rgba(76,201,240,.55);border-radius:14px;padding:14px 14px 12px;margin:0 0 20px}
+.mobile-note[hidden]{display:none}
+.mobile-note p{margin:0 0 10px;font-size:15px;font-weight:700}
+.mn-btns{display:grid;gap:8px}
+.mn-btn{display:flex;align-items:center;justify-content:center;text-align:center;min-height:48px;padding:10px 14px;border-radius:10px;font:inherit;font-size:15px;font-weight:700;line-height:1.45;text-decoration:none;cursor:pointer;
+  color:#fff;border:1px solid rgba(76,201,240,.7);background:rgba(76,201,240,.16);width:100%}
+.mn-btn.mn-sub{color:var(--text);border-color:var(--line2);background:var(--panel2)}
+.mobile-note .mn-msg{margin:8px 0 0;font-size:13px;font-weight:400;color:var(--green);word-break:break-all}
+.mobile-note .mn-msg:empty{display:none}
 @media (min-width:760px){
   h1{font-size:34px}
   .hero{grid-template-columns:1fr 1.15fr}
@@ -67,10 +76,18 @@ footer{margin-top:40px;font-size:13px;color:var(--dim)}footer a{color:var(--dim)
   .shots .wide{grid-column:1/-1}
 }
 </style>
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-EWJXRJY9M6"></script><script src="../../../assets/ga.js?v=202610210745"></script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-EWJXRJY9M6"></script><script src="../../../assets/ga.js?v=202610210745"></script><script src="mobile.js?v=202610282400" defer></script>
 </head>
 <body>
 <main>
+<aside class="mobile-note" id="mobileNote" hidden aria-label="スマホでご覧の方へ">
+<p>このアプリはパソコン用です（ネット不要・データは手元だけ）。</p>
+<div class="mn-btns">
+<button type="button" class="mn-btn" id="sendToSelf">パソコンで開くために、このページを自分に送る</button>
+<a class="mn-btn mn-sub" id="tryDemo" href="/studio/kensetsu/">いまスマホで見本を触ってみる</a>
+</div>
+<p class="mn-msg" id="mobileMsg" role="status" aria-live="polite"></p>
+</aside>
 <p class="crumb"><a href="/">MisaNeco Works ツール集</a> ／ <a href="/studio/">業種別スタジオ</a> ／ <a href="/studio/kensetsu/">建設スタジオ</a> ／ 無料版</p>
 
 <section class="hero">
