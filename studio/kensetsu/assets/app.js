@@ -212,7 +212,7 @@
     week.forEach(function (d) {
       var off = !K.isWork(d.n, c), cls = (off ? ' off' : '') + (d.n === TODAY ? ' today' : '');
       h += '<div class="d' + cls + '"><div class="dh"><span>' + K.WD[K.wday(d.n)] + '</span><span>' + K.ymd(d.n).d + '</span></div>';
-      d.items.slice(0, 3).forEach(function (it) { h += '<span class="dot" style="border-color:' + (it.late ? '#ff5d73' : siteColor(it.t.site)) + '" title="' + esc(siteName(it.t.site) + '：' + it.t.name) + '">' + esc(shortSite(it.t.site)) + '</span>'; });
+      d.items.slice(0, 3).forEach(function (it) { h += '<span class="dot" style="border-color:' + (it.late ? '#ff5d73' : siteColor(it.t.site)) + '" title="' + esc(siteName(it.t.site) + '：' + it.t.name) + '"><span class="ds">' + esc(shortSite(it.t.site)) + '</span><span class="dl">' + esc(siteName(it.t.site) + '：' + it.t.name) + '</span></span>'; });
       if (d.items.length > 3) h += '<span class="dot" style="border-color:#5d6880">+' + (d.items.length - 3) + '</span>';
       if (off && !d.items.length) h += '<span class="dot" style="border-color:transparent;color:#5d6880">' + (K.holidayName(d.n) || '休み') + '</span>';
       h += '</div>';

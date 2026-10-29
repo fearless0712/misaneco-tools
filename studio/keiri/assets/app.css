@@ -282,3 +282,14 @@ tr.new td{background:rgba(95,211,176,.13)}
   .step .t small{display:none}
 }
 .lines select{padding:5px 2px}
+
+/* スマホ幅：ブランド名を画面に固定せず、ページ末尾（フッターの下）に出す（中身に重ならないように） */
+@media (max-width:760px){
+  .brandmark{display:none}
+  .main footer::after{content:"MisaNeco Works";display:block;width:max-content;margin:14px 0 0 auto;font-family:var(--mono);font-size:10.5px;letter-spacing:.14em;color:rgba(238,242,248,.42)}
+}
+
+/* 進み具合などの行：省略表示の枠で札（遅れ など）の上下が切れないように */
+.prog .row .t>span{padding:3px 0;line-height:1.5}
+.prog .row .t{align-items:center}
+.prog .row .t .pill{display:inline-block;line-height:1.45;vertical-align:middle;margin-top:-2px}
