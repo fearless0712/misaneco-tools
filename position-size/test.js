@@ -46,4 +46,27 @@ eq(C({ rate: '0' }).state, 'error', 'zero rate');
 const html = fs.readFileSync(__dirname + '/index.html', 'utf8').replace(/<meta http-equiv="Content-Security-Policy"[^>]*>/, '');
 eq(/a8\.net|ads-inter/.test(html), false, 'no ads on English page');
 eq((html.match(/https?:\/\/[^"'\s<)]+/g) || []).filter(u => !/^https:\/\/(tools\.equaglobal\.com|equaglobal\.com|www\.googletagmanager\.com|schema\.org|line\.me)/.test(u)), [], 'no unexpected external URLs');
+// worked examples on the page (numbers checked in Python as well)
+r = C({ balance: '5000', risk: '2', pip: '0.01', side: 'sell', entry: '150.00', stop: '150.40', rate: '1/150' });
+eq([r.state, r.pips, r.units, r.lots, S.money(r.pipValueLot), S.money(r.loss)], ['ok', 40, 37000, 0.37, '6.67', '98.67'], 'example 2 USD/JPY');
+r = C({ balance: '8000', risk: '1.5', entry: '1.1000', stop: '1.0970', rate: '0.75' });
+eq([r.state, r.riskAmt, r.pips, r.units, r.lots, S.money(r.pipValueLot), S.money(r.loss)], ['ok', 120, 30, 53000, 0.53, '7.50', '119.25'], 'example 3 GBP account');
+const raw = fs.readFileSync(__dirname + '/index.html', 'utf8');
+['0.4 lots (40,000 units)', '0.37 lots (37,000 units)', '$98.67', '0.53 lots (53,000 units)', '£119.25', '£7.50'].forEach(t => eq(raw.includes(t), true, 'page shows ' + t));
+// search: title / description
+const title = /<title>([^<]*)<\/title>/.exec(raw)[1], desc = /<meta name="description" content="([^"]*)"/.exec(raw)[1];
+eq([/Forex Position Size Calculator/.test(title), /Lot Size Calculator/.test(title), title.length <= 70], [true, true, true], 'title');
+eq([/position size/i.test(desc), /lot size/i.test(desc), desc.length <= 260], [true, true, true], 'description');
+// FAQPage structured data matches the visible FAQ
+const lds = [...raw.matchAll(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/g)].map(m => JSON.parse(m[1]));
+const faq = lds.find(x => x['@type'] === 'FAQPage');
+const dec = t => t.replace(/<[^>]+>/g, '').replace(/&amp;/g, '&').replace(/&quot;/g, '"').trim();
+const vis = [.../<section[^>]*id="faq"[^>]*>([\s\S]*?)<\/section>/.exec(raw)[1].matchAll(/<h3>([\s\S]*?)<\/h3>\s*<p>([\s\S]*?)<\/p>/g)].map(m => [dec(m[1]), dec(m[2])]);
+eq(!!faq && faq.mainEntity.length >= 6, true, 'FAQPage present');
+eq(faq.mainEntity.map(q => [q.name, q.acceptedAnswer.text]), vis, 'FAQPage = visible FAQ');
+eq(lds.some(x => x['@type'] === 'WebApplication'), true, 'WebApplication kept');
+eq(/XAU\/USD/.test(raw) && /not covered/.test(raw), true, 'gold is stated as not covered');
+eq(/not financial advice/.test(raw), true, 'not financial advice');
+eq(/\bAI\b/.test(raw.replace(/<script[\s\S]*?<\/script>/g, '')), false, 'no "AI" wording');
+eq(fs.existsSync(__dirname + '/../blog/en-forex-position-size-formula/index.html'), true, 'blog link target exists');
 console.log(`${p} passed, ${f} failed`); process.exit(f ? 1 : 0);

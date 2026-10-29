@@ -1,21 +1,21 @@
 <!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self' https://www.googletagmanager.com; style-src 'self'; img-src 'self' data: https://*.google-analytics.com https://*.googletagmanager.com; connect-src https://*.google-analytics.com https://*.analytics.google.com https://*.googletagmanager.com; base-uri 'none'; form-action 'none'; object-src 'none'">
-<title>Forex Position Size &amp; Lot Size Calculator (Free) - From Your Stop-Loss and Risk %</title>
-<meta name="description" content="Free forex position size and lot size calculator. Enter your account balance, risk per trade, entry and stop-loss to get the largest position in units and lots, the loss if your stop is hit, margin and reward-to-risk. Works with USD, EUR or GBP accounts and JPY pairs. No sign-up; nothing you enter leaves your browser.">
+<title>Forex Position Size Calculator &amp; Lot Size Calculator (Free)</title>
+<meta name="description" content="Free forex position size and lot size calculator. Enter balance, risk %, entry and stop-loss to get your size in standard, mini and micro lots, pip value and the loss at your stop. Formula and worked examples for EUR/USD, USD/JPY and non-USD accounts.">
 <link rel="canonical" href="https://tools.equaglobal.com/position-size/">
 <link rel="alternate" hreflang="en" href="https://tools.equaglobal.com/position-size/">
 <link rel="alternate" hreflang="ja" href="https://tools.equaglobal.com/sonkiri/">
 <meta property="og:type" content="website">
-<meta property="og:title" content="Forex Position Size &amp; Lot Size Calculator - from your stop-loss">
+<meta property="og:title" content="Forex Position Size Calculator &amp; Lot Size Calculator">
 <meta property="og:description" content="Decide how much you can lose first, then let the stop-loss set your position size. Free, no sign-up, runs in your browser.">
 <meta property="og:url" content="https://tools.equaglobal.com/position-size/">
 <meta property="og:locale" content="en_US">
-<link rel="stylesheet" href="../hiwari/app.css?v=202610210230"><link rel="stylesheet" href="../sonkiri/app.css?v=202610212330"><script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebApplication", "name": "Forex Position Size Calculator", "url": "https://tools.equaglobal.com/position-size/", "description": "Work out the largest forex position from your account balance, risk per trade, entry and stop-loss, with the loss if the stop is hit, margin and reward-to-risk.", "applicationCategory": "FinanceApplication", "operatingSystem": "Any (Web browser)", "inLanguage": "en", "isAccessibleForFree": true, "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"}, "publisher": {"@type": "Organization", "name": "Eternal Philosophy"}}</script>
+<link rel="stylesheet" href="../hiwari/app.css?v=202610210230"><link rel="stylesheet" href="../sonkiri/app.css?v=202610212330"><script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebApplication", "name": "Forex Position Size Calculator (Lot Size)", "url": "https://tools.equaglobal.com/position-size/", "description": "Work out the largest forex position from your account balance, risk per trade, entry and stop-loss, with the loss if the stop is hit, margin and reward-to-risk.", "applicationCategory": "FinanceApplication", "operatingSystem": "Any (Web browser)", "inLanguage": "en", "isAccessibleForFree": true, "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"}, "publisher": {"@type": "Organization", "name": "Eternal Philosophy"}}</script><script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "What is a standard, mini and micro lot?", "acceptedAnswer": {"@type": "Answer", "text": "A standard lot is 100,000 units of the base currency, a mini lot is 10,000 units and a micro lot is 1,000 units. On EUR/USD with a USD account, one pip is worth $10, $1 and $0.10 per lot. Some brokers also offer 100-unit nano lots; choose 100 units as the smallest order size for those."}}, {"@type": "Question", "name": "How do I convert units to lots?", "acceptedAnswer": {"@type": "Answer", "text": "Divide the units by the size of one lot. 40,000 units = 0.4 standard lots = 4 mini lots = 40 micro lots. If your broker counts one lot differently, change \"One lot is\" in the calculator."}}, {"@type": "Question", "name": "How do I calculate lot size for JPY pairs?", "acceptedAnswer": {"@type": "Answer", "text": "Choose \"JPY pairs\" (pip = 0.01) and enter the value of 1 yen in your account currency. For a USD account with USD/JPY at 150, type 1/150. One standard lot is then worth about $6.67 per pip."}}, {"@type": "Question", "name": "My account is in EUR, GBP or another currency. Does it work?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. Enter the value of 1 unit of the quote currency in your account currency, for example 0.75 for EUR/USD with a GBP account when 1 USD = 0.75 GBP. The balance and the risk amount are then in your account currency."}}, {"@type": "Question", "name": "Can I use it for gold (XAU/USD), indices or crypto?", "acceptedAnswer": {"@type": "Answer", "text": "No. This calculator is for currency pairs with a pip of 0.0001 or 0.01. Gold, silver, indices and crypto use contract sizes and tick values that differ from broker to broker, so they are not covered here. Use your broker's contract specification for those."}}, {"@type": "Question", "name": "Should I include the spread?", "acceptedAnswer": {"@type": "Answer", "text": "If you enter the spread, it is added to the stop distance and the position gets a little smaller. You buy at the ask and sell at the bid, so the spread can add to the real loss when the stop is hit."}}, {"@type": "Question", "name": "How much should I risk per trade?", "acceptedAnswer": {"@type": "Answer", "text": "This page does not recommend a percentage. The calculator shows the position that matches the risk you choose, and the loss in money if the stop is hit, so you can see the amount before you trade."}}, {"@type": "Question", "name": "Why can my real loss be larger than the result?", "acceptedAnswer": {"@type": "Answer", "text": "Price gaps over weekends or news, slippage and changes in the conversion rate can make the loss larger than the stop price suggests."}}]}</script>
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-EWJXRJY9M6"></script><script src="../assets/ga.js?v=202610210745"></script>
 </head><body>
 <header><div class="wrap"><a href="../blog/en/">MisaNeco Works free tools</a></div></header>
 <main class="wrap">
-<h1>Forex position size &amp; lot size calculator</h1>
+<h1>Forex position size calculator (lot size calculator)</h1>
 <p>Decide two things before you trade: <b>where your stop-loss goes</b> and <b>the most you are willing to lose</b>. Those two numbers set the largest position you can take. This calculator does the math. Nothing you enter is sent anywhere.</p>
 <p class="note"><b>This tool does not tell you what or when to trade.</b> Where you place your stop is your decision. Leveraged forex trading can lose more than you deposit. Read your broker's risk disclosure before trading.</p>
 <noscript><p class="err">This tool needs JavaScript. Please turn it on in your browser settings.</p></noscript>
@@ -83,13 +83,67 @@
 <p class="mut">Checkmarks are not saved. Use the list before every trade.</p>
 </section>
 
-<section class="card">
-<h2>Example</h2>
-<p>Say your balance is $10,000 and you risk 1% per trade ($100). You buy EUR/USD at 1.0850 with a stop at 1.0825 — a 25-pip stop. With a USD account each pip is worth $0.0001 per unit, so the stop costs $0.0025 per unit. $100 ÷ $0.0025 = <b>40,000 units (0.4 lots)</b>, and the loss if the stop is hit is $100.</p>
-<p>Widen the stop and the same $100 buys a smaller position. The idea is to <b>let the stop and your risk decide the size</b> — not to pick a size first and think about the stop later.</p>
+<section class="card" id="formula">
+<h2>How to calculate forex position size (the formula)</h2>
+<ol>
+<li><b>Risk amount</b> = account balance × risk % ÷ 100. Example: $10,000 × 1% = $100.</li>
+<li><b>Stop distance in pips</b> = (entry − stop-loss) ÷ pip size, as a positive number, plus the spread if you enter one. Pip size is 0.0001 for most pairs and 0.01 for JPY pairs.</li>
+<li><b>Pip value per lot</b> = pip size × units in one lot × value of 1 unit of the quote currency in your account currency. EUR/USD with a USD account: 0.0001 × 100,000 × 1 = $10 per pip for one standard lot.</li>
+<li><b>Lot size</b> = risk amount ÷ (stop distance in pips × pip value per lot). The calculator then rounds down to your smallest order size, so the loss at the stop stays within your limit.</li>
+</ol>
+<p class="mut">Pip value per lot on EUR/USD with a USD account:</p>
+<table class="res"><thead><tr><th scope="col">Lot</th><th scope="col">Units</th><th scope="col">Pip value</th></tr></thead>
+<tbody><tr><th scope="row">Standard</th><td class="num">100,000</td><td class="num">$10.00</td></tr>
+<tr><th scope="row">Mini</th><td class="num">10,000</td><td class="num">$1.00</td></tr>
+<tr><th scope="row">Micro</th><td class="num">1,000</td><td class="num">$0.10</td></tr></tbody></table>
+<h3>JPY pairs</h3>
+<p>For pairs with JPY on the right (USD/JPY, EUR/JPY, GBP/JPY), one pip is 0.01, so one standard lot moves 1,000 yen per pip. To turn that into your account currency, divide by the yen rate: with USD/JPY at 150.00, 1,000 ÷ 150.00 ≈ $6.67 per pip per standard lot. In the calculator, choose <b>JPY pairs</b> and type <b>1/150</b> in the conversion box.</p>
+<h3>When your account currency is not the quote currency</h3>
+<p>Pip value starts out in the quote currency (the right side of the pair). If your account is in another currency, multiply by the value of 1 unit of the quote currency in your account currency:</p>
+<ul>
+<li>EUR/USD, USD account: 1 (leave the box empty).</li>
+<li>EUR/USD, GBP account: the GBP value of 1 USD, e.g. <b>0.75</b>.</li>
+<li>USD/JPY, USD account: 1 ÷ the USD/JPY price, e.g. <b>1/150</b>.</li>
+<li>EUR/GBP, USD account: the USD value of 1 GBP, which is the GBP/USD price, e.g. <b>1.33</b>.</li>
+<li>USD/CHF, USD account: 1 ÷ the USD/CHF price.</li>
+</ul>
+<p>Use the current price for the conversion. It keeps moving while your trade is open, so the money value of the stop can drift a little.</p>
 </section>
+
+<section class="card" id="examples">
+<h2>Worked examples</h2>
+<h3>1. EUR/USD with a USD account</h3>
+<p>Balance $10,000, risk 1% = <b>$100</b>. Buy at 1.0850, stop at 1.0825 → 25 pips. Pip value per standard lot = $10. Lot size = $100 ÷ (25 × $10) = <b>0.4 lots (40,000 units)</b>. Loss if the stop is hit: $100.00.</p>
+<h3>2. USD/JPY with a USD account</h3>
+<p>Balance $5,000, risk 2% = <b>$100</b>. Sell at 150.00, stop at 150.40 → 40 pips (pip = 0.01). Pip value per standard lot = 1,000 yen ÷ 150.00 ≈ $6.67. Lot size = $100 ÷ (40 × $6.67) = 0.375 lots, rounded down to 1,000 units → <b>0.37 lots (37,000 units)</b>. Loss if the stop is hit: $98.67.</p>
+<h3>3. EUR/USD with a GBP account</h3>
+<p>Balance £8,000, risk 1.5% = <b>£120</b>. Buy at 1.1000, stop at 1.0970 → 30 pips. With 1 USD = 0.75 GBP, pip value per standard lot = $10 × 0.75 = £7.50. Lot size = £120 ÷ (30 × £7.50) = 0.533 lots → <b>0.53 lots (53,000 units)</b>. Loss if the stop is hit: £119.25.</p>
+<p class="mut">All three use a smallest order size of 1,000 units and no spread. Enter the same numbers above and you get the same result.</p>
+<p>Widen the stop and the same risk buys a smaller position. The idea is to <b>let the stop and your risk decide the size</b> — not to pick a size first and think about the stop later.</p>
+</section>
+
+<section class="card" id="faq">
+<h2>FAQ</h2>
+<h3>What is a standard, mini and micro lot?</h3>
+<p>A standard lot is 100,000 units of the base currency, a mini lot is 10,000 units and a micro lot is 1,000 units. On EUR/USD with a USD account, one pip is worth $10, $1 and $0.10 per lot. Some brokers also offer 100-unit nano lots; choose 100 units as the smallest order size for those.</p>
+<h3>How do I convert units to lots?</h3>
+<p>Divide the units by the size of one lot. 40,000 units = 0.4 standard lots = 4 mini lots = 40 micro lots. If your broker counts one lot differently, change "One lot is" in the calculator.</p>
+<h3>How do I calculate lot size for JPY pairs?</h3>
+<p>Choose "JPY pairs" (pip = 0.01) and enter the value of 1 yen in your account currency. For a USD account with USD/JPY at 150, type 1/150. One standard lot is then worth about $6.67 per pip.</p>
+<h3>My account is in EUR, GBP or another currency. Does it work?</h3>
+<p>Yes. Enter the value of 1 unit of the quote currency in your account currency, for example 0.75 for EUR/USD with a GBP account when 1 USD = 0.75 GBP. The balance and the risk amount are then in your account currency.</p>
+<h3>Can I use it for gold (XAU/USD), indices or crypto?</h3>
+<p>No. This calculator is for currency pairs with a pip of 0.0001 or 0.01. Gold, silver, indices and crypto use contract sizes and tick values that differ from broker to broker, so they are not covered here. Use your broker's contract specification for those.</p>
+<h3>Should I include the spread?</h3>
+<p>If you enter the spread, it is added to the stop distance and the position gets a little smaller. You buy at the ask and sell at the bid, so the spread can add to the real loss when the stop is hit.</p>
+<h3>How much should I risk per trade?</h3>
+<p>This page does not recommend a percentage. The calculator shows the position that matches the risk you choose, and the loss in money if the stop is hit, so you can see the amount before you trade.</p>
+<h3>Why can my real loss be larger than the result?</h3>
+<p>Price gaps over weekends or news, slippage and changes in the conversion rate can make the loss larger than the stop price suggests.</p>
+</section>
+<p>Read more: <a href="../blog/en-forex-position-size-formula/">How to calculate forex position size from your stop-loss (formula and worked examples)</a></p>
 <p>Also free: <a href="../jobcost/">Profit margin &amp; job cost calculator</a> · <a href="../sonkiri/">日本語版（損切り・ロット計算）</a></p>
-<p class="mut">The calculations are covered by tests. Results are estimates. In fast markets (gaps, slippage) your actual loss can be larger than the stop price suggests.</p>
+<p class="mut">The calculations are covered by tests. Results are estimates and are not financial advice. In fast markets (gaps, slippage) your actual loss can be larger than the stop price suggests.</p>
 </main>
 <footer class="wrap">© MisaNeco Works · Tested before release.<br><small class="ga-note">Page views are counted anonymously with Google Analytics. What you type into this tool is never sent.</small></footer>
 <script src="logic.js?v=202610220520"></script><script src="app.js?v=202610220520"></script>

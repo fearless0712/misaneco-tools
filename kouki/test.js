@@ -162,4 +162,31 @@ eq(/外部に送信しません/.test(html), true, '送信しない明記'); eq(
 eq(/https?:\/\/(?!tools\.equaglobal\.com|schema\.org|www\.googletagmanager\.com|line\.me\/R\/ti\/p\/@736dykzx)/.test(html.replace(/<meta http-equiv="Content-Security-Policy"[^>]*>/, '')), false, '外部URLなし');
 [...js.matchAll(/\$\('([\w-]+)'\)/g)].map(m => m[1]).forEach(id => eq(html.includes('id="' + id + '"'), true, 'id: ' + id));
 [0, 1, 2, 3, 4, 5, 6].forEach(n => eq(html.includes('id="w' + n + '"'), true, 'id: w' + n));
+// ページの計算の例（Pythonでも検算済み）とツールの結果が一致する
+const OBON = '2026-08-13〜2026-08-15 お盆';
+r = E({ start: '2026-08-03', days: '10', company: OBON });
+eq([D(r.end), r.calDays, r.off], ['2026-08-19', 17, { week: 4, holiday: 1, company: 2 }], '例2 お盆');
+eq(D(E({ start: '2026-08-04', days: '10', company: OBON }).end), '2026-08-20', '例2 初日不算入（翌日から）');
+r = E({ start: '2026-12-25', days: '5', company: NENMATSU });
+eq([K.fmt(r.end), r.calDays], ['2027年1月6日（水）', 13], '例3 年末年始');
+r = N({ start: '2026-11-02', end: '2026-11-30' });
+eq([r.workDays, r.calDays, r.off.week, r.off.holiday], [19, 29, 8, 2], '例4 逆算');
+const pageText = html.replace(/<[^>]+>/g, '');
+['14日（水）が終了予定日', '暦日では6日', '8月19日（水）が終了予定日', '暦日では17日', '8月20日（木）', '2027年1月6日（水）が終了予定日', '暦日では13日', '稼働日数は19日', '暦日29日', '土日8日と祝日2日']
+  .forEach(t => eq(pageText.includes(t), true, 'ページの例 ' + t));
+// 検索：title・description
+const title = /<title>([^<]*)<\/title>/.exec(html)[1], desc = /<meta name="description" content="([^"]*)"/.exec(html)[1];
+eq([/^工期計算ツール/.test(title), /工期の日数計算/.test(title)], [true, true], 'title');
+eq([/工期の日数計算/.test(desc), /工期計算ツール/.test(desc), /年末年始/.test(desc), /お盆/.test(desc)], [true, true, true, true], 'description');
+// FAQPage がページのよくある質問と一致する
+const lds = [...html.matchAll(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/g)].map(m => JSON.parse(m[1]));
+const faq = lds.find(x => x['@type'] === 'FAQPage');
+const vis = [.../<section[^>]*id="faq"[^>]*>([\s\S]*?)<\/section>/.exec(html)[1].matchAll(/<h3>([\s\S]*?)<\/h3>\s*<p>([\s\S]*?)<\/p>/g)]
+  .map(m => [m[1], m[2]].map(t => t.replace(/<[^>]+>/g, '').replace(/&amp;/g, '&').trim()));
+eq(!!faq && faq.mainEntity.length >= 6, true, 'FAQPage');
+eq(faq.mainEntity.map(q => [q.name, q.acceptedAnswer.text]), vis, 'FAQPage と表示が一致');
+eq(lds.some(x => x['@type'] === 'WebApplication'), true, 'WebApplicationを残す');
+eq(/契約書の定めに従ってください/.test(html) && /初日を数えない/.test(html), true, '初日算入と民法は契約書の定めに従う');
+eq(/\bAI\b/.test(html.replace(/<script[\s\S]*?<\/script>/g, '')), false, 'AIの語がない');
+eq(fs.existsSync(path.join(__dirname, '..', 'blog', 'excel-kouki-kadoubi-workday', 'index.html')), true, 'リンク先がある Excel記事');
 console.log(p + ' passed, ' + f + ' failed'); process.exit(f ? 1 : 0);

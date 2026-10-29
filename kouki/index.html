@@ -1,22 +1,22 @@
 <!doctype html><html lang="ja"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self' https://www.googletagmanager.com; style-src 'self'; img-src 'self' data: https://*.a8.net https://*.google-analytics.com https://*.googletagmanager.com; connect-src https://*.google-analytics.com https://*.analytics.google.com https://*.googletagmanager.com; base-uri 'none'; form-action 'none'; object-src 'none'">
-<title>工期（稼働日）計算ツール｜開始日と稼働日数から終了予定日を出す（土日・祝日・会社の休みに対応／無料）</title>
-<meta name="description" content="工事の開始日と稼働日数から終了予定日を、開始日と終了日から稼働日数を計算する無料ツール。休みの曜日（土日・日曜のみ・任意）、国民の祝日（2026年・2027年）、お盆・年末年始など会社の休みに対応。期間をカレンダーで確認できます。入力は外部に送信しません。">
+<title>工期計算ツール｜工期の日数計算と終了予定日（土日・祝日・年末年始を除く稼働日／無料）</title>
+<meta name="description" content="工期の日数計算ができる無料の工期計算ツール。着工日と稼働日数から終了予定日を、着工日と終了日から稼働日数・暦日数を計算します。土日・祝日（2026年・2027年）・お盆・年末年始を除いて数え、カレンダーで確認できます。入力は外部に送信しません。">
 <link rel="canonical" href="https://tools.equaglobal.com/kouki/">
 <link rel="alternate" hreflang="ja" href="https://tools.equaglobal.com/kouki/">
 <link rel="alternate" hreflang="en" href="https://tools.equaglobal.com/workdays/">
 <meta property="og:type" content="website">
-<meta property="og:title" content="工期（稼働日）計算ツール｜土日・祝日・会社の休みを除いて終了予定日を出す">
+<meta property="og:title" content="工期計算ツール｜土日・祝日・年末年始を除いて工期の日数と終了予定日を計算">
 <meta property="og:description" content="開始日と稼働日数から終了予定日を、開始日と終了日から稼働日数を計算する無料ツール。塗装・水道・土木・電気などの段取りに。入力は外部に送信しません。">
 <meta property="og:url" content="https://tools.equaglobal.com/kouki/">
 <meta property="og:locale" content="ja_JP">
-<link rel="stylesheet" href="../hiwari/app.css?v=202610210230"><link rel="stylesheet" href="app.css?v=202610221330"><link rel="stylesheet" href="../assets/ads-inter.css?v=202610210009"><script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebApplication", "name": "工期（稼働日）計算ツール", "url": "https://tools.equaglobal.com/kouki/", "description": "開始日と稼働日数から終了予定日を、開始日と終了日から稼働日数を計算する無料ツール。休みの曜日・国民の祝日（2026年・2027年）・会社の休みに対応。", "applicationCategory": "BusinessApplication", "operatingSystem": "Any (Web browser)", "inLanguage": "ja", "isAccessibleForFree": true, "offers": {"@type": "Offer", "price": "0", "priceCurrency": "JPY"}, "publisher": {"@type": "Organization", "name": "Eternal Philosophy"}}</script>
+<link rel="stylesheet" href="../hiwari/app.css?v=202610210230"><link rel="stylesheet" href="app.css?v=202610221330"><link rel="stylesheet" href="../assets/ads-inter.css?v=202610210009"><script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebApplication", "name": "工期計算ツール（稼働日・暦日の日数計算）", "url": "https://tools.equaglobal.com/kouki/", "description": "開始日と稼働日数から終了予定日を、開始日と終了日から稼働日数を計算する無料ツール。休みの曜日・国民の祝日（2026年・2027年）・会社の休みに対応。", "applicationCategory": "BusinessApplication", "operatingSystem": "Any (Web browser)", "inLanguage": "ja", "isAccessibleForFree": true, "offers": {"@type": "Offer", "price": "0", "priceCurrency": "JPY"}, "publisher": {"@type": "Organization", "name": "Eternal Philosophy"}}</script><script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "工期は暦日と稼働日のどちらで数えますか？", "acceptedAnswer": {"@type": "Answer", "text": "契約書や工程表によって違います。どちらで数えるかは、契約書・発注者の定めに従ってください。このツールは暦日数と稼働日数の両方を出すので、どちらの場合にも使えます。"}}, {"@type": "Question", "name": "着工日は1日目に入りますか？", "acceptedAnswer": {"@type": "Answer", "text": "このツールでは、開始日を1日目として数えます。開始日が休みの日なら、次の稼働日を1日目にします。翌日から数えたいときは、開始日に翌日の日付を入れてください。"}}, {"@type": "Question", "name": "雨で休んだ日（雨天順延）はどう入れますか？", "acceptedAnswer": {"@type": "Answer", "text": "天気は自動では入りません。休みになった日を「会社の休み」の欄に1行ずつ足すと、その日を飛ばして終了予定日を出し直します。"}}, {"@type": "Question", "name": "年末年始やお盆は休みになりますか？", "acceptedAnswer": {"@type": "Answer", "text": "会社や現場ごとに休む日が違うため、自動では入りません。「会社の休み」の欄に期間で入れてください（例：2026-12-29〜2027-01-03 年末年始）。"}}, {"@type": "Question", "name": "土曜も稼働する場合は？", "acceptedAnswer": {"@type": "Answer", "text": "「休みの曜日」を「日曜のみ」にしてください。第2・第4土曜だけ休みのように日付で決まる休みは、「会社の休み」の欄に日付を入れます。"}}, {"@type": "Question", "name": "2028年以降の祝日は入っていますか？", "acceptedAnswer": {"@type": "Answer", "text": "自動で休みになるのは2026年・2027年の祝日です。2028年以降にかかる工期は、祝日の日付を「会社の休み」の欄に入れてください。期間が2028年以降に入ると、画面に注意が出ます。"}}, {"@type": "Question", "name": "Excelで同じ計算をするには？", "acceptedAnswer": {"@type": "Answer", "text": "WORKDAY.INTL関数とNETWORKDAYS.INTL関数で計算できます。開始日を1日目にする式は、Excelで工期（稼働日）を数えるの記事にまとめています。"}}]}</script>
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-EWJXRJY9M6"></script><script src="../assets/ga.js?v=202610210745"></script>
 </head><body>
 <header><div class="wrap"><a href="../">MisaNeco Works 無料ツール</a></div></header>
 <main class="wrap">
-<h1>工期（稼働日）計算ツール</h1>
-<p>塗装・水道・土木・電気などの工事で、<b>「何日かかる仕事が、いつ終わるか」</b>を、休みを除いて数えます。開始日と稼働日数から終了予定日を出すほか、開始日と終了日から稼働日数を出すこともできます。職人さんの段取りや、お客さんへの日程の説明の下準備にどうぞ。入力は外部に送信しません。</p>
+<h1>工期計算ツール（稼働日・暦日の日数計算）</h1>
+<p>塗装・水道・土木・電気などの工事で、<b>「何日かかる仕事が、いつ終わるか」</b>を、休みを除いて数えます。開始日（着工日）と稼働日数から終了予定日を出すほか、開始日と終了日から工期の日数（稼働日数・暦日数）を出すこともできます。職人さんの段取りや、お客さんへの日程の説明の下準備にどうぞ。入力は外部に送信しません。</p>
 <p class="note"><b>契約の工期の決め方や雨天順延などは、契約・発注者との取り決めに従ってください。</b>このツールは、選んだ休みを除いて日数を数えるだけです。天気・材料の入荷・検査の日程は入っていません。</p>
 <p class="pr mut">このページには広告（アフィリエイトリンク）を含みます。広告を見なくても、すべての機能を使えます。</p>
 <noscript><p class="err">このツールはJavaScriptを使います。ブラウザの設定でJavaScriptをオンにしてください。</p></noscript>
@@ -65,10 +65,64 @@
 <div id="cal"></div>
 </section>
 
-<section class="card">
-<h2>使い方の例</h2>
-<p>たとえば2026年10月9日（金）に始める3日の仕事で、土日と祝日が休みの場合。10月9日が1日目、10日（土）・11日（日）・12日（月・スポーツの日）は休みなので、13日（火）が2日目、<b>14日（水）が終了予定日</b>です。暦の上では6日間になります。</p>
-<p>年末年始やお盆をまたぐときは、「会社の休み」に期間を入れておくと、その日を飛ばして数えます。取引先の休みに合わせたいときも同じです。</p>
+<section class="card" id="kazoekata">
+<h2>工期の数え方：暦日と稼働日（営業日）の違い</h2>
+<p><b>暦日</b>は、カレンダーどおりに数えた日数です。土日・祝日・休みの日も1日として数えます。<b>稼働日</b>（営業日）は、実際に作業をする日だけを数えた日数です。</p>
+<table class="res"><tbody>
+<tr><th scope="row">期間</th><td>2026年10月9日（金）〜10月14日（水）</td></tr>
+<tr><th scope="row">暦日</th><td>6日</td></tr>
+<tr><th scope="row">稼働日（土日・祝日休み）</th><td>3日（10日・11日の土日と12日のスポーツの日を除く）</td></tr>
+</tbody></table>
+<p>契約書や工程表の「工期○日」を暦日で数えるか稼働日で数えるかは、書類によって違います。どちらで数えるかは、契約書・発注者の定めに従ってください。このツールは、結果に暦日数と稼働日数の両方を出します。</p>
+</section>
+
+<section class="card" id="yasumi">
+<h2>土日・祝日・年末年始・お盆の扱い</h2>
+<ul>
+<li><b>土日</b>：「休みの曜日」で、土日・日曜のみ・なし・曜日を選ぶ、から選べます。土曜も稼働する現場は「日曜のみ」にします。</li>
+<li><b>祝日</b>：国民の祝日（振替休日・国民の休日を含む）を、内閣府の発表どおり2026年・2027年分入れてあります。祝日も稼働するなら、チェックを外します。</li>
+<li><b>年末年始・お盆</b>：休む日は会社や現場ごとに違うため、自動では入りません。「会社の休み」の欄に「2026-12-29〜2027-01-03 年末年始」「2026-08-13〜2026-08-15 お盆」のように入れてください。</li>
+<li><b>重なる日</b>：日曜の祝日や、土曜にかかるお盆休みは、1日の休みとして1回だけ数えます。</li>
+</ul>
+</section>
+
+<section class="card" id="shonichi">
+<h2>着工日を1日目と数えるか（初日算入・初日不算入）</h2>
+<p>このツールは、<b>開始日（着工日）を1日目として数えます</b>（初日算入）。たとえば月曜に着工する5日の仕事なら、祝日がなければ金曜が終了予定日です。開始日が休みの日なら、次の稼働日を1日目にします。</p>
+<p>着工日の翌日から数えたいとき（初日不算入）は、開始日に翌日の日付を入れてください。</p>
+<p>法律上の期間の数え方（民法の期間の計算）には、原則として初日を数えない決まりがあります。工期をどちらの数え方にするかは、契約書の定めに従ってください。</p>
+<p>暦日数は「終了日 − 開始日 + 1」（開始日と終了日の両方を含む）で出しています。</p>
+</section>
+
+<section class="card" id="rei">
+<h2>計算の例</h2>
+<h3>例1：連休をはさむ（終了予定日を出す）</h3>
+<p>2026年10月9日（金）に始める3日の仕事で、土日と祝日が休みの場合。10月9日が1日目、10日（土）・11日（日）・12日（月・スポーツの日）は休みなので、13日（火）が2日目、<b>14日（水）が終了予定日</b>です。暦日では6日になります。</p>
+<h3>例2：お盆休みをはさむ／初日を数えない場合</h3>
+<p>2026年8月3日（月）に着工、稼働10日、土日・祝日休み、会社の休みに「2026-08-13〜2026-08-15 お盆」。8月11日（火・山の日）、13日・14日のお盆、土日を飛ばして、<b>8月19日（水）が終了予定日</b>です。暦日では17日になります。着工日を数えず8月4日から数えると、終了予定日は<b>8月20日（木）</b>です。</p>
+<h3>例3：年末年始をまたぐ</h3>
+<p>2026年12月25日（金）に着工、稼働5日、会社の休みに「2026-12-29〜2027-01-03 年末年始」。12月25日・28日が1〜2日目、29日〜1月3日は休み（1月1日は元日）、1月4日〜6日が3〜5日目で、<b>2027年1月6日（水）が終了予定日</b>です。暦日では13日になります。</p>
+<h3>例4：工期の日数を逆算する</h3>
+<p>「計算のしかた」を「開始日と終了日 → 稼働日数を出す」にして、2026年11月2日（月）〜11月30日（月）を入れると、暦日29日のうち土日8日と祝日2日（文化の日・勤労感謝の日）を除いて、<b>稼働日数は19日</b>です。</p>
+<p>年末年始やお盆、取引先の休みに合わせたいときは、「会社の休み」に期間を入れておくと、その日を飛ばして数えます。</p>
+</section>
+
+<section class="card" id="faq">
+<h2>よくある質問</h2>
+<h3>工期は暦日と稼働日のどちらで数えますか？</h3>
+<p>契約書や工程表によって違います。どちらで数えるかは、契約書・発注者の定めに従ってください。このツールは暦日数と稼働日数の両方を出すので、どちらの場合にも使えます。</p>
+<h3>着工日は1日目に入りますか？</h3>
+<p>このツールでは、開始日を1日目として数えます。開始日が休みの日なら、次の稼働日を1日目にします。翌日から数えたいときは、開始日に翌日の日付を入れてください。</p>
+<h3>雨で休んだ日（雨天順延）はどう入れますか？</h3>
+<p>天気は自動では入りません。休みになった日を「会社の休み」の欄に1行ずつ足すと、その日を飛ばして終了予定日を出し直します。</p>
+<h3>年末年始やお盆は休みになりますか？</h3>
+<p>会社や現場ごとに休む日が違うため、自動では入りません。「会社の休み」の欄に期間で入れてください（例：2026-12-29〜2027-01-03 年末年始）。</p>
+<h3>土曜も稼働する場合は？</h3>
+<p>「休みの曜日」を「日曜のみ」にしてください。第2・第4土曜だけ休みのように日付で決まる休みは、「会社の休み」の欄に日付を入れます。</p>
+<h3>2028年以降の祝日は入っていますか？</h3>
+<p>自動で休みになるのは2026年・2027年の祝日です。2028年以降にかかる工期は、祝日の日付を「会社の休み」の欄に入れてください。期間が2028年以降に入ると、画面に注意が出ます。</p>
+<h3>Excelで同じ計算をするには？</h3>
+<p>WORKDAY.INTL関数とNETWORKDAYS.INTL関数で計算できます。開始日を1日目にする式は、<a href="../blog/excel-kouki-kadoubi-workday/">Excelで工期（稼働日）を数える</a>の記事にまとめています。</p>
 </section>
 <p>あわせて読む：<a href="../blog/tosou-menseki-kansu-keisan/">外壁塗装の塗装面積と塗料の缶数の出し方</a> ・ <a href="../blog/kensetsu-jimu-jidouka-iriguchi/">工務店・設備屋・大工の事務を楽にする入り口</a></p>
 <p>関連する無料ツール：<a href="../hiwari/">日割り計算ツール</a> ・ <a href="../riekiritsu/">利益率・上乗せ率 計算ツール</a> ・ <a href="../hozon/">帳簿・領収書の保存期間チェッカー</a> ・ <a href="../workdays/" hreflang="en" lang="en">English: Working days calculator</a></p>
