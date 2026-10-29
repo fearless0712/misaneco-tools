@@ -20,7 +20,8 @@ eq(sm.includes('<loc>https://tools.equaglobal.com/studio/kensetsu/free/</loc>'),
 // 文言
 eq(/AI/.test(html.replace(/<[^>]+>/g, '')), false, 'AIの文言がない');
 for (const w of ['今だけ', '限定', '残りわずか', '最安', '最強', '完璧', '誰でも簡単', '絶対']) eq(html.includes(w), false, '誇大・売り込み言葉なし：' + w);
-eq(/動作を確認したのは Mac の Google Chrome だけです/.test(html) && /Windows・Edge・Safari では確認していません/.test(html), true, '動作環境を正直に');
+eq(/推奨環境：パソコンの Google Chrome/.test(html), true, '推奨環境を書く');
+eq(/確認していません|未確認|確かめていません|確認したのは/.test(html), false, '確認していないことを書かない');
 eq(/インターネットへの送信はしません/.test(html), true, 'データは外部送信なしと明記');
 eq(/架空/.test(html), true, '画面は架空の見本と明記');
 eq(/Eternal Philosophy（EQUA）/.test(html) && /MisaNeco Works/.test(html), true, '運営表記');
@@ -31,7 +32,7 @@ eq(/¥\d/.test(html.replace(/data-price="9800">¥9,800/, '')), false, 'ほかに
 
 // ダウンロード：同じサイトの zip に直接リンク、UTF-8名のzip、中身は約0.9MB
 const dl = html.match(/<a class="dl" id="download" href="([^"]+)" download="([^"]+)">/);
-eq(dl && dl[2], '建設スタジオ_無料版_v1.0.zip', 'ダウンロードボタン');
+eq(dl && dl[2], '建設スタジオ_無料版_v1.0.1.zip', 'ダウンロードボタン');
 const zp = dl && path.join(__dirname, dl[1]);
 eq(!!zp && fs.existsSync(zp), true, 'zip がある');
 if (zp && fs.existsSync(zp)) {

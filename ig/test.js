@@ -37,7 +37,8 @@ eq(/リールで見た画面は、ここから/.test(html), true, '一言の見�
 for (const w of ['おすすめ', '今だけ', '限定', '残りわずか', '最安']) eq(html.includes(w), false, '売り込み言葉なし：' + w);
 eq(/AIを活用|AIで作/.test(html), false, 'AIの文言がない');
 eq(/Eternal Philosophy（EQUA）/.test(html), true, '運営表記');
-eq(/Macで動作を確認。Windowsは未確認/.test(html), true, '動作環境を正直に');
+eq(/推奨環境：パソコンの Google Chrome/.test(html), true, '推奨環境を書く');
+eq(/確認していません|未確認|確かめていません|確認したのは/.test(html), false, '確認していないことを書かない');
 const sm = fs.readFileSync(path.join(ROOT, 'sitemap.xml'), 'utf8');
 eq(sm.includes('/ig/'), false, 'サイトマップに載せない');
 
