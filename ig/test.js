@@ -19,6 +19,7 @@ const APPS = [
   { slug: 'kensetsu', id: 9042496, price: 9800, name: '建設スタジオ' },
   { slug: 'kuruma', id: 9042525, price: 7800, name: '車屋・バイク屋スタジオ' },
   { slug: 'keiri', id: 9042539, price: 6800, name: '経理・事務スタジオ' },
+  { slug: 'fudosan', id: 9061394, price: 9800, name: '不動産スタジオ' },
 ];
 const SETS = [
   { slug: 'kensetsu', id: 9025293, price: 6980 },
@@ -42,7 +43,7 @@ eq(/確認していません|未確認|確かめていません|確認したの�
 const sm = fs.readFileSync(path.join(ROOT, 'sitemap.xml'), 'utf8');
 eq(sm.includes('/ig/'), false, 'サイトマップに載せない');
 
-// ---- アプリ版3枚 ----
+// ---- アプリ版4枚 ----
 for (const a of APPS) {
   const url = 'https://excel-temple.booth.pm/items/' + a.id;
   const i = html.indexOf(url);
@@ -72,7 +73,9 @@ for (const s of SETS) {
 const hrefs = [...html.matchAll(/(?:href|src)="([^"]+)"/g)].map(m => m[1]).filter(h => !/googletagmanager\.com/.test(h)).map(h => h.replace(/\?.*$/, ''));
 let ext = 0;
 for (const h of hrefs) {
-  if (/^https?:/.test(h)) {
+  if (h.startsWith('#')) {
+    eq(html.includes('id="' + h.slice(1) + '"'), true, 'ページ内の飛び先が存在：' + h);
+  } else if (/^https?:/.test(h)) {
     ext++;
     const host = new URL(h).hostname;
     eq(/(^|\.)booth\.pm$/.test(host) || /(^|\.)equaglobal\.com$/.test(host), true, '外部URLは booth.pm / equaglobal.com だけ：' + h);
@@ -82,7 +85,10 @@ for (const h of hrefs) {
     eq(fs.existsSync(f), true, 'リンク先が存在：' + h);
   }
 }
-eq(ext, 3, '外部リンクの数（BOOTH3。相談の欄は10/25に外した）');
+eq(ext, 4, '外部リンクの数（BOOTH4＝スタジオ4種。相談の欄は10/25に外した）');
+// 業種ごとの飛び先（見本・無料版のページから /ig/#slug で来る）
+for (const a of APPS) eq(html.includes('<section class="card" id="' + a.slug + '"') && html.includes('href="#' + a.slug + '"'), true, a.name + ' カードのidと上の業種リンク');
+for (const a of APPS) { const m = html.match(new RegExp('<a href="#' + a.slug + '">[^<]*<small>([^<]*)</small>')); eq(m && m[1].startsWith(yen(a.price)), true, a.name + ' 上の業種リンクの価格'); }
 
 async function live() {
   const ids = [...APPS.map(a => [a.id, a.price, a.name]), ...SETS.map(s => [s.id, s.price, s.slug + 'セット'])];

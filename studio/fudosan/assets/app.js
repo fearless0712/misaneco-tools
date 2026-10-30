@@ -8,6 +8,7 @@
   var K = window.FL, DATA = window.FDATA;
   var Q = new URLSearchParams(location.search);
   var DEMO = Q.get('demo') === '1', CAPTURE = Q.get('capture') === '1';
+  if (DEMO || CAPTURE) document.documentElement.classList.add('is-demo');
   var KEY = 'fudosan-studio-v1';
   var TODAY = K.D(Q.get('today')) || K.todayN();
   var MK = K.ym(TODAY);
