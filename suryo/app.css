@@ -1,0 +1,19 @@
+.tabs{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:6px;margin:16px 0 0}
+.tabs button{min-height:44px;padding:6px 4px;border:2px solid var(--navy);border-radius:10px;background:var(--card);color:var(--navy);font:inherit;font-size:15px;font-weight:700;cursor:pointer}
+.tabs button[aria-selected="true"]{background:var(--navy);color:#fff}
+.tabs button:focus-visible{outline:3px solid var(--focus);outline-offset:2px}
+@media (max-width:560px){.tabs{grid-template-columns:repeat(4,minmax(0,1fr))}}
+.formula{font-weight:700;background:var(--hi);border:1px solid var(--line);border-radius:8px;padding:8px 12px;font-size:15px;margin:8px 0}
+.row .f{min-width:0}
+.radio{border:0;padding:0;margin:12px 0 0;min-width:0}.radio legend{font-size:15px;font-weight:600;color:var(--fg);padding:0}
+.radio label{display:flex;gap:8px;align-items:center;min-height:44px;margin:0;font-weight:500}
+.radio input{width:22px;min-height:22px;height:22px;flex:none;margin:0;padding:0}
+.out-box{border-top:2px solid var(--line);margin-top:12px;padding-top:8px}
+.steps{padding-left:22px;font-size:15px;margin:8px 0}.steps li{margin:3px 0}
+.xl code{display:block;font:15px/1.5 ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;background:var(--bg);border:1px solid var(--line);border-radius:8px;padding:8px 10px;overflow-wrap:anywhere;word-break:break-all;flex:1 1 100%;min-width:0}
+.xlrow{display:flex;flex-wrap:wrap;gap:6px 10px;align-items:center;margin:6px 0 10px}
+.cond{font-size:15px;margin:12px 0 4px}
+.next{border:2px solid var(--navy);border-radius:10px;padding:10px 12px;margin-top:14px}.next p{margin:0 0 4px;font-size:15px}
+.next .btn{text-decoration:none}
+#kotsu code{font-size:14px;overflow-wrap:anywhere}
+[hidden]{display:none!important}

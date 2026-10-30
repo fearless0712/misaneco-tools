@@ -1,0 +1,177 @@
+<!doctype html><html lang="ja"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self' https://www.googletagmanager.com; style-src 'self'; img-src 'self' data: https://*.a8.net https://*.google-analytics.com https://*.googletagmanager.com; connect-src https://*.google-analytics.com https://*.analytics.google.com https://*.googletagmanager.com; base-uri 'none'; form-action 'none'; object-src 'none'">
+<title>建設の数量計算ツール｜塗料の缶数・配管の本数・残土のダンプ台数・クロス・タイル・生コン・足場（Excelの式つき／無料）</title>
+<meta name="description" content="建設の数量計算を1ページで。塗料の缶数、配管の必要本数、残土のダンプ台数、壁紙（クロス）のm数、床タイルの枚数とケース数、土間コンクリートの生コン量、外壁の足場の面積を、切り上げまで計算します。計算の途中とExcelの式（ROUNDUP・CEILING）もコピーできます。入力は外部に送信しません。">
+<link rel="canonical" href="https://tools.equaglobal.com/suryo/">
+<meta property="og:type" content="website">
+<meta property="og:title" content="建設の数量計算（塗料・配管・残土・クロス・タイル・生コン・足場）｜Excelの式つき">
+<meta property="og:description" content="塗料の缶数・配管の本数・残土のダンプ台数・クロスのm数・タイルの枚数・生コン量・足場の面積を、切り上げと計算の途中、Excelの式つきで出す無料ツール。入力は外部に送信しません。">
+<meta property="og:url" content="https://tools.equaglobal.com/suryo/">
+<meta property="og:locale" content="ja_JP">
+<link rel="stylesheet" href="../hiwari/app.css?v=202610210230"><link rel="stylesheet" href="app.css?v=202610311200"><link rel="stylesheet" href="../assets/ads-inter.css?v=202610210009"><script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebApplication", "name": "建設の数量計算（塗料・配管・残土・クロス・タイル・生コン・足場）", "url": "https://tools.equaglobal.com/suryo/", "description": "塗料の缶数・配管の必要本数・残土のダンプ台数・クロスのm数・タイルの枚数・生コン量・足場の面積を、切り上げまで計算し、Excelの式も出す無料ツール。", "applicationCategory": "BusinessApplication", "operatingSystem": "Any (Web browser)", "inLanguage": "ja", "isAccessibleForFree": true, "offers": {"@type": "Offer", "price": "0", "priceCurrency": "JPY"}, "publisher": {"@type": "Organization", "name": "Eternal Philosophy"}}</script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-EWJXRJY9M6"></script><script src="../assets/ga.js?v=202610210745"></script>
+</head><body>
+<header><div class="wrap"><a href="../">MisaNeco Works 無料ツール</a></div></header>
+<main class="wrap">
+<h1>建設の数量計算（塗料・配管・残土・クロス・タイル・生コン・足場）</h1>
+<p>現場の数量を、<b>Excelなら1行の式</b>で出す計算を7つまとめました。数字を入れると、答え（切り上げ済み）・計算の途中・そのまま貼れるExcelの式が出ます。最初は計算の例の数字が入っています。入力は外部に送信しません。</p>
+<p class="note"><b>ロス率・ほぐし率・塗布量・1台に積める量などは、自社の実績や仕様書・メーカー・プラントの値を入れてください。</b>最初に入っている数字は計算の例です。</p>
+<p class="pr mut">このページには広告（アフィリエイトリンク）を含みます。広告を見なくても、すべての機能を使えます。</p>
+<noscript><p class="err">計算にはJavaScriptを使います。ブラウザの設定でJavaScriptをオンにしてください。</p></noscript>
+
+<div class="tabs" role="tablist" aria-label="計算する数量" id="tabs" hidden>
+<button type="button" role="tab" id="t-toryo" aria-controls="toryo">塗料</button>
+<button type="button" role="tab" id="t-haikan" aria-controls="haikan">配管</button>
+<button type="button" role="tab" id="t-zando" aria-controls="zando">残土</button>
+<button type="button" role="tab" id="t-cross" aria-controls="cross">クロス</button>
+<button type="button" role="tab" id="t-tile" aria-controls="tile">タイル</button>
+<button type="button" role="tab" id="t-namacon" aria-controls="namacon">生コン</button>
+<button type="button" role="tab" id="t-ashiba" aria-controls="ashiba">足場</button>
+</div>
+
+<section class="card calc" id="toryo" role="tabpanel" aria-labelledby="h-toryo" data-calc="toryo">
+<h2 id="h-toryo">塗料の缶数</h2>
+<p class="formula">=ROUNDUP(面積×塗布量×回数×(1＋ロス率)÷1缶の量, 0)</p>
+<div class="row">
+<div class="f"><label for="toryo-area">塗る面積（㎡）</label><input id="toryo-area" data-k="area" type="text" inputmode="decimal" autocomplete="off" value="120"></div>
+<div class="f"><label for="toryo-rate">塗布量（kg/㎡/回）</label><input id="toryo-rate" data-k="rate" type="text" inputmode="decimal" autocomplete="off" value="0.15"></div>
+<div class="f"><label for="toryo-coats">同じ塗料で塗る回数</label><input id="toryo-coats" data-k="coats" type="text" inputmode="numeric" autocomplete="off" value="2"></div>
+<div class="f"><label for="toryo-loss">ロス率（％）</label><input id="toryo-loss" data-k="loss" type="text" inputmode="decimal" autocomplete="off" value="0"></div>
+<div class="f"><label for="toryo-can">1缶の量（kg）</label><input id="toryo-can" data-k="can" type="text" inputmode="decimal" autocomplete="off" value="16"></div>
+</div>
+<p class="mut hint">塗布量は仕様書の値で。はけ・ローラー・吹き付けで値が分かれている製品は、その塗り方の値を入れます。ロス率は塗り方の補正の欄です（吹き付けは飛び散る分だけ大きくなりやすい）。仕様書の値が「使用量・所要量」でロス込みなら0％にします。</p>
+<div class="btns"><button type="button" class="btn small ghost" data-ex='{"area":"120","rate":"0.15","coats":"2","loss":"0","can":"16"}'>例1：120㎡・2回</button><button type="button" class="btn small ghost" data-ex='{"area":"197.96","rate":"0.15","coats":"2","loss":"10","can":"16"}'>例2：中塗り＋上塗り・ロス10％</button></div>
+<div class="out-box" aria-live="polite"><div class="big" id="toryo-big">―</div><div class="mut" id="toryo-sub"></div><p class="err" id="toryo-err" role="status"></p><ol class="steps" id="toryo-steps"></ol><div class="xl" id="toryo-xl"></div></div>
+<p class="cond"><b>条件：</b>中塗りと上塗りのように同じ塗料の工程だけ、合計してから1回で切り上げます（工程ごとに切り上げると端数が1缶ずつに化けます）。下塗りや色を変える中塗りは別の塗料として別に計算してください。</p>
+<div class="next"><p><b>この数量をそのまま見積に</b><br>出た缶数は、見積書の明細にそのまま入れられます。</p><div class="btns"><a class="btn small" href="../studio/kensetsu/free/">見積書と工程表の無料版</a><a class="btn small ghost" href="../studio/kensetsu/">見積→工程→請求の見本を触る</a></div></div>
+</section>
+
+<section class="card calc" id="haikan" role="tabpanel" aria-labelledby="h-haikan" data-calc="haikan">
+<h2 id="h-haikan">配管の必要本数</h2>
+<p class="formula">=ROUNDUP(総延長×(1＋余裕)÷1本の長さ, 0)</p>
+<div class="row">
+<div class="f"><label for="haikan-len">測った長さの合計（m）</label><input id="haikan-len" data-k="len" type="text" inputmode="decimal" autocomplete="off" value="23.5"></div>
+<div class="f"><label for="haikan-stock">1本の長さ・定尺（m）</label><input id="haikan-stock" data-k="stock" type="text" inputmode="decimal" autocomplete="off" value="4"></div>
+<div class="f"><label for="haikan-sec">区間の数（継手と継手のあいだ）</label><input id="haikan-sec" data-k="sec" type="text" inputmode="numeric" autocomplete="off" value="0"></div>
+<div class="f"><label for="haikan-sock">受口に差し込む長さ（mm・片側）</label><input id="haikan-sock" data-k="sock" type="text" inputmode="decimal" autocomplete="off" value="35"></div>
+<div class="f"><label for="haikan-cut">切り代（mm・1区間）</label><input id="haikan-cut" data-k="cut" type="text" inputmode="decimal" autocomplete="off" value="3"></div>
+<div class="f"><label for="haikan-margin">余裕（％）</label><input id="haikan-margin" data-k="margin" type="text" inputmode="decimal" autocomplete="off" value="0"></div>
+</div>
+<p class="mut hint">「見えている長さ」を測ったときは、区間の数を入れると、両端の差し込み分と切り代を総延長に足します。もう足してある合計なら、区間の数は0のままにします。余裕は、割ったあとに1本足すのではなく、割る前の総延長に入れます。</p>
+<div class="btns"><button type="button" class="btn small ghost" data-ex='{"len":"23.5","stock":"4","sec":"0","sock":"35","cut":"3","margin":"0"}'>例1：23.5m・定尺4m</button><button type="button" class="btn small ghost" data-ex='{"len":"22","stock":"4","sec":"10","sock":"35","cut":"3","margin":"10"}'>例2：10区間・余裕10％</button></div>
+<div class="out-box" aria-live="polite"><div class="big" id="haikan-big">―</div><div class="mut" id="haikan-sub"></div><p class="err" id="haikan-err" role="status"></p><ol class="steps" id="haikan-steps"></ol><div class="xl" id="haikan-xl"></div></div>
+<p class="cond"><b>条件：</b>受口の長さ・切り代・余裕は例です。使う継手の寸法表と自社の実績の値を入れてください。総延長で割った本数は「最低でもこれだけ」の数で、長い部材が多いときは切り出しの組み合わせで足りるか確かめます。</p>
+<div class="next"><p><b>この数量をそのまま見積に</b><br>出た本数は、見積書の明細にそのまま入れられます。</p><div class="btns"><a class="btn small" href="../studio/kensetsu/free/">見積書と工程表の無料版</a><a class="btn small ghost" href="../studio/kensetsu/">見積→工程→請求の見本を触る</a></div></div>
+</section>
+
+<section class="card calc" id="zando" role="tabpanel" aria-labelledby="h-zando" data-calc="zando">
+<h2 id="h-zando">残土を運ぶダンプの台数</h2>
+<p class="formula">=ROUNDUP(掘削量×ほぐし率÷1台に積める量, 0)</p>
+<div class="row">
+<div class="f"><label for="zando-vol">掘削量・地山（㎥）</label><input id="zando-vol" data-k="vol" type="text" inputmode="decimal" autocomplete="off" value="24"></div>
+<div class="f"><label for="zando-swell">ほぐし率</label><input id="zando-swell" data-k="swell" type="text" inputmode="decimal" autocomplete="off" value="1.2"></div>
+</div>
+<fieldset class="radio"><legend>1台に積める量の決め方</legend>
+<label><input type="radio" name="zando-mode" id="zando-mode-vol" data-k="mode" value="vol" checked> ㎥で入れる</label>
+<label><input type="radio" name="zando-mode" id="zando-mode-weight" data-k="mode" value="weight"> 積める重さから出す</label>
+</fieldset>
+<div class="row" id="zando-volBox">
+<div class="f"><label for="zando-per">1台に積める量（㎥）</label><input id="zando-per" data-k="per" type="text" inputmode="decimal" autocomplete="off" value="3"></div>
+</div>
+<div class="row" id="zando-weightBox" hidden>
+<div class="f"><label for="zando-load">1台に積める重さ（t）</label><input id="zando-load" data-k="load" type="text" inputmode="decimal" autocomplete="off" value=""></div>
+<div class="f"><label for="zando-dens">ほぐした土1㎥の重さ（t/㎥）</label><input id="zando-dens" data-k="dens" type="text" inputmode="decimal" autocomplete="off" value=""></div>
+</div>
+<p class="mut hint">1台に積める量は、荷台に入る量ではなく、積める重さから出した量にします（土は重いので、荷台いっぱいだと過積載になりやすい）。重さから出すときは、積める重さ÷ほぐした土1㎥の重さ で1台の㎥を出します。</p>
+<div class="btns"><button type="button" class="btn small ghost" data-ex='{"vol":"24","swell":"1.2","mode":"vol","per":"3"}'>例：24㎥・ほぐし率1.2・1台3㎥</button></div>
+<div class="out-box" aria-live="polite"><div class="big" id="zando-big">―</div><div class="mut" id="zando-sub"></div><p class="err" id="zando-err" role="status"></p><ol class="steps" id="zando-steps"></ol><div class="xl" id="zando-xl"></div></div>
+<p class="cond"><b>条件：</b>掘った土はふくらむので、地山の量のまま割ると台数が足りなくなります。ほぐし率は土の種類で変わるので、自社の実績の値を入れてください。土の重さ・積める重さも、土質と車両に合わせた値で。</p>
+<div class="next"><p><b>この数量をそのまま見積に</b><br>出た台数は、見積書の明細にそのまま入れられます。</p><div class="btns"><a class="btn small" href="../studio/kensetsu/free/">見積書と工程表の無料版</a><a class="btn small ghost" href="../studio/kensetsu/">見積→工程→請求の見本を触る</a></div></div>
+</section>
+
+<section class="card calc" id="cross" role="tabpanel" aria-labelledby="h-cross" data-calc="cross">
+<h2 id="h-cross">壁紙（クロス）の必要メートル数</h2>
+<p class="formula">=ROUNDUP(壁の周長÷有効幅, 0)×(天井高＋切りしろ)</p>
+<div class="row">
+<div class="f"><label for="cross-peri">壁の周長（m）</label><input id="cross-peri" data-k="peri" type="text" inputmode="decimal" autocomplete="off" value="12.74"></div>
+<div class="f"><label for="cross-h">天井高（m）</label><input id="cross-h" data-k="h" type="text" inputmode="decimal" autocomplete="off" value="2.4"></div>
+<div class="f"><label for="cross-w">有効幅（m）</label><input id="cross-w" data-k="w" type="text" inputmode="decimal" autocomplete="off" value="0.92"></div>
+<div class="f"><label for="cross-cut">上下の切りしろ（m）</label><input id="cross-cut" data-k="cut" type="text" inputmode="decimal" autocomplete="off" value="0.1"></div>
+<div class="f"><label for="cross-rep">柄の送り・リピート（m、無地は0）</label><input id="cross-rep" data-k="rep" type="text" inputmode="decimal" autocomplete="off" value="0"></div>
+</div>
+<p class="mut hint">先に「縦に貼る枚数」を整数にしてから、1枚の長さを掛けます。面積÷幅で出すと、端数の分だけ足りなくなります。</p>
+<div class="btns"><button type="button" class="btn small ghost" data-ex='{"peri":"12.74","h":"2.4","w":"0.92","cut":"0.1","rep":"0"}'>例：6畳（周長12.74m）・天井高2.4m</button></div>
+<div class="out-box" aria-live="polite"><div class="big" id="cross-big">―</div><div class="mut" id="cross-sub"></div><p class="err" id="cross-err" role="status"></p><ol class="steps" id="cross-steps"></ol><div class="xl" id="cross-xl"></div></div>
+<p class="cond"><b>条件：</b>窓やドアの分は引かずに数えています（余りは補修用）。0.92mは有効幅の例、0.1mは上下の切りしろの例です。柄合わせのある品番は、柄の送りの欄に1枚ごとに足す長さを入れてください。</p>
+<div class="next"><p><b>この数量をそのまま見積に</b><br>出たm数は、見積書の明細にそのまま入れられます。</p><div class="btns"><a class="btn small" href="../studio/kensetsu/free/">見積書と工程表の無料版</a><a class="btn small ghost" href="../studio/kensetsu/">見積→工程→請求の見本を触る</a></div></div>
+</section>
+
+<section class="card calc" id="tile" role="tabpanel" aria-labelledby="h-tile" data-calc="tile">
+<h2 id="h-tile">床タイルの枚数とケース数</h2>
+<p class="formula">=ROUNDUP(面積÷(目地込みの1辺)^2×(1＋ロス率), 0)</p>
+<div class="row">
+<div class="f"><label for="tile-area">貼る面積（㎡）</label><input id="tile-area" data-k="area" type="text" inputmode="decimal" autocomplete="off" value="4.5"></div>
+<div class="f"><label for="tile-size">タイルの1辺（mm、正方形）</label><input id="tile-size" data-k="size" type="text" inputmode="decimal" autocomplete="off" value="300"></div>
+<div class="f"><label for="tile-joint">目地の幅（mm）</label><input id="tile-joint" data-k="joint" type="text" inputmode="decimal" autocomplete="off" value="3"></div>
+<div class="f"><label for="tile-loss">ロス率（％）</label><input id="tile-loss" data-k="loss" type="text" inputmode="decimal" autocomplete="off" value="10"></div>
+<div class="f"><label for="tile-pc">1ケースの枚数（空ならケース数は出さない）</label><input id="tile-pc" data-k="pc" type="text" inputmode="numeric" autocomplete="off" value="11"></div>
+</div>
+<p class="mut hint">タイルの寸法ではなく、目地を足した寸法で割ります。</p>
+<div class="btns"><button type="button" class="btn small ghost" data-ex='{"area":"4.5","size":"300","joint":"3","loss":"10","pc":"11"}'>例：4.5㎡・300角＋目地3mm</button></div>
+<div class="out-box" aria-live="polite"><div class="big" id="tile-big">―</div><div class="mut" id="tile-sub"></div><p class="err" id="tile-err" role="status"></p><ol class="steps" id="tile-steps"></ol><div class="xl" id="tile-xl"></div></div>
+<p class="cond"><b>条件：</b>ロス率10％は例です。斜め貼りや、端が細かく切れる割付のときは増やし、割付図を描いたならその枚数を優先してください。</p>
+<div class="next"><p><b>この数量をそのまま見積に</b><br>出た枚数・ケース数は、見積書の明細にそのまま入れられます。</p><div class="btns"><a class="btn small" href="../studio/kensetsu/free/">見積書と工程表の無料版</a><a class="btn small ghost" href="../studio/kensetsu/">見積→工程→請求の見本を触る</a></div></div>
+</section>
+
+<section class="card calc" id="namacon" role="tabpanel" aria-labelledby="h-namacon" data-calc="namacon">
+<h2 id="h-namacon">土間コンクリートの生コン量</h2>
+<p class="formula">=CEILING(面積×厚み×(1＋ロス率), 0.25)</p>
+<div class="row">
+<div class="f"><label for="namacon-area">面積（㎡）</label><input id="namacon-area" data-k="area" type="text" inputmode="decimal" autocomplete="off" value="60"></div>
+<div class="f"><label for="namacon-cm">厚み（cm）</label><input id="namacon-cm" data-k="cm" type="text" inputmode="decimal" autocomplete="off" value="12"></div>
+<div class="f"><label for="namacon-loss">ロス率（％）</label><input id="namacon-loss" data-k="loss" type="text" inputmode="decimal" autocomplete="off" value="5"></div>
+<div class="f"><label for="namacon-step">注文の刻み（㎥）</label><input id="namacon-step" data-k="step" type="text" inputmode="decimal" autocomplete="off" value="0.25"></div>
+<div class="f"><label for="namacon-truck">ミキサー車1台に積める量（㎥、空なら台数は出さない）</label><input id="namacon-truck" data-k="truck" type="text" inputmode="decimal" autocomplete="off" value="4.25"></div>
+</div>
+<p class="mut hint">厚みはcmで入れると、mに直してから掛けます（cmのまま掛けると100倍になります）。</p>
+<div class="btns"><button type="button" class="btn small ghost" data-ex='{"area":"60","cm":"12","loss":"5","step":"0.25","truck":"4.25"}'>例：駐車場60㎡・厚み12cm</button></div>
+<div class="out-box" aria-live="polite"><div class="big" id="namacon-big">―</div><div class="mut" id="namacon-sub"></div><p class="err" id="namacon-err" role="status"></p><ol class="steps" id="namacon-steps"></ol><div class="xl" id="namacon-xl"></div></div>
+<p class="cond"><b>条件：</b>注文の刻み（0.25㎥）、ロス率、1台に積める量（4.25㎥）は例です。ロスは路盤の凸凹で変わり、積める量はプラントと現場までの道で決まるので、聞いた値を入れてください。</p>
+<div class="next"><p><b>この数量をそのまま見積に</b><br>出た㎥と台数は、見積書の明細にそのまま入れられます。</p><div class="btns"><a class="btn small" href="../studio/kensetsu/free/">見積書と工程表の無料版</a><a class="btn small ghost" href="../studio/kensetsu/">見積→工程→請求の見本を触る</a></div></div>
+</section>
+
+<section class="card calc" id="ashiba" role="tabpanel" aria-labelledby="h-ashiba" data-calc="ashiba">
+<h2 id="h-ashiba">外壁の足場の面積</h2>
+<p class="formula">=(建物の外周＋離れ×8)×足場の高さ</p>
+<div class="row">
+<div class="f"><label for="ashiba-peri">建物の外周（m）</label><input id="ashiba-peri" data-k="peri" type="text" inputmode="decimal" autocomplete="off" value="36.4"></div>
+<div class="f"><label for="ashiba-off">壁からの離れ（m）</label><input id="ashiba-off" data-k="off" type="text" inputmode="decimal" autocomplete="off" value="1"></div>
+<div class="f"><label for="ashiba-h">足場の高さ（m）</label><input id="ashiba-h" data-k="h" type="text" inputmode="decimal" autocomplete="off" value="7"></div>
+</div>
+<p class="mut hint">足場は壁から離して組むので、角ごとに離れ×2ずつ長くなり、四隅で×8です。L字のように凸凹があっても、角が直角なら同じ式で合います（出っぱった角と引っこんだ角の差は、いつも4つのため）。</p>
+<div class="btns"><button type="button" class="btn small ghost" data-ex='{"peri":"36.4","off":"1","h":"7"}'>例：外周36.4m・離れ1m・高さ7m</button></div>
+<div class="out-box" aria-live="polite"><div class="big" id="ashiba-big">―</div><div class="mut" id="ashiba-sub"></div><p class="err" id="ashiba-err" role="status"></p><ol class="steps" id="ashiba-steps"></ol><div class="xl" id="ashiba-xl"></div></div>
+<p class="cond"><b>条件：</b>角が直角の建物の式です。離れと高さは例です。高さは軒の高さではなく、足場を組むいちばん上までで入れてください。</p>
+<div class="next"><p><b>この数量をそのまま見積に</b><br>出た㎡は、見積書の明細にそのまま入れられます。</p><div class="btns"><a class="btn small" href="../studio/kensetsu/free/">見積書と工程表の無料版</a><a class="btn small ghost" href="../studio/kensetsu/">見積→工程→請求の見本を触る</a></div></div>
+</section>
+
+<section class="card" id="kotsu">
+<h2>数量の計算で共通するコツ</h2>
+<ul>
+<li><b>四捨五入ではなく切り上げ</b>：缶・本・台・枚は小数では買えないので、ROUNDUP（ラウンドアップ）で切り上げます。5.3本を四捨五入すると5本になり、足りなくなります。</li>
+<li><b>補正は割る前に入れる</b>：ロス・余裕・ほぐし率は、割って切り上げたあとに「1つ足す」のではなく、割る前の量に掛けます。現場の大きさに比例し、根拠が式に残ります。</li>
+<li><b>単位をそろえる</b>：cmはmに、mmはmに直してから掛けます。</li>
+<li><b>まとめて1回だけ切り上げる</b>：同じ材料を何回にも分けて切り上げると、端数が1つずつ増えます。</li>
+</ul>
+<p>Excelの式は、<code>ROUNDUP(数,0)</code>が整数への切り上げ、<code>CEILING(数,0.25)</code>が0.25刻みへの切り上げです。このページの式は半角で出しているので、そのままセルに貼れます。</p>
+</section>
+
+<p>あわせて読む：<a href="../blog/tosou-menseki-kansu-keisan/">外壁塗装の塗装面積と塗料の缶数の出し方</a> ・ <a href="../blog/kensetsu-jimu-jidouka-iriguchi/">工務店・設備屋・大工の事務を楽にする入り口</a></p>
+<p>関連する無料ツール：<a href="../kouki/">工期計算ツール</a> ・ <a href="../riekiritsu/">利益率・上乗せ率 計算ツール</a> ・ <a href="../shiharai/">支払期日の計算ツール</a></p>
+<p class="mut">このツールは、公開前に計算をテストしています。</p>
+<aside class="line-box" aria-label="公式LINE"><p><b>新しい無料ツールや記事を、LINEでお知らせします</b><br>「ツール」「お金」「スマホ」と送ると、合うツールの案内が自動で届きます。</p><a class="line-btn" href="https://line.me/R/ti/p/@736dykzx" target="_blank" rel="noopener">LINEで友だち追加</a><small>Eternal Philosophy 公式LINE（EQUA・MisaNeco Works を運営）</small></aside>
+</main>
+<footer class="wrap">© MisaNeco Works ・ 公開前に計算をテストしています。<br><small class="ga-note">閲覧数をGoogleアナリティクスで匿名で集計しています。このツールに入力した内容は送信しません。</small></footer>
+<script src="logic.js?v=202610311200"></script><script src="app.js?v=202610311200"></script>
+<script src="../assets/ads-inter.js?v=202610210009" data-pool="accounting" defer></script>
+</body></html>
