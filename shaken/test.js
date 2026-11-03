@@ -90,6 +90,6 @@ const SRC = ['https://www.jidoushatouroku-portal.mlit.go.jp/Information-Files/sh
   'https://www.jidoushatouroku-portal.mlit.go.jp/jidousha/kensatoroku/about/inspect/validity-period/index.html',
   'https://wwwtb.mlit.go.jp/tohoku/mg/sb/sub03_02.html'];
 SRC.forEach(u => eq(html.includes('href="' + u + '"'), true, '出典 ' + u));
-eq(/https?:\/\/(?!tools\.equaglobal\.com|schema\.org|www\.googletagmanager\.com|line\.me\/R\/ti\/p\/@736dykzx|www\.jidoushatouroku-portal\.mlit\.go\.jp\/|wwwtb\.mlit\.go\.jp\/)/.test(html.replace(/<meta http-equiv="Content-Security-Policy"[^>]*>/, '')), false, '出典以外の外部URLなし');
+eq(/https?:\/\/(?!tools\.equaglobal\.com|schema\.org|www\.googletagmanager\.com|line\.me\/R\/ti\/p\/@736dykzx|www\.jidoushatouroku-portal\.mlit\.go\.jp\/|wwwtb\.mlit\.go\.jp\/|excel-temple\.booth\.pm\/items\/[0-9]+\?utm_source=tools)/.test(html.replace(/<meta http-equiv="Content-Security-Policy"[^>]*>/, '')), false, '出典以外の外部URLなし');
 [...js.matchAll(/\$\('([\w-]+)'\)/g)].map(m => m[1]).forEach(id => eq(html.includes('id="' + id + '"'), true, 'id: ' + id));
 console.log(p + ' passed, ' + f + ' failed'); process.exit(f ? 1 : 0);

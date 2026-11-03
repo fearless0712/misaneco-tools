@@ -128,7 +128,7 @@ const __ga=require(__dirname+'/../assets/ga-test-helper.js').stripGA(require('fs
 const html=__ga.html;
 eq(/1万円|30日チャレンジ/.test(html),false,'banned');eq(/connect-src 'none'/.test(html),true,'csp');
 eq(/script-src 'self';/.test(html),true,'csp script self');eq(/<script>|\son\w+=/.test(html),false,'no inline js');
-eq(/https?:\/\/(?!(?:tools\.)?equaglobal\.com|px\.a8\.net|www[0-9]*\.a8\.net|\*\.a8\.net|line\.me\/R\/ti\/p\/@736dykzx|schema\.org)/.test(html),false,'no external urls except A8 ad');eq(html.includes('広告・PR'),true,'ad label');
+eq(/https?:\/\/(?!(?:tools\.)?equaglobal\.com|px\.a8\.net|www[0-9]*\.a8\.net|\*\.a8\.net|line\.me\/R\/ti\/p\/@736dykzx|schema\.org|excel-temple\.booth\.pm\/items\/[0-9]+\?utm_source=tools)/.test(html),false,'no external urls except A8 ad');eq(html.includes('広告・PR'),true,'ad label');
 eq(html.includes('<html lang="ja">'),true,'lang ja');
 eq(html.includes('<title>利益率・上乗せ率 計算ツール（売値の逆算つき）</title>'),true,'title');
 eq(html.includes('<link rel="canonical" href="https://tools.equaglobal.com/riekiritsu/">'),true,'canonical');

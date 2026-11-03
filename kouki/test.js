@@ -159,7 +159,7 @@ eq(/外部に送信しません/.test(html), true, '送信しない明記'); eq(
   eq(html.includes('href="' + u + '"'), true, 'リンク ' + u);
   eq(fs.existsSync(path.join(__dirname, u, 'index.html')), true, 'リンク先がある ' + u);
 });
-eq(/https?:\/\/(?!tools\.equaglobal\.com|schema\.org|www\.googletagmanager\.com|line\.me\/R\/ti\/p\/@736dykzx)/.test(html.replace(/<meta http-equiv="Content-Security-Policy"[^>]*>/, '')), false, '外部URLなし');
+eq(/https?:\/\/(?!tools\.equaglobal\.com|schema\.org|www\.googletagmanager\.com|line\.me\/R\/ti\/p\/@736dykzx|excel-temple\.booth\.pm\/items\/[0-9]+\?utm_source=tools)/.test(html.replace(/<meta http-equiv="Content-Security-Policy"[^>]*>/, '')), false, '外部URLなし');
 [...js.matchAll(/\$\('([\w-]+)'\)/g)].map(m => m[1]).forEach(id => eq(html.includes('id="' + id + '"'), true, 'id: ' + id));
 [0, 1, 2, 3, 4, 5, 6].forEach(n => eq(html.includes('id="w' + n + '"'), true, 'id: w' + n));
 // ページの計算の例（Pythonでも検算済み）とツールの結果が一致する

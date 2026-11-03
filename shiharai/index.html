@@ -8,7 +8,7 @@
 <meta property="og:description" content="20日締め翌月末払い、末日締め翌月10日払いなどの支払期日を、土日祝の扱いまで含めて計算する無料ツール。取引先ごとにまとめて計算してExcelに貼れます。入力は外部に送信しません。">
 <meta property="og:url" content="https://tools.equaglobal.com/shiharai/">
 <meta property="og:locale" content="ja_JP">
-<link rel="stylesheet" href="../hiwari/app.css?v=202610210230"><link rel="stylesheet" href="../assets/ads-inter.css?v=202610210009"><style>
+<link rel="stylesheet" href="../hiwari/app.css?v=202610210230"><link rel="stylesheet" href="../assets/ads-inter.css?v=202610210009"><link rel="stylesheet" href="../assets/booth-next.css?v=202611030100"><style>
 /* 支払期日の計算ツールの画面（このページだけで使う分） */
 .hint{margin:6px 0 0}
 textarea{font:inherit;width:100%;padding:8px;border:1px solid var(--line);border-radius:8px;background:var(--card);color:var(--fg);resize:vertical;min-height:96px}
@@ -80,6 +80,7 @@ table.res td.late{color:var(--bad);font-weight:700}
 <p class="mut" id="copied" role="status"></p>
 <p class="mut">「表をコピー」はタブ区切りです。ExcelのA1のセルを選んで貼り付けると、A列：取引先、B列：取引日、C列：締め日、D列：支払期日（調整前）、E列：支払期日（調整後）、F列：曜日、G列：残り日数、H列：支払条件、I列：メモ の順に入ります。</p>
 
+<aside class="booth-next" aria-label="関連するExcel（BOOTH）"><p><b>外注・協力会社への支払いを毎月まとめて管理するなら</b></p><ul><li><a href="https://excel-temple.booth.pm/items/9026778?utm_source=tools&amp;utm_medium=referral&amp;utm_campaign=shiharai" target="_blank" rel="noopener">外注・協力会社 支払管理表</a>（締め日・支払日を自動計算、今月の支払予定と未払い／¥1,480・BOOTH）</li></ul></aside>
 <h3>Excelで同じことをする式</h3>
 <p class="mut">上の表をExcelのA1に貼ったときの、各行の式です。休みの日は、別のシートに「休みの日の一覧をコピー」で貼った日付の列（A列）を選び、<b>「祝日」という名前</b>を付けてください（数式タブ →「名前の定義」）。</p>
 <div id="fx"></div>
