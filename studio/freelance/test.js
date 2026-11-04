@@ -166,13 +166,17 @@ eq(allOk ? [] : msgs, [], '見本：2026〜2027年のどの日に開いても、
 eq(S.docs.filter(d => d.kind === 'inv').every(d => d.due === K.iso(K.calcDue(d.issue, S.clients.find(x => x.id === d.client)).due)), true, '見本の期日は取引先の条件から計算したもの');
 
 // ===== ページの決まり =====
-const csp = (html.match(/http-equiv="Content-Security-Policy" content="([^"]+)"/) || [])[1] || '';
+// 11/4 将さんOK：アクセス解析（GA4）だけ許可。GAの決まった部分を取り除いてから、今までの「外部通信なし」を確かめる
+const GA = require(path.join(__dirname, '..', '..', 'assets', 'ga-test-helper.js')).stripGA(html);
+eq(GA.problems, [], 'GA（アクセス解析）は決まった形だけ（タグ・CSP・注記）');
+eq((GA.html.match(/<script[^>]*src="[^"]+"/g) || []).every(t => !/https?:/.test(t)), true, 'GA以外の外部スクリプトなし');
+const csp = (GA.html.match(/http-equiv="Content-Security-Policy" content="([^"]+)"/) || [])[1] || '';
 eq(/default-src 'none'/.test(csp) && /connect-src 'none'/.test(csp) && /form-action 'none'/.test(csp) && /script-src 'self'/.test(csp), true, 'CSP：外部通信なし・スクリプトは自分のファイルだけ');
-eq((html.match(/https?:\/\/[^"'\s)]+/g) || []).filter(u => !/^https:\/\/fonts\.(googleapis|gstatic)\.com/.test(u)), [], '外部URLは Google Fonts だけ');
+eq((GA.html.match(/https?:\/\/[^"'\s)]+/g) || []).filter(u => !/^https:\/\/fonts\.(googleapis|gstatic)\.com/.test(u)), [], '外部URLは Google Fonts だけ');
 eq(/https?:\/\//.test(app + css + data), false, '画面・見本・CSS に外部URLなし');
 eq((logic.match(/https?:\/\/[^\s)）]+/g) || []).every(u => /^https:\/\/www\.nta\.go\.jp\/|^https:\/\/www8\.cao\.go\.jp\//.test(u)), true, 'logic.js のURLは出典のコメント（国税庁・内閣府）だけ');
 eq(/fetch\(|XMLHttpRequest|WebSocket|sendBeacon|EventSource|navigator\.share|import\(/.test(app + logic + data), false, '送信する処理なし');
-eq(/googletagmanager|gtag|ads-inter|a8\.net|adsbygoogle/.test(html + app), false, '広告・計測のスクリプトなし');
+eq(/googletagmanager|gtag|ads-inter|a8\.net|adsbygoogle/.test(GA.html + app), false, '広告なし・計測はGAだけ');
 const allText = html + app + css + logic + data;
 eq(/(^|[^A-Za-z])AI([^A-Za-z]|$)|ＡＩ|人工知能/.test(allText), false, '「AI」の語なし');
 eq(/未確認|確認していない|確かめていない|未検証|検証していない/.test(allText), false, '確かめていないことを断る文なし');

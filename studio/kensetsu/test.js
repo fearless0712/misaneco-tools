@@ -213,10 +213,14 @@ const est0 = sample.estimates[0]; eq(typeof K.estimate(est0).excl, 'number', '�
 const s2 = data.sample(D('2026-10-22') + 35);
 eq(K.wday(D(s2.tasks[0].start)), K.wday(D(sample.tasks[0].start)), '見本の日付は週単位でずらす');
 // ページの決まり
-const csp = (html.match(/http-equiv="Content-Security-Policy" content="([^"]+)"/) || [])[1] || '';
+// 11/4 将さんOK：アクセス解析（GA4）だけ許可。GAの決まった部分を取り除いてから、今までの「外部通信なし」を確かめる
+const GA = require(path.join(__dirname, '..', '..', 'assets', 'ga-test-helper.js')).stripGA(html);
+eq(GA.problems, [], 'GA（アクセス解析）は決まった形だけ（タグ・CSP・注記）');
+eq((GA.html.match(/<script[^>]*src="[^"]+"/g) || []).every(t => !/https?:/.test(t)), true, 'GA以外の外部スクリプトなし');
+const csp = (GA.html.match(/http-equiv="Content-Security-Policy" content="([^"]+)"/) || [])[1] || '';
 eq(/default-src 'none'/.test(csp) && /connect-src 'none'/.test(csp) && /form-action 'none'/.test(csp), true, 'CSP：外部通信なし');
-eq((html.match(/https?:\/\/[^"'\s)]+/g) || []).filter(u => !/^https:\/\/fonts\.(googleapis|gstatic)\.com/.test(u)), [], '外部URLは Google Fonts だけ');
-eq(/googletagmanager|gtag|ads-inter|a8\.net|adsbygoogle/.test(html + app), false, '広告・計測のスクリプトなし');
+eq((GA.html.match(/https?:\/\/[^"'\s)]+/g) || []).filter(u => !/^https:\/\/fonts\.(googleapis|gstatic)\.com/.test(u)), [], '外部URLは Google Fonts だけ');
+eq(/googletagmanager|gtag|ads-inter|a8\.net|adsbygoogle/.test(GA.html + app), false, '広告なし・計測はGAだけ');
 eq(/fetch\(|XMLHttpRequest|WebSocket|sendBeacon|EventSource/.test(app), false, '送信する処理なし');
 eq(/円引き|今だけ|購入|BOOTH|¥\d|\d+円で/.test(html), false, '宣伝の言葉・価格なし');
 eq(/MisaNeco Works/.test(html), true, 'MisaNeco Works の表記');

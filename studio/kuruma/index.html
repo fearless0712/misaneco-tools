@@ -3,13 +3,14 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; connect-src 'none'; base-uri 'none'; form-action 'none'; object-src 'none'">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self' https://www.googletagmanager.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data: https://*.google-analytics.com https://*.googletagmanager.com; connect-src https://*.google-analytics.com https://*.analytics.google.com https://*.googletagmanager.com; base-uri 'none'; form-action 'none'; object-src 'none'">
 <title>車屋・バイク屋スタジオ｜車検台帳・ピット予約・整備見積・部品・中古車をひとつの画面で（見本）</title>
 <meta name="description" content="町の整備工場・バイク屋さん向け。車検の満了日と案内、ピット予約、整備見積・請求と入金、部品の在庫と発注、中古車の原価と粗利までをつなげて管理するWebアプリの見本です。データはこのブラウザの中だけに保存し、外部に送信しません。表示しているのは架空のお店のデータです。">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700&family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="assets/app.css">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-EWJXRJY9M6"></script><script src="../../assets/ga.js?v=202610210745"></script>
 </head>
 <body>
 <div class="app" id="app">
@@ -51,7 +52,7 @@
 
     <footer class="foot">
       <p>計算のしかたは Excel版（車検・点検台帳・整備見積請求書・作業予約ピット表・部品在庫発注・中古車在庫原価管理・案内文作成）と同じです。車検の有効期間・受けられる時期は国土交通省の案内（2026年10月に確認）にもとづきます。実際の満了日は車検証で、税・法定費用・古物の扱いは運輸支局・税理士など専門家にご確認ください。</p>
-      <p>入力したデータはこのブラウザ（localStorage）にだけ保存し、外部には送信しません。表示しているお店・人・車・金額はすべて架空です。</p>
+      <p>入力したデータはこのブラウザ（localStorage）にだけ保存し、外部には送信しません。表示しているお店・人・車・金額はすべて架空です。<br><small class="ga-note">閲覧数をGoogleアナリティクスで匿名で集計しています。入力したデータは送信しません。</small></p>
       <p><a href="/ig/#kuruma" style="color:var(--acc2);font-weight:700">この画面をそのまま自分の仕事で使える「車屋・バイク屋スタジオ 製品版」（買い切り・ネット不要）を見る →</a></p>
       <p><a href="/erabikata/kuruma/" style="color:var(--acc2)">この業務のExcel版を選ぶ →</a></p>
     </footer>

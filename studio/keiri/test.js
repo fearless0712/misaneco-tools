@@ -200,12 +200,16 @@ eq([m18.sales, m18.exp, Math.round((m18.sales - m18.exp) / m18.sales * 1000) / 1
 eq(K.parseRules(S.company.rules).slice(0, 3).map(r => r.k + '=' + r.acc), ['キュウヨ=給料賃金', 'ヤチン=地代家賃', 'カクウライターズ=外注工賃'], '手で直した行（給与・家賃・外注）は最初の設定より上');
 
 // ===== ページの決まり =====
-const csp = (html.match(/http-equiv="Content-Security-Policy" content="([^"]+)"/) || [])[1] || '';
+// 11/4 将さんOK：アクセス解析（GA4）だけ許可。GAの決まった部分を取り除いてから、今までの「外部通信なし」を確かめる
+const GA = require(path.join(__dirname, '..', '..', 'assets', 'ga-test-helper.js')).stripGA(html);
+eq(GA.problems, [], 'GA（アクセス解析）は決まった形だけ（タグ・CSP・注記）');
+eq((GA.html.match(/<script[^>]*src="[^"]+"/g) || []).every(t => !/https?:/.test(t)), true, 'GA以外の外部スクリプトなし');
+const csp = (GA.html.match(/http-equiv="Content-Security-Policy" content="([^"]+)"/) || [])[1] || '';
 eq(/default-src 'none'/.test(csp) && /connect-src 'none'/.test(csp) && /form-action 'none'/.test(csp), true, 'CSP：外部通信なし');
-eq((html.match(/https?:\/\/[^"'\s)]+/g) || []).filter(u => !/^https:\/\/fonts\.(googleapis|gstatic)\.com/.test(u)), [], '外部URLは Google Fonts だけ');
+eq((GA.html.match(/https?:\/\/[^"'\s)]+/g) || []).filter(u => !/^https:\/\/fonts\.(googleapis|gstatic)\.com/.test(u)), [], '外部URLは Google Fonts だけ');
 eq(/https?:\/\//.test(app + css + logic + data), false, 'js・css に外部URLなし');
 eq(/noindex/.test(html), false, 'public (indexable)');
-eq(/googletagmanager|gtag|ads-inter|a8\.net|adsbygoogle/.test(html + app), false, '広告・計測のスクリプトなし');
+eq(/googletagmanager|gtag|ads-inter|a8\.net|adsbygoogle/.test(GA.html + app), false, '広告なし・計測はGAだけ');
 eq(/fetch\(|XMLHttpRequest|WebSocket|sendBeacon|EventSource/.test(app), false, '送信する処理なし');
 eq(/円引き|今だけ|購入|BOOTH|¥\d|\d+円で|価格/.test(html), false, '宣伝の言葉・価格なし');
 eq(/MisaNeco Works/.test(html) && /class="brandmark"/.test(html), true, '右下に MisaNeco Works');

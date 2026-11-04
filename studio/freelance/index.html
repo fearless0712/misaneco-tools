@@ -3,13 +3,14 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; connect-src 'none'; base-uri 'none'; form-action 'none'; object-src 'none'">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self' https://www.googletagmanager.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data: https://*.google-analytics.com https://*.googletagmanager.com; connect-src https://*.google-analytics.com https://*.analytics.google.com https://*.googletagmanager.com; base-uri 'none'; form-action 'none'; object-src 'none'">
 <title>フリーランス・個人事業主スタジオ｜案件・作業時間・見積請求（源泉徴収・インボイス）・入金・経費と家事按分をひとつの画面で（見本）</title>
 <meta name="description" content="フリーランス・個人事業主向け。取引先の締め日と支払サイト、案件と作業時間、源泉徴収とインボイスの6項目に合わせた見積・請求、支払期日の自動計算、入金、経費と家事按分、案件ごとの実質時給までをつなげたWebアプリの見本です。データはこのブラウザの中だけに保存し、外部に送信しません。表示しているのは架空の人・取引先のデータです。">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700&family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="assets/app.css">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-EWJXRJY9M6"></script><script src="../../assets/ga.js?v=202610210745"></script>
 </head>
 <body>
 <div class="app" id="app">
@@ -51,7 +52,7 @@
     <footer class="foot">
       <p>源泉徴収は、報酬の額（消費税と分けて書いた請求書では税抜の額）が100万円以下の部分は10.21%、100万円を超える部分は20.42%で、1円未満は切り捨てています（国税庁 タックスアンサーNo.2795。令和9年1月以後も合計の税率は同じ：国税庁「防衛特別所得税及び復興特別所得税の源泉徴収のあらまし」）。源泉徴収の対象になるかどうかは仕事の中身と相手で変わるので、取引先ごとに設定します。消費税は1枚の請求書につき税率ごとに1回だけ端数処理します（国税庁「適格請求書等保存方式に関するQ&A」問57）。インボイスの記載事項は国税庁「インボイス制度について」の6項目です。</p>
       <p>支払期日は無料ツール「支払期日の計算ツール」と同じ計算です（締め日・支払サイト、土日祝・銀行の休み〈12/31〜1/3〉は前営業日などにずらす。祝日は内閣府「国民の祝日について」の2026年・2027年）。家事按分は無料ツール「家事按分 計算ツール」と同じ考え方です（割合をかけて1円未満切り捨て、割合の理由をメモに残す）。<b>源泉徴収・消費税の扱いは、国税庁の案内で確認してください。</b>税の判断はしていません。</p>
-      <p>入力したデータはこのブラウザ（localStorage）にだけ保存し、外部には送信しません。表示している人・取引先・住所・口座・登録番号・金額はすべて架空です。</p>
+      <p>入力したデータはこのブラウザ（localStorage）にだけ保存し、外部には送信しません。表示している人・取引先・住所・口座・登録番号・金額はすべて架空です。<br><small class="ga-note">閲覧数をGoogleアナリティクスで匿名で集計しています。入力したデータは送信しません。</small></p>
       <p><a href="/shiharai/" style="color:var(--acc2)">支払期日の計算ツール →</a>　<a href="/anbun/" style="color:var(--acc2)">家事按分 計算ツール →</a></p>
       <p><a href="/studio/" style="color:var(--acc2)">ほかの業種別スタジオを見る →</a></p>
     </footer>

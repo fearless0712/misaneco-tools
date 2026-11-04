@@ -3,13 +3,14 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; connect-src 'none'; base-uri 'none'; form-action 'none'; object-src 'none'">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self' https://www.googletagmanager.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data: https://*.google-analytics.com https://*.googletagmanager.com; connect-src https://*.google-analytics.com https://*.analytics.google.com https://*.googletagmanager.com; base-uri 'none'; form-action 'none'; object-src 'none'">
 <title>経理・事務スタジオ｜明細の仕訳・請求書・入金の照合・勤怠・月次まとめをひとつの画面で（見本）</title>
 <meta name="description" content="小さな会社・個人事業主向け。銀行・カードの明細の取り込みと仕訳、インボイスの請求書、入金の照合、勤怠の集計、月次まとめまでをつなげて管理するWebアプリの見本です。データはこのブラウザの中だけに保存し、外部に送信しません。表示しているのは架空の会社のデータです。">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700&family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="assets/app.css">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-EWJXRJY9M6"></script><script src="../../assets/ga.js?v=202610210745"></script>
 </head>
 <body>
 <div class="app" id="app">
@@ -51,7 +52,7 @@
 
     <footer class="foot">
       <p>計算のしかたは、ブラウザで動くツール（KichoAuto・請求書一括作成・入金消込チェッカー・勤怠集計・MoneyLens・電帳リネーム・CSV文字化けなおし）と同じです。請求書の記載事項と消費税の端数処理（1枚の請求書につき税率ごとに1回）は国税庁の案内にもとづいていますが、税の扱いは事業によって変わります。最終確認は国税庁の案内・税理士へ。勤怠の時間外・深夜の数え方は目安です。就業規則・労使協定・社会保険労務士にご確認ください。</p>
-      <p>入力したデータはこのブラウザ（localStorage）にだけ保存し、外部には送信しません。表示している会社・人・取引先・金額はすべて架空です。</p>
+      <p>入力したデータはこのブラウザ（localStorage）にだけ保存し、外部には送信しません。表示している会社・人・取引先・金額はすべて架空です。<br><small class="ga-note">閲覧数をGoogleアナリティクスで匿名で集計しています。入力したデータは送信しません。</small></p>
       <p><a href="/ig/#keiri" style="color:var(--acc2);font-weight:700">この画面をそのまま自分の仕事で使える「経理・事務スタジオ 製品版」（買い切り・ネット不要）を見る →</a></p>
       <p><a href="/erabikata/keiri/" style="color:var(--acc2)">この業務のツールを選ぶ →</a></p>
     </footer>

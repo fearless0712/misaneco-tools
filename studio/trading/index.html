@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self' https://www.googletagmanager.com; style-src 'self' 'unsafe-inline'; img-src 'self' data: https://*.google-analytics.com https://*.googletagmanager.com; connect-src https://*.google-analytics.com https://*.analytics.google.com https://*.googletagmanager.com; base-uri 'none'; form-action 'none'; object-src 'none'">
+<title>Trading Studio - trading journal and review (sample)</title>
+<meta name="description" content="Record, analyze and review your own trades in one screen: CSV import (MT4, MT5, cTrader, any CSV), win rate, R multiple, expectancy, profit factor, drawdown, your own prop-firm style rules, breakdowns, calendar and position size. Data stays in this browser. Record-keeping tool. Not financial advice. No signals.">
+<link rel="stylesheet" href="assets/app.css">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-EWJXRJY9M6"></script><script src="../../assets/ga.js?v=202610210745"></script>
+</head>
+<body>
+<div class="app" id="app">
+  <aside class="side">
+    <div class="logo"><span class="logo-mark" aria-hidden="true"><svg viewBox="0 0 24 24" width="22" height="22"><polyline points="1,18 7,12 11,15 17,6 23,9" fill="none" stroke="#d85cff" stroke-width="2.2" stroke-linejoin="round" stroke-linecap="round"/><line x1="1" y1="22" x2="23" y2="22" stroke="#4d8dff" stroke-width="2"/></svg></span><div><b>Trading Studio</b><small>JOURNAL · REVIEW</small></div></div>
+    <nav class="nav" id="nav" aria-label="Menu">
+      <button data-view="dash" class="on"><i>01</i><span>Dashboard</span></button>
+      <button data-view="trades"><i>02</i><span>Trades</span></button>
+      <button data-view="import"><i>03</i><span>Import CSV</span></button>
+      <button data-view="prop"><i>04</i><span>Prop rules</span></button>
+      <button data-view="break"><i>05</i><span>Breakdown</span></button>
+      <button data-view="cal"><i>06</i><span>Calendar</span></button>
+      <button data-view="size"><i>07</i><span>Position size</span></button>
+      <button data-view="risk"><i>08</i><span>Risk lab</span></button>
+      <button data-view="set"><i>09</i><span>Settings &amp; data</span></button>
+    </nav>
+    <div class="side-foot">
+      <p class="fict" id="sideFict">The trades shown are a <b>fictional</b> sample, made up for this demo.</p>
+      <button class="ghost" data-act="reset">Back to the sample</button>
+    </div>
+  </aside>
+
+  <main class="main" id="main">
+    <header class="top">
+      <div class="top-l">
+        <h1 id="viewTitle">Dashboard</h1>
+        <p class="top-sub"><span class="live" aria-hidden="true"></span><span id="acctName">Sample account (fictional)</span><span class="sep">/</span><span id="todayLabel"></span></p>
+      </div>
+      <div class="top-r"><span class="chip fict-c" id="chipFict">Fictional data</span><span class="chip">Saved in this browser only</span><span class="chip nfa">Not financial advice</span></div>
+    </header>
+    <div id="warn" class="warnbar" hidden></div>
+
+    <section class="view on" id="v-dash" aria-label="Dashboard"></section>
+    <section class="view" id="v-trades" aria-label="Trades"></section>
+    <section class="view" id="v-import" aria-label="Import CSV"></section>
+    <section class="view" id="v-prop" aria-label="Prop rules"></section>
+    <section class="view" id="v-break" aria-label="Breakdown"></section>
+    <section class="view" id="v-cal" aria-label="Calendar"></section>
+    <section class="view" id="v-size" aria-label="Position size"></section>
+    <section class="view" id="v-risk" aria-label="Risk lab"></section>
+    <section class="view" id="v-set" aria-label="Settings and data"></section>
+
+    <footer class="foot" id="foot">
+      <p><b>Record-keeping tool. Not financial advice. No signals.</b> Trading Studio records and summarizes trades you have already made. It does not predict prices, suggest trades or connect to any broker.</p>
+      <p>Your data is stored only in this browser (localStorage) and is never sent anywhere. The sample account, trades and numbers are fictional.<br><small class="ga-note">Page views are counted anonymously with Google Analytics. Your trades and settings are not sent.</small></p>
+      <p>Prop rule checks use your own numbers and closed trades only. Always read the exact rules of your own account.</p>
+      <p class="web-only"><a href="/position-size/">Forex position size calculator (free) →</a></p>
+      <p>MisaNeco Works</p>
+    </footer>
+  </main>
+</div>
+<div class="brandmark">MisaNeco Works</div>
+<div id="toast" class="toast" role="status" aria-live="polite"></div>
+<div id="cursor" class="cursor" aria-hidden="true"><svg viewBox="0 0 24 24" width="30" height="30"><path d="M3 2 L3 19 L8 14.5 L11.5 22 L14.5 20.6 L11 13.3 L17.5 13.3 Z" fill="#fff" stroke="#d85cff" stroke-width="1.6" stroke-linejoin="round"/></svg><span class="ring"></span></div>
+<script src="assets/edition.js"></script>
+<script src="assets/logic.js"></script>
+<script src="assets/ps.js"></script>
+<script src="assets/data.js"></script>
+<script src="assets/app.js"></script>
+</body>
+</html>
