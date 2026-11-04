@@ -17,9 +17,10 @@ for (const [p, what] of PRICES) {
   const card = i < 0 ? '' : html.slice(i, html.indexOf('</div>', i));
   eq(card.includes(what), true, '料金 ' + p + ' ＝ ' + what);
   // 税込み・税抜きが書いてあるか、決まっていなければ【要確認】の印がある
-  eq(/税込|税抜|【要確認/.test(card), true, '料金 ' + p + ' に税の扱いか【要確認】');
+  eq(card.includes('（税込み）'), true, '料金 ' + p + ' は税込み（11/5 将さん）');
 }
 eq(html.includes('内容を聞いて見積もり'), true, '別業種は見積もり');
+eq(html.includes('見積もりまではお金はかかりません'), true, '見積もりは無料（11/5 将さん）');
 eq(/目安/.test(html), true, '「目安」と書く');
 eq(html.includes('税込み・税抜きは見積もりでご案内'), false, '税の扱いをぼかす書き方をしない');
 // 流れの4段
@@ -65,6 +66,6 @@ eq(/href="(\/studio\/)?custom\/"/.test(fs.readFileSync(path.join(ROOT, 'studio',
 eq(fs.readFileSync(path.join(ROOT, 'ig', 'index.html'), 'utf8').includes(LINK), true, 'IGまとめから');
 
 const todo = (html.match(/【要確認/g) || []).length;
-if (todo) console.log('注意：【要確認】が ' + todo + ' か所残っています（公開前に将さんに確かめて直す）');
+eq(todo, 0, '【要確認】の印が残っていない');
 console.log((fail ? 'NG' : 'OK') + ' custom: ' + pass + ' passed, ' + fail + ' failed');
 process.exit(fail ? 1 : 0);
