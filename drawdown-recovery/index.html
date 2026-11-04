@@ -1,0 +1,124 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self' https://www.googletagmanager.com; style-src 'self'; img-src 'self' data: https://*.google-analytics.com https://*.googletagmanager.com; connect-src https://*.google-analytics.com https://*.analytics.google.com https://*.googletagmanager.com; base-uri 'none'; form-action 'none'; object-src 'none'">
+<title>Drawdown Recovery Calculator - Gain Needed to Recover a Loss (Free)</title>
+<meta name="description" content="Free drawdown recovery calculator. Enter a loss % or your balance and peak to see the gain needed to get back to break-even, the amount to your peak, and a compound estimate of winning trades needed at your risk per trade and average R. Quick reference table from 10% to 90%.">
+<link rel="canonical" href="https://tools.equaglobal.com/drawdown-recovery/">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Drawdown Recovery Calculator - how much gain recovers a loss">
+<meta property="og:description" content="A 50% loss needs a 100% gain to get back. See the gain needed for any drawdown, from your balance and peak too. Free, no sign-up, runs in your browser.">
+<meta property="og:url" content="https://tools.equaglobal.com/drawdown-recovery/">
+<meta property="og:locale" content="en_US">
+<link rel="stylesheet" href="../hiwari/app.css?v=202610210230"><script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebApplication", "name": "Drawdown Recovery Calculator", "url": "https://tools.equaglobal.com/drawdown-recovery/", "description": "Work out the gain needed to recover from a drawdown, the amount needed to get back to your peak balance, and a compound estimate of winning trades needed at a given risk per trade and average R.", "applicationCategory": "FinanceApplication", "operatingSystem": "Any (Web browser)", "inLanguage": "en", "isAccessibleForFree": true, "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"}, "publisher": {"@type": "Organization", "name": "Eternal Philosophy"}}</script><script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Why does a 50% loss need a 100% gain?", "acceptedAnswer": {"@type": "Answer", "text": "The gain is earned on the smaller balance that is left. $10,000 that falls 50% becomes $5,000, and $5,000 has to double (+100%) to reach $10,000 again."}}, {"@type": "Question", "name": "What is the formula for the gain needed to recover?", "acceptedAnswer": {"@type": "Answer", "text": "Gain needed = 1 / (1 - loss) - 1, with the loss as a decimal. For a 25% loss: 1 / 0.75 - 1 = 0.3333, so you need +33.33%."}}, {"@type": "Question", "name": "How is drawdown worked out from my balance?", "acceptedAnswer": {"@type": "Answer", "text": "Drawdown = (peak balance - current balance) / peak balance. With a peak of $10,000 and a balance of $8,000, the drawdown is 20%, the amount back to the peak is $2,000 and the gain needed is $2,000 / $8,000 = 25%."}}, {"@type": "Question", "name": "How is the number of winning trades estimated?", "acceptedAnswer": {"@type": "Answer", "text": "Each win is assumed to add risk % x average R of the current balance, so the balance grows by (1 + risk x R) per win. Wins needed = ln(1 / (1 - drawdown)) / ln(1 + risk x R), rounded up. It ignores losing trades, costs and slippage, so treat it as a rough planning figure only."}}, {"@type": "Question", "name": "Why is 100% not accepted?", "acceptedAnswer": {"@type": "Answer", "text": "At a 100% loss nothing is left, and no percentage gain on zero brings the balance back. The calculator accepts losses from 0% up to, but not including, 100%."}}, {"@type": "Question", "name": "Does it work for stocks, crypto or funds?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. The recovery math is the same for any balance that moves in percentages, whether it is a trading account, a stock portfolio or a fund. Fees, taxes and deposits or withdrawals are not included."}}, {"@type": "Question", "name": "Is this financial advice?", "acceptedAnswer": {"@type": "Answer", "text": "No. It shows arithmetic for planning and education, not financial advice. It does not suggest what to trade, how much to risk, or whether you will recover a loss."}}]}</script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-EWJXRJY9M6"></script><script src="../assets/ga.js?v=202610210745"></script>
+</head><body>
+<header><div class="wrap"><a href="../blog/en/">MisaNeco Works free tools</a></div></header>
+<main class="wrap">
+<h1>Drawdown recovery calculator</h1>
+<p>A loss and the gain that wins it back are not the same size. <b>Lose 50% and you need +100% to get back.</b> Enter a loss %, or your balance and peak, to see the gain needed to recover. Nothing you enter is sent anywhere.</p>
+<p class="note"><b>For planning and education, not financial advice.</b> This tool does the arithmetic only. It does not tell you what to trade or how much to risk, and it does not predict whether a loss will be recovered.</p>
+<noscript><p class="err">This tool needs JavaScript. Please turn it on in your browser settings. The quick reference table below works without it.</p></noscript>
+
+<fieldset class="card">
+<legend>Your drawdown</legend>
+<label for="mode">What do you know?</label>
+<select id="mode"><option value="pct">The loss in %</option><option value="bal">My peak balance and current balance</option></select>
+<div id="pctBox">
+<label for="loss">Loss / drawdown (%)</label>
+<input id="loss" type="text" inputmode="decimal" autocomplete="off" placeholder="e.g. 25">
+</div>
+<div id="balBox" hidden>
+<div class="row">
+<div class="f"><label for="peak">Peak balance</label><input id="peak" type="text" inputmode="decimal" autocomplete="off" placeholder="e.g. 10000"></div>
+<div class="f"><label for="balance">Current balance</label><input id="balance" type="text" inputmode="decimal" autocomplete="off" placeholder="e.g. 8000"></div>
+</div>
+</div>
+</fieldset>
+
+<fieldset class="card">
+<legend>Winning trades needed (optional estimate)</legend>
+<div class="row">
+<div class="f"><label for="risk">Risk per trade (% of balance)</label><input id="risk" type="text" inputmode="decimal" autocomplete="off" placeholder="e.g. 1"></div>
+<div class="f"><label for="avgR">Average win in R (reward-to-risk)</label><input id="avgR" type="text" inputmode="decimal" autocomplete="off" placeholder="e.g. 2"></div>
+</div>
+<p class="mut">R is the amount you risk on a trade. An average win of 2R with 1% risk adds about 2% of your balance per win. Leave both empty to skip this part.</p>
+</fieldset>
+
+<section class="card" id="sum" aria-labelledby="sumH">
+<h2 id="sumH">Result</h2>
+<div aria-live="polite">
+<div class="mut">Gain needed to get back to where you were</div>
+<div class="big" id="need">—</div>
+<p class="err" id="err" role="status"></p>
+</div>
+<table class="res"><tbody id="tbody"></tbody></table>
+<p class="mut" id="winsOut"></p>
+<div class="btns"><button type="button" class="btn" id="copy">Copy result</button></div>
+<p class="mut" id="copied" role="status"></p>
+</section>
+
+<section class="card" id="table">
+<h2>Drawdown recovery table (10% to 90%)</h2>
+<p class="mut">Start from a balance of 100. "Growth needed" is how many times the remaining balance has to grow.</p>
+<table class="res"><thead><tr><th scope="col">Drawdown</th><th scope="col">Gain needed</th><th scope="col">Balance left</th><th scope="col">Growth needed</th></tr></thead>
+<tbody id="qtable"><tr><th scope="row">10%</th><td class="num">+11.11%</td><td class="num">90</td><td class="num">×1.11</td></tr>
+<tr><th scope="row">20%</th><td class="num">+25.00%</td><td class="num">80</td><td class="num">×1.25</td></tr>
+<tr><th scope="row">30%</th><td class="num">+42.86%</td><td class="num">70</td><td class="num">×1.43</td></tr>
+<tr><th scope="row">40%</th><td class="num">+66.67%</td><td class="num">60</td><td class="num">×1.67</td></tr>
+<tr><th scope="row">50%</th><td class="num">+100.00%</td><td class="num">50</td><td class="num">×2.00</td></tr>
+<tr><th scope="row">60%</th><td class="num">+150.00%</td><td class="num">40</td><td class="num">×2.50</td></tr>
+<tr><th scope="row">70%</th><td class="num">+233.33%</td><td class="num">30</td><td class="num">×3.33</td></tr>
+<tr><th scope="row">80%</th><td class="num">+400.00%</td><td class="num">20</td><td class="num">×5.00</td></tr>
+<tr><th scope="row">90%</th><td class="num">+900.00%</td><td class="num">10</td><td class="num">×10.00</td></tr></tbody></table>
+<div class="btns"><button type="button" class="btn ghost small" id="copyTable">Copy table</button></div>
+<p class="mut" id="copiedTable" role="status"></p>
+</section>
+
+<section class="card" id="formula">
+<h2>How to calculate the gain needed to recover a drawdown</h2>
+<ol>
+<li><b>Gain needed</b> = 1 ÷ (1 − loss) − 1, with the loss as a decimal. 10% → 1 ÷ 0.90 − 1 = <b>11.11%</b>. 25% → 1 ÷ 0.75 − 1 = <b>33.33%</b>. 50% → 1 ÷ 0.50 − 1 = <b>100%</b>.</li>
+<li><b>Drawdown from your balance</b> = (peak − current balance) ÷ peak. The amount back to the peak is peak − current balance, and the gain needed is that amount ÷ current balance.</li>
+<li><b>Winning trades (estimate)</b> = ln(1 ÷ (1 − drawdown)) ÷ ln(1 + risk × R), rounded up. Each win is assumed to add risk × R of the current balance, so wins compound.</li>
+</ol>
+<p>The gain grows faster than the loss because it is earned on a smaller balance. Up to about 20% the two numbers stay close; past 50% the gain needed climbs steeply.</p>
+</section>
+
+<section class="card" id="examples">
+<h2>Worked examples</h2>
+<h3>1. From a loss %</h3>
+<p>A 25% drawdown: 1 ÷ (1 − 0.25) − 1 = 0.3333 → <b>+33.33%</b>. On $10,000, a 25% loss leaves $7,500, and $7,500 × 1.3333 = $10,000.</p>
+<h3>2. From your balance and peak</h3>
+<p>Peak $10,000, balance now $8,000. Drawdown = $2,000 ÷ $10,000 = <b>20%</b>. Amount back to the peak = <b>$2,000</b>. Gain needed = $2,000 ÷ $8,000 = <b>25%</b>.</p>
+<h3>3. Winning trades, as a rough estimate</h3>
+<p>Same 20% drawdown, 1% risk per trade, average win 2R. Each win adds about 2% of the balance: ln(1.25) ÷ ln(1.02) = 11.27 → <b>12 winning trades</b> with no losses in between. Each losing trade in between (−1%) adds about 0.51 more wins. Real trades differ, so treat this as arithmetic, not a forecast.</p>
+<p class="mut">Enter the same numbers above and you get the same results.</p>
+</section>
+
+<section class="card" id="faq">
+<h2>FAQ</h2>
+<h3>Why does a 50% loss need a 100% gain?</h3>
+<p>The gain is earned on the smaller balance that is left. $10,000 that falls 50% becomes $5,000, and $5,000 has to double (+100%) to reach $10,000 again.</p>
+<h3>What is the formula for the gain needed to recover?</h3>
+<p>Gain needed = 1 / (1 - loss) - 1, with the loss as a decimal. For a 25% loss: 1 / 0.75 - 1 = 0.3333, so you need +33.33%.</p>
+<h3>How is drawdown worked out from my balance?</h3>
+<p>Drawdown = (peak balance - current balance) / peak balance. With a peak of $10,000 and a balance of $8,000, the drawdown is 20%, the amount back to the peak is $2,000 and the gain needed is $2,000 / $8,000 = 25%.</p>
+<h3>How is the number of winning trades estimated?</h3>
+<p>Each win is assumed to add risk % x average R of the current balance, so the balance grows by (1 + risk x R) per win. Wins needed = ln(1 / (1 - drawdown)) / ln(1 + risk x R), rounded up. It ignores losing trades, costs and slippage, so treat it as a rough planning figure only.</p>
+<h3>Why is 100% not accepted?</h3>
+<p>At a 100% loss nothing is left, and no percentage gain on zero brings the balance back. The calculator accepts losses from 0% up to, but not including, 100%.</p>
+<h3>Does it work for stocks, crypto or funds?</h3>
+<p>Yes. The recovery math is the same for any balance that moves in percentages, whether it is a trading account, a stock portfolio or a fund. Fees, taxes and deposits or withdrawals are not included.</p>
+<h3>Is this financial advice?</h3>
+<p>No. It shows arithmetic for planning and education, not financial advice. It does not suggest what to trade, how much to risk, or whether you will recover a loss.</p>
+</section>
+<section class="card" id="related">
+<h2>Related tools</h2>
+<ul>
+<li><a href="../position-size/">Forex position size calculator (lot size)</a> — size a trade from your stop-loss and the most you are willing to lose.</li>
+</ul>
+</section>
+<p class="mut">The calculations are covered by tests. Results are arithmetic for planning and education, not financial advice. Past results do not tell you future results.</p>
+</main>
+<footer class="wrap">© MisaNeco Works · Tested before release.<br><small class="ga-note">Page views are counted anonymously with Google Analytics. What you type into this tool is never sent.</small></footer>
+<script src="logic.js?v=202611041308"></script><script src="app.js?v=202611041308"></script>
+</body></html>
