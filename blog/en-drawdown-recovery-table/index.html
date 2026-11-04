@@ -1,0 +1,170 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'self'; img-src 'self' data: https://*.a8.net https://*.google-analytics.com https://*.googletagmanager.com; script-src 'self' https://www.googletagmanager.com; connect-src https://*.google-analytics.com https://*.analytics.google.com https://*.googletagmanager.com; base-uri 'none'; form-action 'none'; object-src 'none'">
+<title>How much gain do you need to recover from a drawdown? (formula, table and examples) | MisaNeco Works</title><meta name="description" content="Drawdown recovery in plain numbers — the formula for the gain needed to recover a loss, a drawdown table from 10% to 90%, worked examples from balance and peak, and a rough count of winning trades at 1% risk and 2R.">
+<link rel="canonical" href="https://tools.equaglobal.com/blog/en-drawdown-recovery-table/"><meta property="og:type" content="article"><meta property="og:url" content="https://tools.equaglobal.com/blog/en-drawdown-recovery-table/"><meta property="og:image" content="https://tools.equaglobal.com/blog/og.png"><meta name="twitter:card" content="summary_large_image"><meta property="og:title" content="How much gain do you need to recover from a drawdown? (formula, table and examples) | MisaNeco Works"><meta property="og:description" content="Drawdown recovery in plain numbers — the formula for the gain needed to recover a loss, a drawdown table from 10% to 90%, worked examples from balance and peak, and a rough count of winning trades at 1% risk and 2R.">
+<link rel="alternate" type="application/rss+xml" title="MisaNeco Works Blog" href="https://tools.equaglobal.com/blog/en/rss.xml"><script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "How much gain do you need to recover from a drawdown? (formula, table and examples)", "description": "Drawdown recovery in plain numbers — the formula for the gain needed to recover a loss, a drawdown table from 10% to 90%, worked examples from balance and peak, and a rough count of winning trades at 1% risk and 2R.", "datePublished": "2026-11-04", "dateModified": "2026-11-04", "inLanguage": "en", "mainEntityOfPage": "https://tools.equaglobal.com/blog/en-drawdown-recovery-table/", "image": "https://tools.equaglobal.com/blog/og.png", "author": {"@type": "Organization", "name": "MisaNeco Works", "url": "https://tools.equaglobal.com/"}, "publisher": {"@type": "Organization", "name": "MisaNeco Works"}}</script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-EWJXRJY9M6"></script><script src="../ga.js?v=202611041532"></script>
+<link rel="stylesheet" href="../blog.css?v=202611041532"></head><body>
+<header><div class="wrap"><a href="../en/">MisaNeco Works Blog</a></div></header>
+<main class="wrap"><p class="meta">2026-11-04・Trading</p><h1>How much gain do you need to recover from a drawdown? (formula, table and examples)</h1><p>A 10% loss does not need a 10% gain to get back to where you were. It needs <strong>11.11%</strong>. A 50% loss needs <strong>100%</strong>. The deeper the drawdown, the faster the required gain grows — and that is the main reason to keep losses small.</p>
+<p>This post shows the formula, a drawdown table from 10% to 90%, three worked examples, and what it means for how you size trades.</p>
+<p><strong>Free calculator:</strong> <a href="../../drawdown-recovery/">Drawdown Recovery Calculator</a> — runs in your browser, nothing you type is sent anywhere.</p>
+<p><em>This is for education, not financial advice. It is arithmetic only and doesn't tell you what or when to trade.</em></p>
+<h2>Drawdown recovery formula: gain needed to recover a loss</h2>
+<pre><code>Gain needed = 1 ÷ (1 − loss) − 1
+</code></pre>
+<p>Write the loss as a decimal (25% = 0.25). Multiply the answer by 100 to get a percentage.</p>
+<ul>
+<li><strong>10% loss:</strong> 1 ÷ 0.90 − 1 = 0.1111 → <strong>11.11%</strong></li>
+<li><strong>25% loss:</strong> 1 ÷ 0.75 − 1 = 0.3333 → <strong>33.33%</strong></li>
+<li><strong>50% loss:</strong> 1 ÷ 0.50 − 1 = 1 → <strong>100%</strong></li>
+</ul>
+<p>Why it isn't symmetric: after a loss, you are earning the gain on a <strong>smaller balance</strong>. Lose 50% of $10,000 and you have $5,000. A 50% gain on $5,000 is only $2,500, which takes you to $7,500 — not back to $10,000.</p>
+<h2>Drawdown table: 10% to 90%</h2>
+<table>
+<thead>
+<tr>
+<th>Drawdown</th>
+<th>Gain needed to recover</th>
+<th>Left of every 100</th>
+<th>Balance must grow by</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>10%</td>
+<td>+11.11%</td>
+<td>90</td>
+<td>×1.11</td>
+</tr>
+<tr>
+<td>20%</td>
+<td>+25.00%</td>
+<td>80</td>
+<td>×1.25</td>
+</tr>
+<tr>
+<td>30%</td>
+<td>+42.86%</td>
+<td>70</td>
+<td>×1.43</td>
+</tr>
+<tr>
+<td>40%</td>
+<td>+66.67%</td>
+<td>60</td>
+<td>×1.67</td>
+</tr>
+<tr>
+<td>50%</td>
+<td>+100.00%</td>
+<td>50</td>
+<td>×2.00</td>
+</tr>
+<tr>
+<td>60%</td>
+<td>+150.00%</td>
+<td>40</td>
+<td>×2.50</td>
+</tr>
+<tr>
+<td>70%</td>
+<td>+233.33%</td>
+<td>30</td>
+<td>×3.33</td>
+</tr>
+<tr>
+<td>80%</td>
+<td>+400.00%</td>
+<td>20</td>
+<td>×5.00</td>
+</tr>
+<tr>
+<td>90%</td>
+<td>+900.00%</td>
+<td>10</td>
+<td>×10.00</td>
+</tr>
+</tbody>
+</table>
+<p>Look at the steps between rows. Going from a 10% to a 20% drawdown adds 13.89 points to the gain you need. Going from 40% to 50% adds 33.33 points. Going from 80% to 90% adds 500 points. <strong>Each extra 10% of loss costs more than the one before.</strong></p>
+<h2>Example 1: from your balance and peak</h2>
+<ul>
+<li>Highest balance (peak): <strong>$10,000</strong></li>
+<li>Current balance: <strong>$8,000</strong></li>
+</ul>
+<p>Drawdown = (10,000 − 8,000) ÷ 10,000 = <strong>20%</strong>
+Gain needed = 1 ÷ (1 − 0.20) − 1 = <strong>25%</strong>
+Amount to make back = <strong>$2,000</strong></p>
+<p>Check: $8,000 × 1.25 = $10,000. The dollar amount is the same $2,000 you lost, but as a percentage of what you have now it is 25%, not 20%.</p>
+<h2>Example 2: how many winning trades at 1% risk and 2R?</h2>
+<p>Same 20% drawdown. Suppose you risk 1% of your current balance per trade, and a winning trade makes 2R — twice the amount risked, so +2% of the balance.</p>
+<p>Because each win is 2% of a balance that keeps growing, the count is:</p>
+<pre><code>Winning trades = ln(1 ÷ (1 − drawdown)) ÷ ln(1 + risk × R)
+               = ln(1.25) ÷ ln(1.02)
+               ≈ 11.27 → 12 winning trades
+</code></pre>
+<p>Check: 1.02 to the power 11 is about 1.243 (not quite 1.25), and to the power 12 is about 1.268. So 11 wins take $8,000 to about $9,947, and the 12th takes it past $10,000.</p>
+<p>This assumes <strong>every trade in between is a win</strong>. Each 1% losing trade along the way needs about <strong>0.51 more wins</strong> at 2R to make up. Real results come in mixed order, so treat the number as a rough guide to scale, not a forecast.</p>
+<h2>Example 3: the same rule at deeper drawdowns</h2>
+<p>Still risking 1% per trade at 2R, here is the rough count of consecutive wins needed to recover:</p>
+<table>
+<thead>
+<tr>
+<th>Drawdown</th>
+<th>Gain needed</th>
+<th>Winning trades (1% risk, 2R)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>10%</td>
+<td>+11.11%</td>
+<td>6 (5.32)</td>
+</tr>
+<tr>
+<td>20%</td>
+<td>+25.00%</td>
+<td>12 (11.27)</td>
+</tr>
+<tr>
+<td>30%</td>
+<td>+42.86%</td>
+<td>19 (18.01)</td>
+</tr>
+<tr>
+<td>40%</td>
+<td>+66.67%</td>
+<td>26 (25.80)</td>
+</tr>
+<tr>
+<td>50%</td>
+<td>+100.00%</td>
+<td>36 (35.00)</td>
+</tr>
+</tbody>
+</table>
+<p>A 50% drawdown is five times deeper than a 10% one, but needs about six to seven times as many wins (35.00 vs 5.32).</p>
+<h2>Why stopping losses early matters</h2>
+<p>The table shows the core point: <strong>the gain needed to recover grows faster than the loss itself.</strong> A small drawdown can be recovered with a modest run of trades. A large one can take a very long time, even with a sound method.</p>
+<p>That is why many traders decide the maximum loss per trade before they enter. Ten 1% losses in a row, each taken from the current balance, leave you about 9.56% down — which needs about 10.57% to recover. Ten losses of 5% each would leave you around 40% down, needing roughly 67%.</p>
+<p>Small, fixed losses come from two things: a stop placed before you enter, and a position size worked out from the distance to that stop. If you want to see how to do the second part, read <a href="../en-forex-position-size-formula/">How to calculate forex position size from your stop-loss</a> or use the <a href="../../position-size/">Forex position size calculator</a>.</p>
+<h2>Common mistakes when reading drawdown</h2>
+<ol>
+<li><strong>Measuring from the starting balance instead of the peak.</strong> Drawdown is the fall from the highest balance reached, not from your first deposit.</li>
+<li><strong>Adding percentages.</strong> A −20% month followed by a +20% month is not break-even: $10,000 → $8,000 → $9,600.</li>
+<li><strong>Ignoring deposits and withdrawals.</strong> Money you add or take out changes the balance without being a gain or loss. Adjust for it before working out the drawdown.</li>
+<li><strong>Treating the win count as a plan.</strong> It is arithmetic on an ideal sequence. Losses, costs and spread all push it higher.</li>
+</ol>
+<h2>Quick checklist</h2>
+<ul>
+<li>☐ I know my peak balance and my current balance</li>
+<li>☐ I worked out the drawdown from the peak, not from my first deposit</li>
+<li>☐ I checked the gain needed with the formula or the table, not by guessing</li>
+<li>☐ I decided my maximum risk per trade before entering</li>
+<li>☐ My position size comes from my stop distance and that risk</li>
+</ul>
+<p>Try your own numbers: <a href="../../drawdown-recovery/">Drawdown Recovery Calculator</a></p>
+<p><em>The examples are arithmetic only and use made-up balances. They ignore spread, commissions and swaps.</em></p><div class="tools"><b>Free tools you can use</b><a href="../../position-size/">Forex Position Size Calculator</a><br><a href="../../drawdown-recovery/">Drawdown Recovery Calculator</a><br></div><div class="rel"><b>Related articles</b><a href="../en-forex-position-size-formula/">How to calculate forex position size from your stop-loss (formula and worked examples)</a><br></div></main>
+<footer class="wrap">© MisaNeco Works ・ <a href="../en/">All articles</a> ・ <a href="../../">Free tools</a> ・ <a href="../en/../">日本語の記事</a><br>Articles are checked against official sources. Articles with ads say so at the top. We use Google Analytics to count page views anonymously (no names or contact details).</footer>
+</body></html>
