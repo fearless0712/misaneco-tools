@@ -231,7 +231,7 @@ eq(GA.problems, [], 'GA only, in the fixed form (tag, CSP, note)');
 eq((GA.html.match(/<script[^>]*src="[^"]+"/g) || []).every(t => !/https?:/.test(t)), true, 'no external scripts except GA');
 const csp = (GA.html.match(/http-equiv="Content-Security-Policy" content="([^"]+)"/) || [])[1] || '';
 ok(/default-src 'none'/.test(csp) && /connect-src 'none'/.test(csp) && /form-action 'none'/.test(csp) && !/https?:/.test(csp), 'CSP: no network');
-eq((GA.html.match(/https?:\/\/[^"'\s)]+/g) || []), [], 'no external URLs in the page');
+eq([...new Set(GA.html.match(/https?:\/\/[^"'\s)]+/g) || [])].sort(), ['https://comedyverse.gumroad.com/l/pctrga', 'https://www.etsy.com/listing/4609658847'], 'only the two store links are external URLs');
 eq(/googletagmanager|gtag|ads-inter|a8\.net|adsbygoogle|fonts\.googleapis/.test(GA.html + app), false, 'no ads or web fonts; no analytics except GA');
 eq(/fetch\(|XMLHttpRequest|WebSocket|sendBeacon|EventSource|importScripts/.test(all), false, 'nothing sends data');
 eq(/noindex/.test(html), false, 'public (indexable)');
