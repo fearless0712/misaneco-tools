@@ -78,14 +78,14 @@ for (const h of hrefs) {
   } else if (/^https?:/.test(h)) {
     ext++;
     const host = new URL(h).hostname;
-    eq(/(^|\.)booth\.pm$/.test(host) || /(^|\.)equaglobal\.com$/.test(host), true, '外部URLは booth.pm / equaglobal.com だけ：' + h);
+    eq(/(^|\.)booth\.pm$/.test(host) || /(^|\.)equaglobal\.com$/.test(host) || h === 'https://line.me/R/ti/p/@736dykzx', true, '外部URLは booth.pm / equaglobal.com / 公式LINE だけ：' + h);
   } else {
     const p = h.startsWith('/') ? path.join(ROOT, h) : path.join(__dirname, h);
     const f = h.endsWith('/') ? path.join(p, 'index.html') : p;
     eq(fs.existsSync(f), true, 'リンク先が存在：' + h);
   }
 }
-eq(ext, 4, '外部リンクの数（BOOTH4＝スタジオ4種。相談の欄は10/25に外した）');
+eq(ext, 5, '外部リンクの数（BOOTH4＝スタジオ4種＋公式LINE1＝11/5 受注テスト）');
 // 業種ごとの飛び先（見本・無料版のページから /ig/#slug で来る）
 for (const a of APPS) eq(html.includes('<section class="card" id="' + a.slug + '"') && html.includes('href="#' + a.slug + '"'), true, a.name + ' カードのidと上の業種リンク');
 for (const a of APPS) { const m = html.match(new RegExp('<a href="#' + a.slug + '">[^<]*<small>([^<]*)</small>')); eq(m && m[1].startsWith(yen(a.price)), true, a.name + ' 上の業種リンクの価格'); }
