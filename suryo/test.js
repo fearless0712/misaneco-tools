@@ -165,9 +165,9 @@ eq(/外部に送信しません/.test(html), true, '送信しない明記');
 const vis = html.replace(/<script[\s\S]*?<\/script>/g, '');
 eq(/\bAI\b|ＡＩ|人工知能|AIで|AIを/.test(vis + js), false, 'AIの文言がない');
 eq(/未確認|確認していません|確かめていません/.test(vis), false, '未確認の文言がない');
-eq(/BOOTH|booth\.pm|[0-9,]+円|¥/.test(vis.replace(/<aside class="booth-next"[\s\S]*?<\/aside>/, '')), false, '価格・BOOTHの名前がない（BOOTHへの案内ブロック以外）');
+eq(/BOOTH|booth\.pm|[0-9,]+円|¥/.test(vis.replace(/<aside class="booth-next"[\s\S]*?<\/aside>/, '').replace(/<aside class="next-cta nc-pack"[\s\S]*?<\/aside>/g, '')), false, '価格・BOOTHの名前がない（BOOTHへの案内ブロック・数量計算パックの案内以外）');
 eq((vis.match(/<aside class="booth-next"/g) || []).length, 1, 'BOOTHへの案内ブロックは1つ');
-eq(/https?:\/\/(?!tools\.equaglobal\.com|schema\.org|www\.googletagmanager\.com|line\.me\/R\/ti\/p\/@736dykzx|excel-temple\.booth\.pm\/items\/[0-9]+\?utm_source=tools)/.test(html.replace(/<meta http-equiv="Content-Security-Policy"[^>]*>/, '')), false, '外部URLなし');
+eq(/https?:\/\/(?!tools\.equaglobal\.com|schema\.org|www\.googletagmanager\.com|line\.me\/R\/ti\/p\/@736dykzx|excel-temple\.booth\.pm\/items\/[0-9]+\?utm_source=tools|excel-temple\.booth\.pm\/items\/9104843")/.test(html.replace(/<meta http-equiv="Content-Security-Policy"[^>]*>/, '')), false, '外部URLなし');
 const ga = require(path.join(__dirname, '..', 'assets', 'ga-test-helper.js')).stripGA(html);
 eq(ga.problems, [], 'GAは決まった形だけ');
 eq((ga.html.match(/<script[^>]*src="([^"]+)"/g) || []).every(s => !/https?:/.test(s)), true, 'GA以外の外部スクリプトなし');
@@ -190,6 +190,23 @@ ncs.forEach((b, i) => {
   eq(/AI|今だけ|限定|最安|絶対/.test(b.replace(/<[^>]+>/g, '')), false, '売り込み・AIの語なし ' + w);
 });
 eq(html.includes('<link rel="stylesheet" href="../assets/next-cta.css?v=') && fs.existsSync(path.join(__dirname, '../assets/next-cta.css')), true, '案内のCSS');
+// 11/6 数量計算パック（Excel）の案内：全タブの計算結果のすぐ下に1つずつ。data-cta でどのタブから押されたか分かる（ga.js の purchase_click）
+const PACK = 'https://excel-temple.booth.pm/items/9104843';
+const gaSrc = fs.readFileSync(path.join(__dirname, '../assets/ga.js'), 'utf8');
+NAMES.forEach(n => {
+  const s = sec(n), packs = s.match(/<aside class="next-cta nc-pack"[^>]*>[\s\S]*?<\/aside>/g) || [];
+  eq(packs.length, 1, '数量計算パックの案内は1つ ' + n);
+  const b = packs[0] || '';
+  eq(s.includes('<div class="xl" id="' + n + '-xl"></div></div>\n<aside class="next-cta nc-pack"'), true, '計算結果のすぐ下 ' + n);
+  eq(s.indexOf('nc-pack') < s.indexOf('<div class="next">'), true, 'ほかの案内より上 ' + n);
+  eq(b.includes('<a class="nc-btn nc-studio" href="' + PACK + '" target="_blank" rel="noopener" data-cta="suryo_pack_' + n + '">数量計算パック（Excel）を見る ¥1,480</a>'), true, 'ボタン・リンク先・data-cta ' + n);
+  eq(b.includes('<b>いくつもの工事の数量を、1枚の一覧にまとめたい方へ</b>'), true, '見出し ' + n);
+  eq(b.includes('<small>残土・生コン・砕石・ボード・クロス・タイル・足場・塗料・配管を入れると、数量一覧が自動でできます。電卓で約5分の16問が約1分（代表者が実際に計った時間）。</small>'), true, '説明 ' + n);
+  eq(/AI|今だけ|限定|最安|絶対/.test(b.replace(/<[^>]+>/g, '')), false, '売り込み・AIの語なし ' + n);
+});
+eq((html.match(/data-cta="suryo_pack_\w+"/g) || []).length, NAMES.length, 'data-cta はタブの数だけ');
+eq(/\\\.booth\\\.pm\$\/\.test\(host\)/.test(gaSrc) && gaSrc.includes("'purchase_click'") && gaSrc.includes("getAttribute('data-cta')"), true, 'ga.js が booth のリンクを data-cta つきで数える');
+eq(new URL(PACK).hostname, 'excel-temple.booth.pm', 'リンク先のホスト');
 const title = /<title>([^<]*)<\/title>/.exec(html)[1];
 eq(['塗料', '配管', '残土', 'クロス', 'タイル', '生コン', '足場'].every(w => title.includes(w)), true, 'titleに7種類');
 eq(/<h1>建設の数量計算（塗料・配管・残土・クロス・タイル・生コン・足場）<\/h1>/.test(html), true, 'h1');
