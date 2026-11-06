@@ -1,0 +1,13 @@
+/* 計算のあとの案内（見本へ・公式LINEで無料の見本を頼む）。日本語の計算ツール用（suryo・riekiritsu）
+   色はページの変数（--navy・--card・--line・--mut）を使い、LINEの緑は .line-box と同じ */
+.next-cta{border:2px solid var(--navy,#214f78);border-radius:12px;background:var(--card,#fff);padding:14px 16px;margin:16px 0;font-size:15px;line-height:1.7}
+.next-cta .nc-h{margin:0 0 10px;font-weight:800;font-size:16px}
+.next-cta .nc-item{display:grid;gap:8px}
+.next-cta .nc-item+.nc-item{margin-top:14px;padding-top:14px;border-top:1px solid var(--line,#dde4ee)}
+.next-cta .nc-item p{margin:0}
+.next-cta .nc-btn{display:flex;align-items:center;justify-content:center;text-align:center;min-height:48px;padding:10px 16px;border-radius:10px;font-weight:700;text-decoration:none;line-height:1.45;max-width:420px}
+.next-cta .nc-studio{border:2px solid var(--navy,#214f78);background:var(--navy,#214f78);color:var(--bg,#fff)!important}
+.next-cta .nc-line{border:2px solid #06c755;background:#06c755;color:#fff!important}
+.next-cta .nc-btn:focus-visible{outline:3px solid #e0a800;outline-offset:2px}
+.next-cta small{display:block;font-size:13px;color:var(--mut,#5b6b7f);line-height:1.6}
+@media print{.next-cta{display:none}}

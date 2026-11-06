@@ -141,6 +141,17 @@ const vs=(html.match(/"(?:logic|ja|app)\.(?:js|css)\?v=\d+/g)||[]).map(v=>v.repl
 eq(/<script src="\.\.\/assets\/ads-inter\.js\?v=\d+" data-pool="accounting" data-page-ad="0" defer><\/script>/.test(html),true,'interstitial script');eq(html.includes('href="../assets/ads-inter.css?v='),true,'interstitial css');
 ['logic.js','ja.js','app.js','app.css'].forEach(f=>eq(require('fs').existsSync(__dirname+'/'+f),true,'file '+f));
 eq(require('fs').readFileSync(__dirname+'/logic.js','utf8'),require('fs').readFileSync(__dirname+'/../jobcost/logic.js','utf8'),'logic.js same as jobcost');
+{// 11/6 計算のあとの案内（見本へ・公式LINEで無料の見本）：結果のすぐ下と、ページの下の2か所
+const ncs=html.match(/<aside class="next-cta"[^>]*>[\s\S]*?<\/aside>/g)||[];
+eq(ncs.length,2,'next-cta x2');
+eq(html.indexOf('class="next-cta"')>html.indexOf('id="out"')&&html.indexOf('class="next-cta"')<html.indexOf('<aside class="booth-next"'),true,'next-cta right below result');
+eq(html.lastIndexOf('class="next-cta"')<html.indexOf('<aside class="line-box"')&&html.lastIndexOf('class="next-cta"')>html.indexOf('利益率と上乗せ率のちがい'),true,'next-cta near bottom');
+ncs.forEach((b,i)=>{const w=i?'bottom':'result';
+ eq(b.includes('見積から工程・請求までつなげたい方へ')&&b.includes('<a class="nc-btn nc-studio" href="../studio/" data-cta="riekiritsu_studio_'+w+'">業種別スタジオの見本を見る</a>'),true,'studio btn '+w);
+ eq(b.includes('<a class="nc-btn nc-line" href="https://line.me/R/ti/p/@736dykzx" target="_blank" rel="noopener" data-cta="riekiritsu_line_'+w+'">LINEで無料の見本を頼む</a>'),true,'line btn '+w);
+ eq(/写真を1枚/.test(b)&&/48時間以内に無料の見本/.test(b)&&/名前や電話番号は、隠して/.test(b),true,'line note '+w);
+ eq(/AI|今だけ|限定|最安|絶対|[0-9,]+円|¥/.test(b.replace(/<[^>]+>/g,'')),false,'no hype/price '+w);});
+eq(html.includes('<link rel="stylesheet" href="../assets/next-cta.css?v=')&&require('fs').existsSync(__dirname+'/../assets/next-cta.css'),true,'next-cta css');}
 const en=require('fs').readFileSync(__dirname+'/../jobcost/index.html','utf8');
 eq(en.includes('hreflang="ja" href="https://tools.equaglobal.com/riekiritsu/"'),true,'reverse hreflang in jobcost');
 console.log(p+' passed, '+f+' failed');process.exit(f?1:0);
