@@ -196,7 +196,24 @@ const mc = mstat(S, T0, '2026-10'), mp = mstat(S, T0, '2026-09');
 eq([mc.sales, mc.exp, mp.sales, mp.exp], [1168140, 954517, 1185740, 941997], '10/22：今月の売上1,168,140・経費954,517／前月1,185,740・941,997');
 eq([Math.round((mc.sales - mc.exp) / mc.sales * 1000) / 10, Math.round((mc.exp / mp.exp - 1) * 100)], [18.3, 1], '10/22：利益率18.3%（前月20.6%）・経費の前月比+1%');
 const S18 = DA.sample(K.D('2026-10-18')), m18 = mstat(S18, K.D('2026-10-18'), '2026-10');
-eq([m18.sales, m18.exp, Math.round((m18.sales - m18.exp) / m18.sales * 1000) / 10], [279400, 221857, 20.6], '10/18（月の途中）：月末の給与・請求書はまだ、どちらも前月の約4分の1で利益率20.6%');
+eq([m18.sales, m18.exp, Math.round((m18.sales - m18.exp) / m18.sales * 1000) / 10], [1168140, 954517, 18.3], '10/18（月の途中）：1か月分がそろい、10/22 と同じ数字');
+// 11/7 月初でも月末でも赤字の画面にならない：うるう年を含む3年分の毎日で確かめる
+{
+  let bad = [], min = 1, max = 0, days = 0;
+  for (let n = K.D('2026-01-01'); n <= K.D('2028-12-31'); n++) {
+    const Sd = DA.sample(n), M0 = K.firstOfMonth(n), o = K.ymd(n), mk = K.ym(n), ms = mstat(Sd, n, mk), r = ms.sales ? (ms.sales - ms.exp) / ms.sales : -1, upto = Math.max(n, M0 + 1);
+    const thisInv = Sd.invoices.filter(v => K.ym(K.D(v.issue)) === mk), thisTx = Sd.tx.filter(e => K.ym(K.D(e.date)) === mk);
+    days++; if (r < min) min = r; if (r > max) max = r;
+    if (!(ms.sales > 1000000) || !(ms.exp > 500000) || !(r > 0.1 && r < 0.3) || thisInv.length !== 5 || !thisTx.length) bad.push(K.iso(n) + ' sales' + ms.sales + ' exp' + ms.exp);
+    if (Sd.invoices.some(v => K.D(v.issue) >= upto) || Sd.tx.some(e => K.D(e.date) >= upto) || Sd.kintai.some(x => K.D(x.date) >= n)) bad.push(K.iso(n) + ' 未来の日付');
+    if (Sd.tx.some(e => K.state(e) && K.ym(K.D(e.date)) !== mk)) bad.push(K.iso(n) + ' 前の月に未仕訳');
+    if (Sd.log.some(l => K.D(l.t) > n)) bad.push(K.iso(n) + ' 記録の日付が未来');
+  }
+  eq(bad.slice(0, 5), [], '毎日（' + days + '日）：今月の売上・経費があり、利益率10〜30%、請求書5枚、未来の日付なし');
+  ['2026-11-01', '2026-11-02', '2026-11-07', '2026-11-30', '2027-02-01', '2027-02-28', '2028-02-29', '2026-12-31'].forEach(d => { const n = K.D(d), ms = mstat(DA.sample(n), n, K.ym(n)); eq(ms.sales - ms.exp > 0, true, d + ' 利益はプラス'); });
+}
+// 11/7 触っていない見本は保存を読まず、開くたびに今日の日付で作る（月初の赤字の画面が保存に残らない）
+eq(/function isUntouched\(o\)/.test(app) && /!isUntouched\(o\)\) \{ if \(!o\.draft\)/.test(app) && /o\.untouched = true; return o;/.test(app) && /if \(!keepUntouched\) delete S\.untouched/.test(app) && /if \(!DEMO\) save\(true\);/.test(app), true, '触っていない見本は作り直す・入力したデータは残す');
 eq(K.parseRules(S.company.rules).slice(0, 3).map(r => r.k + '=' + r.acc), ['キュウヨ=給料賃金', 'ヤチン=地代家賃', 'カクウライターズ=外注工賃'], '手で直した行（給与・家賃・外注）は最初の設定より上');
 
 // ===== ページの決まり =====
@@ -206,7 +223,14 @@ eq(GA.problems, [], 'GA（アクセス解析）は決まった形だけ（タグ
 eq((GA.html.match(/<script[^>]*src="[^"]+"/g) || []).every(t => !/https?:/.test(t)), true, 'GA以外の外部スクリプトなし');
 const csp = (GA.html.match(/http-equiv="Content-Security-Policy" content="([^"]+)"/) || [])[1] || '';
 eq(/default-src 'none'/.test(csp) && /connect-src 'none'/.test(csp) && /form-action 'none'/.test(csp), true, 'CSP：外部通信なし');
-eq((GA.html.match(/https?:\/\/[^"'\s)]+/g) || []).filter(u => !/^https:\/\/fonts\.(googleapis|gstatic)\.com/.test(u)), [], '外部URLは Google Fonts だけ');
+eq((GA.html.match(/https?:\/\/[^"'\s)]+/g) || []).filter(u => !/^https:\/\/fonts\.(googleapis|gstatic)\.com/.test(u) && u !== 'https://line.me/R/ti/p/@736dykzx'), [], '外部URLは Google Fonts と公式LINEだけ');
+// 11/7 建設の見本と同じ、公式LINEで「無料の見本」を頼む案内
+const pl = (html.match(/<aside class="promo promo-line"[^>]*>[\s\S]*?<\/aside>/) || [''])[0];
+eq(!!pl && html.indexOf('class="promo promo-line"') > html.indexOf('aria-label="製品版の案内"') && html.indexOf('class="promo promo-line"') < html.indexOf('<header class="top">'), true, 'LINEの案内は製品版の案内のすぐ下');
+eq(/<a class="line" href="https:\/\/line\.me\/R\/ti\/p\/@736dykzx" target="_blank" rel="noopener" data-cta="studio_keiri_line">LINEで無料の見本を頼む<\/a>/.test(pl), true, 'LINEのボタン（計測の印）');
+eq(/写真を1枚/.test(pl) && /48時間以内に無料の見本/.test(pl) && /名前や電話番号は、隠して/.test(pl), true, 'LINEの案内の説明');
+eq((html.match(/line\.me/g) || []).length, 1, 'LINEの案内は1つ');
+eq(/AI/.test(pl.replace(/<[^>]+>/g, '')), false, 'LINEの案内にAIの語なし');
 eq(/https?:\/\//.test(app + css + logic + data), false, 'js・css に外部URLなし');
 eq(/noindex/.test(html), false, 'public (indexable)');
 eq(/googletagmanager|gtag|ads-inter|a8\.net|adsbygoogle/.test(GA.html + app), false, '広告なし・計測はGAだけ');
@@ -221,5 +245,16 @@ eq(/@keyframes|animation\s*:/.test(css), false, '常時のCSSアニメなし（b
 eq(/__studio/.test(app) && /advance/.test(app) && /demo/.test(app) && /capture/.test(app) && /today/.test(app), true, '?demo=1・?capture=1・?today=・__studio.advance');
 eq(/#5fd3b0/i.test(css + app) && /#070b14/i.test(css), true, '配色：深い紺×ミント（studio_keiri.html と同じ）');
 [...app.matchAll(/\$\('#([\w-]+)'\)/g)].map(m => m[1]).filter((v, i, a) => a.indexOf(v) === i).forEach(id => eq(html.includes('id="' + id + '"') || app.includes('id="' + id + '"'), true, 'id: ' + id));
+
+// 11/7 スマホの人の次の手：買えることの1行と、自分に送る（無料版と同じ mobile.js）
+{
+  const _h = fs.readFileSync(path.join(__dirname, 'index.html'), 'utf8'), _c = fs.readFileSync(path.join(__dirname, 'assets/app.css'), 'utf8');
+  const _p = (_h.match(/<aside class="promo" aria-label="製品版の案内">[\s\S]*?<\/aside>/) || [''])[0];
+  eq(_p.includes('<small class="promo-sp">スマホで買って、あとでパソコンでダウンロードできます</small>'), true, 'スマホで買える1行は製品版の案内の中');
+  eq(_p.includes('<a href="/ig/#keiri">製品版の案内を見る →</a>'), true, '製品版ボタンはそのまま（値段なし・/ig/ へ）');
+  eq(/<span class="promo-send" id="mobileNote" hidden><button type="button" id="sendToSelf" data-share-title="[^"]+">パソコンで開くために、このページを自分に送る<\/button><span class="promo-msg" id="mobileMsg"/.test(_p), true, '自分に送る（スマホだけ出す部品）');
+  eq(new RegExp('<script src="\\.\\./kensetsu/free/mobile\\.js\\?v=\\d+" defer></script>').test(_h), true, 'mobile.js を読む（?v= つき）');
+  eq(/\.promo-send\[hidden\]\{display:none\}/.test(_c) && /assets\/app\.css\?v=\d+/.test(_h), true, 'パソコンでは隠れる・CSSは ?v= つき');
+}
 
 console.log(pass + ' passed, ' + fail + ' failed'); process.exit(fail ? 1 : 0);

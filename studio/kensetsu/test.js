@@ -239,4 +239,15 @@ eq(/<a href="\/ig\/#kensetsu">製品版の案内を見る →<\/a>/.test(html) &
 eq(/\.is-demo \.promo\{display:none\}/.test(fs.readFileSync(path.join(__dirname, 'assets/app.css'), 'utf8')), true, 'デモの録画ではLINEの案内も隠れる（.promo）');
 eq(/AI/.test(pl.replace(/<[^>]+>/g, '')), false, 'LINEの案内にAIの語なし');
 
+// 11/7 スマホの人の次の手：買えることの1行と、自分に送る（無料版と同じ mobile.js）
+{
+  const _h = fs.readFileSync(path.join(__dirname, 'index.html'), 'utf8'), _c = fs.readFileSync(path.join(__dirname, 'assets/app.css'), 'utf8');
+  const _p = (_h.match(/<aside class="promo" aria-label="製品版の案内">[\s\S]*?<\/aside>/) || [''])[0];
+  eq(_p.includes('<small class="promo-sp">スマホで買って、あとでパソコンでダウンロードできます</small>'), true, 'スマホで買える1行は製品版の案内の中');
+  eq(_p.includes('<a href="/ig/#kensetsu">製品版の案内を見る →</a>'), true, '製品版ボタンはそのまま（値段なし・/ig/ へ）');
+  eq(/<span class="promo-send" id="mobileNote" hidden><button type="button" id="sendToSelf" data-share-title="[^"]+">パソコンで開くために、このページを自分に送る<\/button><span class="promo-msg" id="mobileMsg"/.test(_p), true, '自分に送る（スマホだけ出す部品）');
+  eq(new RegExp('<script src="free/mobile\\.js\\?v=\\d+" defer></script>').test(_h), true, 'mobile.js を読む（?v= つき）');
+  eq(/\.promo-send\[hidden\]\{display:none\}/.test(_c) && /assets\/app\.css\?v=\d+/.test(_h), true, 'パソコンでは隠れる・CSSは ?v= つき');
+}
+
 console.log(pass + ' passed, ' + fail + ' failed'); process.exit(fail ? 1 : 0);

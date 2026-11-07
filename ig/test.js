@@ -32,7 +32,8 @@ eq(/<meta name="robots" content="noindex,nofollow">/.test(html), true, 'noindex'
 eq(/googlesyndication|adsbygoogle|a8\.net|ads-inter/.test(html), false, '広告なし');
 // 10/25 将さん：アクセス解析（GA）は入れる。スクリプトはGAの2つだけ
 const scripts = [...html.matchAll(/<script[^>]*src="([^"]+)"/gi)].map(m => m[1]);
-eq(scripts, ['https://www.googletagmanager.com/gtag/js?id=G-EWJXRJY9M6', '../assets/ga.js?v=202610210745'], 'スクリプトはアクセス解析（GA）の2つだけ');
+eq(scripts.slice(0, 2), ['https://www.googletagmanager.com/gtag/js?id=G-EWJXRJY9M6', '../assets/ga.js?v=202610210745'], 'スクリプトはアクセス解析（GA）の2つ');
+eq(scripts.length === 3 && /^\.\.\/studio\/kensetsu\/free\/mobile\.js\?v=\d+$/.test(scripts[2]), true, 'ほかは「自分に送る」の部品（無料版と同じ mobile.js）だけ');
 eq(/<script(?![^>]*src=)/i.test(html), false, 'インラインのスクリプトなし');
 eq(/リールで見た画面は、ここから/.test(html), true, '一言の見出し');
 for (const w of ['おすすめ', '今だけ', '限定', '残りわずか', '最安']) eq(html.includes(w), false, '売り込み言葉なし：' + w);
@@ -85,13 +86,29 @@ for (const h of hrefs) {
     eq(fs.existsSync(f), true, 'リンク先が存在：' + h);
   }
 }
-eq(ext, 5, '外部リンクの数（BOOTH4＝スタジオ4種＋公式LINE1＝11/5 受注テスト）');
+eq(ext, 6, '外部リンクの数（BOOTH5＝スタジオ4種＋数量計算パック、公式LINE1）');
+// 11/7 スマホの人の次の手：買えることの1行・自分に送る・計算のリールの入口・LINEの案内
+const SP = 'スマホで買って、あとでパソコンでダウンロードできます';
+eq((html.match(new RegExp('<p class="sp">' + SP + '</p>', 'g')) || []).length, 4, 'スマホで買える1行：アプリ版の4枚すべて');
+for (const a of APPS) { const i = html.indexOf('<section class="card" id="' + a.slug + '"'); const c = html.slice(i, html.indexOf('</section>', i)); eq(c.includes('<p class="sp">' + SP + '</p>') && c.indexOf('<p class="sp">') > c.indexOf('BOOTHで見る'), true, a.name + ' 1行はボタンの下'); }
+eq(/<aside class="mobile-note" id="mobileNote" hidden[^>]*><button type="button" class="mn-btn" id="sendToSelf" data-share-title="[^"]+">パソコンで開くために、このページを自分に送る<\/button><p class="mn-msg" id="mobileMsg"/.test(html), true, '自分に送る（スマホだけ出す部品）');
+eq(fs.existsSync(path.join(ROOT, 'studio/kensetsu/free/mobile.js')), true, 'mobile.js がある');
+const calc = (html.match(/<p class="calc-in">[\s\S]*?<\/p>/) || [''])[0];
+eq(html.indexOf('class="jump"') < html.indexOf('class="calc-in"') && html.indexOf('class="calc-in"') < html.indexOf('id="line"'), true, '計算のリールの入口は業種ボタンのすぐ下');
+eq(['href="/suryo/"', 'href="/riekiritsu/"', 'href="#pack"', '¥1,480'].every(w => calc.includes(w)), true, '入口：数量・利益率・数量計算パック');
+const pack = (html.match(/<a class="row" id="pack"[\s\S]*?<\/a>/) || [''])[0];
+eq(pack.includes('href="https://excel-temple.booth.pm/items/9104843"') && pack.includes('data-cta="ig_suryo_pack"') && pack.includes('data-price="1480">¥1,480<') && pack.includes(SP), true, '数量計算パックの行（リンク先・価格・計測の印・1行）');
+const lb = html.slice(html.indexOf('<section class="card" id="line"'), html.indexOf('</section>', html.indexOf('<section class="card" id="line"')));
+eq(lb.includes('いま使っているExcelや手書きの表の写真を1枚送ってもらえれば、計算が自動で出る見本を48時間で無料で作ってお返しします。お客さまの名前などは隠して、LINEで送ってください。'), true, 'LINEの案内文');
+eq(lb.includes('<a class="btn line" href="https://line.me/R/ti/p/@736dykzx" target="_blank" rel="noopener" data-cta="ig_line">LINEで無料の見本を頼む</a>'), true, 'LINEのボタン（緑・計測の印）');
+eq(/見積書を1枚/.test(html), false, '古い案内文は残っていない');
+eq(/\bAI\b/.test(html.replace(/<[^>]+>/g, '')), false, 'AIと書かない');
 // 業種ごとの飛び先（見本・無料版のページから /ig/#slug で来る）
 for (const a of APPS) eq(html.includes('<section class="card" id="' + a.slug + '"') && html.includes('href="#' + a.slug + '"'), true, a.name + ' カードのidと上の業種リンク');
 for (const a of APPS) { const m = html.match(new RegExp('<a href="#' + a.slug + '">[^<]*<small>([^<]*)</small>')); eq(m && m[1].startsWith(yen(a.price)), true, a.name + ' 上の業種リンクの価格'); }
 
 async function live() {
-  const ids = [...APPS.map(a => [a.id, a.price, a.name]), ...SETS.map(s => [s.id, s.price, s.slug + 'セット'])];
+  const ids = [...APPS.map(a => [a.id, a.price, a.name]), ...SETS.map(s => [s.id, s.price, s.slug + 'セット']), [9104843, 1480, '数量計算パック']];
   for (const [id, price, name] of ids) {
     try {
       const r = await fetch('https://booth.pm/ja/items/' + id + '.json', { headers: { 'User-Agent': 'Mozilla/5.0 (ig hub test)' } });

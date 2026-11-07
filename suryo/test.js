@@ -205,6 +205,9 @@ NAMES.forEach(n => {
   eq(/AI|今だけ|限定|最安|絶対/.test(b.replace(/<[^>]+>/g, '')), false, '売り込み・AIの語なし ' + n);
 });
 eq((html.match(/data-cta="suryo_pack_\w+"/g) || []).length, NAMES.length, 'data-cta はタブの数だけ');
+// 11/7 購入案内の近くに、スマホで買えることの1行（全タブ）。全画面広告はこのページだけ止める（ページ下の広告は残す）
+eq((html.match(/<\/small><small>スマホで買って、あとでパソコンでダウンロードできます<\/small><\/div><\/aside>/g) || []).length, NAMES.length, 'スマホで買える1行はタブの数だけ');
+eq(/<script src="\.\.\/assets\/ads-inter\.js\?v=\d+" data-pool="accounting" data-inter="0" defer><\/script>/.test(html), true, '全画面広告なし（data-inter="0"）・ページ下の広告はあり（data-page-ad なし）');
 eq(/\\\.booth\\\.pm\$\/\.test\(host\)/.test(gaSrc) && gaSrc.includes("'purchase_click'") && gaSrc.includes("getAttribute('data-cta')"), true, 'ga.js が booth のリンクを data-cta つきで数える');
 eq(new URL(PACK).hostname, 'excel-temple.booth.pm', 'リンク先のホスト');
 const title = /<title>([^<]*)<\/title>/.exec(html)[1];

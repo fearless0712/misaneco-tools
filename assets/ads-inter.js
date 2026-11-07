@@ -5,6 +5,7 @@
    ・使い方：body の最後で src="../assets/ads-inter.js?v=…" を defer で読み、data-pool="phone" のように指定する
        data-pool    … phone（スマホ・iPhone）/ move（引越し・回線）/ accounting（お金・帳簿）/ mix（ブログ一覧）
        data-page-ad … "0" ならページ下の広告は出さない（ページにもともと広告があるとき）
+       data-inter   … "0" なら全画面広告は出さない（ページ下の広告は出る）。いまは suryo だけ
    ・英語のページ（<html lang="en">、または途中で英語に切り替えたとき）には出さない。
    ・確認用：?inter=0 で全画面広告だけ止める（ページ下の広告は出る）。 */
 (function () {
@@ -12,7 +13,8 @@
   var ME = document.currentScript;
   var CFG = {
     pool: (ME && ME.getAttribute('data-pool')) || 'accounting',
-    pageAd: !(ME && ME.getAttribute('data-page-ad') === '0')
+    pageAd: !(ME && ME.getAttribute('data-page-ad') === '0'),
+    inter: !(ME && ME.getAttribute('data-inter') === '0')
   };
 
   /* 広告（A8.net のバナー 300x250。リンク＋表示計測の 1x1 画像をそのまま） */
@@ -175,7 +177,7 @@
     var ik = pick(list, avoid);
     var used = {}; if (ik) { used[ik] = 1; for (var k in avoid) used[k] = 1; }
     if (CFG.pageAd) { var pk = pick(list, used); if (pk) showPageAd(pk); }
-    if (isJa()) { if (ik && q('inter') !== '0') showInter(ik); }
+    if (isJa()) { if (ik && CFG.inter && q('inter') !== '0') showInter(ik); }
     else if (pageBox) pageBox.hidden = true;
     // 途中で言語を切り替えるページ（iPhoneのツール）：英語のときは広告を隠す
     if (window.MutationObserver) {

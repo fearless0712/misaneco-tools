@@ -78,7 +78,7 @@ ja.push({ f: 'kouki/index.html', pool: 'accounting', pageAd: true, up: '../' });
 ja.push({ f: 'shaken/index.html', pool: 'accounting', pageAd: true, up: '../' });
 ja.push({ f: 'shiharai/index.html', pool: 'accounting', pageAd: true, up: '../' });
 ja.push({ f: 'kinri/index.html', pool: 'accounting', pageAd: true, up: '../' });
-ja.push({ f: 'suryo/index.html', pool: 'accounting', pageAd: true, up: '../' });
+ja.push({ f: 'suryo/index.html', pool: 'accounting', pageAd: true, noInter: true, up: '../' });
 ja.push({ f: 'riekiritsu/index.html', pool: 'accounting', pageAd: false, up: '../', staticAd: true });
 ja.push({ f: 'anbun/index.html', pool: 'accounting', pageAd: false, up: '../', staticAd: true });
 fs.readdirSync(SITE).filter(function (f) { return /^[A-Z][A-Za-z0-9]+\.html$/.test(f); })
@@ -96,7 +96,7 @@ ja.forEach(function (p) {
       ok(/'unsafe-inline'/.test(dir(c, 'style-src') || ''), p.f + ' CSP allows the inline style');
     }
   } else {
-    var sm = new RegExp('<script src="' + p.up.replace(/\./g, '\\.') + 'assets/ads-inter\\.js\\?v=(\\d+)" data-pool="' + p.pool + '"' + (p.pageAd ? '' : ' data-page-ad="0"') + ' defer></script>').exec(h);
+    var sm = new RegExp('<script src="' + p.up.replace(/\./g, '\\.') + 'assets/ads-inter\\.js\\?v=(\\d+)" data-pool="' + p.pool + '"' + (p.pageAd ? '' : ' data-page-ad="0"') + (p.noInter ? ' data-inter="0"' : '') + ' defer></script>').exec(h);
     ok(!!sm, p.f + ' full-screen ad script (pool ' + p.pool + (p.pageAd ? ', page ad' : '') + ')');
     ok(h.indexOf('<link rel="stylesheet" href="' + p.up + 'assets/ads-inter.css?v=') > 0, p.f + ' full-screen ad css');
     ok(sm && fs.existsSync(path.join(SITE, path.dirname(p.f), p.up, 'assets/ads-inter.js')), p.f + ' script path resolves');
@@ -112,6 +112,10 @@ en.forEach(function (f) {
   ok(!/<html lang="ja"/.test(h), f + ' is not lang=ja');
   ok(h.indexOf('ads-inter') < 0 && h.indexOf('mnad-') < 0, f + ' has NO Japanese full-screen ad');
 });
+/* 全画面広告を止めるのは suryo だけ（11/7 将さんOK）。ほかのページは今までどおり */
+ok(ja.filter(function (p) { return read(p.f).indexOf('data-inter="0"') >= 0; }).map(function (p) { return p.f; }).join() === 'suryo/index.html', 'data-inter="0" is on suryo only');
+ok(/inter: !\(ME && ME\.getAttribute\('data-inter'\) === '0'\)/.test(js) && /if \(ik && CFG\.inter && q\('inter'\) !== '0'\) showInter\(ik\)/.test(js), 'data-inter="0" stops only the full-screen ad');
+ok(/if \(CFG\.pageAd\) \{ var pk = pick\(list, used\); if \(pk\) showPageAd\(pk\); \}/.test(js), 'page ad is not affected by data-inter');
 ok(ja.length >= 50, 'JA pages checked: ' + ja.length);
 ok(en.length >= 20, 'EN pages checked: ' + en.length);
 

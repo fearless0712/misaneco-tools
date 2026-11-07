@@ -194,4 +194,15 @@ eq(/m\.status = '書面による購入申込みあり'; m\.statusDate = K\.iso\(
 ['dash', 'lead', 'survey', 'baikai', 'visit', 'draft', 'settle', 'lease', 'sim', 'set'].forEach(v => eq(html.includes('data-view="' + v + '"') && html.includes('id="v-' + v + '"') && app.includes('RENDER.' + v + ' = '), true, '画面: ' + v));
 [...app.matchAll(/\$\('#([\w-]+)'\)/g)].map(m => m[1]).filter((v, i, a) => a.indexOf(v) === i).forEach(id => eq(html.includes('id="' + id + '"') || app.includes('id="' + id + '"'), true, 'id: ' + id));
 
+// 11/7 スマホの人の次の手：買えることの1行と、自分に送る（無料版と同じ mobile.js）
+{
+  const _h = fs.readFileSync(path.join(__dirname, 'index.html'), 'utf8'), _c = fs.readFileSync(path.join(__dirname, 'assets/app.css'), 'utf8');
+  const _p = (_h.match(/<aside class="promo" aria-label="製品版の案内">[\s\S]*?<\/aside>/) || [''])[0];
+  eq(_p.includes('<small class="promo-sp">スマホで買って、あとでパソコンでダウンロードできます</small>'), true, 'スマホで買える1行は製品版の案内の中');
+  eq(_p.includes('<a href="/ig/#fudosan">製品版の案内を見る →</a>'), true, '製品版ボタンはそのまま（値段なし・/ig/ へ）');
+  eq(/<span class="promo-send" id="mobileNote" hidden><button type="button" id="sendToSelf" data-share-title="[^"]+">パソコンで開くために、このページを自分に送る<\/button><span class="promo-msg" id="mobileMsg"/.test(_p), true, '自分に送る（スマホだけ出す部品）');
+  eq(new RegExp('<script src="\\.\\./kensetsu/free/mobile\\.js\\?v=\\d+" defer></script>').test(_h), true, 'mobile.js を読む（?v= つき）');
+  eq(/\.promo-send\[hidden\]\{display:none\}/.test(_c) && /assets\/app\.css\?v=\d+/.test(_h), true, 'パソコンでは隠れる・CSSは ?v= つき');
+}
+
 console.log(pass + ' passed, ' + fail + ' failed'); process.exit(fail ? 1 : 0);

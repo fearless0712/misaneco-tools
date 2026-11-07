@@ -1,4 +1,5 @@
-/* 建設スタジオ無料版ページ：スマホで来た人への案内（パソコン用のアプリなので）
+/* 建設スタジオ無料版ページ（と /ig/・見本ページ）：スマホで来た人への案内（パソコン用のアプリなので）
+   ・ほかのページでも id="mobileNote"・"sendToSelf"・"mobileMsg" を置けば同じように動く。共有の題名はボタンの data-share-title
    ・スマホ判定は UA と matchMedia の両方。どちらも使えない・判定できないときはパソコン扱い（案内を出さない）
    ・「自分に送る」は navigator.share（端末の共有メニュー）。使えなければ URL をコピーするだけ
    ・外部への送信・計測はしない（このファイルは通信しない） */
@@ -44,6 +45,7 @@
   // 「自分に送る」：共有メニュー → 使えなければコピー。戻り値は表示した文言（テスト用）
   function sendToSelf(win, doc, say) {
     var url = pageUrl(doc, win.location), nav = win.navigator;
+    var btn = doc.getElementById('sendToSelf'), own = btn && btn.getAttribute && btn.getAttribute('data-share-title');
     function fallback() {
       return copyText(win, doc, url).then(function (ok) {
         var m = ok ? 'コピーしました。メモやメールに貼って、パソコンで開いてください。'
@@ -53,7 +55,7 @@
     }
     if (nav && typeof nav.share === 'function') {
       var p;
-      try { p = nav.share({ title: TITLE, url: url }); } catch (e) { return fallback(); }
+      try { p = nav.share({ title: own || TITLE, url: url }); } catch (e) { return fallback(); }
       return Promise.resolve(p).then(function () { say(''); return 'shared'; }, function (e) {
         if (e && e.name === 'AbortError') { say(''); return 'canceled'; }
         return fallback();

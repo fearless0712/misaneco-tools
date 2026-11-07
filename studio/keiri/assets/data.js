@@ -4,9 +4,9 @@
    ・請求書は 請求書一括作成 の見本と同じ取引先・品目（茶菓子は軽減税率8%）
    ・入金は 入金消込チェッカー の見本と同じ型（名前の似た入金・振込手数料の差し引き・登録済みの名義・期日超過）
    ・勤怠は 勤怠集計 の見本と同じ作り方（山田・佐藤・鈴木の3人、16日の休憩不足、18日の深夜、23日の打刻もれ）
-   今月の分は、開いた日までに自然な量になるように、月の動き（固定費・外注・給与・カード・請求書）を今日より前の日付に詰めて置く。
-   ・月の半分くらい（ここではもとの日×1.5まで）が過ぎた分を入れる。月末の給与と月末の請求書は同じ「月末」の動きとして一緒に入る
-     （片方だけ入って利益率や前月比がおかしく見えないように）。22日ごろには1か月分がそろう
+   今月の分は、開いた日がいつでも自然な数字になるように、1か月分の動き（固定費・外注・給与・カード・請求書）を今日より前の日付に詰めて置く。
+   ・11/7 月初に売上¥0・利益マイナスの画面にならないよう、月の途中でも1か月分をそろえる（売上と経費が一緒に入るので利益率もふつう）
+   ・1日は「今日より前」の今月がないので、1日の日付で置く
    ・家賃・通信など月初の固定費は1日・4日。銀行明細は前回（cut の前日まで）取り込み済み、それより後の分（入金・商工会の会費・カード代金）は
      まだ取り込んでいない（「明細の取り込み」に例として入っている）。 */
 (function (root) {
@@ -77,9 +77,9 @@
     var M0 = K.firstOfMonth(today), rules = rulesText(), R = K.parseRules(rules);
     // ---- 今月の詰め方：もとの日 d の動きを、n 日目までに詰めた日にする。V 日目より後の動きはまだ（null）
     var oT = K.ymd(today), td = oT.d, lastT = K.ymd(K.eomonth(M0, 0)).d;
-    var V = Math.min(lastT, Math.round((td - 1) * 1.5));
+    var V = lastT, upto = Math.max(today, M0 + 1); // upto より前の日付を入れる（ふつうは今日より前。1日だけ1日の分を入れる）
     var cut = Math.max(2, Math.min(td - 7, 10)), cutD = K.mkD(oT.y, oT.m, cut); // 銀行明細は cut の前日まで取り込み済み（入金は10日から）
-    var squeeze = function (d, n) { return (d <= V && n >= 1) ? K.mkD(oT.y, oT.m, Math.max(1, Math.ceil(d * n / V))) : null; };
+    var squeeze = function (d, n) { return d <= V ? K.mkD(oT.y, oT.m, Math.max(1, Math.ceil(d * Math.max(1, n) / V))) : null; };
     var seq = 1000, uid = function (p) { seq++; return p + seq; };
     var opt = { taxin: COMPANY.taxin, round: COMPANY.round };
     // ---- 請求書（6か月前〜今月の、今日より前に出したもの）
@@ -89,7 +89,7 @@
       CLIENTS.forEach(function (c, ci) {
         var issue = c.day === 'eom' ? eom : K.mkD(o.y, o.m, c.day);
         if (k === 0) issue = squeeze(K.ymd(issue).d, td - 1);
-        if (issue === null || issue >= today) return;
+        if (issue === null || issue >= upto) return;
         invoices.push({ id: 'i' + o.y + K.pad(o.m) + ci, partner: c.p, hon: '御中', issue: K.iso(issue), due: K.iso(K.dueOf(issue, COMPANY.due)), taxin: opt.taxin, round: opt.round, ci: ci,
           items: c.items.map(function (x) { return { date: K.iso(issue), item: x[0].replace('{m}', o.m), qty: typeof x[1] === 'function' ? x[1](o.m) : x[1], unit: x[2], price: x[3], rate: x[4] }; }), paid: null });
       });
@@ -121,7 +121,7 @@
         push(pd, c.pay.desc, 0, total(v) - (c.pay.fee || 0), { inv: v.id, fee: c.pay.fee || 0 });
       });
     }
-    bank = bank.filter(function (b) { return b.date < today; });
+    bank = bank.filter(function (b) { return b.date < upto; });
     bank.forEach(function (b, i) { b._i = i; });
     bank.sort(function (a, b) { return a.date - b.date || (a.inc ? 0 : 1) - (b.inc ? 0 : 1) || a._i - b._i; });
     var bal = 2400000; bank.forEach(function (b) { bal += b.inc - b.out; b.bal = bal; });
@@ -143,7 +143,7 @@
     for (var k3 = -6; k3 <= 0; k3++) {
       var f3 = K.addMonths(M0, k3), o3 = K.ymd(f3);
       cardFor(f3, o3.y * 12 + o3.m).map(function (x) { return k3 === 0 ? { date: squeeze(K.ymd(x.date).d, td - 3), name: x.name, amt: x.amt } : x; })
-        .filter(function (x) { return x.date !== null && x.date < today; }).forEach(function (x) {
+        .filter(function (x) { return x.date !== null && x.date < upto; }).forEach(function (x) {
         tx.push(K.classify({ id: uid('t'), date: K.iso(x.date), name: K.nfkc(x.name).replace(/\s+/g, ' ').trim(), key: K.keyOf(x.name), amt: x.amt, dir: 'out', src: '未払金', file: 'カード明細_' + K.ym(f3) + '.csv', manual: false }, R));
       });
     }
@@ -166,7 +166,7 @@
       tx: tx, invoices: invoices, kintai: kin, close: close,
       pending: { name: '普通預金_入出金明細_' + K.ym(M0) + '.csv', text: csv },
       log: [
-        { t: K.iso(today - 1), msg: '勤怠：' + oT.m + '月の打刻を取り込んだ（3人）' },
+        { t: K.iso(Math.max(M0, today - 1)), msg: '勤怠：' + oT.m + '月の打刻を取り込んだ（3人）' },
         { t: K.iso(Math.max(M0, today - 2)), msg: 'カード明細を取り込み、自動で仕訳した' },
         { t: K.iso(Math.max(M0, Math.min(cutD, today - 1))), msg: '銀行明細（' + oT.m + '/' + (cut - 1) + 'まで）を取り込み、自動で仕訳した' },
         { t: K.iso(M0), msg: '前月の月次まとめを確認した' }

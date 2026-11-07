@@ -9,7 +9,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700&family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/app.css">
+<link rel="stylesheet" href="assets/app.css?v=202611072100">
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-EWJXRJY9M6"></script><script src="../../assets/ga.js?v=202610210745"></script>
 </head>
 <body>
@@ -35,7 +35,7 @@
   </aside>
 
   <main class="main" id="main">
-    <aside class="promo" aria-label="製品版の案内"><p><b>架空のデータで動く見本です。</b>自分のお店のデータで使う製品版（パソコン用・買い切り・ネット不要）があります。</p><span class="promo-l"><a href="/ig/#fudosan">製品版の案内を見る →</a><a class="sub" href="/studio/custom/">自社向けに作り変え</a></span></aside>
+    <aside class="promo" aria-label="製品版の案内"><p><b>架空のデータで動く見本です。</b>自分のお店のデータで使う製品版（パソコン用・買い切り・ネット不要）があります。<small class="promo-sp">スマホで買って、あとでパソコンでダウンロードできます</small></p><span class="promo-l"><a href="/ig/#fudosan">製品版の案内を見る →</a><a class="sub" href="/studio/custom/">自社向けに作り変え</a></span><span class="promo-send" id="mobileNote" hidden><button type="button" id="sendToSelf" data-share-title="不動産スタジオの見本（パソコン用）">パソコンで開くために、このページを自分に送る</button><span class="promo-msg" id="mobileMsg" role="status" aria-live="polite"></span></span></aside>
     <header class="top">
       <div class="top-l">
         <h1 id="viewTitle">ダッシュボード</h1>
@@ -73,5 +73,6 @@
 <script src="assets/logic.js"></script>
 <script src="assets/data.js"></script>
 <script src="assets/app.js"></script>
+<script src="../kensetsu/free/mobile.js?v=202611072100" defer></script>
 </body>
 </html>

@@ -20,17 +20,24 @@
   // ================= 保存 =================
   var S, storageOk = true;
   function blankDraft() { return { partner: '', hon: '御中', issue: K.iso(TODAY), items: [{ date: K.iso(TODAY), item: '', qty: '', unit: '式', price: '', rate: 10 }, { date: K.iso(TODAY), item: '', qty: '', unit: '', price: '', rate: 10 }] }; }
-  function fresh() { var o = DATA.sample(TODAY); o.draft = blankDraft(); return o; }
+  function fresh() { var o = DATA.sample(TODAY); o.draft = blankDraft(); o.untouched = true; return o; }
+  // 触っていない見本か（11/7 より前の保存には印がないので、記録と下書きで見分ける）。触っていなければ開くたびに今日の日付で作り直す
+  function isUntouched(o) {
+    if (o.untouched) return true;
+    var d = o.draft;
+    return (!o.log || o.log.length <= 4) && (!d || (!d.partner && (d.items || []).every(function (x) { return !x.item && !x.price; })));
+  }
   function load() {
     if (DEMO) return fresh();
     try {
       var raw = localStorage.getItem(KEY);
-      if (raw) { var o = JSON.parse(raw); if (o && o.v === 1 && o.company && o.tx && o.invoices) { if (!o.draft) o.draft = blankDraft(); return o; } }
+      if (raw) { var o = JSON.parse(raw); if (o && o.v === 1 && o.company && o.tx && o.invoices && !isUntouched(o)) { if (!o.draft) o.draft = blankDraft(); return o; } }
     } catch (e) { storageOk = false; }
     return fresh();
   }
-  function save() {
+  function save(keepUntouched) {
     if (DEMO) return;
+    if (!keepUntouched) delete S.untouched;
     try { localStorage.setItem(KEY, JSON.stringify(S)); storageOk = true; }
     catch (e) { storageOk = false; }
     showWarn();
@@ -685,7 +692,7 @@
     switch (a) {
       case 'reset':
         if (!DEMO && !window.confirm('今の入力を消して、見本データ（架空）に戻しますか？')) return;
-        S = fresh(); shown = {}; selInv = null; jrMonth = null; monSel = null; kinEdit = null; save(); $('#coName').textContent = S.company.name; go(view); toast('見本データに戻しました'); return;
+        S = fresh(); shown = {}; selInv = null; jrMonth = null; monSel = null; kinEdit = null; save(true); $('#coName').textContent = S.company.name; go(view); toast('見本データに戻しました'); return;
       case 'imp-load': doImport(); return;
       case 'rules-apply': { var R = rules(), n = 0; S.tx.forEach(function (e) { if (!e.manual) { var was = e.acc; K.classify(e, R); if (was !== e.acc) n++; } }); log('ルールで振り分け直した（' + n + '行が変わった）'); commit(); toast('振り分け直しました（' + R.length + '個のキーワード・' + n + '行が変わった。手で選んだ行はそのまま）'); return; }
       case 'rules-reset': if (!DEMO && !window.confirm('科目の決め方を最初の設定に戻しますか？（足したキーワードは消えます）')) return; C().rules = K.DEFAULT_RULES; commit(); toast('最初の設定に戻しました'); return;
@@ -807,7 +814,7 @@
   $('#coName').textContent = S.company.name;
   $('#todayLabel').textContent = '今日 ' + K.slash(TODAY) + '（' + K.WD[K.wday(TODAY)] + '）';
   showWarn();
-  if (!DEMO) save();
+  if (!DEMO) save(true);
   var fontsReady = (document.fonts && document.fonts.ready) ? document.fonts.ready : Promise.resolve();
   window.__studio.ready = fontsReady.then(function () {
     go('dash');

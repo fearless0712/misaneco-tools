@@ -128,6 +128,11 @@ const winOf = (ua, mq, extra) => Object.assign({
   d = fakeDom(); let msg = 'x';
   let w = winOf(IPHONE, true, { share: (o) => { shared = o; return Promise.resolve(); } });
   eq(await M.sendToSelf(w, d.doc, (t) => (msg = t)), 'shared', '共有メニューを開く');
+  { // 11/7 見本・/ig/ で使うとき：題名はボタンの data-share-title
+    const d2 = fakeDom(); let titled = null; d2.els.sendToSelf.getAttribute = (a) => a === 'data-share-title' ? '見本の題名' : null;
+    const w2 = winOf(IPHONE, true, { share: (o) => { titled = o.title; return Promise.resolve(); } });
+    await M.sendToSelf(w2, d2.doc, () => {}); eq(titled, '見本の題名', '共有の題名はボタンから');
+  }
   eq(shared, { title: '建設スタジオ 無料版（パソコン用）', url: 'https://tools.equaglobal.com/studio/kensetsu/free/' }, 'share に渡すのは url と title だけ（このページ）');
   eq(msg, '', '共有できたら文言なし');
   // 共有をやめた（AbortError）：何もしない・コピーもしない

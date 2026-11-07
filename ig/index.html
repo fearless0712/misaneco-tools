@@ -23,6 +23,16 @@ h2{font-size:19px;line-height:1.45;margin:40px 0 6px;padding-left:12px;border-le
 .jump a small{display:block;font-weight:400;font-size:12px;color:var(--dim);line-height:1.3}
 .jump a{flex:1 1 40%;line-height:1.4;text-align:center;text-decoration:none;font-weight:700;font-size:14px;border:1px solid var(--line);background:var(--panel);border-radius:10px;padding:10px 6px;min-height:44px}
 .card{scroll-margin-top:12px}
+.calc-in{margin:10px 0 0;font-size:14px;line-height:1.7;color:var(--dim)}
+.calc-in b{color:var(--text)}
+.btn.line{background:#06c755;color:#fff;max-width:420px}
+.card .sp{margin:10px 0 0;font-size:12px;color:var(--dim)}
+.mobile-note{margin:0 0 14px}
+.mobile-note[hidden]{display:none}
+.mn-btn{display:flex;align-items:center;justify-content:center;width:100%;text-align:center;min-height:48px;padding:10px 8px;border-radius:10px;font:inherit;font-size:14px;font-weight:700;line-height:1.45;cursor:pointer;color:var(--acc2);background:var(--panel2);border:1px solid var(--line)}
+.mn-msg{margin:8px 0 0;font-size:13px;color:var(--dim);word-break:break-all}
+.mn-msg:empty{display:none}
+a.row{scroll-margin-top:12px}
 .chips{display:flex;flex-wrap:wrap;gap:6px;margin:0 0 14px;padding:0;list-style:none}
 .chips li{font-size:12px;color:var(--text);border:1px solid var(--line);background:var(--panel2);border-radius:999px;padding:2px 10px}
 .grid{display:grid;grid-template-columns:1fr;gap:16px}
@@ -55,7 +65,7 @@ footer{margin-top:40px;font-size:13px;color:var(--dim)}footer a{color:var(--dim)
   .grid{grid-template-columns:repeat(2,1fr)}
 }
 </style>
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-EWJXRJY9M6"></script><script src="../assets/ga.js?v=202610210745"></script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-EWJXRJY9M6"></script><script src="../assets/ga.js?v=202610210745"></script><script src="../studio/kensetsu/free/mobile.js?v=202611072100" defer></script>
 </head>
 <body>
 <main>
@@ -64,17 +74,20 @@ footer{margin-top:40px;font-size:13px;color:var(--dim)}footer a{color:var(--dim)
 <p class="lead">Instagram・YouTube・Threadsで紹介した画面と、買える商品の案内です。まずは無料の見本を触ってみてください。</p>
 <nav class="jump" aria-label="業種を選ぶ"><a href="#kensetsu">建設<small>¥9,800・無料版あり</small></a><a href="#kuruma">車屋・バイク屋<small>¥7,800</small></a><a href="#keiri">経理・事務<small>¥6,800</small></a><a href="#fudosan">不動産<small>¥9,800</small></a></nav>
 
+<p class="calc-in"><b>計算のリールから来た方へ</b>　<a href="/suryo/" data-cta="ig_suryo">数量の計算</a>・<a href="/riekiritsu/" data-cta="ig_riekiritsu">利益率の計算</a>（どちらも無料）／<a href="#pack">数量計算パック（Excel）¥1,480</a></p>
+
 <section class="card" id="line" style="--c:#06c755;margin:14px 0 22px">
 <div class="body">
-<h3>お使いの見積書を、計算が自動で出る形に</h3>
-<p class="what">見積書を1枚送ってもらえれば、計算が自動で出る見本を48時間で無料でお作りします。お見積もりも無料です。</p>
-<div class="btns"><a class="btn try" href="https://line.me/R/ti/p/@736dykzx">LINEで送る（友だち追加）</a></div>
+<h3>いま使っている表を、自動で計算できる形に</h3>
+<p class="what">いま使っているExcelや手書きの表の写真を1枚送ってもらえれば、計算が自動で出る見本を48時間で無料で作ってお返しします。お客さまの名前などは隠して、LINEで送ってください。</p>
+<a class="btn line" href="https://line.me/R/ti/p/@736dykzx" target="_blank" rel="noopener" data-cta="ig_line">LINEで無料の見本を頼む</a>
 </div>
 </section>
 
 <h2 id="studio">業種別スタジオ（アプリ版）</h2>
 <ul class="chips"><li>買い切り</li><li>ネット不要</li><li>データは手元のパソコンだけ</li></ul>
 <p class="sub">リールで動いていた画面と同じ仕組み・同じ計算のアプリです。zipを開いて、パソコンのブラウザで使います。</p>
+<aside class="mobile-note" id="mobileNote" hidden aria-label="スマホでご覧の方へ"><button type="button" class="mn-btn" id="sendToSelf" data-share-title="業種別スタジオの案内（パソコン用）">パソコンで開くために、このページを自分に送る</button><p class="mn-msg" id="mobileMsg" role="status" aria-live="polite"></p></aside>
 <div class="grid">
 <section class="card" id="kensetsu" style="--c:#ff9a3c">
 <img src="assets/kensetsu.jpg" width="600" height="600" alt="建設スタジオの画面（数字は架空の見本）">
@@ -84,6 +97,7 @@ footer{margin-top:40px;font-size:13px;color:var(--dim)}footer a{color:var(--dim)
 <p class="what">見積 → 工程表 → 日報・出面 → 請求 → 入金を、ひとつの画面で。<br>日報を入れると、現場ごとの原価と粗利が自動で出ます。</p>
 <div class="btns"><a class="btn try" href="/studio/kensetsu/">無料の見本を触る</a><a class="btn buy" href="https://excel-temple.booth.pm/items/9042496">BOOTHで見る（¥9,800）</a></div>
 <a class="btn free" href="/studio/kensetsu/free/">無料版をダウンロード（見積書・工程表）</a>
+<p class="sp">スマホで買って、あとでパソコンでダウンロードできます</p>
 </div>
 </section>
 <section class="card" id="kuruma" style="--c:#ff5d73">
@@ -93,6 +107,7 @@ footer{margin-top:40px;font-size:13px;color:var(--dim)}footer a{color:var(--dim)
 <p class="price" data-price="7800">¥7,800<small>買い切り</small></p>
 <p class="what">車検の案内 → ピット予約 → 整備見積 → 請求 → 入金を、ひとつの画面で。<br>部品の在庫と、中古車1台ごとの粗利も見られます。</p>
 <div class="btns"><a class="btn try" href="/studio/kuruma/">無料の見本を触る</a><a class="btn buy" href="https://excel-temple.booth.pm/items/9042525">BOOTHで見る（¥7,800）</a></div>
+<p class="sp">スマホで買って、あとでパソコンでダウンロードできます</p>
 </div>
 </section>
 <section class="card" id="keiri" style="--c:#5fd3b0">
@@ -102,6 +117,7 @@ footer{margin-top:40px;font-size:13px;color:var(--dim)}footer a{color:var(--dim)
 <p class="price" data-price="6800">¥6,800<small>買い切り</small></p>
 <p class="what">明細の取り込みと仕訳 → 請求書 → 入金の照合 → 勤怠 → 月次まとめ。<br>毎月の事務を、ひとつの画面で進められます。</p>
 <div class="btns"><a class="btn try" href="/studio/keiri/">無料の見本を触る</a><a class="btn buy" href="https://excel-temple.booth.pm/items/9042539">BOOTHで見る（¥6,800）</a></div>
+<p class="sp">スマホで買って、あとでパソコンでダウンロードできます</p>
 </div>
 </section>
 <section class="card" id="fudosan" style="--c:#a78bfa">
@@ -111,6 +127,7 @@ footer{margin-top:40px;font-size:13px;color:var(--dim)}footer a{color:var(--dim)
 <p class="price" data-price="9800">¥9,800<small>買い切り</small></p>
 <p class="what">反響・追客 → 物件調査 → 媒介の期限 → 契約書の下書き → 賃貸の更新を、ひとつの画面で。<br>レインズ登録・業務報告・満了日の期限を、カレンダーで管理します。</p>
 <div class="btns"><a class="btn try" href="/studio/fudosan/">無料の見本を触る</a><a class="btn buy" href="https://excel-temple.booth.pm/items/9061394">BOOTHで見る（¥9,800）</a></div>
+<p class="sp">スマホで買って、あとでパソコンでダウンロードできます</p>
 </div>
 </section>
 </div>
@@ -123,6 +140,7 @@ footer{margin-top:40px;font-size:13px;color:var(--dim)}footer a{color:var(--dim)
 <a class="row" href="/erabikata/kensetsu/"><b>建設・設備 業務ツール9点セット</b> <span class="pr" data-price="6980">¥6,980</span><span>見積・原価・請求入金・工程表・日報出面・期限・写真台帳・塗装計算・外注支払</span></a>
 <a class="row" href="/erabikata/kuruma/"><b>車屋・バイク屋 業務ツール6点セット</b> <span class="pr" data-price="4980">¥4,980</span><span>車検台帳・整備見積請求・ピット予約・部品在庫・中古車原価・案内文作成</span></a>
 <a class="row" href="/erabikata/keiri/"><b>経理おまかせ3点セット</b> <span class="pr" data-price="3980">¥3,980</span><span>仕訳帳の自動作成・請求書PDFの整理・支出の見える化</span></a>
+<a class="row" id="pack" href="https://excel-temple.booth.pm/items/9104843" target="_blank" rel="noopener" data-cta="ig_suryo_pack"><b>数量計算パック（Excel）</b> <span class="pr" data-price="1480">¥1,480</span><span>残土・生コン・砕石・ボード・クロス・タイル・足場・塗料・配管を入れると、数量一覧が自動でできます。スマホで買って、あとでパソコンでダウンロードできます</span></a>
 <p class="sub">どれを選べばいいか迷ったら <a href="/erabikata/">業種別の選び方</a> へ。</p>
 
 <h2 id="zukai">図解リール（Excel・セキュリティ・データ）から来た人へ</h2>
@@ -130,7 +148,7 @@ footer{margin-top:40px;font-size:13px;color:var(--dim)}footer a{color:var(--dim)
 <a class="row" href="/blog/"><b>ブログ</b><span>リールの中身を、文章でもう少しくわしく。Excelの関数、パスワード、データの見方など。</span></a>
 
 <footer>
-<p>価格はBOOTHの商品ページで2026年10月31日に確かめたものです。購入の前に、BOOTHの商品ページで最新の内容と価格をご確認ください。画面の数字はすべて架空の見本です。ツールは公開前に動作をテストしています。</p>
+<p>価格はBOOTHの商品ページで2026年11月7日に確かめたものです。購入の前に、BOOTHの商品ページで最新の内容と価格をご確認ください。画面の数字はすべて架空の見本です。ツールは公開前に動作をテストしています。</p>
 <p class="brand"><a href="/">MisaNeco Works ツール集</a> ／ 運営：Eternal Philosophy（EQUA）</p>
 </footer>
 </main>
