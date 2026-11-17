@@ -1,0 +1,4 @@
+/* 無料ツールの結果の下の1行（11/17）：この計算を御社のルールに合わせたExcel・ツールにできます（10,000円〜）＋公式LINE
+   控えめな1行だけ。ポップアップ・固定表示はしない。色はページの変数（--mut・--line・--navy）を使う */
+.juta-note{margin:10px 0 16px;padding:8px 12px;border-left:3px solid var(--line,#dde4ee);font-size:14px;line-height:1.7;color:var(--mut,#5b6b7f)}
+.juta-note a{color:var(--navy,#214f78);font-weight:700;white-space:nowrap}

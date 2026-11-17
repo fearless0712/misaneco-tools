@@ -119,5 +119,23 @@ ok(/if \(CFG\.pageAd\) \{ var pk = pick\(list, used\); if \(pk\) showPageAd\(pk\
 ok(ja.length >= 50, 'JA pages checked: ' + ja.length);
 ok(en.length >= 20, 'EN pages checked: ' + en.length);
 
+/* 11/17 主な無料ツールの結果の下に、受託への控えめな1行（広告・案内と重ねない、ポップアップ・画面下の固定ボタンはツールに出さない） */
+var JUTA = ['suryo', 'kouki', 'shiharai', 'anbun', 'hiwari', 'riekiritsu', 'kinri', 'shaken'];
+JUTA.forEach(function (t) {
+  var h = read(t + '/index.html');
+  var m = h.match(/<p class="juta-note">[\s\S]*?<\/p>/g) || [];
+  ok(m.length === 1, t + ': 受託の1行は1つ');
+  var n = m[0] || '';
+  ok(n === '<p class="juta-note">この計算を、御社のルールに合わせたExcelやツールにできます（10,000円〜）。<a href="https://line.me/R/ti/p/@736dykzx" target="_blank" rel="noopener" data-cta="' + t + '_juta">公式LINEで相談する</a></p>', t + ': 受託の1行の文面・LINE・data-cta');
+  var i = h.indexOf('<p class="juta-note">');
+  var before = h.slice(0, i);
+  ok((before.match(/<aside/g) || []).length === (before.match(/<\/aside>/g) || []).length, t + ': 案内・広告の枠（aside）の中に入れていない');
+  ok(before.lastIndexOf('aria-live') > 0, t + ': 結果の下（結果の欄より後）');
+  ok(/<link rel="stylesheet" href="\.\.\/assets\/juta-note\.css\?v=\d+">/.test(h), t + ': juta-note.css');
+  ok(h.indexOf('juta-bar') < 0, t + ': 画面下の固定ボタンは無料ツールに出さない');
+});
+var jcss = read('assets/juta-note.css');
+ok(!/position\s*:\s*(fixed|sticky)|z-index/.test(jcss), 'juta-note.css は固定表示・重ね表示をしない');
+
 console.log(pass + ' passed, ' + fail + ' failed (JA pages ' + ja.length + ', EN pages ' + en.length + ')');
 process.exit(fail ? 1 : 0);

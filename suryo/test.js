@@ -165,7 +165,7 @@ eq(/外部に送信しません/.test(html), true, '送信しない明記');
 const vis = html.replace(/<script[\s\S]*?<\/script>/g, '');
 eq(/\bAI\b|ＡＩ|人工知能|AIで|AIを/.test(vis + js), false, 'AIの文言がない');
 eq(/未確認|確認していません|確かめていません/.test(vis), false, '未確認の文言がない');
-eq(/BOOTH|booth\.pm|[0-9,]+円|¥/.test(vis.replace(/<aside class="booth-next"[\s\S]*?<\/aside>/, '').replace(/<aside class="next-cta nc-pack"[\s\S]*?<\/aside>/g, '')), false, '価格・BOOTHの名前がない（BOOTHへの案内ブロック・塗料タブの見積Excelの案内以外）');
+eq(/BOOTH|booth\.pm|[0-9,]+円|¥/.test(vis.replace(/<aside class="booth-next"[\s\S]*?<\/aside>/, '').replace(/<aside class="next-cta nc-pack"[\s\S]*?<\/aside>/g, '').replace(/<p class="juta-note">[\s\S]*?<\/p>/, '')), false, '価格・BOOTHの名前がない（BOOTHへの案内ブロック・塗料タブの見積Excelの案内・受託の1行以外）');
 eq((vis.match(/<aside class="booth-next"/g) || []).length, 1, 'BOOTHへの案内ブロックは1つ');
 eq(/https?:\/\/(?!tools\.equaglobal\.com|schema\.org|www\.googletagmanager\.com|line\.me\/R\/ti\/p\/@736dykzx|excel-temple\.booth\.pm\/items\/[0-9]+\?utm_source=tools)/.test(html.replace(/<meta http-equiv="Content-Security-Policy"[^>]*>/, '')), false, '外部URLなし');
 const ga = require(path.join(__dirname, '..', 'assets', 'ga-test-helper.js')).stripGA(html);
@@ -208,7 +208,7 @@ NAMES.forEach(n => {
 // 11/7 購入案内の近くに、スマホで買えることの1行（全タブ）。全画面広告はこのページだけ止める（ページ下の広告は残す）
 eq((html.match(/<\/small><small>スマホで買って、あとでパソコンでダウンロードできます<\/small><\/div><\/aside>/g) || []).length, 1, 'スマホで買える1行は購入の案内（塗料タブ）に1つ');
 eq(/<script src="\.\.\/assets\/ads-inter\.js\?v=\d+" data-pool="accounting" data-inter="0" defer><\/script>/.test(html), true, '全画面広告なし（data-inter="0"）・ページ下の広告はあり（data-page-ad なし）');
-eq(/\\\.booth\\\.pm\$\/\.test\(host\)/.test(gaSrc) && gaSrc.includes("'purchase_click'") && gaSrc.includes("getAttribute('data-cta')"), true, 'ga.js が booth のリンクを data-cta つきで数える');
+eq(/\\\.booth\\\.pm\$\/\.test\(host\)/.test(gaSrc) && gaSrc.includes("'select_item'") && gaSrc.includes("getAttribute('data-cta')"), true, 'ga.js が booth のリンクを data-cta つきで数える');
 eq(new URL(TOSOU.replace(/&amp;/g, '&')).hostname, 'excel-temple.booth.pm', 'リンク先のホスト');
 const title = /<title>([^<]*)<\/title>/.exec(html)[1];
 eq(['塗料', '配管', '残土', 'クロス', 'タイル', '生コン', '足場'].every(w => title.includes(w)), true, 'titleに7種類');

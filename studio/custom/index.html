@@ -23,21 +23,35 @@ h1{font-size:26px;line-height:1.4;margin:0 0 8px}
 .cta small{display:block;color:var(--soft);font-size:13px;margin-top:8px}
 footer{margin-top:44px;font-size:13px;color:var(--soft)}footer a{color:var(--soft)}
 @media (max-width:480px){h1{font-size:22px}}
+.price{margin:12px 0 0;font-size:15px}.price b{color:var(--acc);font-size:18px}
+.sr{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}
+/* スマホ（760px以下）だけ画面下の相談ボタン。PCでは表示しない */
+.juta-bar,.juta-bar-pad{display:none}
+@media (max-width:760px){
+.juta-bar-pad{display:block;height:calc(68px + env(safe-area-inset-bottom,0px))}
+.juta-bar{display:flex;align-items:center;gap:8px;position:fixed;left:0;right:0;bottom:0;z-index:50;padding:8px 10px calc(8px + env(safe-area-inset-bottom,0px)) 14px;background:rgba(11,15,26,.95);border-top:1px solid var(--line);box-shadow:0 -6px 20px rgba(0,0,0,.45)}
+.juta-bar__btn{flex:1 1 auto;display:flex;align-items:center;justify-content:center;min-height:48px;border-radius:999px;background:var(--line-green);color:#fff;font-weight:700;font-size:16px;text-decoration:none}
+.juta-bar__x{flex:0 0 auto;width:44px;height:44px;border-radius:50%;border:1px solid var(--line);background:transparent;color:var(--soft);font-size:20px;line-height:1;cursor:pointer}
+}
 </style>
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-EWJXRJY9M6"></script><script src="../../assets/ga.js?v=202610210745"></script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-EWJXRJY9M6"></script><script src="../../assets/ga.js?v=202611172300"></script>
 </head>
 <body>
 <main>
 <p class="crumb"><a href="/">MisaNeco Works ツール集</a> ／ <a href="/studio/">業種別スタジオ</a></p>
 <h1>御社の業務に合わせて作ります</h1>
 
-<div class="cta" id="line">
+<div class="cta" id="line" data-ga-view="custom_service">
 <p>今お使いのExcelや紙の表、仕事の流れを、公式LINEで一言送ってください。</p>
-<a class="line-btn" href="https://line.me/R/ti/p/@736dykzx" target="_blank" rel="noopener">公式LINEで送る</a>
+<a class="line-btn" href="https://line.me/R/ti/p/@736dykzx" target="_blank" rel="noopener" data-cta="custom_line">公式LINEで送る</a>
 <small>Eternal Philosophy 公式LINE（EQUA・MisaNeco Works を運営）</small>
+<p class="price">カスタマイズ制作 <b>10,000円〜</b></p>
 </div>
 
 <footer><p><a href="/studio/">業種別スタジオの見本一覧</a> ／ <a href="/">MisaNeco Works ツール集</a> ／ 運営：Eternal Philosophy（EQUA）<br><small class="ga-note">閲覧数をGoogleアナリティクスで匿名で集計しています。このページには入力欄がなく、個人の情報は送信しません。</small></p></footer>
 </main>
+<div class="juta-bar-pad" aria-hidden="true"></div>
+<div class="juta-bar" role="complementary" aria-label="無料相談"><a class="juta-bar__btn" href="https://line.me/R/ti/p/@736dykzx" target="_blank" rel="noopener" data-cta="sticky_line">LINEで無料相談<span class="sr">（新しいタブで開きます）</span></a><button class="juta-bar__x" type="button" aria-label="閉じる">×</button></div>
+<script src="../../assets/juta-bar.js?v=202611172300" defer></script>
 </body>
 </html>

@@ -1,4 +1,4 @@
-// node studio/custom/test.js … 作り変えの相談ページの検査（一言＋公式LINE・値段なし・外部URL・言葉の決まり・各見本からの導線）
+// node studio/custom/test.js … 作り変えの相談ページの検査（一言＋公式LINE・価格は10,000円〜だけ・外部URL・言葉の決まり・各見本からの導線）
 'use strict';
 const fs = require('fs'), path = require('path');
 const ROOT = path.join(__dirname, '..', '..');
@@ -7,12 +7,22 @@ let pass = 0, fail = 0;
 const eq = (a, b, m) => { if (JSON.stringify(a) === JSON.stringify(b)) pass++; else { fail++; console.log('FAIL', m, '\n  got ', JSON.stringify(a), '\n  want', JSON.stringify(b)); } };
 const LINE = 'https://line.me/R/ti/p/@736dykzx';
 
-// ---- 中身（11/17 短いページに置きかえ：一言＋公式LINEのボタンだけ。値段は書かない） ----
+// ---- 中身（11/17 短いページに置きかえ：一言＋公式LINEのボタン＋価格「10,000円〜」） ----
 eq(/<h1>御社の業務に合わせて作ります<\/h1>/.test(html), true, '見出し');
 eq(html.includes('<p>今お使いのExcelや紙の表、仕事の流れを、公式LINEで一言送ってください。</p>'), true, '一言の案内');
 eq(html.includes('id="line"'), true, 'LINEの節');
 const text = html.replace(/<script[^]*?<\/script>/g, '').replace(/<[^>]+>/g, '');
-eq(/[0-9０-９,]+\s*円|万円|¥|料金|価格|目安/.test(text), false, '値段・料金の目安を書かない');
+// 11/17〜 価格は「カスタマイズ制作 10,000円〜」の1か所だけ（内容・期間などほかの約束は書かない）
+eq(html.includes('<p class="price">カスタマイズ制作 <b>10,000円〜</b></p>'), true, '価格「カスタマイズ制作 10,000円〜」');
+eq(/[0-9０-９,]+\s*円|万円|¥|料金|価格|目安/.test(text.replace('カスタマイズ制作 10,000円〜', '')), false, 'ほかの値段・料金の目安を書かない');
+eq((text.match(/10,000円〜/g) || []).length, 1, '価格は1か所');
+eq(html.includes('<div class="cta" id="line" data-ga-view="custom_service">'), true, '相談欄に data-ga-view（GA4 custom_service_view）');
+// スマホ（760px以下）だけの画面下の相談ボタン：×で閉じる・余白あり・PCは非表示
+eq(/<div class="juta-bar"[^>]*><a class="juta-bar__btn" href="https:\/\/line\.me\/R\/ti\/p\/@736dykzx" target="_blank" rel="noopener" data-cta="sticky_line">LINEで無料相談/.test(html), true, '画面下の相談ボタン');
+eq(html.includes('<button class="juta-bar__x" type="button" aria-label="閉じる">'), true, '×で閉じる');
+eq(html.indexOf('class="juta-bar-pad"') > html.indexOf('</footer>'), true, 'フッターの後に余白（ボタンで隠さない）');
+eq(html.includes('.juta-bar,.juta-bar-pad{display:none}') && html.includes('@media (max-width:760px){\n.juta-bar-pad{display:block'), true, '760px以下だけ表示（PCは display:none）');
+eq(/<script src="\.\.\/\.\.\/assets\/juta-bar\.js\?v=\d+" defer><\/script>/.test(html), true, 'juta-bar.js を読む');
 for (const id of ['what', 'price', 'flow', 'cannot', 'faq']) eq(html.includes('id="' + id + '"'), false, '古い節は残っていない：' + id);
 eq((html.match(/<a class="line-btn"/g) || []).length, 1, 'ボタンは1つ');
 
@@ -32,7 +42,7 @@ eq(/<script(?![^>]*src=)/i.test(GA.html), false, 'インラインのスクリプ
 eq(/ on[a-z]+="/.test(html), false, 'インラインのイベントなし');
 const urls = [...new Set(GA.html.match(/https?:\/\/[^"'\s<)]+/g) || [])].sort();
 eq(urls, [LINE, 'https://tools.equaglobal.com/studio/custom/'], '外部URLは公式LINEと自分のcanonicalだけ');
-eq(html.includes('<a class="line-btn" href="' + LINE + '" target="_blank" rel="noopener">'), true, 'LINEボタン');
+eq(html.includes('<a class="line-btn" href="' + LINE + '" target="_blank" rel="noopener" data-cta="custom_line">'), true, 'LINEボタン');
 // サイト内リンクは存在する
 for (const h of [...html.matchAll(/href="(\/[^"#]*)"/g)].map(m => m[1])) {
   const f = path.join(ROOT, h, h.endsWith('/') ? 'index.html' : '');
