@@ -250,4 +250,7 @@ eq(/AI/.test(pl.replace(/<[^>]+>/g, '')), false, 'LINEの案内にAIの語なし
   eq(/\.promo-send\[hidden\]\{display:none\}/.test(_c) && /assets\/app\.css\?v=\d+/.test(_h), true, 'パソコンでは隠れる・CSSは ?v= つき');
 }
 
+// ===== ポートフォリオ表示（?pf=1）：帯・公式LINE・スタジオの外へのリンクを出さない／?pf=1 なしは今までどおり（画面の確認は ../pf.e2e.mjs） =====
+require(path.join(__dirname, '..', '..', 'assets', 'pf-test-helper.js')).check(eq, __dirname, { line: 1, promo: 2 });
+
 console.log(pass + ' passed, ' + fail + ' failed'); process.exit(fail ? 1 : 0);

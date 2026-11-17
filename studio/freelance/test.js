@@ -200,4 +200,7 @@ eq(["nav('time')", '#tmAdd', "nav('inv')", '#ivItem-0', '#ivPrice-0', '#ivIssueB
 ['dash', 'client', 'time', 'inv', 'pay', 'exp', 'set'].forEach(v => eq(html.includes('data-view="' + v + '"') && html.includes('id="v-' + v + '"') && app.includes('RENDER.' + v + ' = '), true, '画面: ' + v));
 [...app.matchAll(/\$\('#([\w-]+)'\)/g)].map(m => m[1]).filter((v, i, a) => a.indexOf(v) === i).forEach(id => eq(html.includes('id="' + id + '"') || app.includes('id="' + id + '"') || app.includes("id=\"' + "), true, 'id: ' + id));
 
+// ===== ポートフォリオ表示（?pf=1）：帯・公式LINE・スタジオの外へのリンクを出さない／?pf=1 なしは今までどおり（画面の確認は ../pf.e2e.mjs） =====
+require(path.join(__dirname, '..', '..', 'assets', 'pf-test-helper.js')).check(eq, __dirname, { line: 0, promo: 0 });
+
 console.log(pass + ' passed, ' + fail + ' failed'); process.exit(fail ? 1 : 0);
