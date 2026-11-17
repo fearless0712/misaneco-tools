@@ -86,7 +86,7 @@ for (const h of hrefs) {
     eq(fs.existsSync(f), true, 'リンク先が存在：' + h);
   }
 }
-eq(ext, 6, '外部リンクの数（BOOTH5＝スタジオ4種＋数量計算パック、公式LINE1）');
+eq(ext, 5, '外部リンクの数（BOOTH4＝スタジオ4種、公式LINE1）。11/17 数量計算パックは非公開にしたので外した');
 // 11/7 スマホの人の次の手：買えることの1行・自分に送る・計算のリールの入口・LINEの案内
 const SP = 'スマホで買って、あとでパソコンでダウンロードできます';
 eq((html.match(new RegExp('<p class="sp">' + SP + '</p>', 'g')) || []).length, 4, 'スマホで買える1行：アプリ版の4枚すべて');
@@ -95,9 +95,9 @@ eq(/<aside class="mobile-note" id="mobileNote" hidden[^>]*><button type="button"
 eq(fs.existsSync(path.join(ROOT, 'studio/kensetsu/free/mobile.js')), true, 'mobile.js がある');
 const calc = (html.match(/<p class="calc-in">[\s\S]*?<\/p>/) || [''])[0];
 eq(html.indexOf('class="jump"') < html.indexOf('class="calc-in"') && html.indexOf('class="calc-in"') < html.indexOf('id="line"'), true, '計算のリールの入口は業種ボタンのすぐ下');
-eq(['href="/suryo/"', 'href="/riekiritsu/"', 'href="#pack"', '¥1,480'].every(w => calc.includes(w)), true, '入口：数量・利益率・数量計算パック');
-const pack = (html.match(/<a class="row" id="pack"[\s\S]*?<\/a>/) || [''])[0];
-eq(pack.includes('href="https://excel-temple.booth.pm/items/9104843"') && pack.includes('data-cta="ig_suryo_pack"') && pack.includes('data-price="1480">¥1,480<') && pack.includes(SP), true, '数量計算パックの行（リンク先・価格・計測の印・1行）');
+eq(['href="/suryo/"', 'href="/riekiritsu/"'].every(w => calc.includes(w)), true, '入口：数量・利益率（無料）');
+eq(/#pack|¥1,480/.test(calc), false, '入口に数量計算パック（非公開）は残っていない');
+eq(/id="pack"|ig_suryo_pack|数量計算パック/.test(html), false, '数量計算パック（11/17 非公開）の行は残っていない');
 const lb = html.slice(html.indexOf('<section class="card" id="line"'), html.indexOf('</section>', html.indexOf('<section class="card" id="line"')));
 eq(lb.includes('いま使っているExcelや手書きの表の写真を1枚送ってもらえれば、計算が自動で出る見本を48時間で無料で作ってお返しします。お客さまの名前などは隠して、LINEで送ってください。'), true, 'LINEの案内文');
 eq(lb.includes('<a class="btn line" href="https://line.me/R/ti/p/@736dykzx" target="_blank" rel="noopener" data-cta="ig_line">LINEで無料の見本を頼む</a>'), true, 'LINEのボタン（緑・計測の印）');
@@ -108,7 +108,7 @@ for (const a of APPS) eq(html.includes('<section class="card" id="' + a.slug + '
 for (const a of APPS) { const m = html.match(new RegExp('<a href="#' + a.slug + '">[^<]*<small>([^<]*)</small>')); eq(m && m[1].startsWith(yen(a.price)), true, a.name + ' 上の業種リンクの価格'); }
 
 async function live() {
-  const ids = [...APPS.map(a => [a.id, a.price, a.name]), ...SETS.map(s => [s.id, s.price, s.slug + 'セット']), [9104843, 1480, '数量計算パック']];
+  const ids = [...APPS.map(a => [a.id, a.price, a.name]), ...SETS.map(s => [s.id, s.price, s.slug + 'セット'])];
   for (const [id, price, name] of ids) {
     try {
       const r = await fetch('https://booth.pm/ja/items/' + id + '.json', { headers: { 'User-Agent': 'Mozilla/5.0 (ig hub test)' } });

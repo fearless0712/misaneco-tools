@@ -11,8 +11,10 @@ const BASE = 'https://tools.equaglobal.com/erabikata/';
 
 function setMath(p) {
   const singles = p.set.items.map(no => p.items.find(i => i.no === no));
-  const total = singles.reduce((a, i) => a + i.price, 0);
-  return { singles, total, diff: total - p.set.price };
+  // setOnly：単品はBOOTHで非公開（セットにだけ入っている）。単品合計には入れない（11/17 塗装計算）
+  const buyable = singles.filter(i => i && !i.setOnly);
+  const total = buyable.reduce((a, i) => a + i.price, 0);
+  return { singles, buyable, total, diff: total - p.set.price };
 }
 
 const CSP = `<meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'unsafe-inline'; img-src 'self'; base-uri 'none'; form-action 'none'; object-src 'none'">`;
@@ -130,7 +132,7 @@ function page(p) {
 <p>${esc(p.set.text)}</p>
 <div class="price" data-set-price="${p.set.price}">${yen(p.set.price)}</div>
 <table class="calc" aria-label="単品で買う場合との比較">
-<tr><td>単品${m.singles.length}本を別々に買った合計</td><td data-single-total="${m.total}">${yen(m.total)}</td></tr>
+<tr><td>${m.buyable.length === m.singles.length ? `単品${m.singles.length}本を別々に買った合計` : `単品で買える${m.buyable.length}本の合計（${esc(m.singles.filter(i => i.setOnly).map(i => i.name).join('・'))}はセットだけ）`}</td><td data-single-total="${m.total}">${yen(m.total)}</td></tr>
 <tr><td>セットの価格</td><td>${yen(p.set.price)}</td></tr>
 <tr class="diff"><td>差額</td><td data-diff="${m.diff}">${yen(m.diff)}</td></tr>
 </table>
@@ -145,17 +147,18 @@ function page(p) {
   }
   h += `
 <h2>困りごとから選ぶ</h2>
-<p class="sub">1本ずつでも買えます。リンクはBOOTHの商品ページです。</p>
+<p class="sub">${p.items.some(i => i.setOnly) ? '「セットだけ」以外は1本ずつでも買えます。' : '1本ずつでも買えます。'}リンクはBOOTHの商品ページです。</p>
 <table class="pick">
 <thead><tr><th>困りごと</th><th>合うツール・楽になること</th><th>価格</th><th></th></tr></thead>
 <tbody>
 `;
   for (const it of p.items) {
-    h += `<tr data-item="${it.id}">
+    h += `<tr data-item="${it.setOnly ? 'set-' + it.no : it.id}">
 <td class="c-pain"><span class="pain">${esc(it.pain)}</span></td>
 <td><span class="nm">${esc(it.name)}</span><span class="env">${envLabel(it.env)}</span><div class="ease">${esc(it.ease)}</div></td>
-<td class="pr" data-price="${it.price}">${yen(it.price)}</td>
-<td class="go"><a class="btn ghost" href="${booth(it.id)}" data-booth-id="${it.id}" target="_blank" rel="noopener">BOOTHで見る</a></td>
+${it.setOnly ? `<td class="pr" data-set-only="1">セットだけ</td>
+<td class="go"><a class="btn ghost" href="${it.free.href}">${esc(it.free.label)}</a></td>` : `<td class="pr" data-price="${it.price}">${yen(it.price)}</td>
+<td class="go"><a class="btn ghost" href="${booth(it.id)}" data-booth-id="${it.id}" target="_blank" rel="noopener">BOOTHで見る</a></td>`}
 </tr>
 `;
   }

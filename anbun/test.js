@@ -97,15 +97,15 @@ const ld = JSON.parse(/<script type="application\/ld\+json">([^<]*)<\/script>/.e
 ok(html.includes('広告・PR'), 'ad label'); ok(/<a href="https:\/\/px\.a8\.net\/[^"]+" rel="nofollow sponsored noopener" target="_blank">/.test(html), 'static A8 ad');
 ok(/<script src="\.\.\/assets\/ads-inter\.js\?v=\d+" data-pool="accounting" data-page-ad="0" defer><\/script>/.test(html), 'full-screen ad script');
 ok(/class="line-box"[^]*<\/aside>\n<\/main>/.test(html), 'LINE box right before </main>');
-ok(html.includes('https://excel-temple.booth.pm/items/8995923') && html.includes('Excelで管理したい方へ（有料）'), 'BOOTH paid link');
+ok(!/booth\.pm|Excelで管理したい方へ（有料）/.test(html), 'BOOTH paid link removed (made private 11/17; this page is the free tool)');
 ok(html.includes('href="../hozon/"') && html.includes('href="../riekiritsu/"'), 'related tools');
 ok(html.includes('業務の遂行上必要で、明らかに区分できる部分') && html.includes('目安') && /国税庁の案内/.test(html) && html.includes('税理士'), 'required disclaimers');
 ok(html.includes('taxanswer/shotoku/2210.htm') && html.includes('laws.e-gov.go.jp/law/340CO0000000096'), 'sources cited');
 ok(!/\d+%まで(OK|ＯＫ|なら)|まで経費にできます/.test(html + app + logic), 'no invented percentage rules');
 ok(!/1万円|30日チャレンジ/.test(html), 'banned words');
 const urls = (html + app + logic).match(/https?:\/\/[^"'\s<>)]+/g) || [];
-const allowed = /^https:\/\/(tools\.equaglobal\.com\/|px\.a8\.net\/|www\d*\.a8\.net\/|\*\.a8\.net;$|line\.me\/R\/ti\/p\/@736dykzx$|schema\.org$|excel-temple\.booth\.pm\/items\/8995923$|www\.nta\.go\.jp\/|laws\.e-gov\.go\.jp\/)/;
-const extra = urls.filter(u => !allowed.test(u)); eq(extra.join(' '), '', 'no external URLs except A8 / LINE / schema.org / BOOTH / NTA / e-Gov');
+const allowed = /^https:\/\/(tools\.equaglobal\.com\/|px\.a8\.net\/|www\d*\.a8\.net\/|\*\.a8\.net;$|line\.me\/R\/ti\/p\/@736dykzx$|schema\.org$|www\.nta\.go\.jp\/|laws\.e-gov\.go\.jp\/)/;
+const extra = urls.filter(u => !allowed.test(u)); eq(extra.join(' '), '', 'no external URLs except A8 / LINE / schema.org / NTA / e-Gov');
 const refs = /<section class="mut refs"[^]*?<\/section>/.exec(html)[0];
 ok(urls.filter(u => /nta\.go\.jp|e-gov\.go\.jp/.test(u)).every(u => refs.includes(u)), 'NTA / e-Gov links only in 参考');
 const ids = (html.match(/\sid="([^"]+)"/g) || []).map(s => s.slice(5, -1)); eq(new Set(ids).size, ids.length, 'unique ids');

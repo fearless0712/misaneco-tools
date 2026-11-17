@@ -1,4 +1,4 @@
-// node studio/custom/test.js … 作り変えの案内ページの検査（料金の目安・窓口・外部URL・言葉の決まり・各見本からの導線）
+// node studio/custom/test.js … 作り変えの相談ページの検査（一言＋公式LINE・値段なし・外部URL・言葉の決まり・各見本からの導線）
 'use strict';
 const fs = require('fs'), path = require('path');
 const ROOT = path.join(__dirname, '..', '..');
@@ -7,26 +7,14 @@ let pass = 0, fail = 0;
 const eq = (a, b, m) => { if (JSON.stringify(a) === JSON.stringify(b)) pass++; else { fail++; console.log('FAIL', m, '\n  got ', JSON.stringify(a), '\n  want', JSON.stringify(b)); } };
 const LINE = 'https://line.me/R/ti/p/@736dykzx';
 
-// ---- 中身（依頼文の5項目） ----
-for (const id of ['what', 'price', 'flow', 'cannot', 'faq', 'line']) eq(html.includes('id="' + id + '"'), true, '節がある：' + id);
-eq(/<h1>あなたの会社に合わせて作ります<\/h1>/.test(html), true, '見出し');
-// 料金の目安（11/5 将さんOK）：金額と中身の組み合わせ
-const PRICES = [['1万円〜', '項目や表を1つ足す・名前を変える'], ['3万円〜', '帳票を会社の形に作り変える'], ['10万円〜', '別の業種向けに作り変える']];
-for (const [p, what] of PRICES) {
-  const i = html.indexOf('<b>' + p + '</b>');
-  const card = i < 0 ? '' : html.slice(i, html.indexOf('</div>', i));
-  eq(card.includes(what), true, '料金 ' + p + ' ＝ ' + what);
-  // 税込み・税抜きが書いてあるか、決まっていなければ【要確認】の印がある
-  eq(card.includes('（税込み）'), true, '料金 ' + p + ' は税込み（11/5 将さん）');
-}
-eq(html.includes('内容を聞いて見積もり'), true, '別業種は見積もり');
-eq(html.includes('見積もりまではお金はかかりません'), true, '見積もりは無料（11/5 将さん）');
-eq(/目安/.test(html), true, '「目安」と書く');
-eq(html.includes('税込み・税抜きは見積もりでご案内'), false, '税の扱いをぼかす書き方をしない');
-// 流れの4段
-eq((html.match(/<ol class="flow">([^]*?)<\/ol>/) || [, ''])[1].match(/<b>[^<]+<\/b>/g), ['<b>LINEで相談</b>', '<b>内容を聞いて見積もり</b>', '<b>作って納品</b>', '<b>修正</b>'], '流れ：相談→見積もり→納品→修正');
-for (const w of ['本番のサーバー', 'ほかのシステム', '常駐']) eq(html.includes(w), true, 'できないこと：' + w);
-eq((html.match(/<details>/g) || []).length >= 4, true, 'よくある質問が4つ以上');
+// ---- 中身（11/17 短いページに置きかえ：一言＋公式LINEのボタンだけ。値段は書かない） ----
+eq(/<h1>御社の業務に合わせて作ります<\/h1>/.test(html), true, '見出し');
+eq(html.includes('<p>今お使いのExcelや紙の表、仕事の流れを、公式LINEで一言送ってください。</p>'), true, '一言の案内');
+eq(html.includes('id="line"'), true, 'LINEの節');
+const text = html.replace(/<script[^]*?<\/script>/g, '').replace(/<[^>]+>/g, '');
+eq(/[0-9０-９,]+\s*円|万円|¥|料金|価格|目安/.test(text), false, '値段・料金の目安を書かない');
+for (const id of ['what', 'price', 'flow', 'cannot', 'faq']) eq(html.includes('id="' + id + '"'), false, '古い節は残っていない：' + id);
+eq((html.match(/<a class="line-btn"/g) || []).length, 1, 'ボタンは1つ');
 
 // ---- 言葉の決まり ----
 for (const w of ['おすすめ', '今だけ', '限定', '残りわずか', '最安', '最短', '必ず', '保証', '格安', '業界最']) eq(html.includes(w), false, '売り込み・約束の言葉なし：' + w);

@@ -16,7 +16,8 @@ const rd = f => fs.readFileSync(path.join(__dirname, f), 'utf8');
 
 // ---- 期待値（依頼文の価格表を、テスト側に独立して持つ）----
 const EXPECT = {
-  kensetsu: { set: [9025293, 6980], items: { 9026735: 1480, 9026749: 1480, 9026757: 1480, 9026768: 1480, 9026778: 1480, 9026794: 980, 9026800: 980, 9026808: 980, 9026818: 980 }, total: 11320, diff: 4340 },
+  // 11/17 塗装計算（08）は単品を非公開にした（セットには入ったまま）→ 単品で買える8本の合計で比べる
+  kensetsu: { set: [9025293, 6980], items: { 9026735: 1480, 9026749: 1480, 9026757: 1480, 9026768: 1480, 9026778: 1480, 9026794: 980, 9026800: 980, 9026808: 980 }, setOnly: ['08'], total: 10340, diff: 3360 },
   kuruma: { set: [9026647, 4980], items: { 9026828: 1480, 9026833: 1480, 9026841: 1480, 9026852: 1480, 9026859: 980, 9026865: 980 }, total: 7880, diff: 2900 },
   keiri: { set: [9001410, 3980], items: { 9001234: 1980, 8999920: 1980, 9001463: 1980, 9001432: 1980, 9001366: 1980, 9001443: 1980, 9000204: 2480, 8999860: 1980, 9003228: 0 }, total: 5940, diff: 1960 },
 };
@@ -25,7 +26,9 @@ const EXPECT = {
 for (const [slug, ex] of Object.entries(EXPECT)) {
   const p = pages[slug];
   eq([p.set.id, p.set.price], ex.set, slug + ' セットのIDと価格');
-  eq(Object.fromEntries(p.items.map(i => [i.id, i.price])), ex.items, slug + ' 単品のIDと価格');
+  eq(Object.fromEntries(p.items.filter(i => !i.setOnly).map(i => [i.id, i.price])), ex.items, slug + ' 単品のIDと価格');
+  eq(p.items.filter(i => i.setOnly).map(i => i.no), ex.setOnly || [], slug + ' セットだけ（単品は非公開）の番号');
+  p.items.filter(i => i.setOnly).forEach(i => eq(i.id === null && !!(i.free && i.free.href.startsWith('/')), true, slug + ' セットだけの品はBOOTHのIDを持たず、無料ツールへ案内 ' + i.no));
   const m = setMath(p);
   eq(m.total, ex.total, slug + ' 単品合計');
   eq(m.diff, ex.diff, slug + ' 差額');
@@ -33,7 +36,7 @@ for (const [slug, ex] of Object.entries(EXPECT)) {
   // セットの中身が全部単品にある
   eq(m.singles.every(Boolean), true, slug + ' セットの中身が単品一覧にある');
   // 控え（BOOTH公開ページから取得）と一致
-  for (const id of [p.set.id, ...p.items.map(i => i.id)]) {
+  for (const id of [p.set.id, ...p.items.filter(i => !i.setOnly).map(i => i.id)]) {
     const it = p.set.id === id ? p.set : p.items.find(i => i.id === id);
     eq(!!snap[id], true, slug + ' BOOTHの控えにある ' + id);
     if (snap[id]) eq(snap[id].price, it.price, slug + ' BOOTHの価格と一致 ' + id);
@@ -86,14 +89,14 @@ for (const [slug, f] of Object.entries(files)) {
   const all = [...html.matchAll(/https:\/\/excel-temple\.booth\.pm\/items\/(\d+)/g)].map(x => +x[1]);
   links.forEach(l => eq(l[1], SHOP + l[2], f + ' hrefとIDが一致 ' + l[2]));
   eq(links.length, all.length, f + ' BOOTHリンクはすべてdata-booth-id付き');
-  const want = [p.set.id, ...p.items.map(i => i.id), ...(p.bigSet ? [p.bigSet.id] : [])];
+  const want = [p.set.id, ...p.items.filter(i => !i.setOnly).map(i => i.id), ...(p.bigSet ? [p.bigSet.id] : [])];
   eq([...new Set(all)].sort(), [...new Set(want)].sort(), f + ' BOOTHリンクのID＝データ');
   all.forEach(id => eq(!!snap[id], true, f + ' リンク先がBOOTHの公開商品 ' + id));
   // 価格・合計・差額の表示
   eq(html.includes(`data-set-price="${p.set.price}">${yen(p.set.price)}<`), true, f + ' セット価格の表示');
   eq(html.includes(`data-single-total="${m.total}">${yen(m.total)}<`), true, f + ' 単品合計の表示');
   eq(html.includes(`data-diff="${m.diff}">${yen(m.diff)}<`), true, f + ' 差額の表示');
-  p.items.forEach(i => eq(html.includes(`<tr data-item="${i.id}">`) && html.includes(`data-price="${i.price}">${yen(i.price)}<`), true, f + ' 単品の行と価格 ' + i.name));
+  p.items.forEach(i => eq(html.includes(`<tr data-item="${i.setOnly ? 'set-' + i.no : i.id}">`) && (i.setOnly ? html.includes(`data-set-only="1">セットだけ<`) && html.includes(`href="${i.free.href}"`) : html.includes(`data-price="${i.price}">${yen(i.price)}<`)), true, f + ' 単品の行と価格 ' + i.name));
   // 構成：セット → 困りごと → 見本 → 注意 の順
   const order = ['迷ったらこれ', '困りごとから選ぶ', '実際に触れる見本', 'ご注意'].map(s => html.indexOf('<h2>' + s));
   eq(order.every((v, i) => v > 0 && (i === 0 || v > order[i - 1])), true, f + ' 構成の順番');
