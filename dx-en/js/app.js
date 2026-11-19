@@ -1,4 +1,4 @@
-/* Small Business Automation Check — UI
+/* Business Automation Check — UI
    - All checks run in this page (js/logic.js).
    - Saved in localStorage only (every access wrapped in try/catch; works without it).
    - Free text is never saved or sent.

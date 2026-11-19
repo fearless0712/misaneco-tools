@@ -189,7 +189,7 @@ a.card:hover{border-color:var(--c)}a.card h2{font-size:20px;margin:0 0 6px;paddi
 a.card .set{margin-top:10px;font-size:13px;color:var(--text)}
 </style>`);
   const cards = [
-    ['kensetsu', '#ff9a3c', '建設・設備', '見積・原価・請求入金・工程表・日報出面・期限・写真台帳・塗装計算・外注支払。塗装・水道・土木・電気の小さな会社に。'],
+    ['kensetsu', '#ff9a3c', '建設・設備', '見積・原価・請求入金・工程表・日報出面・期限・写真台帳・塗装計算・外注支払。塗装・水道・土木・電気の会社・職人さんに。'],
     ['kuruma', '#ff5d73', '車屋・バイク屋', '車検・点検台帳、整備見積・請求、ピット予約、部品在庫、中古車の原価、案内文の作成。'],
     ['keiri', '#5fd3b0', '経理・事務', '明細から仕訳帳、請求書の一括作成、入金の照合、請求書PDFの整理、勤怠の集計。'],
   ];

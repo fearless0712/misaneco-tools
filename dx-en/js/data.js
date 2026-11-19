@@ -1,4 +1,4 @@
-/* Small Business Automation Check & Action Plan (English, country-aware) — data
+/* Business Automation Check & Action Plan (English, country-aware) — data
    - Product/tax statements are only those checked on official pages (SOURCES, with checked date).
    - No third-party prices or brand recommendations ("existing cloud service" = category only).
    - MisaNeco Works products: only features shown on their Gumroad pages; prices as shown there (USD).

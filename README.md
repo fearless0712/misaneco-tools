@@ -2,9 +2,9 @@
 
 **https://tools.equaglobal.com/**
 
-Small, offline-friendly web tools and plain-language guides for sole proprietors and small businesses — paperwork, Excel, automation and security. Run by **Eternal Philosophy** (brand: **EQUA** / **MisaNeco Works**).
+Small, offline-friendly web tools and plain-language guides for sole proprietors and businesses — paperwork, Excel, automation and security. Run by **Eternal Philosophy** (brand: **EQUA** / **MisaNeco Works**).
 
-ひとり事業・小さな会社の「事務・Excel・自動化・セキュリティ」をラクにする、無料のWebツールとブログです。
+個人事業主や会社の「事務・Excel・自動化・セキュリティ」をラクにする、無料のWebツールとブログです。
 
 ## What's here
 

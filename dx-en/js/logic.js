@@ -1,4 +1,4 @@
-/* Small Business Automation Check — logic (pure, deterministic)
+/* Business Automation Check — logic (pure, deterministic)
    browser: window.DX (uses window.DX_DATA) / node: module.exports (require('./data.js')) */
 (function (root) {
   'use strict';

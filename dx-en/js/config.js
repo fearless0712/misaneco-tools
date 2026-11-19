@@ -1,4 +1,4 @@
-/* Small Business Automation Check — settings
+/* Business Automation Check — settings
    submitUrl: same receiver as the Japanese version (../dx/js/config.js), a Google Apps Script web app
    that stores the posted fields as one row. When submitUrl is "" no notice is shown and no network code runs.
    The page CSP (index.html) must allow the receiver: connect-src https://script.google.com https://script.googleusercontent.com
