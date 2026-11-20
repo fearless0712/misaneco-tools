@@ -57,8 +57,8 @@ eq((html.match(/<img [^>]*alt="[^"]+"/g) || []).length, 3, 'スクショ3枚（a
 // 11/6 公式LINEで「無料の見本」を頼む案内（上の方に1つ）・製品版への入口を上にも
 const la = (html.match(/<aside class="line-ask"[^>]*>[\s\S]*?<\/aside>/) || [''])[0];
 eq(!!la && html.indexOf('class="line-ask"') > html.indexOf('id="download"') && html.indexOf('class="line-ask"') < html.indexOf('id="h-what"'), true, 'LINEの案内はダウンロードボタンの下・01より上');
-eq(/<a class="line-ask-btn" href="https:\/\/line\.me\/R\/ti\/p\/@736dykzx" target="_blank" rel="noopener" data-cta="free_kensetsu_line">LINEで無料の見本を頼む<\/a>/.test(la), true, 'LINEのボタン（短い文・計測の印）');
-eq(/写真を1枚/.test(la) && /48時間以内に無料の見本/.test(la) && /名前や電話番号は、隠して/.test(la), true, 'LINEの案内の説明');
+eq(/<a class="line-ask-btn" href="https:\/\/line\.me\/R\/ti\/p\/@736dykzx" target="_blank" rel="noopener" data-cta="free_kensetsu_line">LINEで相談する<\/a>/.test(la), true, 'LINEのボタン（短い文・計測の印）');
+eq(/困っていることを一言LINEで/.test(la) && /ツールづくりのご相談/.test(la) && !/48時間/.test(la), true, 'LINEの案内の説明');
 eq((html.match(/line\.me/g) || []).length, 1, 'LINEの案内は1つ');
 eq(/<a href="\/ig\/#kensetsu" data-cta="free_pro_top">製品版について →<\/a>/.test(html) && html.indexOf('free_pro_top') < html.indexOf('id="h-what"'), true, '製品版への入口がダウンロードボタンのすぐ下にもある');
 eq(/<a class="dl" id="download" href="kensetsu-studio-free-v1\.0\.1\.zip"/.test(html), true, 'zip は同じサイトの相対パス（ga.js の free_download で数える）');

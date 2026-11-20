@@ -185,8 +185,8 @@ eq(html.lastIndexOf('class="next-cta"') < html.indexOf('<aside class="line-box"'
 ncs.forEach((b, i) => {
   const w = i ? 'bottom' : 'result';
   eq(b.includes('見積から工程・請求までつなげたい方へ') && b.includes('<a class="nc-btn nc-studio" href="../studio/kensetsu/" data-cta="suryo_studio_' + w + '">建設スタジオの見本を触る</a>'), true, '見本へのボタン ' + w);
-  eq(b.includes('<a class="nc-btn nc-line" href="https://line.me/R/ti/p/@736dykzx" target="_blank" rel="noopener" data-cta="suryo_line_' + w + '">LINEで無料の見本を頼む</a>'), true, 'LINEのボタン ' + w);
-  eq(/写真を1枚/.test(b) && /48時間以内に無料の見本/.test(b) && /名前や電話番号は、隠して/.test(b), true, 'LINEの説明 ' + w);
+  eq(b.includes('<a class="nc-btn nc-line" href="https://line.me/R/ti/p/@736dykzx" target="_blank" rel="noopener" data-cta="suryo_line_' + w + '">LINEで相談する</a>'), true, 'LINEのボタン ' + w);
+  eq(/困っていることを一言LINEで/.test(b) && /ツールづくりのご相談/.test(b) && !/48時間/.test(b), true, 'LINEの説明 ' + w);
   eq(/AI|今だけ|限定|最安|絶対/.test(b.replace(/<[^>]+>/g, '')), false, '売り込み・AIの語なし ' + w);
 });
 eq(html.includes('<link rel="stylesheet" href="../assets/next-cta.css?v=') && fs.existsSync(path.join(__dirname, '../assets/next-cta.css')), true, '案内のCSS');

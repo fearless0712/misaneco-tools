@@ -148,8 +148,8 @@ eq(html.indexOf('class="next-cta"')>html.indexOf('id="out"')&&html.indexOf('clas
 eq(html.lastIndexOf('class="next-cta"')<html.indexOf('<aside class="line-box"')&&html.lastIndexOf('class="next-cta"')>html.indexOf('利益率と上乗せ率のちがい'),true,'next-cta near bottom');
 ncs.forEach((b,i)=>{const w=i?'bottom':'result';
  eq(b.includes('見積から工程・請求までつなげたい方へ')&&b.includes('<a class="nc-btn nc-studio" href="../studio/" data-cta="riekiritsu_studio_'+w+'">業種別スタジオの見本を見る</a>'),true,'studio btn '+w);
- eq(b.includes('<a class="nc-btn nc-line" href="https://line.me/R/ti/p/@736dykzx" target="_blank" rel="noopener" data-cta="riekiritsu_line_'+w+'">LINEで無料の見本を頼む</a>'),true,'line btn '+w);
- eq(/写真を1枚/.test(b)&&/48時間以内に無料の見本/.test(b)&&/名前や電話番号は、隠して/.test(b),true,'line note '+w);
+ eq(b.includes('<a class="nc-btn nc-line" href="https://line.me/R/ti/p/@736dykzx" target="_blank" rel="noopener" data-cta="riekiritsu_line_'+w+'">LINEで相談する</a>'),true,'line btn '+w);
+ eq(/困っていることを一言LINEで/.test(b) && /ツールづくりのご相談/.test(b) && !/48時間/.test(b),true,'line note '+w);
  eq(/AI|今だけ|限定|最安|絶対|[0-9,]+円|¥/.test(b.replace(/<[^>]+>/g,'')),false,'no hype/price '+w);});
 eq(html.includes('<link rel="stylesheet" href="../assets/next-cta.css?v=')&&require('fs').existsSync(__dirname+'/../assets/next-cta.css'),true,'next-cta css');}
 const en=require('fs').readFileSync(__dirname+'/../jobcost/index.html','utf8');

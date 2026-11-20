@@ -227,8 +227,8 @@ eq((GA.html.match(/https?:\/\/[^"'\s)]+/g) || []).filter(u => !/^https:\/\/fonts
 // 11/7 建設の見本と同じ、公式LINEで「無料の見本」を頼む案内
 const pl = (html.match(/<aside class="promo promo-line"[^>]*>[\s\S]*?<\/aside>/) || [''])[0];
 eq(!!pl && html.indexOf('class="promo promo-line"') > html.indexOf('aria-label="製品版の案内"') && html.indexOf('class="promo promo-line"') < html.indexOf('<header class="top">'), true, 'LINEの案内は製品版の案内のすぐ下');
-eq(/<a class="line" href="https:\/\/line\.me\/R\/ti\/p\/@736dykzx" target="_blank" rel="noopener" data-cta="studio_keiri_line">LINEで無料の見本を頼む<\/a>/.test(pl), true, 'LINEのボタン（計測の印）');
-eq(/写真を1枚/.test(pl) && /48時間以内に無料の見本/.test(pl) && /名前や電話番号は、隠して/.test(pl), true, 'LINEの案内の説明');
+eq(/<a class="line" href="https:\/\/line\.me\/R\/ti\/p\/@736dykzx" target="_blank" rel="noopener" data-cta="studio_keiri_line">LINEで相談する<\/a>/.test(pl), true, 'LINEのボタン（計測の印）');
+eq(/困っていることを一言LINEで/.test(pl) && /ツールづくりのご相談/.test(pl) && !/48時間/.test(pl), true, 'LINEの案内の説明');
 eq((html.match(/line\.me/g) || []).length, 1, 'LINEの案内は1つ');
 eq(/AI/.test(pl.replace(/<[^>]+>/g, '')), false, 'LINEの案内にAIの語なし');
 eq(/https?:\/\//.test(app + css + logic + data), false, 'js・css に外部URLなし');

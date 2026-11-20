@@ -232,8 +232,8 @@ eq(/requestAnimationFrame/.test(app) && /visibilitychange/.test(app), true, 'rAF
 // 11/6 公式LINEで「無料の見本」を頼む案内（上の方に1つ、デモの録画では隠す）
 const pl = (html.match(/<aside class="promo promo-line"[^>]*>[\s\S]*?<\/aside>/) || [''])[0];
 eq(!!pl && html.indexOf('class="promo promo-line"') > html.indexOf('aria-label="製品版の案内"') && html.indexOf('class="promo promo-line"') < html.indexOf('<header class="top">'), true, 'LINEの案内は製品版の案内のすぐ下（上の方）');
-eq(/<a class="line" href="https:\/\/line\.me\/R\/ti\/p\/@736dykzx" target="_blank" rel="noopener" data-cta="studio_kensetsu_line">LINEで無料の見本を頼む<\/a>/.test(pl), true, 'LINEのボタン（短い文・計測の印）');
-eq(/写真を1枚/.test(pl) && /48時間以内に無料の見本/.test(pl) && /名前や電話番号は、隠して/.test(pl), true, 'LINEの案内の説明（写真1枚・48時間・名前と電話番号を隠す）');
+eq(/<a class="line" href="https:\/\/line\.me\/R\/ti\/p\/@736dykzx" target="_blank" rel="noopener" data-cta="studio_kensetsu_line">LINEで相談する<\/a>/.test(pl), true, 'LINEのボタン（短い文・計測の印）');
+eq(/困っていることを一言LINEで/.test(pl) && /ツールづくりのご相談/.test(pl) && !/48時間/.test(pl), true, 'LINEの案内の説明（写真1枚・48時間・名前と電話番号を隠す）');
 eq((html.match(/line\.me/g) || []).length, 1, 'LINEの案内は1つ');
 eq(/<a href="\/ig\/#kensetsu">製品版の案内を見る →<\/a>/.test(html) && html.indexOf('製品版の案内を見る') < html.indexOf('<header class="top">'), true, '製品版の案内は上の方にある');
 eq(/\.is-demo \.promo\{display:none\}/.test(fs.readFileSync(path.join(__dirname, 'assets/app.css'), 'utf8')), true, 'デモの録画ではLINEの案内も隠れる（.promo）');
