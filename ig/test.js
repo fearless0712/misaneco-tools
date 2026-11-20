@@ -99,8 +99,8 @@ eq(['href="/suryo/"', 'href="/riekiritsu/"'].every(w => calc.includes(w)), true,
 eq(/#pack|¥1,480/.test(calc), false, '入口に数量計算パック（非公開）は残っていない');
 eq(/id="pack"|ig_suryo_pack|数量計算パック/.test(html), false, '数量計算パック（11/17 非公開）の行は残っていない');
 const lb = html.slice(html.indexOf('<section class="card" id="line"'), html.indexOf('</section>', html.indexOf('<section class="card" id="line"')));
-eq(lb.includes('いま使っているExcelや手書きの表の写真を1枚送ってもらえれば、計算が自動で出る見本を48時間で無料で作ってお返しします。お客さまの名前などは隠して、LINEで送ってください。'), true, 'LINEの案内文');
-eq(lb.includes('<a class="btn line" href="https://line.me/R/ti/p/@736dykzx" target="_blank" rel="noopener" data-cta="ig_line">LINEで無料の見本を頼む</a>'), true, 'LINEのボタン（緑・計測の印）');
+eq(lb.includes('「この表の集計を毎月手でやっている」「見積書と請求書を別々に作っている」など、困っていることを一言LINEで送ってください。今の業務に合わせたツールづくりのご相談を受けています。'), true, 'LINEの案内文');
+eq(lb.includes('<a class="btn line" href="https://line.me/R/ti/p/@736dykzx" target="_blank" rel="noopener" data-cta="ig_line">LINEで相談する</a>'), true, 'LINEのボタン（緑・計測の印）');
 eq(/見積書を1枚/.test(html), false, '古い案内文は残っていない');
 eq(/\bAI\b/.test(html.replace(/<[^>]+>/g, '')), false, 'AIと書かない');
 // 業種ごとの飛び先（見本・無料版のページから /ig/#slug で来る）
