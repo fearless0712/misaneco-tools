@@ -1,4 +1,5 @@
 User-agent: *
 Allow: /
+Disallow: /widget-demo/
 
 Sitemap: https://tools.equaglobal.com/sitemap.xml
