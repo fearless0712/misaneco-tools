@@ -1,59 +1,59 @@
 {
  "notice": "実際の記録から計算",
- "generated_at": "2026-11-23T22:47:33.819733+09:00",
+ "generated_at": "2026-11-24T07:22:03.926282+09:00",
  "assumption": "直近の記録の減り方（週の枠は24時間・セッションは2時間の差）が続くと仮定",
  "alert_level": 0,
  "alert": false,
  "alert_text": "",
- "speech": "Claudeは今週の枠が残り79パーセント。記録が1回だけです（予測は記録が増えると出ます）。ほかは、ChatGPT99パーセント、Gemini100パーセント、Grok100パーセント、Muse99パーセント、Copilot100パーセント。",
+ "speech": "Claudeは今週の枠が残り71パーセント。このペースだと11/27(金) 15時ごろに使い切ります。リセットは11/28(土) 0:00なので、8時間ほど足りません。重い作業はリセット後に。ほかは、ChatGPT99パーセント、Gemini99パーセント、Grok97パーセント、Muse99パーセント、Copilot100パーセント。",
  "fx": {
-  "usd_jpy": 158.64,
-  "date": "2026-11-20",
+  "usd_jpy": 159.07,
+  "date": "2026-11-23",
   "source": "ECB参考レート（frankfurter）"
  },
  "flat": {
-  "claude_pct": "79",
-  "claude_bar": "■■■■■■■■□□",
-  "claude_runout": "予測は記録が増えると出ます",
+  "claude_pct": "71",
+  "claude_bar": "■■■■■■■□□□",
+  "claude_runout": "11/27(金) 15時ごろ",
   "claude_reset": "11/28(土) 0:00",
-  "claude_advice": "記録が1回だけです（予測は記録が増えると出ます）",
-  "claude_line": "Claude  79%  予測は記録が増えると出ます",
-  "claude_spark": "      ▇",
+  "claude_advice": "残り71%・リセットまで3日16時間 → 重い作業はリセット後に",
+  "claude_line": "Claude  71%  11/27(金) 15時ごろ",
+  "claude_spark": "     ▇▆",
   "chatgpt_pct": "99",
   "chatgpt_bar": "■■■■■■■■■■",
-  "chatgpt_runout": "予測は記録が増えると出ます",
+  "chatgpt_runout": "リセットまで持つ",
   "chatgpt_reset": "11/28(土) 10:38",
-  "chatgpt_advice": "記録が1回だけです（予測は記録が増えると出ます）",
-  "chatgpt_line": "ChatGPT  99%  予測は記録が増えると出ます",
-  "chatgpt_spark": "      █",
-  "gemini_pct": "100",
+  "chatgpt_advice": "余りそう（リセット時に約99%残る） → 今日のうちに大きい作業を",
+  "chatgpt_line": "ChatGPT  99%  リセットまで持つ",
+  "chatgpt_spark": "     ██",
+  "gemini_pct": "99",
   "gemini_bar": "■■■■■■■■■■",
-  "gemini_runout": "予測は記録が増えると出ます",
+  "gemini_runout": "リセットまで持つ",
   "gemini_reset": "11/29(日) 17:50",
-  "gemini_advice": "記録が1回だけです（予測は記録が増えると出ます）",
-  "gemini_line": "Gemini  100%  予測は記録が増えると出ます",
-  "gemini_spark": "      █",
-  "grok_pct": "100",
+  "gemini_advice": "余りそう（リセット時に約84.2%残る） → 今日のうちに大きい作業を",
+  "gemini_line": "Gemini  99%  リセットまで持つ",
+  "gemini_spark": "     ██",
+  "grok_pct": "97",
   "grok_bar": "■■■■■■■■■■",
-  "grok_runout": "予測は記録が増えると出ます",
+  "grok_runout": "リセットまで持つ",
   "grok_reset": "11/27(金) 0:00",
-  "grok_advice": "記録が1回だけです（予測は記録が増えると出ます）",
-  "grok_line": "Grok  100%  予測は記録が増えると出ます",
-  "grok_spark": "      █",
+  "grok_advice": "余りそう（リセット時に約74.7%残る） → 今日のうちに大きい作業を",
+  "grok_line": "Grok  97%  リセットまで持つ",
+  "grok_spark": "     ██",
   "muse_pct": "99",
   "muse_bar": "■■■■■■■■■■",
-  "muse_runout": "予測は記録が増えると出ます",
+  "muse_runout": "リセットまで持つ",
   "muse_reset": "11/28(土) 0:00",
-  "muse_advice": "記録が1回だけです（予測は記録が増えると出ます）",
-  "muse_line": "Muse  99%  予測は記録が増えると出ます",
-  "muse_spark": "      █",
+  "muse_advice": "余りそう（リセット時に約99%残る） → 今日のうちに大きい作業を",
+  "muse_line": "Muse  99%  リセットまで持つ",
+  "muse_spark": "     ██",
   "copilot_pct": "100",
   "copilot_bar": "■■■■■■■■■■",
-  "copilot_runout": "予測は記録が増えると出ます",
+  "copilot_runout": "リセットまで持つ",
   "copilot_reset": "12/1(火) 0:00",
-  "copilot_advice": "記録が1回だけです（予測は記録が増えると出ます）",
-  "copilot_line": "Copilot  100%  予測は記録が増えると出ます",
-  "copilot_spark": "      █"
+  "copilot_advice": "余りそう（リセット時に約100%残る） → 今日のうちに大きい作業を",
+  "copilot_line": "Copilot  100%  リセットまで持つ",
+  "copilot_spark": "     ██"
  },
  "services": [
   {
@@ -63,31 +63,31 @@
    "source": "claude.ai/settings/usage（現在のセッション・今週：「○% 使用済み」「○○にリセット」）Maxプラン",
    "meters": [
     {
-     "remaining_pct": 79.0,
-     "used_pct": 21.0,
-     "bar": "■■■■■■■■□□",
-     "as_of": "2026-11-23T22:18:00+09:00",
+     "remaining_pct": 71.0,
+     "used_pct": 29.0,
+     "bar": "■■■■■■■□□□",
+     "as_of": "2026-11-24T07:21:56+09:00",
      "resets_at": "2026-11-28T00:00:00+09:00",
      "resets_text": "11/28(土) 0:00",
-     "hours_to_reset": 97.21,
-     "rate_pct_per_hour": null,
-     "runout_at": null,
-     "runout_text": "",
-     "runs_out_before_reset": null,
-     "short_hours": null,
+     "hours_to_reset": 88.63,
+     "rate_pct_per_hour": 0.882,
+     "runout_at": "2026-11-27T15:49:20.500000+09:00",
+     "runout_text": "11/27(金) 15時ごろ",
+     "runs_out_before_reset": true,
+     "short_hours": 8.18,
      "surplus_at_reset_pct": null,
      "id": "weekly",
      "label": "今週",
-     "advice": "記録が1回だけです（予測は記録が増えると出ます）"
+     "advice": "残り71%・リセットまで3日16時間 → 重い作業はリセット後に"
     },
     {
-     "remaining_pct": 91.0,
-     "used_pct": 9.0,
-     "bar": "■■■■■■■■■□",
-     "as_of": "2026-11-23T22:18:00+09:00",
-     "resets_at": "2026-11-24T02:20:00+09:00",
-     "resets_text": "11/24(火) 2:20",
-     "hours_to_reset": 3.54,
+     "remaining_pct": 72.0,
+     "used_pct": 28.0,
+     "bar": "■■■■■■■□□□",
+     "as_of": "2026-11-24T07:21:56+09:00",
+     "resets_at": "2026-11-24T07:20:00+09:00",
+     "resets_text": "11/24(火) 7:20",
+     "hours_to_reset": -0.03,
      "rate_pct_per_hour": null,
      "runout_at": null,
      "runout_text": "",
@@ -100,33 +100,33 @@
     }
    ],
    "main": {
-    "remaining_pct": 79.0,
-    "used_pct": 21.0,
-    "bar": "■■■■■■■■□□",
-    "as_of": "2026-11-23T22:18:00+09:00",
+    "remaining_pct": 71.0,
+    "used_pct": 29.0,
+    "bar": "■■■■■■■□□□",
+    "as_of": "2026-11-24T07:21:56+09:00",
     "resets_at": "2026-11-28T00:00:00+09:00",
     "resets_text": "11/28(土) 0:00",
-    "hours_to_reset": 97.21,
-    "rate_pct_per_hour": null,
-    "runout_at": null,
-    "runout_text": "",
-    "runs_out_before_reset": null,
-    "short_hours": null,
+    "hours_to_reset": 88.63,
+    "rate_pct_per_hour": 0.882,
+    "runout_at": "2026-11-27T15:49:20.500000+09:00",
+    "runout_text": "11/27(金) 15時ごろ",
+    "runs_out_before_reset": true,
+    "short_hours": 8.18,
     "surplus_at_reset_pct": null,
     "id": "weekly",
     "label": "今週",
-    "advice": "記録が1回だけです（予測は記録が増えると出ます）"
+    "advice": "残り71%・リセットまで3日16時間 → 重い作業はリセット後に"
    },
-   "advice": "記録が1回だけです（予測は記録が増えると出ます）",
+   "advice": "残り71%・リセットまで3日16時間 → 重い作業はリセット後に",
    "history": {
     "dates": [
-     "11/17",
      "11/18",
      "11/19",
      "11/20",
      "11/21",
      "11/22",
-     "11/23"
+     "11/23",
+     "11/24"
     ],
     "remaining_pct": [
      null,
@@ -134,22 +134,22 @@
      null,
      null,
      null,
-     null,
-     79.0
+     79.0,
+     71.0
     ],
-    "spark": "      ▇"
+    "spark": "     ▇▆"
    },
    "value": {
-    "monthly_fee_jpy": 17450,
+    "monthly_fee_jpy": 17497,
     "days_in_month": 30,
-    "elapsed_days": 23,
-    "used_pts_month": 0.0,
-    "yen_per_pct": 40.72,
-    "used_value_jpy": 0,
-    "utilization_pct": 0.0,
-    "text": "1%あたり約40.7円・今月は月額の0%分を使えている"
+    "elapsed_days": 24,
+    "used_pts_month": 8.0,
+    "yen_per_pct": 40.83,
+    "used_value_jpy": 326,
+    "utilization_pct": 2.3,
+    "text": "1%あたり約40.8円・今月は月額の2%分を使えている"
    },
-   "line": "Claude  79%  予測は記録が増えると出ます"
+   "line": "Claude  71%  11/27(金) 15時ごろ"
   },
   {
    "id": "chatgpt",
@@ -161,28 +161,28 @@
      "remaining_pct": 99.0,
      "used_pct": 1.0,
      "bar": "■■■■■■■■■■",
-     "as_of": "2026-11-23T22:19:00+09:00",
+     "as_of": "2026-11-24T07:21:57+09:00",
      "resets_at": "2026-11-28T10:38:23+09:00",
      "resets_text": "11/28(土) 10:38",
-     "hours_to_reset": 107.85,
-     "rate_pct_per_hour": null,
+     "hours_to_reset": 99.27,
+     "rate_pct_per_hour": 0.0,
      "runout_at": null,
      "runout_text": "",
-     "runs_out_before_reset": null,
+     "runs_out_before_reset": false,
      "short_hours": null,
-     "surplus_at_reset_pct": null,
+     "surplus_at_reset_pct": 99.0,
      "id": "weekly",
      "label": "今週",
-     "advice": "記録が1回だけです（予測は記録が増えると出ます）"
+     "advice": "余りそう（リセット時に約99%残る） → 今日のうちに大きい作業を"
     },
     {
      "remaining_pct": 100.0,
      "used_pct": 0.0,
      "bar": "■■■■■■■■■■",
-     "as_of": "2026-11-23T22:19:00+09:00",
-     "resets_at": "2026-11-24T03:18:49+09:00",
-     "resets_text": "11/24(火) 3:18",
-     "hours_to_reset": 4.52,
+     "as_of": "2026-11-24T07:21:57+09:00",
+     "resets_at": "2026-11-24T12:20:00+09:00",
+     "resets_text": "11/24(火) 12:20",
+     "hours_to_reset": 4.97,
      "rate_pct_per_hour": null,
      "runout_at": null,
      "runout_text": "",
@@ -198,30 +198,30 @@
     "remaining_pct": 99.0,
     "used_pct": 1.0,
     "bar": "■■■■■■■■■■",
-    "as_of": "2026-11-23T22:19:00+09:00",
+    "as_of": "2026-11-24T07:21:57+09:00",
     "resets_at": "2026-11-28T10:38:23+09:00",
     "resets_text": "11/28(土) 10:38",
-    "hours_to_reset": 107.85,
-    "rate_pct_per_hour": null,
+    "hours_to_reset": 99.27,
+    "rate_pct_per_hour": 0.0,
     "runout_at": null,
     "runout_text": "",
-    "runs_out_before_reset": null,
+    "runs_out_before_reset": false,
     "short_hours": null,
-    "surplus_at_reset_pct": null,
+    "surplus_at_reset_pct": 99.0,
     "id": "weekly",
     "label": "今週",
-    "advice": "記録が1回だけです（予測は記録が増えると出ます）"
+    "advice": "余りそう（リセット時に約99%残る） → 今日のうちに大きい作業を"
    },
-   "advice": "記録が1回だけです（予測は記録が増えると出ます）",
+   "advice": "余りそう（リセット時に約99%残る） → 今日のうちに大きい作業を",
    "history": {
     "dates": [
-     "11/17",
      "11/18",
      "11/19",
      "11/20",
      "11/21",
      "11/22",
-     "11/23"
+     "11/23",
+     "11/24"
     ],
     "remaining_pct": [
      null,
@@ -229,22 +229,22 @@
      null,
      null,
      null,
-     null,
+     99.0,
      99.0
     ],
-    "spark": "      █"
+    "spark": "     ██"
    },
    "value": {
     "monthly_fee_jpy": 3000,
     "days_in_month": 30,
-    "elapsed_days": 23,
+    "elapsed_days": 24,
     "used_pts_month": 0.0,
     "yen_per_pct": 7.0,
     "used_value_jpy": 0,
     "utilization_pct": 0.0,
     "text": "1%あたり約7.0円・今月は月額の0%分を使えている"
    },
-   "line": "ChatGPT  99%  予測は記録が増えると出ます"
+   "line": "ChatGPT  99%  リセットまで持つ"
   },
   {
    "id": "gemini",
@@ -253,31 +253,31 @@
    "source": "gemini.google.com/usage（現在の使用量・1週間の上限：「○% 使用中」とリセット日時。11/23確認）",
    "meters": [
     {
-     "remaining_pct": 100.0,
-     "used_pct": 0.0,
+     "remaining_pct": 99.0,
+     "used_pct": 1.0,
      "bar": "■■■■■■■■■■",
-     "as_of": "2026-11-23T22:33:00+09:00",
+     "as_of": "2026-11-24T07:21:57+09:00",
      "resets_at": "2026-11-29T17:50:00+09:00",
      "resets_text": "11/29(日) 17:50",
-     "hours_to_reset": 139.04,
-     "rate_pct_per_hour": null,
-     "runout_at": null,
-     "runout_text": "",
-     "runs_out_before_reset": null,
+     "hours_to_reset": 130.47,
+     "rate_pct_per_hour": 0.113,
+     "runout_at": "2026-12-30T16:08:00+09:00",
+     "runout_text": "12/30(水) 16時ごろ",
+     "runs_out_before_reset": false,
      "short_hours": null,
-     "surplus_at_reset_pct": null,
+     "surplus_at_reset_pct": 84.2,
      "id": "weekly",
      "label": "今週",
-     "advice": "記録が1回だけです（予測は記録が増えると出ます）"
+     "advice": "余りそう（リセット時に約84.2%残る） → 今日のうちに大きい作業を"
     },
     {
      "remaining_pct": 100.0,
      "used_pct": 0.0,
      "bar": "■■■■■■■■■■",
-     "as_of": "2026-11-23T22:33:00+09:00",
-     "resets_at": "2026-11-24T01:50:00+09:00",
-     "resets_text": "11/24(火) 1:50",
-     "hours_to_reset": 3.04,
+     "as_of": "2026-11-24T07:21:57+09:00",
+     "resets_at": "2026-11-24T11:50:00+09:00",
+     "resets_text": "11/24(火) 11:50",
+     "hours_to_reset": 4.47,
      "rate_pct_per_hour": null,
      "runout_at": null,
      "runout_text": "",
@@ -290,33 +290,33 @@
     }
    ],
    "main": {
-    "remaining_pct": 100.0,
-    "used_pct": 0.0,
+    "remaining_pct": 99.0,
+    "used_pct": 1.0,
     "bar": "■■■■■■■■■■",
-    "as_of": "2026-11-23T22:33:00+09:00",
+    "as_of": "2026-11-24T07:21:57+09:00",
     "resets_at": "2026-11-29T17:50:00+09:00",
     "resets_text": "11/29(日) 17:50",
-    "hours_to_reset": 139.04,
-    "rate_pct_per_hour": null,
-    "runout_at": null,
-    "runout_text": "",
-    "runs_out_before_reset": null,
+    "hours_to_reset": 130.47,
+    "rate_pct_per_hour": 0.113,
+    "runout_at": "2026-12-30T16:08:00+09:00",
+    "runout_text": "12/30(水) 16時ごろ",
+    "runs_out_before_reset": false,
     "short_hours": null,
-    "surplus_at_reset_pct": null,
+    "surplus_at_reset_pct": 84.2,
     "id": "weekly",
     "label": "今週",
-    "advice": "記録が1回だけです（予測は記録が増えると出ます）"
+    "advice": "余りそう（リセット時に約84.2%残る） → 今日のうちに大きい作業を"
    },
-   "advice": "記録が1回だけです（予測は記録が増えると出ます）",
+   "advice": "余りそう（リセット時に約84.2%残る） → 今日のうちに大きい作業を",
    "history": {
     "dates": [
-     "11/17",
      "11/18",
      "11/19",
      "11/20",
      "11/21",
      "11/22",
-     "11/23"
+     "11/23",
+     "11/24"
     ],
     "remaining_pct": [
      null,
@@ -324,13 +324,13 @@
      null,
      null,
      null,
-     null,
-     100.0
+     100.0,
+     99.0
     ],
-    "spark": "      █"
+    "spark": "     ██"
    },
    "value": null,
-   "line": "Gemini  100%  予測は記録が増えると出ます"
+   "line": "Gemini  99%  リセットまで持つ"
   },
   {
    "id": "grok",
@@ -339,52 +339,52 @@
    "source": "grok.com/dashboard（Overview：Free の Weekly included usage「○% used」「Resets Nov 27」。リセットは日付だけで時刻は出ない→0:00で記録）",
    "meters": [
     {
-     "remaining_pct": 100.0,
-     "used_pct": 0.0,
+     "remaining_pct": 97.0,
+     "used_pct": 3.0,
      "bar": "■■■■■■■■■■",
-     "as_of": "2026-11-23T22:41:00+09:00",
+     "as_of": "2026-11-24T07:21:57+09:00",
      "resets_at": "2026-11-27T00:00:00+09:00",
      "resets_text": "11/27(金) 0:00",
-     "hours_to_reset": 73.21,
-     "rate_pct_per_hour": null,
-     "runout_at": null,
-     "runout_text": "",
-     "runs_out_before_reset": null,
+     "hours_to_reset": 64.63,
+     "rate_pct_per_hour": 0.346,
+     "runout_at": "2026-12-06T00:06:00+09:00",
+     "runout_text": "12/6(日) 0時ごろ",
+     "runs_out_before_reset": false,
      "short_hours": null,
-     "surplus_at_reset_pct": null,
+     "surplus_at_reset_pct": 74.7,
      "id": "weekly",
      "label": "今週",
-     "advice": "記録が1回だけです（予測は記録が増えると出ます）"
+     "advice": "余りそう（リセット時に約74.7%残る） → 今日のうちに大きい作業を"
     }
    ],
    "main": {
-    "remaining_pct": 100.0,
-    "used_pct": 0.0,
+    "remaining_pct": 97.0,
+    "used_pct": 3.0,
     "bar": "■■■■■■■■■■",
-    "as_of": "2026-11-23T22:41:00+09:00",
+    "as_of": "2026-11-24T07:21:57+09:00",
     "resets_at": "2026-11-27T00:00:00+09:00",
     "resets_text": "11/27(金) 0:00",
-    "hours_to_reset": 73.21,
-    "rate_pct_per_hour": null,
-    "runout_at": null,
-    "runout_text": "",
-    "runs_out_before_reset": null,
+    "hours_to_reset": 64.63,
+    "rate_pct_per_hour": 0.346,
+    "runout_at": "2026-12-06T00:06:00+09:00",
+    "runout_text": "12/6(日) 0時ごろ",
+    "runs_out_before_reset": false,
     "short_hours": null,
-    "surplus_at_reset_pct": null,
+    "surplus_at_reset_pct": 74.7,
     "id": "weekly",
     "label": "今週",
-    "advice": "記録が1回だけです（予測は記録が増えると出ます）"
+    "advice": "余りそう（リセット時に約74.7%残る） → 今日のうちに大きい作業を"
    },
-   "advice": "記録が1回だけです（予測は記録が増えると出ます）",
+   "advice": "余りそう（リセット時に約74.7%残る） → 今日のうちに大きい作業を",
    "history": {
     "dates": [
-     "11/17",
      "11/18",
      "11/19",
      "11/20",
      "11/21",
      "11/22",
-     "11/23"
+     "11/23",
+     "11/24"
     ],
     "remaining_pct": [
      null,
@@ -392,13 +392,13 @@
      null,
      null,
      null,
-     null,
-     100.0
+     100.0,
+     97.0
     ],
-    "spark": "      █"
+    "spark": "     ██"
    },
    "value": null,
-   "line": "Grok  100%  予測は記録が増えると出ます"
+   "line": "Grok  97%  リセットまで持つ"
   },
   {
    "id": "muse",
@@ -410,49 +410,49 @@
      "remaining_pct": 99.0,
      "used_pct": 1.0,
      "bar": "■■■■■■■■■■",
-     "as_of": "2026-11-23T22:46:00+09:00",
+     "as_of": "2026-11-24T07:21:57+09:00",
      "resets_at": "2026-11-28T00:00:00+09:00",
      "resets_text": "11/28(土) 0:00",
-     "hours_to_reset": 97.21,
-     "rate_pct_per_hour": null,
+     "hours_to_reset": 88.63,
+     "rate_pct_per_hour": 0.0,
      "runout_at": null,
      "runout_text": "",
-     "runs_out_before_reset": null,
+     "runs_out_before_reset": false,
      "short_hours": null,
-     "surplus_at_reset_pct": null,
+     "surplus_at_reset_pct": 99.0,
      "id": "weekly",
      "label": "今週",
-     "advice": "記録が1回だけです（予測は記録が増えると出ます）"
+     "advice": "余りそう（リセット時に約99%残る） → 今日のうちに大きい作業を"
     }
    ],
    "main": {
     "remaining_pct": 99.0,
     "used_pct": 1.0,
     "bar": "■■■■■■■■■■",
-    "as_of": "2026-11-23T22:46:00+09:00",
+    "as_of": "2026-11-24T07:21:57+09:00",
     "resets_at": "2026-11-28T00:00:00+09:00",
     "resets_text": "11/28(土) 0:00",
-    "hours_to_reset": 97.21,
-    "rate_pct_per_hour": null,
+    "hours_to_reset": 88.63,
+    "rate_pct_per_hour": 0.0,
     "runout_at": null,
     "runout_text": "",
-    "runs_out_before_reset": null,
+    "runs_out_before_reset": false,
     "short_hours": null,
-    "surplus_at_reset_pct": null,
+    "surplus_at_reset_pct": 99.0,
     "id": "weekly",
     "label": "今週",
-    "advice": "記録が1回だけです（予測は記録が増えると出ます）"
+    "advice": "余りそう（リセット時に約99%残る） → 今日のうちに大きい作業を"
    },
-   "advice": "記録が1回だけです（予測は記録が増えると出ます）",
+   "advice": "余りそう（リセット時に約99%残る） → 今日のうちに大きい作業を",
    "history": {
     "dates": [
-     "11/17",
      "11/18",
      "11/19",
      "11/20",
      "11/21",
      "11/22",
-     "11/23"
+     "11/23",
+     "11/24"
     ],
     "remaining_pct": [
      null,
@@ -460,13 +460,13 @@
      null,
      null,
      null,
-     null,
+     99.0,
      99.0
     ],
-    "spark": "      █"
+    "spark": "     ██"
    },
    "value": null,
-   "line": "Muse  99%  予測は記録が増えると出ます"
+   "line": "Muse  99%  リセットまで持つ"
   },
   {
    "id": "copilot",
@@ -478,49 +478,49 @@
      "remaining_pct": 100.0,
      "used_pct": 0.0,
      "bar": "■■■■■■■■■■",
-     "as_of": "2026-11-23T22:43:00+09:00",
+     "as_of": "2026-11-24T07:21:57+09:00",
      "resets_at": "2026-12-01T00:00:00+09:00",
      "resets_text": "12/1(火) 0:00",
-     "hours_to_reset": 169.21,
-     "rate_pct_per_hour": null,
+     "hours_to_reset": 160.63,
+     "rate_pct_per_hour": 0.0,
      "runout_at": null,
      "runout_text": "",
-     "runs_out_before_reset": null,
+     "runs_out_before_reset": false,
      "short_hours": null,
-     "surplus_at_reset_pct": null,
+     "surplus_at_reset_pct": 100.0,
      "id": "monthly",
      "label": "今月",
-     "advice": "記録が1回だけです（予測は記録が増えると出ます）"
+     "advice": "余りそう（リセット時に約100%残る） → 今日のうちに大きい作業を"
     }
    ],
    "main": {
     "remaining_pct": 100.0,
     "used_pct": 0.0,
     "bar": "■■■■■■■■■■",
-    "as_of": "2026-11-23T22:43:00+09:00",
+    "as_of": "2026-11-24T07:21:57+09:00",
     "resets_at": "2026-12-01T00:00:00+09:00",
     "resets_text": "12/1(火) 0:00",
-    "hours_to_reset": 169.21,
-    "rate_pct_per_hour": null,
+    "hours_to_reset": 160.63,
+    "rate_pct_per_hour": 0.0,
     "runout_at": null,
     "runout_text": "",
-    "runs_out_before_reset": null,
+    "runs_out_before_reset": false,
     "short_hours": null,
-    "surplus_at_reset_pct": null,
+    "surplus_at_reset_pct": 100.0,
     "id": "monthly",
     "label": "今月",
-    "advice": "記録が1回だけです（予測は記録が増えると出ます）"
+    "advice": "余りそう（リセット時に約100%残る） → 今日のうちに大きい作業を"
    },
-   "advice": "記録が1回だけです（予測は記録が増えると出ます）",
+   "advice": "余りそう（リセット時に約100%残る） → 今日のうちに大きい作業を",
    "history": {
     "dates": [
-     "11/17",
      "11/18",
      "11/19",
      "11/20",
      "11/21",
      "11/22",
-     "11/23"
+     "11/23",
+     "11/24"
     ],
     "remaining_pct": [
      null,
@@ -528,13 +528,13 @@
      null,
      null,
      null,
-     null,
+     100.0,
      100.0
     ],
-    "spark": "      █"
+    "spark": "     ██"
    },
    "value": null,
-   "line": "Copilot  100%  予測は記録が増えると出ます"
+   "line": "Copilot  100%  リセットまで持つ"
   }
  ]
 }
