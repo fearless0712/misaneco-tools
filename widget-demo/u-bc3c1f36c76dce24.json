@@ -1,6 +1,6 @@
 {
  "notice": "実際の記録から計算",
- "generated_at": "2026-11-24T23:57:02.500060+09:00",
+ "generated_at": "2026-11-25T00:08:29.863529+09:00",
  "assumption": "直近の記録の減り方（週の枠は24時間・セッションは2時間の差）が続くと仮定",
  "alert_level": 0,
  "alert": false,
@@ -8,7 +8,7 @@
  "speech": "Claudeは今週の枠が残り66パーセント。リセットの11/28(土) 0:00には、約23.9パーセント残る見込みです。このペースでちょうど足りそう。ほかは、ChatGPT99パーセント、Gemini99パーセント、Grok97パーセント、Muse99パーセント、Copilot100パーセント。",
  "fx": {
   "usd_jpy": 159.07,
-  "date": "2026-11-23",
+  "date": "2026-11-24",
   "source": "ECB参考レート（frankfurter）"
  },
  "flat": {
@@ -18,42 +18,42 @@
   "claude_reset": "11/28(土) 0:00",
   "claude_advice": "このペースでちょうど足りそう",
   "claude_line": "Claude  66%  リセットまで持つ",
-  "claude_spark": "     ▇▆",
+  "claude_spark": "    ▇▆ ",
   "chatgpt_pct": "99",
   "chatgpt_bar": "■■■■■■■■■■",
   "chatgpt_runout": "予測は記録待ち",
   "chatgpt_reset": "11/28(土) 10:21",
   "chatgpt_advice": "記録が1回だけです（予測は記録が増えると出ます）",
   "chatgpt_line": "ChatGPT  99%  予測は記録待ち",
-  "chatgpt_spark": "     ██",
+  "chatgpt_spark": "    ██ ",
   "gemini_pct": "99",
   "gemini_bar": "■■■■■■■■■■",
   "gemini_runout": "リセットまで持つ",
   "gemini_reset": "11/29(日) 17:50",
   "gemini_advice": "余りそう（リセット時に約93.9%残る） → 今日のうちに大きい作業を",
   "gemini_line": "Gemini  99%  リセットまで持つ",
-  "gemini_spark": "     ██",
+  "gemini_spark": "    ██ ",
   "grok_pct": "97",
   "grok_bar": "■■■■■■■■■■",
   "grok_runout": "リセットまで持つ",
   "grok_reset": "11/27(金) 0:00",
   "grok_advice": "余りそう（リセット時に約90.3%残る） → 今日のうちに大きい作業を",
   "grok_line": "Grok  97%  リセットまで持つ",
-  "grok_spark": "     ██",
+  "grok_spark": "    ██ ",
   "muse_pct": "99",
   "muse_bar": "■■■■■■■■■■",
   "muse_runout": "リセットまで持つ",
   "muse_reset": "11/28(土) 0:00",
   "muse_advice": "余りそう（リセット時に約99%残る） → 今日のうちに大きい作業を",
   "muse_line": "Muse  99%  リセットまで持つ",
-  "muse_spark": "     ██",
+  "muse_spark": "    ██ ",
   "copilot_pct": "100",
   "copilot_bar": "■■■■■■■■■■",
   "copilot_runout": "リセットまで持つ",
   "copilot_reset": "12/1(火) 0:00",
   "copilot_advice": "余りそう（リセット時に約100%残る） → 今日のうちに大きい作業を",
   "copilot_line": "Copilot  100%  リセットまで持つ",
-  "copilot_spark": "     ██"
+  "copilot_spark": "    ██ "
  },
  "pct": {
   "claude": 66.0,
@@ -78,7 +78,7 @@
      "as_of": "2026-11-24T21:22:16+09:00",
      "resets_at": "2026-11-28T00:00:00+09:00",
      "resets_text": "11/28(土) 0:00",
-     "hours_to_reset": 72.05,
+     "hours_to_reset": 71.86,
      "rate_pct_per_hour": 0.563,
      "runout_at": "2026-11-29T18:30:04.923077+09:00",
      "runout_text": "11/29(日) 18時ごろ",
@@ -96,7 +96,7 @@
      "as_of": "2026-11-24T21:22:16+09:00",
      "resets_at": "2026-11-24T22:30:00+09:00",
      "resets_text": "11/24(火) 22:30",
-     "hours_to_reset": -1.45,
+     "hours_to_reset": -1.64,
      "rate_pct_per_hour": null,
      "runout_at": null,
      "runout_text": "",
@@ -115,7 +115,7 @@
     "as_of": "2026-11-24T21:22:16+09:00",
     "resets_at": "2026-11-28T00:00:00+09:00",
     "resets_text": "11/28(土) 0:00",
-    "hours_to_reset": 72.05,
+    "hours_to_reset": 71.86,
     "rate_pct_per_hour": 0.563,
     "runout_at": "2026-11-29T18:30:04.923077+09:00",
     "runout_text": "11/29(日) 18時ごろ",
@@ -129,33 +129,33 @@
    "advice": "このペースでちょうど足りそう",
    "history": {
     "dates": [
-     "11/18",
      "11/19",
      "11/20",
      "11/21",
      "11/22",
      "11/23",
-     "11/24"
+     "11/24",
+     "11/25"
     ],
     "remaining_pct": [
      null,
      null,
      null,
      null,
-     null,
      79.0,
-     66.0
+     66.0,
+     null
     ],
-    "spark": "     ▇▆"
+    "spark": "    ▇▆ "
    },
    "value": {
     "monthly_fee_jpy": 17497,
     "days_in_month": 30,
-    "elapsed_days": 24,
+    "elapsed_days": 25,
     "used_pts_month": 13.0,
     "yen_per_pct": 40.83,
     "used_value_jpy": 530,
-    "utilization_pct": 3.8,
+    "utilization_pct": 3.6,
     "text": "1%あたり約40.8円・今月は月額の4%分を使えている"
    },
    "line": "Claude  66%  リセットまで持つ"
@@ -174,7 +174,7 @@
      "as_of": "2026-11-24T21:22:16+09:00",
      "resets_at": "2026-11-28T10:21:00+09:00",
      "resets_text": "11/28(土) 10:21",
-     "hours_to_reset": 82.4,
+     "hours_to_reset": 82.21,
      "rate_pct_per_hour": null,
      "runout_at": null,
      "runout_text": "",
@@ -192,7 +192,7 @@
      "as_of": "2026-11-24T21:22:16+09:00",
      "resets_at": "2026-11-25T02:21:00+09:00",
      "resets_text": "11/25(水) 2:21",
-     "hours_to_reset": 2.4,
+     "hours_to_reset": 2.21,
      "rate_pct_per_hour": null,
      "runout_at": null,
      "runout_text": "",
@@ -211,7 +211,7 @@
     "as_of": "2026-11-24T21:22:16+09:00",
     "resets_at": "2026-11-28T10:21:00+09:00",
     "resets_text": "11/28(土) 10:21",
-    "hours_to_reset": 82.4,
+    "hours_to_reset": 82.21,
     "rate_pct_per_hour": null,
     "runout_at": null,
     "runout_text": "",
@@ -225,29 +225,29 @@
    "advice": "記録が1回だけです（予測は記録が増えると出ます）",
    "history": {
     "dates": [
-     "11/18",
      "11/19",
      "11/20",
      "11/21",
      "11/22",
      "11/23",
-     "11/24"
+     "11/24",
+     "11/25"
     ],
     "remaining_pct": [
      null,
      null,
      null,
      null,
-     null,
      99.0,
-     99.0
+     99.0,
+     null
     ],
-    "spark": "     ██"
+    "spark": "    ██ "
    },
    "value": {
     "monthly_fee_jpy": 3000,
     "days_in_month": 30,
-    "elapsed_days": 24,
+    "elapsed_days": 25,
     "used_pts_month": 0.0,
     "yen_per_pct": 7.0,
     "used_value_jpy": 0,
@@ -270,7 +270,7 @@
      "as_of": "2026-11-24T21:22:16+09:00",
      "resets_at": "2026-11-29T17:50:00+09:00",
      "resets_text": "11/29(日) 17:50",
-     "hours_to_reset": 113.88,
+     "hours_to_reset": 113.69,
      "rate_pct_per_hour": 0.044,
      "runout_at": "2027-02-27T00:39:40+09:00",
      "runout_text": "2/27(土) 0時ごろ",
@@ -288,7 +288,7 @@
      "as_of": "2026-11-24T21:22:16+09:00",
      "resets_at": "2026-11-24T21:50:00+09:00",
      "resets_text": "11/24(火) 21:50",
-     "hours_to_reset": -2.12,
+     "hours_to_reset": -2.31,
      "rate_pct_per_hour": null,
      "runout_at": null,
      "runout_text": "",
@@ -307,7 +307,7 @@
     "as_of": "2026-11-24T21:22:16+09:00",
     "resets_at": "2026-11-29T17:50:00+09:00",
     "resets_text": "11/29(日) 17:50",
-    "hours_to_reset": 113.88,
+    "hours_to_reset": 113.69,
     "rate_pct_per_hour": 0.044,
     "runout_at": "2027-02-27T00:39:40+09:00",
     "runout_text": "2/27(土) 0時ごろ",
@@ -321,24 +321,24 @@
    "advice": "余りそう（リセット時に約93.9%残る） → 今日のうちに大きい作業を",
    "history": {
     "dates": [
-     "11/18",
      "11/19",
      "11/20",
      "11/21",
      "11/22",
      "11/23",
-     "11/24"
+     "11/24",
+     "11/25"
     ],
     "remaining_pct": [
      null,
      null,
      null,
      null,
-     null,
      100.0,
-     99.0
+     99.0,
+     null
     ],
-    "spark": "     ██"
+    "spark": "    ██ "
    },
    "value": null,
    "line": "Gemini  99%  リセットまで持つ"
@@ -357,7 +357,7 @@
      "as_of": "2026-11-24T21:22:16+09:00",
      "resets_at": "2026-11-27T00:00:00+09:00",
      "resets_text": "11/27(金) 0:00",
-     "hours_to_reset": 48.05,
+     "hours_to_reset": 47.86,
      "rate_pct_per_hour": 0.132,
      "runout_at": "2026-12-25T10:56:33.333333+09:00",
      "runout_text": "12/25(金) 10時ごろ",
@@ -376,7 +376,7 @@
     "as_of": "2026-11-24T21:22:16+09:00",
     "resets_at": "2026-11-27T00:00:00+09:00",
     "resets_text": "11/27(金) 0:00",
-    "hours_to_reset": 48.05,
+    "hours_to_reset": 47.86,
     "rate_pct_per_hour": 0.132,
     "runout_at": "2026-12-25T10:56:33.333333+09:00",
     "runout_text": "12/25(金) 10時ごろ",
@@ -390,24 +390,24 @@
    "advice": "余りそう（リセット時に約90.3%残る） → 今日のうちに大きい作業を",
    "history": {
     "dates": [
-     "11/18",
      "11/19",
      "11/20",
      "11/21",
      "11/22",
      "11/23",
-     "11/24"
+     "11/24",
+     "11/25"
     ],
     "remaining_pct": [
      null,
      null,
      null,
      null,
-     null,
      100.0,
-     97.0
+     97.0,
+     null
     ],
-    "spark": "     ██"
+    "spark": "    ██ "
    },
    "value": null,
    "line": "Grok  97%  リセットまで持つ"
@@ -426,7 +426,7 @@
      "as_of": "2026-11-24T21:22:16+09:00",
      "resets_at": "2026-11-28T00:00:00+09:00",
      "resets_text": "11/28(土) 0:00",
-     "hours_to_reset": 72.05,
+     "hours_to_reset": 71.86,
      "rate_pct_per_hour": 0.0,
      "runout_at": null,
      "runout_text": "",
@@ -445,7 +445,7 @@
     "as_of": "2026-11-24T21:22:16+09:00",
     "resets_at": "2026-11-28T00:00:00+09:00",
     "resets_text": "11/28(土) 0:00",
-    "hours_to_reset": 72.05,
+    "hours_to_reset": 71.86,
     "rate_pct_per_hour": 0.0,
     "runout_at": null,
     "runout_text": "",
@@ -459,24 +459,24 @@
    "advice": "余りそう（リセット時に約99%残る） → 今日のうちに大きい作業を",
    "history": {
     "dates": [
-     "11/18",
      "11/19",
      "11/20",
      "11/21",
      "11/22",
      "11/23",
-     "11/24"
+     "11/24",
+     "11/25"
     ],
     "remaining_pct": [
      null,
      null,
      null,
      null,
-     null,
      99.0,
-     99.0
+     99.0,
+     null
     ],
-    "spark": "     ██"
+    "spark": "    ██ "
    },
    "value": null,
    "line": "Muse  99%  リセットまで持つ"
@@ -495,7 +495,7 @@
      "as_of": "2026-11-24T21:22:16+09:00",
      "resets_at": "2026-12-01T00:00:00+09:00",
      "resets_text": "12/1(火) 0:00",
-     "hours_to_reset": 144.05,
+     "hours_to_reset": 143.86,
      "rate_pct_per_hour": 0.0,
      "runout_at": null,
      "runout_text": "",
@@ -514,7 +514,7 @@
     "as_of": "2026-11-24T21:22:16+09:00",
     "resets_at": "2026-12-01T00:00:00+09:00",
     "resets_text": "12/1(火) 0:00",
-    "hours_to_reset": 144.05,
+    "hours_to_reset": 143.86,
     "rate_pct_per_hour": 0.0,
     "runout_at": null,
     "runout_text": "",
@@ -528,24 +528,24 @@
    "advice": "余りそう（リセット時に約100%残る） → 今日のうちに大きい作業を",
    "history": {
     "dates": [
-     "11/18",
      "11/19",
      "11/20",
      "11/21",
      "11/22",
      "11/23",
-     "11/24"
+     "11/24",
+     "11/25"
     ],
     "remaining_pct": [
      null,
      null,
      null,
      null,
-     null,
      100.0,
-     100.0
+     100.0,
+     null
     ],
-    "spark": "     ██"
+    "spark": "    ██ "
    },
    "value": null,
    "line": "Copilot  100%  リセットまで持つ"
