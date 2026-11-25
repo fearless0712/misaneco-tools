@@ -3,8 +3,8 @@
 <title>利益率（粗利率）と上乗せ率（マークアップ）の違い｜値付けで損しないためのExcel・スプレッドシートの式｜MisaNeco Works</title><meta name="description" content="「原価に25%のせたのに、利益率は20%」。利益率と上乗せ率の違い、目標の利益率から売値を出す式、早見表、案件ごとの利益の表と色付けの手順をまとめました。">
 <link rel="canonical" href="https://tools.equaglobal.com/blog/riekiritsu-uwanoseritsu-chigai/"><meta property="og:type" content="article"><meta property="og:url" content="https://tools.equaglobal.com/blog/riekiritsu-uwanoseritsu-chigai/"><meta property="og:image" content="https://tools.equaglobal.com/blog/og.png"><meta name="twitter:card" content="summary_large_image"><meta property="og:title" content="利益率（粗利率）と上乗せ率（マークアップ）の違い｜値付けで損しないためのExcel・スプレッドシートの式｜MisaNeco Works"><meta property="og:description" content="「原価に25%のせたのに、利益率は20%」。利益率と上乗せ率の違い、目標の利益率から売値を出す式、早見表、案件ごとの利益の表と色付けの手順をまとめました。">
 <link rel="alternate" type="application/rss+xml" title="MisaNeco Works ブログ" href="https://tools.equaglobal.com/blog/rss.xml"><script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "利益率（粗利率）と上乗せ率（マークアップ）の違い｜値付けで損しないためのExcel・スプレッドシートの式", "description": "「原価に25%のせたのに、利益率は20%」。利益率と上乗せ率の違い、目標の利益率から売値を出す式、早見表、案件ごとの利益の表と色付けの手順をまとめました。", "datePublished": "2026-10-20", "dateModified": "2026-10-20", "inLanguage": "ja", "mainEntityOfPage": "https://tools.equaglobal.com/blog/riekiritsu-uwanoseritsu-chigai/", "image": "https://tools.equaglobal.com/blog/og.png", "author": {"@type": "Organization", "name": "MisaNeco Works", "url": "https://tools.equaglobal.com/"}, "publisher": {"@type": "Organization", "name": "MisaNeco Works"}}</script>
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-EWJXRJY9M6"></script><script src="../ga.js?v=202611191757"></script>
-<link rel="stylesheet" href="../blog.css?v=202611191757"><link rel="stylesheet" href="../../assets/ads-inter.css?v=202610210009"></head><body>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-EWJXRJY9M6"></script><script src="../ga.js?v=202611251546"></script>
+<link rel="stylesheet" href="../blog.css?v=202611251546"><link rel="stylesheet" href="../../assets/ads-inter.css?v=202610210009"></head><body>
 <header><div class="wrap"><a href="../">MisaNeco Works ブログ</a></div></header>
 <main class="wrap"><p class="meta">2026-10-20・DX / フリーランス / Excel</p><h1>利益率（粗利率）と上乗せ率（マークアップ）の違い｜値付けで損しないためのExcel・スプレッドシートの式</h1><p class="pr">この記事には広告（アフィリエイトリンク）を含みます。</p><p>値段を決めるとき、「原価に○%のせる」という決め方をよく聞きます。わかりやすい方法です。でも、ここに小さな落とし穴があります。</p>
 <p><strong>原価に25%のせても、利益率は25%になりません。</strong> 20%です。</p>
@@ -272,6 +272,9 @@ IFERRORで包むと、エラーのときは空白を表示します。表がす�
 H2からL2を選んで、右下の小さな四角を下にドラッグします。
 Excelなら、Windowsは Ctrl＋D、Macは ⌘＋D でも下にコピーできます（コピーしたい範囲を下まで選んでから押します）。</p>
 <p>なお、売値がまだ空の行は、利益がマイナスに見えます。売値を入れてから確認してください。</p>
+<p>案件ごとの表は、売上と原価を「1件ずつ」見るためのものです。月ごとの売上・仕入れ・経費をまとめて帳簿にしていくなら、会計ソフトに記録していく方法もあります。</p>
+<div class="ad ad-text"><span class="lbl">広告・PR</span><a href="https://px.a8.net/svt/ejp?a8mat=4BEK9L+5CX82+4JGQ+60WN6" target="_blank" rel="nofollow sponsored noopener">会計自動化ソフトを今すぐ体験 マネーフォワード クラウド会計</a> <img border="0" width="1" height="1" src="https://www13.a8.net/0.gif?a8mat=4BEK9L+5CX82+4JGQ+60WN6" alt=""></div>
+
 <h2>7. 利益率が低い行に色を付ける</h2>
 <p>目標の利益率に届いていない行に、自動で色が付くようにします。使う式は、ExcelもGoogleスプレッドシートも同じです。</p>
 <p><code>=AND($B2&gt;0,$J2&lt;$O$1)</code></p>
@@ -305,7 +308,7 @@ Excelなら、Windowsは Ctrl＋D、Macは ⌘＋D でも下にコピーでき�
 <h2>8. 消費税はどうする？</h2>
 <p>計算は<strong>税抜の金額でそろえる</strong>のがおすすめです。売値は税込、原価は税抜、のように混ざると、利益率がずれてしまいます。</p>
 <p>消費税の扱いは、事業の状況によって変わります。具体的な判断は、税理士や税務署に確認してください。</p>
-<div class="ad"><span class="lbl">広告・PR</span><a href="https://px.a8.net/svt/ejp?a8mat=4BEK9L+6JSFM+4JGQ+BY641" target="_blank" rel="noopener" rel="nofollow">
+<div class="ad"><span class="lbl">広告・PR</span><a href="https://px.a8.net/svt/ejp?a8mat=4BEK9L+6JSFM+4JGQ+BY641" target="_blank" rel="nofollow sponsored noopener">
 <img border="0" width="300" height="250" alt="" src="https://www28.a8.net/svt/bgt?aid=261019929011&wid=001&eno=01&mid=s00000021185002007000&mc=1"></a>
 <img border="0" width="1" height="1" src="https://www17.a8.net/0.gif?a8mat=4BEK9L+6JSFM+4JGQ+BY641" alt=""></div>
 

@@ -6,7 +6,7 @@
 <meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'unsafe-inline'; img-src 'self' https://*.google-analytics.com https://*.googletagmanager.com; script-src 'self' https://www.googletagmanager.com; connect-src https://*.google-analytics.com https://*.analytics.google.com https://*.googletagmanager.com; base-uri 'none'; form-action 'none'; object-src 'none'">
 <meta name="robots" content="noindex,nofollow">
 <title>リールで見た画面は、ここから｜MisaNeco Works</title>
-<meta name="description" content="Instagram・YouTube・Threadsで紹介した業種別スタジオ（建設・車屋バイク屋・経理事務・不動産）の見本と、BOOTHの商品ページへの案内です。">
+<meta name="description" content="Instagram・YouTube・Threadsで紹介した計算（利益率・数量）と、業種別スタジオ（建設・車屋バイク屋・経理事務・不動産）の見本・商品ページへの案内です。">
 <style>
 :root{--bg:#0b0f1a;--panel:#121a2b;--panel2:#162036;--line:#24304a;--text:#eef2f8;--dim:#9fb0c8;--acc:#9fb0c8;--acc2:#eef2f8;--accInk:#0b0f1a}
 *{box-sizing:border-box}
@@ -23,6 +23,20 @@ h2{font-size:19px;line-height:1.45;margin:40px 0 6px;padding-left:12px;border-le
 .jump a small{display:block;font-weight:400;font-size:12px;color:var(--dim);line-height:1.3}
 .jump a{flex:1 1 40%;line-height:1.4;text-align:center;text-decoration:none;font-weight:700;font-size:14px;border:1px solid var(--line);background:var(--panel);border-radius:10px;padding:10px 6px;min-height:44px}
 .card{scroll-margin-top:12px}
+.hero{background:linear-gradient(160deg,#16243f,#121a2b);border:1px solid #2c3d63;border-top:4px solid #ffd166;border-radius:16px;padding:20px 18px 22px;margin:4px 0 8px}
+.hero .eyebrow{display:inline-block;font-size:12px;font-weight:700;color:#0b0f1a;background:#ffd166;border-radius:999px;padding:2px 10px;margin:0 0 10px}
+.hero h2{border:0;padding:0;margin:0 0 10px;font-size:23px;line-height:1.4}
+.hero .ex{display:grid;grid-template-columns:auto 1fr;gap:2px 12px;background:#0b0f1a;border:1px solid var(--line);border-radius:12px;padding:12px 14px;margin:0 0 12px;font-size:15px;font-variant-numeric:tabular-nums}
+.hero .ex span{color:var(--dim);white-space:nowrap}.hero .ex b{text-align:right;white-space:nowrap}
+.hero .ex .tot{border-top:1px solid var(--line);padding-top:6px;margin-top:4px;color:var(--text)}
+.hero .ex .tot+b{border-top:1px solid var(--line);padding-top:6px;margin-top:4px;color:#ffd166;font-size:18px}
+@media (max-width:480px){.hero .ex .tot,.hero .ex .tot+b{grid-column:1/-1}.hero .ex .tot+b{border-top:0;padding-top:0;margin-top:0}}
+.hero p.what{margin:0 0 14px;color:var(--dim);font-size:14px}
+.btn.hero-go{background:#ffd166;color:#0b0f1a;font-size:17px;min-height:56px;width:100%;max-width:460px}
+.hero .more{margin:10px 0 0;font-size:13px;color:var(--dim)}.hero .more a{color:var(--dim)}
+.pr-box{background:var(--panel2);border:1px solid var(--line);border-radius:12px;padding:12px 14px;margin:24px 0 0;font-size:14px;color:var(--dim)}
+.pr-box .pr-tag{display:inline-block;font-size:11px;font-weight:700;border:1px solid var(--dim);border-radius:4px;padding:0 6px;margin-right:6px;color:var(--dim)}
+.pr-box a{color:var(--acc2);font-weight:700}
 .calc-in{margin:10px 0 0;font-size:14px;line-height:1.7;color:var(--dim)}
 .calc-in b{color:var(--text)}
 .btn.line{background:#06c755;color:#fff;max-width:420px}
@@ -65,29 +79,26 @@ footer{margin-top:40px;font-size:13px;color:var(--dim)}footer a{color:var(--dim)
   .grid{grid-template-columns:repeat(2,1fr)}
 }
 </style>
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-EWJXRJY9M6"></script><script src="../assets/ga.js?v=202610210745"></script><script src="../studio/kensetsu/free/mobile.js?v=202611072100" defer></script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-EWJXRJY9M6"></script><script src="../assets/ga.js?v=202610210745"></script><script src="../studio/kensetsu/free/mobile.js?v=202611072100" defer></script><script src="ig.js?v=202611251700" defer></script>
 </head>
 <body>
 <main>
-<p class="crumb"><a href="/">MisaNeco Works ツール集</a></p>
+<p class="crumb"><a href="/" data-ig="crumb_home">MisaNeco Works ツール集</a></p>
 <h1>リールで見た画面は、ここから</h1>
-<p class="lead">Instagram・YouTube・Threadsで紹介した画面と、買える商品の案内です。まずは無料の見本を触ってみてください。</p>
-<nav class="jump" aria-label="業種を選ぶ"><a href="#kensetsu">建設<small>¥9,800・無料版あり</small></a><a href="#kuruma">車屋・バイク屋<small>¥7,800</small></a><a href="#keiri">経理・事務<small>¥6,800</small></a><a href="#fudosan">不動産<small>¥9,800</small></a></nav>
+<p class="lead">Instagram・YouTube・Threadsで紹介した計算と画面の案内です。</p>
 
-<p class="calc-in"><b>計算のリールから来た方へ</b>　<a href="/suryo/" data-cta="ig_suryo">数量の計算</a>・<a href="/riekiritsu/" data-cta="ig_riekiritsu">利益率の計算</a>（どちらも無料）</p>
-
-<section class="card" id="line" style="--c:#06c755;margin:14px 0 22px">
-<div class="body">
-<h3>いま使っている表を、自動で計算できる形に</h3>
-<p class="what">「この表の集計を毎月手でやっている」「見積書と請求書を別々に作っている」など、困っていることを一言LINEで送ってください。今の業務に合わせたツールづくりのご相談を受けています。</p>
-<a class="btn line" href="https://line.me/R/ti/p/@736dykzx" target="_blank" rel="noopener" data-cta="ig_line">LINEで相談する</a>
-</div>
+<section class="hero" id="calc" aria-labelledby="heroTitle">
+<span class="eyebrow">リールでいちばん見られている計算</span>
+<h2 id="heroTitle">7掛けで仕入れて、2割引きで売ったら？</h2>
+<div class="ex" aria-label="定価10,000円の品の例"><span>定価</span><b>10,000円</b><span>仕入れ（7掛け）</span><b>7,000円</b><span>売値（2割引き）</span><b>8,000円</b><span class="tot">残るのは</span><b>1,000円（利益率12.5%）</b></div>
+<p class="what">売値と仕入れを入れると、利益・利益率と「目標の利益率にするための売値」が出ます。カード払いの手数料や送料も、費用の欄に足して計算できます。無料・登録なしで、スマホでもそのまま使えます。</p>
+<a class="btn hero-go" href="/riekiritsu/" data-cta="ig_riekiritsu" data-ig="hero_riekiritsu">利益率を計算する（無料）</a>
+<p class="more">式のくわしい説明は <a href="/blog/riekiritsu-uwanoseritsu-chigai/" data-ig="hero_blog">利益率と上乗せ率のちがい</a> ／ 現場の数量なら <a href="/suryo/" data-cta="ig_suryo" data-ig="hero_suryo">数量の計算</a></p>
 </section>
-
 <h2 id="studio">業種別スタジオ（アプリ版）</h2>
 <ul class="chips"><li>買い切り</li><li>ネット不要</li><li>データは手元のパソコンだけ</li></ul>
 <p class="sub">リールで動いていた画面と同じ仕組み・同じ計算のアプリです。zipを開いて、パソコンのブラウザで使います。</p>
-<aside class="mobile-note" id="mobileNote" hidden aria-label="スマホでご覧の方へ"><button type="button" class="mn-btn" id="sendToSelf" data-share-title="業種別スタジオの案内（パソコン用）">パソコンで開くために、このページを自分に送る</button><p class="mn-msg" id="mobileMsg" role="status" aria-live="polite"></p></aside>
+<aside class="mobile-note" id="mobileNote" hidden aria-label="スマホでご覧の方へ"><button type="button" class="mn-btn" id="sendToSelf" data-ig="send_to_self" data-share-title="業種別スタジオの案内（パソコン用）">パソコンで開くために、このページを自分に送る</button><p class="mn-msg" id="mobileMsg" role="status" aria-live="polite"></p></aside>
 <div class="grid">
 <section class="card" id="kensetsu" style="--c:#ff9a3c">
 <img src="assets/kensetsu.jpg" width="600" height="600" alt="建設スタジオの画面（数字は架空の見本）">
@@ -95,8 +106,8 @@ footer{margin-top:40px;font-size:13px;color:var(--dim)}footer a{color:var(--dim)
 <h3>建設スタジオ</h3>
 <p class="price" data-price="9800">¥9,800<small>買い切り</small></p>
 <p class="what">見積 → 工程表 → 日報・出面 → 請求 → 入金を、ひとつの画面で。<br>日報を入れると、現場ごとの原価と粗利が自動で出ます。</p>
-<div class="btns"><a class="btn try" href="/studio/kensetsu/">無料の見本を触る</a><a class="btn buy" href="https://excel-temple.booth.pm/items/9042496">BOOTHで見る（¥9,800）</a></div>
-<a class="btn free" href="/studio/kensetsu/free/">無料版をダウンロード（見積書・工程表）</a>
+<div class="btns"><a class="btn try" href="/studio/kensetsu/" data-ig="kensetsu_sample">無料の見本を触る</a><a class="btn buy" href="https://excel-temple.booth.pm/items/9042496" data-ig="kensetsu_booth">BOOTHで見る（¥9,800）</a></div>
+<a class="btn free" href="/studio/kensetsu/free/" data-ig="kensetsu_free">無料版をダウンロード（見積書・工程表）</a>
 <p class="sp">スマホで買って、あとでパソコンでダウンロードできます</p>
 </div>
 </section>
@@ -106,7 +117,7 @@ footer{margin-top:40px;font-size:13px;color:var(--dim)}footer a{color:var(--dim)
 <h3>車屋・バイク屋スタジオ</h3>
 <p class="price" data-price="7800">¥7,800<small>買い切り</small></p>
 <p class="what">車検の案内 → ピット予約 → 整備見積 → 請求 → 入金を、ひとつの画面で。<br>部品の在庫と、中古車1台ごとの粗利も見られます。</p>
-<div class="btns"><a class="btn try" href="/studio/kuruma/">無料の見本を触る</a><a class="btn buy" href="https://excel-temple.booth.pm/items/9042525">BOOTHで見る（¥7,800）</a></div>
+<div class="btns"><a class="btn try" href="/studio/kuruma/" data-ig="kuruma_sample">無料の見本を触る</a><a class="btn buy" href="https://excel-temple.booth.pm/items/9042525" data-ig="kuruma_booth">BOOTHで見る（¥7,800）</a></div>
 <p class="sp">スマホで買って、あとでパソコンでダウンロードできます</p>
 </div>
 </section>
@@ -116,7 +127,7 @@ footer{margin-top:40px;font-size:13px;color:var(--dim)}footer a{color:var(--dim)
 <h3>経理・事務スタジオ</h3>
 <p class="price" data-price="6800">¥6,800<small>買い切り</small></p>
 <p class="what">明細の取り込みと仕訳 → 請求書 → 入金の照合 → 勤怠 → 月次まとめ。<br>毎月の事務を、ひとつの画面で進められます。</p>
-<div class="btns"><a class="btn try" href="/studio/keiri/">無料の見本を触る</a><a class="btn buy" href="https://excel-temple.booth.pm/items/9042539">BOOTHで見る（¥6,800）</a></div>
+<div class="btns"><a class="btn try" href="/studio/keiri/" data-ig="keiri_sample">無料の見本を触る</a><a class="btn buy" href="https://excel-temple.booth.pm/items/9042539" data-ig="keiri_booth">BOOTHで見る（¥6,800）</a></div>
 <p class="sp">スマホで買って、あとでパソコンでダウンロードできます</p>
 </div>
 </section>
@@ -126,29 +137,34 @@ footer{margin-top:40px;font-size:13px;color:var(--dim)}footer a{color:var(--dim)
 <h3>不動産スタジオ</h3>
 <p class="price" data-price="9800">¥9,800<small>買い切り</small></p>
 <p class="what">反響・追客 → 物件調査 → 媒介の期限 → 契約書の下書き → 賃貸の更新を、ひとつの画面で。<br>レインズ登録・業務報告・満了日の期限を、カレンダーで管理します。</p>
-<div class="btns"><a class="btn try" href="/studio/fudosan/">無料の見本を触る</a><a class="btn buy" href="https://excel-temple.booth.pm/items/9061394">BOOTHで見る（¥9,800）</a></div>
+<div class="btns"><a class="btn try" href="/studio/fudosan/" data-ig="fudosan_sample">無料の見本を触る</a><a class="btn buy" href="https://excel-temple.booth.pm/items/9061394" data-ig="fudosan_booth">BOOTHで見る（¥9,800）</a></div>
 <p class="sp">スマホで買って、あとでパソコンでダウンロードできます</p>
 </div>
 </section>
 </div>
 <p class="env">推奨環境：パソコンの Google Chrome。アプリ版はパソコンで使う商品です。</p>
-<a class="row" href="/studio/custom/"><b>あなたの会社に合わせて作ります</b><span>項目を足す・見積書や請求書を会社の形にする・別の業種向けにする、などの作り変えのご相談。今お使いのExcelや紙の表、仕事の流れを公式LINEで一言送ってください。</span></a>
 
 <h2 id="excel">Excel版のほうが合う人へ</h2>
-<p class="sub">表を自分で直しながら使いたい人、Excelやスプレッドシートに慣れている人向けです。</p>
-<div class="diff"><b>アプリ版とExcel版のちがい</b><br>アプリ版：入力が1回で、見積から請求・入金までつながります。<br>Excel版：仕事ごとに分かれた表（ファイル）のセットです。必要なものだけ単品でも買えます。</div>
-<a class="row" href="/erabikata/kensetsu/"><b>建設・設備 業務ツール9点セット</b> <span class="pr" data-price="6980">¥6,980</span><span>見積・原価・請求入金・工程表・日報出面・期限・写真台帳・塗装計算・外注支払</span></a>
-<a class="row" href="/erabikata/kuruma/"><b>車屋・バイク屋 業務ツール6点セット</b> <span class="pr" data-price="4980">¥4,980</span><span>車検台帳・整備見積請求・ピット予約・部品在庫・中古車原価・案内文作成</span></a>
-<a class="row" href="/erabikata/keiri/"><b>経理おまかせ3点セット</b> <span class="pr" data-price="3980">¥3,980</span><span>仕訳帳の自動作成・請求書PDFの整理・支出の見える化</span></a>
-<p class="sub">どれを選べばいいか迷ったら <a href="/erabikata/">業種別の選び方</a> へ。</p>
+<a class="row" href="/erabikata/" data-ig="excel_erabikata"><b>業種別の選び方（Excel版のセット・単品）</b><span>表を自分で直しながら使いたい人向け。建設・車屋・経理のセットと単品を、困りごとから選べます。</span></a>
+
+<section class="card" id="line" style="--c:#06c755;margin:22px 0 0">
+<div class="body">
+<h3>いま使っている表を、自動で計算できる形に</h3>
+<p class="what">「この表の集計を毎月手でやっている」「見積書と請求書を別々に作っている」など、困っていることを一言LINEで送ってください。今の業務に合わせたツールづくりのご相談を受けています。</p>
+<a class="btn line" href="https://line.me/R/ti/p/@736dykzx" target="_blank" rel="noopener" data-cta="ig_line" data-ig="line">LINEで相談する</a>
+<p class="sp">業種別スタジオを会社の形に作り変えるご相談は <a href="/studio/custom/" data-ig="custom">作り変えのご案内</a> へ。</p>
+</div>
+</section>
 
 <h2 id="zukai">図解リール（Excel・セキュリティ・データ）から来た人へ</h2>
-<a class="row" href="/"><b>ツール集</b><span>Excel・セキュリティ・データ集計のツール。ほとんどは無料の体験版をブラウザで試せます。</span></a>
-<a class="row" href="/blog/"><b>ブログ</b><span>リールの中身を、文章でもう少しくわしく。Excelの関数、パスワード、データの見方など。</span></a>
+<a class="row" href="/" data-ig="tools_top"><b>ツール集</b><span>Excel・セキュリティ・データ集計のツール。ほとんどは無料の体験版をブラウザで試せます。</span></a>
+<a class="row" href="/blog/" data-ig="blog_top"><b>ブログ</b><span>リールの中身を、文章でもう少しくわしく。Excelの関数、パスワード、データの見方など。</span></a>
+
+<aside class="pr-box" aria-label="広告・PR"><span class="pr-tag">PR</span>売上と仕入れ・経費を帳簿につけていくなら、会計ソフトで月ごとの数字をまとめる方法もあります。<br><a href="https://px.a8.net/svt/ejp?a8mat=4BEK9L+5CX82+4JGQ+60WN6" target="_blank" rel="nofollow sponsored noopener" data-ig="pr_mf_kaikei">会計自動化ソフトを今すぐ体験 マネーフォワード クラウド会計</a><br><small>このリンクは広告（アフィリエイトリンク）です。</small></aside>
 
 <footer>
-<p>価格はBOOTHの商品ページで2026年11月7日に確かめたものです。購入の前に、BOOTHの商品ページで最新の内容と価格をご確認ください。画面の数字はすべて架空の見本です。ツールは公開前に動作をテストしています。</p>
-<p class="brand"><a href="/">MisaNeco Works ツール集</a> ／ 運営：Eternal Philosophy（EQUA）</p>
+<p>価格はBOOTHの商品ページで2026年11月25日に確かめたものです。購入の前に、BOOTHの商品ページで最新の内容と価格をご確認ください。画面の数字はすべて架空の見本です。ツールは公開前に動作をテストしています。</p>
+<p class="brand"><a href="/" data-ig="footer_home">MisaNeco Works ツール集</a> ／ 運営：Eternal Philosophy（EQUA）</p>
 </footer>
 </main>
 </body>
